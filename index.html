@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html><head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Framont Access — Institutional Investment Platform</title>
+<meta name="description" content="Framont Access — curated access to institutional-grade investment products: UCITS &amp; alternative funds, actively managed certificates, listed instruments, and venture capital co-investments.">
+<meta name="theme-color" content="#001F42">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Framont Access">
+<meta property="og:title" content="Framont Access — Institutional Investment Platform">
+<meta property="og:description" content="Curated access to institutional-grade investment products — funds, structured instruments, and venture capital.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Framont Access — Institutional Investment Platform">
+<meta name="twitter:description" content="Curated access to institutional-grade investment products — funds, structured instruments, and venture capital.">
+<meta name="twitter:image" content="assets/og-image.jpg">
+
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #FFFFFF; color: #002E5F; font-family: 'Work Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,130,0,0.22); }
+    @keyframes fadeUp { from { transform: translateY(16px); } to { transform: translateY(0); } }
+    @keyframes unlockPulse { 0% { background-color: rgba(255,130,0,0.30); border-color: #FF8200; } 100% { background-color: #F7F7F5; border-color: #E9E7E2; } }
+    @keyframes modalIn { from { transform: translateY(14px) scale(0.985); } to { transform: translateY(0) scale(1); } }
+    @keyframes toastIn { from { transform: translateY(-10px); } to { transform: translateY(0); } }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; display:flex; flex-direction:column; background:#FFFFFF;">
+
+  <!-- ============ NAV ============ -->
+  <header data-screen-label="Navigation" style="position:sticky; top:0; z-index:900; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); border-bottom:1px solid #E9E7E2;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 40px; height:68px; display:flex; align-items:center; gap:28px;">
+      <div onclick="{{ onHome }}" style="display:flex; align-items:center; gap:14px; cursor:pointer; margin-right:auto; flex-shrink:0;">
+        <sc-if value="{{ logoOk }}" hint-placeholder-val="{{ true }}">
+          <img src="https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" alt="Framont" onerror="{{ onLogoErr }}" style="height:30px; display:block;">
+        </sc-if>
+        <sc-if value="{{ logoFailed }}" hint-placeholder-val="{{ false }}">
+          <span style="font-family:'Playfair Display',serif; font-size:22px; font-weight:600; color:#002E5F; letter-spacing:0.01em;">Framont</span>
+        </sc-if>
+        <span style="border-left:1px solid #E9E7E2; padding-left:14px; font-size:10.5px; font-weight:600; letter-spacing:0.26em; text-transform:uppercase; color:#4D575E;">Access</span>
+      </div>
+      <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex; gap:26px; align-items:center;">
+          <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="4">
+            <a onclick="{{ l.onClick }}" style="font-size:12.5px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; cursor:pointer; white-space:nowrap; flex-shrink:0; padding:6px 0 4px; color: {{ l.color }}; border-bottom:2px solid {{ l.underline }}; transition:color .2s ease, border-color .2s ease;" style-hover="color:#B85C00;">{{ l.label }}</a>
+          </sc-for>
+        </nav>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <button onclick="{{ onLang }}" style="background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:6px 4px; transition:color .2s ease;" style-hover="color:#B85C00;">{{ langLabel }}</button>
+          <sc-if value="{{ isAnon }}" hint-placeholder-val="{{ true }}">
+            <button onclick="{{ onLogin }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:10px 20px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.nav.login }}</button>
+            <button onclick="{{ onRegister }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease, transform .2s ease;" style-hover="background:#E97500; transform:translateY(-1px);">{{ t.auth.register }}</button>
+          </sc-if>
+          <sc-if value="{{ isAuthed }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:13px; font-weight:600; color:#002E5F; white-space:nowrap;">{{ userName }}</span>
+            <button onclick="{{ onSignOut }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:10px 20px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.nav.signOut }}</button>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onclick="{{ onBurger }}" aria-label="Menu" style="background:none; border:none; cursor:pointer; display:flex; flex-direction:column; gap:5px; padding:6px;">
+          <span style="display:block; width:22px; height:2px; background:#002E5F;"></span>
+          <span style="display:block; width:22px; height:2px; background:#002E5F;"></span>
+          <span style="display:block; width:22px; height:2px; background:#002E5F;"></span>
+        </button>
+      </sc-if>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Mobile menu" style="position:fixed; top:68px; left:0; right:0; z-index:850; background:#FFFFFF; border-bottom:1px solid #E9E7E2; padding:16px 28px 24px; display:flex; flex-direction:column; box-shadow:0 24px 48px rgba(0,31,66,0.10);">
+      <sc-for list="{{ navLinks }}" as="ml" hint-placeholder-count="4">
+        <a onclick="{{ ml.onClick }}" style="font-size:14px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#002E5F; padding:14px 0; cursor:pointer; border-bottom:1px solid #F1EFEA;">{{ ml.label }}</a>
+      </sc-for>
+      <sc-if value="{{ isAnon }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; gap:10px; margin-top:18px;">
+          <button onclick="{{ onLogin }}" style="flex:1; background:transparent; border:1px solid #002E5F; color:#002E5F; padding:12px 16px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0;">{{ t.nav.login }}</button>
+          <button onclick="{{ onRegister }}" style="flex:1; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:12px 16px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0;">{{ t.auth.register }}</button>
+        </div>
+      </sc-if>
+      <button onclick="{{ onLang }}" style="align-self:flex-start; margin-top:16px; background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:4px 0;">{{ langLabel }}</button>
+    </div>
+  </sc-if>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Home — Hero" style="position:relative; height:calc(100vh - 68px); min-height:600px; overflow:hidden; background-color:#001F42;">
+      <div style="position:absolute; inset:0; background-image:radial-gradient(80% 60% at 74% 20%, rgba(255,130,0,0.15), rgba(255,130,0,0) 62%), linear-gradient(160deg, #001F42 0%, #002E5F 100%);"></div>
+      <div style="position:absolute; inset:0; background-image: {{ heroBg }}; background-size:cover; background-position:center;"></div>
+      <video class="mo-hero-video" data-hero-video aria-hidden="true" muted loop autoplay playsinline preload="auto" poster="assets/hero-poster.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease;">
+        <source src="assets/hero-loop.mp4" type="video/mp4">
+        <source src="assets/hero-loop.webm" type="video/webm">
+      </video>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,31,66,0.55), rgba(0,31,66,0.85));"></div>
+      <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 40px; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:#FF8200; margin-bottom:26px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .1s backwards;">{{ t.hero.eyebrow }}</div>
+        <h1 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(40px,6vw,72px); line-height:1.08; color:#FFFFFF; margin:0 0 24px; max-width:780px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .22s backwards;">{{ t.hero.t1 }} <span style="color:#FF8200;">{{ t.hero.t2 }}</span></h1>
+        <p style="font-size:clamp(15px,1.7vw,18px); font-weight:300; color:rgba(255,255,255,0.72); line-height:1.7; margin:0 0 44px; max-width:560px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .34s backwards;">{{ t.hero.subtitle }}</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .46s backwards;">
+          <button onclick="{{ onExplore }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:16px 36px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease, transform .2s ease;" style-hover="background:#E97500; transform:translateY(-1px);">{{ t.hero.learnMore }}</button>
+          <button onclick="{{ onRegister }}" style="background:transparent; border:1px solid rgba(255,255,255,0.5); color:#FFFFFF; padding:16px 36px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, background .2s ease;" style-hover="border-color:#FFFFFF; background:rgba(255,255,255,0.08);">{{ t.hero.cta }}</button>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Home — Trust bar" data-reveal="trust" style="transform: translateY({{ rev.trust.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); background:#F7F7F5; border-bottom:1px solid #E9E7E2;">
+      <div style="max-width:1280px; margin:0 auto; padding:20px 40px; display:flex; gap:14px 52px; flex-wrap:wrap; align-items:center; justify-content:center;">
+        <sc-for list="{{ trustItems }}" as="s" hint-placeholder-count="4">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="width:5px; height:5px; background:#FF8200; flex-shrink:0;"></span>
+            <span style="font-size:12px; font-weight:600; letter-spacing:0.13em; text-transform:uppercase; color:#002E5F;">{{ s }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="sec-universe" data-screen-label="Home — Investment universe" data-reveal="universe" style="transform: translateY({{ rev.universe.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); background:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:104px 40px;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.universe.label }}</div>
+        <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(28px,3.2vw,38px); color:#002E5F; line-height:1.15; margin:14px 0 0; max-width:640px;">{{ t.universe.title }}</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:20px; margin-top:48px;">
+          <sc-for list="{{ universeCards }}" as="c" hint-placeholder-count="4">
+            <div onclick="{{ c.onClick }}" style="position:relative; aspect-ratio:4/5; overflow:hidden; cursor:pointer; background-color:#001F42;">
+              <div style="position:absolute; inset:0; background-image: {{ c.bg }}; background-size:cover; background-position:center; transition:transform .6s cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04);"></div>
+              <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,31,66,0.05) 34%, rgba(0,31,66,0.92) 100%); pointer-events:none;"></div>
+              <div style="position:absolute; left:0; right:0; bottom:0; padding:26px; pointer-events:none;">
+                <div style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#FFFFFF;">{{ c.label }}</div>
+                <div style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.55; margin-top:8px;">{{ c.desc }}</div>
+                <div style="font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#FFFFFF; margin-top:18px; display:flex; align-items:center; gap:8px;">{{ t.universe.explore }} <span style="color:#FF8200; font-size:14px;">→</span></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Home — How it works" data-reveal="how" style="transform: translateY({{ rev.how.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); background:#F7F7F5; border-top:1px solid #E9E7E2; border-bottom:1px solid #E9E7E2;">
+      <div style="max-width:1280px; margin:0 auto; padding:96px 40px;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.how.label }}</div>
+        <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(28px,3.2vw,38px); color:#002E5F; line-height:1.15; margin:14px 0 0;">{{ t.how.title }}</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:48px; margin-top:56px;">
+          <sc-for list="{{ howSteps }}" as="h" hint-placeholder-count="3">
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:60px; font-weight:600; color:#FF8200; line-height:1;">{{ h.n }}</div>
+              <div style="font-size:17px; font-weight:600; color:#002E5F; margin-top:18px;">{{ h.title }}</div>
+              <div style="font-size:14px; color:#4D575E; line-height:1.65; margin-top:8px; max-width:300px;">{{ h.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Home — Featured products" data-reveal="featured" style="transform: translateY({{ rev.featured.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); background:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:96px 40px;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.featured.label }}</div>
+        <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(28px,3.2vw,38px); color:#002E5F; line-height:1.15; margin:14px 0 0;">{{ t.featured.title }}</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-top:48px;">
+          <sc-for list="{{ featuredCards }}" as="p" hint-placeholder-count="3">
+            <div style="background:#FFFFFF; border:1px solid #E9E7E2; padding:26px; display:flex; flex-direction:column; gap:14px; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;" style-hover="transform:translateY(-2px); border-color:#FF8200; box-shadow:0 12px 28px rgba(0,31,66,0.07);">
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ p.catLabel }}</span>
+                <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.08); border:1px solid rgba(255,130,0,0.3); color:#B85C00;">{{ p.assetClass }}</span>
+                <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ p.currency }}</span>
+              </div>
+              <div style="font-size:16.5px; font-weight:600; color:#002E5F; line-height:1.35;">{{ p.name }}</div>
+              <p style="font-size:13.5px; color:#4D575E; line-height:1.6; margin:0;">{{ p.strategy }}</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                <div onclick="{{ p.onGate }}" title="{{ p.gateTitle }}" style="background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 12px; cursor: {{ p.gateCursor }}; animation: {{ p.anim }};">
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                    <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.isin }}</span>
+                    <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
+                      <span style="display:inline-flex; align-items:center; gap:5px;">
+                        <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
+                        <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                      </span>
+                    </sc-if>
+                  </div>
+                  <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:5px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.code }}</div>
+                </div>
+                <div onclick="{{ p.onGate }}" title="{{ p.gateTitle }}" style="background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 12px; cursor: {{ p.gateCursor }}; animation: {{ p.anim }};">
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                    <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.minSub }}</span>
+                    <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
+                      <span style="display:inline-flex; align-items:center; gap:5px;">
+                        <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
+                        <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                      </span>
+                    </sc-if>
+                  </div>
+                  <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:5px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.minLabel }}</div>
+                </div>
+              </div>
+              <div style="margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
+                <div>
+                  <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.target }}</div>
+                  <div style="font-size:13px; font-weight:600; color:#B85C00; margin-top:4px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.target }}</div>
+                </div>
+                <button onclick="{{ p.onView }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 16px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.products.viewSubscribe }}</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ CATEGORY PAGE ============ -->
+  <sc-if value="{{ showCat }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Category — Header" style="background:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:44px 40px 64px;">
+        <div style="font-size:12.5px; color:#4D575E; display:flex; gap:10px; align-items:center; margin-bottom:40px;">
+          <a onclick="{{ onHome }}" style="cursor:pointer; color:#4D575E; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.nav.home }}</a>
+          <span style="color:#B8B4AA;">/</span>
+          <span style="color:#002E5F; font-weight:600;">{{ cat.title }}</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:56px; align-items:center;">
+          <div>
+            <h1 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(40px,5vw,60px); color:#002E5F; margin:0 0 20px; line-height:1.08;">{{ cat.title }}</h1>
+            <p style="font-size:17px; color:#4D575E; line-height:1.65; margin:0; max-width:520px;">{{ cat.tagline }}</p>
+            <div style="width:72px; height:2px; background:#FF8200; margin-top:30px;"></div>
+          </div>
+          <div style="position:relative; aspect-ratio:4/5; max-height:420px; width:100%; max-width:336px; justify-self:end; overflow:hidden; background-color:#001F42;">
+            <div style="position:absolute; inset:0; background-image: {{ catBg }}; background-size:cover; background-position:center;"></div>
+            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,31,66,0) 55%, rgba(0,31,66,0.45) 100%); pointer-events:none;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav data-screen-label="Category — Subnav" style="position:sticky; top:68px; z-index:800; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); border-top:1px solid #E9E7E2; border-bottom:1px solid #E9E7E2;">
+      <div style="max-width:1280px; margin:0 auto; padding:0 40px; display:flex; gap:32px; height:52px; align-items:center; overflow-x:auto;">
+        <sc-for list="{{ subnavLinks }}" as="sl" hint-placeholder-count="4">
+          <a onclick="{{ sl.onClick }}" style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; cursor:pointer; white-space:nowrap; transition:color .2s ease;" style-hover="color:#B85C00;">{{ sl.label }}</a>
+        </sc-for>
+      </div>
+    </nav>
+
+    <section id="sec-products" data-screen-label="Category — Products" style="background:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:72px 40px 96px;">
+        <div data-reveal="prods" style="transform: translateY({{ rev.prods.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;">
+            <div>
+              <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.cat.productsLabel }}</div>
+              <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(26px,3vw,34px); color:#002E5F; line-height:1.15; margin:12px 0 0;">{{ t.cat.productsTitle }}</h2>
+            </div>
+            <div style="font-size:13px; color:#4D575E; padding-bottom:4px;">{{ resultsLabel }}</div>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin:30px 0 24px;">
+            <select value="{{ fCls }}" onchange="{{ onFCls }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+              <sc-for list="{{ clsOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+            </select>
+            <select value="{{ fCur }}" onchange="{{ onFCur }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+              <sc-for list="{{ curOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+            </select>
+            <select value="{{ fSize }}" onchange="{{ onFSize }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+              <option value="all">{{ t.products.allSizes }}</option>
+              <option value="under10k">{{ t.products.sizeUnder }}</option>
+              <option value="10kto100k">€10,000 – €100,000</option>
+              <option value="over100k">{{ t.products.sizeOver }}</option>
+            </select>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px;">
+            <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
+              <div style="background:#FFFFFF; border:1px solid #E9E7E2; padding:26px; display:flex; flex-direction:column; gap:14px; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;" style-hover="transform:translateY(-2px); border-color:#FF8200; box-shadow:0 12px 28px rgba(0,31,66,0.07);">
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.08); border:1px solid rgba(255,130,0,0.3); color:#B85C00;">{{ p.assetClass }}</span>
+                  <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ p.currency }}</span>
+                </div>
+                <div style="font-size:16.5px; font-weight:600; color:#002E5F; line-height:1.35;">{{ p.name }}</div>
+                <p style="font-size:13.5px; color:#4D575E; line-height:1.6; margin:0;">{{ p.strategy }}</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                  <div onclick="{{ p.onGate }}" title="{{ p.gateTitle }}" style="background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 12px; cursor: {{ p.gateCursor }}; animation: {{ p.anim }};">
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                      <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.isin }}</span>
+                      <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
+                        <span style="display:inline-flex; align-items:center; gap:5px;">
+                          <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
+                          <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                        </span>
+                      </sc-if>
+                    </div>
+                    <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:5px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.code }}</div>
+                  </div>
+                  <div onclick="{{ p.onGate }}" title="{{ p.gateTitle }}" style="background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 12px; cursor: {{ p.gateCursor }}; animation: {{ p.anim }};">
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                      <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.minSub }}</span>
+                      <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
+                        <span style="display:inline-flex; align-items:center; gap:5px;">
+                          <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
+                          <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                        </span>
+                      </sc-if>
+                    </div>
+                    <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:5px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.minLabel }}</div>
+                  </div>
+                </div>
+                <div style="margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
+                  <div>
+                    <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.target }}</div>
+                    <div style="font-size:13px; font-weight:600; color:#B85C00; margin-top:4px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.target }}</div>
+                  </div>
+                  <button onclick="{{ p.onView }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 16px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.products.viewSubscribe }}</button>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Category — Education" style="background:#F7F7F5; border-top:1px solid #E9E7E2;">
+      <div style="max-width:1280px; margin:0 auto; padding:96px 40px; display:flex; flex-direction:column; gap:80px;">
+        <div id="sec-about" data-reveal="about" style="transform: translateY({{ rev.about.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:64px; align-items:start;">
+          <div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.cat.aboutLabel }}</div>
+            <p style="font-size:15.5px; color:#4D575E; line-height:1.85; margin:20px 0 0;">{{ cat.description }}</p>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.cat.charLabel }}</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#E9E7E2; border:1px solid #E9E7E2; margin-top:20px;">
+              <sc-for list="{{ features }}" as="fe" hint-placeholder-count="5">
+                <div style="background:#FFFFFF; padding:18px 20px;">
+                  <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ fe.label }}</div>
+                  <div style="font-size:14px; font-weight:600; color:#002E5F; margin-top:6px;">{{ fe.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div id="sec-elig" data-reveal="elig" style="transform: translateY({{ rev.elig.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:64px; align-items:start;">
+          <div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.cat.eligLabel }}</div>
+            <p style="font-size:15.5px; color:#4D575E; line-height:1.85; margin:20px 0 0;">{{ cat.eligibility }}</p>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.cat.benefitsLabel }}</div>
+            <div style="display:grid; gap:10px; margin-top:20px;">
+              <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+                <div style="display:flex; gap:12px; align-items:flex-start; background:#FFFFFF; border:1px solid #E9E7E2; padding:14px 16px;">
+                  <span style="width:6px; height:6px; background:#FF8200; flex-shrink:0; margin-top:6px;"></span>
+                  <span style="font-size:14px; color:#4D575E; line-height:1.55;">{{ b }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-faq" data-screen-label="Category — FAQ" style="background:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:96px 40px;">
+        <div data-reveal="faq" style="transform: translateY({{ rev.faq.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); max-width:860px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">FAQ</div>
+          <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(26px,3vw,34px); color:#002E5F; line-height:1.15; margin:12px 0 16px;">{{ t.cat.faqTitle }}</h2>
+          <div>
+            <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="3">
+              <div onclick="{{ f.onToggle }}" style="border-bottom:1px solid #E9E7E2; padding:22px 0; cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; gap:16px; align-items:center;">
+                  <div style="font-size:16px; font-weight:500; color:#002E5F;">{{ f.q }}</div>
+                  <span style="display:inline-flex; flex-shrink:0; transition:transform .25s ease; transform:rotate({{ f.rot }});"><svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:#FF8200; stroke-width:2px; fill:none;"><path d="M6 9 l6 6 6 -6"></path></svg></span>
+                </div>
+                <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:14.5px; color:#4D575E; line-height:1.75; margin-top:12px; max-width:760px; animation:fadeUp .3s ease;">{{ f.a }}</div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ ADMIN ============ -->
+  <sc-if value="{{ showAdmin }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Admin panel" style="background:#FFFFFF; min-height:64vh;">
+      <div style="max-width:1280px; margin:0 auto; padding:56px 40px 112px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
+          <h1 style="font-family:'Playfair Display',serif; font-size:34px; font-weight:500; color:#002E5F; margin:0;">{{ t.admin.title }}</h1>
+          <sc-if value="{{ tabSubs }}" hint-placeholder-val="{{ false }}">
+            <button onclick="{{ onExport }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:10px 20px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.admin.export }}</button>
+          </sc-if>
+        </div>
+        <div style="display:flex; border-bottom:1px solid #E9E7E2; margin:28px 0 0;">
+          <sc-for list="{{ adminTabs }}" as="tb" hint-placeholder-count="3">
+            <button onclick="{{ tb.onClick }}" style="background:none; border:none; border-bottom:2px solid {{ tb.underline }}; color: {{ tb.color }}; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; margin-bottom:-1px; transition:color .2s ease, border-color .2s ease;">{{ tb.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ tabSubs }}" hint-placeholder-val="{{ false }}">
+          <div style="overflow-x:auto; margin-top:8px;">
+            <sc-for list="{{ subsRows }}" as="r" hint-placeholder-count="2">
+                  </sc-for><table style="width:100%; border-collapse:collapse; font-size:13.5px;">
+              <thead>
+                <tr>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.name }}</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.email }}</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.phone }}</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.category }}</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.joined }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style-hover="background:#F7F7F5;">
+                    <td style="padding:15px 16px; font-weight:600; color:#002E5F; border-bottom:1px solid #F1EFEA;">{{ r.name }}</td>
+                    <td style="padding:15px 16px; color:#4D575E; border-bottom:1px solid #F1EFEA;">{{ r.email }}</td>
+                    <td style="padding:15px 16px; color:#4D575E; border-bottom:1px solid #F1EFEA;">{{ r.phone }}</td>
+                    <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA;"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.08); border:1px solid rgba(255,130,0,0.3); color:#B85C00;">{{ r.category }}</span></td>
+                    <td style="padding:15px 16px; color:#4D575E; border-bottom:1px solid #F1EFEA;">{{ r.joined }}</td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </sc-if>
+        <sc-if value="{{ tabProds }}" hint-placeholder-val="{{ false }}">
+          <div style="overflow-x:auto; margin-top:8px;">
+            <sc-for list="{{ prodRows }}" as="pr" hint-placeholder-count="4">
+                  </sc-for><table style="width:100%; border-collapse:collapse; font-size:13.5px;">
+              <thead>
+                <tr>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.productName }}</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">ISIN / Ticker</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.assetClass }}</th>
+                  <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.status }}</th>
+                  <th style="border-bottom:1px solid #E9E7E2;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style-hover="background:#F7F7F5;">
+                    <td style="padding:15px 16px; font-weight:600; color:#002E5F; border-bottom:1px solid #F1EFEA;">{{ pr.name }}</td>
+                    <td style="padding:15px 16px; color:#4D575E; border-bottom:1px solid #F1EFEA; font-family:Consolas,monospace; font-size:12px;">{{ pr.code }}</td>
+                    <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA;"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ pr.assetClass }}</span></td>
+                    <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA;">
+                      <sc-if value="{{ pr.activeB }}" hint-placeholder-val="{{ true }}"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.1); border:1px solid rgba(255,130,0,0.35); color:#B85C00;">{{ pr.statusLabel }}</span></sc-if>
+                      <sc-if value="{{ pr.inactiveB }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#8C959C;">{{ pr.statusLabel }}</span></sc-if>
+                    </td>
+                    <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA; text-align:right;">
+                      <button onclick="{{ pr.onToggle }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:6px 14px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ pr.toggleLabel }}</button>
+                    </td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </sc-if>
+        <sc-if value="{{ tabAct }}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{ noActivity }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center; padding:72px 0; color:#8C959C; font-size:14px;">{{ t.admin.noActivity }}</div>
+          </sc-if>
+          <sc-if value="{{ hasActivity }}" hint-placeholder-val="{{ false }}">
+            <div style="overflow-x:auto; margin-top:8px;">
+              <sc-for list="{{ actRows }}" as="a" hint-placeholder-count="1">
+                    </sc-for><table style="width:100%; border-collapse:collapse; font-size:13.5px;">
+                <thead>
+                  <tr>
+                    <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.user }}</th>
+                    <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.product }}</th>
+                    <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.timestamp }}</th>
+                    <th style="text-align:left; padding:16px; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; border-bottom:1px solid #E9E7E2;">{{ t.admin.session }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style-hover="background:#F7F7F5;">
+                      <td style="padding:15px 16px; color:#002E5F; font-weight:600; border-bottom:1px solid #F1EFEA;">{{ a.user }}</td>
+                      <td style="padding:15px 16px; color:#B85C00; font-weight:500; border-bottom:1px solid #F1EFEA;">{{ a.product }}</td>
+                      <td style="padding:15px 16px; color:#4D575E; border-bottom:1px solid #F1EFEA; font-family:Consolas,monospace; font-size:12px;">{{ a.time }}</td>
+                      <td style="padding:15px 16px; color:#4D575E; border-bottom:1px solid #F1EFEA; font-family:Consolas,monospace; font-size:12px;">{{ a.ref }}</td>
+                    </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </sc-if>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ CTA BAND ============ -->
+  <sc-if value="{{ showCtaBand }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="CTA band" data-reveal="cta" class="mo-cta-band" style="transform: translateY({{ rev.cta.y }}); transition: transform .8s cubic-bezier(.22,.61,.36,1); position:relative; overflow:hidden; background-color:#001630; padding:clamp(90px,12vw,148px) 40px; text-align:center;">
+      <div style="position:absolute; inset:0; background-image:url('assets/cat-amc.jpg'); background-size:cover; background-position:center; opacity:0.20;"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,18,40,0.80) 0%, rgba(0,18,40,0.90) 100%);"></div>
+      <div class="mo-aurora" aria-hidden="true"></div>
+      <div style="position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, rgba(255,130,0,0.55), transparent);"></div>
+      <div style="position:relative; z-index:1; max-width:840px; margin:0 auto;">
+        <div style="display:inline-flex; align-items:center; gap:12px; font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:#FF8200; margin-bottom:24px;">
+          <span style="width:24px; height:1px; background:rgba(255,130,0,0.55);"></span>{{ t.cta.eyebrow }}<span style="width:24px; height:1px; background:rgba(255,130,0,0.55);"></span>
+        </div>
+        <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(32px,5vw,58px); color:#FFFFFF; margin:0 auto; max-width:800px; line-height:1.1; letter-spacing:-0.01em;">{{ t.cta.title }}</h2>
+        <p style="font-size:clamp(15px,1.6vw,17px); font-weight:300; color:rgba(255,255,255,0.68); margin:22px auto 42px; max-width:540px; line-height:1.7;">{{ t.cta.sub }}</p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+          <button onclick="{{ onCta }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:18px 46px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; border-radius:0; box-shadow:0 14px 40px rgba(255,130,0,0.28); transition:background .2s ease, transform .2s ease, box-shadow .2s ease;" style-hover="background:#E97500; transform:translateY(-2px); box-shadow:0 18px 50px rgba(255,130,0,0.40);">{{ ctaLabel }}</button>
+        </div>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:46px;">
+          <sc-for list="{{ trustItems }}" as="ci" hint-placeholder-count="4">
+            <span style="display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border:1px solid rgba(255,255,255,0.14); border-radius:999px; background:rgba(255,255,255,0.04); font-size:12px; font-weight:600; letter-spacing:0.03em; color:rgba(255,255,255,0.82);">
+              <svg viewBox="0 0 24 24" style="width:13px; height:13px; stroke:#FF8200; stroke-width:2.6; fill:none;"><path d="M5 13l4 4L19 7"></path></svg>{{ ci }}
+            </span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ FOOTER ============ -->
+  <footer data-screen-label="Footer" class="mo-footer" style="position:relative; overflow:hidden; background:#00122A; color:#FFFFFF; margin-top:auto;">
+    <div style="height:2px; background:linear-gradient(90deg, transparent, rgba(255,130,0,0.12), #FF8200 45%, #FFC98A 50%, #FF8200 55%, rgba(255,130,0,0.12), transparent);"></div>
+    <div aria-hidden="true" style="position:absolute; bottom:-45%; left:-12%; width:55%; height:130%; background:radial-gradient(closest-side, rgba(255,130,0,0.10), rgba(255,130,0,0) 72%); pointer-events:none;"></div>
+    <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:80px 40px 40px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:44px 40px; align-items:start;">
+        <div style="min-width:0;">
+          <sc-if value="{{ logoOk }}" hint-placeholder-val="{{ true }}">
+            <img src="https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" alt="Framont" onerror="{{ onLogoErr }}" style="height:32px; display:block; filter:brightness(0) invert(1); opacity:0.94;">
+          </sc-if>
+          <sc-if value="{{ logoFailed }}" hint-placeholder-val="{{ false }}">
+            <span style="font-family:'Playfair Display',serif; font-size:24px; font-weight:600; color:#FFFFFF;">Framont</span>
+          </sc-if>
+          <p style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.75; margin:20px 0 22px; max-width:300px;">{{ t.footer.tag }}</p>
+          <span style="display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border:1px solid rgba(255,130,0,0.32); border-radius:999px; background:rgba(255,130,0,0.06); font-size:10.5px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:#FFB273;">
+            <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:#FF8200; stroke-width:2.4; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>{{ t.footer.mfsa }}
+          </span>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">{{ t.footer.platform }}</div>
+          <sc-for list="{{ navLinks }}" as="fl" hint-placeholder-count="4">
+            <a onclick="{{ fl.onClick }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ fl.label }}</a>
+          </sc-for>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">{{ t.footer.legalCol }}</div>
+          <a style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.auth.privacy }}</a>
+          <a style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.contact }}</a>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">{{ t.footer.contactCol }}</div>
+          <div style="display:flex; align-items:center; gap:9px; font-size:13.5px; color:rgba(255,255,255,0.72); margin-bottom:14px;">
+            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0;"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>{{ t.footer.address }}
+          </div>
+          <a href="mailto:access@framont.com" style="display:inline-flex; align-items:center; gap:9px; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease;" style-hover="color:#FF8200;">
+            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>{{ t.footer.email }}
+          </a>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1); margin-top:60px; padding-top:30px;">
+        <p style="font-size:12px; color:rgba(255,255,255,0.42); line-height:1.85; margin:0;">{{ t.footer.legal }}</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:16px 24px; flex-wrap:wrap; margin-top:26px;">
+          <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,0.4);">
+            <span>{{ t.footer.copyright }}</span>
+            <span style="display:inline-flex; align-items:center; gap:7px;"><span style="width:5px; height:5px; background:#FF8200; border-radius:50%;"></span>{{ t.footer.mfsa }}</span>
+          </div>
+          <button data-mo-top aria-label="{{ t.footer.backToTop }}" style="display:inline-flex; align-items:center; gap:9px; background:none; border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.7); padding:9px 16px; border-radius:999px; font-family:'Work Sans',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; cursor:pointer; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#FF8200; color:#FF8200;">{{ t.footer.backToTop }}<svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:currentColor; stroke-width:2.4; fill:none;"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL: REQUEST ACCESS ============ -->
+  <sc-if value="{{ mRegister }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Request access" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+          <div style="height:2px; flex:1; background:#E9E7E2; position:relative;"><div style="position:absolute; left:0; top:0; bottom:0; width: {{ regProgressW }}; background:#FF8200; transition:width .35s ease;"></div></div>
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; white-space:nowrap;">{{ regStepLabel }}</div>
+        </div>
+        <sc-if value="{{ regStep1 }}" hint-placeholder-val="{{ true }}">
+          <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.auth.register }}</h3>
+          <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 26px;">{{ t.reg.intro }}</p>
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:8px;">{{ t.auth.name }}</label>
+            <input value="{{ fName }}" onchange="{{ onName }}" onkeydown="{{ onRegKey }}" placeholder="Mario Rossi" style="width:100%; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 14px; font-size:15px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            <sc-if value="{{ eName }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ eName }}</div></sc-if>
+          </div>
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:8px;">{{ t.auth.email }}</label>
+            <input value="{{ fEmail }}" onchange="{{ onEmail }}" onkeydown="{{ onRegKey }}" type="email" placeholder="mario@example.com" style="width:100%; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 14px; font-size:15px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            <sc-if value="{{ eEmail }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ eEmail }}</div></sc-if>
+          </div>
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:8px;">{{ t.auth.phone }}</label>
+            <div style="display:flex; gap:8px;">
+              <select value="{{ fPrefix }}" onchange="{{ onPrefix }}" style="width:110px; flex-shrink:0; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 10px; font-size:14px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+                <option value="+39">IT +39</option>
+                <option value="+44">UK +44</option>
+                <option value="+1">US +1</option>
+                <option value="+41">CH +41</option>
+                <option value="+33">FR +33</option>
+                <option value="+49">DE +49</option>
+                <option value="+34">ES +34</option>
+                <option value="+31">NL +31</option>
+                <option value="+32">BE +32</option>
+                <option value="+352">LU +352</option>
+              </select>
+              <input value="{{ fPhone }}" onchange="{{ onPhone }}" onkeydown="{{ onRegKey }}" placeholder="333 456 7890" style="flex:1; min-width:0; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 14px; font-size:15px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            </div>
+            <sc-if value="{{ ePhone }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ ePhone }}</div></sc-if>
+          </div>
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:8px;">{{ t.auth.category }}</label>
+            <select value="{{ fCategory }}" onchange="{{ onCategory }}" style="width:100%; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 14px; font-size:15px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+              <option value="retail">{{ t.auth.retail }}</option>
+              <option value="professional">{{ t.auth.professional }}</option>
+              <option value="institutional">{{ t.auth.institutional }}</option>
+            </select>
+          </div>
+          <div style="margin-bottom:24px;">
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <input type="checkbox" id="gdpr" checked="{{ fGdpr }}" onchange="{{ onGdpr }}" style="width:17px; height:17px; accent-color:#FF8200; flex-shrink:0; margin:2px 0 0; cursor:pointer;">
+              <label for="gdpr" style="font-size:13px; color:#4D575E; line-height:1.55; cursor:pointer;">{{ t.auth.gdpr }} <span style="color:#B85C00; text-decoration:underline; text-underline-offset:2px;">{{ t.auth.privacy }}</span></label>
+            </div>
+            <sc-if value="{{ eGdpr }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:8px;">{{ eGdpr }}</div></sc-if>
+          </div>
+          <button onclick="{{ onRegSubmit }}" style="width:100%; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.submit }}</button>
+          <div style="text-align:center; font-size:12.5px; color:#4D575E; margin-top:14px;">{{ t.reg.noFees }}</div>
+        </sc-if>
+        <sc-if value="{{ regStep2 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.auth.verifyEmail }}</h3>
+          <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0;">{{ t.auth.verifyEmailSub }} <strong style="color:#002E5F;">{{ emailSentTo }}</strong></p>
+          <div style="display:flex; gap:10px; justify-content:center; margin:30px 0 8px;">
+            <sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6">
+              <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            </sc-for>
+          </div>
+          <sc-if value="{{ otpError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#B3261E; text-align:center; margin-top:6px;">{{ t.reg.badCode }}</div></sc-if>
+          <button onclick="{{ onVerifyEmail }}" style="width:100%; margin-top:22px; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.verify }}</button>
+          <button onclick="{{ onResend }}" disabled="{{ resendDisabled }}" style="width:100%; margin-top:10px; background:transparent; border:1px solid #E9E7E2; color:#4D575E; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#002E5F; color:#002E5F;">{{ resendLabel }}</button>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+            <a onclick="{{ onBackToForm }}" style="font-size:12.5px; color:#4D575E; cursor:pointer; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.reg.back }}</a>
+            <span style="font-size:11.5px; color:#9AA3AA;">{{ t.reg.demo }}</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ MODAL: LOGIN ============ -->
+  <sc-if value="{{ mLogin }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Sign in" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:440px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
+        <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.auth.login }}</h3>
+        <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 26px;">{{ t.loginM.intro }}</p>
+        <div style="margin-bottom:22px;">
+          <label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:8px;">{{ t.auth.email }}</label>
+          <input value="{{ loginEmail }}" onchange="{{ onLoginEmail }}" onkeydown="{{ onLoginKey }}" type="email" placeholder="mario@example.com" style="width:100%; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 14px; font-size:15px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+          <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ loginError }}</div></sc-if>
+        </div>
+        <button onclick="{{ onLoginSubmit }}" style="width:100%; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.login }}</button>
+        <div style="text-align:center; font-size:11.5px; color:#9AA3AA; margin-top:14px; line-height:1.5;">{{ t.loginM.demo }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ MODAL: PRODUCT DETAIL ============ -->
+  <sc-if value="{{ mProduct }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Product detail" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:640px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+          <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.08); border:1px solid rgba(255,130,0,0.3); color:#B85C00;">{{ pm.assetClass }}</span>
+          <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ pm.currency }}</span>
+          <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ t.products.isin }}: {{ pm.code }}</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:29px; font-weight:500; color:#002E5F; margin:0 0 14px; line-height:1.2;">{{ pm.name }}</h3>
+        <p style="font-size:14.5px; color:#4D575E; line-height:1.7; margin:0;">{{ pm.description }}</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:26px 0;">
+          <div style="background:rgba(255,130,0,0.08); border:1px solid rgba(255,130,0,0.25); padding:18px 20px;">
+            <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.minSub }}</div>
+            <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:600; color:#002E5F; margin-top:6px;">{{ pm.minLabel }}</div>
+          </div>
+          <div style="background:#F7F7F5; border:1px solid #E9E7E2; padding:18px 20px;">
+            <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.target }}</div>
+            <div style="font-size:16px; font-weight:600; color:#002E5F; margin-top:11px;">{{ pm.target }}</div>
+          </div>
+        </div>
+        <div style="margin-bottom:24px;">
+          <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:10px;">{{ t.modal.documents }}</div>
+          <div style="display:flex; gap:24px; flex-wrap:wrap;">
+            <a onclick="{{ onDocClick }}" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.factsheet }}</a>
+            <a onclick="{{ onDocClick }}" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.kid }}</a>
+          </div>
+        </div>
+        <div style="border-top:1px solid #E9E7E2; padding-top:16px; margin-bottom:26px; font-size:12px; color:#8C959C; line-height:1.65;">{{ t.modal.disclaimer }}</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button onclick="{{ onDocClick }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.modal.download }}</button>
+          <button onclick="{{ onStartSub }}" disabled="{{ subscribing }}" style="flex:1; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ subBtnLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ MODAL: PHONE VERIFY ============ -->
+  <sc-if value="{{ mPhone }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Phone verification" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:480px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
+        <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.phoneV.title }}</h3>
+        <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 8px;">{{ t.phoneV.sub }}</p>
+        <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0;">{{ t.auth.verifyPhoneSub }} <strong style="color:#002E5F;">{{ phoneSentTo }}</strong></p>
+        <div style="display:flex; gap:10px; justify-content:center; margin:30px 0 8px;">
+          <sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6">
+            <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+          </sc-for>
+        </div>
+        <sc-if value="{{ otpError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#B3261E; text-align:center; margin-top:6px;">{{ t.reg.badCode }}</div></sc-if>
+        <button onclick="{{ onVerifyPhone }}" disabled="{{ subscribing }}" style="width:100%; margin-top:22px; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ phoneVerifyLabel }}</button>
+        <button onclick="{{ onResend }}" disabled="{{ resendDisabled }}" style="width:100%; margin-top:10px; background:transparent; border:1px solid #E9E7E2; color:#4D575E; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#002E5F; color:#002E5F;">{{ resendLabel }}</button>
+        <div style="text-align:center; font-size:11.5px; color:#9AA3AA; margin-top:14px;">{{ t.reg.demo }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ MODAL: CONFIRMATION ============ -->
+  <sc-if value="{{ mConfirm }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Confirmation" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
+        <div style="text-align:center;">
+          <div style="width:64px; height:64px; border:2px solid #FF8200; display:flex; align-items:center; justify-content:center; margin:0 auto 22px;">
+            <svg viewBox="0 0 24 24" style="width:28px; height:28px; stroke:#FF8200; stroke-width:2.5px; fill:none;"><path d="M4 12.5 l5 5 L20 6.5"></path></svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.modal.confirm }}</h3>
+          <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 auto; max-width:380px;">{{ cMsg }}</p>
+          <div style="display:inline-block; font-family:Consolas,monospace; font-size:13px; letter-spacing:0.12em; color:#002E5F; background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 18px; margin-top:18px;">{{ cRef }}</div>
+        </div>
+        <div style="border-top:1px solid #E9E7E2; margin-top:28px; padding-top:24px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00; margin-bottom:18px;">{{ t.next.title }}</div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="3">
+              <div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:#FF8200; line-height:1; flex-shrink:0; width:18px;">{{ n.n }}</span>
+                <span style="font-size:14px; color:#4D575E; line-height:1.6;">{{ n.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <button onclick="{{ onBackToProducts }}" style="width:100%; margin-top:28px; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.next.back }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ TOAST ============ -->
+  <sc-if value="{{ toastShow }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Toast" style="position:fixed; top:88px; right:28px; z-index:1500; background:#001F42; color:#FFFFFF; padding:14px 20px; display:flex; gap:12px; align-items:center; box-shadow:0 12px 32px rgba(0,31,66,0.35); animation:toastIn .3s ease; max-width:380px;">
+      <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#FF8200; stroke-width:2.5px; fill:none; flex-shrink:0;"><path d="M4 12.5 l5 5 L20 6.5"></path></svg>
+      <div style="font-size:13.5px; line-height:1.5;">{{ toastMsg }}</div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{
+  &quot;startState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;anonymous&quot;, &quot;member&quot;, &quot;phone-verified&quot;, &quot;admin&quot;], &quot;default&quot;: &quot;anonymous&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Demo state&quot; },
+  &quot;language&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;en&quot;, &quot;it&quot;], &quot;default&quot;: &quot;en&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Demo state&quot; },
+  &quot;assetHero&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/hero-poster.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCardFunds&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/card-funds.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCardAmc&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/card-amc.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCardEti&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/card-eti.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCardVc&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/card-vc.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCatFunds&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/cat-funds.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCatAmc&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/cat-amc.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCatEti&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/cat-eti.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; },
+  &quot;assetCatVc&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;assets/cat-vc.jpg&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Image URLs&quot; }
+}">
+class Component extends DCLogic {
+  INVESTGLASS_API_URL = "https://YOUR_INVESTGLASS_INSTANCE.investglass.com/api";
+
+  FEATURED = [{ id: "f001", ck: "funds" }, { id: "a002", ck: "amc" }, { id: "v001", ck: "vc" }];
+
+  T = {
+    en: {
+      lang: "IT",
+      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", vc: "VC Deals", login: "Login", admin: "Admin", signOut: "Sign Out" },
+      hero: { eyebrow: "Framont Group — Investment Platform", t1: "Access the World of", t2: "Framont", subtitle: "Curated access to institutional-grade investment products — across funds, structured instruments, and venture capital opportunities.", cta: "Request Access", learnMore: "Explore Products" },
+      teaser: { locked: "Members only", unlock: "Request access to view" },
+      trust: ["MFSA Licensed", "30+ Years Experience", "€2.4B+ Under Coverage", "18 Jurisdictions"],
+      universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", vc: "Venture capital co-investments for professionals" } },
+      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Verify your email", sub: "Instant — unlocks full product data and documents." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
+      featured: { label: "Featured Products", title: "A selection from the current shelf" },
+      gate: { members: "Members", toastUnlock: "Access granted — full product data unlocked.", toastWelcome: "Signed in — product data unlocked.", toastDocs: "Documents are delivered during secure onboarding (demo)." },
+      cta: { eyebrow: "Membership", title: "Ready to access institutional-grade products?", sub: "Registration is free and takes two minutes.", button: "Request Access" },
+      footer: { tag: "Curated access to institutional-grade investment products for qualified investors across Europe.", platform: "Platform", legalCol: "Legal", company: "Company", contactCol: "Contact", contact: "Contact", address: "Valletta, Malta", email: "access@framont.com", backToTop: "Back to top", copyright: "© 2026 Framont Group. All rights reserved.", mfsa: "Licensed by the MFSA", legal: "Framont & Partners Management Ltd. is licensed by the Malta Financial Services Authority to provide investment services under the Investment Services Act (Cap. 370 of the Laws of Malta). Registered office: Valletta, Malta. The content of this platform is provided for information purposes only and does not constitute investment advice, a solicitation or an offer to the public. Access to certain products is restricted to investors who meet the applicable eligibility criteria. Investments involve risk, including the possible loss of the capital invested. Past performance is not a reliable indicator of future results." },
+      auth: { register: "Request Access", login: "Sign In", name: "Full Name", email: "Email Address", phone: "Phone Number", category: "Investor Category", retail: "Retail Investor", professional: "Professional Investor", institutional: "Institutional Investor", gdpr: "I consent to the processing of my personal data in accordance with the", privacy: "Privacy Policy", submit: "Request Access", verifyEmail: "Verify your email", verifyEmailSub: "Enter the 6-digit code sent to", verifyPhoneSub: "Enter the 6-digit code sent to", verify: "Verify", resend: "Resend code" },
+      err: { name: "Name is required", email: "Valid email required", phone: "Valid phone number required", gdpr: "Please accept the privacy policy" },
+      reg: { step1: "Step 1 of 2", step2: "Step 2 of 2", intro: "Complete the form to unlock full product data — ISINs, minimum subscriptions and documents.", noFees: "No fees. Takes 2 minutes.", demo: "Demo — use code 123456", badCode: "Invalid code. In this demo, use 123456.", back: "← Back to the form" },
+      loginM: { intro: "Enter your registered email to sign in.", demo: "Demo: any email works — admin@framont.com opens the admin panel." },
+      phoneV: { title: "Verify your identity", sub: "Regulation requires phone verification before subscription requests can be submitted. This is a one-time step.", processing: "Processing…" },
+      next: { title: "What happens next", steps: ["Our team contacts you within one business day.", "Suitability assessment and documents via InvestGlass secure onboarding.", "Execution and confirmation of your subscription."], back: "Back to Products" },
+      products: { viewSubscribe: "View & Subscribe", isin: "ISIN", minSub: "Min. Subscription", target: "Target", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products" },
+      modal: { subscribe: "Start Subscription", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", confirm: "Subscription Request Sent", confirmSub: "Your subscription request for {product} has been submitted.", disclaimer: "This product is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results. Capital at risk." },
+      cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products" },
+      admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
+    },
+    it: {
+      lang: "EN",
+      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", vc: "VC Deals", login: "Accedi", admin: "Admin", signOut: "Esci" },
+      hero: { eyebrow: "Framont Group — Piattaforma d'Investimento", t1: "Accedi al Mondo di", t2: "Framont", subtitle: "Accesso curato a prodotti d'investimento di livello istituzionale — fondi, strumenti strutturati e opportunità di venture capital.", cta: "Richiedi Accesso", learnMore: "Esplora i Prodotti" },
+      teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare" },
+      trust: ["Autorizzata MFSA", "30+ Anni di Esperienza", "€2,4 Mld+ in Copertura", "18 Giurisdizioni"],
+      universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", vc: "Co-investimenti VC per professionisti" } },
+      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Verifica l'email", sub: "Immediato — sblocca dati completi e documenti." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
+      featured: { label: "Prodotti in Evidenza", title: "Una selezione dall'offerta attuale" },
+      gate: { members: "Iscritti", toastUnlock: "Accesso concesso — dati prodotto sbloccati.", toastWelcome: "Accesso effettuato — dati prodotto sbloccati.", toastDocs: "I documenti vengono forniti durante l'onboarding sicuro (demo)." },
+      cta: { eyebrow: "Adesione", title: "Pronto ad accedere a prodotti di livello istituzionale?", sub: "La registrazione è gratuita e richiede due minuti.", button: "Richiedi Accesso" },
+      footer: { tag: "Accesso curato a prodotti d'investimento di livello istituzionale per investitori qualificati in Europa.", platform: "Piattaforma", legalCol: "Legale", company: "Azienda", contactCol: "Contatti", contact: "Contatti", address: "La Valletta, Malta", email: "access@framont.com", backToTop: "Torna su", copyright: "© 2026 Framont Group. Tutti i diritti riservati.", mfsa: "Autorizzata dalla MFSA", legal: "Framont & Partners Management Ltd. è autorizzata dalla Malta Financial Services Authority a prestare servizi d'investimento ai sensi dell'Investment Services Act (Cap. 370 delle Leggi di Malta). Sede legale: La Valletta, Malta. I contenuti di questa piattaforma sono forniti a solo scopo informativo e non costituiscono consulenza d'investimento, sollecitazione o offerta al pubblico. L'accesso ad alcuni prodotti è riservato agli investitori che soddisfano i criteri di idoneità applicabili. Gli investimenti comportano rischi, inclusa la possibile perdita del capitale investito. I rendimenti passati non sono un indicatore affidabile dei risultati futuri." },
+      auth: { register: "Richiedi Accesso", login: "Accedi", name: "Nome Completo", email: "Indirizzo Email", phone: "Numero di Telefono", category: "Categoria Investitore", retail: "Investitore Retail", professional: "Investitore Professionale", institutional: "Investitore Istituzionale", gdpr: "Acconsento al trattamento dei miei dati personali ai sensi della", privacy: "Privacy Policy", submit: "Richiedi Accesso", verifyEmail: "Verifica la tua email", verifyEmailSub: "Inserisci il codice a 6 cifre inviato a", verifyPhoneSub: "Inserisci il codice a 6 cifre inviato a", verify: "Verifica", resend: "Rinvia codice" },
+      err: { name: "Il nome è obbligatorio", email: "Email valida richiesta", phone: "Numero di telefono valido richiesto", gdpr: "Accetta la privacy policy" },
+      reg: { step1: "Passo 1 di 2", step2: "Passo 2 di 2", intro: "Compila il modulo per sbloccare i dati completi dei prodotti — ISIN, sottoscrizioni minime e documenti.", noFees: "Nessun costo. Richiede 2 minuti.", demo: "Demo — usa il codice 123456", badCode: "Codice non valido. In questa demo usa 123456.", back: "← Torna al modulo" },
+      loginM: { intro: "Inserisci la tua email registrata per accedere.", demo: "Demo: qualsiasi email funziona — admin@framont.com apre il pannello admin." },
+      phoneV: { title: "Verifica la tua identità", sub: "La normativa richiede la verifica del numero di telefono prima dell'invio di richieste di sottoscrizione. È un passaggio da completare una sola volta.", processing: "Elaborazione…" },
+      next: { title: "Cosa succede ora", steps: ["Il nostro team ti contatta entro un giorno lavorativo.", "Valutazione di adeguatezza e documenti tramite l'onboarding sicuro InvestGlass.", "Esecuzione e conferma della tua sottoscrizione."], back: "Torna ai Prodotti" },
+      products: { viewSubscribe: "Visualizza & Sottoscrivi", isin: "ISIN", minSub: "Sottoscrizione Min.", target: "Obiettivo", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti" },
+      modal: { subscribe: "Avvia Sottoscrizione", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", confirm: "Richiesta di Sottoscrizione Inviata", confirmSub: "La tua richiesta di sottoscrizione per {product} è stata inviata.", disclaimer: "Questo prodotto ha finalità informative e non costituisce consulenza d'investimento. I rendimenti passati non sono indicativi di quelli futuri. Capitale a rischio." },
+      cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili" },
+      admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
+    }
+  };
+
+  DATA = {
+    funds: {
+      en: {
+        title: "Funds",
+        tagline: "Collective investment schemes with institutional-grade governance",
+        description: "Investment funds are collective schemes that pool capital from multiple investors to pursue defined strategies across asset classes. Framont provides access to both UCITS-compliant funds and Alternative Investment Funds (AIFs) managed by regulated asset managers across European and global markets.",
+        eligibility: "UCITS funds are available to all investor categories. AIFs are generally restricted to professional and institutional investors. Jurisdictional restrictions may apply; Framont conducts eligibility checks prior to subscription.",
+        benefits: ["Diversification across hundreds of underlying assets", "Daily or weekly liquidity on UCITS structures", "Regulated oversight by EU and FCA-equivalent authorities", "Access to institutional share classes with reduced fees"],
+        features: [{ label: "Structure", value: "UCITS / AIF" }, { label: "Liquidity", value: "Daily to Weekly" }, { label: "Risk Profile", value: "Low to High" }, { label: "Typical Duration", value: "Open-Ended" }, { label: "Regulatory Framework", value: "AIFMD / UCITS IV" }],
+        faq: [{ q: "What is the difference between UCITS and AIF?", a: "UCITS funds follow strict EU regulations allowing retail investor access. AIFs have more flexibility in strategy but are generally restricted to professional investors." }, { q: "How are dividends handled?", a: "Funds may offer accumulating or distributing share classes. Dividend policies are detailed in each fund's prospectus." }, { q: "What fees should I expect?", a: "Management fees typically range from 0.1% to 2.0% p.a. depending on strategy complexity. Performance fees may apply on some funds." }]
+      },
+      it: {
+        title: "Fondi",
+        tagline: "Schemi di investimento collettivo con governance istituzionale",
+        description: "I fondi d'investimento sono schemi collettivi che raccolgono capitale da più investitori per perseguire strategie definite su diverse classi di attivo. Framont fornisce accesso sia a fondi conformi UCITS che a Fondi d'Investimento Alternativi (AIF) gestiti da gestori patrimoniali regolamentati nei mercati europei e globali.",
+        eligibility: "I fondi UCITS sono disponibili per tutte le categorie di investitori. Gli AIF sono generalmente riservati agli investitori professionali e istituzionali. Possono applicarsi restrizioni giurisdizionali; Framont effettua verifiche di idoneità prima della sottoscrizione.",
+        benefits: ["Diversificazione su centinaia di attivi sottostanti", "Liquidità giornaliera o settimanale sulle strutture UCITS", "Supervisione regolamentata da autorità EU e FCA equivalenti", "Accesso alle classi di azioni istituzionali con commissioni ridotte"],
+        features: [{ label: "Struttura", value: "UCITS / AIF" }, { label: "Liquidità", value: "Giornaliera - Settimanale" }, { label: "Profilo di Rischio", value: "Basso - Alto" }, { label: "Durata Tipica", value: "Aperto" }, { label: "Quadro Regolamentare", value: "AIFMD / UCITS IV" }],
+        faq: [{ q: "Qual è la differenza tra UCITS e AIF?", a: "I fondi UCITS seguono rigide normative UE che consentono l'accesso agli investitori retail. Gli AIF hanno maggiore flessibilità strategica ma sono generalmente riservati agli investitori professionali." }, { q: "Come vengono gestiti i dividendi?", a: "I fondi possono offrire classi di azioni ad accumulazione o a distribuzione. Le politiche sui dividendi sono dettagliate nel prospetto di ogni fondo." }, { q: "Quali commissioni dovrei aspettarmi?", a: "Le commissioni di gestione variano tipicamente dallo 0,1% al 2,0% annuo a seconda della complessità della strategia. Su alcuni fondi possono applicarsi commissioni di performance." }]
+      },
+      products: [
+        { id: "f001", name: "Framont Global Equity UCITS", isin: "LU0987654321", assetClass: "Equity", currency: "EUR", minSub: 1000, minLabel: "€1,000", strategy: "Long-only global equity, MSCI World benchmark", target: "+7-9% annualised", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=f001", description: "A UCITS-compliant global equity fund tracking developed market companies with a quality and momentum tilt. Managed by a team with 25 years of institutional experience." },
+        { id: "f002", name: "Framont European Credit AIF", isin: "IE0012345678", assetClass: "Fixed Income", currency: "EUR", minSub: 100000, minLabel: "€100,000", strategy: "Investment grade and HY European credit", target: "Euribor +3.5%", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=f002", description: "A professional-only AIF investing in European corporate bonds across the investment grade and selective high yield spectrum, with active duration management." },
+        { id: "f003", name: "Framont Multi-Asset Income", isin: "LU1122334455", assetClass: "Multi-Asset", currency: "USD", minSub: 10000, minLabel: "$10,000", strategy: "Diversified income generation, 4-6% yield target", target: "4-6% yield p.a.", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=f003", description: "A diversified multi-asset fund targeting sustainable income through a blend of bonds, dividend equities, and real assets. Available in accumulating and distributing share classes." }
+      ]
+    },
+    amc: {
+      en: {
+        title: "AMC",
+        tagline: "Actively managed certificates combining flexibility and listed access",
+        description: "Actively Managed Certificates are structured products issued on a certificate wrapper that reference an actively managed strategy. Unlike traditional funds, AMCs can be listed and traded on exchanges, offer rapid strategy deployment, and can embed complex payoff structures — all within a single listed instrument.",
+        eligibility: "AMCs are typically available to professional and institutional investors. Some structures may accept retail investors with appropriate risk profiling. KID documentation is mandatory. Framont verifies jurisdictional eligibility before subscription.",
+        benefits: ["Exchange-listed with intraday liquidity", "Strategy flexibility without fund registration costs", "Bespoke mandates achievable at lower AUM thresholds", "Transparent mark-to-market pricing"],
+        features: [{ label: "Structure", value: "Note / Certificate" }, { label: "Liquidity", value: "Listed, Intraday" }, { label: "Risk Profile", value: "Medium to High" }, { label: "Typical Duration", value: "2-5 Years" }, { label: "Regulatory Framework", value: "Prospectus Regulation" }],
+        faq: [{ q: "How does an AMC differ from an ETF?", a: "An AMC is actively managed by a portfolio manager making discretionary decisions, while an ETF passively tracks an index. AMCs can respond to market conditions; ETFs cannot." }, { q: "What is the issuer risk?", a: "AMCs carry issuer credit risk. Framont works exclusively with investment-grade or fully collateralised issuers to mitigate this." }, { q: "Can I exit early?", a: "Listed AMCs can typically be sold on the secondary market. Liquidity depends on the market maker's quotation and daily trading volumes." }]
+      },
+      it: {
+        title: "AMC",
+        tagline: "Certificati a gestione attiva che combinano flessibilità e accesso quotato",
+        description: "Gli Actively Managed Certificates sono prodotti strutturati emessi su un wrapper certificato che fa riferimento a una strategia gestita attivamente. A differenza dei fondi tradizionali, gli AMC possono essere quotati e negoziati in borsa, consentono un rapido avvio della strategia e possono incorporare strutture di payoff complesse — il tutto in un unico strumento quotato.",
+        eligibility: "Gli AMC sono tipicamente disponibili per investitori professionali e istituzionali. Alcune strutture possono accettare investitori retail con un'adeguata profilazione del rischio. La documentazione KID è obbligatoria. Framont verifica l'idoneità giurisdizionale prima della sottoscrizione.",
+        benefits: ["Quotato in borsa con liquidità infragiornaliera", "Flessibilità strategica senza costi di registrazione del fondo", "Mandati su misura raggiungibili con AUM più bassi", "Prezzi mark-to-market trasparenti"],
+        features: [{ label: "Struttura", value: "Nota / Certificato" }, { label: "Liquidità", value: "Quotato, Infragiornaliero" }, { label: "Profilo di Rischio", value: "Medio - Alto" }, { label: "Durata Tipica", value: "2-5 Anni" }, { label: "Quadro Regolamentare", value: "Regolamento Prospetto" }],
+        faq: [{ q: "In cosa si differenzia un AMC da un ETF?", a: "Un AMC è gestito attivamente da un gestore di portafoglio che prende decisioni discrezionali, mentre un ETF segue passivamente un indice. Gli AMC possono rispondere alle condizioni di mercato; gli ETF no." }, { q: "Qual è il rischio emittente?", a: "Gli AMC comportano un rischio di credito dell'emittente. Framont lavora esclusivamente con emittenti investment grade o completamente collateralizzati per mitigarlo." }, { q: "Posso uscire anticipatamente?", a: "Gli AMC quotati possono generalmente essere venduti sul mercato secondario. La liquidità dipende dalla quotazione del market maker e dai volumi di negoziazione giornalieri." }]
+      },
+      products: [
+        { id: "a001", name: "Framont Systematic Macro AMC", isin: "XS2109876543", assetClass: "Macro", currency: "USD", minSub: 50000, minLabel: "$50,000", strategy: "Quantitative macro across FX, rates, commodities", target: "10-15% annualised return", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=a001", description: "A systematic global macro certificate managed with quantitative signals across foreign exchange, interest rates and commodity markets. Rebalanced weekly with full transparency." },
+        { id: "a002", name: "Framont Tech Innovation AMC", isin: "XS2209876544", assetClass: "Equity Thematic", currency: "EUR", minSub: 25000, minLabel: "€25,000", strategy: "Concentrated tech portfolio, 15-25 holdings", target: "Alpha vs NASDAQ-100", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=a002", description: "A concentrated portfolio of 15-25 global technology companies selected for disruptive potential, managed with active position sizing and systematic risk controls." },
+        { id: "a003", name: "Framont ESG Leaders AMC", isin: "XS2309876545", assetClass: "ESG", currency: "EUR", minSub: 10000, minLabel: "€10,000", strategy: "Best-in-class ESG equity selection", target: "+6-8% annualised", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=a003", description: "An ESG-focused actively managed certificate selecting companies based on proprietary environmental, social and governance scoring alongside fundamental financial analysis." }
+      ]
+    },
+    eti: {
+      en: {
+        title: "ETI",
+        tagline: "Exchange traded instruments offering defined exposures to a broader audience",
+        description: "Exchange Traded Instruments encompass a range of listed securities including ETPs, ETNs and other certificates providing defined market exposure. ETIs combine the accessibility of listed equities with structured payoff profiles, and are available to a broader investor base including retail clients where appropriate.",
+        eligibility: "Many ETIs are accessible to retail investors, though some leveraged or inverse structures require professional status or enhanced suitability checks. All instruments come with mandatory PRIIPS KID documentation reviewed by Framont.",
+        benefits: ["Broad market access through a single exchange-listed security", "Lower entry thresholds than traditional structured products", "Transparent pricing throughout market hours", "Wide range of underlying assets and payoff structures"],
+        features: [{ label: "Structure", value: "ETP / ETN / Certificate" }, { label: "Liquidity", value: "Intraday on Exchange" }, { label: "Risk Profile", value: "Low to Very High" }, { label: "Typical Duration", value: "Open / Fixed Term" }, { label: "Regulatory Framework", value: "PRIIPS / MiFID II" }],
+        faq: [{ q: "Are ETIs the same as ETFs?", a: "No. ETIs is a broader category. ETFs are funds; ETIs include ETPs, ETNs, and structured certificates. Not all ETIs have fund-level protections." }, { q: "What is the tracking error?", a: "ETIs linked to physical replication or swaps generally have minimal tracking error. Synthetic structures may diverge from the underlying index during stress periods." }, { q: "Are there capital protection features?", a: "Some ETI structures offer partial or full capital protection at maturity. These features are detailed in the product's Key Information Document." }]
+      },
+      it: {
+        title: "ETI",
+        tagline: "Strumenti quotati con esposizione definita, aperti a una platea più ampia",
+        description: "Gli Exchange Traded Instruments comprendono una gamma di titoli quotati tra cui ETP, ETN e altri certificati che forniscono un'esposizione di mercato definita. Gli ETI combinano l'accessibilità delle azioni quotate con profili di payoff strutturati, e sono disponibili per una base di investitori più ampia inclusi i clienti retail dove appropriato.",
+        eligibility: "Molti ETI sono accessibili agli investitori retail, anche se alcune strutture con leva o inverse richiedono lo status professionale o controlli di idoneità rafforzati. Tutti gli strumenti sono accompagnati dalla documentazione PRIIPS KID obbligatoria verificata da Framont.",
+        benefits: ["Accesso ampio al mercato attraverso un singolo titolo quotato", "Soglie di ingresso più basse rispetto ai prodotti strutturati tradizionali", "Prezzi trasparenti durante l'orario di mercato", "Ampia gamma di sottostanti e strutture di payoff"],
+        features: [{ label: "Struttura", value: "ETP / ETN / Certificato" }, { label: "Liquidità", value: "Infragiornaliero in Borsa" }, { label: "Profilo di Rischio", value: "Basso - Molto Alto" }, { label: "Durata Tipica", value: "Aperto / A Scadenza" }, { label: "Quadro Regolamentare", value: "PRIIPS / MiFID II" }],
+        faq: [{ q: "Gli ETI sono la stessa cosa degli ETF?", a: "No. ETI è una categoria più ampia. Gli ETF sono fondi; gli ETI includono ETP, ETN e certificati strutturati. Non tutti gli ETI hanno le protezioni a livello di fondo." }, { q: "Cos'è il tracking error?", a: "Gli ETI legati a replica fisica o swap hanno generalmente un tracking error minimo. Le strutture sintetiche possono divergere dall'indice sottostante durante periodi di stress." }, { q: "Esistono caratteristiche di protezione del capitale?", a: "Alcune strutture ETI offrono protezione parziale o totale del capitale a scadenza. Queste caratteristiche sono dettagliate nel Documento Informativo Chiave del prodotto." }]
+      },
+      products: [
+        { id: "e001", name: "Framont S&P 500 Enhanced ETP", isin: "DE000A1234567", assetClass: "Equity", currency: "USD", minSub: 500, minLabel: "$500", strategy: "S&P 500 with 1.2x systematic leverage", target: "S&P 500 +20% leverage", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=e001", description: "An exchange-traded product providing 1.2x leveraged exposure to the S&P 500 index, with daily rebalancing and built-in stop-loss mechanism at -15% from high-water mark." },
+        { id: "e002", name: "Framont Gold & Inflation ETN", isin: "DE000A2345678", assetClass: "Commodities", currency: "EUR", minSub: 1000, minLabel: "€1,000", strategy: "Gold + inflation-linked bond blend", target: "Inflation +2% real return", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=e002", description: "An ETN combining physical gold exposure with a portfolio of European inflation-linked bonds, designed as a macro hedge against inflationary environments." },
+        { id: "e003", name: "Framont EM Bond Carry ETN", isin: "DE000A3456789", assetClass: "Fixed Income", currency: "USD", minSub: 2000, minLabel: "$2,000", strategy: "EM sovereign debt, carry strategy", target: "USD 5-7% yield", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=e003", description: "A carry-focused ETN investing in a basket of high-yield emerging market sovereign bonds denominated in USD, with quarterly coupon distributions and active country allocation." }
+      ]
+    },
+    vc: {
+      en: {
+        title: "VC Deals",
+        tagline: "Direct venture co-investments for professional and institutional investors",
+        description: "Framont's VC Deals platform provides curated access to direct co-investment opportunities alongside leading venture capital funds and family offices. These are high-conviction, early to growth-stage investments in technology, deep-tech, and impact companies, structured as SPVs or direct equity tranches.",
+        eligibility: "VC Deals are exclusively available to professional and institutional investors as defined under MiFID II. Minimum commitments are typically €100,000 or higher. Investors must complete enhanced due diligence and suitability assessments prior to access.",
+        benefits: ["Co-invest alongside institutional venture managers", "Access to pre-IPO and growth equity at institutional terms", "Selective deal flow across Europe and US tech ecosystems", "Direct ownership with transparent cap table disclosure"],
+        features: [{ label: "Structure", value: "SPV / Direct Equity" }, { label: "Liquidity", value: "Illiquid, 5-10 Year Horizon" }, { label: "Risk Profile", value: "Very High" }, { label: "Typical Duration", value: "5-10 Years" }, { label: "Regulatory Framework", value: "AIFMD / EuVECA" }],
+        faq: [{ q: "What is the target return profile?", a: "VC investments target 3-10x return multiples over a 5-10 year horizon. Returns are highly variable and capital loss is possible. Past performance of co-investors does not guarantee future returns." }, { q: "How does the SPV structure work?", a: "Framont establishes a Special Purpose Vehicle that pools investor commitments and takes a single position in the target company. Investors receive proportional economic rights." }, { q: "Are there secondary market opportunities?", a: "Some positions may become eligible for secondary market transactions. Framont facilitates introductions to secondary buyers on a best-efforts basis; no liquidity is guaranteed." }]
+      },
+      it: {
+        title: "VC Deals",
+        tagline: "Co-investimenti diretti in venture capital per investitori professionali e istituzionali",
+        description: "La piattaforma VC Deals di Framont fornisce accesso curato a opportunità di co-investimento diretto accanto a fondi di venture capital leader e family office. Si tratta di investimenti ad alta convinzione in fase early-to-growth in aziende tecnologiche, deep-tech e d'impatto, strutturati come SPV o tranche di equity dirette.",
+        eligibility: "I VC Deals sono esclusivamente disponibili per investitori professionali e istituzionali come definiti ai sensi di MiFID II. Gli impegni minimi sono tipicamente €100.000 o superiori. Gli investitori devono completare una due diligence rafforzata e valutazioni di idoneità prima dell'accesso.",
+        benefits: ["Co-investimento accanto a gestori venture istituzionali", "Accesso a pre-IPO ed equity in crescita a termini istituzionali", "Deal flow selettivo negli ecosistemi tech europei e statunitensi", "Proprietà diretta con trasparenza sul cap table"],
+        features: [{ label: "Struttura", value: "SPV / Equity Diretta" }, { label: "Liquidità", value: "Illiquido, Orizzonte 5-10 Anni" }, { label: "Profilo di Rischio", value: "Molto Alto" }, { label: "Durata Tipica", value: "5-10 Anni" }, { label: "Quadro Regolamentare", value: "AIFMD / EuVECA" }],
+        faq: [{ q: "Qual è il profilo di rendimento atteso?", a: "Gli investimenti VC mirano a multipli di rendimento 3-10x su un orizzonte di 5-10 anni. I rendimenti sono altamente variabili e la perdita di capitale è possibile. Le performance passate dei co-investitori non garantiscono rendimenti futuri." }, { q: "Come funziona la struttura SPV?", a: "Framont costituisce un Veicolo a Scopo Speciale che raccoglie gli impegni degli investitori e assume una singola posizione nella società target. Gli investitori ricevono diritti economici proporzionali." }, { q: "Esistono opportunità di mercato secondario?", a: "Alcune posizioni possono diventare eleggibili per transazioni sul mercato secondario. Framont facilita i contatti con acquirenti secondari su base best-effort; non è garantita alcuna liquidità." }]
+      },
+      products: [
+        { id: "v001", name: "Framont Series A: Quantum Computing SPV", isin: null, ticker: "FRA-QC-01", assetClass: "Deep Tech", currency: "EUR", minSub: 100000, minLabel: "€100,000", strategy: "Series A co-investment in European quantum leader", target: "5-10x over 7 years", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=v001", description: "A Series A co-investment opportunity in a leading European quantum computing company, backed by a major institutional VC. The company has achieved quantum advantage in molecular simulation with two Fortune 500 commercial pilots underway." },
+        { id: "v002", name: "Framont Growth: ClimaTech Portfolio SPV", isin: null, ticker: "FRA-CT-01", assetClass: "Impact / ClimaTech", currency: "EUR", minSub: 50000, minLabel: "€50,000", strategy: "Portfolio of 5 growth-stage climate companies", target: "3-5x over 5 years", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=v002", description: "A curated SPV investing across five growth-stage climate technology companies spanning carbon capture, green hydrogen, and sustainable materials. Structured as a diversified impact portfolio with full ESG reporting." },
+        { id: "v003", name: "Framont Seed: B2B SaaS Syndicate", isin: null, ticker: "FRA-SaaS-02", assetClass: "Software / SaaS", currency: "USD", minSub: 25000, minLabel: "$25,000", strategy: "Seed-stage European enterprise SaaS", target: "10x+ over 8-10 years", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=v003", description: "A seed-stage syndicate investing in European enterprise SaaS companies with demonstrable product-market fit and ARR between €500k and €2M. Co-led by a top-decile European VC firm with three unicorn exits." }
+      ]
+    }
+  };
+
+  otpRefs = Array.from({ length: 6 }, () => React.createRef());
+
+  state = {
+    lang: "en",
+    view: "home",
+    user: null,
+    modal: null,
+    regStep: 1,
+    form: { name: "", email: "", prefix: "+39", phone: "", category: "retail", gdpr: false },
+    errors: {},
+    otp: ["", "", "", "", "", ""],
+    otpError: false,
+    resendIn: 0,
+    loginEmail: "",
+    loginError: "",
+    active: null,
+    confirmRef: "",
+    subscribing: false,
+    fCls: "all",
+    fCur: "all",
+    fSize: "all",
+    faqOpen: {},
+    adminTab: "subscribers",
+    subscribers: [
+      { id: 1, name: "Marco Bianchi", email: "m.bianchi@example.com", phone: "+39 345 678 9012", category: "Professional", joined: "2025-11-01T09:12:00" },
+      { id: 2, name: "Sarah Chen", email: "s.chen@hfund.com", phone: "+44 7700 900123", category: "Institutional", joined: "2025-11-15T14:30:00" }
+    ],
+    db: this.DATA,
+    activity: [],
+    mobileOpen: false,
+    isMobile: false,
+    revealed: {},
+    unlockFlash: false,
+    logoFailed: false,
+    toast: ""
+  };
+
+  componentDidMount() {
+    this.applyProps();
+    this._onResize = () => {
+      const m = window.innerWidth < 920;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, mobileOpen: false });
+    };
+    window.addEventListener("resize", this._onResize);
+    this._onResize();
+    this._onKey = (e) => { if (e.key === "Escape" && this.state.modal) this.closeModal(); };
+    window.addEventListener("keydown", this._onKey);
+    this.scanReveal();
+    this._rf = setTimeout(() => {
+      if (this._ioFired) return;
+      const upd = {};
+      document.querySelectorAll("[data-reveal]").forEach((el) => { upd[el.getAttribute("data-reveal")] = true; });
+      this.setState((s) => ({ revealed: { ...s.revealed, ...upd } }));
+    }, 1200);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps && this.props && (prevProps.startState !== this.props.startState || prevProps.language !== this.props.language)) this.applyProps();
+    if (prevState && prevState.view !== this.state.view) window.scrollTo({ top: 0 });
+    this.scanReveal();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._onResize);
+    window.removeEventListener("keydown", this._onKey);
+    clearInterval(this._rt); clearTimeout(this._ft); clearTimeout(this._tt); clearTimeout(this._st); clearTimeout(this._rf);
+    if (this._io) this._io.disconnect();
+  }
+
+  applyProps() {
+    const p = this.props || {};
+    const patch = {};
+    const langP = p.language;
+    if (langP && langP !== this._appliedLang) { this._appliedLang = langP; patch.lang = langP; }
+    const st = p.startState;
+    if (st && st !== this._appliedStart) {
+      this._appliedStart = st;
+      if (st === "anonymous") patch.user = null;
+      if (st === "member") patch.user = { name: "Mario Rossi", email: "mario@example.com", phone: "+39 333 456 7890", category: "professional", role: "member", phoneVerified: false };
+      if (st === "phone-verified") patch.user = { name: "Mario Rossi", email: "mario@example.com", phone: "+39 333 456 7890", category: "professional", role: "member", phoneVerified: true };
+      if (st === "admin") patch.user = { name: "Framont Admin", email: "admin@framont.com", phone: "+356 99 000 000", category: "institutional", role: "admin", phoneVerified: true };
+    }
+    if (Object.keys(patch).length) this.setState(patch);
+  }
+
+  scanReveal() {
+    if (!this._io) {
+      this._seen = new WeakSet();
+      this._io = new IntersectionObserver((entries) => {
+        this._ioFired = true;
+        const upd = {}; let any = false;
+        for (const en of entries) {
+          if (en.isIntersecting) {
+            const id = en.target.getAttribute("data-reveal");
+            if (id && !this.state.revealed[id]) { upd[id] = true; any = true; }
+            this._io.unobserve(en.target);
+          }
+        }
+        if (any) this.setState((s) => ({ revealed: { ...s.revealed, ...upd } }));
+      }, { threshold: 0.06, rootMargin: "0px 0px -60px 0px" });
+    }
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      if (this._seen.has(el)) return;
+      this._seen.add(el);
+      const id = el.getAttribute("data-reveal");
+      if (!this.state.revealed[id]) this._io.observe(el);
+    });
+  }
+
+  navTo(k) {
+    if (k === "admin" && !(this.state.user && this.state.user.role === "admin")) return;
+    this.setState({ view: k, mobileOpen: false, fCls: "all", fCur: "all", fSize: "all" });
+  }
+
+  toggleLang() { this.setState((s) => ({ lang: s.lang === "en" ? "it" : "en" })); }
+
+  openModal(m) {
+    const patch = { modal: m, otpError: false };
+    if (m === "register") { patch.regStep = 1; patch.otp = ["", "", "", "", "", ""]; patch.errors = {}; }
+    this.setState(patch);
+  }
+
+  closeModal() { this.setState({ modal: null, otpError: false, subscribing: false }); }
+
+  signOut() { this.setState((s) => ({ user: null, view: s.view === "admin" ? "home" : s.view, mobileOpen: false })); }
+
+  setForm(k, v) { this.setState((s) => ({ form: { ...s.form, [k]: v }, errors: { ...s.errors, [k]: undefined } })); }
+
+  regSubmit() {
+    const f = this.state.form;
+    const t = this.T[this.state.lang];
+    const e = {};
+    if (!f.name.trim()) e.name = t.err.name;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = t.err.email;
+    if (!/^\d{6,15}$/.test(f.phone.replace(/\s/g, ""))) e.phone = t.err.phone;
+    if (!f.gdpr) e.gdpr = t.err.gdpr;
+    if (Object.keys(e).length) { this.setState({ errors: e }); return; }
+    this.setState({ regStep: 2, otp: ["", "", "", "", "", ""], otpError: false });
+    this.startResend();
+  }
+
+  startResend() {
+    clearInterval(this._rt);
+    this.setState({ resendIn: 30 });
+    this._rt = setInterval(() => {
+      this.setState((s) => {
+        const n = s.resendIn - 1;
+        if (n <= 0) clearInterval(this._rt);
+        return { resendIn: Math.max(0, n) };
+      });
+    }, 1000);
+  }
+
+  otpChange(i, e) {
+    const raw = (e.target.value || "").replace(/\D/g, "");
+    this.setState((s) => {
+      const otp = [...s.otp];
+      if (raw.length <= 1) otp[i] = raw;
+      else for (let k = 0; k < raw.length && i + k < 6; k++) otp[i + k] = raw[k];
+      return { otp, otpError: false };
+    }, () => {
+      if (raw) {
+        const next = Math.min(5, i + Math.max(1, raw.length));
+        const ref = this.otpRefs[next];
+        if (ref && ref.current) ref.current.focus();
+      }
+    });
+  }
+
+  otpKey(i, e) {
+    if (e.key === "Backspace" && !this.state.otp[i] && i > 0) {
+      const ref = this.otpRefs[i - 1];
+      if (ref && ref.current) ref.current.focus();
+    }
+    if (e.key === "Enter") {
+      if (this.state.modal === "register") this.verifyEmail();
+      if (this.state.modal === "phone") this.verifyPhone();
+    }
+  }
+
+  flashUnlock() {
+    clearTimeout(this._ft);
+    this.setState({ unlockFlash: true });
+    this._ft = setTimeout(() => this.setState({ unlockFlash: false }), 2200);
+  }
+
+  showToast(msg) {
+    clearTimeout(this._tt);
+    this.setState({ toast: msg });
+    this._tt = setTimeout(() => this.setState({ toast: "" }), 4200);
+  }
+
+  catName(c) { return { retail: "Retail", professional: "Professional", institutional: "Institutional" }[c] || c; }
+
+  verifyEmail() {
+    if (this.state.otp.join("") !== "123456") { this.setState({ otpError: true }); return; }
+    const f = this.state.form;
+    const t = this.T[this.state.lang];
+    const isAdmin = f.email.trim().toLowerCase() === "admin@framont.com";
+    const user = { name: f.name, email: f.email.trim(), phone: f.prefix + " " + f.phone, category: f.category, role: isAdmin ? "admin" : "member", phoneVerified: isAdmin };
+    this.setState((s) => ({
+      user, modal: null,
+      subscribers: [...s.subscribers, { id: Date.now(), name: user.name, email: user.email, phone: user.phone, category: this.catName(f.category), joined: new Date().toISOString() }]
+    }));
+    this.flashUnlock();
+    this.showToast(t.gate.toastUnlock);
+  }
+
+  login() {
+    const email = this.state.loginEmail.trim();
+    const t = this.T[this.state.lang];
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { this.setState({ loginError: t.err.email }); return; }
+    let user;
+    if (email.toLowerCase() === "admin@framont.com") {
+      user = { name: "Framont Admin", email, phone: "+356 99 000 000", category: "institutional", role: "admin", phoneVerified: true };
+    } else {
+      const found = this.state.subscribers.find((x) => x.email.toLowerCase() === email.toLowerCase());
+      user = found
+        ? { name: found.name, email: found.email, phone: found.phone, category: found.category.toLowerCase(), role: "member", phoneVerified: false }
+        : { name: "Demo User", email, phone: "+39 000 000 0000", category: "professional", role: "member", phoneVerified: false };
+    }
+    this.setState({ user, modal: null, loginEmail: "", loginError: "" });
+    this.flashUnlock();
+    this.showToast(t.gate.toastWelcome);
+  }
+
+  viewProduct(p, ck) {
+    if (!this.state.user) { this.openModal("register"); return; }
+    this.setState({ modal: "product", active: { p, ck } });
+  }
+
+  startSub() {
+    const u = this.state.user;
+    if (!u) { this.openModal("register"); return; }
+    if (!u.phoneVerified) {
+      this.setState({ modal: "phone", otp: ["", "", "", "", "", ""], otpError: false });
+      this.startResend();
+      return;
+    }
+    this.doSubscribe();
+  }
+
+  verifyPhone() {
+    if (this.state.otp.join("") !== "123456") { this.setState({ otpError: true }); return; }
+    this.setState((s) => ({ user: { ...s.user, phoneVerified: true } }));
+    this.doSubscribe();
+  }
+
+  doSubscribe() {
+    const a = this.state.active;
+    if (!a) return;
+    this.setState({ subscribing: true });
+    clearTimeout(this._st);
+    this._st = setTimeout(() => {
+      const u = this.state.user;
+      const ref = "FRA-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+      const payload = { name: u.name, email: u.email, phone: u.phone, investorCategory: u.category, productId: a.p.id, isin: a.p.isin || a.p.ticker, sessionRef: ref };
+      console.log("[InvestGlass API] POST", this.INVESTGLASS_API_URL + "/onboarding/session", payload);
+      const url = a.p.subscribeUrl + "&ref=" + ref + "&email=" + encodeURIComponent(u.email);
+      this.setState((s) => ({
+        subscribing: false, modal: "confirm", confirmRef: ref,
+        activity: [...s.activity, { user: u.name, product: a.p.name, timestamp: new Date().toISOString(), sessionRef: ref, url }]
+      }));
+    }, 900);
+  }
+
+  toggleFaq(key) { this.setState((s) => ({ faqOpen: { ...s.faqOpen, [key]: !s.faqOpen[key] } })); }
+
+  toggleProductStatus(ck, id) {
+    this.setState((s) => ({
+      db: { ...s.db, [ck]: { ...s.db[ck], products: s.db[ck].products.map((p) => p.id === id ? { ...p, active: !p.active } : p) } }
+    }));
+  }
+
+  scrollToSec(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      const se = document.scrollingElement || document.documentElement;
+      const target = el.getBoundingClientRect().top + se.scrollTop - 128;
+      const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) { se.scrollTop = target; return; }
+      const start = se.scrollTop, dist = target - start, dur = 540;
+      const ease = (p) => 1 - Math.pow(1 - p, 3);
+      let t0 = null;
+      const step = (ts) => {
+        if (t0 === null) t0 = ts;
+        const p = Math.min(1, (ts - t0) / dur);
+        se.scrollTop = start + dist * ease(p);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+  }
+
+  exportCSV() {
+    const headers = ["Name,Email,Phone,Category,Joined"];
+    const rows = this.state.subscribers.map((s) => s.name + "," + s.email + "," + s.phone + "," + s.category + "," + s.joined);
+    const csv = [headers, ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "framont_subscribers.csv"; a.click();
+  }
+
+  renderVals() {
+    const s = this.state;
+    const P = this.props || {};
+    const t = this.T[s.lang];
+    const db = s.db;
+    const user = s.user;
+    const isAnon = !user;
+    const view = s.view;
+    const isCat = ["funds", "amc", "eti", "vc"].includes(view);
+    const isAdminView = view === "admin" && !!user && user.role === "admin";
+
+    const rev = {};
+    ["trust", "universe", "how", "featured", "cta", "prods", "about", "elig", "faq"].forEach((id) => {
+      rev[id] = s.revealed[id] ? { y: "0px" } : { y: "18px" };
+    });
+
+    const FALLBACK = "radial-gradient(85% 60% at 72% 18%, rgba(255,130,0,0.16), rgba(255,130,0,0) 62%), linear-gradient(160deg, #001F42 0%, #002E5F 100%)";
+    const bgOf = (url) => url ? 'url("' + url + '")' : FALLBACK;
+
+    const navLinks = ["funds", "amc", "eti", "vc"].map((k) => ({
+      key: k, label: t.nav[k],
+      color: view === k ? "#002E5F" : "#4D575E",
+      underline: view === k ? "#FF8200" : "transparent",
+      onClick: () => this.navTo(k)
+    }));
+    if (user && user.role === "admin") navLinks.push({
+      key: "admin", label: t.nav.admin,
+      color: view === "admin" ? "#002E5F" : "#4D575E",
+      underline: view === "admin" ? "#FF8200" : "transparent",
+      onClick: () => this.navTo("admin")
+    });
+
+    const dec = (p, ck) => ({
+      name: p.name, assetClass: p.assetClass, currency: p.currency,
+      code: p.isin || p.ticker || "—",
+      strategy: p.strategy, minLabel: p.minLabel, target: p.target,
+      locked: isAnon,
+      blur: isAnon ? "blur(6px)" : "none",
+      usel: isAnon ? "none" : "auto",
+      anim: (!isAnon && s.unlockFlash) ? "unlockPulse 1.6s ease" : "none",
+      gateCursor: isAnon ? "pointer" : "default",
+      gateTitle: isAnon ? t.teaser.unlock : "",
+      onGate: isAnon ? (() => this.openModal("register")) : undefined,
+      onView: () => this.viewProduct(p, ck),
+      catLabel: t.nav[ck]
+    });
+
+    let cat = {}, products = [], benefits = [], features = [], faqs = [];
+    let clsOptions = [], curOptions = [], resultsLabel = "", subnavLinks = [], catBg = FALLBACK;
+    if (isCat) {
+      const d = db[view];
+      cat = d[s.lang];
+      const act = d.products.filter((p) => p.active);
+      const fil = act.filter((p) => {
+        if (s.fCls !== "all" && p.assetClass !== s.fCls) return false;
+        if (s.fCur !== "all" && p.currency !== s.fCur) return false;
+        if (s.fSize === "under10k" && p.minSub >= 10000) return false;
+        if (s.fSize === "10kto100k" && (p.minSub < 10000 || p.minSub >= 100000)) return false;
+        if (s.fSize === "over100k" && p.minSub < 100000) return false;
+        return true;
+      });
+      products = fil.map((p) => dec(p, view));
+      resultsLabel = fil.length + " " + (fil.length === 1 ? t.products.result : t.products.results);
+      benefits = cat.benefits;
+      features = cat.features;
+      faqs = cat.faq.map((f, i) => {
+        const open = !!s.faqOpen[view + i];
+        return { q: f.q, a: f.a, open, rot: open ? "180deg" : "0deg", onToggle: () => this.toggleFaq(view + i) };
+      });
+      clsOptions = [{ v: "all", label: t.products.allClasses }].concat([...new Set(act.map((p) => p.assetClass))].map((c) => ({ v: c, label: c })));
+      curOptions = [{ v: "all", label: t.products.allCurrencies }].concat([...new Set(act.map((p) => p.currency))].map((c) => ({ v: c, label: c })));
+      subnavLinks = [
+        { label: t.cat.products, onClick: () => this.scrollToSec("sec-products") },
+        { label: t.cat.about, onClick: () => this.scrollToSec("sec-about") },
+        { label: t.cat.elig, onClick: () => this.scrollToSec("sec-elig") },
+        { label: "FAQ", onClick: () => this.scrollToSec("sec-faq") }
+      ];
+      catBg = bgOf({ funds: P.assetCatFunds, amc: P.assetCatAmc, eti: P.assetCatEti, vc: P.assetCatVc }[view]);
+    }
+
+    const universeCards = ["funds", "amc", "eti", "vc"].map((k) => ({
+      key: k, label: t.nav[k], desc: t.universe.descs[k],
+      bg: bgOf({ funds: P.assetCardFunds, amc: P.assetCardAmc, eti: P.assetCardEti, vc: P.assetCardVc }[k]),
+      onClick: () => this.navTo(k)
+    }));
+
+    const featuredCards = this.FEATURED.map(({ id, ck }) => {
+      const p = db[ck].products.find((x) => x.id === id);
+      return p ? dec(p, ck) : null;
+    }).filter(Boolean);
+
+    const otpBoxes = s.otp.map((v, i) => ({
+      v, r: this.otpRefs[i],
+      onChange: (e) => this.otpChange(i, e),
+      onKey: (e) => this.otpKey(i, e)
+    }));
+
+    const ap = s.active ? s.active.p : null;
+    const pm = ap ? {
+      name: ap.name, description: ap.description, assetClass: ap.assetClass, currency: ap.currency,
+      code: ap.isin || ap.ticker || "—", minLabel: ap.minLabel, target: ap.target
+    } : {};
+    const cMsg = ap ? t.modal.confirmSub.replace("{product}", ap.name) : "";
+    const nextSteps = t.next.steps.map((x, i) => ({ n: String(i + 1), text: x }));
+
+    return {
+      t, rev,
+      navLinks, langLabel: t.lang,
+      onLang: () => this.toggleLang(),
+      onHome: () => this.navTo("home"),
+      isAnon, isAuthed: !!user, userName: user ? user.name : "",
+      onLogin: () => this.openModal("login"),
+      onRegister: () => this.openModal("register"),
+      onSignOut: () => this.signOut(),
+      logoOk: !s.logoFailed, logoFailed: s.logoFailed,
+      onLogoErr: () => this.setState({ logoFailed: true }),
+      isMobile: s.isMobile, showDesktopNav: !s.isMobile,
+      showMobileMenu: s.isMobile && s.mobileOpen,
+      onBurger: () => this.setState((x) => ({ mobileOpen: !x.mobileOpen })),
+      showHome: view === "home", showCat: isCat, showAdmin: isAdminView,
+      showCtaBand: view !== "admin",
+      heroBg: P.assetHero ? 'url("' + P.assetHero + '")' : "none",
+      trustItems: t.trust, universeCards, howSteps: t.how.steps, featuredCards,
+      onExplore: () => this.scrollToSec("sec-universe"),
+      onCta: () => { if (isAnon) this.openModal("register"); else this.navTo("funds"); },
+      ctaLabel: isAnon ? t.cta.button : t.hero.learnMore,
+      cat, catBg, products, benefits, features, faqs,
+      fCls: s.fCls, fCur: s.fCur, fSize: s.fSize,
+      onFCls: (e) => this.setState({ fCls: e.target.value }),
+      onFCur: (e) => this.setState({ fCur: e.target.value }),
+      onFSize: (e) => this.setState({ fSize: e.target.value }),
+      clsOptions, curOptions, resultsLabel, subnavLinks,
+      adminTabs: ["subscribers", "products", "activity"].map((k) => ({
+        key: k, label: t.admin[k],
+        color: s.adminTab === k ? "#002E5F" : "#8C959C",
+        underline: s.adminTab === k ? "#FF8200" : "transparent",
+        onClick: () => this.setState({ adminTab: k })
+      })),
+      tabSubs: isAdminView && s.adminTab === "subscribers",
+      tabProds: isAdminView && s.adminTab === "products",
+      tabAct: isAdminView && s.adminTab === "activity",
+      subsRows: s.subscribers.map((x) => ({ name: x.name, email: x.email, phone: x.phone, category: x.category, joined: new Date(x.joined).toLocaleDateString(s.lang === "it" ? "it-IT" : "en-GB") })),
+      prodRows: Object.entries(db).flatMap(([ck, d]) => d.products.map((p) => ({
+        name: p.name, code: p.isin || p.ticker || "—", assetClass: p.assetClass,
+        activeB: p.active, inactiveB: !p.active,
+        statusLabel: p.active ? t.admin.active : t.admin.inactive,
+        toggleLabel: p.active ? t.admin.deactivate : t.admin.activate,
+        onToggle: () => this.toggleProductStatus(ck, p.id)
+      }))),
+      actRows: s.activity.map((a) => ({ user: a.user, product: a.product, time: new Date(a.timestamp).toLocaleString(), ref: a.sessionRef })),
+      hasActivity: s.activity.length > 0, noActivity: s.activity.length === 0,
+      onExport: () => this.exportCSV(),
+      mRegister: s.modal === "register", mLogin: s.modal === "login",
+      mProduct: s.modal === "product", mPhone: s.modal === "phone", mConfirm: s.modal === "confirm",
+      onCloseModal: () => this.closeModal(),
+      stopProp: (e) => e.stopPropagation(),
+      regStep1: s.regStep === 1, regStep2: s.regStep === 2,
+      regProgressW: s.regStep === 1 ? "50%" : "100%",
+      regStepLabel: s.regStep === 1 ? t.reg.step1 : t.reg.step2,
+      fName: s.form.name, fEmail: s.form.email, fPrefix: s.form.prefix, fPhone: s.form.phone, fCategory: s.form.category, fGdpr: s.form.gdpr,
+      onName: (e) => this.setForm("name", e.target.value),
+      onEmail: (e) => this.setForm("email", e.target.value),
+      onPrefix: (e) => this.setForm("prefix", e.target.value),
+      onPhone: (e) => this.setForm("phone", e.target.value),
+      onCategory: (e) => this.setForm("category", e.target.value),
+      onGdpr: (e) => this.setForm("gdpr", e.target.checked),
+      eName: s.errors.name, eEmail: s.errors.email, ePhone: s.errors.phone, eGdpr: s.errors.gdpr,
+      onRegSubmit: () => this.regSubmit(),
+      onRegKey: (e) => { if (e.key === "Enter") this.regSubmit(); },
+      onBackToForm: () => this.setState({ regStep: 1, otp: ["", "", "", "", "", ""], otpError: false }),
+      otpBoxes, otpError: s.otpError,
+      onVerifyEmail: () => this.verifyEmail(),
+      onVerifyPhone: () => this.verifyPhone(),
+      resendLabel: s.resendIn > 0 ? t.auth.resend + " (" + s.resendIn + "s)" : t.auth.resend,
+      resendDisabled: s.resendIn > 0,
+      onResend: () => this.startResend(),
+      emailSentTo: s.form.email,
+      phoneSentTo: user ? user.phone : "",
+      loginEmail: s.loginEmail, loginError: s.loginError,
+      onLoginEmail: (e) => this.setState({ loginEmail: e.target.value, loginError: "" }),
+      onLoginSubmit: () => this.login(),
+      onLoginKey: (e) => { if (e.key === "Enter") this.login(); },
+      pm,
+      onDocClick: () => this.showToast(t.gate.toastDocs),
+      onStartSub: () => this.startSub(),
+      subBtnLabel: s.subscribing ? t.phoneV.processing : t.modal.subscribe,
+      phoneVerifyLabel: s.subscribing ? t.phoneV.processing : t.auth.verify,
+      subscribing: s.subscribing,
+      cRef: s.confirmRef, cMsg, nextSteps,
+      onBackToProducts: () => this.closeModal(),
+      toastShow: !!s.toast, toastMsg: s.toast
+    };
+  }
+}
+</script>
+
+<!-- ============ MOTION LAYER (added) — assets + micro-interactions ============ -->
+<style>
+  #mo-progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:1000;
+    background:linear-gradient(90deg,#FF8200,#FFB25E);box-shadow:0 0 12px rgba(255,130,0,.55);
+    transition:width .08s linear;pointer-events:none}
+  .mo-hero-video{transform:scale(1.06);animation:mo-kenburns 26s ease-in-out infinite alternate;will-change:transform}
+  @keyframes mo-kenburns{from{transform:scale(1.06)}to{transform:scale(1.16) translate3d(-1.6%,-1.6%,0)}}
+  .mo-reveal{opacity:0;transform:translateY(16px);
+    transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+  .mo-reveal.mo-in{opacity:1;transform:none}
+  .mo-tilt{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+  .mo-cta{position:relative;overflow:hidden}
+  .mo-cta::after{content:"";position:absolute;top:0;left:-150%;width:65%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);
+    transform:skewX(-18deg);transition:left .65s ease;pointer-events:none}
+  .mo-cta:hover::after{left:170%}
+  body.mo-scrolled header{box-shadow:0 12px 34px rgba(0,31,66,.12)!important}
+  /* CTA band animated aurora glow */
+  .mo-cta-band .mo-aurora{position:absolute;inset:-25% -12%;pointer-events:none;
+    background:radial-gradient(42% 55% at 24% 32%, rgba(255,130,0,.22), rgba(255,130,0,0) 60%),
+      radial-gradient(38% 52% at 80% 70%, rgba(90,150,255,.13), rgba(90,150,255,0) 60%);
+    filter:blur(22px);animation:mo-aurora 17s ease-in-out infinite alternate}
+  @keyframes mo-aurora{0%{transform:translate3d(-3%,-2%,0) scale(1)}100%{transform:translate3d(4%,3%,0) scale(1.14)}}
+  .mo-cta-band button:focus-visible{outline-offset:3px}
+  #mo-scrollcue{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:800;
+    width:26px;height:40px;border:1.5px solid rgba(255,255,255,.55);border-radius:14px;
+    display:flex;justify-content:center;padding-top:7px;box-sizing:border-box;
+    opacity:0;transition:opacity .6s ease;pointer-events:none}
+  #mo-scrollcue::before{content:"";width:3px;height:8px;border-radius:2px;background:#FF8200;
+    animation:mo-cue 1.7s ease-in-out infinite}
+  #mo-scrollcue.mo-show{opacity:.85}
+  @keyframes mo-cue{0%{transform:translateY(0);opacity:0}25%{opacity:1}55%{transform:translateY(9px);opacity:0}100%{opacity:0}}
+  /* keyboard focus ring (accessibility) */
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+    outline:2px solid #FF8200;outline-offset:2px;border-radius:1px}
+  /* dynamic viewport height so the hero doesn't jump with mobile browser chrome */
+  @supports (height:100svh){
+    [data-screen-label="Home — Hero"]{height:calc(100svh - 68px)!important}
+  }
+  @media (max-width:600px){
+    #mo-scrollcue{bottom:16px}
+    .mo-hero-video{animation-duration:34s}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .mo-hero-video{animation:none;transform:none}
+    .mo-reveal{transform:none;transition:opacity .45s ease}
+    .mo-cta::after{display:none}
+    .mo-cta-band .mo-aurora{animation:none}
+    #mo-progress,#mo-scrollcue{display:none}
+  }
+</style>
+<script>
+(function(){
+  if(window.__moInit) return; window.__moInit=true;
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var FINE = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  var bar=document.createElement('div'); bar.id='mo-progress';
+  var cue=document.createElement('div'); cue.id='mo-scrollcue';
+  function mountFixed(){
+    if(!bar.isConnected) document.body.appendChild(bar);
+    if(!cue.isConnected) document.body.appendChild(cue);
+  }
+
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('mo-in'); io.unobserve(e.target); } });
+  }, {threshold:.14, rootMargin:'0px 0px -8% 0px'}) : null;
+
+  // Staggered reveal for the top-level card grid inside a labelled section.
+  function decorateGroup(label){
+    var section=document.querySelector('[data-screen-label="'+label+'"]');
+    if(!section) return;
+    var grid=section.querySelector('[style*="grid-template-columns"]'); // first = outer card grid
+    if(!grid) return;
+    Array.prototype.forEach.call(grid.children, function(child,i){
+      if(child.__moRev) return; child.__moRev=true;
+      child.classList.add('mo-reveal');
+      child.style.transitionDelay=Math.min(i*80,480)+'ms';
+      if(io) io.observe(child); else child.classList.add('mo-in');
+    });
+  }
+
+  // Pointer-driven 3D tilt on the portrait universe cards (fine pointers only — skip touch).
+  function decorateTilt(){
+    if(RM || !FINE) return;
+    var cards=document.querySelectorAll('[data-screen-label="Home — Investment universe"] [style*="aspect-ratio"]');
+    Array.prototype.forEach.call(cards, function(card){
+      if(card.__moTilt) return; card.__moTilt=true;
+      card.classList.add('mo-tilt');
+      card.addEventListener('pointermove', function(ev){
+        var r=card.getBoundingClientRect();
+        var px=(ev.clientX-r.left)/r.width-0.5, py=(ev.clientY-r.top)/r.height-0.5;
+        card.style.transform='perspective(860px) rotateX('+(-py*4.2).toFixed(2)+'deg) rotateY('+(px*5.2).toFixed(2)+'deg) translateY(-4px) scale(1.012)';
+      });
+      card.addEventListener('pointerleave', function(){ card.style.transform=''; });
+    });
+  }
+
+  // Smooth "back to top" control in the footer.
+  function smoothTo(target){
+    var se=document.scrollingElement||document.documentElement;
+    if(RM){ se.scrollTop=target; return; }
+    var start=se.scrollTop, dist=target-start, t0=null, ease=function(p){return 1-Math.pow(1-p,3);};
+    var step=function(ts){ if(t0===null)t0=ts; var p=Math.min(1,(ts-t0)/560); se.scrollTop=start+dist*ease(p); if(p<1)requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  function wireBackToTop(){
+    var el=document.querySelector('[data-mo-top]');
+    if(!el || el.__moTop) return; el.__moTop=true;
+    el.addEventListener('click', function(){ smoothTo(0); });
+  }
+
+  // Sheen sweep on primary orange CTAs (detected by their fill).
+  function decorateCTA(){
+    Array.prototype.forEach.call(document.querySelectorAll('button,a'), function(el){
+      if(el.__moCta) return;
+      var bg=getComputedStyle(el).backgroundColor;
+      if(bg==='rgb(255, 130, 0)'){ el.__moCta=true; el.classList.add('mo-cta'); }
+    });
+  }
+
+  // Ensure the hero loop autoplays muted, fade it in once running.
+  function primeHeroVideo(){
+    var v=document.querySelector('[data-hero-video]');
+    if(!v || v.__moPrimed) return; v.__moPrimed=true;
+    try{ v.muted=true; v.defaultMuted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); }catch(e){}
+    var show=function(){ v.style.opacity='1'; };
+    v.addEventListener('playing', show);
+    v.addEventListener('loadeddata', function(){ if(v.readyState>=2) show(); });
+    var p; try{ p=v.play(); }catch(e){}
+    if(p && p.catch) p.catch(function(){
+      var retry=function(){ v.play().then(show).catch(function(){}); };
+      window.addEventListener('pointerdown', retry, {once:true});
+      window.addEventListener('touchstart', retry, {once:true});
+    });
+  }
+
+  var ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(function(){
+      var st=window.pageYOffset||document.documentElement.scrollTop||0;
+      var docH=document.documentElement.scrollHeight-window.innerHeight;
+      bar.style.width=(docH>0?Math.min(100,st/docH*100):0)+'%';
+      document.body.classList.toggle('mo-scrolled', st>8);
+      var hero=document.querySelector('[data-screen-label="Home — Hero"]');
+      if(hero){
+        if(!RM){
+          var content=hero.querySelector('div[style*="z-index:1"]');
+          if(content){
+            var vh=window.innerHeight||800;
+            content.style.transform='translateY('+(st*0.2).toFixed(1)+'px)';
+            content.style.opacity=String(Math.max(0,1-st/(vh*0.72)));
+          }
+        }
+        cue.classList.toggle('mo-show', st<90 && !RM);
+      } else {
+        cue.classList.remove('mo-show');
+      }
+      ticking=false;
+    });
+  }
+
+  function scan(){
+    mountFixed();
+    decorateGroup('Home — Investment universe');
+    decorateGroup('Home — How it works');
+    decorateGroup('Home — Featured products');
+    decorateTilt();
+    decorateCTA();
+    wireBackToTop();
+    primeHeroVideo();
+    onScroll();
+  }
+
+  var scheduled=false;
+  function schedule(){ if(scheduled) return; scheduled=true; requestAnimationFrame(function(){ scheduled=false; scan(); }); }
+
+  function start(){
+    try{ new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true}); }catch(e){}
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    scan();
+    // Poll briefly to catch the async React/Babel mount from CDN, then rely on the observer.
+    var tries=0, iv=setInterval(function(){ scan(); if(++tries>22) clearInterval(iv); }, 350);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+</body></html>
