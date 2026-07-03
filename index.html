@@ -239,9 +239,8 @@
     <section data-screen-label="Category — Header" data-mo-stage style="position:relative; height:220vh; background:#FFFFFF;">
       <div data-mo-sticky style="position:sticky; top:68px; height:calc(100vh - 68px); overflow:hidden; background:#FFFFFF;">
         <div data-mo-frame style="position:absolute; inset:0; will-change:clip-path; background:#001F42;">
-          <div data-mo-media style="position:absolute; inset:0; will-change:transform;">
+          <div data-mo-media data-cat-src="{{ catVid }}" style="position:absolute; inset:0; will-change:transform;">
             <div style="position:absolute; inset:0; background-image: {{ catBg }}; background-size:cover; background-position:center;"></div>
-            <video data-cat-video src="{{ catVid }}" aria-hidden="true" muted loop playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .9s ease;"></video>
             <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,31,66,0.38) 0%, rgba(0,31,66,0.10) 44%, rgba(0,31,66,0.58) 100%); pointer-events:none;"></div>
           </div>
           <div data-mo-cluster style="position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 24px; pointer-events:none; will-change:transform;">
@@ -1642,25 +1641,33 @@ class Component extends DCLogic {
   function outCubic(p){ return 1-Math.pow(1-p,3); }
   function ioCubic(p){ return p<0.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
 
-  function primeCatVideo(v){
+  // The runtime only carries the URL in data-cat-src; the motion layer owns the <video>.
+  // A fresh element per category avoids Chrome wedging a reused media pipeline on src swaps.
+  function primeCatVideo(media){
     if(RM || (navigator.connection&&navigator.connection.saveData)) return;
-    if(!v.__moWired){
-      v.__moWired=true;
-      v.addEventListener('playing', function(){ v.style.opacity='1'; });
-      v.addEventListener('error', function(){ v.style.opacity='0'; });
-    }
-    var src=v.getAttribute('src')||'';
-    if(v.__moSrc===src) return;
-    v.__moSrc=src;
+    var src=media.getAttribute('data-cat-src')||'';
+    if(media.__moVSrc===src) return;
+    media.__moVSrc=src;
+    var old=media.querySelector('video');
+    if(old){ try{ old.pause(); }catch(e){} old.remove(); }
     if(!src) return;
-    try{ v.muted=true; v.defaultMuted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); }catch(e){}
-    v.style.opacity='0';
-    var retry=function(){ if(v.isConnected && v.paused){ var q=v.play(); if(q&&q.catch)q.catch(function(){}); } };
-    try{ v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){
+    var v=document.createElement('video');
+    v.muted=true; v.defaultMuted=true; v.loop=true; v.playsInline=true;
+    v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.setAttribute('aria-hidden','true');
+    v.setAttribute('data-cat-video','');
+    v.preload='auto';
+    v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;pointer-events:none;';
+    v.addEventListener('playing', function(){ v.style.opacity='1'; });
+    v.addEventListener('error', function(){ v.style.opacity='0'; });
+    v.src=src;
+    media.insertBefore(v, media.lastElementChild); // below the scrim, above the poster
+    var p; try{ p=v.play(); }catch(e){}
+    if(p&&p.catch) p.catch(function(){
+      var retry=function(){ if(v.isConnected && v.paused){ var q=v.play(); if(q&&q.catch)q.catch(function(){}); } };
       window.addEventListener('pointerdown', retry, {once:true});
       window.addEventListener('touchstart', retry, {once:true});
       window.addEventListener('scroll', retry, {once:true, passive:true});
-    }); }catch(e){}
+    });
   }
 
   function refreshStage(){
@@ -1676,8 +1683,7 @@ class Component extends DCLogic {
         tag:el.querySelector('[data-mo-tagline]'),
         base:null };
     }
-    var v=el.querySelector('[data-cat-video]');
-    if(v) primeCatVideo(v);
+    if(stg.media) primeCatVideo(stg.media);
   }
 
   // Returns scrub progress 0..1, or null when no stage is mounted.
@@ -1688,8 +1694,8 @@ class Component extends DCLogic {
     var stickyH=stg.sticky.offsetHeight;
     var range=Math.max(1, el.offsetHeight-stickyH);
     var p=Math.max(0, Math.min(1, (68-r.top)/range));
-    var v=el.querySelector('[data-cat-video]');
-    if(v && v.__moSrc){
+    var v=el.querySelector('video[data-cat-video]');
+    if(v){
       if(r.bottom<-40){ if(!v.paused) v.pause(); }
       else if(v.paused && !RM && v.readyState>=2){ var pl=v.play(); if(pl&&pl.catch)pl.catch(function(){}); }
     }
