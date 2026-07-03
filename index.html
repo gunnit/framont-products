@@ -217,10 +217,15 @@
               </div>
               <div style="margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
                 <div>
-                  <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.target }}</div>
-                  <div style="font-size:13px; font-weight:600; color:#B85C00; margin-top:4px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.target }}</div>
+                  <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ p.metricLabel }}</div>
+                  <div style="font-size:13px; font-weight:600; color:#B85C00; margin-top:4px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.metricValue }}</div>
                 </div>
-                <button onclick="{{ p.onView }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 16px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.products.viewSubscribe }}</button>
+                <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end;">
+                  <sc-if value="{{ p.landingUrl }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ p.landingUrl }}" target="_blank" rel="noopener" style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; white-space:nowrap; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.products.learnMore }} ↗</a>
+                  </sc-if>
+                  <button onclick="{{ p.onView }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 16px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.products.viewSubscribe }}</button>
+                </div>
               </div>
             </div>
           </sc-for>
@@ -271,6 +276,7 @@
             </div>
             <div style="font-size:13px; color:#4D575E; padding-bottom:4px;">{{ resultsLabel }}</div>
           </div>
+          <sc-if value="{{ catHasProducts }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin:30px 0 24px;">
             <select value="{{ fCls }}" onchange="{{ onFCls }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
               <sc-for list="{{ clsOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
@@ -323,14 +329,27 @@
                 </div>
                 <div style="margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
                   <div>
-                    <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.target }}</div>
-                    <div style="font-size:13px; font-weight:600; color:#B85C00; margin-top:4px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.target }}</div>
+                    <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ p.metricLabel }}</div>
+                    <div style="font-size:13px; font-weight:600; color:#B85C00; margin-top:4px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.metricValue }}</div>
                   </div>
-                  <button onclick="{{ p.onView }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 16px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.products.viewSubscribe }}</button>
+                  <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end;">
+                    <sc-if value="{{ p.landingUrl }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ p.landingUrl }}" target="_blank" rel="noopener" style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; white-space:nowrap; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.products.learnMore }} ↗</a>
+                    </sc-if>
+                    <button onclick="{{ p.onView }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:10px 16px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.products.viewSubscribe }}</button>
+                  </div>
                 </div>
               </div>
             </sc-for>
           </div>
+          </sc-if>
+          <sc-if value="{{ catEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="border:1px dashed #D8D4CC; background:#F7F7F5; padding:72px 32px; text-align:center; margin-top:30px;">
+              <div style="font-family:'Playfair Display',serif; font-size:26px; font-weight:500; color:#002E5F;">{{ t.cat.comingSoonTitle }}</div>
+              <p style="font-size:14.5px; color:#4D575E; line-height:1.7; max-width:460px; margin:14px auto 26px;">{{ t.cat.comingSoonSub }}</p>
+              <button onclick="{{ onRegister }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:14px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.cat.comingSoonCta }}</button>
+            </div>
+          </sc-if>
         </div>
       </div>
     </section>
@@ -692,20 +711,36 @@
             <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:600; color:#002E5F; margin-top:6px;">{{ pm.minLabel }}</div>
           </div>
           <div style="background:#F7F7F5; border:1px solid #E9E7E2; padding:18px 20px;">
-            <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.target }}</div>
-            <div style="font-size:16px; font-weight:600; color:#002E5F; margin-top:11px;">{{ pm.target }}</div>
+            <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ pm.metricLabel }}</div>
+            <div style="font-size:16px; font-weight:600; color:#002E5F; margin-top:11px;">{{ pm.metricValue }}</div>
           </div>
         </div>
-        <div style="margin-bottom:24px;">
-          <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:10px;">{{ t.modal.documents }}</div>
-          <div style="display:flex; gap:24px; flex-wrap:wrap;">
-            <a onclick="{{ onDocClick }}" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.factsheet }}</a>
-            <a onclick="{{ onDocClick }}" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.kid }}</a>
+        <sc-if value="{{ pmHasFacts }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:24px;">
+            <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:10px;">{{ t.modal.facts }}</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#E9E7E2; border:1px solid #E9E7E2;">
+              <sc-for list="{{ pm.facts }}" as="fe" hint-placeholder-count="4">
+                <div style="background:#FFFFFF; padding:14px 16px;">
+                  <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ fe.label }}</div>
+                  <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:6px; line-height:1.45;">{{ fe.value }}</div>
+                </div>
+              </sc-for>
+            </div>
           </div>
-        </div>
+        </sc-if>
+        <sc-if value="{{ pm.landingUrl }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:24px;">
+            <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:10px;">{{ t.modal.documents }}</div>
+            <div style="display:flex; gap:24px; flex-wrap:wrap;">
+              <a href="{{ pm.landingUrl }}" target="_blank" rel="noopener" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.docsLink }} ↗</a>
+            </div>
+          </div>
+        </sc-if>
         <div style="border-top:1px solid #E9E7E2; padding-top:16px; margin-bottom:26px; font-size:12px; color:#8C959C; line-height:1.65;">{{ t.modal.disclaimer }}</div>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <button onclick="{{ onDocClick }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.modal.download }}</button>
+          <sc-if value="{{ pm.landingUrl }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ pm.landingUrl }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; justify-content:center; background:transparent; border:1px solid #002E5F; color:#002E5F; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; text-decoration:none; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.modal.visitSite }} ↗</a>
+          </sc-if>
           <button onclick="{{ onStartSub }}" disabled="{{ subscribing }}" style="flex:1; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ subBtnLabel }}</button>
         </div>
       </div>
@@ -789,7 +824,7 @@
 class Component extends DCLogic {
   INVESTGLASS_API_URL = "https://YOUR_INVESTGLASS_INSTANCE.investglass.com/api";
 
-  FEATURED = [{ id: "f001", ck: "funds" }, { id: "a002", ck: "amc" }, { id: "v001", ck: "vc" }];
+  FEATURED = [{ id: "eti-heraklit", ck: "eti" }, { id: "eti-techmegatrend", ck: "eti" }, { id: "eti-lcinvest", ck: "eti" }];
 
   T = {
     en: {
@@ -797,22 +832,22 @@ class Component extends DCLogic {
       nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", vc: "VC Deals", login: "Login", admin: "Admin", signOut: "Sign Out" },
       hero: { eyebrow: "Framont Group — Investment Platform", t1: "Access the World of", t2: "Framont", subtitle: "Curated access to institutional-grade investment products — across funds, structured instruments, and venture capital opportunities.", cta: "Request Access", learnMore: "Explore Products" },
       teaser: { locked: "Members only", unlock: "Request access to view" },
-      trust: ["MFSA Licensed", "30+ Years Experience", "€2.4B+ Under Coverage", "18 Jurisdictions"],
+      trust: ["MFSA-authorised AIFM", "Exchange-Listed Products", "Issued by iMaps ETI AG", "Access from €1,000"],
       universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", vc: "Venture capital co-investments for professionals" } },
-      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Verify your email", sub: "Instant — unlocks full product data and documents." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
+      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Verify your email", sub: "Instant — confirms your contact details." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
       featured: { label: "Featured Products", title: "A selection from the current shelf" },
-      gate: { members: "Members", toastUnlock: "Access granted — full product data unlocked.", toastWelcome: "Signed in — product data unlocked.", toastDocs: "Documents are delivered during secure onboarding (demo)." },
+      gate: { members: "Members", toastUnlock: "Thank you — your request has been received. Our team will contact you shortly.", toastWelcome: "Signed in — welcome back.", toastDocs: "Full documentation (KID, prospectus) is available on the official product page." },
       cta: { eyebrow: "Membership", title: "Ready to access institutional-grade products?", sub: "Registration is free and takes two minutes.", button: "Request Access" },
-      footer: { tag: "Curated access to institutional-grade investment products for qualified investors across Europe.", platform: "Platform", legalCol: "Legal", company: "Company", contactCol: "Contact", contact: "Contact", address: "Valletta, Malta", email: "access@framont.com", backToTop: "Back to top", copyright: "© 2026 Framont Group. All rights reserved.", mfsa: "Licensed by the MFSA", legal: "Framont & Partners Management Ltd. is licensed by the Malta Financial Services Authority to provide investment services under the Investment Services Act (Cap. 370 of the Laws of Malta). Registered office: Valletta, Malta. The content of this platform is provided for information purposes only and does not constitute investment advice, a solicitation or an offer to the public. Access to certain products is restricted to investors who meet the applicable eligibility criteria. Investments involve risk, including the possible loss of the capital invested. Past performance is not a reliable indicator of future results." },
+      footer: { tag: "Curated access to institutional-grade investment products for qualified investors across Europe.", platform: "Platform", legalCol: "Legal", company: "Company", contactCol: "Contact", contact: "Contact", address: "Valletta, Malta", email: "gianluigi.montagner@framontmanagement.com", backToTop: "Back to top", copyright: "© 2026 Framont Group. All rights reserved.", mfsa: "Licensed by the MFSA", legal: "Framont & Partners Management Ltd. is licensed by the Malta Financial Services Authority to provide investment services under the Investment Services Act (Cap. 370 of the Laws of Malta). Registered office: Valletta, Malta. The content of this platform is provided for information purposes only and does not constitute investment advice, a solicitation or an offer to the public. Access to certain products is restricted to investors who meet the applicable eligibility criteria. Investments involve risk, including the possible loss of the capital invested. Past performance is not a reliable indicator of future results. Exchange Traded Instruments (ETIs) and actively managed certificates are debt securities of the respective issuer and carry issuer risk. Before any investment decision, read the Key Information Document (KID) and the relevant prospectus or final terms, available on the product pages. Backtested and simulated performance figures are hypothetical, do not represent actual trading and are not a reliable indicator of future results. Where reference is made to results achieved by a strategy developer on personal accounts, such results relate to accounts independent of the instrument and are not indicative of the instrument's performance. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Capital at risk." },
       auth: { register: "Request Access", login: "Sign In", name: "Full Name", email: "Email Address", phone: "Phone Number", category: "Investor Category", retail: "Retail Investor", professional: "Professional Investor", institutional: "Institutional Investor", gdpr: "I consent to the processing of my personal data in accordance with the", privacy: "Privacy Policy", submit: "Request Access", verifyEmail: "Verify your email", verifyEmailSub: "Enter the 6-digit code sent to", verifyPhoneSub: "Enter the 6-digit code sent to", verify: "Verify", resend: "Resend code" },
       err: { name: "Name is required", email: "Valid email required", phone: "Valid phone number required", gdpr: "Please accept the privacy policy" },
-      reg: { step1: "Step 1 of 2", step2: "Step 2 of 2", intro: "Complete the form to unlock full product data — ISINs, minimum subscriptions and documents.", noFees: "No fees. Takes 2 minutes.", demo: "Demo — use code 123456", badCode: "Invalid code. In this demo, use 123456.", back: "← Back to the form" },
+      reg: { step1: "Step 1 of 2", step2: "Step 2 of 2", intro: "Leave your details and our team will contact you about the products you are interested in.", noFees: "No fees. Takes 2 minutes.", demo: "Demo — use code 123456", badCode: "Invalid code. In this demo, use 123456.", back: "← Back to the form" },
       loginM: { intro: "Enter your registered email to sign in.", demo: "Demo: any email works — admin@framont.com opens the admin panel." },
       phoneV: { title: "Verify your identity", sub: "Regulation requires phone verification before subscription requests can be submitted. This is a one-time step.", processing: "Processing…" },
       next: { title: "What happens next", steps: ["Our team contacts you within one business day.", "Suitability assessment and documents via InvestGlass secure onboarding.", "Execution and confirmation of your subscription."], back: "Back to Products" },
-      products: { viewSubscribe: "View & Subscribe", isin: "ISIN", minSub: "Min. Subscription", target: "Target", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products" },
-      modal: { subscribe: "Start Subscription", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", confirm: "Subscription Request Sent", confirmSub: "Your subscription request for {product} has been submitted.", disclaimer: "This product is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results. Capital at risk." },
-      cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products" },
+      products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products" },
+      modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
+      cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products", comingSoonTitle: "Products Coming Soon", comingSoonSub: "We are finalising the onboarding of products in this category. Leave your details and our team will notify you as soon as they are available.", comingSoonCta: "Request Information" },
       admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
     },
     it: {
@@ -820,22 +855,22 @@ class Component extends DCLogic {
       nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", vc: "VC Deals", login: "Accedi", admin: "Admin", signOut: "Esci" },
       hero: { eyebrow: "Framont Group — Piattaforma d'Investimento", t1: "Accedi al Mondo di", t2: "Framont", subtitle: "Accesso curato a prodotti d'investimento di livello istituzionale — fondi, strumenti strutturati e opportunità di venture capital.", cta: "Richiedi Accesso", learnMore: "Esplora i Prodotti" },
       teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare" },
-      trust: ["Autorizzata MFSA", "30+ Anni di Esperienza", "€2,4 Mld+ in Copertura", "18 Giurisdizioni"],
+      trust: ["AIFM autorizzato MFSA", "Prodotti Quotati in Borsa", "Emessi da iMaps ETI AG", "Accesso da €1.000"],
       universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", vc: "Co-investimenti VC per professionisti" } },
-      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Verifica l'email", sub: "Immediato — sblocca dati completi e documenti." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
+      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Verifica l'email", sub: "Immediato — conferma i tuoi recapiti." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
       featured: { label: "Prodotti in Evidenza", title: "Una selezione dall'offerta attuale" },
-      gate: { members: "Iscritti", toastUnlock: "Accesso concesso — dati prodotto sbloccati.", toastWelcome: "Accesso effettuato — dati prodotto sbloccati.", toastDocs: "I documenti vengono forniti durante l'onboarding sicuro (demo)." },
+      gate: { members: "Iscritti", toastUnlock: "Grazie — richiesta ricevuta. Il nostro team ti contatterà a breve.", toastWelcome: "Accesso effettuato — bentornato.", toastDocs: "La documentazione completa (KID, prospetto) è disponibile sulla pagina ufficiale del prodotto." },
       cta: { eyebrow: "Adesione", title: "Pronto ad accedere a prodotti di livello istituzionale?", sub: "La registrazione è gratuita e richiede due minuti.", button: "Richiedi Accesso" },
-      footer: { tag: "Accesso curato a prodotti d'investimento di livello istituzionale per investitori qualificati in Europa.", platform: "Piattaforma", legalCol: "Legale", company: "Azienda", contactCol: "Contatti", contact: "Contatti", address: "La Valletta, Malta", email: "access@framont.com", backToTop: "Torna su", copyright: "© 2026 Framont Group. Tutti i diritti riservati.", mfsa: "Autorizzata dalla MFSA", legal: "Framont & Partners Management Ltd. è autorizzata dalla Malta Financial Services Authority a prestare servizi d'investimento ai sensi dell'Investment Services Act (Cap. 370 delle Leggi di Malta). Sede legale: La Valletta, Malta. I contenuti di questa piattaforma sono forniti a solo scopo informativo e non costituiscono consulenza d'investimento, sollecitazione o offerta al pubblico. L'accesso ad alcuni prodotti è riservato agli investitori che soddisfano i criteri di idoneità applicabili. Gli investimenti comportano rischi, inclusa la possibile perdita del capitale investito. I rendimenti passati non sono un indicatore affidabile dei risultati futuri." },
+      footer: { tag: "Accesso curato a prodotti d'investimento di livello istituzionale per investitori qualificati in Europa.", platform: "Piattaforma", legalCol: "Legale", company: "Azienda", contactCol: "Contatti", contact: "Contatti", address: "La Valletta, Malta", email: "gianluigi.montagner@framontmanagement.com", backToTop: "Torna su", copyright: "© 2026 Framont Group. Tutti i diritti riservati.", mfsa: "Autorizzata dalla MFSA", legal: "Framont & Partners Management Ltd. è autorizzata dalla Malta Financial Services Authority a prestare servizi d'investimento ai sensi dell'Investment Services Act (Cap. 370 delle Leggi di Malta). Sede legale: La Valletta, Malta. I contenuti di questa piattaforma sono forniti a solo scopo informativo e non costituiscono consulenza d'investimento, sollecitazione o offerta al pubblico. L'accesso ad alcuni prodotti è riservato agli investitori che soddisfano i criteri di idoneità applicabili. Gli investimenti comportano rischi, inclusa la possibile perdita del capitale investito. I rendimenti passati non sono un indicatore affidabile dei risultati futuri. Gli Exchange Traded Instruments (ETI) e i certificati a gestione attiva sono titoli di debito del rispettivo emittente e comportano rischio emittente. Prima di ogni decisione d'investimento, leggere il Documento contenente le Informazioni Chiave (KID) e il relativo prospetto o le condizioni definitive, disponibili sulle pagine dei prodotti. I dati di performance da backtest o simulati sono ipotetici, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Ove si faccia riferimento a risultati ottenuti da uno sviluppatore della strategia su conti personali, tali risultati riguardano conti indipendenti dallo strumento e non sono indicativi della performance dello strumento. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Capitale a rischio." },
       auth: { register: "Richiedi Accesso", login: "Accedi", name: "Nome Completo", email: "Indirizzo Email", phone: "Numero di Telefono", category: "Categoria Investitore", retail: "Investitore Retail", professional: "Investitore Professionale", institutional: "Investitore Istituzionale", gdpr: "Acconsento al trattamento dei miei dati personali ai sensi della", privacy: "Privacy Policy", submit: "Richiedi Accesso", verifyEmail: "Verifica la tua email", verifyEmailSub: "Inserisci il codice a 6 cifre inviato a", verifyPhoneSub: "Inserisci il codice a 6 cifre inviato a", verify: "Verifica", resend: "Rinvia codice" },
       err: { name: "Il nome è obbligatorio", email: "Email valida richiesta", phone: "Numero di telefono valido richiesto", gdpr: "Accetta la privacy policy" },
-      reg: { step1: "Passo 1 di 2", step2: "Passo 2 di 2", intro: "Compila il modulo per sbloccare i dati completi dei prodotti — ISIN, sottoscrizioni minime e documenti.", noFees: "Nessun costo. Richiede 2 minuti.", demo: "Demo — usa il codice 123456", badCode: "Codice non valido. In questa demo usa 123456.", back: "← Torna al modulo" },
+      reg: { step1: "Passo 1 di 2", step2: "Passo 2 di 2", intro: "Lascia i tuoi dati e il nostro team ti contatterà sui prodotti di tuo interesse.", noFees: "Nessun costo. Richiede 2 minuti.", demo: "Demo — usa il codice 123456", badCode: "Codice non valido. In questa demo usa 123456.", back: "← Torna al modulo" },
       loginM: { intro: "Inserisci la tua email registrata per accedere.", demo: "Demo: qualsiasi email funziona — admin@framont.com apre il pannello admin." },
       phoneV: { title: "Verifica la tua identità", sub: "La normativa richiede la verifica del numero di telefono prima dell'invio di richieste di sottoscrizione. È un passaggio da completare una sola volta.", processing: "Elaborazione…" },
       next: { title: "Cosa succede ora", steps: ["Il nostro team ti contatta entro un giorno lavorativo.", "Valutazione di adeguatezza e documenti tramite l'onboarding sicuro InvestGlass.", "Esecuzione e conferma della tua sottoscrizione."], back: "Torna ai Prodotti" },
-      products: { viewSubscribe: "Visualizza & Sottoscrivi", isin: "ISIN", minSub: "Sottoscrizione Min.", target: "Obiettivo", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti" },
-      modal: { subscribe: "Avvia Sottoscrizione", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", confirm: "Richiesta di Sottoscrizione Inviata", confirmSub: "La tua richiesta di sottoscrizione per {product} è stata inviata.", disclaimer: "Questo prodotto ha finalità informative e non costituisce consulenza d'investimento. I rendimenti passati non sono indicativi di quelli futuri. Capitale a rischio." },
-      cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili" },
+      products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti" },
+      modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
+      cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili", comingSoonTitle: "Prodotti in Arrivo", comingSoonSub: "Stiamo finalizzando l'inserimento dei prodotti di questa categoria. Lascia i tuoi dati e il nostro team ti avviserà non appena saranno disponibili.", comingSoonCta: "Richiedi Informazioni" },
       admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
     }
   };
@@ -860,11 +895,7 @@ class Component extends DCLogic {
         features: [{ label: "Struttura", value: "UCITS / AIF" }, { label: "Liquidità", value: "Giornaliera - Settimanale" }, { label: "Profilo di Rischio", value: "Basso - Alto" }, { label: "Durata Tipica", value: "Aperto" }, { label: "Quadro Regolamentare", value: "AIFMD / UCITS IV" }],
         faq: [{ q: "Qual è la differenza tra UCITS e AIF?", a: "I fondi UCITS seguono rigide normative UE che consentono l'accesso agli investitori retail. Gli AIF hanno maggiore flessibilità strategica ma sono generalmente riservati agli investitori professionali." }, { q: "Come vengono gestiti i dividendi?", a: "I fondi possono offrire classi di azioni ad accumulazione o a distribuzione. Le politiche sui dividendi sono dettagliate nel prospetto di ogni fondo." }, { q: "Quali commissioni dovrei aspettarmi?", a: "Le commissioni di gestione variano tipicamente dallo 0,1% al 2,0% annuo a seconda della complessità della strategia. Su alcuni fondi possono applicarsi commissioni di performance." }]
       },
-      products: [
-        { id: "f001", name: "Framont Global Equity UCITS", isin: "LU0987654321", assetClass: "Equity", currency: "EUR", minSub: 1000, minLabel: "€1,000", strategy: "Long-only global equity, MSCI World benchmark", target: "+7-9% annualised", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=f001", description: "A UCITS-compliant global equity fund tracking developed market companies with a quality and momentum tilt. Managed by a team with 25 years of institutional experience." },
-        { id: "f002", name: "Framont European Credit AIF", isin: "IE0012345678", assetClass: "Fixed Income", currency: "EUR", minSub: 100000, minLabel: "€100,000", strategy: "Investment grade and HY European credit", target: "Euribor +3.5%", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=f002", description: "A professional-only AIF investing in European corporate bonds across the investment grade and selective high yield spectrum, with active duration management." },
-        { id: "f003", name: "Framont Multi-Asset Income", isin: "LU1122334455", assetClass: "Multi-Asset", currency: "USD", minSub: 10000, minLabel: "$10,000", strategy: "Diversified income generation, 4-6% yield target", target: "4-6% yield p.a.", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=f003", description: "A diversified multi-asset fund targeting sustainable income through a blend of bonds, dividend equities, and real assets. Available in accumulating and distributing share classes." }
-      ]
+      products: []
     },
     amc: {
       en: {
@@ -885,11 +916,7 @@ class Component extends DCLogic {
         features: [{ label: "Struttura", value: "Nota / Certificato" }, { label: "Liquidità", value: "Quotato, Infragiornaliero" }, { label: "Profilo di Rischio", value: "Medio - Alto" }, { label: "Durata Tipica", value: "2-5 Anni" }, { label: "Quadro Regolamentare", value: "Regolamento Prospetto" }],
         faq: [{ q: "In cosa si differenzia un AMC da un ETF?", a: "Un AMC è gestito attivamente da un gestore di portafoglio che prende decisioni discrezionali, mentre un ETF segue passivamente un indice. Gli AMC possono rispondere alle condizioni di mercato; gli ETF no." }, { q: "Qual è il rischio emittente?", a: "Gli AMC comportano un rischio di credito dell'emittente. Framont lavora esclusivamente con emittenti investment grade o completamente collateralizzati per mitigarlo." }, { q: "Posso uscire anticipatamente?", a: "Gli AMC quotati possono generalmente essere venduti sul mercato secondario. La liquidità dipende dalla quotazione del market maker e dai volumi di negoziazione giornalieri." }]
       },
-      products: [
-        { id: "a001", name: "Framont Systematic Macro AMC", isin: "XS2109876543", assetClass: "Macro", currency: "USD", minSub: 50000, minLabel: "$50,000", strategy: "Quantitative macro across FX, rates, commodities", target: "10-15% annualised return", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=a001", description: "A systematic global macro certificate managed with quantitative signals across foreign exchange, interest rates and commodity markets. Rebalanced weekly with full transparency." },
-        { id: "a002", name: "Framont Tech Innovation AMC", isin: "XS2209876544", assetClass: "Equity Thematic", currency: "EUR", minSub: 25000, minLabel: "€25,000", strategy: "Concentrated tech portfolio, 15-25 holdings", target: "Alpha vs NASDAQ-100", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=a002", description: "A concentrated portfolio of 15-25 global technology companies selected for disruptive potential, managed with active position sizing and systematic risk controls." },
-        { id: "a003", name: "Framont ESG Leaders AMC", isin: "XS2309876545", assetClass: "ESG", currency: "EUR", minSub: 10000, minLabel: "€10,000", strategy: "Best-in-class ESG equity selection", target: "+6-8% annualised", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=a003", description: "An ESG-focused actively managed certificate selecting companies based on proprietary environmental, social and governance scoring alongside fundamental financial analysis." }
-      ]
+      products: []
     },
     eti: {
       en: {
@@ -911,9 +938,53 @@ class Component extends DCLogic {
         faq: [{ q: "Gli ETI sono la stessa cosa degli ETF?", a: "No. ETI è una categoria più ampia. Gli ETF sono fondi; gli ETI includono ETP, ETN e certificati strutturati. Non tutti gli ETI hanno le protezioni a livello di fondo." }, { q: "Cos'è il tracking error?", a: "Gli ETI legati a replica fisica o swap hanno generalmente un tracking error minimo. Le strutture sintetiche possono divergere dall'indice sottostante durante periodi di stress." }, { q: "Esistono caratteristiche di protezione del capitale?", a: "Alcune strutture ETI offrono protezione parziale o totale del capitale a scadenza. Queste caratteristiche sono dettagliate nel Documento Informativo Chiave del prodotto." }]
       },
       products: [
-        { id: "e001", name: "Framont S&P 500 Enhanced ETP", isin: "DE000A1234567", assetClass: "Equity", currency: "USD", minSub: 500, minLabel: "$500", strategy: "S&P 500 with 1.2x systematic leverage", target: "S&P 500 +20% leverage", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=e001", description: "An exchange-traded product providing 1.2x leveraged exposure to the S&P 500 index, with daily rebalancing and built-in stop-loss mechanism at -15% from high-water mark." },
-        { id: "e002", name: "Framont Gold & Inflation ETN", isin: "DE000A2345678", assetClass: "Commodities", currency: "EUR", minSub: 1000, minLabel: "€1,000", strategy: "Gold + inflation-linked bond blend", target: "Inflation +2% real return", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=e002", description: "An ETN combining physical gold exposure with a portfolio of European inflation-linked bonds, designed as a macro hedge against inflationary environments." },
-        { id: "e003", name: "Framont EM Bond Carry ETN", isin: "DE000A3456789", assetClass: "Fixed Income", currency: "USD", minSub: 2000, minLabel: "$2,000", strategy: "EM sovereign debt, carry strategy", target: "USD 5-7% yield", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=e003", description: "A carry-focused ETN investing in a basket of high-yield emerging market sovereign bonds denominated in USD, with quarterly coupon distributions and active country allocation." }
+        { id: "eti-heraklit", name: "HERAKLIT Strategy ETI", isin: "DE000AMC0D44", assetClass: "Systematic Multi-Asset", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+          landingUrl: "https://heraklit.framontmanagement.com/",
+          subscribeUrl: "https://heraklit.framontmanagement.com/?src=framont-access",
+          strategy: { en: "Physics-based regime detection (Fokker–Planck) driving systematic exposure across market regimes.", it: "Rilevazione dei regimi di mercato su basi fisiche (Fokker–Planck) che guida l'esposizione sistematica nei diversi regimi." },
+          metricLabel: { en: "Listing", it: "Quotazione" },
+          metricValue: "European Stock Exchange",
+          facts: [
+            { label: { en: "Issuer & Market Maker", it: "Emittente & Market Maker" }, value: "iMaps ETI AG (Liechtenstein)" },
+            { label: { en: "Strategy Developer", it: "Sviluppatore della Strategia" }, value: "Marcus Schmieke, Dr. h.c." },
+            { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
+            { label: { en: "Backtested CAGR (2016–2026)*", it: "CAGR da backtest (2016–2026)*" }, value: "36.67%" },
+            { label: { en: "Backtested CAGR (1999–2026)*", it: "CAGR da backtest (1999–2026)*" }, value: "11.45%" },
+            { label: { en: "Entry / Exit Fee", it: "Commissione di Ingresso / Uscita" }, value: { en: "0.50–1.00% (based on AuM)", it: "0,50–1,00% (in base all'AuM)" } }
+          ],
+          description: { en: "HERAKLIT applies a physics-based market model — regime detection derived from the Fokker–Planck equation across twelve global data streams — to distinguish stable, investable market phases from unstable ones and adjust exposure systematically. Strategy developed by Marcus Schmieke (Strategy Developer); portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). Issued by iMaps ETI AG (Liechtenstein) as an Exchange Traded Instrument. *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "HERAKLIT applica un modello di mercato su basi fisiche — rilevazione dei regimi derivata dall'equazione di Fokker–Planck su dodici flussi di dati globali — per distinguere le fasi di mercato stabili e investibili da quelle instabili e adeguare l'esposizione in modo sistematico. Strategia sviluppata da Marcus Schmieke (Sviluppatore della Strategia); la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Emesso da iMaps ETI AG (Liechtenstein) come Exchange Traded Instrument. *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
+        { id: "eti-techmegatrend", name: "Tech Megatrend Tactical ETI", isin: "DE000AMC0D85", assetClass: "Equity / Technology", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+          landingUrl: "https://techmegatrend.framontmanagement.com/",
+          subscribeUrl: "https://techmegatrend.framontmanagement.com/?src=framont-access",
+          strategy: { en: "Tactical, liquidity-driven US technology exposure rotating across TECL, TQQQ, QQQ, cash and short positioning.", it: "Esposizione tattica alla tecnologia USA guidata dalla liquidità, con rotazione tra TECL, TQQQ, QQQ, liquidità e posizioni short." },
+          metricLabel: { en: "Listing", it: "Quotazione" },
+          metricValue: { en: "Börse Stuttgart", it: "Börse di Stoccarda" },
+          facts: [
+            { label: { en: "Issuer & Market Maker", it: "Emittente & Market Maker" }, value: "iMaps ETI AG (Liechtenstein)" },
+            { label: { en: "Strategy Developer", it: "Sviluppatore della Strategia" }, value: "Dr. Chris Kacher, PhD" },
+            { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
+            { label: { en: "Backtested CAGR (2008–2026, long/cash)*", it: "CAGR da backtest (2008–2026, long/cash)*" }, value: "60.84%" },
+            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "1.0% p.a.", it: "1,0% annuo" } },
+            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "20% (high-water mark)", it: "20% (high-water mark)" } }
+          ],
+          description: { en: "A tactical, liquidity-driven approach to US technology developed by Dr. Chris Kacher (Strategy Developer). The strategy combines macro liquidity analysis with price and volume confirmation, rotating between leveraged and unleveraged technology exposure (TECL, TQQQ, QQQ), cash and short positioning. Issued by iMaps ETI AG and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Leveraged exposure can amplify losses. Capital at risk.", it: "Un approccio tattico alla tecnologia USA guidato dalla liquidità, sviluppato dal Dr. Chris Kacher (Sviluppatore della Strategia). La strategia combina l'analisi della liquidità macro con conferme di prezzo e volume, ruotando tra esposizione tecnologica a leva e non (TECL, TQQQ, QQQ), liquidità e posizioni short. Emesso da iMaps ETI AG e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. L'esposizione a leva può amplificare le perdite. Capitale a rischio." } },
+        { id: "eti-lcinvest", name: "LC Invest — Value Edge ETI", isin: "DE000AMC0BZ5", assetClass: "Gold / FX", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+          landingUrl: "https://lcinvest.framontmanagement.com/",
+          subscribeUrl: "https://lcinvest.framontmanagement.com/?src=framont-access",
+          strategy: { en: "Discretionary Gold and FX strategy combining Smart Money Concepts, price action and macro analysis.", it: "Strategia discrezionale su Oro e Valute che combina Smart Money Concepts, price action e analisi macro." },
+          metricLabel: { en: "Listing", it: "Quotazione" },
+          metricValue: { en: "Börse Stuttgart · Vienna", it: "Börse di Stoccarda · Vienna" },
+          facts: [
+            { label: { en: "Issuer & Market Maker", it: "Emittente & Market Maker" }, value: "iMaps ETI AG (Liechtenstein)" },
+            { label: { en: "Issue Price", it: "Prezzo di Emissione" }, value: "EUR 100" },
+            { label: { en: "Strategy Developer", it: "Sviluppatore della Strategia" }, value: "Luca Cunin" },
+            { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
+            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "4.5% p.a. retail / 6.0% p.a. professional", it: "4,5% annuo retail / 6,0% annuo professionale" } },
+            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "20% (high-water mark)", it: "20% (high-water mark)" } },
+            { label: { en: "Developer's personal account, 2025*", it: "Conto personale dello sviluppatore, 2025*" }, value: "+483%" },
+            { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } }
+          ],
+          description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart and the Vienna Stock Exchange; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda e alla Borsa di Vienna; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } }
       ]
     },
     vc: {
@@ -935,11 +1006,7 @@ class Component extends DCLogic {
         features: [{ label: "Struttura", value: "SPV / Equity Diretta" }, { label: "Liquidità", value: "Illiquido, Orizzonte 5-10 Anni" }, { label: "Profilo di Rischio", value: "Molto Alto" }, { label: "Durata Tipica", value: "5-10 Anni" }, { label: "Quadro Regolamentare", value: "AIFMD / EuVECA" }],
         faq: [{ q: "Qual è il profilo di rendimento atteso?", a: "Gli investimenti VC mirano a multipli di rendimento 3-10x su un orizzonte di 5-10 anni. I rendimenti sono altamente variabili e la perdita di capitale è possibile. Le performance passate dei co-investitori non garantiscono rendimenti futuri." }, { q: "Come funziona la struttura SPV?", a: "Framont costituisce un Veicolo a Scopo Speciale che raccoglie gli impegni degli investitori e assume una singola posizione nella società target. Gli investitori ricevono diritti economici proporzionali." }, { q: "Esistono opportunità di mercato secondario?", a: "Alcune posizioni possono diventare eleggibili per transazioni sul mercato secondario. Framont facilita i contatti con acquirenti secondari su base best-effort; non è garantita alcuna liquidità." }]
       },
-      products: [
-        { id: "v001", name: "Framont Series A: Quantum Computing SPV", isin: null, ticker: "FRA-QC-01", assetClass: "Deep Tech", currency: "EUR", minSub: 100000, minLabel: "€100,000", strategy: "Series A co-investment in European quantum leader", target: "5-10x over 7 years", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=v001", description: "A Series A co-investment opportunity in a leading European quantum computing company, backed by a major institutional VC. The company has achieved quantum advantage in molecular simulation with two Fortune 500 commercial pilots underway." },
-        { id: "v002", name: "Framont Growth: ClimaTech Portfolio SPV", isin: null, ticker: "FRA-CT-01", assetClass: "Impact / ClimaTech", currency: "EUR", minSub: 50000, minLabel: "€50,000", strategy: "Portfolio of 5 growth-stage climate companies", target: "3-5x over 5 years", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=v002", description: "A curated SPV investing across five growth-stage climate technology companies spanning carbon capture, green hydrogen, and sustainable materials. Structured as a diversified impact portfolio with full ESG reporting." },
-        { id: "v003", name: "Framont Seed: B2B SaaS Syndicate", isin: null, ticker: "FRA-SaaS-02", assetClass: "Software / SaaS", currency: "USD", minSub: 25000, minLabel: "$25,000", strategy: "Seed-stage European enterprise SaaS", target: "10x+ over 8-10 years", active: true, subscribeUrl: "https://app.investglass.com/onboard?product=v003", description: "A seed-stage syndicate investing in European enterprise SaaS companies with demonstrable product-market fit and ARR between €500k and €2M. Co-led by a top-decile European VC firm with three unicorn exits." }
-      ]
+      products: []
     }
   };
 
@@ -1170,7 +1237,7 @@ class Component extends DCLogic {
   }
 
   viewProduct(p, ck) {
-    if (!this.state.user) { this.openModal("register"); return; }
+    if (!this.state.user && !p.open) { this.openModal("register"); return; }
     this.setState({ modal: "product", active: { p, ck } });
   }
 
@@ -1279,27 +1346,37 @@ class Component extends DCLogic {
       onClick: () => this.navTo("admin")
     });
 
-    const dec = (p, ck) => ({
-      name: p.name, assetClass: p.assetClass, currency: p.currency,
-      code: p.isin || p.ticker || "—",
-      strategy: p.strategy, minLabel: p.minLabel, target: p.target,
-      locked: isAnon,
-      blur: isAnon ? "blur(6px)" : "none",
-      usel: isAnon ? "none" : "auto",
-      anim: (!isAnon && s.unlockFlash) ? "unlockPulse 1.6s ease" : "none",
-      gateCursor: isAnon ? "pointer" : "default",
-      gateTitle: isAnon ? t.teaser.unlock : "",
-      onGate: isAnon ? (() => this.openModal("register")) : undefined,
-      onView: () => this.viewProduct(p, ck),
-      catLabel: t.nav[ck]
-    });
+    const loc = (v) => (v && typeof v === "object" && !Array.isArray(v)) ? (v[s.lang] != null ? v[s.lang] : v.en) : v;
+
+    const dec = (p, ck) => {
+      const gated = isAnon && !p.open;
+      return {
+        name: p.name, assetClass: p.assetClass, currency: p.currency,
+        code: p.isin || p.ticker || "—",
+        strategy: loc(p.strategy), minLabel: p.minLabel,
+        metricLabel: loc(p.metricLabel), metricValue: loc(p.metricValue),
+        landingUrl: p.landingUrl || "",
+        locked: gated,
+        blur: gated ? "blur(6px)" : "none",
+        usel: gated ? "none" : "auto",
+        anim: (!gated && s.unlockFlash) ? "unlockPulse 1.6s ease" : "none",
+        gateCursor: gated ? "pointer" : "default",
+        gateTitle: gated ? t.teaser.unlock : "",
+        onGate: gated ? (() => this.openModal("register")) : undefined,
+        onView: () => this.viewProduct(p, ck),
+        catLabel: t.nav[ck]
+      };
+    };
 
     let cat = {}, products = [], benefits = [], features = [], faqs = [];
     let clsOptions = [], curOptions = [], resultsLabel = "", subnavLinks = [], catBg = FALLBACK, catVid = "", aboutWords = [];
+    let catEmpty = false, catHasProducts = false;
     if (isCat) {
       const d = db[view];
       cat = d[s.lang];
       const act = d.products.filter((p) => p.active);
+      catEmpty = act.length === 0;
+      catHasProducts = act.length > 0;
       const fil = act.filter((p) => {
         if (s.fCls !== "all" && p.assetClass !== s.fCls) return false;
         if (s.fCur !== "all" && p.currency !== s.fCur) return false;
@@ -1309,7 +1386,7 @@ class Component extends DCLogic {
         return true;
       });
       products = fil.map((p) => dec(p, view));
-      resultsLabel = fil.length + " " + (fil.length === 1 ? t.products.result : t.products.results);
+      resultsLabel = act.length === 0 ? "" : fil.length + " " + (fil.length === 1 ? t.products.result : t.products.results);
       benefits = cat.benefits;
       features = cat.features;
       faqs = cat.faq.map((f, i) => {
@@ -1348,9 +1425,13 @@ class Component extends DCLogic {
 
     const ap = s.active ? s.active.p : null;
     const pm = ap ? {
-      name: ap.name, description: ap.description, assetClass: ap.assetClass, currency: ap.currency,
-      code: ap.isin || ap.ticker || "—", minLabel: ap.minLabel, target: ap.target
+      name: ap.name, description: loc(ap.description), assetClass: ap.assetClass, currency: ap.currency,
+      code: ap.isin || ap.ticker || "—", minLabel: ap.minLabel,
+      metricLabel: loc(ap.metricLabel), metricValue: loc(ap.metricValue),
+      landingUrl: ap.landingUrl || "",
+      facts: (ap.facts || []).map((f) => ({ label: loc(f.label), value: loc(f.value) }))
     } : {};
+    const pmHasFacts = !!(ap && ap.facts && ap.facts.length);
     const cMsg = ap ? t.modal.confirmSub.replace("{product}", ap.name) : "";
     const nextSteps = t.next.steps.map((x, i) => ({ n: String(i + 1), text: x }));
 
@@ -1376,6 +1457,7 @@ class Component extends DCLogic {
       onCta: () => { if (isAnon) this.openModal("register"); else this.navTo("funds"); },
       ctaLabel: isAnon ? t.cta.button : t.hero.learnMore,
       cat, catBg, catVid, aboutWords, products, benefits, features, faqs,
+      catEmpty, catHasProducts,
       fCls: s.fCls, fCur: s.fCur, fSize: s.fSize,
       onFCls: (e) => this.setState({ fCls: e.target.value }),
       onFCur: (e) => this.setState({ fCur: e.target.value }),
@@ -1431,7 +1513,7 @@ class Component extends DCLogic {
       onLoginEmail: (e) => this.setState({ loginEmail: e.target.value, loginError: "" }),
       onLoginSubmit: () => this.login(),
       onLoginKey: (e) => { if (e.key === "Enter") this.login(); },
-      pm,
+      pm, pmHasFacts,
       onDocClick: () => this.showToast(t.gate.toastDocs),
       onStartSub: () => this.startSub(),
       subBtnLabel: s.subscribing ? t.phoneV.processing : t.modal.subscribe,
@@ -1573,7 +1655,12 @@ class Component extends DCLogic {
     if(!src) return;
     try{ v.muted=true; v.defaultMuted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); }catch(e){}
     v.style.opacity='0';
-    try{ v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){}
+    var retry=function(){ if(v.isConnected && v.paused){ var q=v.play(); if(q&&q.catch)q.catch(function(){}); } };
+    try{ v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){
+      window.addEventListener('pointerdown', retry, {once:true});
+      window.addEventListener('touchstart', retry, {once:true});
+      window.addEventListener('scroll', retry, {once:true, passive:true});
+    }); }catch(e){}
   }
 
   function refreshStage(){
@@ -1654,7 +1741,7 @@ class Component extends DCLogic {
     var was=stmt.__moLit||0;
     if(was===lit) return;
     var lo=Math.min(was,lit), hi=Math.max(was,lit);
-    for(var i=lo;i<hi;i++){ if(words[i]) words[i].style.color = i<lit ? '#002E5F' : ''; }
+    for(var i=lo;i<hi;i++){ if(words[i]) words[i].style.color = i<lit ? '#002E5F' : '#BFC8D2'; }
     stmt.__moLit=lit;
   }
 
@@ -1706,9 +1793,12 @@ class Component extends DCLogic {
       kids[i].style.transitionDelay=(60+idx*70)+'ms';
       idx++;
     }
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    var armed=false;
+    var arm=function(){ if(armed) return; armed=true;
       for(var i2=0;i2<kids.length;i2++) kids[i2].classList.add('mo-in');
-    });});
+    };
+    requestAnimationFrame(function(){ requestAnimationFrame(arm); });
+    setTimeout(arm, 220);
   }
 
   // Smooth "back to top" control in the footer.
@@ -1796,12 +1886,20 @@ class Component extends DCLogic {
   }
 
   var scheduled=false;
-  function schedule(){ if(scheduled) return; scheduled=true; requestAnimationFrame(function(){ scheduled=false; scan(); }); }
+  function schedule(){
+    if(scheduled) return; scheduled=true;
+    var done=false;
+    var run=function(){ if(done) return; done=true; scheduled=false; scan(); };
+    requestAnimationFrame(run);
+    setTimeout(run, 300); // rAF stalls in background tabs; timers still tick
+  }
 
   function start(){
-    try{ new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true}); }catch(e){}
+    // Observe <html>, not <body>: the runtime can replace body content wholesale.
+    try{ new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true}); }catch(e){}
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onScroll);
+    document.addEventListener('visibilitychange', schedule);
     scan();
     // Poll briefly to catch the async React/Babel mount from CDN, then rely on the observer.
     var tries=0, iv=setInterval(function(){ scan(); if(++tries>22) clearInterval(iv); }, 350);

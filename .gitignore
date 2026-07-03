@@ -30,3 +30,6 @@ desktop.ini
 
 # Claude Code local settings
 .claude/
+
+# Client source material (email attachments — not for the public repo)
+reference/
