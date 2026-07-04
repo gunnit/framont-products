@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="en"><head>
 
 
 <meta charset="utf-8">
@@ -8,6 +8,8 @@
 <title>Framont Access — Institutional Investment Platform</title>
 <meta name="description" content="Framont Access — curated access to institutional-grade investment products: UCITS &amp; alternative funds, actively managed certificates, listed instruments, and venture capital co-investments.">
 <meta name="theme-color" content="#001F42">
+<link rel="canonical" href="https://gunnit.github.io/framont-products/">
+<link rel="preload" as="image" href="assets/hero-poster.jpg">
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -16,16 +18,83 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Framont Access">
+<meta property="og:url" content="https://gunnit.github.io/framont-products/">
 <meta property="og:title" content="Framont Access — Institutional Investment Platform">
 <meta property="og:description" content="Curated access to institutional-grade investment products — funds, structured instruments, and venture capital.">
-<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image" content="https://gunnit.github.io/framont-products/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Framont Access — Institutional Investment Platform">
 <meta name="twitter:description" content="Curated access to institutional-grade investment products — funds, structured instruments, and venture capital.">
-<meta name="twitter:image" content="assets/og-image.jpg">
+<meta name="twitter:image" content="https://gunnit.github.io/framont-products/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gunnit.github.io/framont-products/#org",
+      "name": "Framont & Partners Management Ltd",
+      "url": "https://www.framontmanagement.com/",
+      "logo": "https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg",
+      "address": { "@type": "PostalAddress", "addressLocality": "Valletta", "addressCountry": "MT" },
+      "description": "MFSA-authorised Alternative Investment Fund Manager (AIFM) providing curated access to institutional-grade investment products."
+    },
+    {
+      "@type": "WebSite",
+      "name": "Framont Access",
+      "url": "https://gunnit.github.io/framont-products/",
+      "inLanguage": ["en", "it"],
+      "publisher": { "@id": "https://gunnit.github.io/framont-products/#org" }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Exchange Traded Instruments",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "FinancialProduct",
+            "name": "HERAKLIT Strategy ETI",
+            "identifier": "DE000AMC0D44",
+            "category": "Exchange Traded Instrument",
+            "url": "https://heraklit.framontmanagement.com/",
+            "provider": { "@id": "https://gunnit.github.io/framont-products/#org" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "FinancialProduct",
+            "name": "Tech Megatrend Tactical ETI",
+            "identifier": "DE000AMC0D85",
+            "category": "Exchange Traded Instrument",
+            "url": "https://techmegatrend.framontmanagement.com/",
+            "provider": { "@id": "https://gunnit.github.io/framont-products/#org" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "FinancialProduct",
+            "name": "LC Invest — Value Edge ETI",
+            "identifier": "DE000AMC0BZ5",
+            "category": "Exchange Traded Instrument",
+            "url": "https://lcinvest.framontmanagement.com/",
+            "provider": { "@id": "https://gunnit.github.io/framont-products/#org" }
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <script src="support.js"></script>
 </head>
@@ -276,20 +345,28 @@
             <div style="font-size:13px; color:#4D575E; padding-bottom:4px;">{{ resultsLabel }}</div>
           </div>
           <sc-if value="{{ catHasProducts }}" hint-placeholder-val="{{ true }}">
+          <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin:30px 0 24px;">
-            <select value="{{ fCls }}" onchange="{{ onFCls }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            <sc-if value="{{ showClsFilter }}" hint-placeholder-val="{{ true }}">
+            <select value="{{ fCls }}" onchange="{{ onFCls }}" aria-label="{{ t.products.filterClass }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
               <sc-for list="{{ clsOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
             </select>
-            <select value="{{ fCur }}" onchange="{{ onFCur }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            </sc-if>
+            <sc-if value="{{ showCurFilter }}" hint-placeholder-val="{{ true }}">
+            <select value="{{ fCur }}" onchange="{{ onFCur }}" aria-label="{{ t.products.filterCurrency }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
               <sc-for list="{{ curOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
             </select>
-            <select value="{{ fSize }}" onchange="{{ onFSize }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            </sc-if>
+            <sc-if value="{{ showSizeFilter }}" hint-placeholder-val="{{ true }}">
+            <select value="{{ fSize }}" onchange="{{ onFSize }}" aria-label="{{ t.products.filterSize }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
               <option value="all">{{ t.products.allSizes }}</option>
               <option value="under10k">{{ t.products.sizeUnder }}</option>
               <option value="10kto100k">€10,000 – €100,000</option>
               <option value="over100k">{{ t.products.sizeOver }}</option>
             </select>
+            </sc-if>
           </div>
+          </sc-if>
           <div data-mo-grid style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px;">
             <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
               <div style="position:relative; overflow:hidden; background:#FFFFFF; border:1px solid #E9E7E2; padding:30px 26px 26px; display:flex; flex-direction:column; gap:14px; transition:transform .25s cubic-bezier(.22,.61,.36,1), border-color .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-4px); border-color:rgba(255,130,0,0.5); box-shadow:0 20px 44px rgba(0,31,66,0.11);">
@@ -472,7 +549,7 @@
                     <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA;"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ pr.assetClass }}</span></td>
                     <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA;">
                       <sc-if value="{{ pr.activeB }}" hint-placeholder-val="{{ true }}"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.1); border:1px solid rgba(255,130,0,0.35); color:#B85C00;">{{ pr.statusLabel }}</span></sc-if>
-                      <sc-if value="{{ pr.inactiveB }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#8C959C;">{{ pr.statusLabel }}</span></sc-if>
+                      <sc-if value="{{ pr.inactiveB }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#5F6A72;">{{ pr.statusLabel }}</span></sc-if>
                     </td>
                     <td style="padding:15px 16px; border-bottom:1px solid #F1EFEA; text-align:right;">
                       <button onclick="{{ pr.onToggle }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:6px 14px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ pr.toggleLabel }}</button>
@@ -485,7 +562,7 @@
         </sc-if>
         <sc-if value="{{ tabAct }}" hint-placeholder-val="{{ false }}">
           <sc-if value="{{ noActivity }}" hint-placeholder-val="{{ false }}">
-            <div style="text-align:center; padding:72px 0; color:#8C959C; font-size:14px;">{{ t.admin.noActivity }}</div>
+            <div style="text-align:center; padding:72px 0; color:#5F6A72; font-size:14px;">{{ t.admin.noActivity }}</div>
           </sc-if>
           <sc-if value="{{ hasActivity }}" hint-placeholder-val="{{ false }}">
             <div style="overflow-x:auto; margin-top:8px;">
@@ -562,30 +639,30 @@
           </span>
         </div>
         <div style="min-width:0;">
-          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">{{ t.footer.platform }}</div>
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.platform }}</div>
           <sc-for list="{{ navLinks }}" as="fl" hint-placeholder-count="4">
             <a onclick="{{ fl.onClick }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ fl.label }}</a>
           </sc-for>
         </div>
         <div style="min-width:0;">
-          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">{{ t.footer.legalCol }}</div>
-          <a style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.auth.privacy }}</a>
-          <a style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.contact }}</a>
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.legalCol }}</div>
+          <a href="https://www.iubenda.com/privacy-policy/85437556" target="_blank" rel="noopener" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.auth.privacy }}</a>
+          <a href="mailto:gianluigi.montagner@framontmanagement.com" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.contact }}</a>
         </div>
         <div style="min-width:0;">
-          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">{{ t.footer.contactCol }}</div>
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.contactCol }}</div>
           <div style="display:flex; align-items:center; gap:9px; font-size:13.5px; color:rgba(255,255,255,0.72); margin-bottom:14px;">
             <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0;"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>{{ t.footer.address }}
           </div>
-          <a href="mailto:access@framont.com" style="display:inline-flex; align-items:center; gap:9px; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease;" style-hover="color:#FF8200;">
-            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>{{ t.footer.email }}
+          <a href="mailto:gianluigi.montagner@framontmanagement.com" style="display:inline-flex; align-items:flex-start; gap:9px; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; overflow-wrap:anywhere; min-width:0; transition:color .2s ease;" style-hover="color:#FF8200;">
+            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0; margin-top:3px;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>{{ t.footer.email }}
           </a>
         </div>
       </div>
       <div style="border-top:1px solid rgba(255,255,255,0.1); margin-top:60px; padding-top:30px;">
-        <p style="font-size:12px; color:rgba(255,255,255,0.42); line-height:1.85; margin:0;">{{ t.footer.legal }}</p>
+        <p style="font-size:12px; color:rgba(255,255,255,0.58); line-height:1.85; margin:0;">{{ t.footer.legal }}</p>
         <div style="display:flex; justify-content:space-between; align-items:center; gap:16px 24px; flex-wrap:wrap; margin-top:26px;">
-          <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,0.4);">
+          <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,0.58);">
             <span>{{ t.footer.copyright }}</span>
             <span style="display:inline-flex; align-items:center; gap:7px;"><span style="width:5px; height:5px; background:#FF8200; border-radius:50%;"></span>{{ t.footer.mfsa }}</span>
           </div>
@@ -598,7 +675,7 @@
   <!-- ============ MODAL: REQUEST ACCESS ============ -->
   <sc-if value="{{ mRegister }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Modal — Request access" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
         <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
           <div style="height:2px; flex:1; background:#E9E7E2; position:relative;"><div style="position:absolute; left:0; top:0; bottom:0; width: {{ regProgressW }}; background:#FF8200; transition:width .35s ease;"></div></div>
@@ -647,7 +724,7 @@
           <div style="margin-bottom:24px;">
             <div style="display:flex; gap:12px; align-items:flex-start;">
               <input type="checkbox" id="gdpr" checked="{{ fGdpr }}" onchange="{{ onGdpr }}" style="width:17px; height:17px; accent-color:#FF8200; flex-shrink:0; margin:2px 0 0; cursor:pointer;">
-              <label for="gdpr" style="font-size:13px; color:#4D575E; line-height:1.55; cursor:pointer;">{{ t.auth.gdpr }} <span style="color:#B85C00; text-decoration:underline; text-underline-offset:2px;">{{ t.auth.privacy }}</span></label>
+              <label for="gdpr" style="font-size:13px; color:#4D575E; line-height:1.55; cursor:pointer;">{{ t.auth.gdpr }} <a href="https://www.iubenda.com/privacy-policy/85437556" target="_blank" rel="noopener" style="color:#B85C00; text-decoration:underline; text-underline-offset:2px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.auth.privacy }}</a></label>
             </div>
             <sc-if value="{{ eGdpr }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:8px;">{{ eGdpr }}</div></sc-if>
           </div>
@@ -659,7 +736,7 @@
           <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0;">{{ t.auth.verifyEmailSub }} <strong style="color:#002E5F;">{{ emailSentTo }}</strong></p>
           <div style="display:flex; gap:10px; justify-content:center; margin:30px 0 8px;">
             <sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6">
-              <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+              <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" aria-label="{{ b.aria }}" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
             </sc-for>
           </div>
           <sc-if value="{{ otpError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#B3261E; text-align:center; margin-top:6px;">{{ t.reg.badCode }}</div></sc-if>
@@ -667,7 +744,7 @@
           <button onclick="{{ onResend }}" disabled="{{ resendDisabled }}" style="width:100%; margin-top:10px; background:transparent; border:1px solid #E9E7E2; color:#4D575E; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#002E5F; color:#002E5F;">{{ resendLabel }}</button>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
             <a onclick="{{ onBackToForm }}" style="font-size:12.5px; color:#4D575E; cursor:pointer; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.reg.back }}</a>
-            <span style="font-size:11.5px; color:#9AA3AA;">{{ t.reg.demo }}</span>
+            <span style="font-size:11.5px; color:#5F6A72;">{{ t.reg.demo }}</span>
           </div>
         </sc-if>
       </div>
@@ -677,7 +754,7 @@
   <!-- ============ MODAL: LOGIN ============ -->
   <sc-if value="{{ mLogin }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Modal — Sign in" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:440px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:440px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
         <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
         <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.auth.login }}</h3>
         <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 26px;">{{ t.loginM.intro }}</p>
@@ -687,7 +764,7 @@
           <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ loginError }}</div></sc-if>
         </div>
         <button onclick="{{ onLoginSubmit }}" style="width:100%; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.login }}</button>
-        <div style="text-align:center; font-size:11.5px; color:#9AA3AA; margin-top:14px; line-height:1.5;">{{ t.loginM.demo }}</div>
+        <div style="text-align:center; font-size:11.5px; color:#5F6A72; margin-top:14px; line-height:1.5;">{{ t.loginM.demo }}</div>
       </div>
     </div>
   </sc-if>
@@ -695,7 +772,7 @@
   <!-- ============ MODAL: PRODUCT DETAIL ============ -->
   <sc-if value="{{ mProduct }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Modal — Product detail" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:640px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:640px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
         <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
           <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:rgba(255,130,0,0.08); border:1px solid rgba(255,130,0,0.3); color:#B85C00;">{{ pm.assetClass }}</span>
@@ -735,7 +812,7 @@
             </div>
           </div>
         </sc-if>
-        <div style="border-top:1px solid #E9E7E2; padding-top:16px; margin-bottom:26px; font-size:12px; color:#8C959C; line-height:1.65;">{{ t.modal.disclaimer }}</div>
+        <div style="border-top:1px solid #E9E7E2; padding-top:16px; margin-bottom:26px; font-size:12px; color:#5F6A72; line-height:1.65;">{{ t.modal.disclaimer }}</div>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
           <sc-if value="{{ pm.landingUrl }}" hint-placeholder-val="{{ false }}">
             <a href="{{ pm.landingUrl }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; justify-content:center; background:transparent; border:1px solid #002E5F; color:#002E5F; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; text-decoration:none; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.modal.visitSite }} ↗</a>
@@ -749,20 +826,20 @@
   <!-- ============ MODAL: PHONE VERIFY ============ -->
   <sc-if value="{{ mPhone }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Modal — Phone verification" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:480px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:480px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
         <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
         <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.phoneV.title }}</h3>
         <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 8px;">{{ t.phoneV.sub }}</p>
         <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0;">{{ t.auth.verifyPhoneSub }} <strong style="color:#002E5F;">{{ phoneSentTo }}</strong></p>
         <div style="display:flex; gap:10px; justify-content:center; margin:30px 0 8px;">
           <sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6">
-            <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+            <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" aria-label="{{ b.aria }}" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
           </sc-for>
         </div>
         <sc-if value="{{ otpError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#B3261E; text-align:center; margin-top:6px;">{{ t.reg.badCode }}</div></sc-if>
         <button onclick="{{ onVerifyPhone }}" disabled="{{ subscribing }}" style="width:100%; margin-top:22px; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ phoneVerifyLabel }}</button>
         <button onclick="{{ onResend }}" disabled="{{ resendDisabled }}" style="width:100%; margin-top:10px; background:transparent; border:1px solid #E9E7E2; color:#4D575E; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#002E5F; color:#002E5F;">{{ resendLabel }}</button>
-        <div style="text-align:center; font-size:11.5px; color:#9AA3AA; margin-top:14px;">{{ t.reg.demo }}</div>
+        <div style="text-align:center; font-size:11.5px; color:#5F6A72; margin-top:14px;">{{ t.reg.demo }}</div>
       </div>
     </div>
   </sc-if>
@@ -770,7 +847,7 @@
   <!-- ============ MODAL: CONFIRMATION ============ -->
   <sc-if value="{{ mConfirm }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Modal — Confirmation" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onclick="{{ stopProp }}" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
         <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
         <div style="text-align:center;">
           <div style="width:64px; height:64px; border:2px solid #FF8200; display:flex; align-items:center; justify-content:center; margin:0 auto 22px;">
@@ -798,7 +875,7 @@
 
   <!-- ============ TOAST ============ -->
   <sc-if value="{{ toastShow }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Toast" style="position:fixed; top:88px; right:28px; z-index:1500; background:#001F42; color:#FFFFFF; padding:14px 20px; display:flex; gap:12px; align-items:center; box-shadow:0 12px 32px rgba(0,31,66,0.35); animation:toastIn .3s ease; max-width:380px;">
+    <div data-screen-label="Toast" role="status" style="position:fixed; top:88px; right:28px; z-index:1500; background:#001F42; color:#FFFFFF; padding:14px 20px; display:flex; gap:12px; align-items:center; box-shadow:0 12px 32px rgba(0,31,66,0.35); animation:toastIn .3s ease; max-width:380px;">
       <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#FF8200; stroke-width:2.5px; fill:none; flex-shrink:0;"><path d="M4 12.5 l5 5 L20 6.5"></path></svg>
       <div style="font-size:13.5px; line-height:1.5;">{{ toastMsg }}</div>
     </div>
@@ -844,7 +921,7 @@ class Component extends DCLogic {
       loginM: { intro: "Enter your registered email to sign in.", demo: "Demo: any email works — admin@framont.com opens the admin panel." },
       phoneV: { title: "Verify your identity", sub: "Regulation requires phone verification before subscription requests can be submitted. This is a one-time step.", processing: "Processing…" },
       next: { title: "What happens next", steps: ["Our team contacts you within one business day.", "Suitability assessment and documents via InvestGlass secure onboarding.", "Execution and confirmation of your subscription."], back: "Back to Products" },
-      products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products" },
+      products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products", filterClass: "Filter by asset class", filterCurrency: "Filter by currency", filterSize: "Filter by minimum investment" },
       modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
       cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products", comingSoonTitle: "Products Coming Soon", comingSoonSub: "We are finalising the onboarding of products in this category. Leave your details and our team will notify you as soon as they are available.", comingSoonCta: "Request Information" },
       admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
@@ -867,7 +944,7 @@ class Component extends DCLogic {
       loginM: { intro: "Inserisci la tua email registrata per accedere.", demo: "Demo: qualsiasi email funziona — admin@framont.com apre il pannello admin." },
       phoneV: { title: "Verifica la tua identità", sub: "La normativa richiede la verifica del numero di telefono prima dell'invio di richieste di sottoscrizione. È un passaggio da completare una sola volta.", processing: "Elaborazione…" },
       next: { title: "Cosa succede ora", steps: ["Il nostro team ti contatta entro un giorno lavorativo.", "Valutazione di adeguatezza e documenti tramite l'onboarding sicuro InvestGlass.", "Esecuzione e conferma della tua sottoscrizione."], back: "Torna ai Prodotti" },
-      products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti" },
+      products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti", filterClass: "Filtra per classe di attivo", filterCurrency: "Filtra per valuta", filterSize: "Filtra per investimento minimo" },
       modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
       cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili", comingSoonTitle: "Prodotti in Arrivo", comingSoonSub: "Stiamo finalizzando l'inserimento dei prodotti di questa categoria. Lascia i tuoi dati e il nostro team ti avviserà non appena saranno disponibili.", comingSoonCta: "Richiedi Informazioni" },
       admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
@@ -1048,6 +1125,9 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.applyProps();
+    this.syncMeta();
+    this._lastView = this.state.view;
+    this._lastLang = this.state.lang;
     this._onResize = () => {
       const m = window.innerWidth < 920;
       if (m !== this.state.isMobile) this.setState({ isMobile: m, mobileOpen: false });
@@ -1065,10 +1145,25 @@ class Component extends DCLogic {
     }, 1200);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps && this.props && (prevProps.startState !== this.props.startState || prevProps.language !== this.props.language)) this.applyProps();
-    if (prevState && prevState.view !== this.state.view) window.scrollTo({ top: 0 });
+    // The DC host calls this without prevState, so view/lang changes are tracked on the instance.
+    if (this._lastView !== undefined && this._lastView !== this.state.view) window.scrollTo({ top: 0 });
+    if (this._lastView !== this.state.view || this._lastLang !== this.state.lang) this.syncMeta();
+    this._lastView = this.state.view;
+    this._lastLang = this.state.lang;
     this.scanReveal();
+  }
+
+  syncMeta() {
+    const s = this.state;
+    try {
+      document.documentElement.lang = s.lang;
+      let title = "Framont Access — Institutional Investment Platform";
+      if (["funds", "amc", "eti", "vc"].includes(s.view)) title = this.DATA[s.view][s.lang].title + " — Framont Access";
+      else if (s.view === "admin") title = this.T[s.lang].admin.title + " — Framont Access";
+      if (document.title !== title) document.title = title;
+    } catch (e) {}
   }
 
   componentWillUnmount() {
@@ -1146,7 +1241,10 @@ class Component extends DCLogic {
     if (!/^\d{6,15}$/.test(f.phone.replace(/\s/g, ""))) e.phone = t.err.phone;
     if (!f.gdpr) e.gdpr = t.err.gdpr;
     if (Object.keys(e).length) { this.setState({ errors: e }); return; }
-    this.setState({ regStep: 2, otp: ["", "", "", "", "", ""], otpError: false });
+    this.setState({ regStep: 2, otp: ["", "", "", "", "", ""], otpError: false }, () => {
+      const r = this.otpRefs[0];
+      if (r && r.current) r.current.focus();
+    });
     this.startResend();
   }
 
@@ -1370,6 +1468,7 @@ class Component extends DCLogic {
     let cat = {}, products = [], benefits = [], features = [], faqs = [];
     let clsOptions = [], curOptions = [], resultsLabel = "", subnavLinks = [], catBg = FALLBACK, catVid = "", aboutWords = [];
     let catEmpty = false, catHasProducts = false;
+    let showClsFilter = false, showCurFilter = false, showSizeFilter = false;
     if (isCat) {
       const d = db[view];
       cat = d[s.lang];
@@ -1394,6 +1493,10 @@ class Component extends DCLogic {
       });
       clsOptions = [{ v: "all", label: t.products.allClasses }].concat([...new Set(act.map((p) => p.assetClass))].map((c) => ({ v: c, label: c })));
       curOptions = [{ v: "all", label: t.products.allCurrencies }].concat([...new Set(act.map((p) => p.currency))].map((c) => ({ v: c, label: c })));
+      // A filter only earns its place when it can actually narrow the list.
+      showClsFilter = clsOptions.length > 2;
+      showCurFilter = curOptions.length > 2;
+      showSizeFilter = new Set(act.map((p) => p.minSub < 10000 ? "s" : p.minSub < 100000 ? "m" : "l")).size > 1;
       subnavLinks = [
         { label: t.cat.products, onClick: () => this.scrollToSec("sec-products") },
         { label: t.cat.about, onClick: () => this.scrollToSec("sec-about") },
@@ -1418,6 +1521,7 @@ class Component extends DCLogic {
 
     const otpBoxes = s.otp.map((v, i) => ({
       v, r: this.otpRefs[i],
+      aria: (s.lang === "it" ? "Cifra " : "Digit ") + (i + 1) + (s.lang === "it" ? " di 6" : " of 6"),
       onChange: (e) => this.otpChange(i, e),
       onKey: (e) => this.otpKey(i, e)
     }));
@@ -1462,9 +1566,11 @@ class Component extends DCLogic {
       onFCur: (e) => this.setState({ fCur: e.target.value }),
       onFSize: (e) => this.setState({ fSize: e.target.value }),
       clsOptions, curOptions, resultsLabel, subnavLinks,
+      showClsFilter, showCurFilter, showSizeFilter,
+      showFilters: showClsFilter || showCurFilter || showSizeFilter,
       adminTabs: ["subscribers", "products", "activity"].map((k) => ({
         key: k, label: t.admin[k],
-        color: s.adminTab === k ? "#002E5F" : "#8C959C",
+        color: s.adminTab === k ? "#002E5F" : "#5F6A72",
         underline: s.adminTab === k ? "#FF8200" : "transparent",
         onClick: () => this.setState({ adminTab: k })
       })),
@@ -1563,8 +1669,10 @@ class Component extends DCLogic {
     transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
   .mo-cascade.mo-in{opacity:1;transform:none}
   /* keyboard focus ring (accessibility) */
-  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{
     outline:2px solid #FF8200;outline-offset:2px;border-radius:1px}
+  ::placeholder{color:#5F6A72;opacity:1}
+  h1,h2,h3{text-wrap:balance}
   /* dynamic viewport height so the hero doesn't jump with mobile browser chrome */
   @supports (height:100svh){
     [data-screen-label="Home — Hero"]{height:calc(100svh - 68px)!important}
@@ -1821,6 +1929,48 @@ class Component extends DCLogic {
     el.addEventListener('click', function(){ smoothTo(0); });
   }
 
+  // ---- Keyboard access: the runtime renders href-less anchors and clickable divs ----
+  function keyActivate(el){
+    el.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); }
+    });
+  }
+  function decorateA11y(){
+    Array.prototype.forEach.call(document.querySelectorAll('a:not([href])'), function(a){
+      if(a.__moKey) return; a.__moKey=true;
+      a.setAttribute('tabindex','0');
+      a.setAttribute('role','link');
+      keyActivate(a);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-screen-label="Home — Investment universe"] [style*="aspect-ratio"]'), function(card){
+      if(card.__moKey) return; card.__moKey=true;
+      card.setAttribute('tabindex','0');
+      card.setAttribute('role','link');
+      keyActivate(card);
+    });
+    var faq=document.querySelector('[data-screen-label="Category — FAQ"]');
+    if(faq){
+      Array.prototype.forEach.call(faq.querySelectorAll('div[style*="cursor"]'), function(row){
+        if(!row.__moFaq){
+          row.__moFaq=true;
+          row.setAttribute('tabindex','0');
+          row.setAttribute('role','button');
+          keyActivate(row);
+        }
+        row.setAttribute('aria-expanded', row.childElementCount>1 ? 'true' : 'false');
+      });
+    }
+  }
+
+  // ---- Move focus into a freshly opened dialog ----
+  function decorateModalFocus(){
+    var m=document.querySelector('[role="dialog"]');
+    if(!m || m.__moFocus) return; m.__moFocus=true;
+    if(!m.hasAttribute('tabindex')) m.setAttribute('tabindex','-1');
+    var target=m.querySelector('input, select')||m;
+    try{ target.focus({preventScroll:true}); }catch(e){ try{ target.focus(); }catch(e2){} }
+  }
+
   // Sheen sweep on primary orange CTAs (detected by their fill).
   function decorateCTA(){
     Array.prototype.forEach.call(document.querySelectorAll('button,a'), function(el){
@@ -1883,6 +2033,8 @@ class Component extends DCLogic {
     decorateGroup('Home — Featured products');
     decorateTilt();
     decorateCTA();
+    decorateA11y();
+    decorateModalFocus();
     wireBackToTop();
     primeHeroVideo();
     refreshStage();
