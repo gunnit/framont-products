@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Actively Managed Certificates (AMC), Explained | Framont Access Insights</title>
+<meta name="description" content="What an Actively Managed Certificate is, how the wrapper works, how AMCs compare with funds on speed, cost and investor protection, and how issuer risk is managed through collateralisation.">
+<meta name="theme-color" content="#001F42">
+<link rel="canonical" href="https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html">
+<link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html">
+<link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/amc-certificati-gestione-attiva.html">
+<link rel="alternate" hreflang="x-default" href="https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Framont Access">
+<meta property="og:url" content="https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html">
+<meta property="og:title" content="Actively Managed Certificates (AMC), Explained">
+<meta property="og:description" content="How the AMC wrapper works, how it compares with funds, and how issuer risk is managed through collateralisation.">
+<meta property="og:image" content="https://gunnit.github.io/framont-products/assets/cat-amc.jpg">
+<meta property="article:published_time" content="2026-07-04">
+<meta property="article:section" content="Actively Managed Certificates">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Actively Managed Certificates (AMC), Explained">
+<meta name="twitter:description" content="How the AMC wrapper works, how it compares with funds, and how issuer risk is managed.">
+<meta name="twitter:image" content="https://gunnit.github.io/framont-products/assets/cat-amc.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="insights.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Actively Managed Certificates (AMC), Explained",
+      "description": "What an Actively Managed Certificate is, how the wrapper works, how AMCs compare with funds on speed, cost and investor protection, and how issuer risk is managed through collateralisation.",
+      "image": "https://gunnit.github.io/framont-products/assets/cat-amc.jpg",
+      "datePublished": "2026-07-04",
+      "dateModified": "2026-07-04",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html",
+      "author": { "@type": "Organization", "name": "Framont Access", "url": "https://gunnit.github.io/framont-products/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Framont & Partners Management Ltd",
+        "logo": { "@type": "ImageObject", "url": "https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Framont Access", "item": "https://gunnit.github.io/framont-products/" },
+        { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://gunnit.github.io/framont-products/articles/" },
+        { "@type": "ListItem", "position": 3, "name": "AMCs, explained" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is an AMC a fund?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. An AMC is legally a debt security of its issuer, not a collective investment scheme. Fund assets are segregated by law; AMC investors instead rely on the issuer's obligation, which is why collateralised structures matter." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why choose an AMC over launching a fund?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Speed and cost. An AMC can be launched in a few weeks and is economically viable from roughly EUR 1 million of assets, while a fund typically takes several months and carries a heavier ongoing cost base. Strategies often start as AMCs and convert to funds once assets grow." }
+        },
+        {
+          "@type": "Question",
+          "name": "How liquid is an AMC?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Exchange-listed AMCs can be bought and sold intraday at the market maker's quoted prices. Liquidity depends on those quotes and on the liquidity of the underlying strategy, so review the bid-ask spread and the prospectus terms." }
+        },
+        {
+          "@type": "Question",
+          "name": "What fees does an AMC carry?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically a management fee accrued in the certificate's price, often a performance fee subject to a high-water mark, and in some cases entry or exit fees. All fees are disclosed in the Key Information Document and final terms." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="topbar-brand" href="../">
+      <img src="https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" alt="Framont">
+      <span class="topbar-tag">Access</span>
+    </a>
+    <a class="plain" href="./">Insights</a>
+    <a class="plain" href="it/amc-certificati-gestione-attiva.html" hreflang="it" lang="it">Italiano</a>
+    <a class="cta" href="../#/amc">View AMC products</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img" style="background-image:url('../assets/cat-amc.jpg');"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-in">
+    <span class="kicker">Insights · Actively Managed Certificates</span>
+    <h1>Actively Managed Certificates, explained</h1>
+    <p class="standfirst">The wrapper behind many specialist strategies: what an AMC actually is, where it beats a fund, where it doesn't, and how issuer risk is contained.</p>
+    <div class="meta"><span>Published <strong>4 July 2026</strong></span><span><strong>6 min</strong> read</span><span>Framont Access</span></div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">/</span><a href="./">Insights</a><span class="sep">/</span><span class="here">AMCs, explained</span>
+</nav>
+
+<main class="article">
+  <div class="answer">
+    <div class="answer-label">In two sentences</div>
+    <p>An Actively Managed Certificate (AMC) is a security that packages a professionally managed investment strategy into a single listed instrument, so the portfolio manager can adjust the underlying assets continuously without the investor trading anything. Legally it is a debt obligation of its issuer, not a fund, which makes the issuer's structure and collateralisation the central diligence question.</p>
+  </div>
+
+  <p class="lead">When a strategy is too specialised, too new or too small to justify a full fund launch, the AMC is the wrapper the industry reaches for. Understanding how it works tells you exactly what you own, what protects it, and what to check before subscribing.</p>
+
+  <h2>How an AMC works</h2>
+  <p>An issuer creates a certificate whose value tracks a reference portfolio. A portfolio manager, operating under a defined investment policy, adjusts that portfolio dynamically: equities, bonds, derivatives, commodities and other liquid assets can all be included. The investor holds one security with one ISIN; every rebalancing decision happens inside the wrapper.</p>
+  <p>The economics follow the strategy: the certificate's price reflects the reference portfolio's value net of fees, marked to market. Where the AMC is listed, a market maker quotes daily buy and sell prices, giving intraday liquidity comparable to other listed securities.</p>
+  <div class="facts" aria-label="AMC key facts">
+    <div><div class="f-label">Legal form</div><div class="f-value">Debt security of the issuer</div></div>
+    <div><div class="f-label">Management</div><div class="f-value">Active, discretionary or systematic</div></div>
+    <div><div class="f-label">Time to launch</div><div class="f-value">Typically 2–3 weeks</div></div>
+    <div><div class="f-label">Viable from</div><div class="f-value">≈ €1m strategy assets</div></div>
+    <div><div class="f-label">Liquidity</div><div class="f-value">Intraday when listed</div></div>
+    <div><div class="f-label">Key document</div><div class="f-value">PRIIPs KID + final terms</div></div>
+  </div>
+
+  <h2>AMC vs fund: the real trade-off</h2>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead>
+        <tr><th scope="col">Dimension</th><th scope="col">AMC</th><th scope="col">Investment fund</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Asset protection</td><td>Issuer obligation; strong only if collateralised</td><td>Segregated fund assets by law</td></tr>
+        <tr><td>Launch time</td><td>Weeks</td><td>Three to six months</td></tr>
+        <tr><td>Cost base</td><td>Lower setup and running costs</td><td>Higher, full fund infrastructure</td></tr>
+        <tr><td>Strategy flexibility</td><td>Very high, incl. niche assets</td><td>Constrained by fund rules</td></tr>
+        <tr><td>Minimum viable size</td><td>≈ €1m</td><td>Tens of millions</td></tr>
+        <tr><td>Liquidity</td><td>Intraday on exchange (if listed)</td><td>Usually daily or weekly NAV</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The pattern in practice: managers prove a strategy in an AMC, then migrate it into a fund once assets and track record justify the heavier structure. For investors, that means AMCs are often where specialist strategies are accessible earliest, at lower minimums than a private mandate.</p>
+
+  <h2>Issuer risk, and how collateralisation contains it</h2>
+  <p>The defining risk of any certificate is counterparty risk: if the issuer fails, holders are creditors. Two design choices determine how serious that is in practice.</p>
+  <p><strong>Who the issuer is.</strong> A dedicated securitisation issuer that does nothing but issue collateralised instruments presents a different risk profile from a universal bank whose balance sheet carries unrelated businesses.</p>
+  <p><strong>Whether the structure is collateralised.</strong> In collateralised AMCs, the reference portfolio's assets are held in a segregated portfolio and pledged to an independent security trustee for the benefit of certificate holders. If the issuer defaults, the pledged assets are reserved for investors rather than general creditors. This is the structure used for the instruments available through Framont Access, issued by iMaps ETI AG under a base prospectus approved by the Liechtenstein FMA.</p>
+
+  <h2>Who does what: reading the roles correctly</h2>
+  <p>AMC documentation names several parties, and the distinctions matter for diligence:</p>
+  <ul>
+    <li><strong>Strategy developer</strong>: designs the underlying strategy and supplies its signals or model. Not a custodian of investor money.</li>
+    <li><strong>Portfolio manager</strong>: the regulated entity executing the strategy inside the wrapper. For Framont Access instruments this is Framont &amp; Partners Management Ltd, an AIFM authorised by the MFSA in Malta.</li>
+    <li><strong>Issuer</strong>: creates the security and maintains the segregated portfolio.</li>
+    <li><strong>Market maker</strong>: quotes tradable prices on the exchange.</li>
+    <li><strong>Security trustee</strong>: holds the collateral pledge for investors.</li>
+  </ul>
+  <p>A clean structure separates these roles. If one entity plays all of them with no independent trustee, the protections are weaker than the marketing may suggest.</p>
+
+  <h2>Costs to expect</h2>
+  <p>AMCs typically carry a management fee accrued daily in the certificate price, and often a performance fee calculated above a high-water mark, meaning the manager earns it only on net new highs. Some instruments add entry or exit fees. Every fee must be disclosed in the KID's cost tables, expressed both as a percentage and in money terms over the recommended holding period. Compare KIDs, not brochures.</p>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq">
+    <details>
+      <summary>Is an AMC a fund?</summary>
+      <div class="faq-a">No. An AMC is legally a debt security of its issuer, not a collective investment scheme. Fund assets are segregated by law; AMC investors instead rely on the issuer's obligation, which is why collateralised structures matter.</div>
+    </details>
+    <details>
+      <summary>Why choose an AMC over launching a fund?</summary>
+      <div class="faq-a">Speed and cost. An AMC can be launched in a few weeks and is economically viable from roughly EUR 1 million of assets, while a fund typically takes several months and carries a heavier ongoing cost base. Strategies often start as AMCs and convert to funds once assets grow.</div>
+    </details>
+    <details>
+      <summary>How liquid is an AMC?</summary>
+      <div class="faq-a">Exchange-listed AMCs can be bought and sold intraday at the market maker's quoted prices. Liquidity depends on those quotes and on the liquidity of the underlying strategy, so review the bid-ask spread and the prospectus terms.</div>
+    </details>
+    <details>
+      <summary>What fees does an AMC carry?</summary>
+      <div class="faq-a">Typically a management fee accrued in the certificate's price, often a performance fee subject to a high-water mark, and in some cases entry or exit fees. All fees are disclosed in the Key Information Document and final terms.</div>
+    </details>
+  </div>
+
+  <p>Framont Access is finalising the onboarding of AMC products. <a href="../#/amc">Request information on the AMC category</a> to be notified when they are available, or explore the <a href="../#/eti">Exchange Traded Instruments</a> already on the shelf, which use the same collateralised issuance structure.</p>
+</main>
+
+<aside class="nextread">
+  <div class="n-label">Keep reading</div>
+  <a href="what-is-an-eti.html">
+    <div class="n-title">What is an Exchange Traded Instrument (ETI)?</div>
+    <div class="n-sub">The listed wrapper used by the products currently on the Framont Access shelf.</div>
+  </a>
+  <a href="how-to-evaluate-systematic-strategies.html">
+    <div class="n-title">How to evaluate a systematic strategy before you invest</div>
+    <div class="n-sub">What backtests can and cannot tell you, fee mechanics, and a due-diligence checklist.</div>
+  </a>
+</aside>
+
+<div class="disclaimer">
+  <p>This article is provided for information purposes only and does not constitute investment advice, an offer or a solicitation. Actively managed certificates and Exchange Traded Instruments are debt securities of the respective issuer and carry issuer risk. Access to certain products is restricted to investors who meet the applicable eligibility criteria. Before any investment decision, read the Key Information Document (KID) and the relevant prospectus or final terms, available on the product pages. Investments involve risk, including the possible loss of the capital invested. Portfolio management of the referenced instruments is performed by Framont &amp; Partners Management Ltd, an AIFM authorised by the MFSA. Capital at risk.</p>
+</div>
+
+<footer class="sitefooter">
+  <div class="sitefooter-in">
+    <span>© 2026 Framont Group. All rights reserved. · Licensed by the MFSA</span>
+    <span class="foot-links">
+      <a href="../">Framont Access</a>
+      <a href="./">Insights</a>
+      <a href="https://www.iubenda.com/privacy-policy/85437556" target="_blank" rel="noopener">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

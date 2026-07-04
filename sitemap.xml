@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gunnit.github.io/framont-products/</loc>
     <lastmod>2026-07-04</lastmod>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/it/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/what-is-an-eti.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/what-is-an-eti.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/cos-e-un-eti.html"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/it/cos-e-un-eti.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/what-is-an-eti.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/cos-e-un-eti.html"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/amc-certificati-gestione-attiva.html"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/it/amc-certificati-gestione-attiva.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/amc-actively-managed-certificates.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/amc-certificati-gestione-attiva.html"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/how-to-evaluate-systematic-strategies.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/how-to-evaluate-systematic-strategies.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html"/>
+  </url>
+  <url>
+    <loc>https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/how-to-evaluate-systematic-strategies.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html"/>
   </url>
 </urlset>

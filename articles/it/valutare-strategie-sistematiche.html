@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come valutare una strategia sistematica prima di investire | Framont Access Insights</title>
+<meta name="description" content="Cosa possono dire e non dire i rendimenti da backtest, perché i risultati simulati e da conto personale differiscono da quelli dello strumento, come funziona l'high-water mark e una checklist di due diligence in sette domande.">
+<meta name="theme-color" content="#001F42">
+<link rel="canonical" href="https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html">
+<link rel="alternate" hreflang="en" href="https://gunnit.github.io/framont-products/articles/how-to-evaluate-systematic-strategies.html">
+<link rel="alternate" hreflang="it" href="https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html">
+<link rel="alternate" hreflang="x-default" href="https://gunnit.github.io/framont-products/articles/how-to-evaluate-systematic-strategies.html">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Framont Access">
+<meta property="og:url" content="https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html">
+<meta property="og:title" content="Come valutare una strategia sistematica prima di investire">
+<meta property="og:description" content="Cosa possono dire e non dire i backtest, come funzionano davvero le commissioni di performance e una checklist di due diligence.">
+<meta property="og:image" content="https://gunnit.github.io/framont-products/assets/cat-funds.jpg">
+<meta property="article:published_time" content="2026-07-04">
+<meta property="article:section" content="Due Diligence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Come valutare una strategia sistematica prima di investire">
+<meta name="twitter:description" content="Cosa possono dire e non dire i backtest e una checklist di due diligence in sette domande.">
+<meta name="twitter:image" content="https://gunnit.github.io/framont-products/assets/cat-funds.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../insights.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Come valutare una strategia sistematica prima di investire",
+      "description": "Cosa possono dire e non dire i rendimenti da backtest, perché i risultati simulati e da conto personale differiscono da quelli dello strumento, come funziona l'high-water mark e una checklist di due diligence in sette domande.",
+      "image": "https://gunnit.github.io/framont-products/assets/cat-funds.jpg",
+      "datePublished": "2026-07-04",
+      "dateModified": "2026-07-04",
+      "inLanguage": "it",
+      "mainEntityOfPage": "https://gunnit.github.io/framont-products/articles/it/valutare-strategie-sistematiche.html",
+      "author": { "@type": "Organization", "name": "Framont Access", "url": "https://gunnit.github.io/framont-products/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Framont & Partners Management Ltd",
+        "logo": { "@type": "ImageObject", "url": "https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Framont Access", "item": "https://gunnit.github.io/framont-products/" },
+        { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://gunnit.github.io/framont-products/articles/it/" },
+        { "@type": "ListItem", "position": 3, "name": "Valutare le strategie sistematiche" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "I rendimenti da backtest sono un indicatore affidabile della performance futura?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. I dati da backtest sono simulati: mostrano come un insieme di regole si sarebbe comportato su dati storici, di norma senza i costi di negoziazione completi, e sono esposti a overfitting, survivorship bias e look-ahead bias. La normativa richiede che siano indicati come non affidabili ai fini dei risultati futuri." }
+        },
+        {
+          "@type": "Question",
+          "name": "Che differenza c'è tra i risultati personali dello sviluppatore e la performance dello strumento?",
+          "acceptedAnswer": { "@type": "Answer", "text": "I risultati da conto personale sono ottenuti su un conto indipendente dallo strumento, con dimensioni, costi, vincoli e impostazioni di rischio differenti. Dicono qualcosa sull'approccio dello sviluppatore ma non sono il track record dello strumento e non sono indicativi della sua performance futura." }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è l'high-water mark?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Una regola per cui la commissione di performance è dovuta solo su nuovi massimi netti. Se uno strumento sale da 100 a 110, paga la commissione, poi scende a 95 e recupera 110, sul recupero non è dovuta una seconda commissione: si applica solo sopra 110." }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa verificare prima di sottoscrivere un prodotto legato a una strategia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Come minimo: KID e prospetto, chi è il gestore di portafoglio regolamentato, se la struttura è collateralizzata, la separazione tra performance reale e simulata, i costi totali in valore monetario, liquidità e condizioni di uscita, e la coerenza del rischio con la propria capacità di perdita." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="topbar-brand" href="../../#/it">
+      <img src="https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" alt="Framont">
+      <span class="topbar-tag">Access</span>
+    </a>
+    <a class="plain" href="./">Insights</a>
+    <a class="plain" href="../how-to-evaluate-systematic-strategies.html" hreflang="en" lang="en">English</a>
+    <a class="cta" href="../../#/it/eti">Vedi i prodotti</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img" style="background-image:url('../../assets/cat-funds.jpg');"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-in">
+    <span class="kicker">Insights · Due Diligence</span>
+    <h1>Come valutare una strategia sistematica prima di investire</h1>
+    <p class="standfirst">Backtest, track record personali, commissioni di performance, governance: cosa significano davvero i numeri di una presentazione, e le sette domande che li mettono alla prova.</p>
+    <div class="meta"><span>Pubblicato il <strong>4 luglio 2026</strong></span><span>Lettura: <strong>8 min</strong></span><span>Framont Access</span></div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="Percorso">
+  <a href="../../#/it">Home</a><span class="sep">/</span><a href="./">Insights</a><span class="sep">/</span><span class="here">Valutare le strategie sistematiche</span>
+</nav>
+
+<main class="article">
+  <div class="answer">
+    <div class="answer-label">In due frasi</div>
+    <p>Una presentazione di strategia mescola tre tipi di numeri: risultati simulati (backtest), risultati di conti indipendenti dal prodotto e il track record reale dello strumento. Solo il terzo è la performance dello strumento; i primi due sono indizi sull'approccio, e valutarli richiede sapere esattamente come ciascuno può trarre in inganno.</p>
+  </div>
+
+  <p class="lead">Ogni strategia quantitativa arriva con un grafico impressionante. La domanda onesta non è mai "quanto è bello il grafico?" ma "quali di questi numeri sarebbero stati davvero disponibili a me, al netto dei costi, se fossi stato investito?". Questa guida fornisce il vocabolario e la checklist per rispondere.</p>
+
+  <h2>Cosa è un backtest, e cosa non è</h2>
+  <p>Un backtest applica un insieme di regole di trading a dati storici e riporta cosa sarebbe accaduto. Condotto con rigore, è uno strumento di ricerca legittimo: mostra come si comporta un modello attraverso regimi, drawdown e crisi che nessun track record reale è abbastanza lungo da contenere.</p>
+  <p>Ciò che non è, è una promessa. I dati da backtest sono simulati: non rappresentano operatività reale, e la normativa richiede che siano indicati come non affidabili ai fini dei risultati futuri. Quattro modalità di errore spiegano gran parte del divario tra simulazione e realtà:</p>
+  <ul>
+    <li><strong>Overfitting.</strong> Regole calibrate fino ad aderire al rumore storico rendono benissimo sul passato e male sul futuro. Più parametri ha una strategia, e più volte è stata rivista per migliorare il backtest, maggiore è il rischio.</li>
+    <li><strong>Survivorship bias.</strong> Testare sui componenti attuali di un indice esclude silenziosamente le società fallite, gonfiando i rendimenti.</li>
+    <li><strong>Look-ahead bias.</strong> Usare informazioni (prezzi, fondamentali, revisioni) che non erano effettivamente disponibili al momento simulato della decisione.</li>
+    <li><strong>Esecuzione senza attriti.</strong> Le simulazioni spesso ipotizzano esecuzioni perfette. L'operatività reale paga spread, slippage e commissioni su ogni operazione.</li>
+  </ul>
+  <p>La dimensione del problema è documentata: quando la piattaforma Quantopian confrontò i backtest di centinaia di strategie con i loro successivi risultati reali, la correlazione tra performance simulata e reale aggiustata per il rischio risultò prossima allo zero. Questo non rende inutile ogni backtest; rende la qualità del processo di test (validazione out-of-sample, walk-forward, costi realistici) la cosa da interrogare.</p>
+
+  <h2>Tre tipi di track record, tre livelli di evidenza</h2>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead>
+        <tr><th scope="col">Numero</th><th scope="col">Cosa mostra</th><th scope="col">Cosa ricordare</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Backtest</td><td>Come le regole si sarebbero comportate sulla storia</td><td>Simulato; esposto ai quattro bias sopra; verificare la metodologia</td></tr>
+        <tr><td>Conto personale</td><td>L'operatività dello sviluppatore sul proprio conto</td><td>Denaro reale, ma dimensioni, costi, vincoli e rischio differenti; indipendente dallo strumento e non indicativo della sua performance</td></tr>
+        <tr><td>Track record dello strumento</td><td>La storia di prezzo del prodotto, al netto delle commissioni</td><td>L'unico numero che è davvero la performance dello strumento; i risultati passati comunque non garantiscono quelli futuri</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Una documentazione seria tiene separate queste categorie e le etichetta. Su Framont Access, ad esempio, i dati di lungo periodo di HERAKLIT sono esplicitamente indicati come simulazioni da backtest, e il risultato 2025 della strategia LC Invest è esplicitamente attribuito al conto di trading personale dello sviluppatore e non all'ETI. Quando una presentazione confonde questi piani, consideralo di per sé un elemento di valutazione.</p>
+
+  <h2>La meccanica delle commissioni: leggere il costo dell'involucro</h2>
+  <p>I prodotti legati a strategie prevedono tipicamente una <strong>commissione di gestione</strong> (maturata giornalmente nel prezzo dello strumento) più una <strong>commissione di performance</strong> sui guadagni. Due dettagli determinano se una commissione di performance è equa:</p>
+  <p><strong>L'high-water mark.</strong> Una commissione "con high-water mark" è dovuta solo su nuovi massimi netti. Esempio: lo strumento sale da 100 a 110 e paga il 20% sui 10 punti di guadagno. Poi scende a 95 e recupera 110. Sul recupero non è dovuta una seconda commissione, perché 110 era già stato pagato; la prossima commissione si applica solo sopra 110. Senza high-water mark, l'investitore può pagare più volte per lo stesso terreno recuperato.</p>
+  <p><strong>Il totale in valore monetario.</strong> Il KID PRIIPs deve mostrare i costi totali in euro sull'orizzonte di detenzione raccomandato, combinando gestione, performance e costi di transazione. È quel numero, non la percentuale in copertina, quello da confrontare tra prodotti.</p>
+
+  <h2>Governance: chi tiene davvero il volante</h2>
+  <p>Una strategia è affidabile quanto la struttura che la esegue. Per i prodotti cartolarizzati come ETI e AMC, mappa i ruoli: lo <strong>sviluppatore della strategia</strong> fornisce il modello; il <strong>gestore di portafoglio</strong>, soggetto regolamentato (per gli strumenti di Framont Access, Framont &amp; Partners Management Ltd, AIFM autorizzato MFSA), la esegue nell'involucro; l'<strong>emittente</strong> mantiene il portafoglio segregato; un <strong>security trustee</strong> indipendente detiene il pegno sul collaterale. La separazione di questi ruoli, con soggetti regolamentati nelle posizioni che toccano il denaro, è ciò che trasforma un modello interessante in uno strumento investibile. Le nostre guide su <a href="cos-e-un-eti.html">ETI</a> e <a href="amc-certificati-gestione-attiva.html">AMC</a> approfondiscono le strutture.</p>
+
+  <h2>La checklist in sette domande</h2>
+  <ol>
+    <li><strong>Quali numeri sono simulati e quali reali?</strong> Chiedi esplicitamente la distinzione e la metodologia del backtest (validazione out-of-sample, costi ipotizzati).</li>
+    <li><strong>Chi è il gestore di portafoglio regolamentato,</strong> e presso quale autorità? Verifica la licenza sul registro pubblico del regolatore.</li>
+    <li><strong>La struttura è collateralizzata,</strong> e chi è il security trustee?</li>
+    <li><strong>Quali sono i costi totali in valore monetario</strong> sull'orizzonte di detenzione raccomandato, secondo il KID?</li>
+    <li><strong>La commissione di performance è soggetta a high-water mark?</strong></li>
+    <li><strong>Come esco,</strong> a quale prezzo, e chi lo quota? Verifica sede di quotazione, condizioni di market making e spread.</li>
+    <li><strong>Qual è lo scenario peggiore realistico,</strong> secondo lo scenario di stress del KID, ed è compatibile con la tua capacità di perdita?</li>
+  </ol>
+  <p>Se un distributore non sa rispondere per iscritto a queste sette domande, il prodotto non è pronto per il tuo capitale, qualunque cosa dica il grafico.</p>
+
+  <h2>Domande frequenti</h2>
+  <div class="faq">
+    <details>
+      <summary>I rendimenti da backtest sono un indicatore affidabile della performance futura?</summary>
+      <div class="faq-a">No. I dati da backtest sono simulati: mostrano come un insieme di regole si sarebbe comportato su dati storici, di norma senza i costi completi, e sono esposti a overfitting, survivorship bias e look-ahead bias. La normativa richiede che siano indicati come non affidabili ai fini dei risultati futuri.</div>
+    </details>
+    <details>
+      <summary>Che differenza c'è tra i risultati personali dello sviluppatore e la performance dello strumento?</summary>
+      <div class="faq-a">I risultati da conto personale sono ottenuti su un conto indipendente dallo strumento, con dimensioni, costi, vincoli e impostazioni di rischio differenti. Dicono qualcosa sull'approccio dello sviluppatore ma non sono il track record dello strumento e non sono indicativi della sua performance futura.</div>
+    </details>
+    <details>
+      <summary>Cos'è l'high-water mark?</summary>
+      <div class="faq-a">Una regola per cui la commissione di performance è dovuta solo su nuovi massimi netti. Se uno strumento sale da 100 a 110, paga la commissione, poi scende a 95 e recupera 110, sul recupero non è dovuta una seconda commissione: si applica solo sopra 110.</div>
+    </details>
+    <details>
+      <summary>Cosa verificare prima di sottoscrivere?</summary>
+      <div class="faq-a">Come minimo: KID e prospetto, chi è il gestore di portafoglio regolamentato, se la struttura è collateralizzata, la separazione tra performance reale e simulata, i costi totali in valore monetario, liquidità e condizioni di uscita, e la coerenza del rischio con la propria capacità di perdita.</div>
+    </details>
+  </div>
+</main>
+
+<section class="products">
+  <div class="products-in">
+    <div class="p-label">Applica la checklist</div>
+    <h2>I prodotti su Framont Access</h2>
+    <div class="p-grid">
+      <a class="p-card" href="https://heraklit.framontmanagement.com/" rel="noopener" target="_blank">
+        <span class="p-tag">Multi-Asset Sistematico</span>
+        <span class="p-name">HERAKLIT Strategy ETI</span>
+        <span class="p-desc">Rilevazione dei regimi derivata dall'equazione di Fokker–Planck su dodici flussi di dati globali. Dati pubblicati come backtest etichettati.</span>
+        <span class="p-more">Pagina prodotto <span>→</span></span>
+      </a>
+      <a class="p-card" href="https://techmegatrend.framontmanagement.com/" rel="noopener" target="_blank">
+        <span class="p-tag">Azionario / Tecnologia</span>
+        <span class="p-name">Tech Megatrend Tactical ETI</span>
+        <span class="p-desc">Rotazione tattica guidata dalla liquidità sull'esposizione tecnologica USA. Commissione di performance 20% con high-water mark.</span>
+        <span class="p-more">Pagina prodotto <span>→</span></span>
+      </a>
+      <a class="p-card" href="https://lcinvest.framontmanagement.com/" rel="noopener" target="_blank">
+        <span class="p-tag">Oro / Valute</span>
+        <span class="p-name">LC Invest — Value Edge ETI</span>
+        <span class="p-desc">Strategia discrezionale su oro e valute; il risultato 2025 pubblicato è attribuito al conto personale dello sviluppatore, indipendente dall'ETI.</span>
+        <span class="p-more">Pagina prodotto <span>→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<aside class="nextread">
+  <div class="n-label">Continua a leggere</div>
+  <a href="cos-e-un-eti.html">
+    <div class="n-title">Cos'è un Exchange Traded Instrument (ETI)?</div>
+    <div class="n-sub">L'involucro quotato e collateralizzato utilizzato dai prodotti sull'offerta di Framont Access.</div>
+  </a>
+  <a href="amc-certificati-gestione-attiva.html">
+    <div class="n-title">Gli Actively Managed Certificates, spiegati</div>
+    <div class="n-sub">Cos'è un AMC, in cosa differisce da un fondo e quando l'involucro ha senso.</div>
+  </a>
+</aside>
+
+<div class="disclaimer">
+  <p>Questo articolo è fornito a solo scopo informativo e non costituisce consulenza d'investimento, offerta o sollecitazione. I dati di performance da backtest o simulati sono ipotetici, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. I risultati ottenuti da uno sviluppatore della strategia su conti personali riguardano conti indipendenti da qualsiasi strumento e non sono indicativi della performance di uno strumento. Gli Exchange Traded Instruments e i certificati a gestione attiva sono titoli di debito del rispettivo emittente e comportano rischio emittente. Prima di ogni decisione d'investimento, leggere il Documento contenente le Informazioni Chiave (KID) e il relativo prospetto o le condizioni definitive. La gestione di portafoglio degli strumenti citati è svolta da Framont &amp; Partners Management Ltd, AIFM autorizzato dalla MFSA. Capitale a rischio.</p>
+</div>
+
+<footer class="sitefooter">
+  <div class="sitefooter-in">
+    <span>© 2026 Framont Group. Tutti i diritti riservati. · Autorizzata dalla MFSA</span>
+    <span class="foot-links">
+      <a href="../../#/it">Framont Access</a>
+      <a href="./">Insights</a>
+      <a href="https://www.iubenda.com/privacy-policy/85437556" target="_blank" rel="noopener">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
