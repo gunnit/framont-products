@@ -96,6 +96,32 @@
 }
 </script>
 
+<script>
+/* Browser extensions and Chrome auto-translate re-parent DOM nodes React owns
+   (e.g. Google Translate wraps text nodes in <font>). React then crashes with
+   "Failed to execute 'removeChild' on 'Node'" and the error boundary blanks the
+   page. Standard mitigation (react#11538): degrade to a warning instead. */
+(function () {
+  if (typeof Node !== "function" || !Node.prototype) return;
+  var rc = Node.prototype.removeChild;
+  Node.prototype.removeChild = function (child) {
+    if (child && child.parentNode !== this) {
+      if (window.console) console.warn("[framont] skipped removeChild: node was re-parented by an extension", child);
+      return child;
+    }
+    return rc.apply(this, arguments);
+  };
+  var ib = Node.prototype.insertBefore;
+  Node.prototype.insertBefore = function (node, ref) {
+    if (ref && ref.parentNode !== this) {
+      if (window.console) console.warn("[framont] insertBefore reference was re-parented by an extension; appending instead", ref);
+      return this.appendChild(node);
+    }
+    return ib.apply(this, arguments);
+  };
+})();
+</script>
+
 <script src="support.js"></script>
 </head>
 <body>
@@ -1134,8 +1160,8 @@ class Component extends DCLogic {
       const r = this.parseHash();
       const patch = {};
       if (r.lang && r.lang !== this.state.lang) patch.lang = r.lang;
-      if (r.view && r.view !== this.state.view) { patch.view = r.view; patch.mobileOpen = false; patch.fCls = "all"; patch.fCur = "all"; patch.fSize = "all"; }
-      else if (!r.view && this.state.view !== "home" && this.state.view !== "admin") { patch.view = "home"; patch.mobileOpen = false; }
+      if (r.view && r.view !== this.state.view) { patch.view = r.view; patch.mobileOpen = false; patch.modal = null; patch.fCls = "all"; patch.fCur = "all"; patch.fSize = "all"; }
+      else if (!r.view && this.state.view !== "home" && this.state.view !== "admin") { patch.view = "home"; patch.mobileOpen = false; patch.modal = null; }
       if (Object.keys(patch).length) this.setState(patch);
     };
     window.addEventListener("hashchange", this._onHash);
@@ -1263,7 +1289,7 @@ class Component extends DCLogic {
 
   navTo(k) {
     if (k === "admin" && !(this.state.user && this.state.user.role === "admin")) return;
-    this.setState({ view: k, mobileOpen: false, fCls: "all", fCur: "all", fSize: "all" });
+    this.setState({ view: k, mobileOpen: false, modal: null, fCls: "all", fCur: "all", fSize: "all" });
   }
 
   toggleLang() {
