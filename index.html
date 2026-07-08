@@ -969,11 +969,11 @@ class Component extends DCLogic {
   T = {
     en: {
       lang: "IT",
-      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", vc: "VC Deals", login: "Login", admin: "Admin", signOut: "Sign Out" },
+      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", deals: "Deals", login: "Login", admin: "Admin", signOut: "Sign Out" },
       hero: { eyebrow: "Framont Group — Investment Platform", t1: "Access the World of", t2: "Framont", subtitle: "Curated access to institutional-grade investment products — across funds, structured instruments, and venture capital opportunities.", cta: "Request Access", learnMore: "Explore Products" },
       teaser: { locked: "Members only", unlock: "Request access to view" },
       trust: ["MFSA-authorised AIFM", "Exchange-Listed Products", "Issued by iMaps ETI AG", "Access from €1,000"],
-      universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", vc: "Venture capital co-investments for professionals" } },
+      universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", deals: "Real estate and private credit opportunities for professionals" } },
       how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Verify your email", sub: "Instant — confirms your contact details." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
       featured: { label: "Featured Products", title: "A selection from the current shelf" },
       insights: { navLabel: "Insights", label: "Insights", title: "Understand the instruments before you invest", hub: "All articles", readMore: "Read the guide", cards: [
@@ -997,11 +997,11 @@ class Component extends DCLogic {
     },
     it: {
       lang: "EN",
-      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", vc: "VC Deals", login: "Accedi", admin: "Admin", signOut: "Esci" },
+      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", deals: "Deals", login: "Accedi", admin: "Admin", signOut: "Esci" },
       hero: { eyebrow: "Framont Group — Piattaforma d'Investimento", t1: "Accedi al Mondo di", t2: "Framont", subtitle: "Accesso curato a prodotti d'investimento di livello istituzionale — fondi, strumenti strutturati e opportunità di venture capital.", cta: "Richiedi Accesso", learnMore: "Esplora i Prodotti" },
       teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare" },
       trust: ["AIFM autorizzato MFSA", "Prodotti Quotati in Borsa", "Emessi da iMaps ETI AG", "Accesso da €1.000"],
-      universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", vc: "Co-investimenti VC per professionisti" } },
+      universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", deals: "Opportunità immobiliari e di private credit per professionisti" } },
       how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Verifica l'email", sub: "Immediato — conferma i tuoi recapiti." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
       featured: { label: "Prodotti in Evidenza", title: "Una selezione dall'offerta attuale" },
       insights: { navLabel: "Insights", label: "Insights", title: "Capire gli strumenti prima di investire", hub: "Tutti gli articoli", readMore: "Leggi la guida", cards: [
@@ -1073,14 +1073,18 @@ class Component extends DCLogic {
           metricLabel: { en: "Eligibility", it: "Idoneità" },
           metricValue: { en: "Professional investors", it: "Investitori professionali" },
           facts: [
-            { label: { en: "Issuer", it: "Emittente" }, value: { en: "Expand2 Issuer PCC Limited — protected cell", it: "Expand2 Issuer PCC Limited — cella protetta" } },
+            { label: { en: "Issuer", it: "Emittente" }, value: { en: "Expand2 Issuer PCC Limited (Guernsey) — protected cell", it: "Expand2 Issuer PCC Limited (Guernsey) — cella protetta" } },
             { label: { en: "Platform", it: "Piattaforma" }, value: "GenTwo" },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "Open-end, unlisted dynamic tracker-certificate (Swiss law)", it: "Open-end, tracker-certificate dinamico non quotato (diritto svizzero)" } },
             { label: { en: "Strategy Manager", it: "Gestore della Strategia" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
-            { label: { en: "Currency", it: "Valuta" }, value: "EUR" },
+            { label: { en: "Currency", it: "Valuta" }, value: { en: "EUR · EUR 1,000 per unit", it: "EUR · EUR 1.000 per quota" } },
             { label: { en: "Minimum Investment", it: "Investimento Minimo" }, value: { en: "€10,000", it: "€10.000" } },
+            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "2.50% p.a.", it: "2,50% annuo" } },
+            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "30% over 0% hurdle (high-water mark)", it: "30% oltre hurdle 0% (high-water mark)" } },
+            { label: { en: "Secondary Market", it: "Mercato Secondario" }, value: { en: "Monthly (15th) · cash settlement", it: "Mensile (giorno 15) · regolamento in contanti" } },
             { label: { en: "Investor Eligibility", it: "Idoneità dell'Investitore" }, value: { en: "Professional investors only", it: "Riservato a investitori professionali" } }
           ],
-          description: { en: "Noctiluca Capital is an actively managed certificate (AMC) issued through a protected cell of Expand2 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1554882477). Strategy management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is denominated in EUR, with a minimum investment of €10,000, and is reserved exclusively for professional investors. The official term sheet will be linked on this page as soon as it is published. *Where track-record figures appear in the product documentation, they are based on a standardised simulation, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "Noctiluca Capital è un certificato a gestione attiva (AMC) emesso tramite una cella protetta di Expand2 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1554882477). La gestione della strategia è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è denominato in EUR, con un investimento minimo di €10.000, ed è riservato esclusivamente a investitori professionali. Il term sheet ufficiale sarà collegato a questa pagina non appena pubblicato. *Ove nella documentazione di prodotto compaiano dati di track record, questi si basano su una simulazione standardizzata, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } }
+          description: { en: "Noctiluca Capital is an actively managed certificate (AMC) issued through a protected cell of Expand2 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1554882477). Strategy management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is denominated in EUR, with a minimum investment of €10,000, and is reserved exclusively for professional investors. The strategy applies systematic breakout and trend-following signals on exchange-listed US equity-index and commodity futures. Post-trade functions are handled by InCore Bank AG (paying agent, Switzerland), with custody and brokerage via TradeStation Europe B.V. (Netherlands). The official term sheet will be linked on this page as soon as it is published. *Where track-record figures appear in the product documentation, they are based on a standardised simulation, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "Noctiluca Capital è un certificato a gestione attiva (AMC) emesso tramite una cella protetta di Expand2 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1554882477). La gestione della strategia è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è denominato in EUR, con un investimento minimo di €10.000, ed è riservato esclusivamente a investitori professionali. La strategia applica segnali sistematici di breakout e trend-following su future su indici azionari e materie prime USA quotati. Le funzioni di post-trade sono svolte da InCore Bank AG (paying agent, Svizzera), con custodia e brokeraggio tramite TradeStation Europe B.V. (Paesi Bassi). Il term sheet ufficiale sarà collegato a questa pagina non appena pubblicato. *Ove nella documentazione di prodotto compaiano dati di track record, questi si basano su una simulazione standardizzata, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } }
       ]
     },
     eti: {
@@ -1152,26 +1156,80 @@ class Component extends DCLogic {
           description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart and the Vienna Stock Exchange; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda e alla Borsa di Vienna; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } }
       ]
     },
-    vc: {
+    deals: {
       en: {
-        title: "VC Deals",
-        tagline: "Direct venture co-investments for professional and institutional investors",
-        description: "Framont's VC Deals platform provides curated access to direct co-investment opportunities alongside leading venture capital funds and family offices. These are high-conviction, early to growth-stage investments in technology, deep-tech, and impact companies, structured as SPVs or direct equity tranches.",
-        eligibility: "VC Deals are exclusively available to professional and institutional investors as defined under MiFID II. Minimum commitments are typically €100,000 or higher. Investors must complete enhanced due diligence and suitability assessments prior to access.",
-        benefits: ["Co-invest alongside institutional venture managers", "Access to pre-IPO and growth equity at institutional terms", "Selective deal flow across Europe and US tech ecosystems", "Direct ownership with transparent cap table disclosure"],
-        features: [{ label: "Structure", value: "SPV / Direct Equity" }, { label: "Liquidity", value: "Illiquid, 5-10 Year Horizon" }, { label: "Risk Profile", value: "Very High" }, { label: "Typical Duration", value: "5-10 Years" }, { label: "Regulatory Framework", value: "AIFMD / EuVECA" }],
-        faq: [{ q: "What is the target return profile?", a: "VC investments target 3-10x return multiples over a 5-10 year horizon. Returns are highly variable and capital loss is possible. Past performance of co-investors does not guarantee future returns." }, { q: "How does the SPV structure work?", a: "Framont establishes a Special Purpose Vehicle that pools investor commitments and takes a single position in the target company. Investors receive proportional economic rights." }, { q: "Are there secondary market opportunities?", a: "Some positions may become eligible for secondary market transactions. Framont facilitates introductions to secondary buyers on a best-efforts basis; no liquidity is guaranteed." }]
+        title: "Deals",
+        tagline: "Curated real estate and private credit opportunities for professional investors",
+        description: "Framont's Deals platform provides professional and institutional investors with access to curated direct opportunities across real estate and private credit — from value-add hospitality and adaptive re-use projects to collateral-backed private lending. Each opportunity is structured through MFSA-regulated vehicles (SPV, club deal, AMC or credit-linked note) and offered by private placement.",
+        eligibility: "Deals are reserved for professional and institutional investors (and qualified investors where applicable) as defined under MiFID II. Full documentation is released only after eligibility verification and, where required, execution of an NDA/NCNDA. Framont conducts suitability checks prior to access.",
+        benefits: ["Direct access to off-market real estate and private credit", "MFSA-regulated structuring (SPV, club deal, AMC, CLN)", "Collateral-backed and asset-backed return profiles", "Confidential, NDA-protected disclosure process"],
+        features: [{ label: "Structure", value: "SPV / Club Deal / AMC / CLN" }, { label: "Liquidity", value: "Illiquid, deal-specific horizon" }, { label: "Risk Profile", value: "High" }, { label: "Typical Duration", value: "Deal-specific" }, { label: "Regulatory Framework", value: "AIFMD / MiFID II" }],
+        faq: [{ q: "What types of deals are offered?", a: "Currently real estate (value-add hospitality, adaptive re-use and portfolio opportunities) and private credit (collateral-backed lending via credit-linked notes). Opportunities are grouped by type." }, { q: "How is confidentiality handled?", a: "Introductory teasers are shown here. Full decks, financials and property or legal documentation are released only to verified professional investors, following an NDA/NCNDA where required." }, { q: "What is the minimum commitment?", a: "Minimums are deal-specific and provided on request during the qualification process." }]
       },
       it: {
-        title: "VC Deals",
-        tagline: "Co-investimenti diretti in venture capital per investitori professionali e istituzionali",
-        description: "La piattaforma VC Deals di Framont fornisce accesso curato a opportunità di co-investimento diretto accanto a fondi di venture capital leader e family office. Si tratta di investimenti ad alta convinzione in fase early-to-growth in aziende tecnologiche, deep-tech e d'impatto, strutturati come SPV o tranche di equity dirette.",
-        eligibility: "I VC Deals sono esclusivamente disponibili per investitori professionali e istituzionali come definiti ai sensi di MiFID II. Gli impegni minimi sono tipicamente €100.000 o superiori. Gli investitori devono completare una due diligence rafforzata e valutazioni di idoneità prima dell'accesso.",
-        benefits: ["Co-investimento accanto a gestori venture istituzionali", "Accesso a pre-IPO ed equity in crescita a termini istituzionali", "Deal flow selettivo negli ecosistemi tech europei e statunitensi", "Proprietà diretta con trasparenza sul cap table"],
-        features: [{ label: "Struttura", value: "SPV / Equity Diretta" }, { label: "Liquidità", value: "Illiquido, Orizzonte 5-10 Anni" }, { label: "Profilo di Rischio", value: "Molto Alto" }, { label: "Durata Tipica", value: "5-10 Anni" }, { label: "Quadro Regolamentare", value: "AIFMD / EuVECA" }],
-        faq: [{ q: "Qual è il profilo di rendimento atteso?", a: "Gli investimenti VC mirano a multipli di rendimento 3-10x su un orizzonte di 5-10 anni. I rendimenti sono altamente variabili e la perdita di capitale è possibile. Le performance passate dei co-investitori non garantiscono rendimenti futuri." }, { q: "Come funziona la struttura SPV?", a: "Framont costituisce un Veicolo a Scopo Speciale che raccoglie gli impegni degli investitori e assume una singola posizione nella società target. Gli investitori ricevono diritti economici proporzionali." }, { q: "Esistono opportunità di mercato secondario?", a: "Alcune posizioni possono diventare eleggibili per transazioni sul mercato secondario. Framont facilita i contatti con acquirenti secondari su base best-effort; non è garantita alcuna liquidità." }]
+        title: "Deals",
+        tagline: "Opportunità selezionate di real estate e private credit per investitori professionali",
+        description: "La piattaforma Deals di Framont offre a investitori professionali e istituzionali l'accesso a opportunità dirette selezionate nel real estate e nel private credit — da progetti hospitality value-add e di riconversione (adaptive re-use) al prestito privato garantito da collaterale. Ogni opportunità è strutturata tramite veicoli regolamentati MFSA (SPV, club deal, AMC o credit-linked note) e offerta in private placement.",
+        eligibility: "I Deals sono riservati a investitori professionali e istituzionali (e qualificati ove applicabile) come definiti ai sensi di MiFID II. La documentazione completa è rilasciata solo previa verifica di idoneità e, ove richiesto, sottoscrizione di un NDA/NCNDA. Framont effettua controlli di adeguatezza prima dell'accesso.",
+        benefits: ["Accesso diretto a real estate e private credit off-market", "Strutturazione regolamentata MFSA (SPV, club deal, AMC, CLN)", "Profili di rendimento garantiti da collaterale/attivi", "Processo di disclosure confidenziale, protetto da NDA"],
+        features: [{ label: "Struttura", value: "SPV / Club Deal / AMC / CLN" }, { label: "Liquidità", value: "Illiquido, orizzonte per singolo deal" }, { label: "Profilo di Rischio", value: "Alto" }, { label: "Durata Tipica", value: "Per singolo deal" }, { label: "Quadro Regolamentare", value: "AIFMD / MiFID II" }],
+        faq: [{ q: "Quali tipologie di deal sono offerte?", a: "Attualmente real estate (hospitality value-add, adaptive re-use e opportunità di portafoglio) e private credit (prestito garantito da collaterale tramite credit-linked note). Le opportunità sono raggruppate per tipologia." }, { q: "Come viene gestita la riservatezza?", a: "Qui sono mostrati teaser introduttivi. Deck completi, dati finanziari e documentazione immobiliare o legale sono rilasciati solo a investitori professionali verificati, previa NDA/NCNDA ove richiesto." }, { q: "Qual è l'impegno minimo?", a: "I minimi dipendono dal singolo deal e vengono forniti su richiesta durante il processo di qualifica." }]
       },
-      products: []
+      products: [
+        { id: "deal-castello-monticello", name: "Hotel Castello Monticello", assetClass: "Real Estate", currency: "EUR", minSub: 0, minLabel: { en: "On request", it: "Su richiesta" }, open: false, active: true,
+          subscribeUrl: "",
+          strategy: { en: "Luxury repositioning of a hospitality asset on Isola del Giglio, Tuscany — value-add strategy.", it: "Riposizionamento luxury di un asset alberghiero all'Isola del Giglio, Toscana — strategia value-add." },
+          metricLabel: { en: "Eligibility", it: "Idoneità" },
+          metricValue: { en: "Professional investors", it: "Investitori professionali" },
+          facts: [
+            { label: { en: "Location", it: "Località" }, value: { en: "Isola del Giglio, Tuscany (Italy)", it: "Isola del Giglio, Toscana (Italia)" } },
+            { label: { en: "Sector", it: "Settore" }, value: { en: "Hospitality — value-add", it: "Hospitality — value-add" } },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "MFSA-regulated SPV (share deal)", it: "SPV regolamentata MFSA (share deal)" } },
+            { label: { en: "Eligibility", it: "Idoneità" }, value: { en: "Professional & institutional investors only", it: "Solo investitori professionali e istituzionali" } },
+            { label: { en: "Documentation", it: "Documentazione" }, value: { en: "Full deck on request", it: "Deck completo su richiesta" } }
+          ],
+          description: { en: "Acquisition and luxury repositioning of a hospitality asset on Isola del Giglio (Tuscany), executed as a value-add strategy through an MFSA-regulated SPV. Reserved for professional and institutional investors; full financials, business plan and documentation are provided on request following eligibility verification.", it: "Acquisizione e riposizionamento luxury di un asset alberghiero all'Isola del Giglio (Toscana), realizzato come strategia value-add tramite una SPV regolamentata MFSA. Riservato a investitori professionali e istituzionali; dati finanziari, business plan e documentazione completa sono forniti su richiesta previa verifica di idoneità." } },
+        { id: "deal-greece-realestate", name: "Greek Real Estate Portfolio", assetClass: "Real Estate", currency: "EUR", minSub: 0, minLabel: { en: "On request", it: "Su richiesta" }, open: false, active: true,
+          subscribeUrl: "",
+          strategy: { en: "Off-market Greek real estate across five asset classes — villas, hotels, prime land, coastal assets and a private island.", it: "Real estate greco off-market su cinque classi di attivo — ville, hotel, terreni pregiati, asset costieri e un'isola privata." },
+          metricLabel: { en: "Eligibility", it: "Idoneità" },
+          metricValue: { en: "Professional investors", it: "Investitori professionali" },
+          facts: [
+            { label: { en: "Geography", it: "Geografia" }, value: { en: "Greece — islands, coast, Athens", it: "Grecia — isole, costa, Atene" } },
+            { label: { en: "Asset classes", it: "Classi di attivo" }, value: { en: "Villas, hotels, land, coastal, private island", it: "Ville, hotel, terreni, costieri, isola privata" } },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "SPV / club deal / AMC", it: "SPV / club deal / AMC" } },
+            { label: { en: "Disclosure", it: "Disclosure" }, value: { en: "NDA / NCNDA protected", it: "Protetta da NDA / NCNDA" } },
+            { label: { en: "Documentation", it: "Documentazione" }, value: { en: "No-name teaser; full disclosure after NDA", it: "Teaser no-name; disclosure completa dopo NDA" } }
+          ],
+          description: { en: "A curated, no-name portfolio of off-market Greek real estate opportunities across five asset classes — luxury villas, boutique and large hotels, prime development land, coastal assets and a private island — structured through MFSA-regulated vehicles. Introductory material only; exact locations, ownership and pricing are disclosed to verified professional investors following an NDA/NCNDA.", it: "Un portafoglio curato e no-name di opportunità immobiliari greche off-market su cinque classi di attivo — ville di lusso, hotel boutique e di grandi dimensioni, terreni edificabili pregiati, asset costieri e un'isola privata — strutturato tramite veicoli regolamentati MFSA. Solo materiale introduttivo; località esatte, proprietà e prezzi sono comunicati agli investitori professionali verificati previa NDA/NCNDA." } },
+        { id: "deal-mazarredo-bilbao", name: "Alameda Mazarredo 31, Bilbao", assetClass: "Real Estate", currency: "EUR", minSub: 0, minLabel: { en: "On request", it: "Su richiesta" }, open: false, active: true,
+          subscribeUrl: "",
+          strategy: { en: "Adaptive re-use of an industrial building into a 71-key 4-star hotel with retail, 500m from the Guggenheim, Bilbao.", it: "Riconversione (adaptive re-use) di un edificio industriale in hotel 4 stelle da 71 camere con retail, a 500m dal Guggenheim, Bilbao." },
+          metricLabel: { en: "Eligibility", it: "Idoneità" },
+          metricValue: { en: "Professional investors", it: "Investitori professionali" },
+          facts: [
+            { label: { en: "Location", it: "Località" }, value: { en: "Bilbao (Spain)", it: "Bilbao (Spagna)" } },
+            { label: { en: "Sector", it: "Settore" }, value: { en: "Hospitality development — adaptive re-use", it: "Sviluppo hospitality — adaptive re-use" } },
+            { label: { en: "Operator", it: "Operatore" }, value: { en: "Room00 (hotel management agreement)", it: "Room00 (hotel management agreement)" } },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "MFSA-regulated SPV with senior debt", it: "SPV regolamentata MFSA con debito senior" } },
+            { label: { en: "Documentation", it: "Documentazione" }, value: { en: "Full deck on request", it: "Deck completo su richiesta" } }
+          ],
+          description: { en: "Adaptive re-use of an approved industrial building in central Bilbao (500m from the Guggenheim) into a 71-key 4-star hotel with a retail unit, operated by Room00 under a hotel management agreement and structured through an MFSA-regulated SPV. Reserved for professional and institutional investors; full financials and documentation are provided on request following eligibility verification.", it: "Riconversione (adaptive re-use) di un edificio industriale approvato nel centro di Bilbao (a 500m dal Guggenheim) in un hotel 4 stelle da 71 camere con unità retail, gestito da Room00 con hotel management agreement e strutturato tramite una SPV regolamentata MFSA. Riservato a investitori professionali e istituzionali; dati finanziari e documentazione completa sono forniti su richiesta previa verifica di idoneità." } },
+        { id: "deal-zalphyx", name: "Zalphyx Giant Capital", assetClass: "Private Credit", currency: "USD", minSub: 0, minLabel: { en: "On request", it: "Su richiesta" }, open: false, active: true,
+          subscribeUrl: "",
+          strategy: { en: "Available soon — USD private mortgage lending in the Dominican Republic via a credit-linked note, with first-rank collateral and a fixed-income profile.", it: "Disponibile a breve — prestito ipotecario privato in USD nella Repubblica Dominicana tramite un credit-linked note, con collaterale di primo grado e profilo obbligazionario." },
+          metricLabel: { en: "Eligibility", it: "Idoneità" },
+          metricValue: { en: "Professional / qualified investors", it: "Investitori professionali / qualificati" },
+          facts: [
+            { label: { en: "Status", it: "Stato" }, value: { en: "Available soon", it: "Disponibile a breve" } },
+            { label: { en: "Geography", it: "Geografia" }, value: { en: "Dominican Republic", it: "Repubblica Dominicana" } },
+            { label: { en: "Sector", it: "Settore" }, value: { en: "Private credit — mortgage lending", it: "Private credit — prestito ipotecario" } },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "Credit-linked note (AMC) on GenTwo", it: "Credit-linked note (AMC) su GenTwo" } },
+            { label: { en: "Collateral", it: "Collaterale" }, value: { en: "First-rank registered mortgage", it: "Ipoteca registrata di primo grado" } },
+            { label: { en: "Eligibility", it: "Idoneità" }, value: { en: "Professional & qualified investors only", it: "Solo investitori professionali e qualificati" } }
+          ],
+          description: { en: "Available soon. A USD-denominated private credit opportunity providing first-rank mortgage lending in the Dominican Republic, structured as a credit-linked note on the GenTwo platform with strategy management by Framont & Partners Management Ltd (MFSA-authorised AIFM). Reserved for professional and qualified investors; full terms and documentation are provided on request following eligibility verification.", it: "Disponibile a breve. Un'opportunità di private credit denominata in USD che fornisce prestito ipotecario di primo grado nella Repubblica Dominicana, strutturata come credit-linked note sulla piattaforma GenTwo con gestione della strategia da parte di Framont & Partners Management Ltd (AIFM autorizzato MFSA). Riservato a investitori professionali e qualificati; termini completi e documentazione sono forniti su richiesta previa verifica di idoneità." } }
+      ]
     }
   };
 
@@ -1261,7 +1319,7 @@ class Component extends DCLogic {
     let lang = null, view = null;
     for (const p of parts) {
       if (p === "en" || p === "it") lang = p;
-      else if (["home", "funds", "amc", "eti", "vc"].includes(p)) view = p === "home" ? null : p;
+      else if (["home", "funds", "amc", "eti", "deals"].includes(p)) view = p === "home" ? null : p;
     }
     return { lang, view };
   }
@@ -1296,7 +1354,7 @@ class Component extends DCLogic {
     try {
       document.documentElement.lang = s.lang;
       let title = "Framont Access — Institutional Investment Platform";
-      if (["funds", "amc", "eti", "vc"].includes(s.view)) title = this.DATA[s.view][s.lang].title + " — Framont Access";
+      if (["funds", "amc", "eti", "deals"].includes(s.view)) title = this.DATA[s.view][s.lang].title + " — Framont Access";
       else if (s.view === "admin") title = this.T[s.lang].admin.title + " — Framont Access";
       if (document.title !== title) document.title = title;
     } catch (e) {}
@@ -1560,7 +1618,7 @@ class Component extends DCLogic {
     const user = s.user;
     const isAnon = !user;
     const view = s.view;
-    const isCat = ["funds", "amc", "eti", "vc"].includes(view);
+    const isCat = ["funds", "amc", "eti", "deals"].includes(view);
     const isAdminView = view === "admin" && !!user && user.role === "admin";
 
     const rev = {};
@@ -1572,7 +1630,7 @@ class Component extends DCLogic {
     const bgOf = (url) => url ? 'url("' + url + '")' : FALLBACK;
 
     const go = (k) => (e) => { if (e && e.preventDefault) e.preventDefault(); this.navTo(k); };
-    const navLinks = ["funds", "amc", "eti", "vc"].map((k) => ({
+    const navLinks = ["funds", "amc", "eti", "deals"].map((k) => ({
       key: k, label: t.nav[k],
       href: "#/" + k,
       color: view === k ? "#002E5F" : "#4D575E",
@@ -1594,7 +1652,7 @@ class Component extends DCLogic {
       return {
         name: p.name, assetClass: p.assetClass, currency: p.currency,
         code: p.isin || p.ticker || "—",
-        strategy: loc(p.strategy), minLabel: p.minLabel,
+        strategy: loc(p.strategy), minLabel: loc(p.minLabel),
         metricLabel: loc(p.metricLabel), metricValue: loc(p.metricValue),
         landingUrl: p.landingUrl || "",
         locked: gated,
@@ -1647,14 +1705,14 @@ class Component extends DCLogic {
         { label: t.cat.elig, onClick: () => this.scrollToSec("sec-elig") },
         { label: "FAQ", onClick: () => this.scrollToSec("sec-faq") }
       ];
-      catBg = bgOf({ funds: P.assetCatFunds, amc: P.assetCatAmc, eti: P.assetCatEti, vc: P.assetCatVc }[view]);
+      catBg = bgOf({ funds: P.assetCatFunds, amc: P.assetCatAmc, eti: P.assetCatEti, deals: P.assetCatVc }[view]);
       catVid = "assets/cat-" + view + "-loop.mp4";
       aboutWords = (cat.description || "").split(/\s+/).filter(Boolean).map((w) => ({ w }));
     }
 
-    const universeCards = ["funds", "amc", "eti", "vc"].map((k) => ({
+    const universeCards = ["funds", "amc", "eti", "deals"].map((k) => ({
       key: k, label: t.nav[k], desc: t.universe.descs[k],
-      bg: bgOf({ funds: P.assetCardFunds, amc: P.assetCardAmc, eti: P.assetCardEti, vc: P.assetCardVc }[k]),
+      bg: bgOf({ funds: P.assetCardFunds, amc: P.assetCardAmc, eti: P.assetCardEti, deals: P.assetCardVc }[k]),
       onClick: () => this.navTo(k)
     }));
 
