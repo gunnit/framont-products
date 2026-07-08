@@ -406,6 +406,23 @@
             </div>
             <div style="font-size:13px; color:#4D575E; padding-bottom:4px;">{{ resultsLabel }}</div>
           </div>
+          <sc-if value="{{ showGuide }}" hint-placeholder-val="{{ false }}">
+          <div style="margin:30px 0 4px; background:linear-gradient(120deg,#001F42,#002E5F); border:1px solid #E9E7E2; padding:26px 28px; display:flex; gap:24px 40px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+            <div style="min-width:240px; flex:1;">
+              <div style="font-size:10.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#FFB273;">{{ guide.kicker }}</div>
+              <div style="font-family:'Playfair Display',serif; font-size:21px; font-weight:500; color:#FFFFFF; margin-top:8px; line-height:1.25;">{{ guide.title }}</div>
+              <p style="font-size:13.5px; color:rgba(255,255,255,0.80); line-height:1.6; margin:8px 0 0; max-width:560px;">{{ guide.sub }}</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+              <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6);">{{ guide.versions }}</div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <sc-for list="{{ guide.links }}" as="g" hint-placeholder-count="4">
+                  <a href="{{ g.url }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; letter-spacing:0.04em; color:#FFFFFF; text-decoration:none; padding:9px 15px; border:1px solid rgba(255,255,255,0.28); background:rgba(255,255,255,0.06); transition:background .2s ease, border-color .2s ease;" style-hover="background:#FF8200; border-color:#FF8200;">{{ g.code }} ↓</a>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
           <sc-if value="{{ catHasProducts }}" hint-placeholder-val="{{ true }}">
           <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin:30px 0 24px;">
@@ -972,6 +989,7 @@ class Component extends DCLogic {
       nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", deals: "Deals", login: "Login", admin: "Admin", signOut: "Sign Out" },
       hero: { eyebrow: "Framont Group — Investment Platform", t1: "Access the World of", t2: "Framont", subtitle: "Curated access to institutional-grade investment products — across funds, structured instruments, and venture capital opportunities.", cta: "Request Access", learnMore: "Explore Products" },
       teaser: { locked: "Members only", unlock: "Request access to view" },
+      guide: { kicker: "Operational guide", title: "How to buy an ETI on Interactive Brokers", sub: "Step by step: open an Interactive Brokers account, enable the required trading permissions and place a buy order by ISIN.", versions: "Versions" },
       trust: ["MFSA-authorised AIFM", "Exchange-Listed Products", "Issued by iMaps ETI AG", "Access from €1,000"],
       universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", deals: "Real estate and private credit opportunities for professionals" } },
       how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Verify your email", sub: "Instant — confirms your contact details." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
@@ -1000,6 +1018,7 @@ class Component extends DCLogic {
       nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", deals: "Deals", login: "Accedi", admin: "Admin", signOut: "Esci" },
       hero: { eyebrow: "Framont Group — Piattaforma d'Investimento", t1: "Accedi al Mondo di", t2: "Framont", subtitle: "Accesso curato a prodotti d'investimento di livello istituzionale — fondi, strumenti strutturati e opportunità di venture capital.", cta: "Richiedi Accesso", learnMore: "Esplora i Prodotti" },
       teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare" },
+      guide: { kicker: "Guida operativa", title: "Come acquistare un ETI su Interactive Brokers", sub: "Passo dopo passo: apri un conto Interactive Brokers, abilita i permessi di negoziazione necessari e inserisci un ordine di acquisto per ISIN.", versions: "Versioni" },
       trust: ["AIFM autorizzato MFSA", "Prodotti Quotati in Borsa", "Emessi da iMaps ETI AG", "Accesso da €1.000"],
       universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", deals: "Opportunità immobiliari e di private credit per professionisti" } },
       how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Verifica l'email", sub: "Immediato — conferma i tuoi recapiti." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
@@ -1671,6 +1690,7 @@ class Component extends DCLogic {
     let clsOptions = [], curOptions = [], resultsLabel = "", subnavLinks = [], catBg = FALLBACK, catVid = "", aboutWords = [];
     let catEmpty = false, catHasProducts = false;
     let showClsFilter = false, showCurFilter = false, showSizeFilter = false;
+    let showGuide = false, guide = null;
     if (isCat) {
       const d = db[view];
       cat = d[s.lang];
@@ -1708,6 +1728,19 @@ class Component extends DCLogic {
       catBg = bgOf({ funds: P.assetCatFunds, amc: P.assetCatAmc, eti: P.assetCatEti, deals: P.assetCatVc }[view]);
       catVid = "assets/cat-" + view + "-loop.mp4";
       aboutWords = (cat.description || "").split(/\s+/).filter(Boolean).map((w) => ({ w }));
+      if (view === "eti") {
+        const GP = "assets/guides/framont-eti-interactive-brokers-";
+        showGuide = true;
+        guide = {
+          kicker: t.guide.kicker, title: t.guide.title, sub: t.guide.sub, versions: t.guide.versions,
+          links: [
+            { code: "IT", url: GP + "it.pdf" },
+            { code: "EN", url: GP + "en.pdf" },
+            { code: "FR", url: GP + "fr.pdf" },
+            { code: "DE", url: GP + "de.pdf" }
+          ]
+        };
+      }
     }
 
     const universeCards = ["funds", "amc", "eti", "deals"].map((k) => ({
@@ -1764,7 +1797,7 @@ class Component extends DCLogic {
       onCta: () => { if (isAnon) this.openModal("register"); else this.navTo("funds"); },
       ctaLabel: isAnon ? t.cta.button : t.hero.learnMore,
       cat, catBg, catVid, aboutWords, products, benefits, features, faqs,
-      catEmpty, catHasProducts,
+      catEmpty, catHasProducts, showGuide, guide,
       fCls: s.fCls, fCur: s.fCur, fSize: s.fSize,
       onFCls: (e) => this.setState({ fCls: e.target.value }),
       onFCur: (e) => this.setState({ fCur: e.target.value }),
