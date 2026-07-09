@@ -147,6 +147,28 @@ table.compare tr:nth-child(even) td { background: var(--wash); }
   .hub-card .h-body { padding: 4px 22px 22px; }
 }
 
+/* ---- Scroll-reveal motion ----
+   Progressive enhancement: the hiding rules only apply when insights.js has added
+   `html.motion` (which it does synchronously in <head>, and only when motion is
+   allowed and IntersectionObserver exists). Without JS / with reduced motion the
+   class is never set, so all content renders normally and stays crawlable. */
+html.motion .hero-in,
+html.motion .article > *,
+html.motion .products-in > .p-label,
+html.motion .products-in > h2,
+html.motion .p-grid > .p-card,
+html.motion .nextread > *,
+html.motion .hub-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+html.motion .mo-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hub-card, .products .p-card { transition: none; }

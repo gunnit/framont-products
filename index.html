@@ -1726,7 +1726,9 @@ class Component extends DCLogic {
         { label: "FAQ", onClick: () => this.scrollToSec("sec-faq") }
       ];
       catBg = bgOf({ funds: P.assetCatFunds, amc: P.assetCatAmc, eti: P.assetCatEti, deals: P.assetCatVc }[view]);
-      catVid = "assets/cat-" + view + "-loop.mp4";
+      // Video files keep the original "vc" slug (the category was renamed vc → deals but the
+      // asset was not), so map the view to its media slug — mirrors the catBg map above.
+      catVid = "assets/cat-" + ({ funds: "funds", amc: "amc", eti: "eti", deals: "vc" }[view] || view) + "-loop.mp4";
       aboutWords = (cat.description || "").split(/\s+/).filter(Boolean).map((w) => ({ w }));
       if (view === "eti") {
         const GP = "assets/guides/framont-eti-interactive-brokers-";
