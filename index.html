@@ -311,7 +311,7 @@
                     <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
                       <span style="display:inline-flex; align-items:center; gap:5px;">
                         <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
-                        <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                        <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ p.lockLabel }}</span>
                       </span>
                     </sc-if>
                   </div>
@@ -323,7 +323,7 @@
                     <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
                       <span style="display:inline-flex; align-items:center; gap:5px;">
                         <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
-                        <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                        <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ p.lockLabel }}</span>
                       </span>
                     </sc-if>
                   </div>
@@ -472,7 +472,7 @@
                       <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
                         <span style="display:inline-flex; align-items:center; gap:5px;">
                           <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
-                          <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                          <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ p.lockLabel }}</span>
                         </span>
                       </sc-if>
                     </div>
@@ -484,7 +484,7 @@
                       <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ true }}">
                         <span style="display:inline-flex; align-items:center; gap:5px;">
                           <svg viewBox="0 0 24 24" style="width:11px; height:11px; stroke:#FF8200; stroke-width:2.4px; fill:none;"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>
-                          <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ t.gate.members }}</span>
+                          <span style="font-size:9.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D575E;">{{ p.lockLabel }}</span>
                         </span>
                       </sc-if>
                     </div>
@@ -767,11 +767,6 @@
     <div data-screen-label="Modal — Request access" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
       <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:500px; max-height:92vh; overflow-y:auto; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
         <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
-        <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
-          <div style="height:2px; flex:1; background:#E9E7E2; position:relative;"><div style="position:absolute; left:0; top:0; bottom:0; width: {{ regProgressW }}; background:#FF8200; transition:width .35s ease;"></div></div>
-          <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; white-space:nowrap;">{{ regStepLabel }}</div>
-        </div>
-        <sc-if value="{{ regStep1 }}" hint-placeholder-val="{{ true }}">
           <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.auth.register }}</h3>
           <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 26px;">{{ t.reg.intro }}</p>
           <div style="margin-bottom:18px;">
@@ -820,23 +815,6 @@
           </div>
           <button onclick="{{ onRegSubmit }}" style="width:100%; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.submit }}</button>
           <div style="text-align:center; font-size:12.5px; color:#4D575E; margin-top:14px;">{{ t.reg.noFees }}</div>
-        </sc-if>
-        <sc-if value="{{ regStep2 }}" hint-placeholder-val="{{ false }}">
-          <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.auth.verifyEmail }}</h3>
-          <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0;">{{ t.auth.verifyEmailSub }} <strong style="color:#002E5F;">{{ emailSentTo }}</strong></p>
-          <div style="display:flex; gap:10px; justify-content:center; margin:30px 0 8px;">
-            <sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6">
-              <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" aria-label="{{ b.aria }}" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
-            </sc-for>
-          </div>
-          <sc-if value="{{ otpError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#B3261E; text-align:center; margin-top:6px;">{{ t.reg.badCode }}</div></sc-if>
-          <button onclick="{{ onVerifyEmail }}" style="width:100%; margin-top:22px; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.verify }}</button>
-          <button onclick="{{ onResend }}" disabled="{{ resendDisabled }}" style="width:100%; margin-top:10px; background:transparent; border:1px solid #E9E7E2; color:#4D575E; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#002E5F; color:#002E5F;">{{ resendLabel }}</button>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
-            <a onclick="{{ onBackToForm }}" style="font-size:12.5px; color:#4D575E; cursor:pointer; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.reg.back }}</a>
-            <span style="font-size:11.5px; color:#5F6A72;">{{ t.reg.demo }}</span>
-          </div>
-        </sc-if>
       </div>
     </div>
   </sc-if>
@@ -854,7 +832,30 @@
           <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ loginError }}</div></sc-if>
         </div>
         <button onclick="{{ onLoginSubmit }}" style="width:100%; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.auth.login }}</button>
-        <div style="text-align:center; font-size:11.5px; color:#5F6A72; margin-top:14px; line-height:1.5;">{{ t.loginM.demo }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ MODAL: DEALS ACCESS CODE ============ -->
+  <sc-if value="{{ mDealsCode }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Deals access code" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:480px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
+        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
+        <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.dealsGate.title }}</h3>
+        <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 26px;">{{ t.dealsGate.intro }}</p>
+        <div style="margin-bottom:22px;">
+          <label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:8px;">{{ t.dealsGate.codeLabel }}</label>
+          <input value="{{ dealsCodeInput }}" onchange="{{ onDealsCodeInput }}" onkeydown="{{ onDealsCodeKey }}" placeholder="{{ t.dealsGate.placeholder }}" autocapitalize="characters" autocomplete="off" spellcheck="false" style="width:100%; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:12px 14px; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+          <sc-if value="{{ dealsCodeError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px; color:#B3261E; margin-top:6px;">{{ t.dealsGate.badCode }}</div></sc-if>
+        </div>
+        <button onclick="{{ onDealsUnlock }}" style="width:100%; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ t.dealsGate.unlock }}</button>
+        <div style="display:flex; align-items:center; gap:14px; margin:24px 0 18px;">
+          <div style="height:1px; flex:1; background:#E9E7E2;"></div>
+          <span style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#5F6A72; white-space:nowrap;">{{ t.dealsGate.noCode }}</span>
+          <div style="height:1px; flex:1; background:#E9E7E2;"></div>
+        </div>
+        <button onclick="{{ onDealsRequest }}" style="width:100%; background:transparent; border:1px solid #002E5F; color:#002E5F; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.dealsGate.request }}</button>
+        <div style="text-align:center; font-size:12px; color:#5F6A72; line-height:1.6; margin-top:14px;">{{ t.dealsGate.requestHint }}</div>
       </div>
     </div>
   </sc-if>
@@ -909,27 +910,6 @@
           </sc-if>
           <button onclick="{{ onStartSub }}" disabled="{{ subscribing }}" style="flex:1; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:14px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ subBtnLabel }}</button>
         </div>
-      </div>
-    </div>
-  </sc-if>
-
-  <!-- ============ MODAL: PHONE VERIFY ============ -->
-  <sc-if value="{{ mPhone }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Modal — Phone verification" onclick="{{ onCloseModal }}" style="position:fixed; inset:0; background:rgba(0,31,66,0.55); backdrop-filter:blur(5px); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px;">
-      <div onclick="{{ stopProp }}" role="dialog" aria-modal="true" style="background:#FFFFFF; width:100%; max-width:480px; padding:44px; position:relative; border-top:3px solid #FF8200; box-shadow:0 30px 80px rgba(0,31,66,0.35); animation:modalIn .28s cubic-bezier(.22,.61,.36,1);">
-        <button onclick="{{ onCloseModal }}" aria-label="Close" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#4D575E; font-size:22px; cursor:pointer; line-height:1; padding:8px; transition:color .2s ease;" style-hover="color:#002E5F;">×</button>
-        <h3 style="font-family:'Playfair Display',serif; font-size:27px; font-weight:500; color:#002E5F; margin:0 0 10px;">{{ t.phoneV.title }}</h3>
-        <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0 0 8px;">{{ t.phoneV.sub }}</p>
-        <p style="font-size:14px; color:#4D575E; line-height:1.65; margin:0;">{{ t.auth.verifyPhoneSub }} <strong style="color:#002E5F;">{{ phoneSentTo }}</strong></p>
-        <div style="display:flex; gap:10px; justify-content:center; margin:30px 0 8px;">
-          <sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6">
-            <input ref="{{ b.r }}" value="{{ b.v }}" onchange="{{ b.onChange }}" onkeydown="{{ b.onKey }}" maxlength="6" inputmode="numeric" aria-label="{{ b.aria }}" style="width:50px; height:62px; text-align:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:#002E5F; background:#FFFFFF; border:1px solid #E9E7E2; outline:none; border-radius:0; padding:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
-          </sc-for>
-        </div>
-        <sc-if value="{{ otpError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px; color:#B3261E; text-align:center; margin-top:6px;">{{ t.reg.badCode }}</div></sc-if>
-        <button onclick="{{ onVerifyPhone }}" disabled="{{ subscribing }}" style="width:100%; margin-top:22px; background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:15px 30px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:#E97500;">{{ phoneVerifyLabel }}</button>
-        <button onclick="{{ onResend }}" disabled="{{ resendDisabled }}" style="width:100%; margin-top:10px; background:transparent; border:1px solid #E9E7E2; color:#4D575E; padding:13px 30px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#002E5F; color:#002E5F;">{{ resendLabel }}</button>
-        <div style="text-align:center; font-size:11.5px; color:#5F6A72; margin-top:14px;">{{ t.reg.demo }}</div>
       </div>
     </div>
   </sc-if>
@@ -990,6 +970,17 @@
 class Component extends DCLogic {
   INVESTGLASS_API_URL = "https://YOUR_INVESTGLASS_INSTANCE.investglass.com/api";
 
+  // ---- Lead delivery (Web3Forms) — public access key, safe in client code ----
+  WEB3FORMS_KEY = "696099b6-87e7-4b98-95a8-960202419a36";
+  WEB3FORMS_URL = "https://api.web3forms.com/submit";
+
+  // ---- Deals gate — one shared access code, sent by email to vetted investors.
+  //      Client-side check on a static site: a compliance/lead-capture gate, not security. ----
+  DEALS_CODE = "FRAMONT-DEALS-2026";
+  // ---- Analytics — both empty = events buffer to window.dataLayer only.
+  //      Set ga4 to a "G-XXXX" id, or plausibleDomain, to auto-load that provider. ----
+  ANALYTICS = { ga4: "", plausibleDomain: "" };
+
   FEATURED = [{ id: "eti-heraklit", ck: "eti" }, { id: "eti-techmegatrend", ck: "eti" }, { id: "eti-lcinvest", ck: "eti" }];
 
   T = {
@@ -1001,24 +992,24 @@ class Component extends DCLogic {
       guide: { kicker: "Operational guide", title: "How to buy an ETI on Interactive Brokers", sub: "Step by step: open an Interactive Brokers account, enable the required trading permissions and place a buy order by ISIN.", versions: "Versions" },
       trust: ["MFSA-authorised AIFM", "Exchange-Listed Products", "Issued by iMaps ETI AG", "Access from €1,000"],
       universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", deals: "Real estate and private credit opportunities for professionals" } },
-      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Verify your email", sub: "Instant — confirms your contact details." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
+      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Explore the full shelf", sub: "Product details unlock instantly across funds, AMC and ETI." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
       featured: { label: "Featured Products", title: "A selection from the current shelf" },
       insights: { navLabel: "Insights", label: "Insights", title: "Understand the instruments before you invest", hub: "All articles", readMore: "Read the guide", cards: [
         { tag: "Exchange Traded Instruments", title: "What is an ETI?", sub: "How ETIs are issued and collateralised, how they differ from ETFs and funds, and how to buy one from €1,000.", time: "7 min", href: "articles/what-is-an-eti.html", img: "assets/cat-eti.jpg" },
         { tag: "Actively Managed Certificates", title: "AMCs, explained", sub: "Where the AMC wrapper beats a fund, where it doesn't, and how issuer risk is contained.", time: "6 min", href: "articles/amc-actively-managed-certificates.html", img: "assets/cat-amc.jpg" },
         { tag: "Due Diligence", title: "Evaluating a systematic strategy", sub: "What backtests can and cannot tell you, fee mechanics, and a seven-question checklist.", time: "8 min", href: "articles/how-to-evaluate-systematic-strategies.html", img: "assets/cat-funds.jpg" }
       ] },
-      gate: { members: "Members", toastUnlock: "Thank you — your request has been received. Our team will contact you shortly.", toastWelcome: "Signed in — welcome back.", toastDocs: "Full documentation (KID, prospectus) is available on the official product page." },
+      gate: { members: "Members", toastUnlock: "Thank you — your request has been received and full product details are now unlocked.", toastWelcome: "Signed in — welcome back.", toastDocs: "Full documentation (KID, prospectus) is available on the official product page." },
+      dealsGate: { title: "Deals — Access Code", intro: "Deals are reserved for professional and institutional investors and are protected by an access code. Enter the code you received by email from our team.", codeLabel: "Access code", placeholder: "Enter your access code", unlock: "Unlock Deals", badCode: "Invalid access code. Please check the email you received from our team, or request access below.", noCode: "Don't have a code yet?", request: "Request Access Code", requestHint: "Leave your details and our team will email you the access code after verifying your eligibility.", toastUnlocked: "Deals unlocked — welcome.", toastRequested: "Request received — our team will email you the access code after verifying your eligibility.", codeRequired: "Code required", unlockHint: "Enter your access code to view" },
       cta: { eyebrow: "Membership", title: "Ready to access institutional-grade products?", sub: "Registration is free and takes two minutes.", button: "Request Access" },
       footer: { tag: "Curated access to institutional-grade investment products for qualified investors across Europe.", platform: "Platform", legalCol: "Legal", company: "Company", contactCol: "Contact", contact: "Contact", cookies: "Cookie Policy", address: "Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta", email: "gianluigi.montagner@framontmanagement.com", backToTop: "Back to top", copyright: "© 2026 Framont Group. All rights reserved.", mfsa: "Licensed by the MFSA", legal: "Framont & Partners Management Ltd. — Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta — VAT No. MT22666318. The Company is licensed by the Malta Financial Services Authority under the Investment Services Act, 1994 (Chapter 370 of the Laws of Malta) and qualifies as a UCITS Management Company under the UCITS Directive and as an Alternative Investment Fund Manager under the AIFMD; a copy of the licence is available on the MFSA website (www.mfsa.mt) and upon request. The content of this platform is provided for information purposes only and does not constitute investment advice, a solicitation or an offer to the public. Access to certain products is restricted to investors who meet the applicable eligibility criteria. Investments involve risk, including the possible loss of the capital invested. Past performance is not a reliable indicator of future results. Exchange Traded Instruments (ETIs) and actively managed certificates are debt securities of the respective issuer and carry issuer risk. Before any investment decision, read the Key Information Document (KID) and the relevant prospectus or final terms, available on the product pages. Backtested and simulated performance figures are hypothetical, do not represent actual trading and are not a reliable indicator of future results. Where reference is made to results achieved by a strategy developer on personal accounts, such results relate to accounts independent of the instrument and are not indicative of the instrument's performance. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Capital at risk." },
-      auth: { register: "Request Access", login: "Sign In", name: "Full Name", email: "Email Address", phone: "Phone Number", category: "Investor Category", retail: "Retail Investor", professional: "Professional Investor", institutional: "Institutional Investor", gdpr: "I consent to the processing of my personal data in accordance with the", privacy: "Privacy Policy", submit: "Request Access", verifyEmail: "Verify your email", verifyEmailSub: "Enter the 6-digit code sent to", verifyPhoneSub: "Enter the 6-digit code sent to", verify: "Verify", resend: "Resend code" },
+      auth: { register: "Request Access", login: "Sign In", name: "Full Name", email: "Email Address", phone: "Phone Number", category: "Investor Category", retail: "Retail Investor", professional: "Professional Investor", institutional: "Institutional Investor", gdpr: "I consent to the processing of my personal data in accordance with the", privacy: "Privacy Policy", submit: "Request Access" },
       err: { name: "Name is required", email: "Valid email required", phone: "Valid phone number required", gdpr: "Please accept the privacy policy" },
-      reg: { step1: "Step 1 of 2", step2: "Step 2 of 2", intro: "Leave your details and our team will contact you about the products you are interested in.", noFees: "No fees. Takes 2 minutes.", demo: "Demo — use code 123456", badCode: "Invalid code. In this demo, use 123456.", back: "← Back to the form" },
-      loginM: { intro: "Enter your registered email to sign in.", demo: "Demo: any email works — admin@framont.com opens the admin panel." },
-      phoneV: { title: "Verify your identity", sub: "Regulation requires phone verification before subscription requests can be submitted. This is a one-time step.", processing: "Processing…" },
+      reg: { intro: "Leave your details and our team will contact you about the products you are interested in.", noFees: "No fees. Takes 2 minutes." },
+      loginM: { intro: "Enter your registered email to sign in.", notFound: "We couldn't find this email. Please request access first." },
       next: { title: "What happens next", steps: ["Our team contacts you within one business day.", "Suitability assessment and documents via InvestGlass secure onboarding.", "Execution and confirmation of your subscription."], back: "Back to Products" },
       products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products", filterClass: "Filter by asset class", filterCurrency: "Filter by currency", filterSize: "Filter by minimum investment" },
-      modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
+      modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", processing: "Processing…", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
       cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products", comingSoonTitle: "Products Coming Soon", comingSoonSub: "We are finalising the onboarding of products in this category. Leave your details and our team will notify you as soon as they are available.", comingSoonCta: "Request Information" },
       admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
     },
@@ -1030,24 +1021,24 @@ class Component extends DCLogic {
       guide: { kicker: "Guida operativa", title: "Come acquistare un ETI su Interactive Brokers", sub: "Passo dopo passo: apri un conto Interactive Brokers, abilita i permessi di negoziazione necessari e inserisci un ordine di acquisto per ISIN.", versions: "Versioni" },
       trust: ["AIFM autorizzato MFSA", "Prodotti Quotati in Borsa", "Emessi da iMaps ETI AG", "Accesso da €1.000"],
       universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", deals: "Opportunità immobiliari e di private credit per professionisti" } },
-      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Verifica l'email", sub: "Immediato — conferma i tuoi recapiti." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
+      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Esplora l'intera offerta", sub: "I dettagli dei prodotti si sbloccano subito su fondi, AMC ed ETI." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
       featured: { label: "Prodotti in Evidenza", title: "Una selezione dall'offerta attuale" },
       insights: { navLabel: "Insights", label: "Insights", title: "Capire gli strumenti prima di investire", hub: "Tutti gli articoli", readMore: "Leggi la guida", cards: [
         { tag: "Exchange Traded Instruments", title: "Cos'è un ETI?", sub: "Come vengono emessi e collateralizzati gli ETI, in cosa differiscono da ETF e fondi, e come acquistarli da €1.000.", time: "7 min", href: "articles/it/cos-e-un-eti.html", img: "assets/cat-eti.jpg" },
         { tag: "Actively Managed Certificates", title: "Gli AMC, spiegati", sub: "Dove l'involucro AMC batte un fondo, dove no, e come si contiene il rischio emittente.", time: "6 min", href: "articles/it/amc-certificati-gestione-attiva.html", img: "assets/cat-amc.jpg" },
         { tag: "Due Diligence", title: "Valutare una strategia sistematica", sub: "Cosa possono dire (e non dire) i backtest, la meccanica delle commissioni e una checklist in sette domande.", time: "8 min", href: "articles/it/valutare-strategie-sistematiche.html", img: "assets/cat-funds.jpg" }
       ] },
-      gate: { members: "Iscritti", toastUnlock: "Grazie — richiesta ricevuta. Il nostro team ti contatterà a breve.", toastWelcome: "Accesso effettuato — bentornato.", toastDocs: "La documentazione completa (KID, prospetto) è disponibile sulla pagina ufficiale del prodotto." },
+      gate: { members: "Iscritti", toastUnlock: "Grazie — richiesta ricevuta. I dettagli completi dei prodotti sono ora sbloccati.", toastWelcome: "Accesso effettuato — bentornato.", toastDocs: "La documentazione completa (KID, prospetto) è disponibile sulla pagina ufficiale del prodotto." },
+      dealsGate: { title: "Deals — Codice di Accesso", intro: "I Deals sono riservati a investitori professionali e istituzionali e sono protetti da un codice di accesso. Inserisci il codice ricevuto via email dal nostro team.", codeLabel: "Codice di accesso", placeholder: "Inserisci il codice di accesso", unlock: "Sblocca i Deals", badCode: "Codice non valido. Controlla l'email ricevuta dal nostro team, oppure richiedi l'accesso qui sotto.", noCode: "Non hai ancora un codice?", request: "Richiedi il Codice di Accesso", requestHint: "Lascia i tuoi dati e il nostro team ti invierà il codice via email dopo la verifica di idoneità.", toastUnlocked: "Deals sbloccati — benvenuto.", toastRequested: "Richiesta ricevuta — il nostro team ti invierà il codice via email dopo la verifica di idoneità.", codeRequired: "Codice richiesto", unlockHint: "Inserisci il codice di accesso per visualizzare" },
       cta: { eyebrow: "Adesione", title: "Pronto ad accedere a prodotti di livello istituzionale?", sub: "La registrazione è gratuita e richiede due minuti.", button: "Richiedi Accesso" },
       footer: { tag: "Accesso curato a prodotti d'investimento di livello istituzionale per investitori qualificati in Europa.", platform: "Piattaforma", legalCol: "Legale", company: "Azienda", contactCol: "Contatti", contact: "Contatti", cookies: "Cookie Policy", address: "Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta", email: "gianluigi.montagner@framontmanagement.com", backToTop: "Torna su", copyright: "© 2026 Framont Group. Tutti i diritti riservati.", mfsa: "Autorizzata dalla MFSA", legal: "Framont & Partners Management Ltd. — Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta — P. IVA MT22666318. La Società è licenziata dalla Malta Financial Services Authority ai sensi dell'Investment Services Act, 1994 (Chapter 370 delle Leggi di Malta) e si qualifica come UCITS Management Company ai sensi della Direttiva UCITS e come Alternative Investment Fund Manager ai sensi della AIFMD; copia della licenza è disponibile sul sito della MFSA (www.mfsa.mt) e su richiesta. I contenuti di questa piattaforma sono forniti a solo scopo informativo e non costituiscono consulenza d'investimento, sollecitazione o offerta al pubblico. L'accesso ad alcuni prodotti è riservato agli investitori che soddisfano i criteri di idoneità applicabili. Gli investimenti comportano rischi, inclusa la possibile perdita del capitale investito. I rendimenti passati non sono un indicatore affidabile dei risultati futuri. Gli Exchange Traded Instruments (ETI) e i certificati a gestione attiva sono titoli di debito del rispettivo emittente e comportano rischio emittente. Prima di ogni decisione d'investimento, leggere il Documento contenente le Informazioni Chiave (KID) e il relativo prospetto o le condizioni definitive, disponibili sulle pagine dei prodotti. I dati di performance da backtest o simulati sono ipotetici, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Ove si faccia riferimento a risultati ottenuti da uno sviluppatore della strategia su conti personali, tali risultati riguardano conti indipendenti dallo strumento e non sono indicativi della performance dello strumento. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Capitale a rischio." },
-      auth: { register: "Richiedi Accesso", login: "Accedi", name: "Nome Completo", email: "Indirizzo Email", phone: "Numero di Telefono", category: "Categoria Investitore", retail: "Investitore Retail", professional: "Investitore Professionale", institutional: "Investitore Istituzionale", gdpr: "Acconsento al trattamento dei miei dati personali ai sensi della", privacy: "Privacy Policy", submit: "Richiedi Accesso", verifyEmail: "Verifica la tua email", verifyEmailSub: "Inserisci il codice a 6 cifre inviato a", verifyPhoneSub: "Inserisci il codice a 6 cifre inviato a", verify: "Verifica", resend: "Rinvia codice" },
+      auth: { register: "Richiedi Accesso", login: "Accedi", name: "Nome Completo", email: "Indirizzo Email", phone: "Numero di Telefono", category: "Categoria Investitore", retail: "Investitore Retail", professional: "Investitore Professionale", institutional: "Investitore Istituzionale", gdpr: "Acconsento al trattamento dei miei dati personali ai sensi della", privacy: "Privacy Policy", submit: "Richiedi Accesso" },
       err: { name: "Il nome è obbligatorio", email: "Email valida richiesta", phone: "Numero di telefono valido richiesto", gdpr: "Accetta la privacy policy" },
-      reg: { step1: "Passo 1 di 2", step2: "Passo 2 di 2", intro: "Lascia i tuoi dati e il nostro team ti contatterà sui prodotti di tuo interesse.", noFees: "Nessun costo. Richiede 2 minuti.", demo: "Demo — usa il codice 123456", badCode: "Codice non valido. In questa demo usa 123456.", back: "← Torna al modulo" },
-      loginM: { intro: "Inserisci la tua email registrata per accedere.", demo: "Demo: qualsiasi email funziona — admin@framont.com apre il pannello admin." },
-      phoneV: { title: "Verifica la tua identità", sub: "La normativa richiede la verifica del numero di telefono prima dell'invio di richieste di sottoscrizione. È un passaggio da completare una sola volta.", processing: "Elaborazione…" },
+      reg: { intro: "Lascia i tuoi dati e il nostro team ti contatterà sui prodotti di tuo interesse.", noFees: "Nessun costo. Richiede 2 minuti." },
+      loginM: { intro: "Inserisci la tua email registrata per accedere.", notFound: "Email non trovata. Richiedi prima l'accesso." },
       next: { title: "Cosa succede ora", steps: ["Il nostro team ti contatta entro un giorno lavorativo.", "Valutazione di adeguatezza e documenti tramite l'onboarding sicuro InvestGlass.", "Esecuzione e conferma della tua sottoscrizione."], back: "Torna ai Prodotti" },
       products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti", filterClass: "Filtra per classe di attivo", filterCurrency: "Filtra per valuta", filterSize: "Filtra per investimento minimo" },
-      modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
+      modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", processing: "Elaborazione…", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
       cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili", comingSoonTitle: "Prodotti in Arrivo", comingSoonSub: "Stiamo finalizzando l'inserimento dei prodotti di questa categoria. Lascia i tuoi dati e il nostro team ti avviserà non appena saranno disponibili.", comingSoonCta: "Richiedi Informazioni" },
       admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
     }
@@ -1261,19 +1252,17 @@ class Component extends DCLogic {
     }
   };
 
-  otpRefs = Array.from({ length: 6 }, () => React.createRef());
-
   state = {
     lang: "en",
     view: "home",
     user: null,
     modal: null,
-    regStep: 1,
+    regContext: null,
     form: { name: "", email: "", prefix: "+39", phone: "", category: "retail", gdpr: false },
     errors: {},
-    otp: ["", "", "", "", "", ""],
-    otpError: false,
-    resendIn: 0,
+    dealsUnlocked: false,
+    dealsCodeInput: "",
+    dealsCodeError: false,
     loginEmail: "",
     loginError: "",
     active: null,
@@ -1299,9 +1288,18 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    // Restore session from previous visits: registered user + Deals unlock survive reloads.
+    try {
+      const patch = {};
+      const raw = window.localStorage.getItem("framont_user");
+      if (raw) patch.user = JSON.parse(raw);
+      if (window.localStorage.getItem("framont_deals_unlocked") === "1") patch.dealsUnlocked = true;
+      if (Object.keys(patch).length) this.setState(patch);
+    } catch (e) {}
     this.applyProps();
     this.initRoute();
     this.syncMeta();
+    this.initAnalytics();
     this._lastView = this.state.view;
     this._lastLang = this.state.lang;
     this._onHash = () => {
@@ -1335,10 +1333,103 @@ class Component extends DCLogic {
     if (prevProps && this.props && (prevProps.startState !== this.props.startState || prevProps.language !== this.props.language)) this.applyProps();
     // The DC host calls this without prevState, so view/lang changes are tracked on the instance.
     if (this._lastView !== undefined && this._lastView !== this.state.view) window.scrollTo({ top: 0 });
-    if (this._lastView !== this.state.view || this._lastLang !== this.state.lang) { this.syncMeta(); this.writeHash(); }
+    if (this._lastView !== this.state.view || this._lastLang !== this.state.lang) {
+      this.syncMeta(); this.writeHash();
+      if (this._lastLang !== this.state.lang) this.trackEvent("language_switch", { language: this.state.lang });
+      this.trackEvent("page_view", { view: this.state.view, language: this.state.lang });
+    }
     this._lastView = this.state.view;
     this._lastLang = this.state.lang;
     this.scanReveal();
+  }
+
+  // ============================================================
+  //  Analytics + lead capture (Web3Forms + provider-agnostic events)
+  // ============================================================
+
+  initAnalytics() {
+    // First-touch attribution: capture UTMs / click ids / referrer once per session.
+    const KEY = "framont_attribution";
+    let attr = null;
+    try { attr = JSON.parse(window.sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!attr) {
+      const q = new URLSearchParams(window.location.search);
+      const g = (k) => q.get(k) || "";
+      attr = {
+        utm_source: g("utm_source"), utm_medium: g("utm_medium"), utm_campaign: g("utm_campaign"),
+        utm_term: g("utm_term"), utm_content: g("utm_content"), gclid: g("gclid"), fbclid: g("fbclid"),
+        landing_page: window.location.pathname + window.location.search,
+        referrer: document.referrer || "direct",
+        first_seen: new Date().toISOString()
+      };
+      try { window.sessionStorage.setItem(KEY, JSON.stringify(attr)); } catch (e) {}
+    }
+    this._attribution = attr;
+
+    // Always keep a GA/GTM-compatible event buffer available.
+    window.dataLayer = window.dataLayer || [];
+
+    // Turnkey loaders — activate only when an id/domain is configured above.
+    if (this.ANALYTICS.ga4 && !window.gtag) {
+      const s = document.createElement("script"); s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + this.ANALYTICS.ga4;
+      document.head.appendChild(s);
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", this.ANALYTICS.ga4, { anonymize_ip: true });
+    }
+    if (this.ANALYTICS.plausibleDomain && !window.plausible) {
+      const s = document.createElement("script"); s.defer = true;
+      s.setAttribute("data-domain", this.ANALYTICS.plausibleDomain);
+      s.src = "https://plausible.io/js/script.js";
+      document.head.appendChild(s);
+      window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
+    }
+
+    this.trackEvent("page_view", { view: this.state.view, language: this.state.lang });
+  }
+
+  // Fan out one event to every analytics sink that happens to be present. No-ops safely.
+  trackEvent(name, params) {
+    const p = params || {};
+    try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, this._attribution || {}, p)); } catch (e) {}
+    try { if (typeof window.gtag === "function") window.gtag("event", name, p); } catch (e) {}
+    try { if (typeof window.plausible === "function") window.plausible(name, { props: p }); } catch (e) {}
+    try { window.dispatchEvent(new CustomEvent("framont:" + name, { detail: p })); } catch (e) {}
+  }
+
+  // Deliver a lead to Web3Forms (email) with full attribution. Fire-and-forget — never blocks the UI.
+  submitLead(kind, extra) {
+    const f = this.state.form, u = this.state.user, a = this._attribution || {};
+    const src = u || { name: f.name, email: (f.email || "").trim(), phone: (f.prefix || "") + " " + f.phone, category: f.category };
+    const subjects = {
+      access_request: "New Access Request — " + (src.name || "Unknown"),
+      deals_access_request: "Deals Access Code Request — " + (src.name || "Unknown"),
+      product_info_request: "Product Info Request — " + ((extra && extra.product) || "")
+    };
+    const body = Object.assign({
+      access_key: this.WEB3FORMS_KEY,
+      subject: subjects[kind] || "New Framont lead",
+      from_name: "Framont Access",
+      botcheck: "",
+      lead_type: kind,
+      name: src.name || "",
+      email: src.email || "",
+      phone: src.phone || "",
+      investor_category: this.catName(src.category),
+      language: this.state.lang,
+      page: window.location.href,
+      utm_source: a.utm_source || "", utm_medium: a.utm_medium || "", utm_campaign: a.utm_campaign || "",
+      utm_term: a.utm_term || "", utm_content: a.utm_content || "", gclid: a.gclid || "", fbclid: a.fbclid || "",
+      referrer: a.referrer || "", landing_page: a.landing_page || ""
+    }, extra || {});
+    try {
+      fetch(this.WEB3FORMS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(body)
+      }).catch(function () {});
+    } catch (e) {}
   }
 
   // ---- Hash routing: #/eti, #/it/eti — shareable category links, working back button ----
@@ -1392,7 +1483,7 @@ class Component extends DCLogic {
     window.removeEventListener("resize", this._onResize);
     window.removeEventListener("keydown", this._onKey);
     window.removeEventListener("hashchange", this._onHash);
-    clearInterval(this._rt); clearTimeout(this._ft); clearTimeout(this._tt); clearTimeout(this._st); clearTimeout(this._rf);
+    clearTimeout(this._ft); clearTimeout(this._tt); clearTimeout(this._st); clearTimeout(this._rf);
     if (this._io) this._io.disconnect();
   }
 
@@ -1405,9 +1496,8 @@ class Component extends DCLogic {
     if (st && st !== this._appliedStart) {
       this._appliedStart = st;
       if (st === "anonymous") patch.user = null;
-      if (st === "member") patch.user = { name: "Mario Rossi", email: "mario@example.com", phone: "+39 333 456 7890", category: "professional", role: "member", phoneVerified: false };
-      if (st === "phone-verified") patch.user = { name: "Mario Rossi", email: "mario@example.com", phone: "+39 333 456 7890", category: "professional", role: "member", phoneVerified: true };
-      if (st === "admin") patch.user = { name: "Framont Admin", email: "admin@framont.com", phone: "+356 99 000 000", category: "institutional", role: "admin", phoneVerified: true };
+      if (st === "member" || st === "phone-verified") patch.user = { name: "Mario Rossi", email: "mario@example.com", phone: "+39 333 456 7890", category: "professional", role: "member" };
+      if (st === "admin") patch.user = { name: "Framont Admin", email: "admin@framont.com", phone: "+356 99 000 000", category: "institutional", role: "admin" };
     }
     if (Object.keys(patch).length) this.setState(patch);
   }
@@ -1448,14 +1538,20 @@ class Component extends DCLogic {
   }
 
   openModal(m) {
-    const patch = { modal: m, otpError: false };
-    if (m === "register") { patch.regStep = 1; patch.otp = ["", "", "", "", "", ""]; patch.errors = {}; }
+    const patch = { modal: m };
+    if (m === "register") { patch.errors = {}; patch.regContext = null; this.trackEvent("form_start", { form: "access_request" }); }
+    if (m === "dealsCode") { patch.dealsCodeInput = ""; patch.dealsCodeError = false; this.trackEvent("form_start", { form: "deals_code" }); }
     this.setState(patch);
   }
 
-  closeModal() { this.setState({ modal: null, otpError: false, subscribing: false }); }
+  closeModal() { this.setState({ modal: null, subscribing: false, regContext: null, dealsCodeError: false }); }
 
-  signOut() { this.setState((s) => ({ user: null, view: s.view === "admin" ? "home" : s.view, mobileOpen: false })); }
+  signOut() {
+    try { window.localStorage.removeItem("framont_user"); } catch (e) {}
+    this.setState((s) => ({ user: null, view: s.view === "admin" ? "home" : s.view, mobileOpen: false }));
+  }
+
+  persistUser(u) { try { window.localStorage.setItem("framont_user", JSON.stringify(u)); } catch (e) {} }
 
   setForm(k, v) { this.setState((s) => ({ form: { ...s.form, [k]: v }, errors: { ...s.errors, [k]: undefined } })); }
 
@@ -1468,50 +1564,21 @@ class Component extends DCLogic {
     if (!/^\d{6,15}$/.test(f.phone.replace(/\s/g, ""))) e.phone = t.err.phone;
     if (!f.gdpr) e.gdpr = t.err.gdpr;
     if (Object.keys(e).length) { this.setState({ errors: e }); return; }
-    this.setState({ regStep: 2, otp: ["", "", "", "", "", ""], otpError: false }, () => {
-      const r = this.otpRefs[0];
-      if (r && r.current) r.current.focus();
-    });
-    this.startResend();
-  }
-
-  startResend() {
-    clearInterval(this._rt);
-    this.setState({ resendIn: 30 });
-    this._rt = setInterval(() => {
-      this.setState((s) => {
-        const n = s.resendIn - 1;
-        if (n <= 0) clearInterval(this._rt);
-        return { resendIn: Math.max(0, n) };
-      });
-    }, 1000);
-  }
-
-  otpChange(i, e) {
-    const raw = (e.target.value || "").replace(/\D/g, "");
-    this.setState((s) => {
-      const otp = [...s.otp];
-      if (raw.length <= 1) otp[i] = raw;
-      else for (let k = 0; k < raw.length && i + k < 6; k++) otp[i + k] = raw[k];
-      return { otp, otpError: false };
-    }, () => {
-      if (raw) {
-        const next = Math.min(5, i + Math.max(1, raw.length));
-        const ref = this.otpRefs[next];
-        if (ref && ref.current) ref.current.focus();
-      }
-    });
-  }
-
-  otpKey(i, e) {
-    if (e.key === "Backspace" && !this.state.otp[i] && i > 0) {
-      const ref = this.otpRefs[i - 1];
-      if (ref && ref.current) ref.current.focus();
-    }
-    if (e.key === "Enter") {
-      if (this.state.modal === "register") this.verifyEmail();
-      if (this.state.modal === "phone") this.verifyPhone();
-    }
+    // One submission = one lead. When the form was opened from the Deals gate, flag it so the
+    // team knows to reply with the access code; otherwise it is a plain access request.
+    const forDeals = this.state.regContext === "deals";
+    const kind = forDeals ? "deals_access_request" : "access_request";
+    this.submitLead(kind);
+    this.trackEvent(kind, { investor_category: this.catName(f.category), language: this.state.lang });
+    const isAdmin = f.email.trim().toLowerCase() === "admin@framont.com";
+    const user = { name: f.name.trim(), email: f.email.trim(), phone: f.prefix + " " + f.phone, category: f.category, role: isAdmin ? "admin" : "member" };
+    this.persistUser(user);
+    this.setState((s) => ({
+      user, modal: null, regContext: null,
+      subscribers: [...s.subscribers, { id: Date.now(), name: user.name, email: user.email, phone: user.phone, category: this.catName(f.category), joined: new Date().toISOString() }]
+    }));
+    this.flashUnlock();
+    this.showToast(forDeals ? t.dealsGate.toastRequested : t.gate.toastUnlock);
   }
 
   flashUnlock() {
@@ -1528,57 +1595,61 @@ class Component extends DCLogic {
 
   catName(c) { return { retail: "Retail", professional: "Professional", institutional: "Institutional" }[c] || c; }
 
-  verifyEmail() {
-    if (this.state.otp.join("") !== "123456") { this.setState({ otpError: true }); return; }
-    const f = this.state.form;
-    const t = this.T[this.state.lang];
-    const isAdmin = f.email.trim().toLowerCase() === "admin@framont.com";
-    const user = { name: f.name, email: f.email.trim(), phone: f.prefix + " " + f.phone, category: f.category, role: isAdmin ? "admin" : "member", phoneVerified: isAdmin };
-    this.setState((s) => ({
-      user, modal: null,
-      subscribers: [...s.subscribers, { id: Date.now(), name: user.name, email: user.email, phone: user.phone, category: this.catName(f.category), joined: new Date().toISOString() }]
-    }));
+  // ---- Deals gate: one fixed access code, delivered by email after a manual eligibility check ----
+  unlockDeals() {
+    const code = (this.state.dealsCodeInput || "").trim().toUpperCase().replace(/\s+/g, "");
+    if (code !== this.DEALS_CODE) { this.setState({ dealsCodeError: true }); return; }
+    try { window.localStorage.setItem("framont_deals_unlocked", "1"); } catch (e) {}
+    this.setState({ dealsUnlocked: true, modal: null, dealsCodeInput: "", dealsCodeError: false });
     this.flashUnlock();
-    this.showToast(t.gate.toastUnlock);
+    this.showToast(this.T[this.state.lang].dealsGate.toastUnlocked);
+    this.trackEvent("deals_unlock", {});
+  }
+
+  requestDealsAccess() {
+    const t = this.T[this.state.lang];
+    if (this.state.user) {
+      // Already registered — their details are on file, so one click sends the code request.
+      this.submitLead("deals_access_request");
+      this.trackEvent("deals_access_request", { investor_category: this.catName(this.state.user.category), language: this.state.lang });
+      this.setState({ modal: null });
+      this.showToast(t.dealsGate.toastRequested);
+    } else {
+      // Anonymous — collect their details first; regSubmit flags the lead as a Deals code request.
+      this.setState({ modal: "register", regContext: "deals", errors: {} });
+      this.trackEvent("form_start", { form: "deals_access_request" });
+    }
   }
 
   login() {
     const email = this.state.loginEmail.trim();
     const t = this.T[this.state.lang];
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { this.setState({ loginError: t.err.email }); return; }
-    let user;
+    let user = null;
     if (email.toLowerCase() === "admin@framont.com") {
-      user = { name: "Framont Admin", email, phone: "+356 99 000 000", category: "institutional", role: "admin", phoneVerified: true };
+      user = { name: "Framont Admin", email, phone: "+356 99 000 000", category: "institutional", role: "admin" };
     } else {
       const found = this.state.subscribers.find((x) => x.email.toLowerCase() === email.toLowerCase());
-      user = found
-        ? { name: found.name, email: found.email, phone: found.phone, category: found.category.toLowerCase(), role: "member", phoneVerified: false }
-        : { name: "Demo User", email, phone: "+39 000 000 0000", category: "professional", role: "member", phoneVerified: false };
+      if (found) user = { name: found.name, email: found.email, phone: found.phone, category: found.category.toLowerCase(), role: "member" };
     }
+    if (!user) { this.setState({ loginError: t.loginM.notFound }); return; }
+    this.persistUser(user);
     this.setState({ user, modal: null, loginEmail: "", loginError: "" });
     this.flashUnlock();
     this.showToast(t.gate.toastWelcome);
+    this.trackEvent("sign_in", { role: user.role });
   }
 
   viewProduct(p, ck) {
-    if (!this.state.user && !p.open) { this.openModal("register"); return; }
+    if (ck === "deals") {
+      if (!this.state.dealsUnlocked) { this.openModal("dealsCode"); return; }
+    } else if (!this.state.user && !p.open) { this.openModal("register"); return; }
     this.setState({ modal: "product", active: { p, ck } });
+    this.trackEvent("view_product", { product: p.name, product_id: p.id, category: ck });
   }
 
   startSub() {
-    const u = this.state.user;
-    if (!u) { this.openModal("register"); return; }
-    if (!u.phoneVerified) {
-      this.setState({ modal: "phone", otp: ["", "", "", "", "", ""], otpError: false });
-      this.startResend();
-      return;
-    }
-    this.doSubscribe();
-  }
-
-  verifyPhone() {
-    if (this.state.otp.join("") !== "123456") { this.setState({ otpError: true }); return; }
-    this.setState((s) => ({ user: { ...s.user, phoneVerified: true } }));
+    if (!this.state.user) { this.openModal("register"); return; }
     this.doSubscribe();
   }
 
@@ -1592,6 +1663,9 @@ class Component extends DCLogic {
       const ref = "FRA-" + Math.random().toString(36).substring(2, 10).toUpperCase();
       const payload = { name: u.name, email: u.email, phone: u.phone, investorCategory: u.category, productId: a.p.id, isin: a.p.isin || a.p.ticker, sessionRef: ref };
       console.log("[InvestGlass API] POST", this.INVESTGLASS_API_URL + "/onboarding/session", payload);
+      const isin = a.p.isin || a.p.ticker || "";
+      this.submitLead("product_info_request", { product: a.p.name, product_id: a.p.id, isin: isin, session_ref: ref });
+      this.trackEvent("product_info_request", { product: a.p.name, product_id: a.p.id, isin: isin });
       const url = a.p.subscribeUrl + "&ref=" + ref + "&email=" + encodeURIComponent(u.email);
       this.setState((s) => ({
         subscribing: false, modal: "confirm", confirmRef: ref,
@@ -1676,7 +1750,10 @@ class Component extends DCLogic {
     const loc = (v) => (v && typeof v === "object" && !Array.isArray(v)) ? (v[s.lang] != null ? v[s.lang] : v.en) : v;
 
     const dec = (p, ck) => {
-      const gated = isAnon && !p.open;
+      // Deals are code-gated for everyone — the access code is the only key, so a vetted
+      // code-holder needs no registration. Other categories unlock with plain registration.
+      const dealsLocked = ck === "deals" && !s.dealsUnlocked;
+      const gated = ck === "deals" ? dealsLocked : (isAnon && !p.open);
       return {
         name: p.name, assetClass: p.assetClass, currency: p.currency,
         code: p.isin || p.ticker || "—",
@@ -1684,12 +1761,13 @@ class Component extends DCLogic {
         metricLabel: loc(p.metricLabel), metricValue: loc(p.metricValue),
         landingUrl: p.landingUrl || "",
         locked: gated,
+        lockLabel: dealsLocked ? t.dealsGate.codeRequired : t.gate.members,
         blur: gated ? "blur(6px)" : "none",
         usel: gated ? "none" : "auto",
         anim: (!gated && s.unlockFlash) ? "unlockPulse 1.6s ease" : "none",
         gateCursor: gated ? "pointer" : "default",
-        gateTitle: gated ? t.teaser.unlock : "",
-        onGate: gated ? (() => this.openModal("register")) : undefined,
+        gateTitle: gated ? (dealsLocked ? t.dealsGate.unlockHint : t.teaser.unlock) : "",
+        onGate: gated ? (() => this.openModal(dealsLocked ? "dealsCode" : "register")) : undefined,
         onView: () => this.viewProduct(p, ck),
         catLabel: t.nav[ck]
       };
@@ -1765,13 +1843,6 @@ class Component extends DCLogic {
       return p ? dec(p, ck) : null;
     }).filter(Boolean);
 
-    const otpBoxes = s.otp.map((v, i) => ({
-      v, r: this.otpRefs[i],
-      aria: (s.lang === "it" ? "Cifra " : "Digit ") + (i + 1) + (s.lang === "it" ? " di 6" : " of 6"),
-      onChange: (e) => this.otpChange(i, e),
-      onKey: (e) => this.otpKey(i, e)
-    }));
-
     const ap = s.active ? s.active.p : null;
     const pm = ap ? {
       name: ap.name, description: loc(ap.description), assetClass: ap.assetClass, currency: ap.currency,
@@ -1837,12 +1908,9 @@ class Component extends DCLogic {
       hasActivity: s.activity.length > 0, noActivity: s.activity.length === 0,
       onExport: () => this.exportCSV(),
       mRegister: s.modal === "register", mLogin: s.modal === "login",
-      mProduct: s.modal === "product", mPhone: s.modal === "phone", mConfirm: s.modal === "confirm",
+      mProduct: s.modal === "product", mDealsCode: s.modal === "dealsCode", mConfirm: s.modal === "confirm",
       onCloseModal: () => this.closeModal(),
       stopProp: (e) => e.stopPropagation(),
-      regStep1: s.regStep === 1, regStep2: s.regStep === 2,
-      regProgressW: s.regStep === 1 ? "50%" : "100%",
-      regStepLabel: s.regStep === 1 ? t.reg.step1 : t.reg.step2,
       fName: s.form.name, fEmail: s.form.email, fPrefix: s.form.prefix, fPhone: s.form.phone, fCategory: s.form.category, fGdpr: s.form.gdpr,
       onName: (e) => this.setForm("name", e.target.value),
       onEmail: (e) => this.setForm("email", e.target.value),
@@ -1853,15 +1921,11 @@ class Component extends DCLogic {
       eName: s.errors.name, eEmail: s.errors.email, ePhone: s.errors.phone, eGdpr: s.errors.gdpr,
       onRegSubmit: () => this.regSubmit(),
       onRegKey: (e) => { if (e.key === "Enter") this.regSubmit(); },
-      onBackToForm: () => this.setState({ regStep: 1, otp: ["", "", "", "", "", ""], otpError: false }),
-      otpBoxes, otpError: s.otpError,
-      onVerifyEmail: () => this.verifyEmail(),
-      onVerifyPhone: () => this.verifyPhone(),
-      resendLabel: s.resendIn > 0 ? t.auth.resend + " (" + s.resendIn + "s)" : t.auth.resend,
-      resendDisabled: s.resendIn > 0,
-      onResend: () => this.startResend(),
-      emailSentTo: s.form.email,
-      phoneSentTo: user ? user.phone : "",
+      dealsCodeInput: s.dealsCodeInput, dealsCodeError: s.dealsCodeError,
+      onDealsCodeInput: (e) => this.setState({ dealsCodeInput: e.target.value, dealsCodeError: false }),
+      onDealsCodeKey: (e) => { if (e.key === "Enter") this.unlockDeals(); },
+      onDealsUnlock: () => this.unlockDeals(),
+      onDealsRequest: () => this.requestDealsAccess(),
       loginEmail: s.loginEmail, loginError: s.loginError,
       onLoginEmail: (e) => this.setState({ loginEmail: e.target.value, loginError: "" }),
       onLoginSubmit: () => this.login(),
@@ -1869,8 +1933,7 @@ class Component extends DCLogic {
       pm, pmHasFacts,
       onDocClick: () => this.showToast(t.gate.toastDocs),
       onStartSub: () => this.startSub(),
-      subBtnLabel: s.subscribing ? t.phoneV.processing : t.modal.subscribe,
-      phoneVerifyLabel: s.subscribing ? t.phoneV.processing : t.auth.verify,
+      subBtnLabel: s.subscribing ? t.modal.processing : t.modal.subscribe,
       subscribing: s.subscribing,
       cRef: s.confirmRef, cMsg, nextSteps,
       onBackToProducts: () => this.closeModal(),
