@@ -1,4 +1,49 @@
+# Framont Access — https://access.framontmanagement.com/
+# All crawlers welcome, including AI / answer-engine bots.
+
 User-agent: *
 Allow: /
 
-Sitemap: https://gunnit.github.io/framont-products/sitemap.xml
+# Search-engine AI crawlers
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Meta
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl (feeds many LLM training sets)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://access.framontmanagement.com/sitemap.xml

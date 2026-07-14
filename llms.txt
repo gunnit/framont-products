@@ -1,0 +1,38 @@
+# Framont Access
+
+> Framont Access is the investment product platform of Framont & Partners Management Ltd — a Malta-based management company licensed by the Malta Financial Services Authority (MFSA) under the Investment Services Act (Cap. 370) and authorised as a UCITS management company and Alternative Investment Fund Manager (AIFM) under the AIFMD. The platform gives eligible investors curated access to institutional-grade investment products: investment funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and selected private market deals.
+
+Key facts:
+
+- Operator: Framont & Partners Management Ltd., Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta (VAT MT22666318)
+- Corporate site: https://www.framontmanagement.com/
+- Platform: https://access.framontmanagement.com/ (English and Italian)
+- Access model: product details unlock with free registration; the Deals section is reserved for vetted investors
+- Nothing on the site is investment advice or a public offer; products are intended for eligible investors and subject to jurisdiction restrictions
+
+## Listed products
+
+- [HERAKLIT Strategy ETI](https://heraklit.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D44, listed on Börse Stuttgart
+- [Tech Megatrend Tactical ETI](https://techmegatrend.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D85
+- [LC Invest — Value Edge ETI](https://lcinvest.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0BZ5
+- Noctiluca Capital AMC: actively managed certificate, ISIN CH1554882477, for professional investors
+
+## Guides (English)
+
+- [What Is an Exchange Traded Instrument (ETI)?](https://access.framontmanagement.com/articles/what-is-an-eti.html): how ETIs are issued and collateralised, how they differ from ETFs, AMCs and funds, and how to buy one
+- [Actively Managed Certificates (AMC), Explained](https://access.framontmanagement.com/articles/amc-actively-managed-certificates.html): structure, costs, risks and use cases of AMCs
+- [How to Evaluate a Systematic Strategy Before You Invest](https://access.framontmanagement.com/articles/how-to-evaluate-systematic-strategies.html): a due-diligence checklist for systematic strategies
+- [Insights hub](https://access.framontmanagement.com/articles/)
+
+## Guide (Italiano)
+
+- [Cos'è un Exchange Traded Instrument (ETI)?](https://access.framontmanagement.com/articles/it/cos-e-un-eti.html)
+- [Actively Managed Certificates (AMC), spiegati](https://access.framontmanagement.com/articles/it/amc-certificati-gestione-attiva.html)
+- [Come valutare una strategia sistematica prima di investire](https://access.framontmanagement.com/articles/it/valutare-strategie-sistematiche.html)
+- [Hub Insights in italiano](https://access.framontmanagement.com/articles/it/)
+
+## Legal
+
+- [Privacy policy](https://www.iubenda.com/privacy-policy/85437556)
+- [Cookie policy](https://www.iubenda.com/privacy-policy/85437556/cookie-policy)
+- Contact: gianluigi.montagner@framontmanagement.com
