@@ -992,7 +992,7 @@ class Component extends DCLogic {
       guide: { kicker: "Operational guide", title: "How to buy an ETI on Interactive Brokers", sub: "Step by step: open an Interactive Brokers account, enable the required trading permissions and place a buy order by ISIN.", versions: "Versions" },
       trust: ["MFSA-authorised AIFM", "Exchange-Listed Products", "Issued by iMaps ETI AG", "Access from €1,000"],
       universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", deals: "Real estate and private credit opportunities for professionals" } },
-      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Explore the full shelf", sub: "Product details unlock instantly across funds, AMC and ETI." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
+      how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Explore the full shelf", sub: "Product details unlock instantly across AMC, ETI and every new listing." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
       featured: { label: "Featured Products", title: "A selection from the current shelf" },
       insights: { navLabel: "Insights", label: "Insights", title: "Understand the instruments before you invest", hub: "All articles", readMore: "Read the guide", cards: [
         { tag: "Exchange Traded Instruments", title: "What is an ETI?", sub: "How ETIs are issued and collateralised, how they differ from ETFs and funds, and how to buy one from €1,000.", time: "7 min", href: "articles/what-is-an-eti.html", img: "assets/cat-eti.jpg" },
@@ -1021,7 +1021,7 @@ class Component extends DCLogic {
       guide: { kicker: "Guida operativa", title: "Come acquistare un ETI su Interactive Brokers", sub: "Passo dopo passo: apri un conto Interactive Brokers, abilita i permessi di negoziazione necessari e inserisci un ordine di acquisto per ISIN.", versions: "Versioni" },
       trust: ["AIFM autorizzato MFSA", "Prodotti Quotati in Borsa", "Emessi da iMaps ETI AG", "Accesso da €1.000"],
       universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", deals: "Opportunità immobiliari e di private credit per professionisti" } },
-      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Esplora l'intera offerta", sub: "I dettagli dei prodotti si sbloccano subito su fondi, AMC ed ETI." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
+      how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Esplora l'intera offerta", sub: "I dettagli dei prodotti si sbloccano subito su AMC, ETI e su ogni nuovo prodotto." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
       featured: { label: "Prodotti in Evidenza", title: "Una selezione dall'offerta attuale" },
       insights: { navLabel: "Insights", label: "Insights", title: "Capire gli strumenti prima di investire", hub: "Tutti gli articoli", readMore: "Leggi la guida", cards: [
         { tag: "Exchange Traded Instruments", title: "Cos'è un ETI?", sub: "Come vengono emessi e collateralizzati gli ETI, in cosa differiscono da ETF e fondi, e come acquistarli da €1.000.", time: "7 min", href: "articles/it/cos-e-un-eti.html", img: "assets/cat-eti.jpg" },
@@ -1150,9 +1150,12 @@ class Component extends DCLogic {
             { label: { en: "Issuer & Market Maker", it: "Emittente & Market Maker" }, value: "iMaps ETI AG (Liechtenstein)" },
             { label: { en: "Strategy Developer", it: "Sviluppatore della Strategia" }, value: "Marcus Schmieke, Dr. h.c." },
             { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
+            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "Disclosed in the KID & prospectus", it: "Indicata nel KID e nel prospetto" } },
+            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "Disclosed in the KID & prospectus", it: "Indicata nel KID e nel prospetto" } },
+            { label: { en: "Entry / Exit Fee", it: "Commissione di Ingresso / Uscita" }, value: { en: "0.50–1.00% (based on AuM)", it: "0,50–1,00% (in base all'AuM)" } },
+            { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } },
             { label: { en: "Backtested CAGR (2016–2026)*", it: "CAGR da backtest (2016–2026)*" }, value: "36.67%" },
-            { label: { en: "Backtested CAGR (1999–2026)*", it: "CAGR da backtest (1999–2026)*" }, value: "11.45%" },
-            { label: { en: "Entry / Exit Fee", it: "Commissione di Ingresso / Uscita" }, value: { en: "0.50–1.00% (based on AuM)", it: "0,50–1,00% (in base all'AuM)" } }
+            { label: { en: "Backtested CAGR (1999–2026)*", it: "CAGR da backtest (1999–2026)*" }, value: "11.45%" }
           ],
           description: { en: "HERAKLIT applies a physics-based market model — regime detection derived from the Fokker–Planck equation across twelve global data streams — to distinguish stable, investable market phases from unstable ones and adjust exposure systematically. Strategy developed by Marcus Schmieke (Strategy Developer); portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). Issued by iMaps ETI AG (Liechtenstein) as an Exchange Traded Instrument listed on Börse Stuttgart. *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "HERAKLIT applica un modello di mercato su basi fisiche — rilevazione dei regimi derivata dall'equazione di Fokker–Planck su dodici flussi di dati globali — per distinguere le fasi di mercato stabili e investibili da quelle instabili e adeguare l'esposizione in modo sistematico. Strategia sviluppata da Marcus Schmieke (Sviluppatore della Strategia); la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Emesso da iMaps ETI AG (Liechtenstein) come Exchange Traded Instrument quotato alla Börse di Stoccarda. *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
         { id: "eti-techmegatrend", name: "Tech Megatrend Tactical ETI", isin: "DE000AMC0D85", assetClass: "Equity / Technology", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
@@ -1165,9 +1168,11 @@ class Component extends DCLogic {
             { label: { en: "Issuer & Market Maker", it: "Emittente & Market Maker" }, value: "iMaps ETI AG (Liechtenstein)" },
             { label: { en: "Strategy Developer", it: "Sviluppatore della Strategia" }, value: "Dr. Chris Kacher, PhD" },
             { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
-            { label: { en: "Backtested CAGR (2008–2026, long/cash)*", it: "CAGR da backtest (2008–2026, long/cash)*" }, value: "60.84%" },
             { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "1.0% p.a.", it: "1,0% annuo" } },
-            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "20% (high-water mark)", it: "20% (high-water mark)" } }
+            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "20% (high-water mark)", it: "20% (high-water mark)" } },
+            { label: { en: "Entry / Exit Fee", it: "Commissione di Ingresso / Uscita" }, value: { en: "0.50–1.00% (based on AuM)", it: "0,50–1,00% (in base all'AuM)" } },
+            { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } },
+            { label: { en: "Backtested CAGR (2008–2026, long/cash)*", it: "CAGR da backtest (2008–2026, long/cash)*" }, value: "60.84%" }
           ],
           description: { en: "A tactical, liquidity-driven approach to US technology developed by Dr. Chris Kacher (Strategy Developer). The strategy combines macro liquidity analysis with price and volume confirmation, rotating between leveraged and unleveraged technology exposure (TECL, TQQQ, QQQ), cash and short positioning. Issued by iMaps ETI AG and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Leveraged exposure can amplify losses. Capital at risk.", it: "Un approccio tattico alla tecnologia USA guidato dalla liquidità, sviluppato dal Dr. Chris Kacher (Sviluppatore della Strategia). La strategia combina l'analisi della liquidità macro con conferme di prezzo e volume, ruotando tra esposizione tecnologica a leva e non (TECL, TQQQ, QQQ), liquidità e posizioni short. Emesso da iMaps ETI AG e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. L'esposizione a leva può amplificare le perdite. Capitale a rischio." } },
         { id: "eti-lcinvest", name: "LC Invest — Value Edge ETI", isin: "DE000AMC0BZ5", assetClass: "Gold / FX", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
@@ -1183,8 +1188,9 @@ class Component extends DCLogic {
             { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
             { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "4.5% p.a. retail / 6.0% p.a. professional", it: "4,5% annuo retail / 6,0% annuo professionale" } },
             { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "20% (high-water mark)", it: "20% (high-water mark)" } },
-            { label: { en: "Developer's personal account, 2025*", it: "Conto personale dello sviluppatore, 2025*" }, value: "+483%" },
-            { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } }
+            { label: { en: "Entry Fee", it: "Commissione di Ingresso" }, value: { en: "0.50–1.00% (indicative)", it: "0,50–1,00% (indicativa)" } },
+            { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } },
+            { label: { en: "Developer's personal account, 2025*", it: "Conto personale dello sviluppatore, 2025*" }, value: "+483%" }
           ],
           description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } }
       ]
@@ -1435,10 +1441,17 @@ class Component extends DCLogic {
   // ---- Hash routing: #/eti, #/it/eti — shareable category links, working back button ----
   parseHash() {
     const parts = (window.location.hash || "").replace(/^#\/?/, "").toLowerCase().split("/").filter(Boolean);
-    let lang = null, view = null;
+    let lang = null, view = null, insights = false;
     for (const p of parts) {
       if (p === "en" || p === "it") lang = p;
+      else if (p === "fondi") view = "funds"; // Italian alias typed/shared by hand
+      else if (p === "insights" || p === "approfondimenti") insights = true;
       else if (["home", "funds", "amc", "eti", "deals"].includes(p)) view = p === "home" ? null : p;
+    }
+    if (insights) {
+      // Insights live as static pages, not a hash view — send the visitor there in their language.
+      window.location.replace((lang || this.state.lang) === "it" ? "articles/it/" : "articles/");
+      return { lang, view: null };
     }
     return { lang, view };
   }
