@@ -15,7 +15,9 @@ Key facts:
 - [HERAKLIT Strategy ETI](https://heraklit.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D44, listed on Börse Stuttgart
 - [Tech Megatrend Tactical ETI](https://techmegatrend.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D85
 - [LC Invest — Value Edge ETI](https://lcinvest.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0BZ5
-- Noctiluca Capital AMC: actively managed certificate, ISIN CH1554882477, for professional investors
+- [IVN Global ETI](https://ivncapital.com/): exchange traded instrument, ISIN DE000AMC0DX6, actively managed global long/short strategy across equities, currencies, commodities and digital assets
+- [Noctiluca Capital AMC](https://access.framontmanagement.com/assets/termsheets/framont-noctiluca-amc-termsheet.pdf): actively managed certificate, ISIN CH1554882477, for professional investors — official term sheet (PDF)
+- [Zalphyx Yield Strategies CLN](https://access.framontmanagement.com/assets/termsheets/framont-zalphyx-cln-termsheet.pdf): 6% p.a. credit-linked note, ISIN CH1518693374, for professional and qualified investors — official term sheet (PDF)
 
 ## Guides (English)
 

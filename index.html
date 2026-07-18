@@ -72,7 +72,7 @@
       "description": "Curated access to institutional-grade investment products: funds, actively managed certificates (AMCs), exchange traded instruments (ETIs), and selected private market deals.",
       "inLanguage": "en",
       "datePublished": "2026-07-03",
-      "dateModified": "2026-07-14",
+      "dateModified": "2026-07-18",
       "isPartOf": { "@id": "https://access.framontmanagement.com/#website" },
       "about": { "@id": "https://access.framontmanagement.com/#org" }
     },
@@ -115,6 +115,18 @@
             "url": "https://lcinvest.framontmanagement.com/",
             "provider": { "@id": "https://access.framontmanagement.com/#org" }
           }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "FinancialProduct",
+            "name": "IVN Global ETI",
+            "identifier": "DE000AMC0DX6",
+            "category": "Exchange Traded Instrument",
+            "url": "https://ivncapital.com/",
+            "provider": { "@id": "https://access.framontmanagement.com/#org" }
+          }
         }
       ]
     },
@@ -123,6 +135,15 @@
       "name": "Noctiluca Capital AMC",
       "identifier": "CH1554882477",
       "category": "Actively Managed Certificate",
+      "url": "https://access.framontmanagement.com/assets/termsheets/framont-noctiluca-amc-termsheet.pdf",
+      "provider": { "@id": "https://access.framontmanagement.com/#org" }
+    },
+    {
+      "@type": "FinancialProduct",
+      "name": "Zalphyx Yield Strategies CLN",
+      "identifier": "CH1518693374",
+      "category": "Credit-Linked Note",
+      "url": "https://access.framontmanagement.com/assets/termsheets/framont-zalphyx-cln-termsheet.pdf",
       "provider": { "@id": "https://access.framontmanagement.com/#org" }
     }
   ]
@@ -171,7 +192,9 @@
     <li><a href="https://heraklit.framontmanagement.com/">HERAKLIT Strategy ETI</a> — ISIN DE000AMC0D44, listed on Börse Stuttgart</li>
     <li><a href="https://techmegatrend.framontmanagement.com/">Tech Megatrend Tactical ETI</a> — ISIN DE000AMC0D85</li>
     <li><a href="https://lcinvest.framontmanagement.com/">LC Invest — Value Edge ETI</a> — ISIN DE000AMC0BZ5</li>
-    <li>Noctiluca Capital AMC — ISIN CH1554882477 (professional investors)</li>
+    <li><a href="https://ivncapital.com/">IVN Global ETI</a> — ISIN DE000AMC0DX6, actively managed global long/short strategy</li>
+    <li><a href="/assets/termsheets/framont-noctiluca-amc-termsheet.pdf">Noctiluca Capital AMC</a> — ISIN CH1554882477 (professional investors)</li>
+    <li><a href="/assets/termsheets/framont-zalphyx-cln-termsheet.pdf">Zalphyx Yield Strategies CLN</a> — ISIN CH1518693374, 6% p.a. credit-linked note (professional and qualified investors)</li>
   </ul>
   <h2>Insights</h2>
   <p>Plain-language guides in <a href="/articles/">English</a> and <a href="/articles/it/">Italian</a>, including <a href="/articles/how-to-evaluate-systematic-strategies.html">how to evaluate a systematic strategy before you invest</a>.</p>
@@ -313,7 +336,7 @@
           <sc-for list="{{ howSteps }}" as="h" hint-placeholder-count="3">
             <div style="position:relative; background:#FFFFFF; border:1px solid #E9E7E2; padding:34px 30px 32px; transition:transform .25s cubic-bezier(.22,.61,.36,1), border-color .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px); border-color:rgba(255,130,0,0.45); box-shadow:0 18px 40px rgba(0,31,66,0.09);">
               <div style="display:flex; align-items:center; gap:16px;">
-                <div style="width:54px; height:54px; flex-shrink:0; border-radius:50%; background:#001F42; color:#FF8200; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:25px; font-weight:600; box-shadow:0 8px 20px rgba(0,31,66,0.18);">{{ h.n }}</div>
+                <div style="width:54px; height:54px; flex-shrink:0; border-radius:50%; background:#001F42; color:#FF8200; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:25px; font-weight:600; line-height:1; padding-bottom:9px; box-sizing:border-box; box-shadow:0 8px 20px rgba(0,31,66,0.18);">{{ h.n }}</div>
                 <div style="height:1px; flex:1; background:linear-gradient(90deg, rgba(255,130,0,0.45), rgba(255,130,0,0));"></div>
               </div>
               <div style="font-size:18px; font-weight:600; color:#002E5F; margin-top:26px;">{{ h.title }}</div>
@@ -930,11 +953,16 @@
             </div>
           </div>
         </sc-if>
-        <sc-if value="{{ pm.landingUrl }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ pmHasDocs }}" hint-placeholder-val="{{ false }}">
           <div style="margin-bottom:24px;">
             <div style="font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; margin-bottom:10px;">{{ t.modal.documents }}</div>
             <div style="display:flex; gap:24px; flex-wrap:wrap;">
-              <a href="{{ pm.landingUrl }}" target="_blank" rel="noopener" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.docsLink }} ↗</a>
+              <sc-if value="{{ pm.termsheetUrl }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ pm.termsheetUrl }}" target="_blank" rel="noopener" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.termsheetLink }} ↓</a>
+              </sc-if>
+              <sc-if value="{{ pm.landingUrl }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ pm.landingUrl }}" target="_blank" rel="noopener" style="font-size:13.5px; font-weight:500; color:#B85C00; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.modal.docsLink }} ↗</a>
+              </sc-if>
             </div>
           </div>
         </sc-if>
@@ -1026,7 +1054,7 @@ class Component extends DCLogic {
       teaser: { locked: "Members only", unlock: "Request access to view" },
       guide: { kicker: "Operational guide", title: "How to buy an ETI on Interactive Brokers", sub: "Step by step: open an Interactive Brokers account, enable the required trading permissions and place a buy order by ISIN.", versions: "Versions" },
       trust: ["MFSA-authorised AIFM", "Exchange-Listed Products", "Issued by iMaps ETI AG", "Access from €1,000"],
-      universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Listed instruments for broader access", deals: "Real estate and private credit opportunities for professionals" } },
+      universe: { label: "The Investment Universe", title: "Four pathways to institutional returns", explore: "Explore", descs: { funds: "UCITS and Alternative Investment Funds", amc: "Exchange-listed actively managed certificates", eti: "Exchange-traded instruments for broader investor access", deals: "Real estate and private credit opportunities for professionals" } },
       how: { label: "How It Works", title: "Three steps to your first subscription", steps: [{ n: "1", title: "Request access", sub: "Free, takes two minutes." }, { n: "2", title: "Explore the full shelf", sub: "Product details unlock instantly across AMC, ETI and every new listing." }, { n: "3", title: "Subscribe to products", sub: "For verified investors, via secure onboarding." }] },
       featured: { label: "Featured Products", title: "A selection from the current shelf" },
       insights: { navLabel: "Insights", label: "Insights", title: "Understand the instruments before you invest", hub: "All articles", readMore: "Read the guide", cards: [
@@ -1044,7 +1072,7 @@ class Component extends DCLogic {
       loginM: { intro: "Enter your registered email to sign in.", notFound: "We couldn't find this email. Please request access first." },
       next: { title: "What happens next", steps: ["Our team contacts you within one business day.", "Suitability assessment and documents via InvestGlass secure onboarding.", "Execution and confirmation of your subscription."], back: "Back to Products" },
       products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products", filterClass: "Filter by asset class", filterCurrency: "Filter by currency", filterSize: "Filter by minimum investment" },
-      modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", processing: "Processing…", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
+      modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", termsheetLink: "Official term sheet (PDF)", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", processing: "Processing…", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
       cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products", comingSoonTitle: "Products Coming Soon", comingSoonSub: "We are finalising the onboarding of products in this category. Leave your details and our team will notify you as soon as they are available.", comingSoonCta: "Request Information" },
       admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
     },
@@ -1055,7 +1083,7 @@ class Component extends DCLogic {
       teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare" },
       guide: { kicker: "Guida operativa", title: "Come acquistare un ETI su Interactive Brokers", sub: "Passo dopo passo: apri un conto Interactive Brokers, abilita i permessi di negoziazione necessari e inserisci un ordine di acquisto per ISIN.", versions: "Versioni" },
       trust: ["AIFM autorizzato MFSA", "Prodotti Quotati in Borsa", "Emessi da iMaps ETI AG", "Accesso da €1.000"],
-      universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati per un accesso più ampio", deals: "Opportunità immobiliari e di private credit per professionisti" } },
+      universe: { label: "L'Universo d'Investimento", title: "Quattro percorsi verso rendimenti istituzionali", explore: "Esplora", descs: { funds: "Fondi UCITS e Alternativi", amc: "Certificati a gestione attiva quotati", eti: "Strumenti quotati in borsa per un accesso più ampio agli investitori", deals: "Opportunità immobiliari e di private credit per professionisti" } },
       how: { label: "Come Funziona", title: "Tre passi alla tua prima sottoscrizione", steps: [{ n: "1", title: "Richiedi l'accesso", sub: "Gratuito, richiede due minuti." }, { n: "2", title: "Esplora l'intera offerta", sub: "I dettagli dei prodotti si sbloccano subito su AMC, ETI e su ogni nuovo prodotto." }, { n: "3", title: "Sottoscrivi i prodotti", sub: "Per investitori verificati, tramite onboarding sicuro." }] },
       featured: { label: "Prodotti in Evidenza", title: "Una selezione dall'offerta attuale" },
       insights: { navLabel: "Insights", label: "Insights", title: "Capire gli strumenti prima di investire", hub: "Tutti gli articoli", readMore: "Leggi la guida", cards: [
@@ -1073,7 +1101,7 @@ class Component extends DCLogic {
       loginM: { intro: "Inserisci la tua email registrata per accedere.", notFound: "Email non trovata. Richiedi prima l'accesso." },
       next: { title: "Cosa succede ora", steps: ["Il nostro team ti contatta entro un giorno lavorativo.", "Valutazione di adeguatezza e documenti tramite l'onboarding sicuro InvestGlass.", "Esecuzione e conferma della tua sottoscrizione."], back: "Torna ai Prodotti" },
       products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti", filterClass: "Filtra per classe di attivo", filterCurrency: "Filtra per valuta", filterSize: "Filtra per investimento minimo" },
-      modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", processing: "Elaborazione…", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
+      modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", termsheetLink: "Term sheet ufficiale (PDF)", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", processing: "Elaborazione…", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
       cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili", comingSoonTitle: "Prodotti in Arrivo", comingSoonSub: "Stiamo finalizzando l'inserimento dei prodotti di questa categoria. Lascia i tuoi dati e il nostro team ti avviserà non appena saranno disponibili.", comingSoonCta: "Richiedi Informazioni" },
       admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
     }
@@ -1123,6 +1151,7 @@ class Component extends DCLogic {
       products: [
         { id: "amc-noctiluca", name: "Noctiluca Capital AMC", isin: "CH1554882477", assetClass: "Actively Managed Certificate", currency: "EUR", minSub: 10000, minLabel: "€10,000", open: true, active: true,
           subscribeUrl: "",
+          termsheetUrl: "assets/termsheets/framont-noctiluca-amc-termsheet.pdf",
           strategy: { en: "Actively managed certificate referencing the Noctiluca Capital strategy, issued on the GenTwo securitisation platform.", it: "Certificato a gestione attiva che replica la strategia Noctiluca Capital, emesso sulla piattaforma di cartolarizzazione GenTwo." },
           metricLabel: { en: "Eligibility", it: "Idoneità" },
           metricValue: { en: "Professional investors", it: "Investitori professionali" },
@@ -1133,26 +1162,32 @@ class Component extends DCLogic {
             { label: { en: "Strategy Manager", it: "Gestore della Strategia" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
             { label: { en: "Currency", it: "Valuta" }, value: { en: "EUR · EUR 1,000 per unit", it: "EUR · EUR 1.000 per quota" } },
             { label: { en: "Minimum Investment", it: "Investimento Minimo" }, value: { en: "€10,000", it: "€10.000" } },
-            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "2.50% p.a.", it: "2,50% annuo" } },
-            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "30% over 0% hurdle (high-water mark)", it: "30% oltre hurdle 0% (high-water mark)" } },
+            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "2.00% p.a. (+ 0.70% p.a. administration)", it: "2,00% annuo (+ 0,70% annuo amministrazione)" } },
+            { label: { en: "Performance Fee", it: "Commissione di Performance" }, value: { en: "20% over 0% hurdle (high-water mark, quarterly)", it: "20% oltre hurdle 0% (high-water mark, trimestrale)" } },
             { label: { en: "Secondary Market", it: "Mercato Secondario" }, value: { en: "Monthly (15th) · cash settlement", it: "Mensile (giorno 15) · regolamento in contanti" } },
             { label: { en: "Investor Eligibility", it: "Idoneità dell'Investitore" }, value: { en: "Professional investors only", it: "Riservato a investitori professionali" } }
           ],
-          description: { en: "Noctiluca Capital is an actively managed certificate (AMC) issued through a protected cell of Expand2 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1554882477). Strategy management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is denominated in EUR, with a minimum investment of €10,000, and is reserved exclusively for professional investors. The strategy applies systematic breakout and trend-following signals on exchange-listed US equity-index and commodity futures. Post-trade functions are handled by InCore Bank AG (paying agent, Switzerland), with custody and brokerage via TradeStation Europe B.V. (Netherlands). The official term sheet will be linked on this page as soon as it is published. *Where track-record figures appear in the product documentation, they are based on a standardised simulation, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "Noctiluca Capital è un certificato a gestione attiva (AMC) emesso tramite una cella protetta di Expand2 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1554882477). La gestione della strategia è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è denominato in EUR, con un investimento minimo di €10.000, ed è riservato esclusivamente a investitori professionali. La strategia applica segnali sistematici di breakout e trend-following su future su indici azionari e materie prime USA quotati. Le funzioni di post-trade sono svolte da InCore Bank AG (paying agent, Svizzera), con custodia e brokeraggio tramite TradeStation Europe B.V. (Paesi Bassi). Il term sheet ufficiale sarà collegato a questa pagina non appena pubblicato. *Ove nella documentazione di prodotto compaiano dati di track record, questi si basano su una simulazione standardizzata, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
-        { id: "amc-zalphyx", name: "Zalphyx Yield Strategies", isin: "CH1518693374", assetClass: "Private Credit", currency: "USD", minSub: 0, minLabel: { en: "On request", it: "Su richiesta" }, open: false, active: true,
+          description: { en: "Noctiluca Capital is an actively managed certificate (AMC) issued through a protected cell of Expand2 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1554882477). Strategy management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is denominated in EUR, with a minimum investment of €10,000, and is reserved exclusively for professional investors. The strategy applies systematic breakout and trend-following signals on exchange-listed global equity-index and commodity futures. Post-trade functions are handled by InCore Bank AG (paying agent, Switzerland), with custody and brokerage via TradeStation Europe B.V. (Netherlands). The official term sheet is available for download on this page. *Where track-record figures appear in the product documentation, they are based on a standardised simulation, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "Noctiluca Capital è un certificato a gestione attiva (AMC) emesso tramite una cella protetta di Expand2 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1554882477). La gestione della strategia è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è denominato in EUR, con un investimento minimo di €10.000, ed è riservato esclusivamente a investitori professionali. La strategia applica segnali sistematici di breakout e trend-following su future quotati su indici azionari globali e materie prime. Le funzioni di post-trade sono svolte da InCore Bank AG (paying agent, Svizzera), con custodia e brokeraggio tramite TradeStation Europe B.V. (Paesi Bassi). Il term sheet ufficiale è scaricabile da questa pagina. *Ove nella documentazione di prodotto compaiano dati di track record, questi si basano su una simulazione standardizzata, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
+        { id: "amc-zalphyx", name: "Zalphyx Yield Strategies", isin: "CH1518693374", assetClass: "Private Credit", currency: "EUR", minSub: 10000, minLabel: "€10,000", open: false, active: true,
           subscribeUrl: "",
-          strategy: { en: "Available soon — USD private mortgage lending in the Dominican Republic via a credit-linked note, with first-rank collateral and a fixed-income profile.", it: "Disponibile a breve — prestito ipotecario privato in USD nella Repubblica Dominicana tramite un credit-linked note, con collaterale di primo grado e profilo obbligazionario." },
+          termsheetUrl: "assets/termsheets/framont-zalphyx-cln-termsheet.pdf",
+          strategy: { en: "In subscription until 28 July 2026 — a 6% p.a. credit-linked note funding first-rank USD mortgage lending in the Dominican Republic, with semi-annual coupons and maturity in August 2029.", it: "In sottoscrizione fino al 28 luglio 2026 — credit-linked note al 6% annuo che finanzia prestiti ipotecari USD di primo grado nella Repubblica Dominicana, con cedole semestrali e scadenza ad agosto 2029." },
           metricLabel: { en: "Eligibility", it: "Idoneità" },
           metricValue: { en: "Professional / qualified investors", it: "Investitori professionali / qualificati" },
           facts: [
-            { label: { en: "Status", it: "Stato" }, value: { en: "Available soon", it: "Disponibile a breve" } },
+            { label: { en: "Status", it: "Stato" }, value: { en: "In subscription — closes 28 July 2026", it: "In sottoscrizione — chiusura 28 luglio 2026" } },
+            { label: { en: "Coupon", it: "Cedola" }, value: { en: "6% p.a., paid semi-annually", it: "6% annuo, pagata semestralmente" } },
+            { label: { en: "Maturity", it: "Scadenza" }, value: { en: "6 August 2029", it: "6 agosto 2029" } },
+            { label: { en: "Issuer", it: "Emittente" }, value: { en: "Expand3 Issuer PCC Limited (Guernsey) — protected cell", it: "Expand3 Issuer PCC Limited (Guernsey) — cella protetta" } },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "Credit-linked note on GenTwo — unlisted, private placement", it: "Credit-linked note su GenTwo — non quotato, private placement" } },
             { label: { en: "Geography", it: "Geografia" }, value: { en: "Dominican Republic", it: "Repubblica Dominicana" } },
             { label: { en: "Sector", it: "Settore" }, value: { en: "Private credit — mortgage lending", it: "Private credit — prestito ipotecario" } },
-            { label: { en: "Structure", it: "Struttura" }, value: { en: "Credit-linked note (AMC) on GenTwo", it: "Credit-linked note (AMC) su GenTwo" } },
-            { label: { en: "Collateral", it: "Collaterale" }, value: { en: "First-rank registered mortgage", it: "Ipoteca registrata di primo grado" } },
+            { label: { en: "Collateral", it: "Collaterale" }, value: { en: "First-rank registered mortgages, max 50% LTV", it: "Ipoteche registrate di primo grado, LTV max 50%" } },
+            { label: { en: "Currency", it: "Valuta" }, value: { en: "EUR · EUR 1,000 per note", it: "EUR · EUR 1.000 per nota" } },
+            { label: { en: "Minimum Investment", it: "Investimento Minimo" }, value: { en: "€10,000 (10 notes)", it: "€10.000 (10 note)" } },
             { label: { en: "Eligibility", it: "Idoneità" }, value: { en: "Professional & qualified investors only", it: "Solo investitori professionali e qualificati" } }
           ],
-          description: { en: "Available soon. A USD-denominated private credit opportunity providing first-rank mortgage lending in the Dominican Republic, structured as a credit-linked note on the GenTwo platform with strategy management by Framont & Partners Management Ltd (MFSA-authorised AIFM). Reserved for professional and qualified investors; full terms and documentation are provided on request following eligibility verification.", it: "Disponibile a breve. Un'opportunità di private credit denominata in USD che fornisce prestito ipotecario di primo grado nella Repubblica Dominicana, strutturata come credit-linked note sulla piattaforma GenTwo con gestione della strategia da parte di Framont & Partners Management Ltd (AIFM autorizzato MFSA). Riservato a investitori professionali e qualificati; termini completi e documentazione sono forniti su richiesta previa verifica di idoneità." } }
+          description: { en: "A private credit opportunity structured as a 6% p.a. credit-linked note (CLN) issued through a protected cell of Expand3 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1518693374), with InCore Bank AG as paying agent. The note funds a private loan to Zalphyx Giant Capital LLC, which originates first-rank, USD-denominated mortgage loans in the Dominican Republic with a maximum loan-to-value of 50% and geographic concentration caps across Santo Domingo, Cap Cana, Punta Cana and Las Terrenas. The note is EUR-denominated (EUR 1,000 per note, minimum 10 notes), pays its coupon semi-annually and matures on 6 August 2029, subject to early redemption. Subscription closes on 28 July 2026. Unlisted and offered by private placement, reserved for professional and qualified investors. Investors bear the credit risk of the underlying loan and of the issuer; coupons and redemption depend on the loan being repaid. Capital at risk.", it: "Un'opportunità di private credit strutturata come credit-linked note (CLN) al 6% annuo, emessa tramite una cella protetta di Expand3 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1518693374), con InCore Bank AG come paying agent. La nota finanzia un prestito privato a Zalphyx Giant Capital LLC, che origina prestiti ipotecari di primo grado denominati in USD nella Repubblica Dominicana, con loan-to-value massimo del 50% e limiti di concentrazione geografica tra Santo Domingo, Cap Cana, Punta Cana e Las Terrenas. La nota è denominata in EUR (EUR 1.000 per nota, minimo 10 note), paga la cedola semestralmente e scade il 6 agosto 2029, salvo rimborso anticipato. La sottoscrizione chiude il 28 luglio 2026. Non quotata e offerta in private placement, riservata a investitori professionali e qualificati. Gli investitori sopportano il rischio di credito del prestito sottostante e dell'emittente; cedole e rimborso dipendono dal rimborso del prestito. Capitale a rischio." } }
       ]
     },
     eti: {
@@ -1229,7 +1264,24 @@ class Component extends DCLogic {
             { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } },
             { label: { en: "Developer's personal account, 2025*", it: "Conto personale dello sviluppatore, 2025*" }, value: "+483%" }
           ],
-          description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } }
+          description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } },
+        { id: "eti-ivn", name: "IVN Global ETI", isin: "DE000AMC0DX6", assetClass: "Alternative Multi-Asset", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+          landingUrl: "https://ivncapital.com/",
+          subscribeUrl: "",
+          strategy: { en: "Actively managed global long/short strategy across equity indices, currencies, commodities and digital assets, targeting returns uncorrelated to traditional markets.", it: "Strategia globale long/short a gestione attiva su indici azionari, valute, materie prime e asset digitali, con l'obiettivo di rendimenti non correlati ai mercati tradizionali." },
+          metricLabel: { en: "Issue Price", it: "Prezzo di Emissione" },
+          metricValue: "EUR 100",
+          facts: [
+            { label: { en: "Issuer & Market Maker", it: "Emittente & Market Maker" }, value: "iMaps ETI AG (Liechtenstein)" },
+            { label: { en: "Issue Price", it: "Prezzo di Emissione" }, value: "EUR 100" },
+            { label: { en: "Strategy Developer", it: "Sviluppatore della Strategia" }, value: "IVN Capital" },
+            { label: { en: "Portfolio Manager", it: "Gestore di Portafoglio" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
+            { label: { en: "Management Fee", it: "Commissione di Gestione" }, value: { en: "up to 4.5% p.a. retail / 6.0% p.a. professional", it: "fino a 4,5% annuo retail / 6,0% annuo professionale" } },
+            { label: { en: "Indicative Return Objective*", it: "Obiettivo di Rendimento Indicativo*" }, value: { en: "10% p.a. (management guideline, not guaranteed)", it: "10% annuo (linea guida gestionale, non garantito)" } },
+            { label: { en: "Leverage Limit", it: "Limite di Leva" }, value: { en: "Max 300% of portfolio value", it: "Max 300% del valore del portafoglio" } },
+            { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · tradable through banks and brokers", it: "T+2 · negoziabile tramite banche e broker" } }
+          ],
+          description: { en: "IVN Global is an Exchange Traded Instrument issued by iMaps ETI AG (Liechtenstein) at an issue price of EUR 100 (ISIN DE000AMC0DX6). The underlying segregated portfolio is actively managed and denominated in EUR, taking long and/or short positions across global equity indices, currencies, commodities and digital assets, with the objective of generating returns uncorrelated to traditional financial markets. The strategy is developed by IVN Capital (Strategy Developer); portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta), acting as Delegated Investment Manager. Leverage is capped at 300% of portfolio value under the portfolio guidelines. Further information is available at ivncapital.com; the Key Information Document is available from Framont & Partners Management Ltd and on the issuer's product page. *The 10% p.a. indicative return objective published by IVN Capital is a management guideline, is not guaranteed and is not a reliable indicator of future results. Capital at risk.", it: "IVN Global è un Exchange Traded Instrument emesso da iMaps ETI AG (Liechtenstein) a un prezzo di emissione di EUR 100 (ISIN DE000AMC0DX6). Il portafoglio segregato sottostante è gestito attivamente ed è denominato in EUR, con posizioni long e/o short su indici azionari globali, valute, materie prime e asset digitali, con l'obiettivo di generare rendimenti non correlati ai mercati finanziari tradizionali. La strategia è sviluppata da IVN Capital (Sviluppatore della Strategia); la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta), in qualità di Delegated Investment Manager. La leva è limitata al 300% del valore del portafoglio secondo le linee guida di gestione. Maggiori informazioni su ivncapital.com; il Documento Informativo Chiave è disponibile presso Framont & Partners Management Ltd e sulla pagina prodotto dell'emittente. *L'obiettivo di rendimento indicativo del 10% annuo pubblicato da IVN Capital è una linea guida gestionale, non è garantito e non è un indicatore affidabile dei risultati futuri. Capitale a rischio." } }
       ]
     },
     deals: {
@@ -1899,9 +1951,11 @@ class Component extends DCLogic {
       code: ap.isin || ap.ticker || "—", minLabel: ap.minLabel,
       metricLabel: loc(ap.metricLabel), metricValue: loc(ap.metricValue),
       landingUrl: ap.landingUrl || "",
+      termsheetUrl: ap.termsheetUrl || "",
       facts: (ap.facts || []).map((f) => ({ label: loc(f.label), value: loc(f.value) }))
     } : {};
     const pmHasFacts = !!(ap && ap.facts && ap.facts.length);
+    const pmHasDocs = !!(ap && (ap.landingUrl || ap.termsheetUrl));
     const cMsg = ap ? t.modal.confirmSub.replace("{product}", ap.name) : "";
     const nextSteps = t.next.steps.map((x, i) => ({ n: String(i + 1), text: x }));
 
@@ -1980,7 +2034,7 @@ class Component extends DCLogic {
       onLoginEmail: (e) => this.setState({ loginEmail: e.target.value, loginError: "" }),
       onLoginSubmit: () => this.login(),
       onLoginKey: (e) => { if (e.key === "Enter") this.login(); },
-      pm, pmHasFacts,
+      pm, pmHasFacts, pmHasDocs,
       onDocClick: () => this.showToast(t.gate.toastDocs),
       onStartSub: () => this.startSub(),
       subBtnLabel: s.subscribing ? t.modal.processing : t.modal.subscribe,
