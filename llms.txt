@@ -10,6 +10,22 @@ Key facts:
 - Access model: product details unlock with free registration; the Deals section is reserved for vetted investors
 - Nothing on the site is investment advice or a public offer; products are intended for eligible investors and subject to jurisdiction restrictions
 
+## Investment funds (reserved — professional and eligible investors)
+
+Framont & Partners Management Ltd manages a focused range of alternative investment funds spanning Italian real estate, distressed credit and global capital-market strategies, described on the [Funds page](https://access.framontmanagement.com/#/funds):
+
+- Gentile da Fabriano: closed-ended reserved Italian real estate AIF, long-dated horizon of up to 30 years
+- Orizzonte: closed-ended reserved Italian real estate AIF, guided by a dedicated Real Estate Management Committee
+- Wright: closed-ended reserved Italian real estate AIF focused on Rome, for professional investors or subscriptions from €500,000
+- Real Sequoia: closed-ended reserved Italian real estate AIF, funds the construction, completion and development of the assets it holds
+- Pinnacle Investment: closed-ended reserved Italian real estate AIF across residential, office, commercial, industrial and tourism assets in Italy, the EU and the G8
+- Hubble Capital: closed-ended reserved Italian AIF, credit compartment — distressed credit largely secured by real estate collateral
+- Asymetria Fund: open-ended absolute-return sub-fund of Global Series SICAV plc (Notified AIF, Malta) — equity-derivatives strategy, EUR, monthly dealing
+- Earth Horizon Fund: private equity sub-fund of Global Series SICAV plc (Notified AIF, Malta) — EUR and USD share classes, semi-annual dealing
+- CIREDCO Fund 1: closed-ended Notified AIF (Malta) — Coinvesting Italian Real Estate Distressed Credit Opportunities Fund, NPLs/UTPs secured by Italian property
+
+Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memorandum are available on request from the Management Company / AIFM.
+
 ## Listed products
 
 - [HERAKLIT Strategy ETI](https://heraklit.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D44, listed on Börse Stuttgart
