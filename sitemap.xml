@@ -6,13 +6,13 @@
   </url>
   <url>
     <loc>https://access.framontmanagement.com/articles/</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/"/>
   </url>
   <url>
     <loc>https://access.framontmanagement.com/articles/it/</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/"/>
   </url>
@@ -51,5 +51,41 @@
     <lastmod>2026-07-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/how-to-evaluate-systematic-strategies.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/valutare-strategie-sistematiche.html"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/articles/how-to-read-a-priips-kid.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/how-to-read-a-priips-kid.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/come-leggere-un-kid-priips.html"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/articles/it/come-leggere-un-kid-priips.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/how-to-read-a-priips-kid.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/come-leggere-un-kid-priips.html"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/articles/what-is-an-alternative-investment-fund.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/what-is-an-alternative-investment-fund.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/cos-e-un-fia.html"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/articles/it/cos-e-un-fia.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/what-is-an-alternative-investment-fund.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/cos-e-un-fia.html"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/articles/private-credit-explained.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/private-credit-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/credito-privato-spiegato.html"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/articles/it/credito-privato-spiegato.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/articles/private-credit-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/articles/it/credito-privato-spiegato.html"/>
   </url>
 </urlset>

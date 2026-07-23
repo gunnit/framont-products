@@ -40,6 +40,9 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [What Is an Exchange Traded Instrument (ETI)?](https://access.framontmanagement.com/articles/what-is-an-eti.html): how ETIs are issued and collateralised, how they differ from ETFs, AMCs and funds, and how to buy one
 - [Actively Managed Certificates (AMC), Explained](https://access.framontmanagement.com/articles/amc-actively-managed-certificates.html): structure, costs, risks and use cases of AMCs
 - [How to Evaluate a Systematic Strategy Before You Invest](https://access.framontmanagement.com/articles/how-to-evaluate-systematic-strategies.html): a due-diligence checklist for systematic strategies
+- [How to Read a PRIIPs KID Before You Invest](https://access.framontmanagement.com/articles/how-to-read-a-priips-kid.html): what the 1–7 risk indicator measures, why performance scenarios are not forecasts, and how to read the costs table
+- [What Is an Alternative Investment Fund (AIF)?](https://access.framontmanagement.com/articles/what-is-an-alternative-investment-fund.html): how AIFs differ from UCITS, reserved and Notified AIFs, eligibility, liquidity and documents
+- [What Is Private Credit? A Plain-Language Guide](https://access.framontmanagement.com/articles/private-credit-explained.html): direct lending, distressed credit and credit-linked notes — returns, risks and access
 - [Insights hub](https://access.framontmanagement.com/articles/)
 
 ## Guide (Italiano)
@@ -47,6 +50,9 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [Cos'è un Exchange Traded Instrument (ETI)?](https://access.framontmanagement.com/articles/it/cos-e-un-eti.html)
 - [Actively Managed Certificates (AMC), spiegati](https://access.framontmanagement.com/articles/it/amc-certificati-gestione-attiva.html)
 - [Come valutare una strategia sistematica prima di investire](https://access.framontmanagement.com/articles/it/valutare-strategie-sistematiche.html)
+- [Come leggere un KID PRIIPs prima di investire](https://access.framontmanagement.com/articles/it/come-leggere-un-kid-priips.html)
+- [Cos'è un FIA (Fondo di Investimento Alternativo)?](https://access.framontmanagement.com/articles/it/cos-e-un-fia.html)
+- [Cos'è il credito privato? Guida in linguaggio chiaro](https://access.framontmanagement.com/articles/it/credito-privato-spiegato.html)
 - [Hub Insights in italiano](https://access.framontmanagement.com/articles/it/)
 
 ## Legal
