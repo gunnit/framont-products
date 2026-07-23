@@ -1,49 +1,66 @@
 # Framont Access — https://access.framontmanagement.com/
 # All crawlers welcome, including AI / answer-engine bots.
+# /preview/ holds internal layout and content drafts awaiting client approval;
+# it is disallowed in every group, because a bot obeys only the group that
+# matches it most specifically — a Disallow under "*" alone would not reach the
+# named AI crawlers below.
 
 User-agent: *
 Allow: /
+Disallow: /preview/
 
 # Search-engine AI crawlers
 User-agent: Google-Extended
 Allow: /
+Disallow: /preview/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /preview/
 
 # OpenAI
 User-agent: GPTBot
 Allow: /
+Disallow: /preview/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /preview/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /preview/
 
 # Anthropic
 User-agent: ClaudeBot
 Allow: /
+Disallow: /preview/
 
 User-agent: Claude-User
 Allow: /
+Disallow: /preview/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /preview/
 
 # Perplexity
 User-agent: PerplexityBot
 Allow: /
+Disallow: /preview/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /preview/
 
 # Meta
 User-agent: meta-externalagent
 Allow: /
+Disallow: /preview/
 
 # Common Crawl (feeds many LLM training sets)
 User-agent: CCBot
 Allow: /
+Disallow: /preview/
 
 Sitemap: https://access.framontmanagement.com/sitemap.xml

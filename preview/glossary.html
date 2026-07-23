@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Framont Access — Glossary (content draft for approval)</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#FFFFFF;color:#002E5F;font-family:'Work Sans',sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(255,130,0,.22)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+  .draftbar{background:#001630;color:rgba(255,255,255,.82);font-size:12px;padding:11px 24px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
+  .draftbar b{color:#FFB273;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
+
+  header{border-bottom:1px solid #E9E7E2}
+  .head{padding:54px 0 38px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00}
+  h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,44px);line-height:1.1;margin:14px 0 0;letter-spacing:-.01em}
+  .lede{font-size:15.5px;font-weight:300;color:#4D575E;line-height:1.75;margin:16px 0 0;max-width:660px}
+
+  .tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:24px 0 8px}
+  .chip{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#4D575E;background:#FFFFFF;border:1px solid #E9E7E2;padding:9px 15px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+  .chip:hover{border-color:#FF8200;color:#B85C00}
+  .chip[aria-pressed="true"]{background:#002E5F;border-color:#002E5F;color:#FFFFFF}
+  input[type=search]{flex:1;min-width:200px;max-width:320px;font-family:'Work Sans',sans-serif;font-size:14px;color:#002E5F;background:#FFFFFF;border:1px solid #E9E7E2;padding:10px 14px;outline:none;border-radius:0;transition:border-color .2s,box-shadow .2s}
+  input[type=search]:focus{border-color:#FF8200;box-shadow:0 0 0 3px rgba(255,130,0,.12)}
+  .sep{width:1px;height:22px;background:#E9E7E2;margin:0 4px}
+  .count{font-size:12px;color:#7C848C;margin-left:auto}
+
+  .group{margin-top:46px}
+  .grouphead{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00;padding-bottom:12px;border-bottom:1px solid #E9E7E2}
+  .term{display:grid;grid-template-columns:250px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid #E9E7E2;align-items:start}
+  .term:hover{background:#FCFBF9}
+  .tname{font-size:15px;font-weight:600;color:#002E5F;line-height:1.35}
+  .talt{font-size:12px;color:#7C848C;margin-top:5px;line-height:1.5}
+  .tdef{font-size:14px;color:#4D575E;line-height:1.75}
+  .flag{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#B85C00;background:rgba(255,130,0,.07);border:1px solid rgba(255,130,0,.28);padding:4px 9px}
+  .empty{padding:48px 0;font-size:14px;color:#7C848C}
+
+  .needs{margin:52px 0 0;border-left:3px solid #FF8200;background:#F7F7F5;padding:24px 28px}
+  .needs h3{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#B85C00;margin:0 0 12px}
+  .needs li{font-size:13.5px;color:#4D575E;line-height:1.75;margin-bottom:6px}
+  .needs ul{margin:0;padding-left:18px}
+
+  footer{background:#00122A;color:rgba(255,255,255,.6);font-size:11.5px;line-height:1.85;margin-top:56px}
+  footer .wrap{padding:44px 32px 56px}
+
+  @media (max-width:760px){
+    .wrap{padding:0 20px}
+    .term{grid-template-columns:1fr;gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="draftbar">
+  <b data-i18n="draftTag">Content draft</b>
+  <span data-i18n="draftText">Drafted by Niuexa for Francesca's review — every definition below is a proposal, nothing is published.</span>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow" data-i18n="eyebrow">Glossary</div>
+      <h1 data-i18n="title">The words on this platform, in plain language</h1>
+      <p class="lede" data-i18n="lede">A bilingual glossary of the terms used across the product pages. These are the definitions search engines and AI assistants quote when someone asks what an ETI or an AMC actually is — which is why they are worth getting exactly right.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tools">
+    <input type="search" id="q" placeholder="Search a term…" aria-label="Search a term">
+    <button class="chip" data-filter="all" aria-pressed="true" data-i18n="fAll">All</button>
+    <button class="chip" data-filter="instruments" aria-pressed="false" data-i18n="gInstruments">Instruments</button>
+    <button class="chip" data-filter="parties" aria-pressed="false" data-i18n="gParties">Parties</button>
+    <button class="chip" data-filter="costs" aria-pressed="false" data-i18n="gCosts">Costs</button>
+    <button class="chip" data-filter="investors" aria-pressed="false" data-i18n="gInvestors">Investors</button>
+    <button class="chip" data-filter="docs" aria-pressed="false" data-i18n="gDocs">Documents</button>
+    <span class="sep"></span>
+    <button class="chip" id="langBtn">Italiano</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="needs">
+    <h3 data-i18n="needTitle">For Francesca</h3>
+    <ul id="needList"></ul>
+  </div>
+</div>
+
+<footer><div class="wrap" id="legal"></div></footer>
+
+<script>
+/* Glossary draft — bilingual, data-driven. Entries marked `flag:true` touch the
+   compliance rules already agreed (role terminology, investor classification),
+   so they need explicit sign-off rather than a general read-through. */
+var lang = "en", filter = "all", query = "";
+
+var GROUPS = [
+  { key:"instruments", label:{ en:"Instruments and wrappers", it:"Strumenti e involucri" } },
+  { key:"parties", label:{ en:"Who does what", it:"Chi fa cosa" } },
+  { key:"costs", label:{ en:"Costs and performance", it:"Costi e performance" } },
+  { key:"investors", label:{ en:"Investor classification", it:"Classificazione degli investitori" } },
+  { key:"docs", label:{ en:"Documents and safeguards", it:"Documenti e presidi" } }
+];
+
+var TERMS = [
+  { g:"instruments", en:{ t:"Exchange Traded Instrument (ETI)", alt:"Strumento quotato",
+      d:"A listed security issued by a securitisation vehicle that packages a managed investment strategy into an instrument with its own ISIN. It is bought and sold like a share, through any bank or broker, and its assets are held in a portfolio segregated from the issuer's other business." },
+    it:{ t:"Exchange Traded Instrument (ETI)", alt:"Strumento quotato",
+      d:"Un titolo quotato emesso da un veicolo di cartolarizzazione che racchiude una strategia d'investimento gestita in uno strumento dotato di ISIN. Si compra e si vende come un'azione, tramite qualsiasi banca o broker, e le sue attività sono detenute in un portafoglio segregato rispetto al resto dell'attività dell'emittente." } },
+
+  { g:"instruments", en:{ t:"Actively Managed Certificate (AMC)", alt:"Certificato a gestione attiva",
+      d:"A securitised certificate whose value tracks a strategy managed on a discretionary or systematic basis by an appointed manager. It gives fund-like exposure in the format of a security, and can be brought to market faster and at lower asset levels than a fund." },
+    it:{ t:"Actively Managed Certificate (AMC)", alt:"Certificato a gestione attiva",
+      d:"Un certificato cartolarizzato il cui valore replica una strategia gestita su base discrezionale o sistematica da un gestore designato. Offre un'esposizione simile a quella di un fondo nella forma di un titolo, e può arrivare sul mercato più rapidamente e con masse inferiori rispetto a un fondo." } },
+
+  { g:"instruments", en:{ t:"Alternative Investment Fund (AIF)", alt:"FIA — Fondo di Investimento Alternativo",
+      d:"A collective investment fund that is not a UCITS, managed under the AIFMD and generally reserved for professional and eligible investors. Framont's range includes Italian reserved AIFs and Malta-domiciled Notified AIFs." },
+    it:{ t:"Fondo di Investimento Alternativo (FIA)", alt:"AIF — Alternative Investment Fund",
+      d:"Un fondo comune d'investimento che non è un UCITS, gestito ai sensi della AIFMD e generalmente riservato a investitori professionali e idonei. La gamma Framont comprende FIA riservati italiani e AIF Notificati domiciliati a Malta." } },
+
+  { g:"instruments", en:{ t:"Reserved AIF", alt:"FIA riservato",
+      d:"An Italian alternative investment fund whose units may be subscribed only by professional investors, or by other investors meeting the minimum set in the fund's rules. Most of Framont's real estate funds are closed-ended reserved AIFs." },
+    it:{ t:"FIA riservato", alt:"Reserved AIF",
+      d:"Un fondo di investimento alternativo italiano le cui quote possono essere sottoscritte solo da investitori professionali, o da altri investitori che raggiungano il minimo previsto dal regolamento del fondo. La maggior parte dei fondi immobiliari Framont sono FIA riservati di tipo chiuso." } },
+
+  { g:"instruments", en:{ t:"Notified AIF", alt:"AIF Notificato",
+      d:"A Malta-domiciled alternative investment fund entered in the MFSA's list of notified AIFs, rather than separately licensed, on the responsibility of a fully authorised AIFM. Framont's three Malta funds are sub-funds of Global Series SICAV plc." },
+    it:{ t:"AIF Notificato", alt:"Notified AIF",
+      d:"Un fondo di investimento alternativo domiciliato a Malta iscritto nell'elenco dei notified AIF della MFSA anziché autorizzato singolarmente, sotto la responsabilità di un AIFM pienamente autorizzato. I tre fondi maltesi di Framont sono comparti di Global Series SICAV plc." } },
+
+  { g:"instruments", en:{ t:"Credit-Linked Note (CLN)", alt:"Nota legata al credito",
+      d:"A note whose coupon and repayment depend on the performance of an underlying credit exposure — typically a loan. The investor takes the credit risk of that exposure as well as that of the issuer." },
+    it:{ t:"Credit-Linked Note (CLN)", alt:"Nota legata al credito",
+      d:"Una nota la cui cedola e il cui rimborso dipendono dall'andamento di un'esposizione creditizia sottostante, tipicamente un prestito. L'investitore assume il rischio di credito di tale esposizione oltre a quello dell'emittente." } },
+
+  { g:"instruments", en:{ t:"Protected cell (PCC)", alt:"Cella protetta",
+      d:"A legally ring-fenced compartment inside a protected cell company. Each cell holds the assets and liabilities of one product only, so the performance of one product does not reach the investors of another." },
+    it:{ t:"Cella protetta (PCC)", alt:"Protected cell",
+      d:"Un comparto giuridicamente separato all'interno di una protected cell company. Ogni cella accoglie attività e passività di un solo prodotto, così l'andamento di un prodotto non ricade sugli investitori di un altro." } },
+
+  { g:"instruments", en:{ t:"Closed-ended / open-ended", alt:"Chiuso / aperto",
+      d:"A closed-ended fund has a fixed life and no ongoing redemptions: capital is returned as assets are sold. An open-ended fund accepts subscriptions and redemptions at set dealing dates — monthly for Asymetria, semi-annual for Earth Horizon." },
+    it:{ t:"Chiuso / aperto", alt:"Closed-ended / open-ended",
+      d:"Un fondo chiuso ha durata definita e non prevede rimborsi continui: il capitale rientra man mano che gli asset vengono venduti. Un fondo aperto accetta sottoscrizioni e rimborsi a date prestabilite — mensili per Asymetria, semestrali per Earth Horizon." } },
+
+  { g:"parties", en:{ t:"Portfolio Manager", alt:"Gestore di portafoglio", flag:true,
+      d:"The regulated entity that takes the investment decisions inside an instrument. For every product referenced on this platform that entity is Framont & Partners Management Ltd, an AIFM authorised by the MFSA." },
+    it:{ t:"Gestore di portafoglio", alt:"Portfolio Manager", flag:true,
+      d:"L'entità regolamentata che assume le decisioni d'investimento all'interno di uno strumento. Per ogni prodotto citato su questa piattaforma tale entità è Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA." } },
+
+  { g:"parties", en:{ t:"Strategy Developer", alt:"Sviluppatore della strategia", flag:true,
+      d:"The person or firm that designs the underlying strategy an instrument follows. A strategy developer provides the strategy only and does not manage the portfolio; results achieved on a developer's personal accounts are independent of the instrument." },
+    it:{ t:"Sviluppatore della strategia", alt:"Strategy Developer", flag:true,
+      d:"La persona o la società che progetta la strategia sottostante replicata da uno strumento. Lo sviluppatore fornisce esclusivamente la strategia e non gestisce il portafoglio; i risultati ottenuti sui conti personali dello sviluppatore sono indipendenti dallo strumento." } },
+
+  { g:"parties", en:{ t:"AIFM", alt:"Alternative Investment Fund Manager",
+      d:"A manager of alternative investment funds authorised under the AIFMD, subject to requirements on capital, risk management, valuation, delegation and reporting. Framont & Partners Management Ltd is authorised by the MFSA." },
+    it:{ t:"AIFM", alt:"Alternative Investment Fund Manager",
+      d:"Un gestore di fondi di investimento alternativi autorizzato ai sensi della AIFMD, soggetto a requisiti di capitale, gestione del rischio, valorizzazione, delega e reporting. Framont & Partners Management Ltd è autorizzata dalla MFSA." } },
+
+  { g:"parties", en:{ t:"Issuer", alt:"Emittente",
+      d:"The entity that issues a certificate or listed instrument and owes the investor repayment. Its creditworthiness is the issuer risk carried by every note and certificate, whatever the underlying strategy does." },
+    it:{ t:"Emittente", alt:"Issuer",
+      d:"L'entità che emette un certificato o uno strumento quotato ed è debitrice del rimborso verso l'investitore. La sua solidità è il rischio emittente che accompagna ogni nota e ogni certificato, a prescindere dall'andamento della strategia sottostante." } },
+
+  { g:"parties", en:{ t:"Depositary", alt:"Depositario",
+      d:"The bank appointed under the AIFMD to hold a fund's assets in custody, verify ownership, monitor cash flows and oversee the manager's compliance with the fund rules." },
+    it:{ t:"Depositario", alt:"Depositary",
+      d:"La banca designata ai sensi della AIFMD per la custodia delle attività del fondo, la verifica della proprietà, il monitoraggio dei flussi di cassa e la vigilanza sul rispetto del regolamento da parte del gestore." } },
+
+  { g:"parties", en:{ t:"Paying agent", alt:"Paying agent",
+      d:"The bank that handles settlement, coupon payments and redemptions on a certificate or note. On the GenTwo products this role is performed by InCore Bank AG." },
+    it:{ t:"Paying agent", alt:"Agente pagatore",
+      d:"La banca che cura regolamento, pagamento delle cedole e rimborsi di un certificato o di una nota. Sui prodotti GenTwo questo ruolo è svolto da InCore Bank AG." } },
+
+  { g:"parties", en:{ t:"Market maker", alt:"Market maker",
+      d:"The party that quotes buy and sell prices for a listed instrument during market hours. The tightness of those quotes, not the strategy, is what determines how easily an investor can trade in size." },
+    it:{ t:"Market maker", alt:"Market maker",
+      d:"Il soggetto che espone prezzi in acquisto e in vendita di uno strumento quotato durante l'orario di mercato. È l'ampiezza di quelle quotazioni, non la strategia, a determinare quanto facilmente un investitore può negoziare volumi rilevanti." } },
+
+  { g:"costs", en:{ t:"Management fee", alt:"Commissione di gestione",
+      d:"The annual fee charged for managing the strategy, accrued on the value of the instrument or fund and deducted before the value the investor sees." },
+    it:{ t:"Commissione di gestione", alt:"Management fee",
+      d:"La commissione annua applicata per la gestione della strategia, maturata sul valore dello strumento o del fondo e dedotta prima del valore che l'investitore osserva." } },
+
+  { g:"costs", en:{ t:"Performance fee", alt:"Commissione di performance",
+      d:"A share of the gain above an agreed threshold, paid to the manager. Where a high-water mark applies, it is charged only on new gains above the highest value previously reached." },
+    it:{ t:"Commissione di performance", alt:"Performance fee",
+      d:"Una quota del guadagno oltre una soglia concordata, riconosciuta al gestore. Ove si applichi un high-water mark, è dovuta solo sui nuovi guadagni superiori al valore massimo già raggiunto." } },
+
+  { g:"costs", en:{ t:"High-water mark", alt:"High-water mark",
+      d:"The highest value an instrument has previously reached. It prevents an investor from paying a performance fee twice on the same recovery after a loss." },
+    it:{ t:"High-water mark", alt:"High-water mark",
+      d:"Il valore massimo già raggiunto da uno strumento. Impedisce all'investitore di pagare due volte la commissione di performance sullo stesso recupero dopo una perdita." } },
+
+  { g:"costs", en:{ t:"Ongoing costs", alt:"Costi correnti",
+      d:"The total annual running cost of an instrument as disclosed in its Key Information Document — management, administration and other recurring charges together, which is the figure to compare across products." },
+    it:{ t:"Costi correnti", alt:"Ongoing costs",
+      d:"Il costo annuo complessivo di gestione di uno strumento come indicato nel Documento contenente le Informazioni Chiave — gestione, amministrazione e altri oneri ricorrenti insieme: è questo il dato da confrontare tra prodotti." } },
+
+  { g:"costs", en:{ t:"Backtest", alt:"Backtest",
+      d:"A simulation of how a strategy would have behaved on historical data. It involves no real trading, benefits from hindsight in its design, and is not a reliable indicator of future results." },
+    it:{ t:"Backtest", alt:"Backtest",
+      d:"Una simulazione del comportamento che una strategia avrebbe avuto su dati storici. Non comporta operatività reale, beneficia del senno di poi nella sua costruzione e non è un indicatore affidabile dei risultati futuri." } },
+
+  { g:"costs", en:{ t:"Settlement T+2", alt:"Regolamento T+2",
+      d:"Trade date plus two business days — the point at which a purchase of a listed instrument is actually settled and the security appears in the investor's account." },
+    it:{ t:"Regolamento T+2", alt:"Settlement T+2",
+      d:"Data dell'operazione più due giorni lavorativi — il momento in cui l'acquisto di uno strumento quotato viene effettivamente regolato e il titolo compare sul conto dell'investitore." } },
+
+  { g:"investors", en:{ t:"Professional investor", alt:"Investitore professionale", flag:true,
+      d:"A client classified as professional under MiFID II, presumed to have the experience and knowledge to take investment decisions and assess the risks involved. Several products on this platform are reserved for this class." },
+    it:{ t:"Investitore professionale", alt:"Professional investor", flag:true,
+      d:"Un cliente classificato come professionale ai sensi della MiFID II, che si presume abbia esperienza e conoscenze per assumere decisioni d'investimento e valutare i rischi connessi. Diversi prodotti di questa piattaforma sono riservati a questa categoria." } },
+
+  { g:"investors", en:{ t:"Qualified investor", alt:"Investitore qualificato", flag:true,
+      d:"An investor who meets the criteria set out in the offering documentation of a specific product — a threshold defined per product, which may differ from the MiFID II professional classification." },
+    it:{ t:"Investitore qualificato", alt:"Qualified investor", flag:true,
+      d:"Un investitore che soddisfa i criteri stabiliti nella documentazione d'offerta di uno specifico prodotto — una soglia definita per singolo prodotto, che può differire dalla classificazione MiFID II di cliente professionale." } },
+
+  { g:"investors", en:{ t:"Eligible investor", alt:"Investitore idoneo", flag:true,
+      d:"An investor who, without being professional, meets the conditions a fund's own rules set for subscription — for example a minimum subscription of €500,000 in the Wright fund." },
+    it:{ t:"Investitore idoneo", alt:"Eligible investor", flag:true,
+      d:"Un investitore che, pur non essendo professionale, soddisfa le condizioni previste dal regolamento del fondo per la sottoscrizione — ad esempio una sottoscrizione minima di €500.000 nel fondo Wright." } },
+
+  { g:"investors", en:{ t:"Retail investor", alt:"Investitore retail", flag:true,
+      d:"Any client not classified as professional. Retail clients receive the fullest set of protections under MiFID II, including a mandatory Key Information Document and a suitability assessment before subscription." },
+    it:{ t:"Investitore retail", alt:"Retail investor", flag:true,
+      d:"Qualsiasi cliente non classificato come professionale. I clienti retail godono del più ampio insieme di tutele previste dalla MiFID II, incluso il Documento contenente le Informazioni Chiave obbligatorio e la valutazione di adeguatezza prima della sottoscrizione." } },
+
+  { g:"docs", en:{ t:"Key Information Document (KID)", alt:"Documento informativo chiave",
+      d:"A standardised document required by the PRIIPs Regulation, at most three pages, setting out what the product is, its risk indicator, performance scenarios, total costs and how to complain. It is the first document to read before investing." },
+    it:{ t:"Documento contenente le Informazioni Chiave (KID)", alt:"Key Information Document",
+      d:"Un documento standardizzato richiesto dal Regolamento PRIIPs, di massimo tre pagine, che illustra cos'è il prodotto, il suo indicatore di rischio, gli scenari di performance, i costi complessivi e come presentare un reclamo. È il primo documento da leggere prima di investire." } },
+
+  { g:"docs", en:{ t:"Prospectus and final terms", alt:"Prospetto e condizioni definitive",
+      d:"The full legal documentation of a listed instrument: the prospectus sets out the issuance programme, the final terms the specific instrument. Together they are the binding text behind every summary." },
+    it:{ t:"Prospetto e condizioni definitive", alt:"Prospectus and final terms",
+      d:"La documentazione legale completa di uno strumento quotato: il prospetto definisce il programma di emissione, le condizioni definitive il singolo strumento. Insieme costituiscono il testo vincolante dietro ogni sintesi." } },
+
+  { g:"docs", en:{ t:"Fund Rules / Offering Supplement", alt:"Regolamento di Gestione / Offering Supplement",
+      d:"The constitutional documents of a fund, setting out strategy, terms, costs and risk factors. Italian funds use the Regolamento di Gestione; Malta funds an Offering Supplement alongside the Offering Memorandum." },
+    it:{ t:"Regolamento di Gestione / Offering Supplement", alt:"Fund Rules",
+      d:"I documenti costitutivi di un fondo, che definiscono strategia, termini, costi e fattori di rischio. I fondi italiani utilizzano il Regolamento di Gestione; i fondi maltesi un Offering Supplement affiancato all'Offering Memorandum." } },
+
+  { g:"docs", en:{ t:"ISIN", alt:"International Securities Identification Number",
+      d:"The twelve-character code that identifies a security uniquely worldwide. It is what an investor gives their bank or broker to place an order on the right instrument." },
+    it:{ t:"ISIN", alt:"International Securities Identification Number",
+      d:"Il codice di dodici caratteri che identifica univocamente un titolo a livello mondiale. È il dato che l'investitore comunica alla propria banca o al proprio broker per inserire un ordine sullo strumento corretto." } },
+
+  { g:"docs", en:{ t:"Issuer risk", alt:"Rischio emittente",
+      d:"The risk that the issuer of a note or certificate fails to meet its obligations, independently of how the underlying strategy performs. Collateralisation and segregated portfolios reduce this risk but do not remove it." },
+    it:{ t:"Rischio emittente", alt:"Issuer risk",
+      d:"Il rischio che l'emittente di una nota o di un certificato non adempia alle proprie obbligazioni, indipendentemente dall'andamento della strategia sottostante. Collateralizzazione e portafogli segregati riducono questo rischio ma non lo eliminano." } },
+
+  { g:"docs", en:{ t:"Private placement", alt:"Collocamento privato",
+      d:"An offer made to a restricted circle of investors rather than to the public, and therefore outside the prospectus obligations that apply to public offers." },
+    it:{ t:"Collocamento privato", alt:"Private placement",
+      d:"Un'offerta rivolta a una cerchia ristretta di investitori anziché al pubblico, e per questo esclusa dagli obblighi di prospetto applicabili alle offerte pubbliche." } }
+];
+
+var UI = {
+  en: {
+    draftTag:"Content draft",
+    draftText:"Drafted by Niuexa for Francesca's review — every definition below is a proposal, nothing is published.",
+    eyebrow:"Glossary", title:"The words on this platform, in plain language",
+    lede:"A bilingual glossary of the terms used across the product pages. These are the definitions search engines and AI assistants quote when someone asks what an ETI or an AMC actually is — which is why they are worth getting exactly right.",
+    fAll:"All", gInstruments:"Instruments", gParties:"Parties", gCosts:"Costs", gInvestors:"Investors", gDocs:"Documents",
+    search:"Search a term…", flag:"Compliance sign-off needed", entries:"entries", entry:"entry", none:"No term matches that search.",
+    needTitle:"For Francesca",
+    need:[
+      "Six entries are marked “compliance sign-off needed”: Portfolio Manager, Strategy Developer, and the four investor classifications. They restate the rules already agreed, so they need your exact wording rather than a general read-through.",
+      "Anything missing? The list covers the vocabulary currently used on the product pages; happy to add terms your clients actually ask about.",
+      "Once approved, each definition also feeds a short FAQ block on the matching product page and structured data (DefinedTermSet, FAQPage) — that is the part search engines and AI assistants quote."
+    ],
+    legal:"Draft for internal approval — not published. Definitions are plain-language explanations of terms used on access.framontmanagement.com and do not replace the legal documentation of any product. For information purposes only; this is not investment advice, an offer or a solicitation. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk."
+  },
+  it: {
+    draftTag:"Bozza di contenuto",
+    draftText:"Redatta da Niuexa per la revisione di Francesca — ogni definizione è una proposta, nulla è pubblicato.",
+    eyebrow:"Glossario", title:"Le parole di questa piattaforma, in linguaggio semplice",
+    lede:"Un glossario bilingue dei termini usati nelle pagine prodotto. Sono queste le definizioni che motori di ricerca e assistenti AI citano quando qualcuno chiede cos'è davvero un ETI o un AMC — ed è per questo che vale la pena scriverle con precisione.",
+    fAll:"Tutti", gInstruments:"Strumenti", gParties:"Soggetti", gCosts:"Costi", gInvestors:"Investitori", gDocs:"Documenti",
+    search:"Cerca un termine…", flag:"Serve approvazione compliance", entries:"voci", entry:"voce", none:"Nessun termine corrisponde alla ricerca.",
+    needTitle:"Per Francesca",
+    need:[
+      "Sei voci sono contrassegnate “serve approvazione compliance”: Gestore di portafoglio, Sviluppatore della strategia e le quattro classificazioni degli investitori. Riprendono le regole già concordate, quindi serve la tua formulazione esatta più che una semplice rilettura.",
+      "Manca qualcosa? L'elenco copre il vocabolario oggi usato nelle pagine prodotto; volentieri aggiungiamo i termini che i vostri clienti chiedono davvero.",
+      "Una volta approvate, ogni definizione alimenta anche un blocco FAQ sulla pagina prodotto corrispondente e i dati strutturati (DefinedTermSet, FAQPage) — è quella la parte che motori di ricerca e assistenti AI citano."
+    ],
+    legal:"Bozza per approvazione interna — non pubblicata. Le definizioni sono spiegazioni in linguaggio semplice dei termini usati su access.framontmanagement.com e non sostituiscono la documentazione legale di alcun prodotto. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio."
+  }
+};
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function render(){
+  var t = UI[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k = el.getAttribute("data-i18n"); if (t[k]) el.textContent = t[k];
+  });
+  document.getElementById("langBtn").textContent = lang === "en" ? "Italiano" : "English";
+  document.getElementById("q").placeholder = t.search;
+  document.getElementById("legal").textContent = t.legal;
+  document.getElementById("needList").innerHTML = t.need.map(function(n){ return "<li>" + esc(n) + "</li>"; }).join("");
+
+  var q = query.trim().toLowerCase(), html = "", shown = 0;
+  GROUPS.forEach(function(g){
+    if (filter !== "all" && filter !== g.key) return;
+    var items = TERMS.filter(function(x){
+      if (x.g !== g.key) return false;
+      if (!q) return true;
+      var e = x[lang];
+      return (e.t + " " + e.alt + " " + e.d).toLowerCase().indexOf(q) !== -1;
+    });
+    if (!items.length) return;
+    shown += items.length;
+    html += '<div class="group"><div class="grouphead">' + esc(g.label[lang]) + "</div>";
+    items.forEach(function(x){
+      var e = x[lang];
+      html += '<div class="term"><div><div class="tname">' + esc(e.t) + '</div><div class="talt">' + esc(e.alt) + "</div></div>" +
+        '<div><div class="tdef">' + esc(e.d) + "</div>" +
+        (e.flag ? '<span class="flag">' + esc(t.flag) + "</span>" : "") + "</div></div>";
+    });
+    html += "</div>";
+  });
+  document.getElementById("list").innerHTML = html || '<div class="empty">' + esc(t.none) + "</div>";
+  document.getElementById("count").textContent = shown + " " + (shown === 1 ? t.entry : t.entries);
+}
+
+document.querySelectorAll("[data-filter]").forEach(function(b){
+  b.addEventListener("click", function(){
+    filter = b.getAttribute("data-filter");
+    document.querySelectorAll("[data-filter]").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
+    render();
+  });
+});
+document.getElementById("q").addEventListener("input", function(e){ query = e.target.value; render(); });
+document.getElementById("langBtn").addEventListener("click", function(){ lang = lang === "en" ? "it" : "en"; render(); });
+render();
+</script>
+</body>
+</html>
