@@ -1,0 +1,357 @@
+/* ============================================================================
+   Framont Access — preview documents
+   Shared design layer for the four draft pages under /preview/.
+   Standalone by design: these are review documents, not part of the SPA build,
+   so they carry their own tokens rather than importing the app's inline styles.
+   ========================================================================= */
+
+:root{
+  /* Navy is the room. Four depths, darkest for footers, lightest for headings. */
+  --navy-900:#00122A;
+  --navy-800:#001630;
+  --navy-700:#001F42;
+  --navy-600:#002E5F;
+
+  /* Ink ramp on light surfaces. Every step verified at 4.5:1 or better. */
+  --ink:#002E5F;      /* 11.6:1 */
+  --ink-2:#42505C;    /* 8.1:1  */
+  --ink-3:#5F6A72;    /* 5.6:1  */
+
+  --paper:#FFFFFF;
+  --paper-2:#F7F7F5;
+  --line:#E9E7E2;
+  --line-2:#D6D2C9;
+
+  /* Orange is the signature: attention and action only. */
+  --amber:#FF8200;
+  --amber-ink:#B85C00;   /* 4.6:1 on paper, safe for text */
+  --amber-soft:#FFB273;
+
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+
+  /* Type scale, 1.28 ratio, fluid at the top end. */
+  --t-display:clamp(2.4rem,5.4vw,4.4rem);
+  --t-h2:clamp(1.55rem,2.9vw,2.3rem);
+  --t-h3:1.0625rem;
+  --t-body:0.95rem;
+  --t-small:0.8125rem;
+  --t-micro:0.6875rem;
+
+  --gap:clamp(1.5rem,3vw,2.5rem);
+  --bleed:clamp(1.25rem,4vw,2.5rem);
+  --measure:68ch;
+
+  /* Named stacking order. No arbitrary 999s. */
+  --z-rule:1;
+  --z-sticky-cell:2;
+  --z-sticky-head:4;
+  --z-chrome:20;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+
+  /* 54px bar plus its hairline: the sticky table header docks exactly beneath it. */
+  --chrome-h:55px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink-2);
+  font-family:var(--sans);
+  font-size:var(--t-body);
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+::selection{background:rgba(255,130,0,.22);color:var(--navy-700)}
+
+:where(a):focus-visible,:where(button):focus-visible,:where(input):focus-visible,
+:where(select):focus-visible,:where(textarea):focus-visible{
+  outline:2px solid var(--amber);
+  outline-offset:2px;
+}
+
+/* overflow-wrap guards against a long unbroken token (a domain, an ISIN) in a
+   heading blowing out the layout on a narrow viewport. */
+h1,h2,h3{color:var(--ink);margin:0;text-wrap:balance;overflow-wrap:break-word}
+p{margin:0;text-wrap:pretty}
+
+.wrap{max-width:1320px;margin:0 auto;padding-inline:var(--bleed)}
+.wrap-narrow{max-width:1060px;margin:0 auto;padding-inline:var(--bleed)}
+
+/* ---------------------------------------------------------------- chrome -- */
+/* A persistent bar across all four documents: the reviewer can move between
+   them without going back to the hub, and always sees the draft status. */
+
+.chrome{
+  position:sticky;top:0;z-index:var(--z-chrome);
+  background:var(--navy-900);
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+.chrome-in{
+  max-width:1320px;margin:0 auto;padding:0 var(--bleed);
+  min-height:54px;display:flex;align-items:center;gap:clamp(12px,3vw,32px);flex-wrap:wrap;
+}
+.mark{
+  font-family:var(--serif);font-size:15px;font-weight:600;color:#fff;
+  letter-spacing:.01em;white-space:nowrap;text-decoration:none;
+}
+.mark span{color:var(--amber)}
+.stamp{
+  font-size:var(--t-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-soft);border:1px solid rgba(255,178,115,.32);padding:4px 9px;white-space:nowrap;
+}
+.chrome nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.chrome nav a{
+  font-size:var(--t-small);color:rgba(255,255,255,.62);text-decoration:none;
+  padding:7px 12px;white-space:nowrap;transition:color .25s var(--ease),background-color .25s var(--ease);
+}
+.chrome nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.chrome nav a[aria-current="page"]{color:#fff;box-shadow:inset 0 -2px 0 var(--amber)}
+.lang{
+  font-family:var(--sans);font-size:var(--t-micro);font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.78);background:transparent;
+  border:1px solid rgba(255,255,255,.22);padding:7px 13px;cursor:pointer;white-space:nowrap;
+  transition:border-color .25s var(--ease),color .25s var(--ease);
+}
+.lang:hover{border-color:var(--amber);color:var(--amber)}
+
+/* ------------------------------------------------------------------ hero -- */
+
+.hero{position:relative;background:var(--navy-700);overflow:hidden;isolation:isolate}
+/* The settled state IS the base state and the keyframes land back on it, with
+   no fill-mode. If animations never run (background tab, print, headless), the
+   image still renders; the animation only adds the settle when it can play. */
+.hero-img{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:1;transform:none;
+  animation:heroSettle 2.4s var(--ease);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:var(--z-rule);
+  background:linear-gradient(100deg,rgba(0,18,42,.94) 0%,rgba(0,18,42,.80) 42%,rgba(0,31,66,.36) 100%);
+}
+.hero-in{
+  position:relative;z-index:2;
+  max-width:1320px;margin:0 auto;padding:clamp(64px,11vw,132px) var(--bleed) clamp(40px,6vw,64px);
+  display:grid;gap:clamp(20px,3vw,30px);
+}
+.plan-no{
+  font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.1rem);line-height:1;color:var(--amber);
+  display:flex;align-items:baseline;gap:14px;
+}
+.plan-no small{
+  font-family:var(--sans);font-size:var(--t-micro);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);
+}
+.hero h1{
+  font-family:var(--serif);font-weight:500;font-size:var(--t-display);line-height:1.06;
+  letter-spacing:-.018em;color:#fff;max-width:17ch;
+}
+.hero .dek{
+  font-size:clamp(1rem,1.5vw,1.125rem);font-weight:300;line-height:1.78;
+  color:rgba(255,255,255,.76);max-width:56ch;
+}
+.hero-meta{
+  display:flex;gap:0;flex-wrap:wrap;margin-top:clamp(10px,2vw,20px);
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.hero-meta div{
+  padding:16px clamp(18px,3vw,34px) 4px 0;margin-right:clamp(18px,3vw,34px);
+  border-right:1px solid rgba(255,255,255,.14);
+}
+.hero-meta div:last-child{border-right:none;margin-right:0;padding-right:0}
+.hero-meta dt{
+  font-size:var(--t-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin:0 0 5px;
+}
+.hero-meta dd{margin:0;font-size:var(--t-small);color:#fff;font-weight:500}
+
+@keyframes heroSettle{from{transform:scale(1.06);opacity:0} to{transform:none;opacity:1}}
+
+/* --------------------------------------------------------------- section -- */
+
+section{padding-block:clamp(52px,7vw,88px)}
+section.tight{padding-block:clamp(34px,4vw,52px)}
+section.alt{background:var(--paper-2);border-block:1px solid var(--line)}
+
+.lede-block{display:grid;gap:14px;max-width:var(--measure)}
+h2{font-family:var(--serif);font-weight:500;font-size:var(--t-h2);line-height:1.18;letter-spacing:-.012em}
+.lede-block p{color:var(--ink-2)}
+
+/* Section label used sparingly, not above every heading. */
+.rule-head{
+  display:flex;align-items:baseline;gap:8px 16px;flex-wrap:wrap;margin-bottom:26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px;
+}
+.rule-head h2{flex:1 1 16ch;min-width:0}
+.rule-head .of{
+  font-size:var(--t-small);color:var(--ink-3);font-variant-numeric:tabular-nums;
+}
+
+/* ----------------------------------------------------------------- table -- */
+
+.tablewrap{
+  border:1px solid var(--line);overflow-x:auto;
+  scrollbar-width:thin;
+  /* Fades the right edge so the horizontal scroll is discoverable. */
+  background:
+    linear-gradient(90deg,var(--paper) 30%,rgba(255,255,255,0)),
+    linear-gradient(90deg,rgba(255,255,255,0),var(--paper) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(0,31,66,.10),transparent),
+    radial-gradient(farthest-side at 100% 50%,rgba(0,31,66,.10),transparent) 100% 0;
+  background-repeat:no-repeat;
+  background-size:44px 100%,44px 100%,16px 100%,16px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+/* `overflow-x:auto` makes this element the scroll container on both axes, so a
+   sticky header can only dock to the container, never to the viewport. Giving
+   the container a height on roomy screens is what makes `top` mean something;
+   without it the header would look sticky in the stylesheet and scroll away in
+   the browser. */
+@media (min-width:900px) and (min-height:720px){
+  .tablewrap{max-height:calc(100vh - var(--chrome-h) - 3rem);overflow-y:auto}
+}
+/* Eight columns squeezed into 1250px wrap every cell onto four lines, which is
+   the opposite of comparable. Giving the table room and scrolling it sideways
+   under a pinned first column halves the row height. */
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:1560px}
+thead th{
+  position:sticky;top:0;z-index:var(--z-sticky-head);
+  background:var(--paper-2);border-bottom:1px solid var(--line-2);
+  text-align:left;font-size:var(--t-micro);font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);padding:15px 18px;white-space:nowrap;
+}
+thead th:first-child{left:0;z-index:calc(var(--z-sticky-head) + 1);min-width:246px}
+tbody td{
+  border-bottom:1px solid var(--line);padding:18px;font-size:var(--t-small);
+  line-height:1.68;color:var(--ink-2);vertical-align:top;background:var(--paper);
+}
+/* The product name stays in view while the reviewer scrolls the wide columns. */
+th:first-child,td:first-child{position:sticky;left:0;z-index:var(--z-sticky-cell)}
+td:first-child{box-shadow:1px 0 0 var(--line)}
+tr.row:hover td{background:#FCFBF9}
+tr.row:hover td .pname{color:var(--amber-ink)}
+
+.band td{
+  background:var(--navy-700);color:#fff;padding:13px 18px;
+  font-size:var(--t-micro);font-weight:600;letter-spacing:.17em;text-transform:uppercase;
+  position:sticky;left:0;
+}
+.band .of{
+  color:rgba(255,255,255,.52);font-weight:400;letter-spacing:.04em;text-transform:none;
+  font-size:var(--t-small);margin-left:12px;font-variant-numeric:tabular-nums;
+}
+.pname{font-size:0.9375rem;font-weight:600;color:var(--ink);line-height:1.35;transition:color .25s var(--ease)}
+.pmeta{font-size:var(--t-micro);color:var(--ink-3);margin-top:6px;line-height:1.5;letter-spacing:.01em}
+.emph{color:var(--ink);font-weight:500}
+
+/* Locked values render exactly as a visitor sees them on the live cards. */
+.gated{display:flex;flex-direction:column;gap:7px}
+.gated .val{
+  filter:blur(4.5px);user-select:none;font-weight:600;color:var(--ink);
+  font-size:var(--t-small);letter-spacing:.04em;width:max-content;
+}
+.gated .tag{
+  display:inline-flex;align-items:center;gap:6px;font-size:var(--t-micro);font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;
+}
+.gated .tag svg{width:11px;height:11px;stroke:var(--amber);stroke-width:2.4;fill:none;flex:none}
+
+/* Anything not sourced from a published record. */
+.tbc{color:var(--amber-ink);border-bottom:1px dotted rgba(184,92,0,.5);cursor:help}
+
+/* ------------------------------------------------------------ open items -- */
+/* Deliberately not a side-striped callout: a ruled block with a hanging label. */
+
+.open-items{margin-top:clamp(32px,4vw,48px);border-top:2px solid var(--navy-700);padding-top:22px}
+.open-items h3{
+  font-size:var(--t-micro);font-weight:600;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:6px;
+}
+.open-items ol{margin:0;padding:0;list-style:none;counter-reset:oi}
+.open-items li{
+  counter-increment:oi;display:grid;grid-template-columns:34px 1fr;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--line);font-size:var(--t-small);color:var(--ink-2);
+}
+.open-items li::before{
+  content:counter(oi,decimal-leading-zero);
+  font-family:var(--serif);font-size:0.9375rem;color:var(--amber-ink);line-height:1.7;
+}
+
+/* ------------------------------------------------------------------ note -- */
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:0;border-top:1px solid var(--line)}
+.notes > div{padding:26px 30px 26px 0;border-bottom:1px solid var(--line)}
+.notes h3{font-size:var(--t-h3);font-weight:600;margin-bottom:9px;color:var(--ink)}
+.notes p{font-size:var(--t-small);color:var(--ink-2);max-width:44ch}
+
+/* ---------------------------------------------------------------- footer -- */
+
+footer{background:var(--navy-900);color:rgba(255,255,255,.62)}
+footer .wrap,footer .wrap-narrow{padding-block:clamp(38px,5vw,56px)}
+footer p{font-size:var(--t-small);line-height:1.85;max-width:100ch}
+footer .sig{
+  margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:var(--t-micro);letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.42);
+}
+
+/* ---------------------------------------------------------------- reveal -- */
+/* Sections are visible by default. The hidden start state applies only once the
+   script has confirmed it can observe and settle them again (html.reveal-ready),
+   so a page with JS blocked, a print, or a headless render never ships blank. */
+
+@media (prefers-reduced-motion:no-preference){
+  html.reveal-ready .rise{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  html.reveal-ready .rise.in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-img{animation:none}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* ----------------------------------------------------------------- print -- */
+/* These are review documents. Someone will print one. */
+
+@media print{
+  .chrome,.lang{display:none}
+  body{color:#000;font-size:10pt;line-height:1.5}
+  .hero{background:#fff;color:#000}
+  .hero-img,.hero::after{display:none}
+  .hero h1,.hero .dek,.hero-meta dd{color:#000}
+  .hero-meta dt,.plan-no small{color:#333}
+  .hero-in{padding:0 0 18pt}
+  section{padding-block:14pt;break-inside:avoid}
+  section.alt{background:#fff}
+  .tablewrap{overflow:visible;border-color:#999;background:none}
+  table{min-width:0;font-size:8pt}
+  thead th{position:static;background:#eee;color:#000}
+  th:first-child,td:first-child{position:static;box-shadow:none}
+  .band td{background:#000;color:#fff;position:static}
+  .gated .val{filter:none;color:#666}
+  footer{background:#fff;color:#000}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:7pt;color:#555}
+}
+
+/* ------------------------------------------------------------ responsive -- */
+
+@media (max-width:900px){
+  /* A sticky bar that wraps onto three rows would eat a fifth of a phone
+     viewport, so below this width it scrolls away with the page. */
+  .chrome{position:static}
+  :root{--chrome-h:0px}
+  .chrome-in{padding-block:9px;gap:10px 14px;min-height:0}
+  .chrome nav{width:100%;margin-left:0;order:4;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .chrome nav a{padding:6px 11px 6px 0}
+  .chrome nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--amber);padding-inline:0 11px}
+  .lang{margin-left:auto;order:3}
+  thead th{top:0}
+  .hero-meta div{border-right:none;margin-right:0;padding-right:0;flex:1 1 100%}
+  .hero-meta div + div{border-top:1px solid rgba(255,255,255,.1);padding-top:12px}
+}

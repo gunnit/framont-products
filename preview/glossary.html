@@ -4,107 +4,115 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Framont Access — Glossary (content draft for approval)</title>
+<title>Framont Access — Glossary (content draft)</title>
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/preview/hero-glossary.jpg">
+<link rel="stylesheet" href="preview.css">
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#FFFFFF;color:#002E5F;font-family:'Work Sans',sans-serif;-webkit-font-smoothing:antialiased}
-  ::selection{background:rgba(255,130,0,.22)}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  .tools{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .tools input{
+    flex:1 1 240px;max-width:340px;font-family:var(--sans);font-size:var(--t-body);color:var(--ink);
+    background:var(--paper);border:1px solid var(--line-2);padding:11px 14px;border-radius:0;outline:none;
+    transition:border-color .25s var(--ease),box-shadow .25s var(--ease);
+  }
+  .tools input::placeholder{color:var(--ink-3)}
+  .tools input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,130,0,.13)}
+  .tools .tabs{display:flex;gap:0;flex-wrap:wrap;margin-left:auto}
+  .tools .tabs button{
+    font-family:var(--sans);font-size:var(--t-small);font-weight:500;color:var(--ink-3);
+    background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px 9px;cursor:pointer;
+    transition:color .25s var(--ease),border-color .25s var(--ease);
+  }
+  .tools .tabs button:hover{color:var(--amber-ink)}
+  .tools .tabs button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--amber)}
+  .tally{font-size:var(--t-small);color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
 
-  .draftbar{background:#001630;color:rgba(255,255,255,.82);font-size:12px;padding:11px 24px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
-  .draftbar b{color:#FFB273;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
-
-  header{border-bottom:1px solid #E9E7E2}
-  .head{padding:54px 0 38px}
-  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00}
-  h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,44px);line-height:1.1;margin:14px 0 0;letter-spacing:-.01em}
-  .lede{font-size:15.5px;font-weight:300;color:#4D575E;line-height:1.75;margin:16px 0 0;max-width:660px}
-
-  .tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:24px 0 8px}
-  .chip{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#4D575E;background:#FFFFFF;border:1px solid #E9E7E2;padding:9px 15px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
-  .chip:hover{border-color:#FF8200;color:#B85C00}
-  .chip[aria-pressed="true"]{background:#002E5F;border-color:#002E5F;color:#FFFFFF}
-  input[type=search]{flex:1;min-width:200px;max-width:320px;font-family:'Work Sans',sans-serif;font-size:14px;color:#002E5F;background:#FFFFFF;border:1px solid #E9E7E2;padding:10px 14px;outline:none;border-radius:0;transition:border-color .2s,box-shadow .2s}
-  input[type=search]:focus{border-color:#FF8200;box-shadow:0 0 0 3px rgba(255,130,0,.12)}
-  .sep{width:1px;height:22px;background:#E9E7E2;margin:0 4px}
-  .count{font-size:12px;color:#7C848C;margin-left:auto}
-
-  .group{margin-top:46px}
-  .grouphead{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00;padding-bottom:12px;border-bottom:1px solid #E9E7E2}
-  .term{display:grid;grid-template-columns:250px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid #E9E7E2;align-items:start}
-  .term:hover{background:#FCFBF9}
-  .tname{font-size:15px;font-weight:600;color:#002E5F;line-height:1.35}
-  .talt{font-size:12px;color:#7C848C;margin-top:5px;line-height:1.5}
-  .tdef{font-size:14px;color:#4D575E;line-height:1.75}
-  .flag{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#B85C00;background:rgba(255,130,0,.07);border:1px solid rgba(255,130,0,.28);padding:4px 9px}
-  .empty{padding:48px 0;font-size:14px;color:#7C848C}
-
-  .needs{margin:52px 0 0;border-left:3px solid #FF8200;background:#F7F7F5;padding:24px 28px}
-  .needs h3{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#B85C00;margin:0 0 12px}
-  .needs li{font-size:13.5px;color:#4D575E;line-height:1.75;margin-bottom:6px}
-  .needs ul{margin:0;padding-left:18px}
-
-  footer{background:#00122A;color:rgba(255,255,255,.6);font-size:11.5px;line-height:1.85;margin-top:56px}
-  footer .wrap{padding:44px 32px 56px}
+  .set{margin-top:clamp(34px,4vw,52px)}
+  .set > h2{
+    font-family:var(--sans);font-size:var(--t-micro);font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--line-2);
+  }
+  .term{
+    display:grid;grid-template-columns:minmax(190px,15rem) 1fr;gap:clamp(20px,4vw,52px);
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .term dt{margin:0}
+  .term .word{font-family:var(--serif);font-size:1.125rem;font-weight:500;color:var(--ink);line-height:1.3}
+  .term .alt{font-size:var(--t-micro);color:var(--ink-3);margin-top:7px;letter-spacing:.02em;line-height:1.5}
+  .term dd{margin:0;font-size:var(--t-small);color:var(--ink-2);max-width:62ch}
+  .term .flag{
+    display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:var(--t-micro);font-weight:600;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--amber-ink);
+  }
+  .term .flag i{width:5px;height:5px;background:var(--amber);flex:none}
+  .term:target,.term:hover{background:#FCFBF9}
+  .none{padding:56px 0;font-size:var(--t-body);color:var(--ink-3)}
 
   @media (max-width:760px){
-    .wrap{padding:0 20px}
-    .term{grid-template-columns:1fr;gap:8px}
+    .term{grid-template-columns:1fr;gap:10px}
+    .tools .tabs{margin-left:0;width:100%;overflow-x:auto}
   }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 
-<div class="draftbar">
-  <b data-i18n="draftTag">Content draft</b>
-  <span data-i18n="draftText">Drafted by Niuexa for Francesca's review — every definition below is a proposal, nothing is published.</span>
+<header data-chrome></header>
+
+<div class="hero">
+  <div class="hero-img" style="background-image:url('../assets/preview/hero-glossary.jpg')"></div>
+  <div class="hero-in">
+    <div class="plan-no">02<small data-i18n="planLabel">Improvement plan</small></div>
+    <h1 data-i18n="title">The words on this platform, in plain language</h1>
+    <p class="dek" data-i18n="dek">Thirty-one bilingual definitions covering the vocabulary used across the product pages. These are the lines search engines and AI assistants quote when someone asks what an ETI actually is, which is why they are worth getting exactly right.</p>
+    <dl class="hero-meta">
+      <div><dt data-i18n="mStatus">Status</dt><dd data-i18n="mStatusV">Awaiting Francesca's content sign-off</dd></div>
+      <div><dt data-i18n="mFlagged">Needs compliance wording</dt><dd data-i18n="mFlaggedV">Six of thirty-one entries</dd></div>
+      <div><dt data-i18n="mAuthor">Drafted by</dt><dd>Niuexa</dd></div>
+    </dl>
+  </div>
 </div>
 
-<header>
-  <div class="wrap">
-    <div class="head">
-      <div class="eyebrow" data-i18n="eyebrow">Glossary</div>
-      <h1 data-i18n="title">The words on this platform, in plain language</h1>
-      <p class="lede" data-i18n="lede">A bilingual glossary of the terms used across the product pages. These are the definitions search engines and AI assistants quote when someone asks what an ETI or an AMC actually is — which is why they are worth getting exactly right.</p>
+<main>
+  <section class="tight">
+    <div class="wrap-narrow">
+      <div class="tools">
+        <input type="search" id="q" aria-label="Search a term">
+        <div class="tabs" id="tabs" role="group" aria-label="Filter by group"></div>
+        <span class="tally" id="tally"></span>
+      </div>
+      <div id="list" class="rise in"></div>
     </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap-narrow">
+      <div class="rise">
+        <div class="rule-head">
+          <h2 data-i18n="askTitle">Three things we need from you</h2>
+          <span class="of" data-i18n="askOf">Francesca</span>
+        </div>
+        <div class="open-items" style="border-top:none;margin-top:0;padding-top:0">
+          <ol id="askList"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap-narrow">
+    <p id="legal"></p>
+    <div class="sig" data-i18n="sig">Niuexa for Framont Group</div>
   </div>
-</header>
+</footer>
 
-<div class="wrap">
-  <div class="tools">
-    <input type="search" id="q" placeholder="Search a term…" aria-label="Search a term">
-    <button class="chip" data-filter="all" aria-pressed="true" data-i18n="fAll">All</button>
-    <button class="chip" data-filter="instruments" aria-pressed="false" data-i18n="gInstruments">Instruments</button>
-    <button class="chip" data-filter="parties" aria-pressed="false" data-i18n="gParties">Parties</button>
-    <button class="chip" data-filter="costs" aria-pressed="false" data-i18n="gCosts">Costs</button>
-    <button class="chip" data-filter="investors" aria-pressed="false" data-i18n="gInvestors">Investors</button>
-    <button class="chip" data-filter="docs" aria-pressed="false" data-i18n="gDocs">Documents</button>
-    <span class="sep"></span>
-    <button class="chip" id="langBtn">Italiano</button>
-    <span class="count" id="count"></span>
-  </div>
-
-  <div id="list"></div>
-
-  <div class="needs">
-    <h3 data-i18n="needTitle">For Francesca</h3>
-    <ul id="needList"></ul>
-  </div>
-</div>
-
-<footer><div class="wrap" id="legal"></div></footer>
-
+<script src="preview.js"></script>
 <script>
-/* Glossary draft — bilingual, data-driven. Entries marked `flag:true` touch the
-   compliance rules already agreed (role terminology, investor classification),
-   so they need explicit sign-off rather than a general read-through. */
-var lang = "en", filter = "all", query = "";
-
+/* Group order is thematic rather than alphabetical: a reader who lands here
+   from a product page is looking for a family of terms, not a letter. */
 var GROUPS = [
   { key:"instruments", label:{ en:"Instruments and wrappers", it:"Strumenti e involucri" } },
   { key:"parties", label:{ en:"Who does what", it:"Chi fa cosa" } },
@@ -124,9 +132,9 @@ var TERMS = [
     it:{ t:"Actively Managed Certificate (AMC)", alt:"Certificato a gestione attiva",
       d:"Un certificato cartolarizzato il cui valore replica una strategia gestita su base discrezionale o sistematica da un gestore designato. Offre un'esposizione simile a quella di un fondo nella forma di un titolo, e può arrivare sul mercato più rapidamente e con masse inferiori rispetto a un fondo." } },
 
-  { g:"instruments", en:{ t:"Alternative Investment Fund (AIF)", alt:"FIA — Fondo di Investimento Alternativo",
+  { g:"instruments", en:{ t:"Alternative Investment Fund (AIF)", alt:"FIA, Fondo di Investimento Alternativo",
       d:"A collective investment fund that is not a UCITS, managed under the AIFMD and generally reserved for professional and eligible investors. Framont's range includes Italian reserved AIFs and Malta-domiciled Notified AIFs." },
-    it:{ t:"Fondo di Investimento Alternativo (FIA)", alt:"AIF — Alternative Investment Fund",
+    it:{ t:"Fondo di Investimento Alternativo (FIA)", alt:"AIF, Alternative Investment Fund",
       d:"Un fondo comune d'investimento che non è un UCITS, gestito ai sensi della AIFMD e generalmente riservato a investitori professionali e idonei. La gamma Framont comprende FIA riservati italiani e AIF Notificati domiciliati a Malta." } },
 
   { g:"instruments", en:{ t:"Reserved AIF", alt:"FIA riservato",
@@ -140,7 +148,7 @@ var TERMS = [
       d:"Un fondo di investimento alternativo domiciliato a Malta iscritto nell'elenco dei notified AIF della MFSA anziché autorizzato singolarmente, sotto la responsabilità di un AIFM pienamente autorizzato. I tre fondi maltesi di Framont sono comparti di Global Series SICAV plc." } },
 
   { g:"instruments", en:{ t:"Credit-Linked Note (CLN)", alt:"Nota legata al credito",
-      d:"A note whose coupon and repayment depend on the performance of an underlying credit exposure — typically a loan. The investor takes the credit risk of that exposure as well as that of the issuer." },
+      d:"A note whose coupon and repayment depend on the performance of an underlying credit exposure, typically a loan. The investor takes the credit risk of that exposure as well as that of the issuer." },
     it:{ t:"Credit-Linked Note (CLN)", alt:"Nota legata al credito",
       d:"Una nota la cui cedola e il cui rimborso dipendono dall'andamento di un'esposizione creditizia sottostante, tipicamente un prestito. L'investitore assume il rischio di credito di tale esposizione oltre a quello dell'emittente." } },
 
@@ -150,9 +158,9 @@ var TERMS = [
       d:"Un comparto giuridicamente separato all'interno di una protected cell company. Ogni cella accoglie attività e passività di un solo prodotto, così l'andamento di un prodotto non ricade sugli investitori di un altro." } },
 
   { g:"instruments", en:{ t:"Closed-ended / open-ended", alt:"Chiuso / aperto",
-      d:"A closed-ended fund has a fixed life and no ongoing redemptions: capital is returned as assets are sold. An open-ended fund accepts subscriptions and redemptions at set dealing dates — monthly for Asymetria, semi-annual for Earth Horizon." },
+      d:"A closed-ended fund has a fixed life and no ongoing redemptions: capital is returned as assets are sold. An open-ended fund accepts subscriptions and redemptions at set dealing dates: monthly for Asymetria, semi-annual for Earth Horizon." },
     it:{ t:"Chiuso / aperto", alt:"Closed-ended / open-ended",
-      d:"Un fondo chiuso ha durata definita e non prevede rimborsi continui: il capitale rientra man mano che gli asset vengono venduti. Un fondo aperto accetta sottoscrizioni e rimborsi a date prestabilite — mensili per Asymetria, semestrali per Earth Horizon." } },
+      d:"Un fondo chiuso ha durata definita e non prevede rimborsi continui: il capitale rientra man mano che gli asset vengono venduti. Un fondo aperto accetta sottoscrizioni e rimborsi a date prestabilite: mensili per Asymetria, semestrali per Earth Horizon." } },
 
   { g:"parties", en:{ t:"Portfolio Manager", alt:"Gestore di portafoglio", flag:true,
       d:"The regulated entity that takes the investment decisions inside an instrument. For every product referenced on this platform that entity is Framont & Partners Management Ltd, an AIFM authorised by the MFSA." },
@@ -205,9 +213,9 @@ var TERMS = [
       d:"Il valore massimo già raggiunto da uno strumento. Impedisce all'investitore di pagare due volte la commissione di performance sullo stesso recupero dopo una perdita." } },
 
   { g:"costs", en:{ t:"Ongoing costs", alt:"Costi correnti",
-      d:"The total annual running cost of an instrument as disclosed in its Key Information Document — management, administration and other recurring charges together, which is the figure to compare across products." },
+      d:"The total annual running cost of an instrument as disclosed in its Key Information Document: management, administration and other recurring charges together. That is the figure to compare across products." },
     it:{ t:"Costi correnti", alt:"Ongoing costs",
-      d:"Il costo annuo complessivo di gestione di uno strumento come indicato nel Documento contenente le Informazioni Chiave — gestione, amministrazione e altri oneri ricorrenti insieme: è questo il dato da confrontare tra prodotti." } },
+      d:"Il costo annuo complessivo di gestione di uno strumento come indicato nel Documento contenente le Informazioni Chiave: gestione, amministrazione e altri oneri ricorrenti insieme. È questo il dato da confrontare tra prodotti." } },
 
   { g:"costs", en:{ t:"Backtest", alt:"Backtest",
       d:"A simulation of how a strategy would have behaved on historical data. It involves no real trading, benefits from hindsight in its design, and is not a reliable indicator of future results." },
@@ -215,9 +223,9 @@ var TERMS = [
       d:"Una simulazione del comportamento che una strategia avrebbe avuto su dati storici. Non comporta operatività reale, beneficia del senno di poi nella sua costruzione e non è un indicatore affidabile dei risultati futuri." } },
 
   { g:"costs", en:{ t:"Settlement T+2", alt:"Regolamento T+2",
-      d:"Trade date plus two business days — the point at which a purchase of a listed instrument is actually settled and the security appears in the investor's account." },
+      d:"Trade date plus two business days, the point at which a purchase of a listed instrument is actually settled and the security appears in the investor's account." },
     it:{ t:"Regolamento T+2", alt:"Settlement T+2",
-      d:"Data dell'operazione più due giorni lavorativi — il momento in cui l'acquisto di uno strumento quotato viene effettivamente regolato e il titolo compare sul conto dell'investitore." } },
+      d:"Data dell'operazione più due giorni lavorativi, il momento in cui l'acquisto di uno strumento quotato viene effettivamente regolato e il titolo compare sul conto dell'investitore." } },
 
   { g:"investors", en:{ t:"Professional investor", alt:"Investitore professionale", flag:true,
       d:"A client classified as professional under MiFID II, presumed to have the experience and knowledge to take investment decisions and assess the risks involved. Several products on this platform are reserved for this class." },
@@ -225,14 +233,14 @@ var TERMS = [
       d:"Un cliente classificato come professionale ai sensi della MiFID II, che si presume abbia esperienza e conoscenze per assumere decisioni d'investimento e valutare i rischi connessi. Diversi prodotti di questa piattaforma sono riservati a questa categoria." } },
 
   { g:"investors", en:{ t:"Qualified investor", alt:"Investitore qualificato", flag:true,
-      d:"An investor who meets the criteria set out in the offering documentation of a specific product — a threshold defined per product, which may differ from the MiFID II professional classification." },
+      d:"An investor who meets the criteria set out in the offering documentation of a specific product, a threshold defined per product, which may differ from the MiFID II professional classification." },
     it:{ t:"Investitore qualificato", alt:"Qualified investor", flag:true,
-      d:"Un investitore che soddisfa i criteri stabiliti nella documentazione d'offerta di uno specifico prodotto — una soglia definita per singolo prodotto, che può differire dalla classificazione MiFID II di cliente professionale." } },
+      d:"Un investitore che soddisfa i criteri stabiliti nella documentazione d'offerta di uno specifico prodotto, una soglia definita per singolo prodotto, che può differire dalla classificazione MiFID II di cliente professionale." } },
 
   { g:"investors", en:{ t:"Eligible investor", alt:"Investitore idoneo", flag:true,
-      d:"An investor who, without being professional, meets the conditions a fund's own rules set for subscription — for example a minimum subscription of €500,000 in the Wright fund." },
+      d:"An investor who, without being professional, meets the conditions a fund's own rules set for subscription, for example a minimum subscription of €500,000 in the Wright fund." },
     it:{ t:"Investitore idoneo", alt:"Eligible investor", flag:true,
-      d:"Un investitore che, pur non essendo professionale, soddisfa le condizioni previste dal regolamento del fondo per la sottoscrizione — ad esempio una sottoscrizione minima di €500.000 nel fondo Wright." } },
+      d:"Un investitore che, pur non essendo professionale, soddisfa le condizioni previste dal regolamento del fondo per la sottoscrizione, ad esempio una sottoscrizione minima di €500.000 nel fondo Wright." } },
 
   { g:"investors", en:{ t:"Retail investor", alt:"Investitore retail", flag:true,
       d:"Any client not classified as professional. Retail clients receive the fullest set of protections under MiFID II, including a mandatory Key Information Document and a suitability assessment before subscription." },
@@ -269,52 +277,57 @@ var TERMS = [
     it:{ t:"Collocamento privato", alt:"Private placement",
       d:"Un'offerta rivolta a una cerchia ristretta di investitori anziché al pubblico, e per questo esclusa dagli obblighi di prospetto applicabili alle offerte pubbliche." } }
 ];
-
-var UI = {
+var DICT = {
   en: {
-    draftTag:"Content draft",
-    draftText:"Drafted by Niuexa for Francesca's review — every definition below is a proposal, nothing is published.",
-    eyebrow:"Glossary", title:"The words on this platform, in plain language",
-    lede:"A bilingual glossary of the terms used across the product pages. These are the definitions search engines and AI assistants quote when someone asks what an ETI or an AMC actually is — which is why they are worth getting exactly right.",
-    fAll:"All", gInstruments:"Instruments", gParties:"Parties", gCosts:"Costs", gInvestors:"Investors", gDocs:"Documents",
-    search:"Search a term…", flag:"Compliance sign-off needed", entries:"entries", entry:"entry", none:"No term matches that search.",
-    needTitle:"For Francesca",
-    need:[
-      "Six entries are marked “compliance sign-off needed”: Portfolio Manager, Strategy Developer, and the four investor classifications. They restate the rules already agreed, so they need your exact wording rather than a general read-through.",
-      "Anything missing? The list covers the vocabulary currently used on the product pages; happy to add terms your clients actually ask about.",
-      "Once approved, each definition also feeds a short FAQ block on the matching product page and structured data (DefinedTermSet, FAQPage) — that is the part search engines and AI assistants quote."
+    planLabel:"Improvement plan", title:"The words on this platform, in plain language",
+    dek:"Thirty-one bilingual definitions covering the vocabulary used across the product pages. These are the lines search engines and AI assistants quote when someone asks what an ETI actually is, which is why they are worth getting exactly right.",
+    mStatus:"Status", mStatusV:"Awaiting Francesca's content sign-off",
+    mFlagged:"Needs compliance wording", mFlaggedV:"Six of thirty-one entries",
+    mAuthor:"Drafted by",
+    search:"Search a term", all:"All", flag:"Compliance sign-off",
+    entries:"entries", entry:"entry", none:"No term matches that search.",
+    askTitle:"Three things we need from you", askOf:"Francesca", sig:"Niuexa for Framont Group",
+    ask:[
+      "Six entries are flagged for compliance sign-off: Portfolio Manager, Strategy Developer, and the four investor classifications. They restate rules we have already agreed, so what we need is your exact wording, not a general read-through.",
+      "Anything missing? The list covers the vocabulary currently on the product pages. We are happy to add the terms your clients actually ask about.",
+      "Once approved, each definition also feeds a short question block on the matching product page plus structured data (DefinedTermSet, FAQPage). That is the part search engines and AI assistants quote."
     ],
-    legal:"Draft for internal approval — not published. Definitions are plain-language explanations of terms used on access.framontmanagement.com and do not replace the legal documentation of any product. For information purposes only; this is not investment advice, an offer or a solicitation. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk."
+    legal:"Draft for internal approval, not published. Definitions are plain-language explanations of terms used on access.framontmanagement.com and do not replace the legal documentation of any product. For information purposes only; this is not investment advice, an offer or a solicitation. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk."
   },
   it: {
-    draftTag:"Bozza di contenuto",
-    draftText:"Redatta da Niuexa per la revisione di Francesca — ogni definizione è una proposta, nulla è pubblicato.",
-    eyebrow:"Glossario", title:"Le parole di questa piattaforma, in linguaggio semplice",
-    lede:"Un glossario bilingue dei termini usati nelle pagine prodotto. Sono queste le definizioni che motori di ricerca e assistenti AI citano quando qualcuno chiede cos'è davvero un ETI o un AMC — ed è per questo che vale la pena scriverle con precisione.",
-    fAll:"Tutti", gInstruments:"Strumenti", gParties:"Soggetti", gCosts:"Costi", gInvestors:"Investitori", gDocs:"Documenti",
-    search:"Cerca un termine…", flag:"Serve approvazione compliance", entries:"voci", entry:"voce", none:"Nessun termine corrisponde alla ricerca.",
-    needTitle:"Per Francesca",
-    need:[
-      "Sei voci sono contrassegnate “serve approvazione compliance”: Gestore di portafoglio, Sviluppatore della strategia e le quattro classificazioni degli investitori. Riprendono le regole già concordate, quindi serve la tua formulazione esatta più che una semplice rilettura.",
-      "Manca qualcosa? L'elenco copre il vocabolario oggi usato nelle pagine prodotto; volentieri aggiungiamo i termini che i vostri clienti chiedono davvero.",
-      "Una volta approvate, ogni definizione alimenta anche un blocco FAQ sulla pagina prodotto corrispondente e i dati strutturati (DefinedTermSet, FAQPage) — è quella la parte che motori di ricerca e assistenti AI citano."
+    planLabel:"Piano di miglioramento", title:"Le parole di questa piattaforma, in linguaggio semplice",
+    dek:"Trentuno definizioni bilingui sul vocabolario usato nelle pagine prodotto. Sono le righe che motori di ricerca e assistenti AI citano quando qualcuno chiede cos'è davvero un ETI, ed è per questo che vale la pena scriverle con precisione.",
+    mStatus:"Stato", mStatusV:"In attesa dell'approvazione di Francesca",
+    mFlagged:"Richiede dicitura compliance", mFlaggedV:"Sei voci su trentuno",
+    mAuthor:"Redatto da",
+    search:"Cerca un termine", all:"Tutti", flag:"Approvazione compliance",
+    entries:"voci", entry:"voce", none:"Nessun termine corrisponde alla ricerca.",
+    askTitle:"Tre cose che ci servono da te", askOf:"Francesca", sig:"Niuexa per Framont Group",
+    ask:[
+      "Sei voci sono contrassegnate per approvazione compliance: Gestore di portafoglio, Sviluppatore della strategia e le quattro classificazioni degli investitori. Riprendono regole già concordate, quindi ci serve la tua formulazione esatta, non una semplice rilettura.",
+      "Manca qualcosa? L'elenco copre il vocabolario oggi presente nelle pagine prodotto. Volentieri aggiungiamo i termini che i vostri clienti chiedono davvero.",
+      "Una volta approvate, ogni definizione alimenta anche un breve blocco di domande sulla pagina prodotto corrispondente e i dati strutturati (DefinedTermSet, FAQPage). È quella la parte che motori di ricerca e assistenti AI citano."
     ],
-    legal:"Bozza per approvazione interna — non pubblicata. Le definizioni sono spiegazioni in linguaggio semplice dei termini usati su access.framontmanagement.com e non sostituiscono la documentazione legale di alcun prodotto. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio."
+    legal:"Bozza per approvazione interna, non pubblicata. Le definizioni sono spiegazioni in linguaggio semplice dei termini usati su access.framontmanagement.com e non sostituiscono la documentazione legale di alcun prodotto. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio."
   }
 };
 
-function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+var filter = "all", query = "";
 
-function render(){
-  var t = UI[lang];
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){
-    var k = el.getAttribute("data-i18n"); if (t[k]) el.textContent = t[k];
-  });
-  document.getElementById("langBtn").textContent = lang === "en" ? "Italiano" : "English";
+function render(lang){
+  var t = DICT[lang], esc = PV.esc;
   document.getElementById("q").placeholder = t.search;
   document.getElementById("legal").textContent = t.legal;
-  document.getElementById("needList").innerHTML = t.need.map(function(n){ return "<li>" + esc(n) + "</li>"; }).join("");
+  document.getElementById("askList").innerHTML = t.ask.map(function(a){ return "<li><span>" + esc(a) + "</span></li>"; }).join("");
+
+  document.getElementById("tabs").innerHTML =
+    [{ key:"all", label:t.all }].concat(GROUPS.map(function(g){ return { key:g.key, label:g.label[lang] }; }))
+    .map(function(f){
+      return '<button data-tab="' + f.key + '" aria-pressed="' + (filter === f.key) + '">' + esc(f.label) + "</button>";
+    }).join("");
+  document.querySelectorAll("[data-tab]").forEach(function(b){
+    b.addEventListener("click", function(){ filter = b.getAttribute("data-tab"); render(PV.lang); });
+  });
 
   var q = query.trim().toLowerCase(), html = "", shown = 0;
   GROUPS.forEach(function(g){
@@ -327,29 +340,20 @@ function render(){
     });
     if (!items.length) return;
     shown += items.length;
-    html += '<div class="group"><div class="grouphead">' + esc(g.label[lang]) + "</div>";
+    html += '<div class="set"><h2>' + esc(g.label[lang]) + "</h2><dl>";
     items.forEach(function(x){
       var e = x[lang];
-      html += '<div class="term"><div><div class="tname">' + esc(e.t) + '</div><div class="talt">' + esc(e.alt) + "</div></div>" +
-        '<div><div class="tdef">' + esc(e.d) + "</div>" +
-        (e.flag ? '<span class="flag">' + esc(t.flag) + "</span>" : "") + "</div></div>";
+      html += '<div class="term"><dt><div class="word">' + esc(e.t) + '</div><div class="alt">' + esc(e.alt) + "</div></dt>" +
+        "<dd>" + esc(e.d) + (e.flag ? '<span class="flag"><i></i>' + esc(t.flag) + "</span>" : "") + "</dd></div>";
     });
-    html += "</div>";
+    html += "</dl></div>";
   });
-  document.getElementById("list").innerHTML = html || '<div class="empty">' + esc(t.none) + "</div>";
-  document.getElementById("count").textContent = shown + " " + (shown === 1 ? t.entry : t.entries);
+  document.getElementById("list").innerHTML = html || '<div class="none">' + esc(t.none) + "</div>";
+  document.getElementById("tally").textContent = shown + " " + (shown === 1 ? t.entry : t.entries);
 }
 
-document.querySelectorAll("[data-filter]").forEach(function(b){
-  b.addEventListener("click", function(){
-    filter = b.getAttribute("data-filter");
-    document.querySelectorAll("[data-filter]").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
-    render();
-  });
-});
-document.getElementById("q").addEventListener("input", function(e){ query = e.target.value; render(); });
-document.getElementById("langBtn").addEventListener("click", function(){ lang = lang === "en" ? "it" : "en"; render(); });
-render();
+document.getElementById("q").addEventListener("input", function(e){ query = e.target.value; render(PV.lang); });
+PV.init({ dict: DICT, render: render });
 </script>
 </body>
 </html>

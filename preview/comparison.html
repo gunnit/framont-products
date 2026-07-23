@@ -4,382 +4,345 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Framont Access — Product comparison (layout draft)</title>
+<title>Framont Access — Product comparison (draft)</title>
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/preview/hero-comparison.jpg">
+<link rel="stylesheet" href="preview.css">
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#FFFFFF;color:#002E5F;font-family:'Work Sans',sans-serif;-webkit-font-smoothing:antialiased}
-  ::selection{background:rgba(255,130,0,.22)}
-  a{color:#B85C00}
-
-  .draftbar{background:#001630;color:rgba(255,255,255,.82);font-size:12px;letter-spacing:.02em;padding:11px 24px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
-  .draftbar b{color:#FFB273;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
-
-  header{border-bottom:1px solid #E9E7E2;background:#FFFFFF}
-  .wrap{max-width:1360px;margin:0 auto;padding:0 32px}
-  .head{padding:52px 0 40px;display:flex;gap:32px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
-  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00}
-  h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.1;margin:14px 0 0;color:#002E5F;letter-spacing:-.01em}
-  .lede{font-size:15.5px;font-weight:300;color:#4D575E;line-height:1.7;margin:16px 0 0;max-width:620px}
-
-  .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:0 0 26px}
-  .chip{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#4D575E;background:#FFFFFF;border:1px solid #E9E7E2;padding:9px 16px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
-  .chip:hover{border-color:#FF8200;color:#B85C00}
-  .chip[aria-pressed="true"]{background:#002E5F;border-color:#002E5F;color:#FFFFFF}
-  .sep{width:1px;height:22px;background:#E9E7E2;margin:0 6px}
-
-  .tablewrap{overflow-x:auto;border:1px solid #E9E7E2;border-bottom:none}
-  table{border-collapse:collapse;width:100%;min-width:1180px}
-  thead th{position:sticky;top:0;z-index:5;background:#F7F7F5;border-bottom:1px solid #E9E7E2;text-align:left;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#4D575E;padding:14px 16px;white-space:nowrap}
-  thead th:first-child{min-width:230px}
-  .band td{background:#001F42;color:#FFFFFF;padding:12px 16px;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
-  .band .count{color:rgba(255,255,255,.55);font-weight:400;letter-spacing:.06em;margin-left:10px;text-transform:none;font-size:11px}
-  tbody td{border-bottom:1px solid #E9E7E2;padding:16px;font-size:13.5px;line-height:1.6;color:#4D575E;vertical-align:top}
-  tbody tr.row:hover td{background:#FCFBF9}
-  .pname{font-size:14.5px;font-weight:600;color:#002E5F;line-height:1.35}
-  .pmeta{font-size:11px;color:#7C848C;margin-top:5px;letter-spacing:.02em}
-  .strong{color:#002E5F;font-weight:500}
-  .lock{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4D575E;background:#F7F7F5;border:1px solid #E9E7E2;padding:5px 9px;white-space:nowrap}
-  .lock svg{width:10px;height:10px;stroke:#FF8200;stroke-width:2.4;fill:none;flex:none}
-  .tbc{color:#B85C00;border-bottom:1px dotted rgba(184,92,0,.5);cursor:help}
-  .note{font-size:11.5px;color:#7C848C;margin-top:6px;line-height:1.5}
-
-  .cards{display:none}
-  .card{border:1px solid #E9E7E2;border-top:3px solid #FF8200;padding:22px;margin-bottom:14px}
-  .card h3{font-size:15px;font-weight:600;color:#002E5F;margin:0 0 4px}
-  .card dl{display:grid;grid-template-columns:38% 62%;gap:1px;background:#E9E7E2;border:1px solid #E9E7E2;margin:16px 0 0}
-  .card dt{background:#F7F7F5;padding:10px 12px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#4D575E;margin:0}
-  .card dd{background:#FFFFFF;padding:10px 12px;font-size:13px;color:#4D575E;margin:0;line-height:1.55}
-  .cardband{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;background:#001F42;padding:11px 16px;margin:26px 0 14px}
-
-  footer{background:#F7F7F5;border-top:1px solid #E9E7E2;margin-top:56px}
-  .foot{padding:52px 0 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px}
-  .foot h2{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00;margin:0 0 16px}
-  .foot p,.foot li{font-size:13px;color:#4D575E;line-height:1.75}
-  .foot ul{margin:0;padding-left:18px}
-  .legal{border-top:1px solid #E9E7E2;padding:26px 0 60px;font-size:11.5px;color:#7C848C;line-height:1.8}
-
-  @media (max-width:900px){
-    .wrap{padding:0 20px}
-    .tablewrap{display:none}
-    .cards{display:block}
+  /* Category filter: a ruled bar of tabs, not a row of pill chips. */
+  .filters{display:flex;gap:0;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);margin-bottom:clamp(24px,3vw,34px)}
+  .filters button{
+    font-family:var(--sans);font-size:var(--t-small);font-weight:500;color:var(--ink-3);
+    background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;
+    padding:12px 18px 11px;cursor:pointer;transition:color .25s var(--ease),border-color .25s var(--ease);
   }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .filters button:first-child{padding-left:0}
+  .filters button:hover{color:var(--amber-ink)}
+  .filters button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--amber)}
+  .filters .n{font-size:var(--t-micro);color:var(--ink-3);margin-left:6px;font-variant-numeric:tabular-nums}
+  .filters button[aria-pressed="true"] .n{color:var(--amber-ink)}
+
+  /* Below 900px the table becomes a stack of product records. */
+  .stack{display:none}
+  .stack .band-h{
+    background:var(--navy-700);color:#fff;padding:12px 16px;margin:30px 0 12px;
+    font-size:var(--t-micro);font-weight:600;letter-spacing:.17em;text-transform:uppercase;
+  }
+  .rec{border:1px solid var(--line);border-top:2px solid var(--amber);padding:20px;margin-bottom:12px}
+  .rec dl{display:grid;grid-template-columns:34% 66%;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:16px}
+  .rec dt{background:var(--paper-2);padding:10px 12px;margin:0;font-size:var(--t-micro);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .rec dd{background:var(--paper);padding:10px 12px;margin:0;font-size:var(--t-small);color:var(--ink-2)}
+  @media (max-width:900px){ .tablewrap{display:none} .stack{display:block} }
 </style>
 </head>
 <body>
 
-<div class="draftbar">
-  <b data-i18n="draftTag">Layout draft</b>
-  <span data-i18n="draftText">Internal preview for approval — not linked from access.framontmanagement.com and excluded from search engines.</span>
+<header data-chrome></header>
+
+<div class="hero">
+  <div class="hero-img" style="background-image:url('../assets/preview/hero-comparison.jpg')"></div>
+  <div class="hero-in">
+    <div class="plan-no">01<small data-i18n="planLabel">Improvement plan</small></div>
+    <h1 data-i18n="title">Eighteen products, one page</h1>
+    <p class="dek" data-i18n="dek">Wrapper, strategy, liquidity, currency, costs and eligibility for the whole range, in a single view. ISIN and minimum subscription stay locked, exactly as they are on the live site.</p>
+    <dl class="hero-meta">
+      <div><dt data-i18n="mStatus">Status</dt><dd data-i18n="mStatusV">Awaiting your approval of the layout</dd></div>
+      <div><dt data-i18n="mSource">Source</dt><dd data-i18n="mSourceV">Published product records and KIDs</dd></div>
+      <div><dt data-i18n="mDate">Data as at</dt><dd>23.07.2026</dd></div>
+    </dl>
+  </div>
 </div>
 
-<header>
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <div class="eyebrow" data-i18n="eyebrow">The Framont Range</div>
-        <h1 data-i18n="title">Every product, side by side</h1>
-        <p class="lede" data-i18n="lede">One view of the full shelf — wrapper, strategy, liquidity, currency and costs. ISIN and minimum subscription stay reserved for registered users, exactly as they are on the live site.</p>
-      </div>
-      <div style="font-size:12px;color:#7C848C;line-height:1.7;text-align:right;min-width:180px">
-        <div data-i18n="asOfLabel">Data as at</div>
-        <div style="color:#002E5F;font-weight:600;font-size:13px">23.07.2026</div>
+<main>
+  <section class="tight">
+    <div class="wrap">
+      <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+      <div class="rise in">
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="cProduct">Product</th>
+                <th data-i18n="cWrapper">Wrapper and structure</th>
+                <th data-i18n="cStrategy">Strategy</th>
+                <th data-i18n="cLiquidity">Liquidity</th>
+                <th data-i18n="cCurrency">Currency</th>
+                <th data-i18n="cCosts">Costs</th>
+                <th data-i18n="cEligibility">Eligibility</th>
+                <th data-i18n="cGated">ISIN and minimum</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="stack" id="stack"></div>
       </div>
     </div>
-  </div>
-</header>
+  </section>
 
-<div class="wrap">
-  <div class="controls" style="padding-top:26px">
-    <button class="chip" data-filter="all" aria-pressed="true" data-i18n="fAll">All products</button>
-    <button class="chip" data-filter="funds" aria-pressed="false" data-i18n="fFunds">Funds</button>
-    <button class="chip" data-filter="amc" aria-pressed="false">AMC</button>
-    <button class="chip" data-filter="eti" aria-pressed="false">ETI</button>
-    <button class="chip" data-filter="deals" aria-pressed="false" data-i18n="fDeals">Deals</button>
-    <span class="sep"></span>
-    <button class="chip" id="langBtn" aria-pressed="false">Italiano</button>
-  </div>
-
-  <div class="tablewrap">
-    <table id="tbl">
-      <thead>
-        <tr>
-          <th data-i18n="cProduct">Product</th>
-          <th data-i18n="cWrapper">Wrapper &amp; structure</th>
-          <th data-i18n="cStrategy">Strategy</th>
-          <th data-i18n="cLiquidity">Liquidity</th>
-          <th data-i18n="cCurrency">Currency</th>
-          <th data-i18n="cCosts">Costs</th>
-          <th data-i18n="cEligibility">Eligibility</th>
-          <th data-i18n="cGated">ISIN &amp; minimum</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
-  </div>
-  <div class="cards" id="cards"></div>
-</div>
+  <section class="alt">
+    <div class="wrap">
+      <div class="rise">
+        <div class="rule-head">
+          <h2 data-i18n="openTitle">Open questions</h2>
+          <span class="of" data-i18n="openOf">Three, all for Framont</span>
+        </div>
+        <div class="open-items" style="border-top:none;margin-top:0;padding-top:0">
+          <ol id="openList"></ol>
+        </div>
+      </div>
+      <div class="rise" style="margin-top:clamp(40px,5vw,64px)">
+        <div class="notes" id="notes"></div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
   <div class="wrap">
-    <div class="foot">
-      <div>
-        <h2 data-i18n="needTitle">To confirm before go-live</h2>
-        <ul id="needList"></ul>
-      </div>
-      <div>
-        <h2 data-i18n="whereTitle">Where this would live</h2>
-        <p data-i18n="whereText">As a fifth entry in the main navigation (“Compare”), and as a link at the top of each category page. The table reads from the same product data as the cards, so a change to a product updates both.</p>
-      </div>
-      <div>
-        <h2 data-i18n="gateTitle">What stays behind the gate</h2>
-        <p data-i18n="gateText">ISIN and minimum subscription are shown as locked chips and open the registration form on click — the same rule as the product cards. Everything else in the table is public.</p>
-      </div>
-    </div>
-    <div class="legal" id="legal"></div>
+    <p id="legal"></p>
+    <div class="sig" data-i18n="sig">Niuexa for Framont Group</div>
   </div>
 </footer>
 
+<script src="preview.js"></script>
 <script>
-/* Preview page — bilingual, data-driven so the table can be ported into the site
-   from the same product records that already feed the product cards. */
-var LOCK = '<span class="lock"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg><span data-lockname></span></span>';
-
+/* Product records mirror the data already published on the live site, so this
+   table can later read from the same source rather than a second copy. */
 var GROUPS = [
-  { key: "funds", label: { en: "Funds — alternative investment funds", it: "Fondi — fondi di investimento alternativi" } },
-  { key: "amc", label: { en: "AMC — actively managed certificates & notes", it: "AMC — certificati a gestione attiva e note" } },
-  { key: "eti", label: { en: "ETI — exchange traded instruments", it: "ETI — exchange traded instruments" } },
-  { key: "deals", label: { en: "Deals — private market opportunities", it: "Deals — opportunità nei mercati privati" } }
+  { key:"funds", label:{ en:"Funds", it:"Fondi" }, note:{ en:"Alternative investment funds", it:"Fondi di investimento alternativi" } },
+  { key:"amc",   label:{ en:"AMC",   it:"AMC" },   note:{ en:"Actively managed certificates and notes", it:"Certificati a gestione attiva e note" } },
+  { key:"eti",   label:{ en:"ETI",   it:"ETI" },   note:{ en:"Exchange traded instruments", it:"Exchange traded instruments" } },
+  { key:"deals", label:{ en:"Deals", it:"Deals" }, note:{ en:"Private market opportunities", it:"Opportunità nei mercati privati" } }
 ];
 
 var P = [
-  /* ---- FUNDS ---- */
-  { g:"funds", name:"Gentile da Fabriano", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"},
+  { g:"funds", name:"Gentile da Fabriano", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Real estate, property rights and property-holding companies",it:"Immobili, diritti reali e società immobiliari"},
-    liquidity:{en:"Closed-ended — horizon up to 30 years",it:"Chiuso — orizzonte fino a 30 anni"},
+    liquidity:{en:"Closed-ended, horizon up to 30 years",it:"Chiuso, orizzonte fino a 30 anni"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Orizzonte", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"},
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"Orizzonte", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
-    strategy:{en:"Acquire, enhance and dispose of real estate; dedicated Real Estate Management Committee",it:"Acquisizione, valorizzazione e dismissione di immobili; Comitato di Gestione Immobiliare dedicato"},
+    strategy:{en:"Acquire, enhance and dispose of real estate. Dedicated management committee",it:"Acquisizione, valorizzazione e dismissione di immobili. Comitato di gestione dedicato"},
     liquidity:{en:"Closed-ended",it:"Chiuso"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Wright", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"},
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"Wright", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"From €500,000",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Real estate and real estate company shares, focus on Rome",it:"Immobili e azioni di società immobiliari, focus su Roma"},
     liquidity:{en:"Closed-ended",it:"Chiuso"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional investors, or subscriptions from €500,000",it:"Investitori professionali, o sottoscrizioni da €500.000"} },
-  { g:"funds", name:"Real Sequoia", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"},
+  { g:"funds", name:"Real Sequoia", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
-    strategy:{en:"≥2/3 in real estate; funds construction, completion and development of held assets",it:"≥2/3 in immobili; finanzia costruzione, completamento e sviluppo degli asset detenuti"},
-    liquidity:{en:"Closed-ended — medium to long term",it:"Chiuso — medio-lungo periodo"},
+    strategy:{en:"Two thirds in real estate. Funds construction and development of held assets",it:"Due terzi in immobili. Finanzia costruzione e sviluppo degli asset detenuti"},
+    liquidity:{en:"Closed-ended, medium to long term",it:"Chiuso, medio-lungo periodo"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Pinnacle Investment", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"},
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"Pinnacle Investment", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
-    strategy:{en:"Residential, office, commercial, industrial and tourism assets in Italy, EU and G8",it:"Residenziale, direzionale, commerciale, industriale e turistico in Italia, UE e G8"},
-    liquidity:{en:"Closed-ended — medium to long term",it:"Chiuso — medio-lungo periodo"},
+    strategy:{en:"Residential, office, commercial, industrial and tourism. Italy, EU and G8",it:"Residenziale, direzionale, commerciale, industriale e turistico. Italia, UE e G8"},
+    liquidity:{en:"Closed-ended, medium to long term",it:"Chiuso, medio-lungo periodo"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Hubble Capital", meta:{en:"Italian Reserved AIF — credit compartment",it:"FIA Italiano Riservato — comparto crediti"},
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"Hubble Capital", meta:{en:"Italian Reserved AIF, credit compartment",it:"FIA Italiano Riservato, comparto crediti"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved AIF · Italy",it:"FIA riservato di tipo chiuso · Italia"},
     strategy:{en:"Distressed credit, largely secured by real estate collateral",it:"Crediti distressed, in prevalenza garantiti da collaterale immobiliare"},
-    liquidity:{en:"Closed-ended — commitments and capital calls",it:"Chiuso — impegni e richiami di capitale"},
+    liquidity:{en:"Closed-ended, commitments and capital calls",it:"Chiuso, impegni e richiami di capitale"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Asymetria Fund", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"},
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"Asymetria Fund", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
     wrapper:{en:"Open-ended sub-fund of Global Series SICAV plc · Malta",it:"Comparto aperto di Global Series SICAV plc · Malta"},
-    strategy:{en:"Absolute return via listed & OTC derivatives — equities, indices, FX, commodities, volatility",it:"Absolute return con derivati quotati e OTC — azioni, indici, valute, materie prime, volatilità"},
+    strategy:{en:"Absolute return via listed and OTC derivatives",it:"Absolute return con derivati quotati e OTC"},
     liquidity:{en:"Monthly dealing",it:"Sottoscrizioni e rimborsi mensili"},
     ccy:"EUR", costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Earth Horizon Fund", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"},
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"Earth Horizon Fund", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
     wrapper:{en:"Sub-fund of Global Series SICAV plc · Malta",it:"Comparto di Global Series SICAV plc · Malta"},
-    strategy:{en:"Private equity — majority and minority stakes, directly or via SPVs; initial focus on real estate",it:"Private equity — partecipazioni di maggioranza e minoranza, dirette o tramite SPV; focus iniziale immobiliare"},
+    strategy:{en:"Private equity stakes, direct or via SPVs. Initial focus on real estate",it:"Partecipazioni di private equity, dirette o tramite SPV. Focus iniziale immobiliare"},
     liquidity:{en:"Semi-annual dealing",it:"Sottoscrizioni e rimborsi semestrali"},
-    ccy:{en:"EUR & USD share classes",it:"Classi in EUR e USD"}, costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"CIREDCO Fund 1", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"},
+    ccy:{en:"EUR and USD share classes",it:"Classi in EUR e USD"}, costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
+  { g:"funds", name:"CIREDCO Fund 1", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
     wrapper:{en:"Closed-ended Notified AIF · Malta",it:"AIF Notificato di tipo chiuso · Malta"},
     strategy:{en:"Italian NPLs, UTPs and distressed positions secured by property",it:"NPL, UTP e posizioni deteriorate garantite da immobili in Italia"},
     liquidity:{en:"Closed-ended",it:"Chiuso"},
     ccy:"EUR", costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
-    elig:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"} },
+    elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
 
-  /* ---- AMC ---- */
-  { g:"amc", name:"Noctiluca Capital AMC", meta:{en:"Expand2 Issuer PCC (Guernsey) · GenTwo",it:"Expand2 Issuer PCC (Guernsey) · GenTwo"},
-    wrapper:{en:"Open-end unlisted dynamic tracker certificate (Swiss law)",it:"Tracker certificate dinamico open-end non quotato (diritto svizzero)"},
-    strategy:{en:"Systematic breakout and trend-following on listed global equity-index and commodity futures",it:"Segnali sistematici di breakout e trend-following su future su indici azionari globali e materie prime"},
-    liquidity:{en:"Monthly (15th) · cash settlement",it:"Mensile (giorno 15) · regolamento in contanti"},
-    ccy:{en:"EUR · EUR 1,000 per unit",it:"EUR · EUR 1.000 per quota"},
-    costs:{en:"2.00% p.a. management + 0.70% p.a. administration · 20% performance over a 0% hurdle, high-water mark, quarterly",it:"2,00% annuo di gestione + 0,70% annuo di amministrazione · 20% di performance oltre hurdle 0%, high-water mark, trimestrale"},
+  { g:"amc", name:"Noctiluca Capital AMC", meta:{en:"Expand2 Issuer PCC (Guernsey) · GenTwo",it:"Expand2 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1554882477",
+    wrapper:{en:"Open-end unlisted dynamic tracker certificate, Swiss law",it:"Tracker certificate dinamico open-end non quotato, diritto svizzero"},
+    strategy:{en:"Systematic breakout and trend-following on global index and commodity futures",it:"Breakout e trend-following sistematici su future su indici e materie prime"},
+    liquidity:{en:"Monthly on the 15th, cash settlement",it:"Mensile il giorno 15, regolamento in contanti"},
+    ccy:{en:"EUR, EUR 1,000 per unit",it:"EUR, EUR 1.000 per quota"},
+    costs:{en:"2.00% p.a. management, 0.70% p.a. administration. Performance 20% over a 0% hurdle, high-water mark",it:"2,00% annuo di gestione, 0,70% annuo di amministrazione. Performance 20% oltre hurdle 0%, high-water mark"},
     elig:{en:"Professional investors only",it:"Riservato a investitori professionali"} },
-  { g:"amc", name:"Zalphyx Yield Strategies", meta:{en:"Expand3 Issuer PCC (Guernsey) · GenTwo",it:"Expand3 Issuer PCC (Guernsey) · GenTwo"},
-    wrapper:{en:"Credit-linked note — unlisted, private placement",it:"Credit-linked note — non quotata, private placement"},
-    strategy:{en:"Private credit — first-rank USD mortgage lending in the Dominican Republic, max 50% LTV",it:"Private credit — prestiti ipotecari USD di primo grado nella Repubblica Dominicana, LTV max 50%"},
-    liquidity:{en:"Hold to maturity — 6 August 2029, subject to early redemption",it:"Detenzione fino a scadenza — 6 agosto 2029, salvo rimborso anticipato"},
-    ccy:{en:"EUR · EUR 1,000 per note",it:"EUR · EUR 1.000 per nota"},
+  { g:"amc", name:"Zalphyx Yield Strategies", meta:{en:"Expand3 Issuer PCC (Guernsey) · GenTwo",it:"Expand3 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1518693374",
+    wrapper:{en:"Credit-linked note, unlisted, private placement",it:"Credit-linked note, non quotata, private placement"},
+    strategy:{en:"First-rank USD mortgages, Dominican Republic, maximum 50% LTV",it:"Ipoteche USD di primo grado, Repubblica Dominicana, LTV massimo 50%"},
+    liquidity:{en:"Hold to maturity, 6 August 2029, subject to early redemption",it:"Detenzione fino a scadenza, 6 agosto 2029, salvo rimborso anticipato"},
+    ccy:{en:"EUR, EUR 1,000 per note",it:"EUR, EUR 1.000 per nota"},
     costs:{en:"6% p.a. coupon, paid semi-annually",it:"Cedola 6% annuo, pagata semestralmente"},
-    elig:{en:"Professional & qualified investors only — in subscription until 28 July 2026",it:"Solo investitori professionali e qualificati — in sottoscrizione fino al 28 luglio 2026"} },
+    elig:{en:"Professional and qualified investors only. In subscription until 28 July 2026",it:"Solo investitori professionali e qualificati. In sottoscrizione fino al 28 luglio 2026"} },
 
-  /* ---- ETI ---- */
-  { g:"eti", name:"HERAKLIT Strategy ETI", meta:{en:"iMaps ETI AG (Liechtenstein) · Börse Stuttgart",it:"iMaps ETI AG (Liechtenstein) · Börse di Stoccarda"},
-    wrapper:{en:"Listed exchange traded instrument · issue price EUR 100",it:"Exchange traded instrument quotato · prezzo di emissione EUR 100"},
-    strategy:{en:"Systematic multi-asset — physics-based regime detection (Fokker–Planck) across twelve global data streams",it:"Multi-asset sistematico — rilevazione dei regimi su basi fisiche (Fokker–Planck) su dodici flussi di dati globali"},
-    liquidity:{en:"Daily on exchange · T+2",it:"Giornaliera in borsa · T+2"},
+  { g:"eti", name:"HERAKLIT Strategy ETI", meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0D44",
+    wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
+    strategy:{en:"Systematic multi-asset. Regime detection across twelve global data streams",it:"Multi-asset sistematico. Rilevazione dei regimi su dodici flussi di dati globali"},
+    liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"4.50% p.a. ongoing costs and 25% performance fee (per KID) · 0.50–1.00% entry/exit based on AuM",it:"4,50% annuo di costi correnti e commissione di performance 25% (da KID) · 0,50–1,00% ingresso/uscita in base all'AuM"},
+    costs:{en:"4.50% p.a. ongoing, 25% performance (per KID). Entry and exit 0.50 to 1.00%",it:"4,50% annuo di costi correnti, performance 25% (da KID). Ingresso e uscita 0,50 a 1,00%"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
-  { g:"eti", name:"Tech Megatrend Tactical ETI", meta:{en:"iMaps ETI AG (Liechtenstein) · Börse Stuttgart",it:"iMaps ETI AG (Liechtenstein) · Börse di Stoccarda"},
-    wrapper:{en:"Listed exchange traded instrument · issue price EUR 100",it:"Exchange traded instrument quotato · prezzo di emissione EUR 100"},
-    strategy:{en:"Tactical, liquidity-driven US technology exposure rotating across TECL, TQQQ, QQQ, cash and short positioning",it:"Esposizione tattica alla tecnologia USA guidata dalla liquidità, con rotazione tra TECL, TQQQ, QQQ, liquidità e posizioni short"},
-    liquidity:{en:"Daily on exchange · T+2",it:"Giornaliera in borsa · T+2"},
+  { g:"eti", name:"Tech Megatrend Tactical ETI", meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0D85",
+    wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
+    strategy:{en:"Tactical US technology. Rotates across TECL, TQQQ, QQQ, cash and short",it:"Tecnologia USA tattica. Rotazione tra TECL, TQQQ, QQQ, liquidità e short"},
+    liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"1.0% p.a. management · 20% performance (high-water mark) · 0.50–1.00% entry/exit based on AuM",it:"1,0% annuo di gestione · 20% di performance (high-water mark) · 0,50–1,00% ingresso/uscita in base all'AuM"},
+    costs:{en:"1.0% p.a. management, 20% performance (high-water mark). Entry and exit 0.50 to 1.00%",it:"1,0% annuo di gestione, 20% di performance (high-water mark). Ingresso e uscita 0,50 a 1,00%"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
-  { g:"eti", name:"LC Invest — Value Edge ETI", meta:{en:"iMaps ETI AG (Liechtenstein) · Börse Stuttgart",it:"iMaps ETI AG (Liechtenstein) · Börse di Stoccarda"},
-    wrapper:{en:"Listed exchange traded instrument · issue price EUR 100",it:"Exchange traded instrument quotato · prezzo di emissione EUR 100"},
-    strategy:{en:"Discretionary Gold and FX — Smart Money Concepts, price action and macro analysis",it:"Oro e valute in gestione discrezionale — Smart Money Concepts, price action e analisi macro"},
-    liquidity:{en:"Daily on exchange · T+2",it:"Giornaliera in borsa · T+2"},
+  { g:"eti", name:"LC Invest, Value Edge ETI", meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0BZ5",
+    wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
+    strategy:{en:"Discretionary Gold and FX. Smart Money Concepts, price action and macro analysis",it:"Oro e valute in gestione discrezionale. Smart Money Concepts, price action e analisi macro"},
+    liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"4.5% p.a. retail / 6.0% p.a. professional management · 20% performance (high-water mark) · 0.50–1.00% entry (indicative)",it:"4,5% annuo retail / 6,0% annuo professionale di gestione · 20% di performance (high-water mark) · 0,50–1,00% di ingresso (indicativa)"},
+    costs:{en:"4.5% retail or 6.0% professional p.a., 20% performance (high-water mark). Entry 0.50 to 1.00%",it:"4,5% retail o 6,0% professionale annuo, 20% di performance (high-water mark). Ingresso 0,50 a 1,00%"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
-  { g:"eti", name:"IVN Global ETI", meta:{en:"iMaps ETI AG (Liechtenstein)",it:"iMaps ETI AG (Liechtenstein)"},
-    wrapper:{en:"Listed exchange traded instrument · issue price EUR 100",it:"Exchange traded instrument quotato · prezzo di emissione EUR 100"},
-    strategy:{en:"Global long/short across equity indices, currencies, commodities and digital assets; leverage capped at 300% of portfolio value",it:"Long/short globale su indici azionari, valute, materie prime e asset digitali; leva massima 300% del valore del portafoglio"},
-    liquidity:{en:"T+2 · tradable through banks and brokers",it:"T+2 · negoziabile tramite banche e broker"},
+  { g:"eti", name:"IVN Global ETI", meta:{en:"iMaps ETI AG (Liechtenstein)",it:"iMaps ETI AG (Liechtenstein)"}, isin:"DE000AMC0DX6",
+    wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
+    strategy:{en:"Global long/short: indices, currencies, commodities, digital assets. Leverage max 300%",it:"Long/short globale: indici, valute, materie prime, asset digitali. Leva massima 300%"},
+    liquidity:{en:"T+2, tradable through banks and brokers",it:"T+2, negoziabile tramite banche e broker"},
     ccy:"EUR",
-    costs:{en:"Up to 4.5% p.a. retail / 6.0% p.a. professional management",it:"Fino a 4,5% annuo retail / 6,0% annuo professionale di gestione"},
+    costs:{en:"Up to 4.5% retail or 6.0% professional p.a.",it:"Fino a 4,5% retail o 6,0% professionale annuo"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
 
-  /* ---- DEALS ---- */
-  { g:"deals", name:{en:"Value-Add Hospitality — Italy",it:"Hospitality value-add — Italia"}, meta:{en:"MFSA-regulated SPV (share deal)",it:"SPV regolamentata MFSA (share deal)"},
+  { g:"deals", name:{en:"Value-Add Hospitality, Italy",it:"Hospitality value-add, Italia"}, meta:{en:"MFSA-regulated SPV (share deal)",it:"SPV regolamentata MFSA (share deal)"}, isin:"On request",
     wrapper:{en:"Direct opportunity through an MFSA-regulated SPV",it:"Opportunità diretta tramite SPV regolamentata MFSA"},
     strategy:{en:"Acquisition and luxury repositioning of a hospitality asset",it:"Acquisizione e riposizionamento luxury di un asset alberghiero"},
-    liquidity:{en:"Illiquid — deal-specific horizon",it:"Illiquido — orizzonte specifico dell'operazione"},
-    ccy:"EUR", costs:{en:"On request — full deck after eligibility check",it:"Su richiesta — deck completo dopo verifica di idoneità"},
-    elig:{en:"Professional & institutional investors only",it:"Solo investitori professionali e istituzionali"} },
-  { g:"deals", name:{en:"Greek Real Estate Portfolio",it:"Portafoglio immobiliare greco"}, meta:{en:"SPV / club deal / AMC",it:"SPV / club deal / AMC"},
+    liquidity:{en:"Illiquid, deal-specific horizon",it:"Illiquido, orizzonte specifico dell'operazione"},
+    ccy:"EUR", costs:{en:"On request, after eligibility check",it:"Su richiesta, dopo verifica di idoneità"},
+    elig:{en:"Professional and institutional investors only",it:"Solo investitori professionali e istituzionali"} },
+  { g:"deals", name:{en:"Greek Real Estate Portfolio",it:"Portafoglio immobiliare greco"}, meta:{en:"SPV, club deal or AMC",it:"SPV, club deal o AMC"}, isin:"On request",
     wrapper:{en:"Structured through MFSA-regulated vehicles",it:"Strutturato tramite veicoli regolamentati MFSA"},
-    strategy:{en:"Off-market villas, hotels, prime land, coastal assets and a private island",it:"Ville, hotel, terreni pregiati, asset costieri e un'isola privata off-market"},
-    liquidity:{en:"Illiquid — deal-specific horizon",it:"Illiquido — orizzonte specifico dell'operazione"},
-    ccy:"EUR", costs:{en:"On request — full disclosure after NDA/NCNDA",it:"Su richiesta — disclosure completa dopo NDA/NCNDA"},
-    elig:{en:"Professional & institutional investors only",it:"Solo investitori professionali e istituzionali"} },
-  { g:"deals", name:{en:"Adaptive Re-Use Hotel Development — Spain",it:"Sviluppo alberghiero adaptive re-use — Spagna"}, meta:{en:"MFSA-regulated SPV with senior debt",it:"SPV regolamentata MFSA con debito senior"},
+    strategy:{en:"Off-market villas, hotels, land, coastal assets and a private island",it:"Ville, hotel, terreni, asset costieri e un'isola privata off-market"},
+    liquidity:{en:"Illiquid, deal-specific horizon",it:"Illiquido, orizzonte specifico dell'operazione"},
+    ccy:"EUR", costs:{en:"On request, after NDA or NCNDA",it:"Su richiesta, dopo NDA o NCNDA"},
+    elig:{en:"Professional and institutional investors only",it:"Solo investitori professionali e istituzionali"} },
+  { g:"deals", name:{en:"Adaptive Re-Use Hotel Development, Spain",it:"Sviluppo alberghiero adaptive re-use, Spagna"}, meta:{en:"MFSA-regulated SPV with senior debt",it:"SPV regolamentata MFSA con debito senior"}, isin:"On request",
     wrapper:{en:"Direct opportunity through an MFSA-regulated SPV",it:"Opportunità diretta tramite SPV regolamentata MFSA"},
-    strategy:{en:"Industrial building converted into a 71-key 4-star hotel with retail, international operator",it:"Edificio industriale riconvertito in hotel 4 stelle da 71 camere con retail, operatore internazionale"},
-    liquidity:{en:"Illiquid — deal-specific horizon",it:"Illiquido — orizzonte specifico dell'operazione"},
-    ccy:"EUR", costs:{en:"On request — full deck after eligibility check",it:"Su richiesta — deck completo dopo verifica di idoneità"},
-    elig:{en:"Professional & institutional investors only",it:"Solo investitori professionali e istituzionali"} }
+    strategy:{en:"Industrial building converted into a 71-key 4-star hotel with retail",it:"Edificio industriale riconvertito in hotel 4 stelle da 71 camere con retail"},
+    liquidity:{en:"Illiquid, deal-specific horizon",it:"Illiquido, orizzonte specifico dell'operazione"},
+    ccy:"EUR", costs:{en:"On request, after eligibility check",it:"Su richiesta, dopo verifica di idoneità"},
+    elig:{en:"Professional and institutional investors only",it:"Solo investitori professionali e istituzionali"} }
 ];
 
-var UI = {
+var DICT = {
   en: {
-    draftTag:"Layout draft", draftText:"Internal preview for approval — not linked from access.framontmanagement.com and excluded from search engines.",
-    eyebrow:"The Framont Range", title:"Every product, side by side",
-    lede:"One view of the full shelf — wrapper, strategy, liquidity, currency and costs. ISIN and minimum subscription stay reserved for registered users, exactly as they are on the live site.",
-    asOfLabel:"Data as at", fAll:"All products", fFunds:"Funds", fDeals:"Deals", langBtn:"Italiano",
-    cProduct:"Product", cWrapper:"Wrapper & structure", cStrategy:"Strategy", cLiquidity:"Liquidity",
-    cCurrency:"Currency", cCosts:"Costs", cEligibility:"Eligibility", cGated:"ISIN & minimum",
-    lockName:"Members only", count:"products", one:"product",
-    needTitle:"To confirm before go-live", whereTitle:"Where this would live",
-    whereText:"As a fifth entry in the main navigation (“Compare”), and as a link at the top of each category page. The table reads from the same product data as the cards, so a change to a product updates both.",
-    gateTitle:"What stays behind the gate",
-    gateText:"ISIN and minimum subscription are shown as locked chips and open the registration form on click — the same rule as the product cards. Everything else in the table is public.",
-    need:[
-      "Fund costs: the nine funds currently show “per Fund Rules / Offering Supplement”. If Framont wants a management-fee column filled in, we need the figure per fund.",
-      "ETI eligibility wording: shown as “per PRIIPs KID and suitability check”. Francesca to confirm the exact formula for retail access.",
-      "Whether the Deals rows appear at all before the access code is entered, or only the three other categories."
+    planLabel:"Improvement plan", title:"Eighteen products, one page",
+    dek:"Wrapper, strategy, liquidity, currency, costs and eligibility for the whole range, in a single view. ISIN and minimum subscription stay locked, exactly as they are on the live site.",
+    mStatus:"Status", mStatusV:"Awaiting your approval of the layout",
+    mSource:"Source", mSourceV:"Published product records and KIDs", mDate:"Data as at",
+    cProduct:"Product", cWrapper:"Wrapper and structure", cStrategy:"Strategy", cLiquidity:"Liquidity",
+    cCurrency:"Currency", cCosts:"Costs", cEligibility:"Eligibility", cGated:"ISIN and minimum",
+    all:"All", locked:"Members only", sig:"Niuexa for Framont Group",
+    openTitle:"Open questions", openOf:"Three, all for Framont",
+    open:[
+      "Fund costs. The nine funds read “per Fund Rules”. If you want a real management-fee column, we need the figure per fund.",
+      "ETI eligibility. Shown as “per PRIIPs KID and suitability check”. Francesca to confirm the exact formula for retail access.",
+      "Deals rows. Should they appear at all before the access code is entered, or only the other three categories?"
     ],
-    legal:"Draft for internal approval — not published. Figures are taken from the product records already live on access.framontmanagement.com and from the official KIDs and term sheets. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and are not a reliable indicator of future results. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the KID and the prospectus or Fund Rules before investing. Capital at risk."
+    notes:[
+      { h:"Where it would live", p:"A fifth entry in the main navigation, and a link at the top of each category page." },
+      { h:"How it stays current", p:"It reads the same product records as the cards, so editing a product updates both at once." },
+      { h:"What stays locked", p:"ISIN and minimum subscription blur and open the registration form on click, the same rule as the product cards." }
+    ],
+    legal:"Draft for internal approval, not published. Figures are taken from the product records already live on access.framontmanagement.com and from the official KIDs and term sheets. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and are not a reliable indicator of future results. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the KID and the prospectus or Fund Rules before investing. Capital at risk."
   },
   it: {
-    draftTag:"Bozza di layout", draftText:"Anteprima interna per approvazione — non collegata da access.framontmanagement.com ed esclusa dai motori di ricerca.",
-    eyebrow:"La gamma Framont", title:"Tutti i prodotti, affiancati",
-    lede:"Una vista unica dell'intera gamma — struttura, strategia, liquidità, valuta e costi. ISIN e sottoscrizione minima restano riservati agli utenti registrati, esattamente come sul sito online.",
-    asOfLabel:"Dati aggiornati al", fAll:"Tutti i prodotti", fFunds:"Fondi", fDeals:"Deals", langBtn:"English",
+    planLabel:"Piano di miglioramento", title:"Diciotto prodotti, una pagina",
+    dek:"Struttura, strategia, liquidità, valuta, costi e idoneità dell'intera gamma, in una vista unica. ISIN e sottoscrizione minima restano bloccati, esattamente come sul sito online.",
+    mStatus:"Stato", mStatusV:"In attesa della vostra approvazione sul layout",
+    mSource:"Fonte", mSourceV:"Schede prodotto pubblicate e KID", mDate:"Dati aggiornati al",
     cProduct:"Prodotto", cWrapper:"Struttura", cStrategy:"Strategia", cLiquidity:"Liquidità",
     cCurrency:"Valuta", cCosts:"Costi", cEligibility:"Idoneità", cGated:"ISIN e minimo",
-    lockName:"Solo iscritti", count:"prodotti", one:"prodotto",
-    needTitle:"Da confermare prima della pubblicazione", whereTitle:"Dove andrebbe inserita",
-    whereText:"Come quinta voce nella navigazione principale (“Confronta”) e come link in cima a ogni pagina di categoria. La tabella legge dagli stessi dati di prodotto delle schede: una modifica al prodotto aggiorna entrambe.",
-    gateTitle:"Cosa resta dietro il gate",
-    gateText:"ISIN e sottoscrizione minima appaiono come chip bloccati e al clic aprono il modulo di registrazione — la stessa regola delle schede prodotto. Tutto il resto della tabella è pubblico.",
-    need:[
-      "Costi dei fondi: i nove fondi riportano oggi “da Regolamento / Offering Supplement”. Se Framont vuole una colonna con la commissione di gestione, servono i dati per singolo fondo.",
-      "Formula di idoneità degli ETI: indicata come “da KID PRIIPs e verifica di adeguatezza”. Francesca conferma la dicitura esatta per l'accesso retail.",
-      "Se le righe Deals debbano comparire prima dell'inserimento del codice di accesso, o solo le altre tre categorie."
+    all:"Tutti", locked:"Solo iscritti", sig:"Niuexa per Framont Group",
+    openTitle:"Questioni aperte", openOf:"Tre, tutte per Framont",
+    open:[
+      "Costi dei fondi. I nove fondi riportano “da Regolamento”. Per una colonna con la commissione di gestione servono i dati per singolo fondo.",
+      "Idoneità degli ETI. Indicata come “da KID PRIIPs e verifica di adeguatezza”. Francesca conferma la dicitura esatta per l'accesso retail.",
+      "Righe Deals. Devono comparire prima dell'inserimento del codice di accesso, o solo le altre tre categorie?"
     ],
-    legal:"Bozza per approvazione interna — non pubblicata. I dati provengono dalle schede prodotto già online su access.framontmanagement.com e dai KID e term sheet ufficiali. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio."
+    notes:[
+      { h:"Dove andrebbe inserita", p:"Come quinta voce nella navigazione principale e come link in cima a ogni pagina di categoria." },
+      { h:"Come resta aggiornata", p:"Legge le stesse schede prodotto delle card: modificare un prodotto aggiorna entrambe in un colpo solo." },
+      { h:"Cosa resta bloccato", p:"ISIN e sottoscrizione minima appaiono sfocati e al clic aprono il modulo di registrazione, la stessa regola delle schede prodotto." }
+    ],
+    legal:"Bozza per approvazione interna, non pubblicata. I dati provengono dalle schede prodotto già online su access.framontmanagement.com e dai KID e term sheet ufficiali. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio."
   }
 };
 
-var lang = "en", filter = "all";
-function L(v){ return (v && typeof v === "object") ? (v[lang] || v.en) : v; }
-function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-function cell(v, tbc){ return tbc ? '<span class="tbc" title="To be confirmed by Framont">' + esc(L(v)) + '</span>' : esc(L(v)); }
-function lock(){ return LOCK.replace('<span data-lockname></span>', '<span>' + esc(UI[lang].lockName) + '</span>'); }
+var LOCK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"></path></svg>';
+var filter = "all";
 
-function render(){
-  var t = UI[lang];
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){
-    var k = el.getAttribute("data-i18n"); if (t[k]) el.textContent = t[k];
-  });
-  document.getElementById("langBtn").textContent = t.langBtn;
+function render(lang){
+  var t = DICT[lang], esc = PV.esc, L = PV.L;
+
   document.getElementById("legal").textContent = t.legal;
-  document.getElementById("needList").innerHTML = t.need.map(function(n){ return "<li>" + esc(n) + "</li>"; }).join("");
+  document.getElementById("openList").innerHTML = t.open.map(function(o){ return "<li><span>" + esc(o) + "</span></li>"; }).join("");
+  document.getElementById("notes").innerHTML = t.notes.map(function(n){
+    return "<div><h3>" + esc(n.h) + "</h3><p>" + esc(n.p) + "</p></div>";
+  }).join("");
 
-  var rows = "", cards = "";
+  var fb = [{ key:"all", label:t.all, n:P.length }].concat(GROUPS.map(function(g){
+    return { key:g.key, label:L(g.label), n:P.filter(function(p){ return p.g === g.key; }).length };
+  }));
+  document.getElementById("filters").innerHTML = fb.map(function(f){
+    return '<button data-filter="' + f.key + '" aria-pressed="' + (filter === f.key) + '">' +
+      esc(f.label) + '<span class="n">' + f.n + "</span></button>";
+  }).join("");
+  document.querySelectorAll("[data-filter]").forEach(function(b){
+    b.addEventListener("click", function(){ filter = b.getAttribute("data-filter"); render(PV.lang); });
+  });
+
+  function val(v, tbc){ return tbc ? '<span class="tbc" title="To be confirmed by Framont">' + esc(L(v)) + "</span>" : esc(L(v)); }
+  function gate(p){
+    return '<div class="gated"><span class="val" aria-hidden="true">' + esc(p.isin) + "</span>" +
+      '<span class="tag">' + LOCK_SVG + esc(t.locked) + "</span></div>";
+  }
+
+  var rows = "", stack = "";
   GROUPS.forEach(function(g){
     if (filter !== "all" && filter !== g.key) return;
     var items = P.filter(function(p){ return p.g === g.key; });
     if (!items.length) return;
-    rows += '<tr class="band"><td colspan="8">' + esc(L(g.label)) +
-            '<span class="count">' + items.length + " " + (items.length === 1 ? t.one : t.count) + "</span></td></tr>";
-    cards += '<div class="cardband">' + esc(L(g.label)) + "</div>";
+    var head = esc(L(g.label)) + '<span class="of">' + esc(L(g.note)) + " · " + items.length + "</span>";
+    rows += '<tr class="band"><td colspan="8">' + head + "</td></tr>";
+    stack += '<div class="band-h">' + head + "</div>";
     items.forEach(function(p){
       rows += '<tr class="row">' +
         '<td><div class="pname">' + esc(L(p.name)) + '</div><div class="pmeta">' + esc(L(p.meta)) + "</div></td>" +
-        "<td>" + cell(p.wrapper) + "</td>" +
-        "<td>" + cell(p.strategy) + "</td>" +
-        '<td class="strong">' + cell(p.liquidity) + "</td>" +
-        '<td class="strong">' + cell(p.ccy) + "</td>" +
-        "<td>" + cell(p.costs, p.costsTbc) + "</td>" +
-        "<td>" + cell(p.elig, p.eligTbc) + "</td>" +
-        "<td>" + lock() + "</td>" +
-      "</tr>";
-      cards += '<div class="card"><h3>' + esc(L(p.name)) + '</h3><div class="pmeta">' + esc(L(p.meta)) + "</div><dl>" +
-        "<dt>" + esc(t.cWrapper) + "</dt><dd>" + cell(p.wrapper) + "</dd>" +
-        "<dt>" + esc(t.cStrategy) + "</dt><dd>" + cell(p.strategy) + "</dd>" +
-        "<dt>" + esc(t.cLiquidity) + "</dt><dd>" + cell(p.liquidity) + "</dd>" +
-        "<dt>" + esc(t.cCurrency) + "</dt><dd>" + cell(p.ccy) + "</dd>" +
-        "<dt>" + esc(t.cCosts) + "</dt><dd>" + cell(p.costs, p.costsTbc) + "</dd>" +
-        "<dt>" + esc(t.cEligibility) + "</dt><dd>" + cell(p.elig, p.eligTbc) + "</dd>" +
-        "<dt>" + esc(t.cGated) + "</dt><dd>" + lock() + "</dd>" +
-      "</dl></div>";
+        "<td>" + val(p.wrapper) + "</td><td>" + val(p.strategy) + "</td>" +
+        '<td class="emph">' + val(p.liquidity) + '</td><td class="emph">' + val(p.ccy) + "</td>" +
+        "<td>" + val(p.costs, p.costsTbc) + "</td><td>" + val(p.elig, p.eligTbc) + "</td>" +
+        "<td>" + gate(p) + "</td></tr>";
+      stack += '<div class="rec"><div class="pname">' + esc(L(p.name)) + '</div><div class="pmeta">' + esc(L(p.meta)) + "</div><dl>" +
+        "<dt>" + esc(t.cWrapper) + "</dt><dd>" + val(p.wrapper) + "</dd>" +
+        "<dt>" + esc(t.cStrategy) + "</dt><dd>" + val(p.strategy) + "</dd>" +
+        "<dt>" + esc(t.cLiquidity) + "</dt><dd>" + val(p.liquidity) + "</dd>" +
+        "<dt>" + esc(t.cCurrency) + "</dt><dd>" + val(p.ccy) + "</dd>" +
+        "<dt>" + esc(t.cCosts) + "</dt><dd>" + val(p.costs, p.costsTbc) + "</dd>" +
+        "<dt>" + esc(t.cEligibility) + "</dt><dd>" + val(p.elig, p.eligTbc) + "</dd>" +
+        "<dt>" + esc(t.cGated) + "</dt><dd>" + gate(p) + "</dd></dl></div>";
     });
   });
   document.getElementById("tbody").innerHTML = rows;
-  document.getElementById("cards").innerHTML = cards;
+  document.getElementById("stack").innerHTML = stack;
 }
 
-document.querySelectorAll("[data-filter]").forEach(function(b){
-  b.addEventListener("click", function(){
-    filter = b.getAttribute("data-filter");
-    document.querySelectorAll("[data-filter]").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
-    render();
-  });
-});
-document.getElementById("langBtn").addEventListener("click", function(){ lang = lang === "en" ? "it" : "en"; render(); });
-render();
+PV.init({ dict: DICT, render: render });
 </script>
 </body>
 </html>

@@ -4,157 +4,165 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Framont Access — Structure &amp; safeguards (layout draft)</title>
+<title>Framont Access — Structure and safeguards (draft)</title>
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/preview/hero-structure.jpg">
+<link rel="stylesheet" href="preview.css">
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#FFFFFF;color:#002E5F;font-family:'Work Sans',sans-serif;-webkit-font-smoothing:antialiased}
-  ::selection{background:rgba(255,130,0,.22)}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
-
-  .draftbar{background:#001630;color:rgba(255,255,255,.82);font-size:12px;padding:11px 24px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
-  .draftbar b{color:#FFB273;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
-
-  .hero{background:#001F42;color:#FFFFFF;position:relative;overflow:hidden}
-  .hero:after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,130,0,.55),transparent)}
-  .hero .wrap{padding:76px 32px 72px;position:relative;z-index:1}
-  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#FFB273}
-  h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.08;margin:16px 0 0;letter-spacing:-.01em;max-width:820px}
-  .lede{font-size:16px;font-weight:300;color:rgba(255,255,255,.72);line-height:1.75;margin:20px 0 0;max-width:660px}
-  .langbtn{position:absolute;top:34px;right:32px;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.8);background:transparent;border:1px solid rgba(255,255,255,.24);padding:9px 16px;cursor:pointer;transition:border-color .2s,color .2s}
-  .langbtn:hover{border-color:#FF8200;color:#FF8200}
-
-  section{padding:74px 0}
-  section + section{border-top:1px solid #E9E7E2}
-  .alt{background:#F7F7F5}
-  .kicker{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00}
-  h2{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3vw,33px);color:#002E5F;line-height:1.2;margin:12px 0 0}
-  .sub{font-size:15px;color:#4D575E;line-height:1.75;margin:14px 0 0;max-width:720px}
-
-  .chain{display:flex;align-items:stretch;gap:0;margin-top:36px;overflow-x:auto;padding-bottom:6px}
-  .node{background:#FFFFFF;border:1px solid #E9E7E2;padding:20px 20px;min-width:198px;flex:1 1 0;display:flex;flex-direction:column;gap:7px;position:relative}
-  .alt .node{background:#FFFFFF}
-  .node.pm{border-color:rgba(255,130,0,.55);box-shadow:0 12px 30px rgba(0,31,66,.07)}
-  .node.pm:before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:3px;background:linear-gradient(90deg,#FF8200,#FFC98A)}
-  .role{font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#B85C00}
-  .ent{font-size:14.5px;font-weight:600;color:#002E5F;line-height:1.35}
-  .det{font-size:12.5px;color:#4D575E;line-height:1.6}
-  .badge{margin-top:auto;padding-top:10px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#4D575E;display:inline-flex;align-items:center;gap:6px}
-  .badge span.dot{width:5px;height:5px;background:#FF8200;border-radius:50%;flex:none}
-  .arrow{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:#C9CDD2}
-  .arrow svg{width:16px;height:16px;stroke:#FF8200;stroke-width:2;fill:none}
-  .tbc{color:#B85C00;border-bottom:1px dotted rgba(184,92,0,.55)}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#E9E7E2;border:1px solid #E9E7E2;margin-top:34px}
-  .cell{background:#FFFFFF;padding:24px}
-  .cell h3{font-size:13px;font-weight:600;color:#002E5F;margin:0 0 8px}
-  .cell p{font-size:13px;color:#4D575E;line-height:1.7;margin:0}
-  .cell a{color:#B85C00}
-
-  .listing{margin-top:30px;border:1px solid #E9E7E2}
-  .listing .row{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid #E9E7E2;flex-wrap:wrap}
-  .listing .row:last-child{border-bottom:none}
-  .listing .nm{font-size:14px;font-weight:600;color:#002E5F}
-  .listing .isin{font-family:'Work Sans',sans-serif;font-size:12.5px;color:#4D575E;letter-spacing:.04em}
-  .listing .lk{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#B85C00;text-decoration:none;border:1px solid #E9E7E2;padding:8px 14px;transition:border-color .2s,color .2s}
-  .listing .lk:hover{border-color:#FF8200;color:#FF8200}
-
-  .needs{margin-top:34px;border-left:3px solid #FF8200;background:#FFFFFF;padding:22px 26px}
-  .needs h3{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#B85C00;margin:0 0 12px}
-  .needs li{font-size:13.5px;color:#4D575E;line-height:1.75;margin-bottom:6px}
-  .needs ul{margin:0;padding-left:18px}
-
-  footer{background:#00122A;color:rgba(255,255,255,.6);font-size:11.5px;line-height:1.85}
-  footer .wrap{padding:44px 32px 56px}
-
-  @media (max-width:860px){
-    .wrap{padding:0 20px}
-    .chain{flex-direction:column;overflow-x:visible}
-    .arrow{flex:0 0 30px;transform:rotate(90deg)}
-    .langbtn{position:static;display:inline-block;margin-bottom:22px}
+  /* The chain reads as a stepper: one ruled track, numbered stops, and the
+     Framont stop filled in navy because that is the one link we answer for. */
+  .chain{
+    display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+    margin-top:clamp(28px,3.5vw,42px);border-top:1px solid var(--line-2);
   }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .link{border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .link:last-child{border-right:none}
+  .link .inner{padding:0 22px 26px 0;display:flex;flex-direction:column;gap:9px;height:100%}
+  .link:not(:first-child) .inner{padding-left:22px}
+  .num{
+    align-self:flex-start;margin-top:-12px;width:24px;height:24px;background:var(--paper);
+    border:1px solid var(--line-2);display:grid;place-items:center;
+    font-size:10px;font-weight:600;color:var(--ink-3);font-variant-numeric:tabular-nums;
+  }
+  .alt .num{background:var(--paper-2)}
+  .role{font-size:var(--t-micro);font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--amber-ink)}
+  .ent{font-size:0.9375rem;font-weight:600;color:var(--ink);line-height:1.36}
+  .det{font-size:var(--t-small);color:var(--ink-2);line-height:1.65}
+  .badge{
+    margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:7px;
+    font-size:var(--t-micro);font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);
+  }
+  .badge i{width:5px;height:5px;background:var(--amber);flex:none}
+
+  .link.key{background:var(--navy-700);border-right-color:var(--navy-700)}
+  .link.key .inner{padding:0 22px 26px}
+  .link.key .num{background:var(--amber);border-color:var(--amber);color:#fff}
+  .link.key .role{color:var(--amber-soft)}
+  .link.key .ent{color:#fff}
+  .link.key .det{color:rgba(255,255,255,.74)}
+  .link.key .badge{color:rgba(255,255,255,.86)}
+
+  /* Regulatory anchors: ruled entries, not a grid of identical cards. */
+  .anchors{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));column-gap:clamp(32px,5vw,64px);margin-top:8px}
+  .anchors > div{padding:24px 0;border-bottom:1px solid var(--line)}
+  .anchors h3{font-size:var(--t-h3);font-weight:600;margin-bottom:8px;color:var(--ink)}
+  .anchors p{font-size:var(--t-small);color:var(--ink-2);max-width:52ch}
+
+  .quotes{border-top:1px solid var(--line-2);margin-top:8px}
+  .quotes .q{
+    display:flex;gap:20px;align-items:baseline;justify-content:space-between;flex-wrap:wrap;
+    padding:17px 0;border-bottom:1px solid var(--line);
+  }
+  .quotes .nm{font-size:0.9375rem;font-weight:600;color:var(--ink)}
+  .quotes .code{font-size:var(--t-small);color:var(--ink-3);letter-spacing:.05em;font-variant-numeric:tabular-nums}
+  .quotes .pending{
+    font-size:var(--t-micro);font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--amber-ink);border:1px dotted rgba(184,92,0,.5);padding:6px 12px;white-space:nowrap;
+  }
+
+  @media (max-width:900px){
+    .chain{grid-template-columns:1fr;border-top:none}
+    .link{border-right:none;border-bottom:1px solid var(--line)}
+    .link:last-child{border-bottom:none}
+    .link .inner,.link:not(:first-child) .inner{padding:22px 0}
+    .link.key .inner{padding:22px}
+    .num{margin-top:0}
+  }
 </style>
 </head>
 <body>
 
-<div class="draftbar">
-  <b data-i18n="draftTag">Layout draft</b>
-  <span data-i18n="draftText">Internal preview for approval — not linked from access.framontmanagement.com and excluded from search engines.</span>
-</div>
+<header data-chrome></header>
 
 <div class="hero">
-  <div class="wrap">
-    <button class="langbtn" id="langBtn">Italiano</button>
-    <div class="eyebrow" data-i18n="eyebrow">Structure &amp; safeguards</div>
-    <h1 data-i18n="title">Who issues it, who manages it, where it is listed</h1>
-    <p class="lede" data-i18n="lede">Every instrument on the platform sits inside a regulated chain. This is that chain, drawn out: the issuer, the portfolio manager, the post-trade agents and the venue — so the regulatory architecture reads as an asset, not as a footnote.</p>
+  <div class="hero-img" style="background-image:url('../assets/preview/hero-structure.jpg')"></div>
+  <div class="hero-in">
+    <div class="plan-no">05<small data-i18n="planLabel">Improvement plan</small></div>
+    <h1 data-i18n="title">Who issues it, who manages it, where it trades</h1>
+    <p class="dek" data-i18n="dek">Every instrument on the platform sits inside a regulated chain. This draws that chain out, one stop at a time, so the regulatory architecture reads as credibility rather than fine print.</p>
+    <dl class="hero-meta">
+      <div><dt data-i18n="mStatus">Status</dt><dd data-i18n="mStatusV">Awaiting your approval of the layout</dd></div>
+      <div><dt data-i18n="mSource">Source</dt><dd data-i18n="mSourceV">Published product records and term sheets</dd></div>
+      <div><dt data-i18n="mGap">Open gaps</dt><dd data-i18n="mGapV">Four, listed at the foot</dd></div>
+    </dl>
   </div>
 </div>
 
-<section>
-  <div class="wrap">
-    <div class="kicker" data-i18n="k1">Exchange traded instruments</div>
-    <h2 data-i18n="h1t">A listed security, a segregated strategy</h2>
-    <p class="sub" data-i18n="s1">HERAKLIT, Tech Megatrend Tactical, LC Invest — Value Edge and IVN Global are issued by iMaps ETI AG and bought like any other listed security, through the investor's own bank or broker.</p>
-    <div class="chain" id="chainEti"></div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="kicker" data-i18n="k2">Certificates &amp; notes</div>
-    <h2 data-i18n="h2t">Issued through a protected cell</h2>
-    <p class="sub" data-i18n="s2">Noctiluca Capital and Zalphyx Yield Strategies are issued through protected cells on the GenTwo securitisation platform — each cell ring-fenced from the others, with post-trade functions handled by regulated agents.</p>
-    <div class="chain" id="chainAmc"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="kicker" data-i18n="k3">Funds</div>
-    <h2 data-i18n="h3t">Managed under the AIFMD</h2>
-    <p class="sub" data-i18n="s3">The nine funds in the range are alternative investment funds — six Italian reserved AIFs and three Malta-domiciled Notified AIFs — with Framont &amp; Partners Management Ltd as the appointed management company and AIFM.</p>
-    <div class="chain" id="chainFunds"></div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="kicker" data-i18n="k4">Regulatory anchors</div>
-    <h2 data-i18n="h4t">The licences behind the platform</h2>
-    <div class="grid" id="anchors"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="kicker" data-i18n="k5">Exchange listings</div>
-    <h2 data-i18n="h5t">Where the listed products trade</h2>
-    <p class="sub" data-i18n="s5">Each listed instrument links to its quotation page, so an investor can verify the price independently of us.</p>
-    <div class="listing" id="listings"></div>
-    <div class="needs">
-      <h3 data-i18n="needTitle">To confirm before go-live</h3>
-      <ul id="needList"></ul>
+<main>
+  <section>
+    <div class="wrap">
+      <div class="rise in lede-block">
+        <h2 data-i18n="h1t">A listed security with a segregated strategy</h2>
+        <p data-i18n="s1">HERAKLIT, Tech Megatrend Tactical, LC Invest and IVN Global are issued by iMaps ETI AG and bought like any other listed security, through the investor's own bank or broker.</p>
+      </div>
+      <div class="chain rise in" id="chainEti"></div>
     </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="rise lede-block">
+        <h2 data-i18n="h2t">A certificate issued through a protected cell</h2>
+        <p data-i18n="s2">Noctiluca Capital and Zalphyx Yield Strategies are issued through protected cells on the GenTwo platform. Each cell is ring-fenced from the others, and post-trade sits with regulated agents.</p>
+      </div>
+      <div class="chain rise" id="chainAmc"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rise lede-block">
+        <h2 data-i18n="h3t">A fund managed under the AIFMD</h2>
+        <p data-i18n="s3">Nine funds: six Italian reserved AIFs and three Malta-domiciled Notified AIFs, with Framont &amp; Partners Management Ltd as the appointed management company and AIFM.</p>
+      </div>
+      <div class="chain rise" id="chainFunds"></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="rise">
+        <div class="rule-head">
+          <h2 data-i18n="h4t">The licences behind the platform</h2>
+          <span class="of" data-i18n="h4of">Four anchors</span>
+        </div>
+        <div class="anchors" id="anchors"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rise">
+        <div class="rule-head">
+          <h2 data-i18n="h5t">Where the listed products trade</h2>
+          <span class="of" data-i18n="h5of">Four instruments</span>
+        </div>
+        <p style="max-width:var(--measure);margin-bottom:22px" data-i18n="s5">Each listed instrument would link to its quotation page, so an investor can check the price without taking our word for it.</p>
+        <div class="quotes" id="quotes"></div>
+      </div>
+      <div class="rise open-items">
+        <h3 data-i18n="openTitle">Open questions</h3>
+        <ol id="openList"></ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p id="legal"></p>
+    <div class="sig" data-i18n="sig">Niuexa for Framont Group</div>
   </div>
-</section>
+</footer>
 
-<footer><div class="wrap" id="legal"></div></footer>
-
+<script src="preview.js"></script>
 <script>
-/* Preview page — bilingual, data-driven. Entities are taken from the product
-   records and term sheets already published on access.framontmanagement.com;
-   anything not sourced from those is marked as "to be confirmed". */
-var lang = "en";
-function L(v){ return (v && typeof v === "object" && !Array.isArray(v)) ? (v[lang] || v.en) : v; }
-function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-var ARROW = '<div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></div>';
-
+/* Entities come from the product records and term sheets already published on
+   access.framontmanagement.com. Anything else is flagged `tbc`. */
 var CHAINS = {
   eti: [
     { role:{en:"Investor",it:"Investitore"}, ent:{en:"Your bank or broker",it:"La tua banca o il tuo broker"},
@@ -162,152 +170,147 @@ var CHAINS = {
     { role:{en:"Venue",it:"Sede di negoziazione"}, ent:"Börse Stuttgart",
       det:{en:"Daily trading during market hours",it:"Negoziazione giornaliera durante l'orario di mercato"},
       badge:{en:"Regulated market",it:"Mercato regolamentato"} },
-    { role:{en:"Issuer & market maker",it:"Emittente e market maker"}, ent:"iMaps ETI AG",
-      det:{en:"Liechtenstein · issue price EUR 100 · segregated portfolio per instrument",it:"Liechtenstein · prezzo di emissione EUR 100 · portafoglio segregato per strumento"} },
-    { role:{en:"Portfolio manager",it:"Gestore di portafoglio"}, ent:"Framont & Partners Management Ltd", pm:true,
-      det:{en:"Malta · takes every investment decision inside the instrument",it:"Malta · assume ogni decisione d'investimento all'interno dello strumento"},
+    { role:{en:"Issuer and market maker",it:"Emittente e market maker"}, ent:"iMaps ETI AG",
+      det:{en:"Liechtenstein. Issue price EUR 100, segregated portfolio per instrument",it:"Liechtenstein. Prezzo di emissione EUR 100, portafoglio segregato per strumento"} },
+    { role:{en:"Portfolio manager",it:"Gestore di portafoglio"}, ent:"Framont & Partners Management Ltd", key:true,
+      det:{en:"Malta. Takes every investment decision inside the instrument",it:"Malta. Assume ogni decisione d'investimento all'interno dello strumento"},
       badge:{en:"MFSA-authorised AIFM",it:"AIFM autorizzato MFSA"} },
-    { role:{en:"Strategy developer",it:"Sviluppatore della strategia"}, ent:{en:"Per instrument",it:"Per singolo strumento"},
-      det:{en:"Marcus Schmieke · Dr. Chris Kacher · Luca Cunin · IVN Capital — providers of the underlying strategy only",it:"Marcus Schmieke · Dr. Chris Kacher · Luca Cunin · IVN Capital — solo fornitori della strategia sottostante"} }
+    { role:{en:"Strategy developer",it:"Sviluppatore della strategia"}, ent:{en:"One per instrument",it:"Uno per strumento"},
+      det:{en:"Marcus Schmieke, Dr. Chris Kacher, Luca Cunin, IVN Capital. Providers of the underlying strategy only",it:"Marcus Schmieke, Dr. Chris Kacher, Luca Cunin, IVN Capital. Solo fornitori della strategia sottostante"} }
   ],
   amc: [
     { role:{en:"Investor",it:"Investitore"}, ent:{en:"Private placement",it:"Private placement"},
       det:{en:"Subscription from €10,000, professional investors",it:"Sottoscrizione da €10.000, investitori professionali"} },
     { role:{en:"Issuer",it:"Emittente"}, ent:{en:"Expand2 / Expand3 Issuer PCC Limited",it:"Expand2 / Expand3 Issuer PCC Limited"},
-      det:{en:"Guernsey · a protected cell per product, ring-fenced from the others",it:"Guernsey · una cella protetta per prodotto, separata dalle altre"} },
+      det:{en:"Guernsey. One protected cell per product, ring-fenced from the others",it:"Guernsey. Una cella protetta per prodotto, separata dalle altre"} },
     { role:{en:"Securitisation platform",it:"Piattaforma di cartolarizzazione"}, ent:"GenTwo",
-      det:{en:"Switzerland · structuring and lifecycle of the certificate",it:"Svizzera · strutturazione e gestione del ciclo di vita del certificato"} },
-    { role:{en:"Strategy manager",it:"Gestore della strategia"}, ent:"Framont & Partners Management Ltd", pm:true,
-      det:{en:"Malta · manages the strategy referenced by the certificate",it:"Malta · gestisce la strategia replicata dal certificato"},
+      det:{en:"Switzerland. Structuring and lifecycle of the certificate",it:"Svizzera. Strutturazione e ciclo di vita del certificato"} },
+    { role:{en:"Strategy manager",it:"Gestore della strategia"}, ent:"Framont & Partners Management Ltd", key:true,
+      det:{en:"Malta. Manages the strategy the certificate references",it:"Malta. Gestisce la strategia replicata dal certificato"},
       badge:{en:"MFSA-authorised AIFM",it:"AIFM autorizzato MFSA"} },
     { role:{en:"Post-trade",it:"Post-trade"}, ent:"InCore Bank AG · TradeStation Europe B.V.",
-      det:{en:"Paying agent (Switzerland) · custody and brokerage (Netherlands)",it:"Paying agent (Svizzera) · custodia e brokeraggio (Paesi Bassi)"} }
+      det:{en:"Paying agent in Switzerland, custody and brokerage in the Netherlands",it:"Paying agent in Svizzera, custodia e brokeraggio nei Paesi Bassi"} }
   ],
   funds: [
-    { role:{en:"Investor",it:"Investitore"}, ent:{en:"Professional & eligible investors",it:"Investitori professionali e idonei"},
+    { role:{en:"Investor",it:"Investitore"}, ent:{en:"Professional and eligible",it:"Professionali e idonei"},
       det:{en:"Eligibility verified before subscription; minimums set in the fund documentation",it:"Idoneità verificata prima della sottoscrizione; minimi definiti nella documentazione del fondo"} },
-    { role:{en:"Vehicle",it:"Veicolo"}, ent:{en:"Reserved AIF (Italy) · Notified AIF (Malta)",it:"FIA riservato (Italia) · AIF Notificato (Malta)"},
+    { role:{en:"Vehicle",it:"Veicolo"}, ent:{en:"Reserved AIF · Notified AIF",it:"FIA riservato · AIF Notificato"},
       det:{en:"Six Italian reserved funds; three sub-funds of Global Series SICAV plc",it:"Sei fondi riservati italiani; tre comparti di Global Series SICAV plc"} },
-    { role:{en:"Management company & AIFM",it:"Società di gestione e AIFM"}, ent:"Framont & Partners Management Ltd", pm:true,
-      det:{en:"Malta · appointed manager of every fund in the range",it:"Malta · gestore designato di ogni fondo della gamma"},
+    { role:{en:"Management company and AIFM",it:"Società di gestione e AIFM"}, ent:"Framont & Partners Management Ltd", key:true,
+      det:{en:"Malta. Appointed manager of every fund in the range",it:"Malta. Gestore designato di ogni fondo della gamma"},
       badge:{en:"MFSA-authorised AIFM",it:"AIFM autorizzato MFSA"} },
     { role:{en:"Depositary",it:"Depositario"}, ent:{en:"To be confirmed",it:"Da confermare"}, tbc:true,
-      det:{en:"Appointed per fund under the AIFMD — Framont to supply the entity names",it:"Designato per singolo fondo ai sensi della AIFMD — Framont fornirà i nominativi"} },
-    { role:{en:"Documentation",it:"Documentazione"}, ent:{en:"Fund Rules · Offering Supplement",it:"Regolamento di Gestione · Offering Supplement"},
-      det:{en:"Strategy, terms and risk factors — available on request from the management company",it:"Strategia, termini e fattori di rischio — su richiesta presso la società di gestione"} }
+      det:{en:"Appointed per fund under the AIFMD. Framont to supply the entity names",it:"Designato per singolo fondo ai sensi della AIFMD. Framont fornirà i nominativi"} },
+    { role:{en:"Documentation",it:"Documentazione"}, ent:{en:"Fund Rules · Offering Supplement",it:"Regolamento · Offering Supplement"},
+      det:{en:"Strategy, terms and risk factors, on request from the management company",it:"Strategia, termini e fattori di rischio, su richiesta presso la società di gestione"} }
   ]
 };
 
-var UI = {
+var QUOTES = [
+  { nm:"HERAKLIT Strategy ETI", isin:"DE000AMC0D44" },
+  { nm:"Tech Megatrend Tactical ETI", isin:"DE000AMC0D85" },
+  { nm:"LC Invest, Value Edge ETI", isin:"DE000AMC0BZ5" },
+  { nm:"IVN Global ETI", isin:"DE000AMC0DX6" }
+];
+
+var DICT = {
   en: {
-    draftTag:"Layout draft",
-    draftText:"Internal preview for approval — not linked from access.framontmanagement.com and excluded from search engines.",
-    eyebrow:"Structure & safeguards", title:"Who issues it, who manages it, where it is listed",
-    lede:"Every instrument on the platform sits inside a regulated chain. This is that chain, drawn out: the issuer, the portfolio manager, the post-trade agents and the venue — so the regulatory architecture reads as an asset, not as a footnote.",
-    k1:"Exchange traded instruments", h1t:"A listed security, a segregated strategy",
-    s1:"HERAKLIT, Tech Megatrend Tactical, LC Invest — Value Edge and IVN Global are issued by iMaps ETI AG and bought like any other listed security, through the investor's own bank or broker.",
-    k2:"Certificates & notes", h2t:"Issued through a protected cell",
-    s2:"Noctiluca Capital and Zalphyx Yield Strategies are issued through protected cells on the GenTwo securitisation platform — each cell ring-fenced from the others, with post-trade functions handled by regulated agents.",
-    k3:"Funds", h3t:"Managed under the AIFMD",
-    s3:"The nine funds in the range are alternative investment funds — six Italian reserved AIFs and three Malta-domiciled Notified AIFs — with Framont & Partners Management Ltd as the appointed management company and AIFM.",
-    k4:"Regulatory anchors", h4t:"The licences behind the platform",
-    k5:"Exchange listings", h5t:"Where the listed products trade",
-    s5:"Each listed instrument links to its quotation page, so an investor can verify the price independently of us.",
-    needTitle:"To confirm before go-live", quote:"Quotation page",
+    planLabel:"Improvement plan", title:"Who issues it, who manages it, where it trades",
+    dek:"Every instrument on the platform sits inside a regulated chain. This draws that chain out, one stop at a time, so the regulatory architecture reads as credibility rather than fine print.",
+    mStatus:"Status", mStatusV:"Awaiting your approval of the layout",
+    mSource:"Source", mSourceV:"Published product records and term sheets",
+    mGap:"Open gaps", mGapV:"Four, listed at the foot",
+    h1t:"A listed security with a segregated strategy",
+    s1:"HERAKLIT, Tech Megatrend Tactical, LC Invest and IVN Global are issued by iMaps ETI AG and bought like any other listed security, through the investor's own bank or broker.",
+    h2t:"A certificate issued through a protected cell",
+    s2:"Noctiluca Capital and Zalphyx Yield Strategies are issued through protected cells on the GenTwo platform. Each cell is ring-fenced from the others, and post-trade sits with regulated agents.",
+    h3t:"A fund managed under the AIFMD",
+    s3:"Nine funds: six Italian reserved AIFs and three Malta-domiciled Notified AIFs, with Framont & Partners Management Ltd as the appointed management company and AIFM.",
+    h4t:"The licences behind the platform", h4of:"Four anchors",
+    h5t:"Where the listed products trade", h5of:"Four instruments",
+    s5:"Each listed instrument would link to its quotation page, so an investor can check the price without taking our word for it.",
+    pending:"URL pending", venue:"Börse Stuttgart", sig:"Niuexa for Framont Group",
+    openTitle:"Open questions",
     anchors:[
       { h:"Malta Financial Services Authority", p:"Framont & Partners Management Ltd is licensed by the MFSA under the Investment Services Act, 1994 (Chapter 370 of the Laws of Malta). A copy of the licence is available on the MFSA website and on request." },
-      { h:"AIFMD & UCITS", p:"The company qualifies as a UCITS Management Company under the UCITS Directive and as an Alternative Investment Fund Manager under the AIFMD — the framework under which every fund in the range is managed." },
-      { h:"PRIIPs & MiFID II", p:"Listed instruments carry a Key Information Document under the PRIIPs Regulation; distribution and suitability follow MiFID II. Read the KID and the prospectus or final terms before investing." },
+      { h:"AIFMD and UCITS", p:"The company qualifies as a UCITS Management Company under the UCITS Directive and as an Alternative Investment Fund Manager under the AIFMD, the framework under which every fund in the range is managed." },
+      { h:"PRIIPs and MiFID II", p:"Listed instruments carry a Key Information Document under the PRIIPs Regulation; distribution and suitability follow MiFID II. Read the KID and the prospectus or final terms before investing." },
       { h:"Roles, kept separate", p:"Strategy developers provide the underlying strategy only. Portfolio management of every referenced instrument is performed by Framont & Partners Management Ltd." }
     ],
-    listings:[
-      { nm:"HERAKLIT Strategy ETI", isin:"DE000AMC0D44", venue:"Börse Stuttgart" },
-      { nm:"Tech Megatrend Tactical ETI", isin:"DE000AMC0D85", venue:"Börse Stuttgart" },
-      { nm:"LC Invest — Value Edge ETI", isin:"DE000AMC0BZ5", venue:"Börse Stuttgart" },
-      { nm:"IVN Global ETI", isin:"DE000AMC0DX6", venue:"Börse Stuttgart" }
-    ],
-    need:[
-      "Börse Stuttgart quotation URLs per ISIN — shown as placeholders here; to be supplied or confirmed with iMaps before the links go live.",
-      "Depositary of each fund under the AIFMD — the entity names are the one gap in the fund chain.",
+    open:[
+      "Börse Stuttgart quotation URLs per ISIN. Shown as pending here; to be supplied or confirmed with iMaps before the links go live.",
+      "Depositary of each fund under the AIFMD. The entity names are the one gap in the fund chain.",
       "Whether the ETI chain should also name the custodian and paying agent, as the certificate chain does.",
-      "Francesca's sign-off on the wording of every role label, and on naming the four strategy developers on a public page."
+      "Francesca's sign-off on every role label, and on naming the four strategy developers on a public page."
     ],
-    legal:"Draft for internal approval — not published. Entities shown are taken from the product records and term sheets already published on access.framontmanagement.com; items marked “to be confirmed” are not yet sourced. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk."
+    legal:"Draft for internal approval, not published. Entities shown are taken from the product records and term sheets already published on access.framontmanagement.com; items marked “to be confirmed” are not yet sourced. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk."
   },
   it: {
-    draftTag:"Bozza di layout",
-    draftText:"Anteprima interna per approvazione — non collegata da access.framontmanagement.com ed esclusa dai motori di ricerca.",
-    eyebrow:"Struttura e presidi", title:"Chi emette, chi gestisce, dove è quotato",
-    lede:"Ogni strumento della piattaforma vive dentro una catena regolamentata. Questa è quella catena, disegnata: emittente, gestore di portafoglio, agenti post-trade e sede di negoziazione — perché l'assetto regolamentare si legga come un asset e non come una nota a piè di pagina.",
-    k1:"Exchange traded instruments", h1t:"Un titolo quotato, una strategia segregata",
-    s1:"HERAKLIT, Tech Megatrend Tactical, LC Invest — Value Edge e IVN Global sono emessi da iMaps ETI AG e si acquistano come qualsiasi altro titolo quotato, tramite la banca o il broker dell'investitore.",
-    k2:"Certificati e note", h2t:"Emessi tramite una cella protetta",
-    s2:"Noctiluca Capital e Zalphyx Yield Strategies sono emessi tramite celle protette sulla piattaforma di cartolarizzazione GenTwo — ogni cella separata dalle altre, con le funzioni post-trade svolte da agenti regolamentati.",
-    k3:"Fondi", h3t:"Gestiti ai sensi della AIFMD",
-    s3:"I nove fondi della gamma sono fondi di investimento alternativi — sei FIA riservati italiani e tre AIF Notificati domiciliati a Malta — con Framont & Partners Management Ltd come società di gestione e AIFM designato.",
-    k4:"Riferimenti regolamentari", h4t:"Le licenze dietro la piattaforma",
-    k5:"Quotazioni", h5t:"Dove si negoziano i prodotti quotati",
-    s5:"Ogni strumento quotato rimanda alla propria pagina di quotazione, così l'investitore può verificare il prezzo in autonomia.",
-    needTitle:"Da confermare prima della pubblicazione", quote:"Pagina di quotazione",
+    planLabel:"Piano di miglioramento", title:"Chi emette, chi gestisce, dove si negozia",
+    dek:"Ogni strumento della piattaforma vive dentro una catena regolamentata. Qui quella catena è disegnata, una tappa alla volta, perché l'assetto regolamentare si legga come credibilità e non come nota a piè di pagina.",
+    mStatus:"Stato", mStatusV:"In attesa della vostra approvazione sul layout",
+    mSource:"Fonte", mSourceV:"Schede prodotto e term sheet pubblicati",
+    mGap:"Punti aperti", mGapV:"Quattro, elencati in fondo",
+    h1t:"Un titolo quotato con una strategia segregata",
+    s1:"HERAKLIT, Tech Megatrend Tactical, LC Invest e IVN Global sono emessi da iMaps ETI AG e si acquistano come qualsiasi altro titolo quotato, tramite la banca o il broker dell'investitore.",
+    h2t:"Un certificato emesso tramite una cella protetta",
+    s2:"Noctiluca Capital e Zalphyx Yield Strategies sono emessi tramite celle protette sulla piattaforma GenTwo. Ogni cella è separata dalle altre e il post-trade è affidato ad agenti regolamentati.",
+    h3t:"Un fondo gestito ai sensi della AIFMD",
+    s3:"Nove fondi: sei FIA riservati italiani e tre AIF Notificati domiciliati a Malta, con Framont & Partners Management Ltd come società di gestione e AIFM designato.",
+    h4t:"Le licenze dietro la piattaforma", h4of:"Quattro riferimenti",
+    h5t:"Dove si negoziano i prodotti quotati", h5of:"Quattro strumenti",
+    s5:"Ogni strumento quotato rimanderebbe alla propria pagina di quotazione, così l'investitore può verificare il prezzo senza doverci credere sulla parola.",
+    pending:"URL da confermare", venue:"Börse di Stoccarda", sig:"Niuexa per Framont Group",
+    openTitle:"Questioni aperte",
     anchors:[
       { h:"Malta Financial Services Authority", p:"Framont & Partners Management Ltd è licenziata dalla MFSA ai sensi dell'Investment Services Act, 1994 (Chapter 370 delle Leggi di Malta). Copia della licenza è disponibile sul sito della MFSA e su richiesta." },
-      { h:"AIFMD e UCITS", p:"La società si qualifica come UCITS Management Company ai sensi della Direttiva UCITS e come Alternative Investment Fund Manager ai sensi della AIFMD — il quadro entro cui è gestito ogni fondo della gamma." },
+      { h:"AIFMD e UCITS", p:"La società si qualifica come UCITS Management Company ai sensi della Direttiva UCITS e come Alternative Investment Fund Manager ai sensi della AIFMD, il quadro entro cui è gestito ogni fondo della gamma." },
       { h:"PRIIPs e MiFID II", p:"Gli strumenti quotati sono accompagnati da un Documento contenente le Informazioni Chiave ai sensi del Regolamento PRIIPs; distribuzione e adeguatezza seguono la MiFID II. Leggere il KID e il prospetto o le condizioni definitive prima di investire." },
       { h:"Ruoli, tenuti distinti", p:"Gli sviluppatori delle strategie forniscono esclusivamente la strategia sottostante. La gestione di portafoglio di ogni strumento citato è svolta da Framont & Partners Management Ltd." }
     ],
-    listings:[
-      { nm:"HERAKLIT Strategy ETI", isin:"DE000AMC0D44", venue:"Börse di Stoccarda" },
-      { nm:"Tech Megatrend Tactical ETI", isin:"DE000AMC0D85", venue:"Börse di Stoccarda" },
-      { nm:"LC Invest — Value Edge ETI", isin:"DE000AMC0BZ5", venue:"Börse di Stoccarda" },
-      { nm:"IVN Global ETI", isin:"DE000AMC0DX6", venue:"Börse di Stoccarda" }
-    ],
-    need:[
-      "URL delle pagine di quotazione su Börse Stuttgart per ISIN — qui sono segnaposto; da fornire o confermare con iMaps prima di attivare i link.",
-      "Depositario di ciascun fondo ai sensi della AIFMD — i nominativi sono l'unico tassello mancante nella catena dei fondi.",
+    open:[
+      "URL delle pagine di quotazione su Börse Stuttgart per ISIN. Qui indicati come da confermare; da fornire o verificare con iMaps prima di attivare i link.",
+      "Depositario di ciascun fondo ai sensi della AIFMD. I nominativi sono l'unico tassello mancante nella catena dei fondi.",
       "Se la catena ETI debba indicare anche banca depositaria e paying agent, come fa quella dei certificati.",
-      "Approvazione di Francesca sulla formulazione di ogni etichetta di ruolo e sulla citazione dei quattro sviluppatori di strategia in una pagina pubblica."
+      "Approvazione di Francesca su ogni etichetta di ruolo e sulla citazione dei quattro sviluppatori di strategia in una pagina pubblica."
     ],
-    legal:"Bozza per approvazione interna — non pubblicata. Le entità indicate provengono dalle schede prodotto e dai term sheet già pubblicati su access.framontmanagement.com; le voci contrassegnate come “da confermare” non sono ancora verificate. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio."
+    legal:"Bozza per approvazione interna, non pubblicata. Le entità indicate provengono dalle schede prodotto e dai term sheet già pubblicati su access.framontmanagement.com; le voci contrassegnate come “da confermare” non sono ancora verificate. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio."
   }
 };
 
 function chain(nodes){
+  var esc = PV.esc, L = PV.L;
   return nodes.map(function(n, i){
-    var badge = n.badge ? '<div class="badge"><span class="dot"></span>' + esc(L(n.badge)) + "</div>" : "";
     var ent = esc(L(n.ent));
     if (n.tbc) ent = '<span class="tbc">' + ent + "</span>";
-    return (i ? ARROW : "") +
-      '<div class="node' + (n.pm ? " pm" : "") + '">' +
-        '<div class="role">' + esc(L(n.role)) + "</div>" +
-        '<div class="ent">' + ent + "</div>" +
-        '<div class="det">' + esc(L(n.det)) + "</div>" + badge +
-      "</div>";
+    return '<div class="link' + (n.key ? " key" : "") + '"><div class="inner">' +
+        '<span class="num">' + (i + 1) + "</span>" +
+        '<span class="role">' + esc(L(n.role)) + "</span>" +
+        '<span class="ent">' + ent + "</span>" +
+        '<span class="det">' + esc(L(n.det)) + "</span>" +
+        (n.badge ? '<span class="badge"><i></i>' + esc(L(n.badge)) + "</span>" : "") +
+      "</div></div>";
   }).join("");
 }
 
-function render(){
-  var t = UI[lang];
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){
-    var k = el.getAttribute("data-i18n"); if (t[k]) el.textContent = t[k];
-  });
-  document.getElementById("langBtn").textContent = lang === "en" ? "Italiano" : "English";
+function render(lang){
+  var t = DICT[lang], esc = PV.esc;
   document.getElementById("chainEti").innerHTML = chain(CHAINS.eti);
   document.getElementById("chainAmc").innerHTML = chain(CHAINS.amc);
   document.getElementById("chainFunds").innerHTML = chain(CHAINS.funds);
   document.getElementById("anchors").innerHTML = t.anchors.map(function(a){
-    return '<div class="cell"><h3>' + esc(a.h) + "</h3><p>" + esc(a.p) + "</p></div>";
+    return "<div><h3>" + esc(a.h) + "</h3><p>" + esc(a.p) + "</p></div>";
   }).join("");
-  document.getElementById("listings").innerHTML = t.listings.map(function(l){
-    return '<div class="row"><div><div class="nm">' + esc(l.nm) + '</div><div class="isin">ISIN ' + esc(l.isin) + " · " + esc(l.venue) + '</div></div>' +
-      '<a class="lk" href="#" onclick="return false" title="URL to be confirmed">' + esc(t.quote) + " ↗</a></div>";
+  document.getElementById("quotes").innerHTML = QUOTES.map(function(q){
+    return '<div class="q"><div><div class="nm">' + esc(q.nm) + '</div>' +
+      '<div class="code">ISIN ' + esc(q.isin) + " · " + esc(t.venue) + "</div></div>" +
+      '<span class="pending">' + esc(t.pending) + "</span></div>";
   }).join("");
-  document.getElementById("needList").innerHTML = t.need.map(function(n){ return "<li>" + esc(n) + "</li>"; }).join("");
+  document.getElementById("openList").innerHTML = t.open.map(function(o){ return "<li><span>" + esc(o) + "</span></li>"; }).join("");
   document.getElementById("legal").textContent = t.legal;
 }
 
-document.getElementById("langBtn").addEventListener("click", function(){ lang = lang === "en" ? "it" : "en"; render(); });
-render();
+PV.init({ dict: DICT, render: render });
 </script>
 </body>
 </html>

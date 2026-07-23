@@ -4,208 +4,210 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Framont Access — Improvement plan, previews</title>
+<title>Framont Access — Improvement plan</title>
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/preview/hero-hub.jpg">
+<link rel="stylesheet" href="preview.css">
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#FFFFFF;color:#002E5F;font-family:'Work Sans',sans-serif;-webkit-font-smoothing:antialiased}
-  ::selection{background:rgba(255,130,0,.22)}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 32px}
-
-  .draftbar{background:#001630;color:rgba(255,255,255,.82);font-size:12px;padding:11px 24px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
-  .draftbar b{color:#FFB273;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
-
-  .hero{background:#001F42;color:#FFFFFF;position:relative}
-  .hero:after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,130,0,.55),transparent)}
-  .hero .wrap{padding:70px 32px 66px;position:relative}
-  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#FFB273}
-  h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(29px,4.2vw,46px);line-height:1.1;margin:16px 0 0;letter-spacing:-.01em;max-width:760px}
-  .lede{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.72);line-height:1.75;margin:20px 0 0;max-width:640px}
-  .langbtn{position:absolute;top:30px;right:32px;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.8);background:transparent;border:1px solid rgba(255,255,255,.24);padding:9px 16px;cursor:pointer;transition:border-color .2s,color .2s}
-  .langbtn:hover{border-color:#FF8200;color:#FF8200}
-
-  section{padding:66px 0}
-  section + section{border-top:1px solid #E9E7E2}
-  .alt{background:#F7F7F5}
-  .kicker{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B85C00}
-  h2{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.2;margin:12px 0 0}
-  .sub{font-size:15px;color:#4D575E;line-height:1.75;margin:14px 0 0;max-width:660px}
-
-  .items{margin-top:34px;display:grid;gap:14px}
-  .item{border:1px solid #E9E7E2;background:#FFFFFF;padding:26px 28px;display:grid;grid-template-columns:44px 1fr auto;gap:22px;align-items:center;text-decoration:none;color:inherit;transition:border-color .25s,box-shadow .25s,transform .25s}
-  a.item:hover{border-color:rgba(255,130,0,.55);box-shadow:0 18px 40px rgba(0,31,66,.09);transform:translateY(-2px)}
-  .num{font-family:'Playfair Display',serif;font-size:26px;color:#FF8200;line-height:1}
-  .it-title{font-size:16px;font-weight:600;color:#002E5F;line-height:1.35}
-  .it-sub{font-size:13.5px;color:#4D575E;line-height:1.65;margin-top:6px}
-  .status{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;white-space:nowrap;border:1px solid}
-  .st-live{color:#1B6E3C;border-color:rgba(27,110,60,.35);background:rgba(27,110,60,.07)}
-  .st-review{color:#B85C00;border-color:rgba(255,130,0,.35);background:rgba(255,130,0,.07)}
-  .st-wait{color:#5F6A72;border-color:#E9E7E2;background:#F7F7F5}
-  .arrow{font-size:15px;color:#B85C00}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#E9E7E2;border:1px solid #E9E7E2;margin-top:32px}
-  .cell{background:#FFFFFF;padding:24px}
-  .alt .cell{background:#FFFFFF}
-  .cell h3{font-size:13px;font-weight:600;margin:0 0 8px}
-  .cell p{font-size:13px;color:#4D575E;line-height:1.7;margin:0}
-
-  footer{background:#00122A;color:rgba(255,255,255,.6);font-size:11.5px;line-height:1.85}
-  footer .wrap{padding:42px 32px 54px}
-
-  @media (max-width:720px){
-    .wrap{padding:0 20px}
-    .item{grid-template-columns:1fr;gap:12px}
-    .langbtn{position:static;display:inline-block;margin-bottom:20px}
+  /* The six points are a real numbered sequence, so the numerals carry
+     information rather than decorating a section. */
+  .plan{border-top:1px solid var(--line-2)}
+  .item{
+    display:grid;grid-template-columns:58px 1fr minmax(120px,auto);
+    gap:clamp(14px,2.5vw,30px);align-items:start;
+    padding:clamp(22px,3vw,30px) 0;border-bottom:1px solid var(--line);
+    color:inherit;text-decoration:none;
   }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  a.item{transition:background-color .3s var(--ease)}
+  a.item:hover{background:#FCFBF9}
+  a.item:hover .it-title{color:var(--amber-ink)}
+  a.item:hover .go{transform:translateX(4px);color:var(--amber)}
+  .no{font-family:var(--serif);font-size:1.75rem;line-height:1.1;color:var(--amber-ink);font-variant-numeric:tabular-nums}
+  a.item .no{color:var(--amber)}
+  .it-title{font-size:1.0625rem;font-weight:600;color:var(--ink);line-height:1.35;transition:color .3s var(--ease)}
+  .it-sub{font-size:var(--t-small);color:var(--ink-2);margin-top:8px;max-width:62ch}
+  .right{display:flex;align-items:center;gap:14px;justify-content:flex-end;flex-wrap:wrap}
+  .state{
+    font-size:var(--t-micro);font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    padding:6px 11px;white-space:nowrap;border:1px solid;
+  }
+  .s-live{color:#14603A;border-color:rgba(20,96,58,.34);background:rgba(20,96,58,.07)}
+  .s-review{color:var(--amber-ink);border-color:rgba(255,130,0,.36);background:rgba(255,130,0,.07)}
+  .s-wait{color:var(--ink-3);border-color:var(--line-2);background:var(--paper-2)}
+  .go{color:var(--ink-3);font-size:1.1rem;line-height:1;transition:transform .3s var(--ease),color .3s var(--ease)}
+
+  .needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));column-gap:clamp(32px,5vw,64px);border-top:1px solid var(--line-2);margin-top:8px}
+  .needs > div{padding:26px 0;border-bottom:1px solid var(--line)}
+  .needs h3{font-size:var(--t-h3);font-weight:600;color:var(--ink);margin-bottom:9px}
+  .needs p{font-size:var(--t-small);color:var(--ink-2);max-width:46ch}
+
+  @media (max-width:760px){
+    .item{grid-template-columns:44px 1fr}
+    .right{grid-column:1 / -1;justify-content:flex-start;padding-left:0}
+    .go{display:none}
+  }
 </style>
 </head>
 <body>
 
-<div class="draftbar">
-  <b data-i18n="draftTag">Internal</b>
-  <span data-i18n="draftText">Preview area — not linked from access.framontmanagement.com and excluded from search engines.</span>
-</div>
+<header data-chrome></header>
 
 <div class="hero">
-  <div class="wrap">
-    <button class="langbtn" id="langBtn">Italiano</button>
-    <div class="eyebrow" data-i18n="eyebrow">Framont Access — improvement plan</div>
-    <h1 data-i18n="title">Six improvements, three of them already live</h1>
-    <p class="lede" data-i18n="lede">Following the approval of 22 July, everything that could ship without new product data is online. What needed Framont's data or a look at the layout first is here as a draft.</p>
+  <div class="hero-img" style="background-image:url('../assets/preview/hero-hub.jpg')"></div>
+  <div class="hero-in">
+    <div class="plan-no">6<small data-i18n="planLabel">Points, three of them live</small></div>
+    <h1 data-i18n="title">The improvement plan, half of it already shipped</h1>
+    <p class="dek" data-i18n="dek">Following your approval of 22 July, everything that needed no new product data is online. What needed Framont's figures, or a look at the layout first, is here as a draft.</p>
+    <dl class="hero-meta">
+      <div><dt data-i18n="mLive">Live</dt><dd data-i18n="mLiveV">Points 3, 4 and 6</dd></div>
+      <div><dt data-i18n="mDraft">In draft</dt><dd data-i18n="mDraftV">Points 1, 5 and 2</dd></div>
+      <div><dt data-i18n="mDate">Updated</dt><dd>23.07.2026</dd></div>
+    </dl>
   </div>
 </div>
 
-<section>
-  <div class="wrap">
-    <div class="kicker" data-i18n="k1">For review</div>
-    <h2 data-i18n="h1t">The two previews you asked to see</h2>
-    <p class="sub" data-i18n="s1">Both are built from the product records already published on the site. Anything not sourced from those is marked in orange as “to be confirmed”.</p>
-    <div class="items" id="previews"></div>
+<main>
+  <section>
+    <div class="wrap-narrow">
+      <div class="rise in">
+        <div class="rule-head">
+          <h2 data-i18n="h1t">The two drafts you asked to see</h2>
+          <span class="of" data-i18n="h1of">Plus the glossary for Francesca</span>
+        </div>
+        <p class="lede-block" style="margin-bottom:26px" data-i18n="s1">Both are built from the product records already published on the site. Anything not sourced from those is marked in orange as “to be confirmed”.</p>
+        <div class="plan" id="previews"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap-narrow">
+      <div class="rise">
+        <div class="rule-head">
+          <h2 data-i18n="h2t">Already live on the site</h2>
+          <span class="of" data-i18n="h2of">Shipped 23 July</span>
+        </div>
+        <div class="plan" id="shipped"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap-narrow">
+      <div class="rise">
+        <div class="rule-head">
+          <h2 data-i18n="h3t">What closes the rest</h2>
+          <span class="of" data-i18n="h3of">Two days per page once approved</span>
+        </div>
+        <div class="needs" id="needs"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap-narrow">
+    <p id="legal"></p>
+    <div class="sig" data-i18n="sig">Niuexa for Framont Group</div>
   </div>
-</section>
+</footer>
 
-<section class="alt">
-  <div class="wrap">
-    <div class="kicker" data-i18n="k2">Already live</div>
-    <h2 data-i18n="h2t">Shipped on access.framontmanagement.com</h2>
-    <p class="sub" data-i18n="s2">Points 3, 4 and 6 needed no new product data, so they went straight in.</p>
-    <div class="items" id="shipped"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="kicker" data-i18n="k3">Next</div>
-    <h2 data-i18n="h3t">What we need to finish the rest</h2>
-    <div class="grid" id="needs"></div>
-  </div>
-</section>
-
-<footer><div class="wrap" id="legal"></div></footer>
-
+<script src="preview.js"></script>
 <script>
-var lang = "en";
-function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-var UI = {
+var DICT = {
   en: {
-    draftTag:"Internal", draftText:"Preview area — not linked from access.framontmanagement.com and excluded from search engines.",
-    eyebrow:"Framont Access — improvement plan", title:"Six improvements, three of them already live",
-    lede:"Following the approval of 22 July, everything that could ship without new product data is online. What needed Framont's data or a look at the layout first is here as a draft.",
-    k1:"For review", h1t:"The two previews you asked to see",
+    planLabel:"Points, three of them live", title:"The improvement plan, half of it already shipped",
+    dek:"Following your approval of 22 July, everything that needed no new product data is online. What needed Framont's figures, or a look at the layout first, is here as a draft.",
+    mLive:"Live", mLiveV:"Points 3, 4 and 6", mDraft:"In draft", mDraftV:"Points 1, 5 and 2", mDate:"Updated",
+    h1t:"The two drafts you asked to see", h1of:"Plus the glossary for Francesca",
     s1:"Both are built from the product records already published on the site. Anything not sourced from those is marked in orange as “to be confirmed”.",
-    k2:"Already live", h2t:"Shipped on access.framontmanagement.com",
-    s2:"Points 3, 4 and 6 needed no new product data, so they went straight in.",
-    k3:"Next", h3t:"What we need to finish the rest",
-    stReview:"Awaiting approval", stLive:"Live", stWait:"Awaiting content",
+    h2t:"Already live on the site", h2of:"Shipped 23 July",
+    h3t:"What closes the rest", h3of:"Two days per page once approved",
+    stReview:"Your approval", stLive:"Live", stWait:"Content pending", sig:"Niuexa for Framont Group",
     previews:[
       { n:"1", href:"comparison.html", t:"Product comparison table",
-        s:"All eighteen products side by side — wrapper, strategy, liquidity, currency, costs and eligibility. ISIN and minimum subscription stay behind the registration gate.", st:"review" },
-      { n:"5", href:"structure.html", t:"Structure & safeguards",
-        s:"The product chain drawn out for each wrapper: issuer, venue, portfolio manager, post-trade agents — plus the licences behind the platform.", st:"review" },
-      { n:"2", href:"glossary.html", t:"Glossary — draft for Francesca",
-        s:"Thirty-one bilingual definitions covering the vocabulary used across the product pages. Six entries restate agreed compliance rules and need explicit sign-off.", st:"wait" }
+        s:"All eighteen products side by side: wrapper, strategy, liquidity, currency, costs and eligibility. ISIN and minimum subscription stay behind the registration gate.", st:"review" },
+      { n:"5", href:"structure.html", t:"Structure and safeguards",
+        s:"The product chain drawn out for each wrapper: issuer, venue, portfolio manager, post-trade agents, and the licences behind the platform.", st:"review" },
+      { n:"2", href:"glossary.html", t:"Glossary, draft for Francesca",
+        s:"Thirty-one bilingual definitions covering the vocabulary used across the product pages. Six restate agreed compliance rules and need her exact wording.", st:"wait" }
     ],
     shipped:[
       { n:"3", t:"Registration funnel analytics",
-        s:"Every step of the gate now reports to GA4 with the product it happened on: locked data seen, lock clicked, registration started, registration completed, gate abandoned — plus the Deals code gate and call requests." },
+        s:"Every step of the gate now reports to GA4 with the product it happened on: locked data seen, lock clicked, registration started, registration completed, gate abandoned. The Deals code gate and call requests are tracked the same way." },
       { n:"4", t:"A smarter registration gate",
-        s:"One non-sensitive datum per product — listing, structure or eligibility — is now always readable, while ISIN and minimum subscription stay locked. The registration message adapts to the product, the category or the guide the visitor arrived from." },
-      { n:"6", t:"“Request a call”",
-        s:"A discreet second route for institutional visitors who would rather talk first: in the registration window and under the main call to action. Requests are routed to Gianluigi Montagner, as agreed." }
+        s:"One non-sensitive datum per product, listing or structure or eligibility, is now always readable, while ISIN and minimum subscription stay locked. The registration message adapts to the product, the category, or the guide the visitor arrived from." },
+      { n:"6", t:"Request a call",
+        s:"A second, quieter route for institutional visitors who would rather talk first: in the registration window and under the main call to action. Requests are routed to Gianluigi Montagner, as agreed." }
     ],
     needs:[
       { h:"From Francesca", p:"Sign-off on the glossary, on the role labels in the structure module, and on the eligibility wording used in the comparison table." },
-      { h:"From Framont", p:"Management fees per fund (nine funds currently read “per Fund Rules”), the depositary of each fund, and the Börse Stuttgart quotation URLs per ISIN." },
-      { h:"From this side", p:"Once the drafts are approved, both pages go into the site itself — same data source as the product cards, so they stay in step automatically. Two working days each." }
+      { h:"From Framont", p:"Management fees per fund, since the nine funds currently read “per Fund Rules”. The depositary of each fund. The Börse Stuttgart quotation URLs per ISIN." },
+      { h:"From us", p:"Once approved, both pages go into the site itself, reading the same product records as the cards so they stay in step automatically." }
     ],
-    legal:"Internal preview — not published, not linked from the live site, excluded from search engines. All figures are taken from the product records already published on access.framontmanagement.com and from the official KIDs and term sheets. For information purposes only; this is not investment advice, an offer or a solicitation. Capital at risk."
+    legal:"Internal preview, not published, not linked from the live site and excluded from search engines. All figures are taken from the product records already published on access.framontmanagement.com and from the official KIDs and term sheets. For information purposes only; this is not investment advice, an offer or a solicitation. Capital at risk."
   },
   it: {
-    draftTag:"Interno", draftText:"Area di anteprima — non collegata da access.framontmanagement.com ed esclusa dai motori di ricerca.",
-    eyebrow:"Framont Access — piano di miglioramento", title:"Sei interventi, tre già online",
-    lede:"Dopo l'approvazione del 22 luglio, tutto ciò che poteva partire senza nuovi dati di prodotto è online. Ciò che richiedeva dati da Framont o una verifica del layout è qui in bozza.",
-    k1:"Da rivedere", h1t:"Le due anteprime che avete chiesto",
+    planLabel:"Punti, tre già online", title:"Il piano di miglioramento, metà già pubblicato",
+    dek:"Dopo la vostra approvazione del 22 luglio, tutto ciò che non richiedeva nuovi dati di prodotto è online. Ciò che richiedeva i dati di Framont, o prima una verifica del layout, è qui in bozza.",
+    mLive:"Online", mLiveV:"Punti 3, 4 e 6", mDraft:"In bozza", mDraftV:"Punti 1, 5 e 2", mDate:"Aggiornato",
+    h1t:"Le due bozze che avete chiesto", h1of:"Più il glossario per Francesca",
     s1:"Entrambe sono costruite sulle schede prodotto già pubblicate sul sito. Ciò che non proviene da lì è segnalato in arancione come “da confermare”.",
-    k2:"Già online", h2t:"Pubblicato su access.framontmanagement.com",
-    s2:"I punti 3, 4 e 6 non richiedevano nuovi dati di prodotto, quindi sono già attivi.",
-    k3:"Prossimi passi", h3t:"Cosa serve per completare il resto",
-    stReview:"In attesa di approvazione", stLive:"Online", stWait:"In attesa di contenuti",
+    h2t:"Già online sul sito", h2of:"Pubblicato il 23 luglio",
+    h3t:"Cosa serve per chiudere il resto", h3of:"Due giornate a pagina, una volta approvate",
+    stReview:"Vostra approvazione", stLive:"Online", stWait:"Contenuti attesi", sig:"Niuexa per Framont Group",
     previews:[
       { n:"1", href:"comparison.html", t:"Tabella comparativa dei prodotti",
-        s:"Tutti i diciotto prodotti affiancati — struttura, strategia, liquidità, valuta, costi e idoneità. ISIN e sottoscrizione minima restano dietro il gate di registrazione.", st:"review" },
+        s:"Tutti i diciotto prodotti affiancati: struttura, strategia, liquidità, valuta, costi e idoneità. ISIN e sottoscrizione minima restano dietro il gate di registrazione.", st:"review" },
       { n:"5", href:"structure.html", t:"Struttura e presidi",
-        s:"La catena del prodotto disegnata per ciascun involucro: emittente, sede di negoziazione, gestore di portafoglio, agenti post-trade — più le licenze dietro la piattaforma.", st:"review" },
-      { n:"2", href:"glossary.html", t:"Glossario — bozza per Francesca",
-        s:"Trentuno definizioni bilingui sul vocabolario usato nelle pagine prodotto. Sei voci riprendono regole di compliance già concordate e richiedono approvazione esplicita.", st:"wait" }
+        s:"La catena del prodotto disegnata per ciascun involucro: emittente, sede di negoziazione, gestore di portafoglio, agenti post-trade e le licenze dietro la piattaforma.", st:"review" },
+      { n:"2", href:"glossary.html", t:"Glossario, bozza per Francesca",
+        s:"Trentuno definizioni bilingui sul vocabolario usato nelle pagine prodotto. Sei riprendono regole di compliance già concordate e richiedono la sua formulazione esatta.", st:"wait" }
     ],
     shipped:[
       { n:"3", t:"Analytics sul funnel di registrazione",
-        s:"Ogni passaggio del gate viene ora tracciato su GA4 con il prodotto su cui è avvenuto: dati bloccati visualizzati, lucchetto cliccato, registrazione iniziata, registrazione completata, gate abbandonato — oltre al gate del codice Deals e alle richieste di chiamata." },
+        s:"Ogni passaggio del gate arriva ora su GA4 con il prodotto su cui è avvenuto: dati bloccati visualizzati, lucchetto cliccato, registrazione iniziata, registrazione completata, gate abbandonato. Il gate del codice Deals e le richieste di chiamata sono tracciati allo stesso modo." },
       { n:"4", t:"Un gate di registrazione più intelligente",
-        s:"Un dato non sensibile per prodotto — quotazione, struttura o idoneità — è ora sempre leggibile, mentre ISIN e sottoscrizione minima restano bloccati. Il messaggio di registrazione si adatta al prodotto, alla categoria o alla guida da cui arriva il visitatore." },
-      { n:"6", t:"“Richiedi una chiamata”",
-        s:"Una seconda via discreta per i visitatori istituzionali che preferiscono prima parlare: nella finestra di registrazione e sotto la call to action principale. Le richieste sono indirizzate a Gianluigi Montagner, come concordato." }
+        s:"Un dato non sensibile per prodotto, quotazione o struttura o idoneità, è ora sempre leggibile, mentre ISIN e sottoscrizione minima restano bloccati. Il messaggio di registrazione si adatta al prodotto, alla categoria o alla guida da cui arriva il visitatore." },
+      { n:"6", t:"Richiedi una chiamata",
+        s:"Una seconda via, più discreta, per i visitatori istituzionali che preferiscono prima parlare: nella finestra di registrazione e sotto la call to action principale. Le richieste sono indirizzate a Gianluigi Montagner, come concordato." }
     ],
     needs:[
       { h:"Da Francesca", p:"Approvazione del glossario, delle etichette di ruolo nel modulo struttura e della formula di idoneità usata nella tabella comparativa." },
-      { h:"Da Framont", p:"Commissioni di gestione per singolo fondo (i nove fondi riportano oggi “da Regolamento”), il depositario di ciascun fondo e gli URL delle pagine di quotazione su Börse Stuttgart per ISIN." },
-      { h:"Da parte nostra", p:"Approvate le bozze, entrambe le pagine entrano nel sito — stessa fonte dati delle schede prodotto, quindi restano allineate in automatico. Due giornate lavorative ciascuna." }
+      { h:"Da Framont", p:"Commissioni di gestione per singolo fondo, dato che i nove fondi riportano oggi “da Regolamento”. Il depositario di ciascun fondo. Gli URL delle pagine di quotazione su Börse Stuttgart per ISIN." },
+      { h:"Da parte nostra", p:"Approvate le bozze, entrambe le pagine entrano nel sito leggendo le stesse schede prodotto delle card, così restano allineate in automatico." }
     ],
-    legal:"Anteprima interna — non pubblicata, non collegata dal sito online, esclusa dai motori di ricerca. Tutti i dati provengono dalle schede prodotto già pubblicate su access.framontmanagement.com e dai KID e term sheet ufficiali. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Capitale a rischio."
+    legal:"Anteprima interna, non pubblicata, non collegata dal sito online ed esclusa dai motori di ricerca. Tutti i dati provengono dalle schede prodotto già pubblicate su access.framontmanagement.com e dai KID e term sheet ufficiali. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Capitale a rischio."
   }
 };
 
-function item(x, t, linked){
-  var st = x.st === "live" ? ["st-live", t.stLive] : x.st === "wait" ? ["st-wait", t.stWait] : ["st-review", t.stReview];
-  var inner = '<div class="num">' + x.n + "</div>" +
-    '<div><div class="it-title">' + esc(x.t) + '</div><div class="it-sub">' + esc(x.s) + "</div></div>" +
-    '<div style="display:flex;gap:14px;align-items:center"><span class="status ' + st[0] + '">' + esc(st[1]) + "</span>" +
-    (linked ? '<span class="arrow">→</span>' : "") + "</div>";
-  return linked ? '<a class="item" href="' + x.href + '">' + inner + "</a>" : '<div class="item">' + inner + "</div>";
+function row(x, t, linked){
+  var esc = PV.esc;
+  var st = x.st === "live" ? ["s-live", t.stLive] : x.st === "wait" ? ["s-wait", t.stWait] : ["s-review", t.stReview];
+  var inner =
+    '<div class="no">' + x.n + "</div>" +
+    '<div><div class="it-title">' + esc(x.t) + '</div><p class="it-sub">' + esc(x.s) + "</p></div>" +
+    '<div class="right"><span class="state ' + st[0] + '">' + esc(st[1]) + "</span>" +
+      (linked ? '<span class="go" aria-hidden="true">&rsaquo;</span>' : "") + "</div>";
+  return linked
+    ? '<a class="item" href="' + x.href + '">' + inner + "</a>"
+    : '<div class="item">' + inner + "</div>";
 }
 
-function render(){
-  var t = UI[lang];
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){
-    var k = el.getAttribute("data-i18n"); if (t[k]) el.textContent = t[k];
-  });
-  document.getElementById("langBtn").textContent = lang === "en" ? "Italiano" : "English";
-  document.getElementById("previews").innerHTML = t.previews.map(function(x){ return item(x, t, true); }).join("");
-  document.getElementById("shipped").innerHTML = t.shipped.map(function(x){ return item({ n:x.n, t:x.t, s:x.s, st:"live" }, t, false); }).join("");
+function render(lang){
+  var t = DICT[lang], esc = PV.esc;
+  document.getElementById("previews").innerHTML = t.previews.map(function(x){ return row(x, t, true); }).join("");
+  document.getElementById("shipped").innerHTML = t.shipped.map(function(x){ return row({ n:x.n, t:x.t, s:x.s, st:"live" }, t, false); }).join("");
   document.getElementById("needs").innerHTML = t.needs.map(function(n){
-    return '<div class="cell"><h3>' + esc(n.h) + "</h3><p>" + esc(n.p) + "</p></div>";
+    return "<div><h3>" + esc(n.h) + "</h3><p>" + esc(n.p) + "</p></div>";
   }).join("");
   document.getElementById("legal").textContent = t.legal;
 }
 
-document.getElementById("langBtn").addEventListener("click", function(){ lang = lang === "en" ? "it" : "en"; render(); });
-render();
+PV.init({ dict: DICT, render: render });
 </script>
 </body>
 </html>
