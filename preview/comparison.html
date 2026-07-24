@@ -195,6 +195,12 @@ var P = [
     ccy:{en:"EUR, EUR 1,000 per unit",it:"EUR, EUR 1.000 per quota"},
     costs:{en:"2.00% p.a. management, 0.70% p.a. administration. Performance 20% over a 0% hurdle, high-water mark",it:"2,00% annuo di gestione, 0,70% annuo di amministrazione. Performance 20% oltre hurdle 0%, high-water mark"},
     elig:{en:"Professional investors only",it:"Riservato a investitori professionali"} },
+  { g:"amc", name:"Framont Global Total Return AMC", open:true, meta:{en:"Leonteq · Borsa Italiana",it:"Leonteq · Borsa Italiana"}, isin:"On request",
+    wrapper:{en:"Actively managed certificate, listed, retail (PRIIPs KID)",it:"Certificato a gestione attiva, quotato, retail (KID PRIIPs)"},
+    strategy:{en:"Multi-asset net-total-return strategy on the Framont Global Total Return Index (FRGLBOPP): equities, ETFs and cash",it:"Strategia multi-asset net total return sull'indice Framont Global Total Return (FRGLBOPP): azioni, ETF e liquidità"},
+    liquidity:{en:"Listed on Borsa Italiana",it:"Quotato su Borsa Italiana"},
+    ccy:"EUR", costs:{en:"Per PRIIPs KID",it:"Da KID PRIIPs"}, costsTbc:true,
+    elig:{en:"Retail investors (PRIIPs KID)",it:"Investitori retail (KID PRIIPs)"} },
   { g:"amc", name:"Zalphyx Yield Strategies", open:false, soon:{en:"In subscription to 28 Jul 2026",it:"In sottoscrizione fino al 28 lug 2026"}, meta:{en:"Expand3 Issuer PCC (Guernsey) · GenTwo",it:"Expand3 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1518693374",
     wrapper:{en:"Credit-linked note, unlisted, private placement",it:"Credit-linked note, non quotata, private placement"},
     strategy:{en:"First-rank USD mortgages, Dominican Republic, maximum 50% LTV",it:"Ipoteche USD di primo grado, Repubblica Dominicana, LTV massimo 50%"},
@@ -265,7 +271,7 @@ var DICT = {
     soonTitle:"Coming soon and reserved", soonOf:"Teaser level, no ISIN or minimum",
     openTitle:"Open questions", openOf:"Two for Framont, one for Francesca",
     open:[
-      "New AMC. Gianluigi is sending the details separately; it joins the AMC group as soon as they arrive.",
+      "Framont Global Total Return AMC is now in the AMC group. Its certificate ISIN, minimum and fees are pending the PRIIPs KID, shown as “on request” until then.",
       "Fund management fees. The nine funds still read “per Fund Rules”; a management-fee column needs the figure per fund.",
       "ETI eligibility. Shown as “per PRIIPs KID and suitability check”; Francesca to confirm the exact wording for retail access."
     ],
@@ -288,7 +294,7 @@ var DICT = {
     soonTitle:"In arrivo e riservati", soonOf:"Livello teaser, senza ISIN né minimo",
     openTitle:"Questioni aperte", openOf:"Due per Framont, una per Francesca",
     open:[
-      "Nuovo AMC. Gianluigi invia gli estremi a parte; entra nel gruppo AMC appena arrivano.",
+      "L’AMC Framont Global Total Return è ora nel gruppo AMC. ISIN del certificato, minimo e commissioni sono in attesa del KID PRIIPs, indicati come “su richiesta” fino ad allora.",
       "Commissioni di gestione dei fondi. I nove fondi riportano ancora “da Regolamento”; per una colonna con la commissione servono i dati per singolo fondo.",
       "Idoneità degli ETI. Indicata come “da KID PRIIPs e verifica di adeguatezza”; Francesca conferma la dicitura esatta per l'accesso retail."
     ],

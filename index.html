@@ -245,6 +245,13 @@
     },
     {
       "@type": "FinancialProduct",
+      "name": "Framont Global Total Return AMC",
+      "category": "Actively Managed Certificate",
+      "url": "https://access.framontmanagement.com/#/amc",
+      "provider": { "@id": "https://access.framontmanagement.com/#org" }
+    },
+    {
+      "@type": "FinancialProduct",
       "name": "Zalphyx Yield Strategies CLN",
       "identifier": "CH1518693374",
       "category": "Credit-Linked Note",
@@ -369,6 +376,7 @@
     <li><a href="https://lcinvest.framontmanagement.com/">LC Invest — Value Edge ETI</a> — ISIN DE000AMC0BZ5</li>
     <li><a href="https://ivncapital.com/">IVN Global ETI</a> — ISIN DE000AMC0DX6, actively managed global long/short strategy</li>
     <li><a href="/assets/termsheets/framont-noctiluca-amc-termsheet.pdf">Noctiluca Capital AMC</a> — ISIN CH1554882477 (professional investors)</li>
+    <li>Framont Global Total Return AMC — actively managed certificate on the Framont Global Total Return Index (FRGLBOPP), issued by Leonteq and listed on Borsa Italiana (retail, PRIIPs KID)</li>
     <li><a href="/assets/termsheets/framont-zalphyx-cln-termsheet.pdf">Zalphyx Yield Strategies CLN</a> — ISIN CH1518693374, 6% p.a. credit-linked note (professional and qualified investors)</li>
   </ul>
   <h2>Frequently asked questions</h2>
@@ -1639,6 +1647,24 @@ class Component extends DCLogic {
             { label: { en: "Investor Eligibility", it: "Idoneità dell'Investitore" }, value: { en: "Professional investors only", it: "Riservato a investitori professionali" } }
           ],
           description: { en: "Noctiluca Capital is an actively managed certificate (AMC) issued through a protected cell of Expand2 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1554882477). Strategy management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is denominated in EUR, with a minimum investment of €10,000, and is reserved exclusively for professional investors. The strategy applies systematic breakout and trend-following signals on exchange-listed global equity-index and commodity futures. Post-trade functions are handled by InCore Bank AG (paying agent, Switzerland), with custody and brokerage via TradeStation Europe B.V. (Netherlands). The official term sheet is available for download on this page. *Where track-record figures appear in the product documentation, they are based on a standardised simulation, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "Noctiluca Capital è un certificato a gestione attiva (AMC) emesso tramite una cella protetta di Expand2 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1554882477). La gestione della strategia è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è denominato in EUR, con un investimento minimo di €10.000, ed è riservato esclusivamente a investitori professionali. La strategia applica segnali sistematici di breakout e trend-following su future quotati su indici azionari globali e materie prime. Le funzioni di post-trade sono svolte da InCore Bank AG (paying agent, Svizzera), con custodia e brokeraggio tramite TradeStation Europe B.V. (Paesi Bassi). Il term sheet ufficiale è scaricabile da questa pagina. *Ove nella documentazione di prodotto compaiano dati di track record, questi si basano su una simulazione standardizzata, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
+        { id: "amc-framont-gtr", name: "Framont Global Total Return AMC", assetClass: "Actively Managed Certificate", currency: "EUR", minSub: 0, minLabel: { en: "On request", it: "Su richiesta" }, open: true, active: true,
+          subscribeUrl: "",
+          strategy: { en: "Actively managed certificate on the Framont Global Total Return Index, issued by Leonteq and listed on Borsa Italiana. A retail product with a PRIIPs KID, giving multi-asset exposure across equities, ETFs and cash.", it: "Certificato a gestione attiva sull'indice Framont Global Total Return, emesso da Leonteq e quotato su Borsa Italiana. Prodotto retail con KID PRIIPs, per un'esposizione multi-asset ad azioni, ETF e liquidità." },
+          metricLabel: { en: "Listing", it: "Quotazione" },
+          metricValue: { en: "Borsa Italiana", it: "Borsa Italiana" },
+          facts: [
+            { label: { en: "Issuer", it: "Emittente" }, value: "Leonteq Securities AG" },
+            { label: { en: "Underlying Index", it: "Indice Sottostante" }, value: { en: "Framont Global Total Return Index · FRGLBOPP", it: "Framont Global Total Return Index · FRGLBOPP" } },
+            { label: { en: "Index Calculation Agent", it: "Agente di Calcolo dell'Indice" }, value: "Solactive AG" },
+            { label: { en: "Strategy Manager", it: "Gestore della Strategia" }, value: { en: "Framont & Partners Management Ltd — MFSA-authorised AIFM", it: "Framont & Partners Management Ltd — AIFM autorizzato MFSA" } },
+            { label: { en: "Listing", it: "Quotazione" }, value: "Borsa Italiana" },
+            { label: { en: "Currency", it: "Valuta" }, value: "EUR" },
+            { label: { en: "Asset Classes", it: "Classi di Attivo" }, value: { en: "Equities, ETFs and cash", it: "Azioni, ETF e liquidità" } },
+            { label: { en: "Return Type", it: "Tipo di Rendimento" }, value: { en: "Net total return", it: "Net total return" } },
+            { label: { en: "Eligibility", it: "Idoneità" }, value: { en: "Retail investors — PRIIPs KID", it: "Investitori retail — KID PRIIPs" } },
+            { label: { en: "Documentation", it: "Documentazione" }, value: { en: "PRIIPs KID and certificate ISIN on request", it: "KID PRIIPs e ISIN del certificato su richiesta" } }
+          ],
+          description: { en: "Framont Global Total Return is an actively managed certificate (AMC) issued by Leonteq Securities AG and listed on Borsa Italiana, tracking the Framont Global Total Return Index (ticker FRGLBOPP), calculated by Solactive AG. The EUR-denominated index follows a net-total-return, multi-asset strategy that can hold equities, ETFs and cash, with dividends reinvested, and reflects an actively managed strategy advised by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is available to retail investors and is accompanied by a PRIIPs Key Information Document; the tradeable ISIN and minimum are set out in that documentation, available on request. Certificates are debt securities of the issuer and carry issuer risk. Read the KID before any investment decision. Capital at risk.", it: "Framont Global Total Return è un certificato a gestione attiva (AMC) emesso da Leonteq Securities AG e quotato su Borsa Italiana, che replica l'indice Framont Global Total Return (ticker FRGLBOPP), calcolato da Solactive AG. L'indice, denominato in EUR, segue una strategia multi-asset net total return che può detenere azioni, ETF e liquidità, con reinvestimento dei dividendi, e riflette una strategia a gestione attiva su indicazione di Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è disponibile per gli investitori retail ed è accompagnato da un Documento contenente le Informazioni Chiave (KID PRIIPs); l'ISIN negoziabile e il minimo sono indicati in tale documentazione, disponibile su richiesta. I certificati sono titoli di debito dell'emittente e comportano rischio emittente. Leggere il KID prima di ogni decisione d'investimento. Capitale a rischio." } },
         { id: "amc-zalphyx", name: "Zalphyx Yield Strategies", isin: "CH1518693374", assetClass: "Private Credit", currency: "EUR", minSub: 10000, minLabel: "€10,000", open: false, active: true,
           subscribeUrl: "",
           termsheetUrl: "assets/termsheets/framont-zalphyx-cln-termsheet.pdf",
