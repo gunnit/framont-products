@@ -66,10 +66,10 @@
   <div class="hero-in">
     <div class="plan-no">02<small data-i18n="planLabel">Improvement plan</small></div>
     <h1 data-i18n="title">The words on this platform, in plain language</h1>
-    <p class="dek" data-i18n="dek">Thirty-one bilingual definitions covering the vocabulary used across the product pages. These are the lines search engines and AI assistants quote when someone asks what an ETI actually is, which is why they are worth getting exactly right.</p>
+    <p class="dek" data-i18n="dek">Thirty-two bilingual definitions covering the vocabulary used across the product pages. These are the lines search engines and AI assistants quote when someone asks what an ETI actually is, which is why they are worth getting exactly right.</p>
     <dl class="hero-meta">
       <div><dt data-i18n="mStatus">Status</dt><dd data-i18n="mStatusV">Awaiting Francesca's content sign-off</dd></div>
-      <div><dt data-i18n="mFlagged">Needs compliance wording</dt><dd data-i18n="mFlaggedV">Six of thirty-one entries</dd></div>
+      <div><dt data-i18n="mFlagged">Needs compliance wording</dt><dd data-i18n="mFlaggedV">Seven of thirty-two entries</dd></div>
       <div><dt data-i18n="mAuthor">Drafted by</dt><dd>Niuexa</dd></div>
     </dl>
   </div>
@@ -232,6 +232,11 @@ var TERMS = [
     it:{ t:"Investitore professionale", alt:"Professional investor", flag:true,
       d:"Un cliente classificato come professionale ai sensi della MiFID II, che si presume abbia esperienza e conoscenze per assumere decisioni d'investimento e valutare i rischi connessi. Diversi prodotti di questa piattaforma sono riservati a questa categoria." } },
 
+  { g:"investors", en:{ t:"Elective professional client", alt:"Cliente professionale su richiesta", flag:true,
+      d:"A retail client can ask to be treated as professional (opting up) if they meet at least two of three conditions: significant-size transactions on the relevant market, averaging ten per quarter over the previous four quarters; a financial instrument portfolio, cash deposits included, above €500,000; or at least one year worked in the financial sector in a role requiring knowledge of the transactions or services envisaged. Opting up means giving up some of the protections a retail client receives." },
+    it:{ t:"Cliente professionale su richiesta", alt:"Elective professional client", flag:true,
+      d:"Un cliente retail può chiedere di essere trattato come professionale (opt-up) se soddisfa almeno due delle tre condizioni: operazioni di dimensione significativa sul mercato di riferimento, in media dieci per trimestre nei quattro trimestri precedenti; un portafoglio di strumenti finanziari, depositi in contanti inclusi, superiore a €500.000; almeno un anno di lavoro nel settore finanziario in una posizione che richiede la conoscenza delle operazioni o dei servizi previsti. L'opt-up comporta la rinuncia ad alcune tutele riservate al cliente retail." } },
+
   { g:"investors", en:{ t:"Qualified investor", alt:"Investitore qualificato", flag:true,
       d:"An investor who meets the criteria set out in the offering documentation of a specific product, a threshold defined per product, which may differ from the MiFID II professional classification." },
     it:{ t:"Investitore qualificato", alt:"Qualified investor", flag:true,
@@ -280,15 +285,15 @@ var TERMS = [
 var DICT = {
   en: {
     planLabel:"Improvement plan", title:"The words on this platform, in plain language",
-    dek:"Thirty-one bilingual definitions covering the vocabulary used across the product pages. These are the lines search engines and AI assistants quote when someone asks what an ETI actually is, which is why they are worth getting exactly right.",
+    dek:"Thirty-two bilingual definitions covering the vocabulary used across the product pages. These are the lines search engines and AI assistants quote when someone asks what an ETI actually is, which is why they are worth getting exactly right.",
     mStatus:"Status", mStatusV:"Awaiting Francesca's content sign-off",
-    mFlagged:"Needs compliance wording", mFlaggedV:"Six of thirty-one entries",
+    mFlagged:"Needs compliance wording", mFlaggedV:"Seven of thirty-two entries",
     mAuthor:"Drafted by",
     search:"Search a term", all:"All", flag:"Compliance sign-off",
     entries:"entries", entry:"entry", none:"No term matches that search.",
     askTitle:"Three things we need from you", askOf:"Francesca", sig:"Niuexa for Framont Group",
     ask:[
-      "Six entries are flagged for compliance sign-off: Portfolio Manager, Strategy Developer, and the four investor classifications. They restate rules we have already agreed, so what we need is your exact wording, not a general read-through.",
+      "Seven entries are flagged for compliance sign-off: Portfolio Manager, Strategy Developer, and the five investor classifications. They restate rules we have already agreed, so what we need is your exact wording, not a general read-through.",
       "Anything missing? The list covers the vocabulary currently on the product pages. We are happy to add the terms your clients actually ask about.",
       "Once approved, each definition also feeds a short question block on the matching product page plus structured data (DefinedTermSet, FAQPage). That is the part search engines and AI assistants quote."
     ],
@@ -296,15 +301,15 @@ var DICT = {
   },
   it: {
     planLabel:"Piano di miglioramento", title:"Le parole di questa piattaforma, in linguaggio semplice",
-    dek:"Trentuno definizioni bilingui sul vocabolario usato nelle pagine prodotto. Sono le righe che motori di ricerca e assistenti AI citano quando qualcuno chiede cos'è davvero un ETI, ed è per questo che vale la pena scriverle con precisione.",
+    dek:"Trentadue definizioni bilingui sul vocabolario usato nelle pagine prodotto. Sono le righe che motori di ricerca e assistenti AI citano quando qualcuno chiede cos'è davvero un ETI, ed è per questo che vale la pena scriverle con precisione.",
     mStatus:"Stato", mStatusV:"In attesa dell'approvazione di Francesca",
-    mFlagged:"Richiede dicitura compliance", mFlaggedV:"Sei voci su trentuno",
+    mFlagged:"Richiede dicitura compliance", mFlaggedV:"Sette voci su trentadue",
     mAuthor:"Redatto da",
     search:"Cerca un termine", all:"Tutti", flag:"Approvazione compliance",
     entries:"voci", entry:"voce", none:"Nessun termine corrisponde alla ricerca.",
     askTitle:"Tre cose che ci servono da te", askOf:"Francesca", sig:"Niuexa per Framont Group",
     ask:[
-      "Sei voci sono contrassegnate per approvazione compliance: Gestore di portafoglio, Sviluppatore della strategia e le quattro classificazioni degli investitori. Riprendono regole già concordate, quindi ci serve la tua formulazione esatta, non una semplice rilettura.",
+      "Sette voci sono contrassegnate per approvazione compliance: Gestore di portafoglio, Sviluppatore della strategia e le cinque classificazioni degli investitori. Riprendono regole già concordate, quindi ci serve la tua formulazione esatta, non una semplice rilettura.",
       "Manca qualcosa? L'elenco copre il vocabolario oggi presente nelle pagine prodotto. Volentieri aggiungiamo i termini che i vostri clienti chiedono davvero.",
       "Una volta approvate, ogni definizione alimenta anche un breve blocco di domande sulla pagina prodotto corrispondente e i dati strutturati (DefinedTermSet, FAQPage). È quella la parte che motori di ricerca e assistenti AI citano."
     ],
