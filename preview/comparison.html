@@ -35,7 +35,14 @@
   .rec dl{display:grid;grid-template-columns:34% 66%;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:16px}
   .rec dt{background:var(--paper-2);padding:10px 12px;margin:0;font-size:var(--t-micro);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
   .rec dd{background:var(--paper);padding:10px 12px;margin:0;font-size:var(--t-small);color:var(--ink-2)}
+  .none-row{padding:40px 18px;text-align:center;color:var(--ink-3);font-size:var(--t-small)}
+  #soon[hidden]{display:none}
+  .soon-list{border-top:1px solid var(--line-2)}
+  .s-row{display:grid;grid-template-columns:minmax(200px,17rem) 1fr auto;gap:14px 28px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+  .s-desc{font-size:var(--t-small);color:var(--ink-2)}
+  .s-tag{font-size:var(--t-micro);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line-2);background:var(--paper-2);padding:6px 11px;white-space:nowrap;justify-self:end}
   @media (max-width:900px){ .tablewrap{display:none} .stack{display:block} }
+  @media (max-width:760px){ .s-row{grid-template-columns:1fr;gap:6px} .s-tag{justify-self:start} }
 </style>
 </head>
 <body>
@@ -46,12 +53,12 @@
   <div class="hero-img" style="background-image:url('../assets/preview/hero-comparison.jpg')"></div>
   <div class="hero-in">
     <div class="plan-no">01<small data-i18n="planLabel">Improvement plan</small></div>
-    <h1 data-i18n="title">Eighteen products, one page</h1>
-    <p class="dek" data-i18n="dek">Wrapper, strategy, liquidity, currency, costs and eligibility for the whole range, in a single view. ISIN and minimum subscription stay locked, exactly as they are on the live site.</p>
+    <h1 data-i18n="title">Products open to subscription</h1>
+    <p class="dek" data-i18n="dek">Wrapper, strategy, liquidity, currency, costs and eligibility for every product open to subscription, in one view. ISIN and minimum subscription stay locked, exactly as on the live site.</p>
     <dl class="hero-meta">
-      <div><dt data-i18n="mStatus">Status</dt><dd data-i18n="mStatusV">Awaiting your approval of the layout</dd></div>
-      <div><dt data-i18n="mSource">Source</dt><dd data-i18n="mSourceV">Published product records and KIDs</dd></div>
-      <div><dt data-i18n="mDate">Data as at</dt><dd>23.07.2026</dd></div>
+      <div><dt data-i18n="mStatus">Status</dt><dd data-i18n="mStatusV">Desk corrections incorporated</dd></div>
+      <div><dt data-i18n="mSource">Source</dt><dd data-i18n="mSourceV">Records, KIDs and desk-confirmed fees</dd></div>
+      <div><dt data-i18n="mDate">Data as at</dt><dd>24.07.2026</dd></div>
     </dl>
   </div>
 </div>
@@ -80,6 +87,12 @@
         </div>
         <div class="stack" id="stack"></div>
       </div>
+    </div>
+  </section>
+
+  <section class="tight" style="padding-top:0">
+    <div class="wrap">
+      <div id="soon" class="rise" hidden></div>
     </div>
   </section>
 
@@ -120,69 +133,69 @@ var GROUPS = [
 ];
 
 var P = [
-  { g:"funds", name:"Gentile da Fabriano", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
+  { g:"funds", name:"Gentile da Fabriano", open:true, meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Real estate, property rights and property-holding companies",it:"Immobili, diritti reali e società immobiliari"},
     liquidity:{en:"Closed-ended, horizon up to 30 years",it:"Chiuso, orizzonte fino a 30 anni"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Orizzonte", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
+  { g:"funds", name:"Orizzonte", open:true, meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Acquire, enhance and dispose of real estate. Dedicated management committee",it:"Acquisizione, valorizzazione e dismissione di immobili. Comitato di gestione dedicato"},
     liquidity:{en:"Closed-ended",it:"Chiuso"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Wright", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"From €500,000",
+  { g:"funds", name:"Wright", open:true, meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"From €500,000",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Real estate and real estate company shares, focus on Rome",it:"Immobili e azioni di società immobiliari, focus su Roma"},
     liquidity:{en:"Closed-ended",it:"Chiuso"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional investors, or subscriptions from €500,000",it:"Investitori professionali, o sottoscrizioni da €500.000"} },
-  { g:"funds", name:"Real Sequoia", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
+  { g:"funds", name:"Real Sequoia", open:true, meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Two thirds in real estate. Funds construction and development of held assets",it:"Due terzi in immobili. Finanzia costruzione e sviluppo degli asset detenuti"},
     liquidity:{en:"Closed-ended, medium to long term",it:"Chiuso, medio-lungo periodo"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Pinnacle Investment", meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
+  { g:"funds", name:"Pinnacle Investment", open:true, meta:{en:"Italian Reserved AIF",it:"FIA Italiano Riservato"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved real estate AIF · Italy",it:"FIA immobiliare riservato di tipo chiuso · Italia"},
     strategy:{en:"Residential, office, commercial, industrial and tourism. Italy, EU and G8",it:"Residenziale, direzionale, commerciale, industriale e turistico. Italia, UE e G8"},
     liquidity:{en:"Closed-ended, medium to long term",it:"Chiuso, medio-lungo periodo"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Hubble Capital", meta:{en:"Italian Reserved AIF, credit compartment",it:"FIA Italiano Riservato, comparto crediti"}, isin:"On request",
+  { g:"funds", name:"Hubble Capital", open:true, meta:{en:"Italian Reserved AIF, credit compartment",it:"FIA Italiano Riservato, comparto crediti"}, isin:"On request",
     wrapper:{en:"Closed-ended reserved AIF · Italy",it:"FIA riservato di tipo chiuso · Italia"},
     strategy:{en:"Distressed credit, largely secured by real estate collateral",it:"Crediti distressed, in prevalenza garantiti da collaterale immobiliare"},
     liquidity:{en:"Closed-ended, commitments and capital calls",it:"Chiuso, impegni e richiami di capitale"},
     ccy:"EUR", costs:{en:"Per Fund Rules",it:"Da Regolamento di Gestione"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Asymetria Fund", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
+  { g:"funds", name:"Asymetria Fund", open:true, meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
     wrapper:{en:"Open-ended sub-fund of Global Series SICAV plc · Malta",it:"Comparto aperto di Global Series SICAV plc · Malta"},
     strategy:{en:"Absolute return via listed and OTC derivatives",it:"Absolute return con derivati quotati e OTC"},
     liquidity:{en:"Monthly dealing",it:"Sottoscrizioni e rimborsi mensili"},
     ccy:"EUR", costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"Earth Horizon Fund", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
+  { g:"funds", name:"Earth Horizon Fund", open:true, meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
     wrapper:{en:"Sub-fund of Global Series SICAV plc · Malta",it:"Comparto di Global Series SICAV plc · Malta"},
     strategy:{en:"Private equity stakes, direct or via SPVs. Initial focus on real estate",it:"Partecipazioni di private equity, dirette o tramite SPV. Focus iniziale immobiliare"},
     liquidity:{en:"Semi-annual dealing",it:"Sottoscrizioni e rimborsi semestrali"},
     ccy:{en:"EUR and USD share classes",it:"Classi in EUR e USD"}, costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
-  { g:"funds", name:"CIREDCO Fund 1", meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
+  { g:"funds", name:"CIREDCO Fund 1", open:true, meta:{en:"Notified AIF (Malta)",it:"AIF Notificato (Malta)"}, isin:"On request",
     wrapper:{en:"Closed-ended Notified AIF · Malta",it:"AIF Notificato di tipo chiuso · Malta"},
     strategy:{en:"Italian NPLs, UTPs and distressed positions secured by property",it:"NPL, UTP e posizioni deteriorate garantite da immobili in Italia"},
     liquidity:{en:"Closed-ended",it:"Chiuso"},
     ccy:"EUR", costs:{en:"Per Offering Supplement",it:"Da Offering Supplement"}, costsTbc:true,
     elig:{en:"Professional and eligible investors",it:"Investitori professionali e idonei"} },
 
-  { g:"amc", name:"Noctiluca Capital AMC", meta:{en:"Expand2 Issuer PCC (Guernsey) · GenTwo",it:"Expand2 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1554882477",
+  { g:"amc", name:"Noctiluca Capital AMC", open:true, meta:{en:"Expand2 Issuer PCC (Guernsey) · GenTwo",it:"Expand2 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1554882477",
     wrapper:{en:"Open-end unlisted dynamic tracker certificate, Swiss law",it:"Tracker certificate dinamico open-end non quotato, diritto svizzero"},
     strategy:{en:"Systematic breakout and trend-following on global index and commodity futures",it:"Breakout e trend-following sistematici su future su indici e materie prime"},
     liquidity:{en:"Monthly on the 15th, cash settlement",it:"Mensile il giorno 15, regolamento in contanti"},
     ccy:{en:"EUR, EUR 1,000 per unit",it:"EUR, EUR 1.000 per quota"},
     costs:{en:"2.00% p.a. management, 0.70% p.a. administration. Performance 20% over a 0% hurdle, high-water mark",it:"2,00% annuo di gestione, 0,70% annuo di amministrazione. Performance 20% oltre hurdle 0%, high-water mark"},
     elig:{en:"Professional investors only",it:"Riservato a investitori professionali"} },
-  { g:"amc", name:"Zalphyx Yield Strategies", meta:{en:"Expand3 Issuer PCC (Guernsey) · GenTwo",it:"Expand3 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1518693374",
+  { g:"amc", name:"Zalphyx Yield Strategies", open:false, soon:{en:"In subscription to 28 Jul 2026",it:"In sottoscrizione fino al 28 lug 2026"}, meta:{en:"Expand3 Issuer PCC (Guernsey) · GenTwo",it:"Expand3 Issuer PCC (Guernsey) · GenTwo"}, isin:"CH1518693374",
     wrapper:{en:"Credit-linked note, unlisted, private placement",it:"Credit-linked note, non quotata, private placement"},
     strategy:{en:"First-rank USD mortgages, Dominican Republic, maximum 50% LTV",it:"Ipoteche USD di primo grado, Repubblica Dominicana, LTV massimo 50%"},
     liquidity:{en:"Hold to maturity, 6 August 2029, subject to early redemption",it:"Detenzione fino a scadenza, 6 agosto 2029, salvo rimborso anticipato"},
@@ -190,48 +203,48 @@ var P = [
     costs:{en:"6% p.a. coupon, paid semi-annually",it:"Cedola 6% annuo, pagata semestralmente"},
     elig:{en:"Professional and qualified investors only. In subscription until 28 July 2026",it:"Solo investitori professionali e qualificati. In sottoscrizione fino al 28 luglio 2026"} },
 
-  { g:"eti", name:"HERAKLIT Strategy ETI", meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0D44",
+  { g:"eti", name:"HERAKLIT Strategy ETI", open:true, meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0D44",
     wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
     strategy:{en:"Systematic multi-asset. Regime detection across twelve global data streams",it:"Multi-asset sistematico. Rilevazione dei regimi su dodici flussi di dati globali"},
     liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"4.50% p.a. ongoing, 25% performance (per KID). Entry and exit 0.50 to 1.00%",it:"4,50% annuo di costi correnti, performance 25% (da KID). Ingresso e uscita 0,50 a 1,00%"},
+    costs:{en:"1% p.a. management, 25% performance fee",it:"1% annuo di gestione, 25% commissione di performance"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
-  { g:"eti", name:"Tech Megatrend Tactical ETI", meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0D85",
+  { g:"eti", name:"Tech Megatrend Tactical ETI", open:true, meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0D85",
     wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
     strategy:{en:"Tactical US technology. Rotates across TECL, TQQQ, QQQ, cash and short",it:"Tecnologia USA tattica. Rotazione tra TECL, TQQQ, QQQ, liquidità e short"},
     liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"1.0% p.a. management, 20% performance (high-water mark). Entry and exit 0.50 to 1.00%",it:"1,0% annuo di gestione, 20% di performance (high-water mark). Ingresso e uscita 0,50 a 1,00%"},
+    costs:{en:"1% p.a. management, 30% performance fee",it:"1% annuo di gestione, 30% commissione di performance"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
-  { g:"eti", name:"LC Invest, Value Edge ETI", meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0BZ5",
+  { g:"eti", name:"LC Invest, Value Edge ETI", open:true, meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0BZ5",
     wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
     strategy:{en:"Discretionary Gold and FX. Smart Money Concepts, price action and macro analysis",it:"Oro e valute in gestione discrezionale. Smart Money Concepts, price action e analisi macro"},
     liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"4.5% retail or 6.0% professional p.a., 20% performance (high-water mark). Entry 0.50 to 1.00%",it:"4,5% retail o 6,0% professionale annuo, 20% di performance (high-water mark). Ingresso 0,50 a 1,00%"},
+    costs:{en:"2% p.a. management, 20% performance fee",it:"2% annuo di gestione, 20% commissione di performance"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
-  { g:"eti", name:"IVN Global ETI", meta:{en:"iMaps ETI AG (Liechtenstein)",it:"iMaps ETI AG (Liechtenstein)"}, isin:"DE000AMC0DX6",
+  { g:"eti", name:"IVN Global ETI", open:true, meta:{en:"iMaps ETI AG · Börse Stuttgart",it:"iMaps ETI AG · Börse di Stoccarda"}, isin:"DE000AMC0DX6",
     wrapper:{en:"Listed exchange traded instrument, issue price EUR 100",it:"Exchange traded instrument quotato, prezzo di emissione EUR 100"},
     strategy:{en:"Global long/short: indices, currencies, commodities, digital assets. Leverage max 300%",it:"Long/short globale: indici, valute, materie prime, asset digitali. Leva massima 300%"},
-    liquidity:{en:"T+2, tradable through banks and brokers",it:"T+2, negoziabile tramite banche e broker"},
+    liquidity:{en:"Daily on exchange, T+2",it:"Giornaliera in borsa, T+2"},
     ccy:"EUR",
-    costs:{en:"Up to 4.5% retail or 6.0% professional p.a.",it:"Fino a 4,5% retail o 6,0% professionale annuo"},
+    costs:{en:"3% p.a. management, 20% performance fee",it:"3% annuo di gestione, 20% commissione di performance"},
     elig:{en:"Per PRIIPs KID and suitability check",it:"Da KID PRIIPs e verifica di adeguatezza"}, eligTbc:true },
 
-  { g:"deals", name:{en:"Value-Add Hospitality, Italy",it:"Hospitality value-add, Italia"}, meta:{en:"MFSA-regulated SPV (share deal)",it:"SPV regolamentata MFSA (share deal)"}, isin:"On request",
+  { g:"deals", name:{en:"Value-Add Hospitality, Italy",it:"Hospitality value-add, Italia"}, open:false, soon:{en:"By access code",it:"Su codice di accesso"}, meta:{en:"MFSA-regulated SPV (share deal)",it:"SPV regolamentata MFSA (share deal)"}, isin:"On request",
     wrapper:{en:"Direct opportunity through an MFSA-regulated SPV",it:"Opportunità diretta tramite SPV regolamentata MFSA"},
     strategy:{en:"Acquisition and luxury repositioning of a hospitality asset",it:"Acquisizione e riposizionamento luxury di un asset alberghiero"},
     liquidity:{en:"Illiquid, deal-specific horizon",it:"Illiquido, orizzonte specifico dell'operazione"},
     ccy:"EUR", costs:{en:"On request, after eligibility check",it:"Su richiesta, dopo verifica di idoneità"},
     elig:{en:"Professional and institutional investors only",it:"Solo investitori professionali e istituzionali"} },
-  { g:"deals", name:{en:"Greek Real Estate Portfolio",it:"Portafoglio immobiliare greco"}, meta:{en:"SPV, club deal or AMC",it:"SPV, club deal o AMC"}, isin:"On request",
+  { g:"deals", name:{en:"Greek Real Estate Portfolio",it:"Portafoglio immobiliare greco"}, open:false, soon:{en:"By access code",it:"Su codice di accesso"}, meta:{en:"SPV, club deal or AMC",it:"SPV, club deal o AMC"}, isin:"On request",
     wrapper:{en:"Structured through MFSA-regulated vehicles",it:"Strutturato tramite veicoli regolamentati MFSA"},
     strategy:{en:"Off-market villas, hotels, land, coastal assets and a private island",it:"Ville, hotel, terreni, asset costieri e un'isola privata off-market"},
     liquidity:{en:"Illiquid, deal-specific horizon",it:"Illiquido, orizzonte specifico dell'operazione"},
     ccy:"EUR", costs:{en:"On request, after NDA or NCNDA",it:"Su richiesta, dopo NDA o NCNDA"},
     elig:{en:"Professional and institutional investors only",it:"Solo investitori professionali e istituzionali"} },
-  { g:"deals", name:{en:"Adaptive Re-Use Hotel Development, Spain",it:"Sviluppo alberghiero adaptive re-use, Spagna"}, meta:{en:"MFSA-regulated SPV with senior debt",it:"SPV regolamentata MFSA con debito senior"}, isin:"On request",
+  { g:"deals", name:{en:"Adaptive Re-Use Hotel Development, Spain",it:"Sviluppo alberghiero adaptive re-use, Spagna"}, open:false, soon:{en:"By access code",it:"Su codice di accesso"}, meta:{en:"MFSA-regulated SPV with senior debt",it:"SPV regolamentata MFSA con debito senior"}, isin:"On request",
     wrapper:{en:"Direct opportunity through an MFSA-regulated SPV",it:"Opportunità diretta tramite SPV regolamentata MFSA"},
     strategy:{en:"Industrial building converted into a 71-key 4-star hotel with retail",it:"Edificio industriale riconvertito in hotel 4 stelle da 71 camere con retail"},
     liquidity:{en:"Illiquid, deal-specific horizon",it:"Illiquido, orizzonte specifico dell'operazione"},
@@ -241,46 +254,50 @@ var P = [
 
 var DICT = {
   en: {
-    planLabel:"Improvement plan", title:"Eighteen products, one page",
-    dek:"Wrapper, strategy, liquidity, currency, costs and eligibility for the whole range, in a single view. ISIN and minimum subscription stay locked, exactly as they are on the live site.",
-    mStatus:"Status", mStatusV:"Awaiting your approval of the layout",
-    mSource:"Source", mSourceV:"Published product records and KIDs", mDate:"Data as at",
+    planLabel:"Improvement plan", title:"Products open to subscription",
+    dek:"Wrapper, strategy, liquidity, currency, costs and eligibility for every product open to subscription, in one view. ISIN and minimum subscription stay locked, exactly as on the live site. Products not yet placeable sit in the coming-soon strip below.",
+    mStatus:"Status", mStatusV:"Desk corrections incorporated",
+    mSource:"Source", mSourceV:"Records, KIDs and desk-confirmed fees", mDate:"Data as at",
     cProduct:"Product", cWrapper:"Wrapper and structure", cStrategy:"Strategy", cLiquidity:"Liquidity",
     cCurrency:"Currency", cCosts:"Costs", cEligibility:"Eligibility", cGated:"ISIN and minimum",
     all:"All", locked:"Members only", sig:"Niuexa for Framont Group",
-    openTitle:"Open questions", openOf:"Three, all for Framont",
+    noneOpen:"No products in this category are open to subscription. See the coming-soon strip below.",
+    soonTitle:"Coming soon and reserved", soonOf:"Teaser level, no ISIN or minimum",
+    openTitle:"Open questions", openOf:"Two for Framont, one for Francesca",
     open:[
-      "Fund costs. The nine funds read “per Fund Rules”. If you want a real management-fee column, we need the figure per fund.",
-      "ETI eligibility. Shown as “per PRIIPs KID and suitability check”. Francesca to confirm the exact formula for retail access.",
-      "Deals rows. Should they appear at all before the access code is entered, or only the other three categories?"
+      "New AMC. Gianluigi is sending the details separately; it joins the AMC group as soon as they arrive.",
+      "Fund management fees. The nine funds still read “per Fund Rules”; a management-fee column needs the figure per fund.",
+      "ETI eligibility. Shown as “per PRIIPs KID and suitability check”; Francesca to confirm the exact wording for retail access."
     ],
     notes:[
       { h:"Where it would live", p:"A fifth entry in the main navigation, and a link at the top of each category page." },
       { h:"How it stays current", p:"It reads the same product records as the cards, so editing a product updates both at once." },
       { h:"What stays locked", p:"ISIN and minimum subscription blur and open the registration form on click, the same rule as the product cards." }
     ],
-    legal:"Draft for internal approval, not published. Figures are taken from the product records already live on access.framontmanagement.com and from the official KIDs and term sheets. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and are not a reliable indicator of future results. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the KID and the prospectus or Fund Rules before investing. Capital at risk."
+    legal:"Draft for internal approval, not published. Figures are taken from the product records already live on access.framontmanagement.com and from the official KIDs, term sheets and fee schedules confirmed by Framont. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and are not a reliable indicator of future results. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the KID and the prospectus or Fund Rules before investing. Capital at risk."
   },
   it: {
-    planLabel:"Piano di miglioramento", title:"Diciotto prodotti, una pagina",
-    dek:"Struttura, strategia, liquidità, valuta, costi e idoneità dell'intera gamma, in una vista unica. ISIN e sottoscrizione minima restano bloccati, esattamente come sul sito online.",
-    mStatus:"Stato", mStatusV:"In attesa della vostra approvazione sul layout",
-    mSource:"Fonte", mSourceV:"Schede prodotto pubblicate e KID", mDate:"Dati aggiornati al",
+    planLabel:"Piano di miglioramento", title:"Prodotti aperti alle sottoscrizioni",
+    dek:"Struttura, strategia, liquidità, valuta, costi e idoneità di ogni prodotto aperto alle sottoscrizioni, in una vista unica. ISIN e sottoscrizione minima restano bloccati, come sul sito online. I prodotti non ancora collocabili sono nella sezione in arrivo qui sotto.",
+    mStatus:"Stato", mStatusV:"Correzioni del desk recepite",
+    mSource:"Fonte", mSourceV:"Schede, KID e fee confermate dal desk", mDate:"Dati aggiornati al",
     cProduct:"Prodotto", cWrapper:"Struttura", cStrategy:"Strategia", cLiquidity:"Liquidità",
     cCurrency:"Valuta", cCosts:"Costi", cEligibility:"Idoneità", cGated:"ISIN e minimo",
     all:"Tutti", locked:"Solo iscritti", sig:"Niuexa per Framont Group",
-    openTitle:"Questioni aperte", openOf:"Tre, tutte per Framont",
+    noneOpen:"Nessun prodotto di questa categoria è aperto alle sottoscrizioni. Vedi la sezione in arrivo qui sotto.",
+    soonTitle:"In arrivo e riservati", soonOf:"Livello teaser, senza ISIN né minimo",
+    openTitle:"Questioni aperte", openOf:"Due per Framont, una per Francesca",
     open:[
-      "Costi dei fondi. I nove fondi riportano “da Regolamento”. Per una colonna con la commissione di gestione servono i dati per singolo fondo.",
-      "Idoneità degli ETI. Indicata come “da KID PRIIPs e verifica di adeguatezza”. Francesca conferma la dicitura esatta per l'accesso retail.",
-      "Righe Deals. Devono comparire prima dell'inserimento del codice di accesso, o solo le altre tre categorie?"
+      "Nuovo AMC. Gianluigi invia gli estremi a parte; entra nel gruppo AMC appena arrivano.",
+      "Commissioni di gestione dei fondi. I nove fondi riportano ancora “da Regolamento”; per una colonna con la commissione servono i dati per singolo fondo.",
+      "Idoneità degli ETI. Indicata come “da KID PRIIPs e verifica di adeguatezza”; Francesca conferma la dicitura esatta per l'accesso retail."
     ],
     notes:[
       { h:"Dove andrebbe inserita", p:"Come quinta voce nella navigazione principale e come link in cima a ogni pagina di categoria." },
       { h:"Come resta aggiornata", p:"Legge le stesse schede prodotto delle card: modificare un prodotto aggiorna entrambe in un colpo solo." },
       { h:"Cosa resta bloccato", p:"ISIN e sottoscrizione minima appaiono sfocati e al clic aprono il modulo di registrazione, la stessa regola delle schede prodotto." }
     ],
-    legal:"Bozza per approvazione interna, non pubblicata. I dati provengono dalle schede prodotto già online su access.framontmanagement.com e dai KID e term sheet ufficiali. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio."
+    legal:"Bozza per approvazione interna, non pubblicata. I dati provengono dalle schede prodotto già online su access.framontmanagement.com e dai KID, dai term sheet ufficiali e dalle fee confermate da Framont. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio."
   }
 };
 
@@ -313,11 +330,14 @@ function render(lang){
       '<span class="tag">' + LOCK_SVG + esc(t.locked) + "</span></div>";
   }
 
-  var rows = "", stack = "";
+  // Main table: only products open to subscription (Gian, 24 Jul). The rest go
+  // to the coming-soon strip below.
+  var rows = "", stack = "", shown = 0;
   GROUPS.forEach(function(g){
     if (filter !== "all" && filter !== g.key) return;
-    var items = P.filter(function(p){ return p.g === g.key; });
+    var items = P.filter(function(p){ return p.g === g.key && p.open; });
     if (!items.length) return;
+    shown += items.length;
     var head = esc(L(g.label)) + '<span class="of">' + esc(L(g.note)) + " · " + items.length + "</span>";
     rows += '<tr class="band"><td colspan="8">' + head + "</td></tr>";
     stack += '<div class="band-h">' + head + "</div>";
@@ -338,8 +358,28 @@ function render(lang){
         "<dt>" + esc(t.cGated) + "</dt><dd>" + gate(p) + "</dd></dl></div>";
     });
   });
+  if (!shown) {
+    rows = '<tr><td colspan="8" class="none-row">' + esc(t.noneOpen) + "</td></tr>";
+    stack = '<div class="none-row">' + esc(t.noneOpen) + "</div>";
+  }
   document.getElementById("tbody").innerHTML = rows;
   document.getElementById("stack").innerHTML = stack;
+
+  // Coming-soon and reserved: teaser level only, no ISIN, minimum or costs.
+  var soon = P.filter(function(p){ return !p.open && (filter === "all" || p.g === filter); });
+  var wrap = document.getElementById("soon");
+  if (!soon.length) { wrap.hidden = true; wrap.innerHTML = ""; }
+  else {
+    wrap.hidden = false;
+    wrap.innerHTML =
+      '<div class="rule-head"><h2>' + esc(t.soonTitle) + '</h2><span class="of">' + esc(t.soonOf) + "</span></div>" +
+      '<div class="soon-list">' + soon.map(function(p){
+        return '<div class="s-row"><div><div class="pname">' + esc(L(p.name)) + '</div>' +
+          '<div class="pmeta">' + esc(L(p.meta)) + "</div></div>" +
+          '<div class="s-desc">' + esc(L(p.wrapper)) + "</div>" +
+          '<span class="s-tag">' + esc(L(p.soon)) + "</span></div>";
+      }).join("") + "</div>";
+  }
 }
 
 PV.init({ dict: DICT, render: render });
