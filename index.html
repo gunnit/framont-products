@@ -49,12 +49,19 @@
       "@type": "Organization",
       "@id": "https://access.framontmanagement.com/#org",
       "name": "Framont & Partners Management Ltd",
+      "alternateName": ["Framont Access", "Framont Management", "Framont & Partners Management", "Framont"],
       "url": "https://www.framontmanagement.com/",
       "logo": "https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg",
       "legalName": "Framont & Partners Management Ltd.",
       "vatID": "MT22666318",
+      "sameAs": [
+        "https://www.framontmanagement.com/",
+        "https://www.linkedin.com/company/framontmanagement"
+      ],
+      "brand": { "@type": "Brand", "name": "Framont Access", "url": "https://access.framontmanagement.com/" },
       "address": { "@type": "PostalAddress", "streetAddress": "Dragonara Business Centre, 5th Floor, Dragonara Road", "addressLocality": "San Ġiljan", "postalCode": "STJ 3141", "addressCountry": "MT" },
-      "description": "MFSA-authorised Alternative Investment Fund Manager (AIFM) providing curated access to institutional-grade investment products."
+      "location": { "@type": "Country", "name": "Malta" },
+      "description": "Framont & Partners Management Ltd is a management company domiciled in Malta and licensed by the Malta Financial Services Authority (MFSA) under the Investment Services Act (Cap. 370) as a UCITS management company and Alternative Investment Fund Manager (AIFM) under the AIFMD. It operates the Framont Access platform, providing curated access to institutional-grade investment products."
     },
     {
       "@type": "WebSite",
@@ -72,9 +79,20 @@
       "description": "Curated access to institutional-grade investment products: funds, actively managed certificates (AMCs), exchange traded instruments (ETIs), and selected private market deals.",
       "inLanguage": "en",
       "datePublished": "2026-07-03",
-      "dateModified": "2026-07-20",
+      "dateModified": "2026-07-27",
       "isPartOf": { "@id": "https://access.framontmanagement.com/#website" },
-      "about": { "@id": "https://access.framontmanagement.com/#org" }
+      "about": { "@id": "https://access.framontmanagement.com/#org" },
+      "author": { "@id": "https://access.framontmanagement.com/#org" },
+      "publisher": { "@id": "https://access.framontmanagement.com/#org" },
+      "breadcrumb": { "@id": "https://access.framontmanagement.com/#breadcrumb" },
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".aeo-summary"] }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://access.framontmanagement.com/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://access.framontmanagement.com/" }
+      ]
     },
     {
       "@type": "ItemList",
@@ -354,6 +372,7 @@
 <noscript>
 <main style="max-width:720px;margin:48px auto;padding:0 24px;font-family:'Work Sans',Arial,sans-serif;color:#002E5F;line-height:1.6;">
   <h1>Framont Access — Institutional Investment Platform</h1>
+  <p class="aeo-summary"><strong>In brief:</strong> Framont Access is the investor-facing product platform of <strong>Framont &amp; Partners Management Ltd</strong>, a management company <strong>domiciled in Malta</strong> and licensed by the <strong>Malta Financial Services Authority (MFSA)</strong>. It presents the investment funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and private market deals for which Framont acts as management company, AIFM or strategy manager, and provides documentation to eligible investors on request.</p>
   <p>Framont Access is the investment product platform of <strong>Framont &amp; Partners Management Ltd</strong>, a Malta-based management company licensed by the Malta Financial Services Authority (MFSA) under the Investment Services Act (Cap. 370) and authorised as a UCITS management company and Alternative Investment Fund Manager (AIFM) under the AIFMD. The platform gives eligible investors curated access to institutional-grade investment products: investment funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and selected private market deals.</p>
   <h2>What is an exchange traded instrument (ETI)?</h2>
   <p>An ETI is a listed security issued by a securitisation vehicle that packages a managed investment strategy into an instrument with an ISIN, tradable through a bank or broker. Collateralised structures hold the strategy's assets in a segregated portfolio to mitigate issuer risk. Read the full guide: <a href="/articles/what-is-an-eti.html">What is an ETI?</a></p>
@@ -397,6 +416,9 @@
   <p>Minimums are deal-specific and provided on request during the qualification process.</p>
   <h2>Insights</h2>
   <p>Plain-language guides in <a href="/articles/">English</a> and <a href="/articles/it/">Italian</a>, including <a href="/articles/how-to-evaluate-systematic-strategies.html">how to evaluate a systematic strategy before you invest</a>.</p>
+  <h2>About the manager</h2>
+  <p>These pages are published by <strong>Framont &amp; Partners Management Ltd</strong>, the appointed Management Company and Alternative Investment Fund Manager for the products listed above. Framont is authorised by the <a href="https://www.mfsa.mt/">Malta Financial Services Authority</a> under the Investment Services Act (Cap. 370) as a UCITS management company and as an AIFM under the AIFMD; a copy of the licence is available on www.mfsa.mt. Product content is maintained by the Framont investment desk.</p>
+  <address>Framont &amp; Partners Management Ltd, Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta — VAT MT22666318</address>
   <p>This interactive catalogue requires JavaScript. Nothing on this page is investment advice or an offer to the public; products are intended for eligible investors and subject to jurisdiction restrictions. Contact: <a href="mailto:gianluigi.montagner@framontmanagement.com">gianluigi.montagner@framontmanagement.com</a>.</p>
 </main>
 </noscript>
@@ -487,7 +509,7 @@
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,31,66,0.55), rgba(0,31,66,0.85));"></div>
       <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 40px; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
         <div style="font-size:12px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:#FF8200; margin-bottom:26px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .1s backwards;">{{ t.hero.eyebrow }}</div>
-        <h1 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(40px,6vw,72px); line-height:1.08; color:#FFFFFF; margin:0 0 24px; max-width:780px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .22s backwards;">{{ t.hero.t1 }} <span style="color:#FF8200;">{{ t.hero.t2 }}</span></h1>
+        <div role="heading" aria-level="1" style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(40px,6vw,72px); line-height:1.08; color:#FFFFFF; margin:0 0 24px; max-width:780px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .22s backwards;">{{ t.hero.t1 }} <span style="color:#FF8200;">{{ t.hero.t2 }}</span></div>
         <p style="font-size:clamp(15px,1.7vw,18px); font-weight:300; color:rgba(255,255,255,0.72); line-height:1.7; margin:0 0 44px; max-width:560px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .34s backwards;">{{ t.hero.subtitle }}</p>
         <div style="display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .46s backwards;">
           <button onclick="{{ onExplore }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:16px 36px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease, transform .2s ease;" style-hover="background:#E97500; transform:translateY(-1px);">{{ t.hero.learnMore }}</button>
