@@ -393,6 +393,8 @@
   <p>A single comparison view sets every product open to subscription side by side — wrapper and structure, strategy, liquidity, currency, costs and eligibility — grouped by funds, AMCs and ETIs, and filterable by category: <a href="/#/compare">Product comparison</a> (<a href="/#/it/confronto">Italian</a>). Reserved private market opportunities are listed below the table at teaser level and are released by access code after eligibility verification.</p>
   <h2>Who issues these products, and who manages them</h2>
   <p>Each wrapper sits inside its own regulated chain, set out stop by stop at <a href="/#/structure">Structure and safeguards</a> (<a href="/#/it/struttura">Italian</a>). The exchange traded instruments are issued by iMaps ETI AG (Liechtenstein) and listed on Börse Stuttgart; Noctiluca Capital is issued through a protected cell of Expand2 Issuer PCC Limited (Guernsey) on the GenTwo platform, with InCore Bank AG as paying agent and custody and brokerage via TradeStation Europe B.V.; the nine funds are Italian reserved AIFs and Malta-domiciled Notified AIFs. In every case portfolio management is performed by Framont &amp; Partners Management Ltd, an AIFM authorised by the MFSA, while strategy developers provide the underlying strategy only.</p>
+  <h2>Glossary</h2>
+  <p>The vocabulary used across these pages — ETI, AMC, reserved and Notified AIF, protected cell, AIFM, depositary, paying agent, management and performance fee, high-water mark, ongoing costs, backtest, professional, qualified, eligible and retail investor, Key Information Document, prospectus and final terms, Fund Rules, ISIN, issuer risk, private placement — is defined in plain language at <a href="/#/glossary">Glossary</a> (<a href="/#/it/glossario">Italian</a>). Those definitions are a guide and do not replace the documentation of any product.</p>
   <h2>Frequently asked questions</h2>
   <h3>What funds does Framont manage?</h3>
   <p>Framont &amp; Partners Management Ltd manages nine alternative investment funds: six Italian reserved AIFs — Gentile da Fabriano, Orizzonte, Wright, Real Sequoia and Pinnacle Investment in real estate, and Hubble Capital in distressed credit — and three Malta-domiciled Notified AIFs: Asymetria Fund (absolute return), Earth Horizon Fund (private equity) and CIREDCO Fund 1 (Italian real estate distressed credit).</p>
@@ -643,7 +645,10 @@
             <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B85C00;">{{ t.insights.label }}</div>
             <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(28px,3.2vw,38px); color:#002E5F; line-height:1.15; margin:14px 0 0; max-width:640px;">{{ t.insights.title }}</h2>
           </div>
-          <a href="{{ insightsHref }}" style="font-size:11.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#002E5F; text-decoration:none; padding-bottom:6px; white-space:nowrap; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.insights.hub }} <span style="color:#FF8200;">→</span></a>
+          <div style="display:flex; gap:26px; align-items:center; flex-wrap:wrap;">
+            <a onclick="{{ onGlossary }}" href="#/glossary" style="font-size:11.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#002E5F; text-decoration:none; padding-bottom:6px; white-space:nowrap; cursor:pointer; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.glossary.label }} <span style="color:#FF8200;">→</span></a>
+            <a href="{{ insightsHref }}" style="font-size:11.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#002E5F; text-decoration:none; padding-bottom:6px; white-space:nowrap; transition:color .2s ease;" style-hover="color:#B85C00;">{{ t.insights.hub }} <span style="color:#FF8200;">→</span></a>
+          </div>
         </div>
         <div data-mo-grid style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-top:48px;">
           <sc-for list="{{ insightCards }}" as="ic" hint-placeholder-count="3">
@@ -993,8 +998,9 @@
           </div>
         </sc-if>
 
-        <div style="margin-top:clamp(34px,4vw,48px);">
+        <div style="margin-top:clamp(34px,4vw,48px); display:flex; gap:26px 32px; flex-wrap:wrap;">
           <a onclick="{{ onStructure }}" href="#/structure" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.compare.structureLink }} →</a>
+          <a onclick="{{ onGlossary }}" href="#/glossary" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.structure.glossaryLink }} →</a>
         </div>
         <p style="font-size:12px; color:#7C848C; line-height:1.85; margin:clamp(40px,5vw,60px) 0 0; max-width:960px;">{{ t.compare.note }}</p>
       </div>
@@ -1075,10 +1081,73 @@
             </sc-if>
           </div>
         </sc-for>
-        <div style="margin-top:clamp(34px,4vw,48px);">
+        <div style="margin-top:clamp(34px,4vw,48px); display:flex; gap:26px 32px; flex-wrap:wrap;">
           <a onclick="{{ onCompare }}" href="#/compare" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.structure.compareLink }} →</a>
+          <a onclick="{{ onGlossary }}" href="#/glossary" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.structure.glossaryLink }} →</a>
         </div>
         <p style="font-size:12px; color:#7C848C; line-height:1.85; margin:clamp(40px,5vw,60px) 0 0; max-width:960px;">{{ t.structure.note }}</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ GLOSSARY ============ -->
+  <sc-if value="{{ showGlossary }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Glossary — Header" style="position:relative; overflow:hidden; background:#001F42; color:#FFFFFF;">
+      <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(78% 62% at 76% 12%, rgba(255,130,0,0.16), rgba(255,130,0,0) 62%); pointer-events:none;"></div>
+      <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:clamp(56px,7vw,92px) 40px clamp(40px,5vw,60px);">
+        <div style="font-size:12.5px; color:rgba(255,255,255,0.6); display:flex; gap:10px; align-items:center; margin-bottom:34px;">
+          <a onclick="{{ onHome }}" href="#/" style="cursor:pointer; color:rgba(255,255,255,0.6); text-decoration:none; transition:color .2s ease;" style-hover="color:#FFB273;">{{ t.nav.home }}</a>
+          <span style="color:rgba(255,255,255,0.3);">/</span>
+          <span style="color:#FFFFFF; font-weight:600;">{{ t.glossary.label }}</span>
+        </div>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#FFB273;">{{ t.glossary.label }}</div>
+        <h1 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(32px,4.6vw,54px); line-height:1.1; color:#FFFFFF; margin:16px 0 0;">{{ t.glossary.title }}</h1>
+        <div style="width:64px; height:2px; background:#FF8200; margin:26px 0 0;"></div>
+        <p style="font-size:clamp(14px,1.5vw,16.5px); font-weight:300; color:rgba(255,255,255,0.8); line-height:1.7; max-width:720px; margin:24px 0 0;">{{ t.glossary.sub }}</p>
+      </div>
+    </section>
+
+    <section data-screen-label="Glossary — Terms" style="background:#FFFFFF;">
+      <div style="max-width:940px; margin:0 auto; padding:clamp(30px,4vw,44px) 40px 96px;">
+        <div class="gl-tools">
+          <input type="search" value="{{ glQuery }}" onchange="{{ onGlQuery }}" placeholder="{{ t.glossary.search }}" aria-label="{{ t.glossary.search }}" style="flex:1 1 240px; max-width:340px; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:11px 14px; font-size:14.5px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
+          <span class="gl-tally">{{ glTally }}</span>
+        </div>
+        <div class="gl-tabs" role="group" aria-label="{{ t.glossary.label }}">
+          <sc-for list="{{ glTabs }}" as="f" hint-placeholder-count="6">
+            <button onclick="{{ f.onClick }}" aria-pressed="{{ f.pressed }}" style="color: {{ f.color }}; border-bottom-color: {{ f.underline }};">{{ f.label }}<span class="gl-n" style="color: {{ f.nColor }};">{{ f.n }}</span></button>
+          </sc-for>
+        </div>
+
+        <sc-for list="{{ glGroups }}" as="g" hint-placeholder-count="5">
+          <div class="gl-set">
+            <h2>{{ g.label }}</h2>
+            <dl>
+              <sc-for list="{{ g.terms }}" as="x" hint-placeholder-count="6">
+                <div class="gl-term">
+                  <dt>
+                    <span class="gl-word">{{ x.term }}</span>
+                    <span class="gl-alt">{{ x.alt }}</span>
+                  </dt>
+                  <dd>{{ x.def }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+          </div>
+        </sc-for>
+
+        <sc-if value="{{ glNone }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:64px 0; text-align:center;">
+            <p style="font-size:15px; color:#4D575E; margin:0 0 18px;">{{ t.glossary.none }}</p>
+            <button onclick="{{ onGlClear }}" style="background:none; border:1px solid #E9E7E2; color:#4D575E; padding:10px 20px; font-family:'Work Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:border-color .2s ease, color .2s ease;" style-hover="border-color:#FF8200; color:#B85C00;">{{ t.glossary.clear }}</button>
+          </div>
+        </sc-if>
+
+        <div style="margin-top:clamp(38px,4.5vw,54px); display:flex; gap:26px 32px; flex-wrap:wrap;">
+          <a onclick="{{ onCompare }}" href="#/compare" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.structure.compareLink }} →</a>
+          <a onclick="{{ onStructure }}" href="#/structure" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.compare.structureLink }} →</a>
+        </div>
+        <p style="font-size:12px; color:#7C848C; line-height:1.85; margin:clamp(36px,4.5vw,52px) 0 0;">{{ t.glossary.note }}</p>
       </div>
     </section>
   </sc-if>
@@ -1242,6 +1311,7 @@
             <a onclick="{{ fl.onClick }}" href="{{ fl.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ fl.label }}</a>
           </sc-for>
           <a onclick="{{ onStructure }}" href="#/structure" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.structure.label }}</a>
+          <a onclick="{{ onGlossary }}" href="#/glossary" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.glossary.label }}</a>
           <a href="{{ insightsHref }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.insights.navLabel }}</a>
         </div>
         <div style="min-width:0;">
@@ -1623,7 +1693,7 @@ class Component extends DCLogic {
       { role: { en: "Investor", it: "Investitore" }, ent: { en: "Professional and eligible", it: "Professionali e idonei" },
         det: { en: "Eligibility verified before subscription; minimums set in the fund documentation", it: "Idoneità verificata prima della sottoscrizione; minimi definiti nella documentazione del fondo" } },
       { role: { en: "Vehicle", it: "Veicolo" }, ent: { en: "Reserved AIF · Notified AIF", it: "FIA riservato · AIF Notificato" },
-        det: { en: "Six Italian reserved funds; three sub-funds of Global Series SICAV plc", it: "Sei fondi riservati italiani; tre comparti di Global Series SICAV plc" } },
+        det: { en: "Six Italian reserved funds; three Malta-domiciled Notified AIFs", it: "Sei fondi riservati italiani; tre AIF Notificati domiciliati a Malta" } },
       { role: { en: "Management company and AIFM", it: "Società di gestione e AIFM" }, ent: "Framont & Partners Management Ltd", key: true,
         det: { en: "Malta. Appointed manager of every fund in the range", it: "Malta. Gestore designato di ogni fondo della gamma" },
         badge: { en: "MFSA-authorised AIFM", it: "AIFM autorizzato MFSA" } },
@@ -1633,6 +1703,121 @@ class Component extends DCLogic {
         det: { en: "Strategy, terms and risk factors, on request from the management company", it: "Strategia, termini e fattori di rischio, su richiesta presso la società di gestione" } }
     ] }
   ];
+
+  // ---- Glossary: the vocabulary used across the product pages. Grouped thematically
+  //      rather than alphabetically — a reader arriving from a product page is looking
+  //      for a family of terms, not a letter. Also emitted as schema.org DefinedTermSet. ----
+  GLOSSARY = {
+    groups: [
+      { key: "instruments", label: { en: "Instruments and wrappers", it: "Strumenti e involucri" } },
+      { key: "parties", label: { en: "Who does what", it: "Chi fa cosa" } },
+      { key: "costs", label: { en: "Costs and performance", it: "Costi e performance" } },
+      { key: "investors", label: { en: "Investor classification", it: "Classificazione degli investitori" } },
+      { key: "docs", label: { en: "Documents and safeguards", it: "Documenti e presidi" } }
+    ],
+    terms: [
+      { g: "instruments",
+        en: { t: "Exchange Traded Instrument (ETI)", alt: "Strumento quotato", d: "A listed security issued by a securitisation vehicle that packages a managed investment strategy into an instrument with its own ISIN. It is bought and sold like a share, through any bank or broker, and its assets are held in a portfolio segregated from the issuer's other business." },
+        it: { t: "Exchange Traded Instrument (ETI)", alt: "Strumento quotato", d: "Un titolo quotato emesso da un veicolo di cartolarizzazione che racchiude una strategia d'investimento gestita in uno strumento dotato di ISIN. Si compra e si vende come un'azione, tramite qualsiasi banca o broker, e le sue attività sono detenute in un portafoglio segregato rispetto al resto dell'attività dell'emittente." } },
+      { g: "instruments",
+        en: { t: "Actively Managed Certificate (AMC)", alt: "Certificato a gestione attiva", d: "A securitised certificate whose value tracks a strategy managed on a discretionary or systematic basis by an appointed manager. It gives fund-like exposure in the format of a security, and can be brought to market faster and at lower asset levels than a fund." },
+        it: { t: "Actively Managed Certificate (AMC)", alt: "Certificato a gestione attiva", d: "Un certificato cartolarizzato il cui valore replica una strategia gestita su base discrezionale o sistematica da un gestore designato. Offre un'esposizione simile a quella di un fondo nella forma di un titolo, e può arrivare sul mercato più rapidamente e con masse inferiori rispetto a un fondo." } },
+      { g: "instruments",
+        en: { t: "Alternative Investment Fund (AIF)", alt: "FIA, Fondo di Investimento Alternativo", d: "A collective investment fund that is not a UCITS, managed under the AIFMD and generally reserved for professional and eligible investors. Framont's range includes Italian reserved AIFs and Malta-domiciled Notified AIFs." },
+        it: { t: "Fondo di Investimento Alternativo (FIA)", alt: "AIF, Alternative Investment Fund", d: "Un fondo comune d'investimento che non è un UCITS, gestito ai sensi della AIFMD e generalmente riservato a investitori professionali e idonei. La gamma Framont comprende FIA riservati italiani e AIF Notificati domiciliati a Malta." } },
+      { g: "instruments",
+        en: { t: "Reserved AIF", alt: "FIA riservato", d: "An Italian alternative investment fund whose units may be subscribed only by professional investors, or by other investors meeting the minimum set in the fund's rules. Most of Framont's real estate funds are closed-ended reserved AIFs." },
+        it: { t: "FIA riservato", alt: "Reserved AIF", d: "Un fondo di investimento alternativo italiano le cui quote possono essere sottoscritte solo da investitori professionali, o da altri investitori che raggiungano il minimo previsto dal regolamento del fondo. La maggior parte dei fondi immobiliari Framont sono FIA riservati di tipo chiuso." } },
+      { g: "instruments",
+        en: { t: "Notified AIF", alt: "AIF Notificato", d: "A Malta-domiciled alternative investment fund entered in the MFSA's list of notified AIFs, rather than separately licensed, on the responsibility of a fully authorised AIFM. Framont's Malta funds are Notified AIFs: Asymetria Fund and Earth Horizon Fund as sub-funds of Global Series SICAV plc, and CIREDCO Fund 1 as a closed-ended fund in its own right." },
+        it: { t: "AIF Notificato", alt: "Notified AIF", d: "Un fondo di investimento alternativo domiciliato a Malta iscritto nell'elenco dei notified AIF della MFSA anziché autorizzato singolarmente, sotto la responsabilità di un AIFM pienamente autorizzato. I fondi maltesi di Framont sono AIF Notificati: Asymetria Fund ed Earth Horizon Fund come comparti di Global Series SICAV plc, e CIREDCO Fund 1 come fondo chiuso a sé stante." } },
+      { g: "instruments",
+        en: { t: "Credit-Linked Note (CLN)", alt: "Nota legata al credito", d: "A note whose coupon and repayment depend on the performance of an underlying credit exposure, typically a loan. The investor takes the credit risk of that exposure as well as that of the issuer." },
+        it: { t: "Credit-Linked Note (CLN)", alt: "Nota legata al credito", d: "Una nota la cui cedola e il cui rimborso dipendono dall'andamento di un'esposizione creditizia sottostante, tipicamente un prestito. L'investitore assume il rischio di credito di tale esposizione oltre a quello dell'emittente." } },
+      { g: "instruments",
+        en: { t: "Protected cell (PCC)", alt: "Cella protetta", d: "A legally ring-fenced compartment inside a protected cell company. Each cell holds the assets and liabilities of one product only, so the performance of one product does not reach the investors of another." },
+        it: { t: "Cella protetta (PCC)", alt: "Protected cell", d: "Un comparto giuridicamente separato all'interno di una protected cell company. Ogni cella accoglie attività e passività di un solo prodotto, così l'andamento di un prodotto non ricade sugli investitori di un altro." } },
+      { g: "instruments",
+        en: { t: "Closed-ended / open-ended", alt: "Chiuso / aperto", d: "A closed-ended fund has a fixed life and no ongoing redemptions: capital is returned as assets are sold. An open-ended fund accepts subscriptions and redemptions at set dealing dates: monthly for Asymetria, semi-annual for Earth Horizon." },
+        it: { t: "Chiuso / aperto", alt: "Closed-ended / open-ended", d: "Un fondo chiuso ha durata definita e non prevede rimborsi continui: il capitale rientra man mano che gli asset vengono venduti. Un fondo aperto accetta sottoscrizioni e rimborsi a date prestabilite: mensili per Asymetria, semestrali per Earth Horizon." } },
+
+      { g: "parties",
+        en: { t: "Portfolio Manager", alt: "Gestore di portafoglio", d: "The regulated entity that takes the investment decisions inside an instrument. For every product referenced on this platform that entity is Framont & Partners Management Ltd, an AIFM authorised by the MFSA." },
+        it: { t: "Gestore di portafoglio", alt: "Portfolio Manager", d: "L'entità regolamentata che assume le decisioni d'investimento all'interno di uno strumento. Per ogni prodotto citato su questa piattaforma tale entità è Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA." } },
+      { g: "parties",
+        en: { t: "Strategy Developer", alt: "Sviluppatore della strategia", d: "The person or firm that designs the underlying strategy an instrument follows. A strategy developer provides the strategy only and does not manage the portfolio; results achieved on a developer's personal accounts are independent of the instrument and are not indicative of its performance." },
+        it: { t: "Sviluppatore della strategia", alt: "Strategy Developer", d: "La persona o la società che progetta la strategia sottostante replicata da uno strumento. Lo sviluppatore fornisce esclusivamente la strategia e non gestisce il portafoglio; i risultati ottenuti sui conti personali dello sviluppatore sono indipendenti dallo strumento e non sono indicativi della sua performance." } },
+      { g: "parties",
+        en: { t: "AIFM", alt: "Alternative Investment Fund Manager", d: "A manager of alternative investment funds authorised under the AIFMD, subject to requirements on capital, risk management, valuation, delegation and reporting. Framont & Partners Management Ltd is authorised by the MFSA." },
+        it: { t: "AIFM", alt: "Alternative Investment Fund Manager", d: "Un gestore di fondi di investimento alternativi autorizzato ai sensi della AIFMD, soggetto a requisiti di capitale, gestione del rischio, valorizzazione, delega e reporting. Framont & Partners Management Ltd è autorizzata dalla MFSA." } },
+      { g: "parties",
+        en: { t: "Issuer", alt: "Emittente", d: "The entity that issues a certificate or listed instrument and owes the investor repayment. Its creditworthiness is the issuer risk carried by every note and certificate, whatever the underlying strategy does." },
+        it: { t: "Emittente", alt: "Issuer", d: "L'entità che emette un certificato o uno strumento quotato ed è debitrice del rimborso verso l'investitore. La sua solidità è il rischio emittente che accompagna ogni nota e ogni certificato, a prescindere dall'andamento della strategia sottostante." } },
+      { g: "parties",
+        en: { t: "Depositary", alt: "Depositario", d: "The bank appointed under the AIFMD to hold a fund's assets in custody, verify ownership, monitor cash flows and oversee the manager's compliance with the fund rules." },
+        it: { t: "Depositario", alt: "Depositary", d: "La banca designata ai sensi della AIFMD per la custodia delle attività del fondo, la verifica della proprietà, il monitoraggio dei flussi di cassa e la vigilanza sul rispetto del regolamento da parte del gestore." } },
+      { g: "parties",
+        en: { t: "Paying agent", alt: "Paying agent", d: "The bank that handles settlement, coupon payments and redemptions on a certificate or note. On the GenTwo products this role is performed by InCore Bank AG." },
+        it: { t: "Paying agent", alt: "Agente pagatore", d: "La banca che cura regolamento, pagamento delle cedole e rimborsi di un certificato o di una nota. Sui prodotti GenTwo questo ruolo è svolto da InCore Bank AG." } },
+      { g: "parties",
+        en: { t: "Market maker", alt: "Market maker", d: "The party that quotes buy and sell prices for a listed instrument during market hours. The tightness of those quotes, not the strategy, is what determines how easily an investor can trade in size." },
+        it: { t: "Market maker", alt: "Market maker", d: "Il soggetto che espone prezzi in acquisto e in vendita di uno strumento quotato durante l'orario di mercato. È l'ampiezza di quelle quotazioni, non la strategia, a determinare quanto facilmente un investitore può negoziare volumi rilevanti." } },
+
+      { g: "costs",
+        en: { t: "Management fee", alt: "Commissione di gestione", d: "The annual fee charged for managing the strategy, accrued on the value of the instrument or fund and deducted before the value the investor sees." },
+        it: { t: "Commissione di gestione", alt: "Management fee", d: "La commissione annua applicata per la gestione della strategia, maturata sul valore dello strumento o del fondo e dedotta prima del valore che l'investitore osserva." } },
+      { g: "costs",
+        en: { t: "Performance fee", alt: "Commissione di performance", d: "A share of the gain above an agreed threshold, paid to the manager. Where a high-water mark applies, it is charged only on new gains above the highest value previously reached." },
+        it: { t: "Commissione di performance", alt: "Performance fee", d: "Una quota del guadagno oltre una soglia concordata, riconosciuta al gestore. Ove si applichi un high-water mark, è dovuta solo sui nuovi guadagni superiori al valore massimo già raggiunto." } },
+      { g: "costs",
+        en: { t: "High-water mark", alt: "High-water mark", d: "The highest value an instrument has previously reached. It prevents an investor from paying a performance fee twice on the same recovery after a loss." },
+        it: { t: "High-water mark", alt: "High-water mark", d: "Il valore massimo già raggiunto da uno strumento. Impedisce all'investitore di pagare due volte la commissione di performance sullo stesso recupero dopo una perdita." } },
+      { g: "costs",
+        en: { t: "Ongoing costs", alt: "Costi correnti", d: "The total annual running cost of an instrument as disclosed in its Key Information Document: management, administration and other recurring charges together. That is the figure to compare across products." },
+        it: { t: "Costi correnti", alt: "Ongoing costs", d: "Il costo annuo complessivo di gestione di uno strumento come indicato nel Documento contenente le Informazioni Chiave: gestione, amministrazione e altri oneri ricorrenti insieme. È questo il dato da confrontare tra prodotti." } },
+      { g: "costs",
+        en: { t: "Backtest", alt: "Backtest", d: "A simulation of how a strategy would have behaved on historical data. It involves no real trading, benefits from hindsight in its design, and is not a reliable indicator of future results." },
+        it: { t: "Backtest", alt: "Backtest", d: "Una simulazione del comportamento che una strategia avrebbe avuto su dati storici. Non comporta operatività reale, beneficia del senno di poi nella sua costruzione e non è un indicatore affidabile dei risultati futuri." } },
+      { g: "costs",
+        en: { t: "Settlement T+2", alt: "Regolamento T+2", d: "Trade date plus two business days, the point at which a purchase of a listed instrument is actually settled and the security appears in the investor's account." },
+        it: { t: "Regolamento T+2", alt: "Settlement T+2", d: "Data dell'operazione più due giorni lavorativi, il momento in cui l'acquisto di uno strumento quotato viene effettivamente regolato e il titolo compare sul conto dell'investitore." } },
+
+      { g: "investors",
+        en: { t: "Professional investor", alt: "Investitore professionale", d: "A client classified as professional under MiFID II, presumed to have the experience and knowledge to take investment decisions and assess the risks involved. Several products on this platform are reserved for this class." },
+        it: { t: "Investitore professionale", alt: "Professional investor", d: "Un cliente classificato come professionale ai sensi della MiFID II, che si presume abbia esperienza e conoscenze per assumere decisioni d'investimento e valutare i rischi connessi. Diversi prodotti di questa piattaforma sono riservati a questa categoria." } },
+      { g: "investors",
+        en: { t: "Elective professional client", alt: "Cliente professionale su richiesta", d: "A retail client who asks to be treated as professional, and is reclassified only after Framont has verified that the conditions set by MiFID II are met. Opting up means giving up some of the protections a retail client receives; the applicable conditions and their consequences are set out before any reclassification." },
+        it: { t: "Cliente professionale su richiesta", alt: "Elective professional client", d: "Un cliente retail che chiede di essere trattato come professionale e viene riclassificato solo dopo che Framont ha verificato la sussistenza delle condizioni previste dalla MiFID II. L'opt-up comporta la rinuncia ad alcune tutele riservate al cliente retail; le condizioni applicabili e le loro conseguenze sono illustrate prima di ogni riclassificazione." } },
+      { g: "investors",
+        en: { t: "Qualified investor", alt: "Investitore qualificato", d: "An investor who meets the criteria set out in the offering documentation of a specific product, a threshold defined per product, which may differ from the MiFID II professional classification." },
+        it: { t: "Investitore qualificato", alt: "Qualified investor", d: "Un investitore che soddisfa i criteri stabiliti nella documentazione d'offerta di uno specifico prodotto, una soglia definita per singolo prodotto, che può differire dalla classificazione MiFID II di cliente professionale." } },
+      { g: "investors",
+        en: { t: "Eligible investor", alt: "Investitore idoneo", d: "An investor who, without being professional, meets the conditions a fund's own rules set for subscription, for example a minimum subscription of €500,000 in the Wright fund." },
+        it: { t: "Investitore idoneo", alt: "Eligible investor", d: "Un investitore che, pur non essendo professionale, soddisfa le condizioni previste dal regolamento del fondo per la sottoscrizione, ad esempio una sottoscrizione minima di €500.000 nel fondo Wright." } },
+      { g: "investors",
+        en: { t: "Retail investor", alt: "Investitore retail", d: "Any client not classified as professional. Retail clients receive the fullest set of protections under MiFID II, including a mandatory Key Information Document and a suitability assessment before subscription." },
+        it: { t: "Investitore retail", alt: "Retail investor", d: "Qualsiasi cliente non classificato come professionale. I clienti retail godono del più ampio insieme di tutele previste dalla MiFID II, incluso il Documento contenente le Informazioni Chiave obbligatorio e la valutazione di adeguatezza prima della sottoscrizione." } },
+
+      { g: "docs",
+        en: { t: "Key Information Document (KID)", alt: "Documento informativo chiave", d: "A standardised document required by the PRIIPs Regulation, at most three pages, setting out what the product is, its risk indicator, performance scenarios, total costs and how to complain. It is the first document to read before investing." },
+        it: { t: "Documento contenente le Informazioni Chiave (KID)", alt: "Key Information Document", d: "Un documento standardizzato richiesto dal Regolamento PRIIPs, di massimo tre pagine, che illustra cos'è il prodotto, il suo indicatore di rischio, gli scenari di performance, i costi complessivi e come presentare un reclamo. È il primo documento da leggere prima di investire." } },
+      { g: "docs",
+        en: { t: "Prospectus and final terms", alt: "Prospetto e condizioni definitive", d: "The full legal documentation of a listed instrument: the prospectus sets out the issuance programme, the final terms the specific instrument. Together they are the binding text behind every summary." },
+        it: { t: "Prospetto e condizioni definitive", alt: "Prospectus and final terms", d: "La documentazione legale completa di uno strumento quotato: il prospetto definisce il programma di emissione, le condizioni definitive il singolo strumento. Insieme costituiscono il testo vincolante dietro ogni sintesi." } },
+      { g: "docs",
+        en: { t: "Fund Rules / Offering Supplement", alt: "Regolamento di Gestione / Offering Supplement", d: "The constitutional documents of a fund, setting out strategy, terms, costs and risk factors. Italian funds use the Regolamento di Gestione; Malta funds an Offering Supplement alongside the Offering Memorandum." },
+        it: { t: "Regolamento di Gestione / Offering Supplement", alt: "Fund Rules", d: "I documenti costitutivi di un fondo, che definiscono strategia, termini, costi e fattori di rischio. I fondi italiani utilizzano il Regolamento di Gestione; i fondi maltesi un Offering Supplement affiancato all'Offering Memorandum." } },
+      { g: "docs",
+        en: { t: "ISIN", alt: "International Securities Identification Number", d: "The twelve-character code that identifies a security uniquely worldwide. It is what an investor gives their bank or broker to place an order on the right instrument." },
+        it: { t: "ISIN", alt: "International Securities Identification Number", d: "Il codice di dodici caratteri che identifica univocamente un titolo a livello mondiale. È il dato che l'investitore comunica alla propria banca o al proprio broker per inserire un ordine sullo strumento corretto." } },
+      { g: "docs",
+        en: { t: "Issuer risk", alt: "Rischio emittente", d: "The risk that the issuer of a note or certificate fails to meet its obligations, independently of how the underlying strategy performs. Collateralisation and segregated portfolios reduce this risk but do not remove it." },
+        it: { t: "Rischio emittente", alt: "Issuer risk", d: "Il rischio che l'emittente di una nota o di un certificato non adempia alle proprie obbligazioni, indipendentemente dall'andamento della strategia sottostante. Collateralizzazione e portafogli segregati riducono questo rischio ma non lo eliminano." } },
+      { g: "docs",
+        en: { t: "Private placement", alt: "Collocamento privato", d: "An offer made to a restricted circle of investors rather than to the public, and therefore outside the prospectus obligations that apply to public offers." },
+        it: { t: "Collocamento privato", alt: "Private placement", d: "Un'offerta rivolta a una cerchia ristretta di investitori anziché al pubblico, e per questo esclusa dagli obblighi di prospetto applicabili alle offerte pubbliche." } }
+    ]
+  };
 
   T = {
     en: {
@@ -1701,7 +1886,13 @@ class Component extends DCLogic {
           { h: "PRIIPs and MiFID II", p: "Listed instruments carry a Key Information Document under the PRIIPs Regulation; distribution and suitability follow MiFID II. Read the KID and the prospectus or final terms before investing." },
           { h: "Roles, kept separate", p: "Strategy developers provide the underlying strategy only. Portfolio management of every referenced instrument is performed by Framont & Partners Management Ltd." }
         ],
-        note: "Entities shown are taken from the product records, term sheets and official documentation for the instruments on this platform. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk." },
+        note: "Entities shown are taken from the product records, term sheets and official documentation for the instruments on this platform. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk.",
+        glossaryLink: "What these words mean" },
+      glossary: { label: "Glossary", title: "The words on this platform, in plain language",
+        sub: "Every term used across the product pages, defined without jargon — instruments and wrappers, who does what, costs, investor classification, and the documents behind each product.",
+        search: "Search a term", all: "All", entries: "entries", entry: "entry",
+        none: "No term matches that search.", clear: "Clear",
+        note: "These definitions are plain-language explanations of terms used on this platform. They are a guide, not a legal definition, and they do not replace the documentation of any product: where a definition and a product's Key Information Document, prospectus, final terms or Fund Rules differ, the product documentation governs. For information purposes only; this is not investment advice, an offer or a solicitation. Capital at risk." },
       admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
     },
     it: {
@@ -1770,7 +1961,13 @@ class Component extends DCLogic {
           { h: "PRIIPs e MiFID II", p: "Gli strumenti quotati sono accompagnati da un Documento contenente le Informazioni Chiave ai sensi del Regolamento PRIIPs; distribuzione e adeguatezza seguono la MiFID II. Leggere il KID e il prospetto o le condizioni definitive prima di investire." },
           { h: "Ruoli, tenuti distinti", p: "Gli sviluppatori delle strategie forniscono esclusivamente la strategia sottostante. La gestione di portafoglio di ogni strumento citato è svolta da Framont & Partners Management Ltd." }
         ],
-        note: "Le entità indicate provengono dalle schede prodotto, dai term sheet e dalla documentazione ufficiale degli strumenti presenti su questa piattaforma. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio." },
+        note: "Le entità indicate provengono dalle schede prodotto, dai term sheet e dalla documentazione ufficiale degli strumenti presenti su questa piattaforma. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio.",
+        glossaryLink: "Cosa significano queste parole" },
+      glossary: { label: "Glossario", title: "Le parole di questa piattaforma, in linguaggio semplice",
+        sub: "Ogni termine usato nelle pagine prodotto, spiegato senza gergo — strumenti e involucri, chi fa cosa, costi, classificazione degli investitori e i documenti dietro ciascun prodotto.",
+        search: "Cerca un termine", all: "Tutti", entries: "voci", entry: "voce",
+        none: "Nessun termine corrisponde alla ricerca.", clear: "Cancella",
+        note: "Queste definizioni sono spiegazioni in linguaggio semplice dei termini usati su questa piattaforma. Sono una guida, non una definizione legale, e non sostituiscono la documentazione di alcun prodotto: in caso di difformità tra una definizione e il Documento contenente le Informazioni Chiave, il prospetto, le condizioni definitive o il Regolamento del prodotto, prevale la documentazione di prodotto. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Capitale a rischio." },
       admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
     }
   };
@@ -2283,6 +2480,8 @@ class Component extends DCLogic {
     fCur: "all",
     fSize: "all",
     cmpFilter: "all",
+    glFilter: "all",
+    glQuery: "",
     faqOpen: {},
     adminTab: "subscribers",
     subscribers: [
@@ -2320,7 +2519,7 @@ class Component extends DCLogic {
       const r = this.parseHash();
       const patch = {};
       if (r.lang && r.lang !== this.state.lang) patch.lang = r.lang;
-      if (r.view && r.view !== this.state.view) { patch.view = r.view; patch.mobileOpen = false; patch.modal = null; patch.fCls = "all"; patch.fCur = "all"; patch.fSize = "all"; }
+      if (r.view && r.view !== this.state.view) { patch.view = r.view; patch.mobileOpen = false; patch.modal = null; patch.fCls = "all"; patch.fCur = "all"; patch.fSize = "all"; patch.glQuery = ""; patch.glFilter = "all"; }
       else if (!r.view && this.state.view !== "home" && this.state.view !== "admin") { patch.view = "home"; patch.mobileOpen = false; patch.modal = null; }
       if (Object.keys(patch).length) this.setState(patch);
     };
@@ -2521,8 +2720,9 @@ class Component extends DCLogic {
       else if (p === "fondi") view = "funds"; // Italian alias typed/shared by hand
       else if (p === "confronto") view = "compare"; // Italian alias, as for #/fondi
       else if (p === "struttura") view = "structure";
+      else if (p === "glossario") view = "glossary";
       else if (p === "insights" || p === "approfondimenti") insights = true;
-      else if (["home", "funds", "amc", "eti", "deals", "compare", "structure"].includes(p)) view = p === "home" ? null : p;
+      else if (["home", "funds", "amc", "eti", "deals", "compare", "structure", "glossary"].includes(p)) view = p === "home" ? null : p;
     }
     if (insights) {
       // Insights live as static pages, not a hash view — send the visitor there in their language.
@@ -2565,9 +2765,45 @@ class Component extends DCLogic {
       if (["funds", "amc", "eti", "deals"].includes(s.view)) title = this.DATA[s.view][s.lang].title + " — Framont Access";
       else if (s.view === "compare") title = this.T[s.lang].compare.label + " — Framont Access";
       else if (s.view === "structure") title = this.T[s.lang].structure.label + " — Framont Access";
+      else if (s.view === "glossary") title = this.T[s.lang].glossary.label + " — Framont Access";
       else if (s.view === "admin") title = this.T[s.lang].admin.title + " — Framont Access";
       if (document.title !== title) document.title = title;
+      this.syncGlossaryLd();
     } catch (e) {}
+  }
+
+  // The glossary's definitions are the lines search engines and AI assistants quote,
+  // so they are also published as a schema.org DefinedTermSet — generated from the same
+  // constant the page renders, never a second copy, and swapped when the language does.
+  syncGlossaryLd() {
+    const s = this.state;
+    const ID = "ld-glossary";
+    const existing = document.getElementById(ID);
+    if (s.view !== "glossary") { if (existing) existing.remove(); return; }
+    const base = "https://access.framontmanagement.com/";
+    const url = base + (s.lang === "it" ? "#/it/glossario" : "#/glossary");
+    const doc = {
+      "@context": "https://schema.org",
+      "@type": "DefinedTermSet",
+      "@id": base + "#glossary",
+      name: this.T[s.lang].glossary.label + " — Framont Access",
+      description: this.T[s.lang].glossary.sub,
+      url,
+      inLanguage: s.lang,
+      publisher: { "@id": base + "#org" },
+      hasDefinedTerm: this.GLOSSARY.terms.map((x) => ({
+        "@type": "DefinedTerm",
+        name: x[s.lang].t,
+        alternateName: x[s.lang].alt,
+        description: x[s.lang].d,
+        inDefinedTermSet: base + "#glossary"
+      }))
+    };
+    const el = existing || document.createElement("script");
+    el.type = "application/ld+json";
+    el.id = ID;
+    el.textContent = JSON.stringify(doc);
+    if (!existing) document.head.appendChild(el);
   }
 
   componentWillUnmount() {
@@ -2619,7 +2855,7 @@ class Component extends DCLogic {
 
   navTo(k) {
     if (k === "admin" && !(this.state.user && this.state.user.role === "admin")) return;
-    this.setState({ view: k, mobileOpen: false, modal: null, fCls: "all", fCur: "all", fSize: "all" });
+    this.setState({ view: k, mobileOpen: false, modal: null, fCls: "all", fCur: "all", fSize: "all", glQuery: "", glFilter: "all" });
   }
 
   toggleLang() {
@@ -2857,6 +3093,7 @@ class Component extends DCLogic {
     const isCat = ["funds", "amc", "eti", "deals"].includes(view);
     const isCompare = view === "compare";
     const isStructure = view === "structure";
+    const isGlossary = view === "glossary";
     const isAdminView = view === "admin" && !!user && user.role === "admin";
 
     const rev = {};
@@ -3083,6 +3320,46 @@ class Component extends DCLogic {
       stQuotesLabel = stQuotes.length + " " + t.structure.h5of;
     }
 
+    // ---- Glossary -----------------------------------------------------------
+    let glTabs = [], glGroups = [], glTally = "", glNone = false, glHasQuery = false;
+    if (isGlossary) {
+      const G = this.GLOSSARY;
+      const q = s.glQuery.trim().toLowerCase();
+      glHasQuery = !!q;
+      const matches = (x) => {
+        if (s.glFilter !== "all" && x.g !== s.glFilter) return false;
+        if (!q) return true;
+        const e = x[s.lang];
+        return (e.t + " " + e.alt + " " + e.d).toLowerCase().indexOf(q) !== -1;
+      };
+      // Tab counts follow the search, so a tab never promises entries the query has filtered out.
+      const inQuery = (x) => !q || ((x[s.lang].t + " " + x[s.lang].alt + " " + x[s.lang].d).toLowerCase().indexOf(q) !== -1);
+      glTabs = [{ key: "all", label: t.glossary.all, n: G.terms.filter(inQuery).length }]
+        .concat(G.groups.map((g) => ({ key: g.key, label: loc(g.label), n: G.terms.filter((x) => x.g === g.key && inQuery(x)).length })))
+        .map((f) => {
+          const on = s.glFilter === f.key;
+          return {
+            key: f.key, label: f.label, n: String(f.n), pressed: on ? "true" : "false",
+            color: on ? "#002E5F" : "#4D575E",
+            underline: on ? "#FF8200" : "transparent",
+            nColor: on ? "#B85C00" : "#7C848C",
+            onClick: () => this.setState({ glFilter: f.key })
+          };
+        });
+      let shown = 0;
+      G.groups.forEach((g) => {
+        const items = G.terms.filter((x) => x.g === g.key && matches(x));
+        if (!items.length) return;
+        shown += items.length;
+        glGroups.push({
+          key: g.key, label: loc(g.label),
+          terms: items.map((x) => ({ term: x[s.lang].t, alt: x[s.lang].alt, def: x[s.lang].d }))
+        });
+      });
+      glTally = shown + " " + (shown === 1 ? t.glossary.entry : t.glossary.entries);
+      glNone = shown === 0;
+    }
+
     const universeCards = ["funds", "amc", "eti", "deals"].map((k) => ({
       key: k, label: t.nav[k], desc: t.universe.descs[k],
       bg: bgOf({ funds: P.assetCardFunds, amc: P.assetCardAmc, eti: P.assetCardEti, deals: P.assetCardVc }[k]),
@@ -3137,9 +3414,14 @@ class Component extends DCLogic {
       showHome: view === "home", showCat: isCat, showAdmin: isAdminView,
       showCompare: isCompare,
       cmpFilters, cmpGroups, cmpSoon, cmpEmpty, cmpHasSoon,
-      onCompare: go("compare"), onStructure: go("structure"),
+      onCompare: go("compare"), onStructure: go("structure"), onGlossary: go("glossary"),
       showStructure: isStructure,
       stChains, stAnchors, stQuotes, stQuotesLabel,
+      showGlossary: isGlossary,
+      glTabs, glGroups, glTally, glNone, glHasQuery,
+      glQuery: s.glQuery,
+      onGlQuery: (e) => this.setState({ glQuery: e.target.value }),
+      onGlClear: () => this.setState({ glQuery: "" }),
       showCtaBand: view !== "admin",
       heroBg: P.assetHero ? 'url("' + P.assetHero + '")' : "none",
       trustItems: t.trust, universeCards, howSteps: t.how.steps, featuredCards,
@@ -3353,6 +3635,36 @@ class Component extends DCLogic {
     .st-link:last-child{border-bottom:none}
     .st-key{padding:22px}
     .st-num{margin-top:0}
+  }
+  /* ---- Glossary ---- */
+  .gl-tools{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .gl-tally{font-size:13px;color:#7C848C;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .gl-tabs{display:flex;gap:0;flex-wrap:wrap;align-items:center;
+    border-bottom:1px solid #E9E7E2;margin-top:18px}
+  .gl-tabs button{font-family:'Work Sans',sans-serif;font-size:12.5px;font-weight:600;
+    letter-spacing:.09em;text-transform:uppercase;background:none;border:none;
+    border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 16px 11px;cursor:pointer;
+    transition:color .2s ease,border-color .2s ease}
+  .gl-tabs button:first-child{padding-left:0}
+  .gl-tabs button:hover{color:#B85C00!important}
+  .gl-n{margin-left:7px;font-size:10.5px;font-variant-numeric:tabular-nums}
+  .gl-set{margin-top:clamp(34px,4vw,52px)}
+  .gl-set>h2{font-family:'Work Sans',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:#002E5F;padding-bottom:12px;margin:0;
+    border-bottom:1px solid #D8D4CC}
+  .gl-set dl{margin:0}
+  .gl-term{display:grid;grid-template-columns:minmax(190px,15rem) 1fr;gap:clamp(18px,4vw,44px);
+    padding:22px 0;border-bottom:1px solid #F1EFEA;transition:background .2s ease}
+  .gl-term:hover{background:#FCFBF9}
+  .gl-term dt{margin:0}
+  .gl-word{display:block;font-family:'Playfair Display',serif;font-size:18px;font-weight:500;
+    color:#002E5F;line-height:1.3}
+  .gl-alt{display:block;font-size:10.5px;color:#7C848C;margin-top:7px;line-height:1.5}
+  .gl-term dd{margin:0;font-size:13.5px;color:#4D575E;line-height:1.75;max-width:62ch}
+  @media (max-width:760px){
+    .gl-term{grid-template-columns:1fr;gap:10px}
+    .gl-tabs{overflow-x:auto;flex-wrap:nowrap}
+    .gl-tabs button{white-space:nowrap}
   }
   /* keyboard focus ring (accessibility) */
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{
