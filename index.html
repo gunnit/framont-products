@@ -391,6 +391,8 @@
   </ul>
   <h2>Comparing the products</h2>
   <p>A single comparison view sets every product open to subscription side by side — wrapper and structure, strategy, liquidity, currency, costs and eligibility — grouped by funds, AMCs and ETIs, and filterable by category: <a href="/#/compare">Product comparison</a> (<a href="/#/it/confronto">Italian</a>). Reserved private market opportunities are listed below the table at teaser level and are released by access code after eligibility verification.</p>
+  <h2>Who issues these products, and who manages them</h2>
+  <p>Each wrapper sits inside its own regulated chain, set out stop by stop at <a href="/#/structure">Structure and safeguards</a> (<a href="/#/it/struttura">Italian</a>). The exchange traded instruments are issued by iMaps ETI AG (Liechtenstein) and listed on Börse Stuttgart; Noctiluca Capital is issued through a protected cell of Expand2 Issuer PCC Limited (Guernsey) on the GenTwo platform, with InCore Bank AG as paying agent and custody and brokerage via TradeStation Europe B.V.; the nine funds are Italian reserved AIFs and Malta-domiciled Notified AIFs. In every case portfolio management is performed by Framont &amp; Partners Management Ltd, an AIFM authorised by the MFSA, while strategy developers provide the underlying strategy only.</p>
   <h2>Frequently asked questions</h2>
   <h3>What funds does Framont manage?</h3>
   <p>Framont &amp; Partners Management Ltd manages nine alternative investment funds: six Italian reserved AIFs — Gentile da Fabriano, Orizzonte, Wright, Real Sequoia and Pinnacle Investment in real estate, and Hubble Capital in distressed credit — and three Malta-domiciled Notified AIFs: Asymetria Fund (absolute return), Earth Horizon Fund (private equity) and CIREDCO Fund 1 (Italian real estate distressed credit).</p>
@@ -991,7 +993,92 @@
           </div>
         </sc-if>
 
+        <div style="margin-top:clamp(34px,4vw,48px);">
+          <a onclick="{{ onStructure }}" href="#/structure" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.compare.structureLink }} →</a>
+        </div>
         <p style="font-size:12px; color:#7C848C; line-height:1.85; margin:clamp(40px,5vw,60px) 0 0; max-width:960px;">{{ t.compare.note }}</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ STRUCTURE ============ -->
+  <sc-if value="{{ showStructure }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Structure — Header" style="position:relative; overflow:hidden; background:#001F42; color:#FFFFFF;">
+      <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(78% 62% at 76% 12%, rgba(255,130,0,0.16), rgba(255,130,0,0) 62%); pointer-events:none;"></div>
+      <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:clamp(56px,7vw,92px) 40px clamp(40px,5vw,60px);">
+        <div style="font-size:12.5px; color:rgba(255,255,255,0.6); display:flex; gap:10px; align-items:center; margin-bottom:34px;">
+          <a onclick="{{ onHome }}" href="#/" style="cursor:pointer; color:rgba(255,255,255,0.6); text-decoration:none; transition:color .2s ease;" style-hover="color:#FFB273;">{{ t.nav.home }}</a>
+          <span style="color:rgba(255,255,255,0.3);">/</span>
+          <span style="color:#FFFFFF; font-weight:600;">{{ t.structure.label }}</span>
+        </div>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#FFB273;">{{ t.structure.label }}</div>
+        <h1 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(32px,4.6vw,54px); line-height:1.1; color:#FFFFFF; margin:16px 0 0;">{{ t.structure.title }}</h1>
+        <div style="width:64px; height:2px; background:#FF8200; margin:26px 0 0;"></div>
+        <p style="font-size:clamp(14px,1.5vw,16.5px); font-weight:300; color:rgba(255,255,255,0.8); line-height:1.7; max-width:720px; margin:24px 0 0;">{{ t.structure.sub }}</p>
+      </div>
+    </section>
+
+    <sc-for list="{{ stChains }}" as="c" hint-placeholder-count="3">
+      <section data-screen-label="Structure — Chain" style="background: {{ c.alt }}; border-top:1px solid #E9E7E2;">
+        <div style="max-width:1280px; margin:0 auto; padding:clamp(56px,6vw,84px) 40px;">
+          <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(24px,2.9vw,32px); color:#002E5F; line-height:1.2; margin:0;">{{ c.heading }}</h2>
+          <p style="font-size:14.5px; color:#4D575E; line-height:1.75; max-width:70ch; margin:14px 0 0;">{{ c.lede }}</p>
+          <div class="st-chain">
+            <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5">
+              <div class="{{ l.cls }}" style="background: {{ l.bg }};">
+                <span class="st-num" style="background: {{ l.numBg }}; color: {{ l.numColor }}; border-color: {{ l.numBorder }};">{{ l.n }}</span>
+                <span class="st-role" style="color: {{ l.roleColor }};">{{ l.role }}</span>
+                <span class="st-ent" style="color: {{ l.entColor }};">{{ l.ent }}</span>
+                <span class="st-det" style="color: {{ l.detColor }};">{{ l.det }}</span>
+                <sc-if value="{{ l.hasBadge }}" hint-placeholder-val="{{ false }}">
+                  <span class="st-badge" style="color: {{ l.badgeColor }};"><i></i>{{ l.badge }}</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-for>
+
+    <section data-screen-label="Structure — Anchors" style="background:#001630; color:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:clamp(56px,6vw,84px) 40px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; border-bottom:1px solid rgba(255,255,255,0.14); padding-bottom:16px;">
+          <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(24px,2.9vw,32px); color:#FFFFFF; margin:0;">{{ t.structure.h4t }}</h2>
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">{{ t.structure.h4of }}</span>
+        </div>
+        <div class="st-anchors">
+          <sc-for list="{{ stAnchors }}" as="a" hint-placeholder-count="4">
+            <div>
+              <h3 style="font-size:15.5px; font-weight:600; color:#FFFFFF; margin:0 0 8px;">{{ a.h }}</h3>
+              <p style="font-size:13.5px; color:rgba(255,255,255,0.7); line-height:1.75; margin:0; max-width:52ch;">{{ a.p }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Structure — Listed products" style="background:#FFFFFF;">
+      <div style="max-width:1280px; margin:0 auto; padding:clamp(56px,6vw,84px) 40px 96px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; border-bottom:1px solid #E9E7E2; padding-bottom:16px;">
+          <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(24px,2.9vw,32px); color:#002E5F; margin:0;">{{ t.structure.h5t }}</h2>
+          <span style="font-size:12px; color:#7C848C;">{{ stQuotesLabel }}</span>
+        </div>
+        <p style="font-size:14.5px; color:#4D575E; line-height:1.75; max-width:70ch; margin:20px 0 4px;">{{ t.structure.s5 }}</p>
+        <sc-for list="{{ stQuotes }}" as="q" hint-placeholder-count="4">
+          <div class="st-quote">
+            <div>
+              <div style="font-size:15px; font-weight:600; color:#002E5F; line-height:1.35;">{{ q.name }}</div>
+              <div style="font-size:12.5px; color:#7C848C; margin-top:4px; letter-spacing:0.04em;">ISIN {{ q.isin }} · {{ q.venue }}</div>
+            </div>
+            <sc-if value="{{ q.hasLanding }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ q.landingUrl }}" target="_blank" rel="noopener" style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; white-space:nowrap; transition:color .2s ease;" style-hover="color:#FF8200;">{{ t.structure.productPage }} ↗</a>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div style="margin-top:clamp(34px,4vw,48px);">
+          <a onclick="{{ onCompare }}" href="#/compare" style="display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#B85C00; text-decoration:none; cursor:pointer; border-bottom:1px solid rgba(184,92,0,0.35); padding-bottom:5px; transition:color .2s ease, border-color .2s ease;" style-hover="color:#FF8200; border-color:#FF8200;">{{ t.structure.compareLink }} →</a>
+        </div>
+        <p style="font-size:12px; color:#7C848C; line-height:1.85; margin:clamp(40px,5vw,60px) 0 0; max-width:960px;">{{ t.structure.note }}</p>
       </div>
     </section>
   </sc-if>
@@ -1154,6 +1241,7 @@
           <sc-for list="{{ navLinks }}" as="fl" hint-placeholder-count="4">
             <a onclick="{{ fl.onClick }}" href="{{ fl.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ fl.label }}</a>
           </sc-for>
+          <a onclick="{{ onStructure }}" href="#/structure" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.structure.label }}</a>
           <a href="{{ insightsHref }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.insights.navLabel }}</a>
         </div>
         <div style="min-width:0;">
@@ -1499,6 +1587,53 @@ class Component extends DCLogic {
 
   FEATURED = [{ id: "eti-heraklit", ck: "eti" }, { id: "eti-techmegatrend", ck: "eti" }, { id: "eti-lcinvest", ck: "eti" }];
 
+  // ---- Structure and safeguards: the regulated chain behind each wrapper.
+  //      Category-level architecture, so it lives here rather than on a product record.
+  //      `key` marks the link Framont answers for; `devs` is filled from the ETI records
+  //      at render time, so a new instrument brings its strategy developer with it. ----
+  CHAINS = [
+    { ck: "eti", links: [
+      { role: { en: "Investor", it: "Investitore" }, ent: { en: "Your bank or broker", it: "La tua banca o il tuo broker" },
+        det: { en: "Buy order placed by ISIN, settlement T+2, from €1,000", it: "Ordine di acquisto per ISIN, regolamento T+2, da €1.000" } },
+      { role: { en: "Venue", it: "Sede di negoziazione" }, ent: "Börse Stuttgart",
+        det: { en: "Daily trading during market hours", it: "Negoziazione giornaliera durante l'orario di mercato" },
+        badge: { en: "Regulated market", it: "Mercato regolamentato" } },
+      { role: { en: "Issuer and market maker", it: "Emittente e market maker" }, ent: "iMaps ETI AG",
+        det: { en: "Liechtenstein. Issue price EUR 100, segregated portfolio per instrument", it: "Liechtenstein. Prezzo di emissione EUR 100, portafoglio segregato per strumento" } },
+      { role: { en: "Portfolio manager", it: "Gestore di portafoglio" }, ent: "Framont & Partners Management Ltd", key: true,
+        det: { en: "Malta. Takes every investment decision inside the instrument", it: "Malta. Assume ogni decisione d'investimento all'interno dello strumento" },
+        badge: { en: "MFSA-authorised AIFM", it: "AIFM autorizzato MFSA" } },
+      { role: { en: "Strategy developer", it: "Sviluppatore della strategia" }, ent: { en: "One per instrument", it: "Uno per strumento" },
+        devs: true, det: { en: "Providers of the underlying strategy only", it: "Solo fornitori della strategia sottostante" } }
+    ] },
+    { ck: "amc", links: [
+      { role: { en: "Investor", it: "Investitore" }, ent: { en: "Private placement", it: "Private placement" },
+        det: { en: "Subscription from €10,000, professional investors", it: "Sottoscrizione da €10.000, investitori professionali" } },
+      { role: { en: "Issuer", it: "Emittente" }, ent: "Expand2 Issuer PCC Limited",
+        det: { en: "Guernsey. One protected cell per product, ring-fenced from the others", it: "Guernsey. Una cella protetta per prodotto, separata dalle altre" } },
+      { role: { en: "Securitisation platform", it: "Piattaforma di cartolarizzazione" }, ent: "GenTwo",
+        det: { en: "Switzerland. Structuring and lifecycle of the certificate", it: "Svizzera. Strutturazione e ciclo di vita del certificato" } },
+      { role: { en: "Strategy manager", it: "Gestore della strategia" }, ent: "Framont & Partners Management Ltd", key: true,
+        det: { en: "Malta. Manages the strategy the certificate references", it: "Malta. Gestisce la strategia replicata dal certificato" },
+        badge: { en: "MFSA-authorised AIFM", it: "AIFM autorizzato MFSA" } },
+      { role: { en: "Post-trade", it: "Post-trade" }, ent: "InCore Bank AG · TradeStation Europe B.V.",
+        det: { en: "Paying agent in Switzerland, custody and brokerage in the Netherlands", it: "Paying agent in Svizzera, custodia e brokeraggio nei Paesi Bassi" } }
+    ] },
+    { ck: "funds", links: [
+      { role: { en: "Investor", it: "Investitore" }, ent: { en: "Professional and eligible", it: "Professionali e idonei" },
+        det: { en: "Eligibility verified before subscription; minimums set in the fund documentation", it: "Idoneità verificata prima della sottoscrizione; minimi definiti nella documentazione del fondo" } },
+      { role: { en: "Vehicle", it: "Veicolo" }, ent: { en: "Reserved AIF · Notified AIF", it: "FIA riservato · AIF Notificato" },
+        det: { en: "Six Italian reserved funds; three sub-funds of Global Series SICAV plc", it: "Sei fondi riservati italiani; tre comparti di Global Series SICAV plc" } },
+      { role: { en: "Management company and AIFM", it: "Società di gestione e AIFM" }, ent: "Framont & Partners Management Ltd", key: true,
+        det: { en: "Malta. Appointed manager of every fund in the range", it: "Malta. Gestore designato di ogni fondo della gamma" },
+        badge: { en: "MFSA-authorised AIFM", it: "AIFM autorizzato MFSA" } },
+      { role: { en: "Depositary", it: "Depositario" }, ent: { en: "Appointed under the AIFMD", it: "Designato ai sensi della AIFMD" },
+        det: { en: "A depositary is appointed for each fund as the AIFMD requires; the appointed entity is named in that fund's documentation", it: "Per ogni fondo è designato un depositario come richiesto dalla AIFMD; l'entità designata è indicata nella documentazione del fondo" } },
+      { role: { en: "Documentation", it: "Documentazione" }, ent: { en: "Fund Rules · Offering Supplement", it: "Regolamento · Offering Supplement" },
+        det: { en: "Strategy, terms and risk factors, on request from the management company", it: "Strategia, termini e fattori di rischio, su richiesta presso la società di gestione" } }
+    ] }
+  ];
+
   T = {
     en: {
       lang: "IT",
@@ -1545,7 +1680,28 @@ class Component extends DCLogic {
         notes: { funds: "Alternative investment funds", amc: "Actively managed certificates", eti: "Exchange traded instruments", deals: "Private market opportunities" },
         none: "No product in this category is currently open to subscription. Reserved opportunities are listed below.",
         soonTitle: "Reserved and by access code", soonSub: "Teaser level — no ISIN or minimum",
-        note: "Figures are taken from the product records on this site and from the official KIDs, term sheets and fee schedules. Fund and certificate costs are set out in full in the Fund Rules, Offering Supplement or PRIIPs KID of each product. This table is a summary for comparison only: it is not investment advice, an offer or a solicitation, and it does not replace the product documentation. Read the KID and the prospectus or Fund Rules before investing. Capital at risk." },
+        note: "Figures are taken from the product records on this site and from the official KIDs, term sheets and fee schedules. Fund and certificate costs are set out in full in the Fund Rules, Offering Supplement or PRIIPs KID of each product. This table is a summary for comparison only: it is not investment advice, an offer or a solicitation, and it does not replace the product documentation. Read the KID and the prospectus or Fund Rules before investing. Capital at risk.",
+        structureLink: "See how these products are structured" },
+      structure: { label: "Structure and safeguards", title: "Who issues it, who manages it, where it trades",
+        sub: "Every instrument on this platform sits inside a regulated chain — issuer, venue, portfolio manager, post-trade agents. Each chain is drawn out one stop at a time, with the licences behind the platform set out at the end.",
+        subnav: "Structure and safeguards", compareLink: "Compare the products side by side",
+        h1t: "A listed security with a segregated strategy",
+        s1: "The exchange traded instruments are issued by iMaps ETI AG and bought like any other listed security, through the investor's own bank or broker.",
+        h2t: "A certificate issued through a protected cell",
+        s2: "Noctiluca Capital is issued through a protected cell on the GenTwo platform. The cell is ring-fenced from every other cell of the issuer, and post-trade sits with regulated agents.",
+        h3t: "A fund managed under the AIFMD",
+        s3: "Nine funds: six Italian reserved AIFs and three Malta-domiciled Notified AIFs, with Framont & Partners Management Ltd as the appointed management company and AIFM.",
+        h4t: "The licences behind the platform", h4of: "Four anchors",
+        h5t: "Where the listed products trade", h5of: "instruments",
+        s5: "Each listed instrument trades under its own ISIN. The issuer's product page carries the current price and the Key Information Document, so the price can be checked without taking our word for it.",
+        venue: "Börse Stuttgart", productPage: "Product page",
+        anchors: [
+          { h: "Malta Financial Services Authority", p: "Framont & Partners Management Ltd is licensed by the MFSA under the Investment Services Act, 1994 (Chapter 370 of the Laws of Malta). A copy of the licence is available on the MFSA website and on request." },
+          { h: "AIFMD and UCITS", p: "The company qualifies as a UCITS Management Company under the UCITS Directive and as an Alternative Investment Fund Manager under the AIFMD, the framework under which every fund in the range is managed." },
+          { h: "PRIIPs and MiFID II", p: "Listed instruments carry a Key Information Document under the PRIIPs Regulation; distribution and suitability follow MiFID II. Read the KID and the prospectus or final terms before investing." },
+          { h: "Roles, kept separate", p: "Strategy developers provide the underlying strategy only. Portfolio management of every referenced instrument is performed by Framont & Partners Management Ltd." }
+        ],
+        note: "Entities shown are taken from the product records, term sheets and official documentation for the instruments on this platform. For information purposes only; this is not investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Read the Key Information Document and the relevant prospectus, final terms or Fund Rules before any investment decision. Capital at risk." },
       admin: { title: "Admin Panel", subscribers: "Subscribers", products: "Products", activity: "Activity Log", export: "Export CSV", name: "Name", email: "Email", phone: "Phone", category: "Category", joined: "Joined", productName: "Product Name", status: "Status", active: "Active", inactive: "Inactive", deactivate: "Deactivate", activate: "Activate", user: "User", product: "Product", timestamp: "Timestamp", session: "Session Ref", assetClass: "Asset Class", noActivity: "No subscription activity yet." }
     },
     it: {
@@ -1593,7 +1749,28 @@ class Component extends DCLogic {
         notes: { funds: "Fondi di investimento alternativi", amc: "Certificati a gestione attiva", eti: "Exchange traded instruments", deals: "Opportunità nei mercati privati" },
         none: "Nessun prodotto di questa categoria è attualmente aperto alle sottoscrizioni. Le opportunità riservate sono elencate qui sotto.",
         soonTitle: "Riservati e su codice di accesso", soonSub: "Livello teaser — senza ISIN né minimo",
-        note: "I dati provengono dalle schede prodotto di questo sito e dai KID, dai term sheet ufficiali e dalle condizioni economiche applicabili. I costi dei fondi e dei certificati sono indicati per intero nel Regolamento di Gestione, nell'Offering Supplement o nel KID PRIIPs di ciascun prodotto. Questa tabella è una sintesi a fini di confronto: non costituisce consulenza d'investimento, offerta o sollecitazione e non sostituisce la documentazione di prodotto. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio." },
+        note: "I dati provengono dalle schede prodotto di questo sito e dai KID, dai term sheet ufficiali e dalle condizioni economiche applicabili. I costi dei fondi e dei certificati sono indicati per intero nel Regolamento di Gestione, nell'Offering Supplement o nel KID PRIIPs di ciascun prodotto. Questa tabella è una sintesi a fini di confronto: non costituisce consulenza d'investimento, offerta o sollecitazione e non sostituisce la documentazione di prodotto. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio.",
+        structureLink: "Scopri come sono strutturati questi prodotti" },
+      structure: { label: "Struttura e presidi", title: "Chi emette, chi gestisce, dove si negozia",
+        sub: "Ogni strumento di questa piattaforma vive dentro una catena regolamentata — emittente, sede di negoziazione, gestore di portafoglio, agenti post-trade. Ogni catena è disegnata una tappa alla volta, con le licenze dietro la piattaforma in chiusura.",
+        subnav: "Struttura e presidi", compareLink: "Confronta i prodotti a colpo d'occhio",
+        h1t: "Un titolo quotato con una strategia segregata",
+        s1: "Gli exchange traded instrument sono emessi da iMaps ETI AG e si acquistano come qualsiasi altro titolo quotato, tramite la banca o il broker dell'investitore.",
+        h2t: "Un certificato emesso tramite una cella protetta",
+        s2: "Noctiluca Capital è emesso tramite una cella protetta sulla piattaforma GenTwo. La cella è separata da ogni altra cella dell'emittente e il post-trade è affidato ad agenti regolamentati.",
+        h3t: "Un fondo gestito ai sensi della AIFMD",
+        s3: "Nove fondi: sei FIA riservati italiani e tre AIF Notificati domiciliati a Malta, con Framont & Partners Management Ltd come società di gestione e AIFM designato.",
+        h4t: "Le licenze dietro la piattaforma", h4of: "Quattro riferimenti",
+        h5t: "Dove si negoziano i prodotti quotati", h5of: "strumenti",
+        s5: "Ogni strumento quotato è negoziato con il proprio ISIN. La pagina prodotto dell'emittente riporta il prezzo corrente e il Documento contenente le Informazioni Chiave, così il prezzo si può verificare senza doverci credere sulla parola.",
+        venue: "Börse di Stoccarda", productPage: "Pagina prodotto",
+        anchors: [
+          { h: "Malta Financial Services Authority", p: "Framont & Partners Management Ltd è licenziata dalla MFSA ai sensi dell'Investment Services Act, 1994 (Chapter 370 delle Leggi di Malta). Copia della licenza è disponibile sul sito della MFSA e su richiesta." },
+          { h: "AIFMD e UCITS", p: "La società si qualifica come UCITS Management Company ai sensi della Direttiva UCITS e come Alternative Investment Fund Manager ai sensi della AIFMD, il quadro entro cui è gestito ogni fondo della gamma." },
+          { h: "PRIIPs e MiFID II", p: "Gli strumenti quotati sono accompagnati da un Documento contenente le Informazioni Chiave ai sensi del Regolamento PRIIPs; distribuzione e adeguatezza seguono la MiFID II. Leggere il KID e il prospetto o le condizioni definitive prima di investire." },
+          { h: "Ruoli, tenuti distinti", p: "Gli sviluppatori delle strategie forniscono esclusivamente la strategia sottostante. La gestione di portafoglio di ogni strumento citato è svolta da Framont & Partners Management Ltd." }
+        ],
+        note: "Le entità indicate provengono dalle schede prodotto, dai term sheet e dalla documentazione ufficiale degli strumenti presenti su questa piattaforma. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. Gli sviluppatori delle strategie agiscono esclusivamente come fornitori della strategia sottostante; la gestione di portafoglio degli strumenti citati è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA. Leggere il Documento contenente le Informazioni Chiave e il relativo prospetto, le condizioni definitive o il Regolamento prima di ogni decisione d'investimento. Capitale a rischio." },
       admin: { title: "Pannello Admin", subscribers: "Iscritti", products: "Prodotti", activity: "Registro Attività", export: "Esporta CSV", name: "Nome", email: "Email", phone: "Telefono", category: "Categoria", joined: "Iscritto il", productName: "Nome Prodotto", status: "Stato", active: "Attivo", inactive: "Inattivo", deactivate: "Disattiva", activate: "Attiva", user: "Utente", product: "Prodotto", timestamp: "Data/Ora", session: "Riferimento Sessione", assetClass: "Classe di Attivo", noActivity: "Nessuna attività di sottoscrizione." }
     }
   };
@@ -2343,8 +2520,9 @@ class Component extends DCLogic {
       if (p === "en" || p === "it") lang = p;
       else if (p === "fondi") view = "funds"; // Italian alias typed/shared by hand
       else if (p === "confronto") view = "compare"; // Italian alias, as for #/fondi
+      else if (p === "struttura") view = "structure";
       else if (p === "insights" || p === "approfondimenti") insights = true;
-      else if (["home", "funds", "amc", "eti", "deals", "compare"].includes(p)) view = p === "home" ? null : p;
+      else if (["home", "funds", "amc", "eti", "deals", "compare", "structure"].includes(p)) view = p === "home" ? null : p;
     }
     if (insights) {
       // Insights live as static pages, not a hash view — send the visitor there in their language.
@@ -2386,6 +2564,7 @@ class Component extends DCLogic {
       let title = "Framont Access — Institutional Investment Platform";
       if (["funds", "amc", "eti", "deals"].includes(s.view)) title = this.DATA[s.view][s.lang].title + " — Framont Access";
       else if (s.view === "compare") title = this.T[s.lang].compare.label + " — Framont Access";
+      else if (s.view === "structure") title = this.T[s.lang].structure.label + " — Framont Access";
       else if (s.view === "admin") title = this.T[s.lang].admin.title + " — Framont Access";
       if (document.title !== title) document.title = title;
     } catch (e) {}
@@ -2677,6 +2856,7 @@ class Component extends DCLogic {
     const view = s.view;
     const isCat = ["funds", "amc", "eti", "deals"].includes(view);
     const isCompare = view === "compare";
+    const isStructure = view === "structure";
     const isAdminView = view === "admin" && !!user && user.role === "admin";
 
     const rev = {};
@@ -2777,9 +2957,10 @@ class Component extends DCLogic {
         { label: t.cat.about, onClick: () => this.scrollToSec("sec-about") },
         { label: t.cat.elig, onClick: () => this.scrollToSec("sec-elig") },
         { label: "FAQ", onClick: () => this.scrollToSec("sec-faq") },
-        // The way out of a single category and into the whole shelf, at the top of every
-        // category page — the comparison table's main entry point alongside the nav.
-        { label: t.compare.subnav, onClick: () => this.navTo("compare") }
+        // The two ways out of a single category: across the whole shelf, or down into the
+        // regulated chain behind it. The top of every category page is where both belong.
+        { label: t.compare.subnav, onClick: () => this.navTo("compare") },
+        { label: t.structure.subnav, onClick: () => this.navTo("structure") }
       ];
       catBg = bgOf({ funds: P.assetCatFunds, amc: P.assetCatAmc, eti: P.assetCatEti, deals: P.assetCatVc }[view]);
       // Video files keep the original "vc" slug (the category was renamed vc → deals but the
@@ -2863,6 +3044,45 @@ class Component extends DCLogic {
       cmpHasSoon = cmpSoon.length > 0;
     }
 
+    // ---- Structure and safeguards ------------------------------------------
+    // The chain is category-level, but its leaf data is not: the strategy developers
+    // and the listed instruments are read off the ETI records, so a new instrument
+    // appears here without a second edit.
+    let stChains = [], stAnchors = [], stQuotes = [], stQuotesLabel = "";
+    if (isStructure) {
+      const factOf = (p, labelEn) => {
+        const f = (p.facts || []).find((x) => x.label && x.label.en === labelEn && x.label.it !== undefined);
+        return f ? loc(f.value) : "";
+      };
+      const devs = db.eti.products.filter((p) => p.active)
+        .map((p) => factOf(p, "Strategy Developer")).filter(Boolean);
+      stChains = this.CHAINS.map((c) => ({
+        key: c.ck, heading: t.structure["h" + ({ eti: 1, amc: 2, funds: 3 }[c.ck]) + "t"],
+        lede: t.structure["s" + ({ eti: 1, amc: 2, funds: 3 }[c.ck])],
+        alt: c.ck === "amc" ? "#F7F7F5" : "#FFFFFF",
+        links: c.links.map((n, i) => ({
+          n: String(i + 1), role: loc(n.role), ent: loc(n.ent),
+          det: n.devs && devs.length ? devs.join(" · ") + ". " + loc(n.det) : loc(n.det),
+          badge: n.badge ? loc(n.badge) : "", hasBadge: !!n.badge,
+          cls: n.key ? "st-link st-key" : "st-link",
+          bg: n.key ? "#001F42" : "transparent",
+          numBg: n.key ? "#FF8200" : "#FFFFFF",
+          numColor: n.key ? "#FFFFFF" : "#5F6A72",
+          numBorder: n.key ? "#FF8200" : "#D8D4CC",
+          roleColor: n.key ? "#FFB273" : "#B85C00",
+          entColor: n.key ? "#FFFFFF" : "#002E5F",
+          detColor: n.key ? "rgba(255,255,255,0.74)" : "#4D575E",
+          badgeColor: n.key ? "rgba(255,255,255,0.86)" : "#4D575E"
+        }))
+      }));
+      stAnchors = t.structure.anchors;
+      stQuotes = db.eti.products.filter((p) => p.active && p.isin).map((p) => ({
+        name: p.name, isin: p.isin, venue: t.structure.venue,
+        landingUrl: p.landingUrl || "", hasLanding: !!p.landingUrl
+      }));
+      stQuotesLabel = stQuotes.length + " " + t.structure.h5of;
+    }
+
     const universeCards = ["funds", "amc", "eti", "deals"].map((k) => ({
       key: k, label: t.nav[k], desc: t.universe.descs[k],
       bg: bgOf({ funds: P.assetCardFunds, amc: P.assetCardAmc, eti: P.assetCardEti, deals: P.assetCardVc }[k]),
@@ -2917,6 +3137,9 @@ class Component extends DCLogic {
       showHome: view === "home", showCat: isCat, showAdmin: isAdminView,
       showCompare: isCompare,
       cmpFilters, cmpGroups, cmpSoon, cmpEmpty, cmpHasSoon,
+      onCompare: go("compare"), onStructure: go("structure"),
+      showStructure: isStructure,
+      stChains, stAnchors, stQuotes, stQuotesLabel,
       showCtaBand: view !== "admin",
       heroBg: P.assetHero ? 'url("' + P.assetHero + '")' : "none",
       trustItems: t.trust, universeCards, howSteps: t.how.steps, featuredCards,
@@ -3098,6 +3321,38 @@ class Component extends DCLogic {
     .cmp-soon-tag{justify-self:start}
     .cmp-rec dl{grid-template-columns:1fr}
     .cmp-rec .cmp-gate{flex-direction:column}
+  }
+  /* ---- Structure: the chain reads as a stepper on one ruled track, with the
+     Framont stop filled in navy because that is the link we answer for. ---- */
+  .st-chain{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+    margin-top:clamp(30px,3.6vw,44px);border-top:1px solid #D8D4CC}
+  .st-link{display:flex;flex-direction:column;gap:9px;
+    border-right:1px solid #E9E7E2;padding:0 22px 26px 0}
+  .st-link:not(:first-child){padding-left:22px}
+  .st-link:last-child{border-right:none}
+  .st-key{border-right-color:#001F42;padding:0 22px 26px}
+  .st-num{align-self:flex-start;margin-top:-12px;width:24px;height:24px;
+    border:1px solid #D8D4CC;display:grid;place-items:center;
+    font-size:10px;font-weight:600;font-variant-numeric:tabular-nums}
+  .st-role{font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;line-height:1.5}
+  .st-ent{font-size:15px;font-weight:600;line-height:1.36}
+  .st-det{font-size:13px;line-height:1.65}
+  .st-badge{margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:7px;
+    font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+  .st-badge i{width:5px;height:5px;background:#FF8200;flex:none}
+  /* Four anchors sit best as a 2×2; three columns would leave an orphan. */
+  .st-anchors{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));
+    column-gap:clamp(32px,5vw,64px)}
+  .st-anchors>div{padding:26px 0;border-bottom:1px solid rgba(255,255,255,0.12)}
+  .st-quote{display:flex;gap:20px;align-items:baseline;justify-content:space-between;
+    flex-wrap:wrap;padding:18px 0;border-bottom:1px solid #F1EFEA}
+  @media (max-width:900px){
+    .st-chain{grid-template-columns:1fr;border-top:none}
+    .st-link{border-right:none;border-bottom:1px solid #E9E7E2;padding:22px 0}
+    .st-link:not(:first-child){padding-left:0}
+    .st-link:last-child{border-bottom:none}
+    .st-key{padding:22px}
+    .st-num{margin-top:0}
   }
   /* keyboard focus ring (accessibility) */
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{

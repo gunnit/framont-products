@@ -119,23 +119,23 @@
 <script>
 var DICT = {
   en: {
-    planLabel:"Points, four of them live", title:"The improvement plan, most of it already shipped",
-    dek:"Following your approval of 22 July, everything that needed no new product data is online. What needed Framont's figures, or a look at the layout first, is here as a draft.",
-    mLive:"Live", mLiveV:"Points 1, 3, 4 and 6", mDraft:"In draft", mDraftV:"Points 5 and 2", mDate:"Updated",
-    h1t:"What is still in draft", h1of:"Structure, and the glossary for Francesca",
-    s1:"Both are built from the product records already published on the site. Anything not sourced from those is marked in orange as “to be confirmed”.",
+    planLabel:"Points, five of them live", title:"The improvement plan, all but the glossary shipped",
+    dek:"Following your approval of 22 July, everything that needed no new product data is online. The glossary is the last point open, and it is waiting on Francesca's wording.",
+    mLive:"Live", mLiveV:"Points 1, 3, 4, 5 and 6", mDraft:"In draft", mDraftV:"Point 2", mDate:"Updated",
+    h1t:"What is still in draft", h1of:"The glossary for Francesca",
+    s1:"Built from the product records already published on the site. Anything not sourced from those is marked in orange as “to be confirmed”.",
     h2t:"Already live on the site", h2of:"Shipped 23 July and 16 August",
     h3t:"What closes the rest", h3of:"Two days per page once approved",
     stReview:"Your approval", stLive:"Live", stWait:"Content pending", sig:"Niuexa for Framont Group",
     previews:[
-      { n:"5", href:"structure.html", t:"Structure and safeguards",
-        s:"The product chain drawn out for each wrapper: issuer, venue, portfolio manager, post-trade agents, and the licences behind the platform.", st:"review" },
       { n:"2", href:"glossary.html", t:"Glossary, draft for Francesca",
         s:"Thirty-one bilingual definitions covering the vocabulary used across the product pages. Six restate agreed compliance rules and need her exact wording.", st:"wait" }
     ],
     shipped:[
       { n:"1", t:"Product comparison table",
         s:"All eighteen products side by side at access.framontmanagement.com/#/compare — wrapper, strategy, liquidity, currency, costs and eligibility, filtered by category. Reached from a fifth entry in the main navigation, from the footer, and from the top of every category page. It reads the same product records as the cards, so a product edited once updates both. ISIN and minimum follow the same access rules as the cards; the three Deals sit below at teaser level, behind the access code." },
+      { n:"5", t:"Structure and safeguards",
+        s:"The regulated chain behind each wrapper at access.framontmanagement.com/#/structure — investor, venue, issuer, portfolio manager, post-trade — with the Framont link filled in navy, the four licence anchors, and the listed instruments linking to the issuer's product page. Linked from the footer, from the top of every category page and from the comparison table. The strategy developers and the listed instruments are read off the ETI records, so a new instrument arrives on the page by itself." },
       { n:"3", t:"Registration funnel analytics",
         s:"Every step of the gate now reports to GA4 with the product it happened on: locked data seen, lock clicked, registration started, registration completed, gate abandoned. The Deals code gate and call requests are tracked the same way." },
       { n:"4", t:"A smarter registration gate",
@@ -144,30 +144,30 @@ var DICT = {
         s:"A second, quieter route for institutional visitors who would rather talk first: in the registration window and under the main call to action. Requests are routed to Gianluigi Montagner, as agreed." }
     ],
     needs:[
-      { h:"From Francesca", p:"Sign-off on the glossary and on the role labels in the structure module. The eligibility column of the live comparison table repeats the ETI wording already published on the category page — confirmation that this is the phrasing you want kept." },
-      { h:"From Framont", p:"Management fees per fund: the nine funds read “set out in the Fund Rules”, which is accurate but less useful than a figure. The depositary of each fund. The Börse Stuttgart quotation URLs per ISIN." },
-      { h:"From us", p:"The comparison table is now in the site itself, reading the same product records as the cards. The structure module follows the same way once approved." }
+      { h:"From Francesca", p:"Sign-off on the glossary. On the two live pages, the role labels and the eligibility wording repeat phrasing already published on the product and category pages — confirmation that this is what you want kept." },
+      { h:"From Framont", p:"Management fees per fund: the nine funds read “set out in the Fund Rules”, which is accurate but less useful than a figure. The depositary of each fund, so the fund chain can name it rather than describe it. The Börse Stuttgart quotation URLs per ISIN, so the listed instruments can link to the venue as well as to the issuer." },
+      { h:"From us", p:"Both pages are now in the site itself, reading the same product records as the cards. The glossary follows the same way once its wording is settled." }
     ],
     legal:"Internal preview, not published, not linked from the live site and excluded from search engines. All figures are taken from the product records already published on access.framontmanagement.com and from the official KIDs and term sheets. For information purposes only; this is not investment advice, an offer or a solicitation. Capital at risk."
   },
   it: {
-    planLabel:"Punti, quattro già online", title:"Il piano di miglioramento, quasi tutto pubblicato",
-    dek:"Dopo la vostra approvazione del 22 luglio, tutto ciò che non richiedeva nuovi dati di prodotto è online. Ciò che richiedeva i dati di Framont, o prima una verifica del layout, è qui in bozza.",
-    mLive:"Online", mLiveV:"Punti 1, 3, 4 e 6", mDraft:"In bozza", mDraftV:"Punti 5 e 2", mDate:"Aggiornato",
-    h1t:"Cosa resta in bozza", h1of:"La struttura e il glossario per Francesca",
-    s1:"Entrambe sono costruite sulle schede prodotto già pubblicate sul sito. Ciò che non proviene da lì è segnalato in arancione come “da confermare”.",
+    planLabel:"Punti, cinque già online", title:"Il piano di miglioramento, tutto tranne il glossario",
+    dek:"Dopo la vostra approvazione del 22 luglio, tutto ciò che non richiedeva nuovi dati di prodotto è online. Resta aperto il solo glossario, in attesa della formulazione di Francesca.",
+    mLive:"Online", mLiveV:"Punti 1, 3, 4, 5 e 6", mDraft:"In bozza", mDraftV:"Punto 2", mDate:"Aggiornato",
+    h1t:"Cosa resta in bozza", h1of:"Il glossario per Francesca",
+    s1:"Costruito sulle schede prodotto già pubblicate sul sito. Ciò che non proviene da lì è segnalato in arancione come “da confermare”.",
     h2t:"Già online sul sito", h2of:"Pubblicato il 23 luglio e il 16 agosto",
     h3t:"Cosa serve per chiudere il resto", h3of:"Due giornate a pagina, una volta approvate",
     stReview:"Vostra approvazione", stLive:"Online", stWait:"Contenuti attesi", sig:"Niuexa per Framont Group",
     previews:[
-      { n:"5", href:"structure.html", t:"Struttura e presidi",
-        s:"La catena del prodotto disegnata per ciascun involucro: emittente, sede di negoziazione, gestore di portafoglio, agenti post-trade e le licenze dietro la piattaforma.", st:"review" },
       { n:"2", href:"glossary.html", t:"Glossario, bozza per Francesca",
         s:"Trentuno definizioni bilingui sul vocabolario usato nelle pagine prodotto. Sei riprendono regole di compliance già concordate e richiedono la sua formulazione esatta.", st:"wait" }
     ],
     shipped:[
       { n:"1", t:"Tabella comparativa dei prodotti",
         s:"Tutti i diciotto prodotti affiancati su access.framontmanagement.com/#/confronto — struttura, strategia, liquidità, valuta, costi e idoneità, con filtro per categoria. Raggiungibile da una quinta voce nella navigazione principale, dal footer e dalla cima di ogni pagina di categoria. Legge le stesse schede prodotto delle card: un prodotto modificato una volta aggiorna entrambe. ISIN e minimo seguono le stesse regole di accesso delle card; i tre Deals restano sotto a livello teaser, dietro il codice di accesso." },
+      { n:"5", t:"Struttura e presidi",
+        s:"La catena regolamentata dietro ciascun involucro su access.framontmanagement.com/#/struttura — investitore, sede di negoziazione, emittente, gestore di portafoglio, post-trade — con la tappa Framont in blu, i quattro riferimenti di licenza e gli strumenti quotati che rimandano alla pagina prodotto dell'emittente. Collegata dal footer, dalla cima di ogni pagina di categoria e dalla tabella comparativa. Gli sviluppatori delle strategie e gli strumenti quotati sono letti dalle schede ETI: un nuovo strumento arriva sulla pagina da solo." },
       { n:"3", t:"Analytics sul funnel di registrazione",
         s:"Ogni passaggio del gate arriva ora su GA4 con il prodotto su cui è avvenuto: dati bloccati visualizzati, lucchetto cliccato, registrazione iniziata, registrazione completata, gate abbandonato. Il gate del codice Deals e le richieste di chiamata sono tracciati allo stesso modo." },
       { n:"4", t:"Un gate di registrazione più intelligente",
@@ -176,9 +176,9 @@ var DICT = {
         s:"Una seconda via, più discreta, per i visitatori istituzionali che preferiscono prima parlare: nella finestra di registrazione e sotto la call to action principale. Le richieste sono indirizzate a Gianluigi Montagner, come concordato." }
     ],
     needs:[
-      { h:"Da Francesca", p:"Approvazione del glossario e delle etichette di ruolo nel modulo struttura. La colonna idoneità della tabella comparativa online riprende la formula ETI già pubblicata sulla pagina di categoria: serve conferma che sia la dicitura da mantenere." },
-      { h:"Da Framont", p:"Commissioni di gestione per singolo fondo: i nove fondi riportano “indicati nel Regolamento di Gestione”, corretto ma meno utile di un dato. Il depositario di ciascun fondo. Gli URL delle pagine di quotazione su Börse Stuttgart per ISIN." },
-      { h:"Da parte nostra", p:"La tabella comparativa è ora nel sito, e legge le stesse schede prodotto delle card. Il modulo struttura seguirà nello stesso modo una volta approvato." }
+      { h:"Da Francesca", p:"Approvazione del glossario. Sulle due pagine online, etichette di ruolo e formule di idoneità riprendono diciture già pubblicate sulle pagine prodotto e di categoria: serve conferma che siano quelle da mantenere." },
+      { h:"Da Framont", p:"Commissioni di gestione per singolo fondo: i nove fondi riportano “indicati nel Regolamento di Gestione”, corretto ma meno utile di un dato. Il depositario di ciascun fondo, perché la catena possa indicarlo invece di descriverlo. Gli URL delle pagine di quotazione su Börse Stuttgart per ISIN, per collegare gli strumenti quotati anche alla sede di negoziazione." },
+      { h:"Da parte nostra", p:"Entrambe le pagine sono ora nel sito e leggono le stesse schede prodotto delle card. Il glossario seguirà nello stesso modo una volta definita la formulazione." }
     ],
     legal:"Anteprima interna, non pubblicata, non collegata dal sito online ed esclusa dai motori di ricerca. Tutti i dati provengono dalle schede prodotto già pubblicate su access.framontmanagement.com e dai KID e term sheet ufficiali. A solo scopo informativo; non costituisce consulenza d'investimento, offerta o sollecitazione. Capitale a rischio."
   }
