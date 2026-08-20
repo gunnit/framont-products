@@ -34,6 +34,12 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [IVN Global ETI](https://ivncapital.com/): exchange traded instrument, ISIN DE000AMC0DX6, actively managed global long/short strategy across equities, currencies, commodities and digital assets
 - [Noctiluca Capital AMC](https://access.framontmanagement.com/assets/termsheets/framont-noctiluca-amc-termsheet.pdf): actively managed certificate, ISIN CH1554882477, for professional investors — official term sheet (PDF)
 
+## Compare, structure and vocabulary
+
+- [Product comparison](https://access.framontmanagement.com/compare/): every product open to subscription side by side — wrapper and structure, strategy, liquidity, currency, costs and eligibility, filtered by funds, AMCs and ETIs. Italian: [Confronto prodotti](https://access.framontmanagement.com/it/confronto/)
+- [Structure and safeguards](https://access.framontmanagement.com/structure/): the regulated chain behind each wrapper — investor, venue, issuer, portfolio manager, post-trade agents — and the licences behind the platform. Italian: [Struttura e presidi](https://access.framontmanagement.com/it/struttura/)
+- [Glossary](https://access.framontmanagement.com/glossary/): thirty-two plain-language definitions of the vocabulary used across the product pages — ETI, AMC, reserved and Notified AIF, AIFM, depositary, paying agent, management and performance fee, high-water mark, ongoing costs, backtest, investor classifications, KID, prospectus, Fund Rules, ISIN, issuer risk, private placement. Italian: [Glossario](https://access.framontmanagement.com/it/glossario/)
+
 ## Guides (English)
 
 - [What Is an Exchange Traded Instrument (ETI)?](https://access.framontmanagement.com/articles/what-is-an-eti.html): how ETIs are issued and collateralised, how they differ from ETFs, AMCs and funds, and how to buy one
