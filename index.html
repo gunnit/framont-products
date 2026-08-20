@@ -269,6 +269,14 @@
       "provider": { "@id": "https://access.framontmanagement.com/#org" }
     },
     {
+      "@type": "FinancialProduct",
+      "name": "Zalphyx Yield Strategies CLN",
+      "identifier": "CH1518693374",
+      "category": "Credit-Linked Note",
+      "url": "https://access.framontmanagement.com/assets/termsheets/framont-zalphyx-cln-termsheet.pdf",
+      "provider": { "@id": "https://access.framontmanagement.com/#org" }
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://access.framontmanagement.com/#faq",
       "inLanguage": "en",
@@ -388,11 +396,12 @@
     <li><a href="https://ivncapital.com/">IVN Global ETI</a> — ISIN DE000AMC0DX6, actively managed global long/short strategy</li>
     <li><a href="/assets/termsheets/framont-noctiluca-amc-termsheet.pdf">Noctiluca Capital AMC</a> — ISIN CH1554882477 (professional investors)</li>
     <li>Framont Global Total Return AMC — actively managed certificate on the Framont Global Total Return Index (FRGLBOPP), issued by Leonteq and listed on Borsa Italiana (retail, PRIIPs KID)</li>
+    <li><a href="/assets/termsheets/framont-zalphyx-cln-termsheet.pdf">Zalphyx Yield Strategies CLN</a> — ISIN CH1518693374, 6% p.a. credit-linked note (professional and qualified investors)</li>
   </ul>
   <h2>Comparing the products</h2>
   <p>A single comparison view sets every product open to subscription side by side — wrapper and structure, strategy, liquidity, currency, costs and eligibility — grouped by funds, AMCs and ETIs, and filterable by category: <a href="/compare/">Product comparison</a> (<a href="/it/confronto/">Italian</a>). Reserved private market opportunities are listed below the table at teaser level and are released by access code after eligibility verification.</p>
   <h2>Who issues these products, and who manages them</h2>
-  <p>Each wrapper sits inside its own regulated chain, set out stop by stop at <a href="/structure/">Structure and safeguards</a> (<a href="/it/struttura/">Italian</a>). The exchange traded instruments are issued by iMaps ETI AG (Liechtenstein) and listed on Börse Stuttgart; Noctiluca Capital is issued through a protected cell of Expand2 Issuer PCC Limited (Guernsey) on the GenTwo platform, with InCore Bank AG as paying agent and custody and brokerage via TradeStation Europe B.V.; the nine funds are Italian reserved AIFs and Malta-domiciled Notified AIFs. In every case portfolio management is performed by Framont &amp; Partners Management Ltd, an AIFM authorised by the MFSA, while strategy developers provide the underlying strategy only.</p>
+  <p>Each wrapper sits inside its own regulated chain, set out stop by stop at <a href="/structure/">Structure and safeguards</a> (<a href="/it/struttura/">Italian</a>). The exchange traded instruments are issued by iMaps ETI AG (Liechtenstein) and listed on Börse Stuttgart; Noctiluca Capital and Zalphyx Yield Strategies are issued through protected cells on the GenTwo platform — of Expand2 Issuer PCC Limited and Expand3 Issuer PCC Limited (Guernsey) respectively — with InCore Bank AG as paying agent, and custody and brokerage for Noctiluca Capital via TradeStation Europe B.V.; the nine funds are Italian reserved AIFs and Malta-domiciled Notified AIFs. In every case portfolio management is performed by Framont &amp; Partners Management Ltd, an AIFM authorised by the MFSA, while strategy developers provide the underlying strategy only.</p>
   <h2>Glossary</h2>
   <p>The vocabulary used across these pages — ETI, AMC, reserved and Notified AIF, protected cell, AIFM, depositary, paying agent, management and performance fee, high-water mark, ongoing costs, backtest, professional, qualified, eligible and retail investor, Key Information Document, prospectus and final terms, Fund Rules, ISIN, issuer risk, private placement — is defined in plain language at <a href="/glossary/">Glossary</a> (<a href="/it/glossario/">Italian</a>). Those definitions are a guide and do not replace the documentation of any product.</p>
   <h2>Frequently asked questions</h2>
@@ -1873,7 +1882,7 @@ class Component extends DCLogic {
         h1t: "A listed security with a segregated strategy",
         s1: "The exchange traded instruments are issued by iMaps ETI AG and bought like any other listed security, through the investor's own bank or broker.",
         h2t: "A certificate issued through a protected cell",
-        s2: "Noctiluca Capital is issued through a protected cell on the GenTwo platform. The cell is ring-fenced from every other cell of the issuer, and post-trade sits with regulated agents.",
+        s2: "Noctiluca Capital and Zalphyx Yield Strategies are issued through protected cells on the GenTwo platform. Each cell is ring-fenced from the others, and post-trade sits with regulated agents.",
         h3t: "A fund managed under the AIFMD",
         s3: "Nine funds: six Italian reserved AIFs and three Malta-domiciled Notified AIFs, with Framont & Partners Management Ltd as the appointed management company and AIFM.",
         h4t: "The licences behind the platform", h4of: "Four anchors",
@@ -1948,7 +1957,7 @@ class Component extends DCLogic {
         h1t: "Un titolo quotato con una strategia segregata",
         s1: "Gli exchange traded instrument sono emessi da iMaps ETI AG e si acquistano come qualsiasi altro titolo quotato, tramite la banca o il broker dell'investitore.",
         h2t: "Un certificato emesso tramite una cella protetta",
-        s2: "Noctiluca Capital è emesso tramite una cella protetta sulla piattaforma GenTwo. La cella è separata da ogni altra cella dell'emittente e il post-trade è affidato ad agenti regolamentati.",
+        s2: "Noctiluca Capital e Zalphyx Yield Strategies sono emessi tramite celle protette sulla piattaforma GenTwo. Ogni cella è separata dalle altre e il post-trade è affidato ad agenti regolamentati.",
         h3t: "Un fondo gestito ai sensi della AIFMD",
         s3: "Nove fondi: sei FIA riservati italiani e tre AIF Notificati domiciliati a Malta, con Framont & Partners Management Ltd come società di gestione e AIFM designato.",
         h4t: "Le licenze dietro la piattaforma", h4of: "Quattro riferimenti",
@@ -2253,7 +2262,34 @@ class Component extends DCLogic {
             { label: { en: "Eligibility", it: "Idoneità" }, value: { en: "Retail investors — PRIIPs KID", it: "Investitori retail — KID PRIIPs" } },
             { label: { en: "Documentation", it: "Documentazione" }, value: { en: "PRIIPs KID and certificate ISIN on request", it: "KID PRIIPs e ISIN del certificato su richiesta" } }
           ],
-          description: { en: "Framont Global Total Return is an actively managed certificate (AMC) issued by Leonteq Securities AG and listed on Borsa Italiana, tracking the Framont Global Total Return Index (ticker FRGLBOPP), calculated by Solactive AG. The EUR-denominated index follows a net-total-return, multi-asset strategy that can hold equities, ETFs and cash, with dividends reinvested, and reflects an actively managed strategy advised by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is available to retail investors and is accompanied by a PRIIPs Key Information Document; the tradeable ISIN and minimum are set out in that documentation, available on request. Certificates are debt securities of the issuer and carry issuer risk. Read the KID before any investment decision. Capital at risk.", it: "Framont Global Total Return è un certificato a gestione attiva (AMC) emesso da Leonteq Securities AG e quotato su Borsa Italiana, che replica l'indice Framont Global Total Return (ticker FRGLBOPP), calcolato da Solactive AG. L'indice, denominato in EUR, segue una strategia multi-asset net total return che può detenere azioni, ETF e liquidità, con reinvestimento dei dividendi, e riflette una strategia a gestione attiva su indicazione di Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è disponibile per gli investitori retail ed è accompagnato da un Documento contenente le Informazioni Chiave (KID PRIIPs); l'ISIN negoziabile e il minimo sono indicati in tale documentazione, disponibile su richiesta. I certificati sono titoli di debito dell'emittente e comportano rischio emittente. Leggere il KID prima di ogni decisione d'investimento. Capitale a rischio." } }
+          description: { en: "Framont Global Total Return is an actively managed certificate (AMC) issued by Leonteq Securities AG and listed on Borsa Italiana, tracking the Framont Global Total Return Index (ticker FRGLBOPP), calculated by Solactive AG. The EUR-denominated index follows a net-total-return, multi-asset strategy that can hold equities, ETFs and cash, with dividends reinvested, and reflects an actively managed strategy advised by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is available to retail investors and is accompanied by a PRIIPs Key Information Document; the tradeable ISIN and minimum are set out in that documentation, available on request. Certificates are debt securities of the issuer and carry issuer risk. Read the KID before any investment decision. Capital at risk.", it: "Framont Global Total Return è un certificato a gestione attiva (AMC) emesso da Leonteq Securities AG e quotato su Borsa Italiana, che replica l'indice Framont Global Total Return (ticker FRGLBOPP), calcolato da Solactive AG. L'indice, denominato in EUR, segue una strategia multi-asset net total return che può detenere azioni, ETF e liquidità, con reinvestimento dei dividendi, e riflette una strategia a gestione attiva su indicazione di Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è disponibile per gli investitori retail ed è accompagnato da un Documento contenente le Informazioni Chiave (KID PRIIPs); l'ISIN negoziabile e il minimo sono indicati in tale documentazione, disponibile su richiesta. I certificati sono titoli di debito dell'emittente e comportano rischio emittente. Leggere il KID prima di ogni decisione d'investimento. Capitale a rischio." } },
+        { id: "amc-zalphyx", name: "Zalphyx Yield Strategies", isin: "CH1518693374", assetClass: "Private Credit", currency: "EUR", minSub: 10000, minLabel: "€10,000", open: false, active: true,
+          subscribeUrl: "",
+          termsheetUrl: "assets/termsheets/framont-zalphyx-cln-termsheet.pdf",
+          cmp: { wrapper: { en: "Credit-linked note, unlisted, private placement", it: "Credit-linked note, non quotata, private placement" },
+            short: { en: "First-rank USD mortgages, Dominican Republic, maximum 50% LTV", it: "Ipoteche USD di primo grado, Repubblica Dominicana, LTV massimo 50%" },
+            liquidity: { en: "Hold to maturity, 6 August 2029, subject to early redemption", it: "Detenzione fino a scadenza, 6 agosto 2029, salvo rimborso anticipato" },
+            ccy: { en: "EUR · EUR 1,000 per note", it: "EUR · EUR 1.000 per nota" },
+            costs: { en: "6% p.a. coupon, paid semi-annually", it: "Cedola 6% annuo, pagata semestralmente" },
+            elig: { en: "Professional and qualified investors only. In subscription until 28 July 2026", it: "Solo investitori professionali e qualificati. In sottoscrizione fino al 28 luglio 2026" },
+            meta: { en: "Expand3 Issuer PCC (Guernsey) · GenTwo", it: "Expand3 Issuer PCC (Guernsey) · GenTwo" } },
+          strategy: { en: "In subscription until 28 July 2026 — a 6% p.a. credit-linked note funding first-rank USD mortgage lending in the Dominican Republic, with semi-annual coupons and maturity in August 2029.", it: "In sottoscrizione fino al 28 luglio 2026 — credit-linked note al 6% annuo che finanzia prestiti ipotecari USD di primo grado nella Repubblica Dominicana, con cedole semestrali e scadenza ad agosto 2029." },
+          metricLabel: { en: "Eligibility", it: "Idoneità" },
+          metricValue: { en: "Professional / qualified investors", it: "Investitori professionali / qualificati" },
+          facts: [
+            { label: { en: "Status", it: "Stato" }, value: { en: "In subscription — closes 28 July 2026", it: "In sottoscrizione — chiusura 28 luglio 2026" } },
+            { label: { en: "Coupon", it: "Cedola" }, value: { en: "6% p.a., paid semi-annually", it: "6% annuo, pagata semestralmente" } },
+            { label: { en: "Maturity", it: "Scadenza" }, value: { en: "6 August 2029", it: "6 agosto 2029" } },
+            { label: { en: "Issuer", it: "Emittente" }, value: { en: "Expand3 Issuer PCC Limited (Guernsey) — protected cell", it: "Expand3 Issuer PCC Limited (Guernsey) — cella protetta" } },
+            { label: { en: "Structure", it: "Struttura" }, value: { en: "Credit-linked note on GenTwo — unlisted, private placement", it: "Credit-linked note su GenTwo — non quotato, private placement" } },
+            { label: { en: "Geography", it: "Geografia" }, value: { en: "Dominican Republic", it: "Repubblica Dominicana" } },
+            { label: { en: "Sector", it: "Settore" }, value: { en: "Private credit — mortgage lending", it: "Private credit — prestito ipotecario" } },
+            { label: { en: "Collateral", it: "Collaterale" }, value: { en: "First-rank registered mortgages, max 50% LTV", it: "Ipoteche registrate di primo grado, LTV max 50%" } },
+            { label: { en: "Currency", it: "Valuta" }, value: { en: "EUR · EUR 1,000 per note", it: "EUR · EUR 1.000 per nota" } },
+            { label: { en: "Minimum Investment", it: "Investimento Minimo" }, value: { en: "€10,000 (10 notes)", it: "€10.000 (10 note)" } },
+            { label: { en: "Eligibility", it: "Idoneità" }, value: { en: "Professional & qualified investors only", it: "Solo investitori professionali e qualificati" } }
+          ],
+          description: { en: "A private credit opportunity structured as a 6% p.a. credit-linked note (CLN) issued through a protected cell of Expand3 Issuer PCC Limited on the GenTwo securitisation platform (ISIN CH1518693374), with InCore Bank AG as paying agent. The note funds a private loan to Zalphyx Giant Capital LLC, which originates first-rank, USD-denominated mortgage loans in the Dominican Republic with a maximum loan-to-value of 50% and geographic concentration caps across Santo Domingo, Cap Cana, Punta Cana and Las Terrenas. The note is EUR-denominated (EUR 1,000 per note, minimum 10 notes), pays its coupon semi-annually and matures on 6 August 2029, subject to early redemption. Subscription closes on 28 July 2026. Unlisted and offered by private placement, reserved for professional and qualified investors. Investors bear the credit risk of the underlying loan and of the issuer; coupons and redemption depend on the loan being repaid. Capital at risk.", it: "Un'opportunità di private credit strutturata come credit-linked note (CLN) al 6% annuo, emessa tramite una cella protetta di Expand3 Issuer PCC Limited sulla piattaforma di cartolarizzazione GenTwo (ISIN CH1518693374), con InCore Bank AG come paying agent. La nota finanzia un prestito privato a Zalphyx Giant Capital LLC, che origina prestiti ipotecari di primo grado denominati in USD nella Repubblica Dominicana, con loan-to-value massimo del 50% e limiti di concentrazione geografica tra Santo Domingo, Cap Cana, Punta Cana e Las Terrenas. La nota è denominata in EUR (EUR 1.000 per nota, minimo 10 note), paga la cedola semestralmente e scade il 6 agosto 2029, salvo rimborso anticipato. La sottoscrizione chiude il 28 luglio 2026. Non quotata e offerta in private placement, riservata a investitori professionali e qualificati. Gli investitori sopportano il rischio di credito del prestito sottostante e dell'emittente; cedole e rimborso dipendono dal rimborso del prestito. Capitale a rischio." } }
       ]
     },
     eti: {
