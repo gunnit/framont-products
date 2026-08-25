@@ -49,10 +49,11 @@
       "description": "What backtested performance can and cannot tell you, why simulated and personal-account results differ from an instrument's returns, how high-water-mark fees work, and a seven-question due-diligence checklist.",
       "image": "https://access.framontmanagement.com/assets/cat-funds.jpg",
       "datePublished": "2026-07-04",
-      "dateModified": "2026-07-04",
+      "dateModified": "2026-08-25",
       "inLanguage": "en",
       "mainEntityOfPage": "https://access.framontmanagement.com/articles/how-to-evaluate-systematic-strategies.html",
       "author": { "@type": "Organization", "name": "Framont Access", "url": "https://access.framontmanagement.com/" },
+      "reviewedBy": { "@type": "Person", "name": "Gianluigi Montagner", "jobTitle": "CEO and Founder \u2013 Chief Executive Officer", "worksFor": { "@type": "Organization", "name": "Framont & Partners Management" } },
       "publisher": {
         "@type": "Organization",
         "name": "Framont & Partners Management Ltd",
@@ -125,6 +126,17 @@
   <a href="../">Home</a><span class="sep">/</span><a href="./">Insights</a><span class="sep">/</span><span class="here">Evaluating systematic strategies</span>
 </nav>
 
+<div class="byline">
+  <div class="byline-in">
+    <div class="byline-grid">
+      <div><span class="b-label">Written by</span><span class="b-value">Framont Access editorial team</span></div>
+      <div><span class="b-label">Reviewed by</span><span class="b-value">Gianluigi Montagner<span class="b-role">CEO and Founder &ndash; Chief Executive Officer, Framont &amp; Partners Management</span></span></div>
+      <div><span class="b-label">Last reviewed</span><span class="b-value"><time data-review-date datetime="2026-08-25">25 August 2026</time></span></div>
+    </div>
+    <p class="byline-note">Reviewed for regulatory and structural accuracy. The reviewer validates the content; he is not its author. Framont &amp; Partners Management acts as portfolio manager to several of the instruments used as examples and earns fees from them &mdash; those passages are labelled <span class="scope" data-scope="framont">Framont example</span>. <a href="/editorial-policy/">Editorial and review policy</a></p>
+  </div>
+</div>
+
 <main class="article">
   <div class="answer">
     <div class="answer-label">In two sentences</div>
@@ -135,14 +147,46 @@
 
   <h2>What a backtest is, and what it is not</h2>
   <p>A backtest applies a set of trading rules to historical data and reports what would have happened. Done rigorously, it is a legitimate research tool: it shows how a model behaves across regimes, drawdowns and crises that no live track record is long enough to contain.</p>
-  <p>What it is not is a promise. Backtested figures are simulated: they do not represent actual trading, and regulators require them to be labelled as not a reliable indicator of future results. Four failure modes account for most of the gap between simulation and reality:</p>
+  <p><span class="scope" data-scope="general">General rule</span> What it is not is a promise. Backtested figures are simulated: they do not represent actual trading. <span class="claim" data-source-id="eu-mifid2-org-565-2017">Where a firm shows simulated past performance in a marketing communication, EU rules require it to be based on actual past data for the instrument or index concerned, to cover a full period of at least five years or the instrument's whole life, and to carry a prominent warning that the figures refer to simulated past performance and are not a reliable indicator of future performance<a class="cite" href="https://eur-lex.europa.eu/eli/reg_del/2017/565/oj/eng" rel="noopener" target="_blank" aria-label="Source: EUR-Lex &mdash; Commission Delegated Regulation (EU) 2017/565, Article 44 — fair, clear and not misleading information, past performance and simulated past performance">EUR-Lex</a></span>. Four failure modes account for most of the gap between simulation and reality: Four failure modes account for most of the gap between simulation and reality:</p>
   <ul>
     <li><strong>Overfitting.</strong> Rules tuned until they fit historical noise perform beautifully on the past and poorly on the future. The more parameters a strategy has, and the more times it was revised to improve the backtest, the higher the risk.</li>
     <li><strong>Survivorship bias.</strong> Testing on today's index members quietly excludes the companies that failed, inflating returns.</li>
     <li><strong>Look-ahead bias.</strong> Using information (prices, fundamentals, revisions) that was not actually available at the simulated decision time.</li>
     <li><strong>Frictionless execution.</strong> Simulations often assume perfect fills. Live trading pays spreads, slippage and fees on every trade.</li>
   </ul>
-  <p>The scale of the problem is documented: when the Quantopian platform compared hundreds of crowdsourced strategies' backtests against their subsequent live results, the correlation between backtested and live risk-adjusted performance was close to zero. That does not make every backtest worthless; it makes the quality of the testing process, out-of-sample validation, walk-forward testing, realistic costs, the thing to interrogate.</p>
+  <p>The scale of the problem has been measured rather than asserted. <span class="claim" data-source-id="wiecki-2016-backtest-oos" data-as-of="2016-03-09">A study of 888 algorithmic strategies developed on the Quantopian platform, each with at least six months of out-of-sample performance, found that the backtest Sharpe ratio explained less than 2.5 per cent of the variation in out-of-sample Sharpe, and that the more a strategy had been backtested, the wider the gap between its simulated and its subsequent results<a class="cite" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2745220" rel="noopener" target="_blank" aria-label="Source: SSRN / The Journal of Investing &mdash; Wiecki, Campbell, Lent & Stauth, 'All That Glitters Is Not Gold: Comparing Backtest and Out-of-Sample Performance on a Large Cohort of Trading Algorithms', The Journal of Investing 25(3), 2016">SSRN</a></span>. Two qualifications belong with that number, and are usually dropped when it is quoted: the cohort was crowdsourced retail-developed strategies on a single platform, not institutional managers, and the same study found that other backtest features &mdash; volatility, maximum drawdown, whether the portfolio was hedged &mdash; did carry predictive signal. The finding is not that backtesting is worthless. It is that the headline risk-adjusted number is the least informative thing in a backtest, and the testing process behind it is what deserves the interrogation.</p>
+
+  <h2>Four levels of performance evidence</h2>
+  <p>Before comparing two numbers, establish that they are the same kind of number. These four tiers are ordered by how
+    hard the evidence is to manufacture, strongest first:</p>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead>
+        <tr><th scope="col">Tier</th><th scope="col">What it is</th><th scope="col">What makes it checkable</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Audited live record</td><td>The instrument's own realised performance, examined by an auditor</td><td>Auditor named, period stated, net of all fees; the strongest evidence available</td></tr>
+        <tr><td>Observable live record</td><td>Prices an independent third party published as they happened &mdash; an exchange, an administrator, a data vendor</td><td>Reproducible by anyone with the ISIN; no reliance on the manager's own reporting</td></tr>
+        <tr><td>Personal-account record</td><td>The developer's own trading, on their own account</td><td>Real money, but different size, costs, constraints and risk settings; not the instrument's performance</td></tr>
+        <tr><td>Simulation / backtest</td><td>How rules would have behaved on historical data</td><td>Weakest tier; only as good as the disclosed methodology, and exposed to the four biases above</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="srcnote"><strong>Note</strong> The tiers are an editorial framework, not a regulatory classification. The
+    labelling obligations that attach to simulated figures are set out in
+    <span class="claim" data-source-id="eu-mifid2-org-565-2017">Commission Delegated Regulation (EU) 2017/565, Article 44<a class="cite" href="https://eur-lex.europa.eu/eli/reg_del/2017/565/oj/eng" rel="noopener" target="_blank" aria-label="Source: EUR-Lex &mdash; Commission Delegated Regulation (EU) 2017/565, Article 44 — fair, clear and not misleading information, past performance and simulated past performance">EUR-Lex</a></span>.</p>
+
+  <h2>Six things a performance figure must tell you</h2>
+  <p>Whatever tier it sits in, a figure you cannot place is a figure you cannot use. For every number in a presentation,
+    establish:</p>
+  <ul>
+    <li><strong>The observation window</strong> &mdash; exact start and end dates, not "since inception" or "last 5 years".</li>
+    <li><strong>Live or simulated</strong> &mdash; and, if the series switches partway, the exact date it switches.</li>
+    <li><strong>Gross or net</strong> &mdash; and net of which fees: management, performance, custody, issuance, all of them?</li>
+    <li><strong>Trading-cost assumptions</strong> &mdash; what spread, slippage and commission a simulation charged itself.</li>
+    <li><strong>Whose account</strong> &mdash; the instrument, a model portfolio, or a person's own trading.</li>
+    <li><strong>Who published the underlying data</strong> &mdash; an independent source, or the manager. If no independent source exists, that should be disclosed rather than left to inference.</li>
+  </ul>
 
   <h2>Three kinds of track record, three levels of evidence</h2>
   <div class="tablewrap">
@@ -157,7 +201,7 @@
       </tbody>
     </table>
   </div>
-  <p>Serious product documentation keeps these categories separate and labels them. On Framont Access, for example, HERAKLIT's long-horizon figures are explicitly marked as backtested simulations, and the LC Invest strategy's 2025 result is explicitly attributed to the strategy developer's personal trading account rather than to the ETI. When a presentation blurs these lines, treat it as a finding in itself.</p>
+  <p>Serious product documentation keeps these categories separate and labels them. <span class="scope" data-scope="framont">Framont example</span> On Framont Access, HERAKLIT's long-horizon figures are explicitly marked as backtested simulations, and the LC Invest strategy's 2025 result is explicitly attributed to the strategy developer's personal trading account rather than to the ETI &mdash; a personal-account record in the table above, not the instrument's performance. For the instrument's own history, <span class="claim" data-source-id="imaps-eti-heraklit">the issuer publishes the product record, including ISIN and currency, on its own site<a class="cite" href="https://imaps-capital.com/eti-details/?isin=DE000AMC0D44" rel="noopener" target="_blank" aria-label="Source: iMaps ETI AG (issuer) &mdash; iMaps ETI AG — HERAKLIT Strategy ETI product record (ISIN DE000AMC0D44)">iMaps</a></span>, which is the independently observable series rather than a manager-reported one. Neither figure is audited, and this page does not claim otherwise. When a presentation blurs these lines, treat it as a finding in itself.</p>
 
   <h2>Fee mechanics: reading the cost of the wrapper</h2>
   <p>Strategy products typically charge a <strong>management fee</strong> (accrued daily in the instrument's price) plus a <strong>performance fee</strong> on gains. Two details determine whether a performance fee is fair:</p>

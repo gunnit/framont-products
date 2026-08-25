@@ -49,6 +49,9 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [How to Read a PRIIPs KID Before You Invest](https://access.framontmanagement.com/articles/how-to-read-a-priips-kid.html): what the 1–7 risk indicator measures, why performance scenarios are not forecasts, and how to read the costs table
 - [What Is an Alternative Investment Fund (AIF)?](https://access.framontmanagement.com/articles/what-is-an-alternative-investment-fund.html): how AIFs differ from UCITS, reserved and Notified AIFs, eligibility, liquidity and documents
 - [What Is Private Credit? A Plain-Language Guide](https://access.framontmanagement.com/articles/private-credit-explained.html): direct lending, distressed credit and credit-linked notes — returns, risks and access
+- [AIF, AMC or ETI: which wrapper fits your strategy](https://access.framontmanagement.com/articles/choose-aif-amc-or-eti.html)
+- [Launching below EUR 20m: the routes that actually work](https://access.framontmanagement.com/articles/launch-investment-vehicle-under-20m.html)
+- [Malta: AIFM setup, notification and distribution](https://access.framontmanagement.com/articles/malta-aifm-setup-notification-distribution.html)
 - [Insights hub](https://access.framontmanagement.com/articles/)
 
 ## Guide (Italiano)
@@ -59,7 +62,17 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [Come leggere un KID PRIIPs prima di investire](https://access.framontmanagement.com/articles/it/come-leggere-un-kid-priips.html)
 - [Cos'è un FIA (Fondo di Investimento Alternativo)?](https://access.framontmanagement.com/articles/it/cos-e-un-fia.html)
 - [Cos'è il credito privato? Guida in linguaggio chiaro](https://access.framontmanagement.com/articles/it/credito-privato-spiegato.html)
+- [FIA, AMC o ETI: quale involucro si adatta alla tua strategia](https://access.framontmanagement.com/articles/it/scegliere-aif-amc-o-eti.html)
+- [Lanciare sotto i 20 milioni: le vie che funzionano davvero](https://access.framontmanagement.com/articles/it/lanciare-veicolo-investimento-sotto-20m.html)
+- [Malta: AIFM, notifica e distribuzione](https://access.framontmanagement.com/articles/it/aifm-malta-setup-notifica-distribuzione.html)
 - [Hub Insights in italiano](https://access.framontmanagement.com/articles/it/)
+
+## Editorial standards
+
+Articles are written by the Framont Access editorial team and reviewed for regulatory and structural accuracy by Gianluigi Montagner, CEO and Founder – Chief Executive Officer, Framont & Partners Management. Every material legal, numeric, licence, listing or product-structure claim is tied to a named primary source with a stated date, and claims that hold only in one jurisdiction or only for one Framont product are labelled as such on the page.
+
+- [Editorial and review policy](https://access.framontmanagement.com/editorial-policy/)
+- [Politica editoriale e di revisione](https://access.framontmanagement.com/it/politica-editoriale/)
 
 ## Legal
 

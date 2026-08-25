@@ -524,7 +524,7 @@
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,31,66,0.55), rgba(0,31,66,0.85));"></div>
       <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 40px; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
         <div style="font-size:12px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:#FF8200; margin-bottom:26px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .1s backwards;">{{ t.hero.eyebrow }}</div>
-        <div role="heading" aria-level="1" style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(40px,6vw,72px); line-height:1.08; color:#FFFFFF; margin:0 0 24px; max-width:780px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .22s backwards;">{{ t.hero.t1 }} <span style="color:#FF8200;">{{ t.hero.t2 }}</span></div>
+        <h1 style="font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(40px,6vw,72px); line-height:1.08; color:#FFFFFF; margin:0 0 24px; max-width:780px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .22s backwards;">{{ t.hero.t1 }} <span style="color:#FF8200;">{{ t.hero.t2 }}</span></h1>
         <p style="font-size:clamp(15px,1.7vw,18px); font-weight:300; color:rgba(255,255,255,0.72); line-height:1.7; margin:0 0 44px; max-width:560px; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .34s backwards;">{{ t.hero.subtitle }}</p>
         <div style="display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) .46s backwards;">
           <button onclick="{{ onExplore }}" style="background:#FF8200; border:1px solid #FF8200; color:#FFFFFF; padding:16px 36px; font-family:'Work Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease, transform .2s ease;" style-hover="background:#E97500; transform:translateY(-1px);">{{ t.hero.learnMore }}</button>
@@ -1675,8 +1675,8 @@ class Component extends DCLogic {
       { role: { en: "Investor", it: "Investitore" }, ent: { en: "Your bank or broker", it: "La tua banca o il tuo broker" },
         det: { en: "Buy order placed by ISIN, settlement T+2, from €1,000", it: "Ordine di acquisto per ISIN, regolamento T+2, da €1.000" } },
       { role: { en: "Venue", it: "Sede di negoziazione" }, ent: "Börse Stuttgart",
-        det: { en: "Daily trading during market hours", it: "Negoziazione giornaliera durante l'orario di mercato" },
-        badge: { en: "Regulated market", it: "Mercato regolamentato" } },
+        det: { en: "Daily trading during market hours, on the Regulated Unofficial Market (Freiverkehr)", it: "Negoziazione giornaliera durante l'orario di mercato, sul Regulated Unofficial Market (Freiverkehr)" },
+        badge: { en: "Open market segment", it: "Segmento di mercato aperto" } },
       { role: { en: "Issuer and market maker", it: "Emittente e market maker" }, ent: "iMaps ETI AG",
         det: { en: "Liechtenstein. Issue price EUR 100, segregated portfolio per instrument", it: "Liechtenstein. Prezzo di emissione EUR 100, portafoglio segregato per strumento" } },
       { role: { en: "Portfolio manager", it: "Gestore di portafoglio" }, ent: "Framont & Partners Management Ltd", key: true,
@@ -1726,8 +1726,8 @@ class Component extends DCLogic {
     ],
     terms: [
       { g: "instruments",
-        en: { t: "Exchange Traded Instrument (ETI)", alt: "Strumento quotato", d: "A listed security issued by a securitisation vehicle that packages a managed investment strategy into an instrument with its own ISIN. It is bought and sold like a share, through any bank or broker, and its assets are held in a portfolio segregated from the issuer's other business." },
-        it: { t: "Exchange Traded Instrument (ETI)", alt: "Strumento quotato", d: "Un titolo quotato emesso da un veicolo di cartolarizzazione che racchiude una strategia d'investimento gestita in uno strumento dotato di ISIN. Si compra e si vende come un'azione, tramite qualsiasi banca o broker, e le sue attività sono detenute in un portafoglio segregato rispetto al resto dell'attività dell'emittente." } },
+        en: { t: "Exchange Traded Instrument (ETI)", alt: "Strumento quotato", d: "A listed security issued by a securitisation vehicle that packages a managed investment strategy into an instrument with its own ISIN. It is traded like a share by ISIN, though not every broker offers the venue, so access should be confirmed for the specific instrument. Whether its assets are segregated or secured is set out in the issuer's base prospectus and the instrument's final terms." },
+        it: { t: "Exchange Traded Instrument (ETI)", alt: "Strumento quotato", d: "Un titolo quotato emesso da un veicolo di cartolarizzazione che racchiude una strategia d'investimento gestita in uno strumento dotato di ISIN. Si negozia come un'azione tramite il suo ISIN, ma non tutti i broker offrono quel mercato: l'accesso va verificato per lo specifico strumento. Se le sue attività siano segregate o assistite da garanzia è indicato nel prospetto di base dell'emittente e nelle condizioni definitive." } },
       { g: "instruments",
         en: { t: "Actively Managed Certificate (AMC)", alt: "Certificato a gestione attiva", d: "A securitised certificate whose value tracks a strategy managed on a discretionary or systematic basis by an appointed manager. It gives fund-like exposure in the format of a security, and can be brought to market faster and at lower asset levels than a fund." },
         it: { t: "Actively Managed Certificate (AMC)", alt: "Certificato a gestione attiva", d: "Un certificato cartolarizzato il cui valore replica una strategia gestita su base discrezionale o sistematica da un gestore designato. Offre un'esposizione simile a quella di un fondo nella forma di un titolo, e può arrivare sul mercato più rapidamente e con masse inferiori rispetto a un fondo." } },
