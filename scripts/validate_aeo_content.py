@@ -359,6 +359,7 @@ def check_discovery(canonicals: list[str], report: Report) -> None:
 
 def check_links(registry: dict, report: Report) -> None:
     """Resolve every registry URL. Bot challenges are reported, not failed."""
+    import ssl
     import urllib.error
     import urllib.request
 
@@ -383,6 +384,27 @@ def check_links(registry: dict, report: Report) -> None:
                 report.warn(f"link: {sid} returned {exc.code}; mark access.automated as 'bot-protected' if this is expected")
             else:
                 report.error(f"link: {sid} returned HTTP {exc.code} for {url}")
+        except urllib.error.URLError as exc:
+            # A certificate that this machine cannot verify is usually a gap in the
+            # local trust store rather than a dead source: browsers and curl accept
+            # several publisher roots that Python's bundled store does not carry.
+            # Retry unverified purely to establish reachability, and downgrade to a
+            # warning that names the cause instead of failing a healthy source.
+            if isinstance(getattr(exc, "reason", None), ssl.SSLCertVerificationError):
+                try:
+                    unverified = ssl._create_unverified_context()
+                    request = urllib.request.Request(url, headers=headers)
+                    with urllib.request.urlopen(request, timeout=30, context=unverified) as response:
+                        status = response.status
+                    print(f"  tls   {status}  {sid}  (reachable; certificate not verifiable by this trust store)")
+                    report.warn(
+                        f"link: {sid} served a certificate this machine cannot verify, but the document is "
+                        f"reachable ({status}). Check the CA bundle before treating this as a source problem."
+                    )
+                    continue
+                except Exception:  # noqa: BLE001 - still unreachable, so it is a real finding
+                    pass
+            report.error(f"link: {sid} did not resolve ({exc.__class__.__name__}: {exc}) for {url}")
         except Exception as exc:  # noqa: BLE001 - any transport failure is a finding
             report.error(f"link: {sid} did not resolve ({exc.__class__.__name__}: {exc}) for {url}")
 

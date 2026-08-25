@@ -344,3 +344,45 @@ a.cite:hover { background: rgba(255,130,0,0.12); }
   .scope { margin-bottom: 3px; }
   .srcnote { margin-top: -16px; }
 }
+
+/* Row headers carry product names, not column labels: they should read as
+   names rather than inherit the uppercase treatment of a <th> in the head. */
+table.compare th[scope="row"],
+table.compare th[scope="colgroup"] {
+  text-align: left;
+  color: var(--navy-ink);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.compare th[scope="row"] { white-space: nowrap; }
+table.compare th[scope="row"] .as-of {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: normal;
+}
+table.compare th[scope="colgroup"] {
+  background: var(--navy-ink);
+  color: #FFFFFF;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+table.compare tr:nth-child(even) th[scope="row"] { background: var(--wash); }
+
+/* The product comparison is eight columns wide and is the point of its page.
+   On a large screen let it break out past the prose column rather than scroll;
+   below 1200px it stays inside the column and scrolls as before. */
+@media (min-width: 1200px) {
+  .tablewrap.bleed {
+    width: calc(100% + 360px);
+    max-width: calc(100vw - 40px);
+    margin-left: -180px;
+  }
+}
