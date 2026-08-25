@@ -171,8 +171,9 @@
       "source_type": "regulator-rulebook",
       "jurisdiction": "MT",
       "as_of": "2025-05",
-      "supports": ["naif-notification-process", "naif-eligible-investors", "naif-aifm-responsibility"],
+      "supports": ["naif-notification-process", "naif-eligible-investors", "naif-aifm-responsibility", "naif-exclusions", "naif-notification-timetable", "naif-qualifying-investor-threshold"],
       "languages": ["en", "it"],
+      "note": "Rules verified against the 30 May 2025 version (v4.00) on 2026-08-25. Rule 1.02: NAIFs are exempt from licensing under the Investment Services Act subject to inclusion in the List of Notified AIFs. Rule 2.01: promoted to Professional and/or Qualifying Investors only; managed by a full-scope AIFM authorised under AIFMD; the AIFM assumes responsibility for the NAIF. Rule 2.02: notification unavailable to self-managed schemes, schemes not marketed exclusively to Professional/Qualifying Investors, and loan-origination schemes unless established under the EuVECA or EuSEF Regulations. Rule 3.01: Qualifying Investors invest a minimum of EUR 100,000, not reducible below that amount by partial redemption, plus a written declaration of awareness of the risks. Rule 4.04: notification filed within 30 calendar days of the governing body resolution and before the prospectus effective date. Rule 4.05: MFSA includes the AIF in the List within 10 working days of a duly completed filing.",
       "access": { "automated": "ok" },
       "last_checked": "2026-08-25"
     },
