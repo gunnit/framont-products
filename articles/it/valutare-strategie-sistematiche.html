@@ -147,14 +147,46 @@
 
   <h2>Cosa è un backtest, e cosa non è</h2>
   <p>Un backtest applica un insieme di regole di trading a dati storici e riporta cosa sarebbe accaduto. Condotto con rigore, è uno strumento di ricerca legittimo: mostra come si comporta un modello attraverso regimi, drawdown e crisi che nessun track record reale è abbastanza lungo da contenere.</p>
-  <p>Ciò che non è, è una promessa. I dati da backtest sono simulati: non rappresentano operatività reale, e la normativa richiede che siano indicati come non affidabili ai fini dei risultati futuri. Quattro modalità di errore spiegano gran parte del divario tra simulazione e realtà:</p>
+  <p><span class="scope" data-scope="general">Regola generale</span> Ciò che non è, è una promessa. I dati da backtest sono simulati: non rappresentano operatività reale. <span class="claim" data-source-id="eu-mifid2-org-565-2017">Quando un intermediario presenta performance simulate in una comunicazione di marketing, la normativa europea impone che si basino su dati storici reali dello strumento o dell'indice di riferimento, che coprano un periodo completo di almeno cinque anni o l'intera vita dello strumento e che rechino in evidenza l'avvertenza che i dati si riferiscono a performance simulate e non sono un indicatore affidabile dei risultati futuri<a class="cite" href="https://eur-lex.europa.eu/eli/reg_del/2017/565/oj/eng" rel="noopener" target="_blank" aria-label="Source: EUR-Lex &mdash; Commission Delegated Regulation (EU) 2017/565, Article 44 — fair, clear and not misleading information, past performance and simulated past performance">EUR-Lex</a></span>. Quattro modalità di fallimento spiegano gran parte della distanza fra simulazione e realtà: Quattro modalità di errore spiegano gran parte del divario tra simulazione e realtà:</p>
   <ul>
     <li><strong>Overfitting.</strong> Regole calibrate fino ad aderire al rumore storico rendono benissimo sul passato e male sul futuro. Più parametri ha una strategia, e più volte è stata rivista per migliorare il backtest, maggiore è il rischio.</li>
     <li><strong>Survivorship bias.</strong> Testare sui componenti attuali di un indice esclude silenziosamente le società fallite, gonfiando i rendimenti.</li>
     <li><strong>Look-ahead bias.</strong> Usare informazioni (prezzi, fondamentali, revisioni) che non erano effettivamente disponibili al momento simulato della decisione.</li>
     <li><strong>Esecuzione senza attriti.</strong> Le simulazioni spesso ipotizzano esecuzioni perfette. L'operatività reale paga spread, slippage e commissioni su ogni operazione.</li>
   </ul>
-  <p>La dimensione del problema è documentata: quando la piattaforma Quantopian confrontò i backtest di centinaia di strategie con i loro successivi risultati reali, la correlazione tra performance simulata e reale aggiustata per il rischio risultò prossima allo zero. Questo non rende inutile ogni backtest; rende la qualità del processo di test (validazione out-of-sample, walk-forward, costi realistici) la cosa da interrogare.</p>
+  <p>La dimensione del problema è stata misurata, non affermata. <span class="claim" data-source-id="wiecki-2016-backtest-oos" data-as-of="2016-03-09">Uno studio su 888 strategie algoritmiche sviluppate sulla piattaforma Quantopian, ciascuna con almeno sei mesi di performance out-of-sample, ha rilevato che lo Sharpe ratio del backtest spiegava meno del 2,5 per cento della variabilità dello Sharpe out-of-sample, e che più una strategia era stata sottoposta a backtest, più ampio risultava lo scarto fra risultati simulati e risultati successivi<a class="cite" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2745220" rel="noopener" target="_blank" aria-label="Source: SSRN / The Journal of Investing &mdash; Wiecki, Campbell, Lent & Stauth, 'All That Glitters Is Not Gold: Comparing Backtest and Out-of-Sample Performance on a Large Cohort of Trading Algorithms', The Journal of Investing 25(3), 2016">SSRN</a></span>. Due precisazioni accompagnano quel dato e di solito vengono perse quando lo si cita: il campione era composto da strategie sviluppate da privati su un'unica piattaforma, non da gestori istituzionali, e lo stesso studio ha rilevato che altre caratteristiche del backtest &mdash; volatilità, massimo drawdown, presenza di copertura &mdash; avevano invece valore predittivo. La conclusione non è che il backtest sia inutile: è che il numero di sintesi aggiustato per il rischio è la parte meno informativa di un backtest, e che il processo di test dietro di esso è ciò che merita l'esame.</p>
+
+  <h2>Quattro livelli di evidenza sulla performance</h2>
+  <p>Prima di confrontare due numeri, accertati che siano lo stesso tipo di numero. Questi quattro livelli sono ordinati
+    per quanto è difficile fabbricarne l'evidenza, dal più solido:</p>
+  <div class="tablewrap">
+    <table class="compare">
+      <thead>
+        <tr><th scope="col">Livello</th><th scope="col">Che cos'&egrave;</th><th scope="col">Che cosa lo rende verificabile</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Track record certificato</td><td>La performance realizzata dello strumento, esaminata da un revisore</td><td>Revisore indicato, periodo dichiarato, al netto di tutte le commissioni: l'evidenza pi&ugrave; solida disponibile</td></tr>
+        <tr><td>Track record osservabile</td><td>Prezzi pubblicati da un terzo indipendente mentre accadevano: una borsa, un amministratore, un data provider</td><td>Riproducibile da chiunque abbia l'ISIN, senza dipendere dalla rendicontazione del gestore</td></tr>
+        <tr><td>Conto personale</td><td>L'operativit&agrave; dello sviluppatore sul proprio conto</td><td>Denaro vero, ma dimensione, costi, vincoli e impostazioni di rischio diversi: non &egrave; la performance dello strumento</td></tr>
+        <tr><td>Simulazione / backtest</td><td>Come si sarebbero comportate le regole su dati storici</td><td>Il livello pi&ugrave; debole: vale quanto la metodologia dichiarata ed &egrave; esposto ai quattro bias visti sopra</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="srcnote"><strong>Nota</strong> I livelli sono uno schema redazionale, non una classificazione normativa. Gli
+    obblighi di etichettatura che riguardano i dati simulati sono fissati dal
+    <span class="claim" data-source-id="eu-mifid2-org-565-2017">Regolamento delegato (UE) 2017/565, articolo 44<a class="cite" href="https://eur-lex.europa.eu/eli/reg_del/2017/565/oj/eng" rel="noopener" target="_blank" aria-label="Source: EUR-Lex &mdash; Commission Delegated Regulation (EU) 2017/565, Article 44 — fair, clear and not misleading information, past performance and simulated past performance">EUR-Lex</a></span>.</p>
+
+  <h2>Sei cose che un dato di performance deve dirti</h2>
+  <p>Qualunque sia il livello, un dato che non riesci a collocare &egrave; un dato che non puoi usare. Per ogni numero di
+    una presentazione, accerta:</p>
+  <ul>
+    <li><strong>La finestra di osservazione</strong> &mdash; date esatte di inizio e fine, non &laquo;dall'avvio&raquo; o &laquo;ultimi 5 anni&raquo;.</li>
+    <li><strong>Reale o simulato</strong> &mdash; e, se la serie cambia a met&agrave; strada, la data esatta in cui cambia.</li>
+    <li><strong>Lordo o netto</strong> &mdash; e al netto di quali commissioni: gestione, performance, custodia, emissione, tutte?</li>
+    <li><strong>Le ipotesi sui costi di negoziazione</strong> &mdash; quale spread, slippage e commissione la simulazione si &egrave; addebitata.</li>
+    <li><strong>Di chi &egrave; il conto</strong> &mdash; lo strumento, un portafoglio modello o l'operativit&agrave; personale di una persona.</li>
+    <li><strong>Chi ha pubblicato i dati sottostanti</strong> &mdash; una fonte indipendente o il gestore. Se una fonte indipendente non esiste, va dichiarato e non lasciato dedurre.</li>
+  </ul>
 
   <h2>Tre tipi di track record, tre livelli di evidenza</h2>
   <div class="tablewrap">
@@ -169,7 +201,7 @@
       </tbody>
     </table>
   </div>
-  <p>Una documentazione seria tiene separate queste categorie e le etichetta. Su Framont Access, ad esempio, i dati di lungo periodo di HERAKLIT sono esplicitamente indicati come simulazioni da backtest, e il risultato 2025 della strategia LC Invest è esplicitamente attribuito al conto di trading personale dello sviluppatore e non all'ETI. Quando una presentazione confonde questi piani, consideralo di per sé un elemento di valutazione.</p>
+  <p>Una documentazione seria tiene separate queste categorie e le etichetta. <span class="scope" data-scope="framont">Esempio Framont</span> Su Framont Access i dati di lungo periodo di HERAKLIT sono esplicitamente indicati come simulazioni da backtest, e il risultato 2025 della strategia LC Invest è esplicitamente attribuito al conto di trading personale dello sviluppatore e non all'ETI: un risultato di conto personale nella tabella qui sopra, non la performance dello strumento. Per la storia dello strumento, <span class="claim" data-source-id="imaps-eti-heraklit">l'emittente pubblica la scheda prodotto, con ISIN e valuta, sul proprio sito<a class="cite" href="https://imaps-capital.com/eti-details/?isin=DE000AMC0D44" rel="noopener" target="_blank" aria-label="Source: iMaps ETI AG (issuer) &mdash; iMaps ETI AG — HERAKLIT Strategy ETI product record (ISIN DE000AMC0D44)">iMaps</a></span>, che è la serie osservabile in modo indipendente e non una rendicontazione del gestore. Nessuno dei due dati è certificato da un revisore, e questa pagina non sostiene il contrario. Quando una presentazione confonde questi piani, consideralo di per sé un elemento di valutazione.</p>
 
   <h2>La meccanica delle commissioni: leggere il costo dell'involucro</h2>
   <p>I prodotti legati a strategie prevedono tipicamente una <strong>commissione di gestione</strong> (maturata giornalmente nel prezzo dello strumento) più una <strong>commissione di performance</strong> sui guadagni. Due dettagli determinano se una commissione di performance è equa:</p>
