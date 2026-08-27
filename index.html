@@ -455,6 +455,7 @@
 <div style="min-height:100vh; display:flex; flex-direction:column; background:#FFFFFF;">
 
   <!-- ============ NAV ============ -->
+  <a href="#main" class="mo-skip">{{ t.nav.skip }}</a>
   <header data-screen-label="Navigation" style="position:sticky; top:0; z-index:900; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); border-bottom:1px solid #E9E7E2;">
     <div style="max-width:1280px; margin:0 auto; padding:0 clamp(16px,5vw,40px); height:68px; display:flex; align-items:center; gap:28px;">
       <div onclick="{{ onHome }}" style="display:flex; align-items:center; gap:14px; cursor:pointer; margin-right:auto; flex-shrink:0;">
@@ -511,6 +512,8 @@
       <button onclick="{{ onLang }}" data-tap-target style="align-self:flex-start; margin-top:16px; background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:4px 0;">{{ langLabel }}</button>
     </div>
   </sc-if>
+
+  <main id="main" tabindex="-1">
 
   <!-- ============ HOME ============ -->
   <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
@@ -1296,6 +1299,8 @@
     </section>
   </sc-if>
 
+  </main>
+
   <!-- ============ FOOTER ============ -->
   <footer data-screen-label="Footer" class="mo-footer" style="position:relative; overflow:hidden; background:#00122A; color:#FFFFFF; margin-top:auto;">
     <div style="height:2px; background:linear-gradient(90deg, transparent, rgba(255,130,0,0.12), #FF8200 45%, #FFC98A 50%, #FF8200 55%, rgba(255,130,0,0.12), transparent);"></div>
@@ -1832,7 +1837,7 @@ class Component extends DCLogic {
   T = {
     en: {
       lang: "IT",
-      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Compare", login: "Login", admin: "Admin", signOut: "Sign Out" },
+      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Compare", login: "Login", admin: "Admin", signOut: "Sign Out", skip: "Skip to content" },
       hero: { eyebrow: "Framont Group — Investment Platform", t1: "Access the World of", t2: "Framont", subtitle: "Curated access to institutional-grade investment products — across funds, structured instruments, and private market opportunities.", cta: "Request Access", learnMore: "Explore Products" },
       teaser: { locked: "Members only", unlock: "Request access to view", preview: "Preview" },
       guide: { heading: "Partner brokers for trading ETIs", versions: "Versions", items: [
@@ -1907,7 +1912,7 @@ class Component extends DCLogic {
     },
     it: {
       lang: "EN",
-      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Confronto", login: "Accedi", admin: "Admin", signOut: "Esci" },
+      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Confronto", login: "Accedi", admin: "Admin", signOut: "Esci", skip: "Vai al contenuto" },
       hero: { eyebrow: "Framont Group — Piattaforma d'Investimento", t1: "Accedi al Mondo di", t2: "Framont", subtitle: "Accesso curato a prodotti d'investimento di livello istituzionale — fondi, strumenti strutturati e opportunità nei mercati privati.", cta: "Richiedi Accesso", learnMore: "Esplora i Prodotti" },
       teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare", preview: "Anteprima" },
       guide: { heading: "Broker partner per negoziare gli ETI", versions: "Versioni", items: [
@@ -2567,8 +2572,26 @@ class Component extends DCLogic {
     };
     window.addEventListener("resize", this._onResize);
     this._onResize();
-    this._onKey = (e) => { if (e.key === "Escape" && this.state.modal) this.closeModal(); };
+    this._onKey = (e) => {
+      if (!this.state.modal) return;
+      if (e.key === "Escape") { this.closeModal(); return; }
+      if (e.key !== "Tab") return;
+      // Keep Tab inside the dialog: without this the background page stays reachable
+      // while the modal is open, which is both confusing and a WCAG failure.
+      const d = document.querySelector('[role="dialog"]');
+      if (!d) return;
+      const f = [...d.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+        .filter((el) => el.offsetParent !== null || el === document.activeElement);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === d)) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
     window.addEventListener("keydown", this._onKey);
+    // Back is the canonical "close the overlay" gesture, especially on mobile. Without a
+    // history entry it left the page instead and lost the category the visitor was on.
+    this._onPop = () => { if (this.state.modal) { this._modalHistory = false; this._closeModalState(); } };
+    window.addEventListener("popstate", this._onPop);
     this.scanReveal();
     this._rf = setTimeout(() => {
       if (this._ioFired) return;
@@ -2589,7 +2612,33 @@ class Component extends DCLogic {
     }
     this._lastView = this.state.view;
     this._lastLang = this.state.lang;
+    this.syncModalA11y();
     this.scanReveal();
+  }
+
+  // The dialog markup is correct (role, aria-modal) but nothing named it, focus never moved
+  // into it, and the page kept scrolling behind it.
+  syncModalA11y() {
+    const open = !!this.state.modal;
+    if (open && !this._modalWasOpen) {
+      const ae = document.activeElement;
+      this._modalOpener = (ae && ae !== document.body && !ae.closest('[role="dialog"]')) ? ae : null;
+    }
+    if (open === this._modalWasOpen) return;
+    this._modalWasOpen = open;
+    try { document.body.style.overflow = open ? "hidden" : ""; } catch (e) {}
+    if (!open) return;
+    // Give Back something to pop so it closes the dialog instead of leaving the page.
+    if (!this._modalHistory) {
+      try { window.history.pushState({ framontModal: true }, ""); this._modalHistory = true; } catch (e) {}
+    }
+    setTimeout(() => {
+      const d = document.querySelector('[role="dialog"]');
+      if (!d) return;
+      const h = d.querySelector("h3");
+      if (h) { if (!h.id) h.id = "dlg-title-" + Math.abs(Date.now() % 100000); d.setAttribute("aria-labelledby", h.id); }
+      if (!d.contains(document.activeElement)) { try { d.focus(); } catch (e) {} }
+    }, 40);
   }
 
   // ============================================================
@@ -2858,6 +2907,8 @@ class Component extends DCLogic {
     window.removeEventListener("resize", this._onResize);
     window.removeEventListener("keydown", this._onKey);
     window.removeEventListener("hashchange", this._onHash);
+    window.removeEventListener("popstate", this._onPop);
+    try { document.body.style.overflow = ""; } catch (e) {}
     clearTimeout(this._ft); clearTimeout(this._tt); clearTimeout(this._st); clearTimeout(this._rf);
     if (this._io) this._io.disconnect();
   }
@@ -2929,7 +2980,15 @@ class Component extends DCLogic {
     // the funnel leaks, and the only way to see it is to record the close.
     const m = this.state.modal;
     if (m === "register" || m === "dealsCode" || m === "call") this.funnel("gate_abandon", { step: m });
+    if (this._modalHistory) { this._modalHistory = false; try { window.history.back(); return; } catch (e) {} }
+    this._closeModalState();
+  }
+
+  _closeModalState() {
     this.setState({ modal: null, subscribing: false, regContext: null, regCtx: null, dealsCodeError: false });
+    const el = this._modalOpener;
+    this._modalOpener = null;
+    if (el && document.contains(el)) { try { el.focus(); } catch (e) {} }
   }
 
   // One entry point for "Request a call", so every trigger carries its own origin.
@@ -3779,6 +3838,12 @@ class Component extends DCLogic {
     [data-mo-word]{color:#002E5F!important}
     .mo-cascade{opacity:1;transform:none;transition:none}
   }
+  /* Keyboard users had no way past the header: no landmark, no skip link. */
+  .mo-skip { position: absolute; left: -9999px; top: 0; z-index: 2000; background: #002E5F;
+    color: #FFFFFF; padding: 12px 20px; font-family: 'Work Sans', sans-serif; font-size: 14px;
+    font-weight: 600; text-decoration: none; }
+  .mo-skip:focus { left: 8px; top: 8px; }
+  #main:focus { outline: none; }
   /* ---- Audit fixes: tap targets, focus, small-screen legibility -------------------- */
   /* Interactive controls need a ~44px target. These were 13-28px tall with 13px gaps. */
   footer a, footer button { min-height: 44px; display: inline-flex; align-items: center; }
