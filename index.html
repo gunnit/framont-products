@@ -458,7 +458,7 @@
   <a href="#main" class="mo-skip">{{ t.nav.skip }}</a>
   <header data-screen-label="Navigation" style="position:sticky; top:0; z-index:900; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); border-bottom:1px solid #E9E7E2;">
     <div style="max-width:1280px; margin:0 auto; padding:0 clamp(16px,5vw,40px); height:68px; display:flex; align-items:center; gap:28px;">
-      <div onclick="{{ onHome }}" style="display:flex; align-items:center; gap:14px; cursor:pointer; margin-right:auto; flex-shrink:0;">
+      <a href="#/" onclick="{{ onHome }}" aria-label="Framont Access" style="display:flex; align-items:center; gap:14px; cursor:pointer; margin-right:auto; flex-shrink:0; text-decoration:none;">
         <sc-if value="{{ logoOk }}" hint-placeholder-val="{{ true }}">
           <img src="https://www.framontmanagement.com/wp-content/uploads/2024/10/logo-framont-management.svg" alt="Framont" onerror="{{ onLogoErr }}" style="height:30px; display:block;">
         </sc-if>
@@ -466,7 +466,7 @@
           <span style="font-family:'Playfair Display',serif; font-size:22px; font-weight:600; color:#002E5F; letter-spacing:0.01em;">Framont</span>
         </sc-if>
         <span style="border-left:1px solid #E9E7E2; padding-left:14px; font-size:10.5px; font-weight:600; letter-spacing:0.26em; text-transform:uppercase; color:#4D575E;">Access</span>
-      </div>
+      </a>
       <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
         <nav style="display:flex; gap:26px; align-items:center;">
           <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="4">
@@ -475,7 +475,7 @@
           <a href="{{ insightsHref }}" style="font-size:12.5px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; text-decoration:none; cursor:pointer; white-space:nowrap; flex-shrink:0; padding:6px 0 4px; color:#4D575E; border-bottom:2px solid transparent; transition:color .2s ease;" style-hover="color:#A85400;">{{ t.insights.navLabel }}</a>
         </nav>
         <div style="display:flex; gap:12px; align-items:center;">
-          <button onclick="{{ onLang }}" data-tap-target style="background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:6px 4px; transition:color .2s ease;" style-hover="color:#A85400;">{{ langLabel }}</button>
+          <button onclick="{{ onLang }}" data-tap-target lang="{{ langOtherCode }}" aria-label="{{ t.nav.switchLang }}" style="background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:6px 4px; transition:color .2s ease;" style-hover="color:#A85400;">{{ langLabel }}</button>
           <sc-if value="{{ isAnon }}" hint-placeholder-val="{{ true }}">
             <button onclick="{{ onLogin }}" style="background:transparent; border:1px solid #002E5F; color:#002E5F; padding:10px 20px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease;" style-hover="background:rgba(0,46,95,0.06);">{{ t.nav.login }}</button>
             <button onclick="{{ onRegister }}" style="background:#B35A00; border:1px solid #B35A00; color:#FFFFFF; padding:10px 22px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:background .2s ease, transform .2s ease;" style-hover="background:#E97500; transform:translateY(-1px);">{{ t.auth.register }}</button>
@@ -509,7 +509,7 @@
           <button onclick="{{ onRegister }}" style="flex:1; background:#B35A00; border:1px solid #B35A00; color:#FFFFFF; padding:12px 16px; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; border-radius:0;">{{ t.auth.register }}</button>
         </div>
       </sc-if>
-      <button onclick="{{ onLang }}" data-tap-target style="align-self:flex-start; margin-top:16px; background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:4px 0;">{{ langLabel }}</button>
+      <button onclick="{{ onLang }}" data-tap-target lang="{{ langOtherCode }}" aria-label="{{ t.nav.switchLang }}" style="align-self:flex-start; margin-top:16px; background:none; border:none; cursor:pointer; font-family:'Work Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.14em; color:#4D575E; padding:4px 0;">{{ langLabel }}</button>
     </div>
   </sc-if>
 
@@ -761,7 +761,7 @@
             <select value="{{ fSize }}" onchange="{{ onFSize }}" aria-label="{{ t.products.filterSize }}" style="background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:10px 14px; font-family:'Work Sans',sans-serif; font-size:13px; border-radius:0; outline:none; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
               <option value="all">{{ t.products.allSizes }}</option>
               <option value="under10k">{{ t.products.sizeUnder }}</option>
-              <option value="10kto100k">€10,000 – €100,000</option>
+              <option value="10kto100k">{{ t.products.size10to100 }}</option>
               <option value="over100k">{{ t.products.sizeOver }}</option>
             </select>
             </sc-if>
@@ -823,6 +823,12 @@
               </div>
             </sc-for>
           </div>
+          </sc-if>
+          <sc-if value="{{ filterEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="border:1px dashed #D8D4CC; background:#F7F7F5; padding:56px 32px; text-align:center; margin-top:30px;">
+              <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:500; color:#002E5F;">{{ t.products.noMatch }}</div>
+              <button onclick="{{ onClearFilters }}" style="margin-top:18px; background:transparent; border:1px solid #002E5F; color:#002E5F; padding:12px 26px; font-family:'Work Sans',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; min-height:44px;">{{ t.products.clearFilters }}</button>
+            </div>
           </sc-if>
           <sc-if value="{{ catEmpty }}" hint-placeholder-val="{{ false }}">
             <div style="border:1px dashed #D8D4CC; background:#F7F7F5; padding:72px 32px; text-align:center; margin-top:30px;">
@@ -1837,7 +1843,7 @@ class Component extends DCLogic {
   T = {
     en: {
       lang: "IT",
-      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Compare", login: "Login", admin: "Admin", signOut: "Sign Out", skip: "Skip to content" },
+      nav: { home: "Home", funds: "Funds", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Compare", login: "Login", admin: "Admin", signOut: "Sign Out", skip: "Skip to content", switchLang: "Passa all\u2019italiano" },
       hero: { eyebrow: "Framont Group — Investment Platform", t1: "Access the World of", t2: "Framont", subtitle: "Curated access to institutional-grade investment products — across funds, structured instruments, and private market opportunities.", cta: "Request Access", learnMore: "Explore Products" },
       teaser: { locked: "Members only", unlock: "Request access to view", preview: "Preview" },
       guide: { heading: "Partner brokers for trading ETIs", versions: "Versions", items: [
@@ -1871,7 +1877,7 @@ class Component extends DCLogic {
       call: { title: "Request a Call", intro: "Leave your details and a member of the Framont desk will call you back. No registration required.", window: "Preferred time", windowMorning: "Morning (9:00–13:00 CET)", windowAfternoon: "Afternoon (14:00–18:00 CET)", windowAny: "Any time", note: "What would you like to discuss?", notePlaceholder: "Optional — product, mandate size, timing…", submit: "Request a Call", routed: "Your request goes directly to our CEO's office and is passed to the relevant desk.", toast: "Thank you — your call request has been received. Our team will be in touch shortly.", ctaLink: "or request a call" },
       loginM: { intro: "Enter your registered email to sign in.", notFound: "We couldn't find this email on this device. Request access and we will set you up.", noAccount: "Don't have an account yet?" },
       next: { title: "What happens next", steps: ["Our team contacts you within one business day.", "Suitability assessment and documents via InvestGlass secure onboarding.", "Execution and confirmation of your subscription."], back: "Back to Products" },
-      products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products", filterClass: "Filter by asset class", filterCurrency: "Filter by currency", filterSize: "Filter by minimum investment" },
+      products: { viewSubscribe: "View Details", learnMore: "Learn More", isin: "ISIN", minSub: "Min. Investment", target: "Listing", noMatch: "No product matches these filters.", clearFilters: "Clear filters", size10to100: "\u20ac10,000 \u2013 \u20ac100,000", allClasses: "All Asset Classes", allCurrencies: "All Currencies", allSizes: "All Minimums", sizeUnder: "Under €10,000", sizeOver: "€100,000+", result: "product", results: "products", filterClass: "Filter by asset class", filterCurrency: "Filter by currency", filterSize: "Filter by minimum investment" },
       modal: { subscribe: "Request Information", documents: "Key Documents", factsheet: "Factsheet", kid: "Key Investor Document", download: "Download Documents", facts: "Key Facts", visitSite: "Visit Product Page", docsLink: "KID, prospectus and factsheet — on the official product page", termsheetLink: "Official term sheet (PDF)", confirm: "Information Request Sent", confirmSub: "Your information request for {product} has been submitted.", processing: "Processing…", disclaimer: "For information purposes only — this does not constitute investment advice, an offer or a solicitation. ETIs and certificates are debt securities of the issuer and carry issuer risk. Backtested or simulated figures are hypothetical and not a reliable indicator of future results; results of a strategy developer's personal account are independent of the instrument and not indicative of its performance. Read the KID and prospectus before investing. Capital at risk." },
       cat: { products: "Products", about: "About", elig: "Eligibility", aboutLabel: "About this instrument", charLabel: "Characteristics", eligLabel: "Who can invest", benefitsLabel: "Key benefits", faqTitle: "Frequently asked questions", productsLabel: "Products", productsTitle: "Available Products", comingSoonTitle: "Products Coming Soon", comingSoonSub: "We are finalising the onboarding of products in this category. Leave your details and our team will notify you as soon as they are available.", comingSoonCta: "Request Information" },
       compare: { label: "Product comparison", title: "Every product, side by side", sub: "Wrapper, strategy, liquidity, currency, costs and eligibility for each product open to subscription, in a single view. ISIN and minimum subscription follow exactly the same access rules as the product cards. Reserved opportunities, released by access code, stay at teaser level below.",
@@ -1912,7 +1918,7 @@ class Component extends DCLogic {
     },
     it: {
       lang: "EN",
-      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Confronto", login: "Accedi", admin: "Admin", signOut: "Esci", skip: "Vai al contenuto" },
+      nav: { home: "Home", funds: "Fondi", amc: "AMC", eti: "ETI", deals: "Deals", compare: "Confronto", login: "Accedi", admin: "Admin", signOut: "Esci", skip: "Vai al contenuto", switchLang: "Switch to English" },
       hero: { eyebrow: "Framont Group — Piattaforma d'Investimento", t1: "Accedi al Mondo di", t2: "Framont", subtitle: "Accesso curato a prodotti d'investimento di livello istituzionale — fondi, strumenti strutturati e opportunità nei mercati privati.", cta: "Richiedi Accesso", learnMore: "Esplora i Prodotti" },
       teaser: { locked: "Solo per iscritti", unlock: "Richiedi accesso per visualizzare", preview: "Anteprima" },
       guide: { heading: "Broker partner per negoziare gli ETI", versions: "Versioni", items: [
@@ -1946,7 +1952,7 @@ class Component extends DCLogic {
       call: { title: "Richiedi una Chiamata", intro: "Lascia i tuoi dati e un membro del desk Framont ti richiamerà. Nessuna registrazione richiesta.", window: "Fascia oraria preferita", windowMorning: "Mattino (9:00–13:00 CET)", windowAfternoon: "Pomeriggio (14:00–18:00 CET)", windowAny: "Indifferente", note: "Di cosa vorresti parlare?", notePlaceholder: "Facoltativo — prodotto, dimensione del mandato, tempistiche…", submit: "Richiedi una Chiamata", routed: "La richiesta arriva direttamente all'ufficio del nostro CEO, che la smista al desk competente.", toast: "Grazie — la tua richiesta di chiamata è stata ricevuta. Il nostro team ti contatterà a breve.", ctaLink: "oppure richiedi una chiamata" },
       loginM: { intro: "Inserisci la tua email registrata per accedere.", notFound: "Email non trovata su questo dispositivo. Richiedi l'accesso e ti attiviamo noi.", noAccount: "Non hai ancora un account?" },
       next: { title: "Cosa succede ora", steps: ["Il nostro team ti contatta entro un giorno lavorativo.", "Valutazione di adeguatezza e documenti tramite l'onboarding sicuro InvestGlass.", "Esecuzione e conferma della tua sottoscrizione."], back: "Torna ai Prodotti" },
-      products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti", filterClass: "Filtra per classe di attivo", filterCurrency: "Filtra per valuta", filterSize: "Filtra per investimento minimo" },
+      products: { viewSubscribe: "Vedi Dettagli", learnMore: "Scopri di Più", isin: "ISIN", minSub: "Investimento Min.", target: "Quotazione", noMatch: "Nessun prodotto corrisponde a questi filtri.", clearFilters: "Azzera i filtri", size10to100: "\u20ac10.000 \u2013 \u20ac100.000", allClasses: "Tutte le Classi", allCurrencies: "Tutte le Valute", allSizes: "Tutti i Tagli", sizeUnder: "Sotto €10.000", sizeOver: "€100.000+", result: "prodotto", results: "prodotti", filterClass: "Filtra per classe di attivo", filterCurrency: "Filtra per valuta", filterSize: "Filtra per investimento minimo" },
       modal: { subscribe: "Richiedi Informazioni", documents: "Documenti Chiave", factsheet: "Factsheet", kid: "Documento Informativo Chiave", download: "Scarica i Documenti", facts: "Dati Chiave", visitSite: "Vai alla Pagina del Prodotto", docsLink: "KID, prospetto e factsheet — sulla pagina ufficiale del prodotto", termsheetLink: "Term sheet ufficiale (PDF)", confirm: "Richiesta di Informazioni Inviata", confirmSub: "La tua richiesta di informazioni per {product} è stata inviata.", processing: "Elaborazione…", disclaimer: "A solo scopo informativo — non costituisce consulenza d'investimento, offerta o sollecitazione. Gli ETI e i certificati sono titoli di debito dell'emittente e comportano rischio emittente. I dati di backtest o simulati sono ipotetici e non sono un indicatore affidabile dei risultati futuri; i risultati del conto personale di uno sviluppatore della strategia sono indipendenti dallo strumento e non indicativi della sua performance. Leggere il KID e il prospetto prima di investire. Capitale a rischio." },
       cat: { products: "Prodotti", about: "Informazioni", elig: "Idoneità", aboutLabel: "Informazioni sullo strumento", charLabel: "Caratteristiche", eligLabel: "Chi può investire", benefitsLabel: "Principali vantaggi", faqTitle: "Domande frequenti", productsLabel: "Prodotti", productsTitle: "Prodotti Disponibili", comingSoonTitle: "Prodotti in Arrivo", comingSoonSub: "Stiamo finalizzando l'inserimento dei prodotti di questa categoria. Lascia i tuoi dati e il nostro team ti avviserà non appena saranno disponibili.", comingSoonCta: "Richiedi Informazioni" },
       compare: { label: "Confronto prodotti", title: "Tutti i prodotti, a confronto", sub: "Struttura, strategia, liquidità, valuta, costi e idoneità di ogni prodotto aperto alle sottoscrizioni, in una vista unica. ISIN e sottoscrizione minima seguono esattamente le stesse regole di accesso delle schede prodotto. Le opportunità riservate, accessibili su codice, restano a livello teaser qui sotto.",
@@ -3341,7 +3347,7 @@ class Component extends DCLogic {
 
     let cat = {}, products = [], benefits = [], features = [], faqs = [];
     let clsOptions = [], curOptions = [], resultsLabel = "", subnavLinks = [], catBg = FALLBACK, catVid = "", aboutWords = [];
-    let catEmpty = false, catHasProducts = false;
+    let catEmpty = false, catHasProducts = false, filterEmpty = false;
     let showClsFilter = false, showCurFilter = false, showSizeFilter = false;
     let showGuide = false, guideHeading = "", guides = [];
     if (isCat) {
@@ -3359,7 +3365,7 @@ class Component extends DCLogic {
         if (s.fSize === "over100k" && p.minSub < 100000) return false;
         return true;
       });
-      catEmpty = fil.length === 0;
+      filterEmpty = act.length > 0 && fil.length === 0;
       products = fil.map((p) => dec(p, view));
       resultsLabel = act.length === 0 ? "" : fil.length + " " + (fil.length === 1 ? t.products.result : t.products.results);
       benefits = cat.benefits;
@@ -3368,7 +3374,7 @@ class Component extends DCLogic {
         const open = !!s.faqOpen[view + i];
         return { q: f.q, a: f.a, open, rot: open ? "180deg" : "0deg", onToggle: () => this.toggleFaq(view + i) };
       });
-      clsOptions = [{ v: "all", label: t.products.allClasses }].concat([...new Set(act.map((p) => p.assetClass))].map((c) => ({ v: c, label: c })));
+      clsOptions = [{ v: "all", label: t.products.allClasses }].concat([...new Set(act.map((p) => p.assetClass))].map((c) => ({ v: c, label: this.locClass(c) })));
       curOptions = [{ v: "all", label: t.products.allCurrencies }].concat([...new Set(act.map((p) => p.currency))].map((c) => ({ v: c, label: c })));
       // A filter only earns its place when it can actually narrow the list.
       showClsFilter = clsOptions.length > 2;
@@ -3559,7 +3565,7 @@ class Component extends DCLogic {
 
     const ap = s.active ? s.active.p : null;
     const pm = ap ? {
-      name: ap.name, description: loc(ap.description), assetClass: ap.assetClass, currency: ap.currency,
+      name: ap.name, description: loc(ap.description), assetClass: this.locClass(ap.assetClass), currency: ap.currency,
       code: ap.isin || ap.ticker || "—", minLabel: loc(ap.minLabel),
       metricLabel: loc(ap.metricLabel), metricValue: loc(ap.metricValue),
       landingUrl: ap.landingUrl || "",
@@ -3599,6 +3605,7 @@ class Component extends DCLogic {
       onBurger: () => this.setState((x) => ({ mobileOpen: !x.mobileOpen })),
       // Collapsed/expanded state has to be announced, not just visually implied.
       mobileOpenStr: s.mobileOpen ? "true" : "false",
+      langOtherCode: s.lang === "it" ? "en" : "it",
       showHome: view === "home", showCat: isCat, showAdmin: isAdminView,
       showCompare: isCompare,
       cmpFilters, cmpGroups, cmpSoon, cmpEmpty, cmpHasSoon,
@@ -3619,7 +3626,8 @@ class Component extends DCLogic {
       onCta: () => { if (isAnon) this.openModal("register"); else this.navTo("funds"); },
       ctaLabel: isAnon ? t.cta.button : t.hero.learnMore,
       cat, catBg, catVid, aboutWords, products, benefits, features, faqs,
-      catEmpty, catHasProducts, showGuide, guideHeading, guides,
+      catEmpty, filterEmpty, catHasProducts, showGuide, guideHeading, guides,
+      onClearFilters: () => this.setState({ fCls: "all", fCur: "all", fSize: "all" }),
       fCls: s.fCls, fCur: s.fCur, fSize: s.fSize,
       onFCls: (e) => this.setState({ fCls: e.target.value }),
       onFCur: (e) => this.setState({ fCur: e.target.value }),
@@ -3638,7 +3646,7 @@ class Component extends DCLogic {
       tabAct: isAdminView && s.adminTab === "activity",
       subsRows: s.subscribers.map((x) => ({ name: x.name, email: x.email, phone: x.phone, category: x.category, joined: new Date(x.joined).toLocaleDateString(s.lang === "it" ? "it-IT" : "en-GB") })),
       prodRows: Object.entries(db).flatMap(([ck, d]) => d.products.map((p) => ({
-        name: p.name, code: p.isin || p.ticker || "—", assetClass: p.assetClass,
+        name: p.name, code: p.isin || p.ticker || "—", assetClass: this.locClass(p.assetClass),
         activeB: p.active, inactiveB: !p.active,
         statusLabel: p.active ? t.admin.active : t.admin.inactive,
         toggleLabel: p.active ? t.admin.deactivate : t.admin.activate,
