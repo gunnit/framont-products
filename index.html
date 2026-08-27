@@ -936,7 +936,7 @@
               <div class="cmp-band" role="row"><span role="cell">{{ g.label }}<span class="cmp-band-of">{{ g.note }} · {{ g.count }}</span></span></div>
               <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="4">
                 <div class="cmp-row" role="row">
-                  <span role="cell"><span class="cmp-name">{{ r.name }}</span><span class="cmp-meta">{{ r.meta }}</span></span>
+                  <span role="rowheader"><span class="cmp-name">{{ r.name }}</span><span class="cmp-meta">{{ r.meta }}</span></span>
                   <span role="cell">{{ r.wrapper }}</span>
                   <span role="cell">{{ r.short }}</span>
                   <span role="cell" class="cmp-emph">{{ r.liquidity }}</span>
@@ -1123,7 +1123,7 @@
       <div style="max-width:940px; margin:0 auto; padding:clamp(30px,4vw,44px) 40px 96px;">
         <div class="gl-tools">
           <input type="search" value="{{ glQuery }}" onchange="{{ onGlQuery }}" placeholder="{{ t.glossary.search }}" aria-label="{{ t.glossary.search }}" style="flex:1 1 240px; max-width:340px; box-sizing:border-box; background:#FFFFFF; border:1px solid #E9E7E2; color:#002E5F; padding:11px 14px; font-size:14.5px; font-family:'Work Sans',sans-serif; outline:none; border-radius:0; transition:border-color .2s ease, box-shadow .2s ease;" style-focus="border-color:#FF8200; box-shadow:0 0 0 3px rgba(255,130,0,0.12);">
-          <span class="gl-tally">{{ glTally }}</span>
+          <span class="gl-tally" role="status" aria-live="polite">{{ glTally }}</span>
         </div>
         <div class="gl-tabs" role="group" aria-label="{{ t.glossary.label }}">
           <sc-for list="{{ glTabs }}" as="f" hint-placeholder-count="6">
@@ -1139,7 +1139,7 @@
                 <div class="gl-term">
                   <dt>
                     <span class="gl-word">{{ x.term }}</span>
-                    <span class="gl-alt">{{ x.alt }}</span>
+                    <span class="gl-alt" lang="{{ x.altLang }}">{{ x.alt }}</span>
                   </dt>
                   <dd>{{ x.def }}</dd>
                 </div>
@@ -1692,7 +1692,7 @@ class Component extends DCLogic {
         devs: true, det: { en: "Providers of the underlying strategy only", it: "Solo fornitori della strategia sottostante" } }
     ] },
     { ck: "amc", links: [
-      { role: { en: "Investor", it: "Investitore" }, ent: { en: "Private placement", it: "Private placement" },
+      { role: { en: "Investor", it: "Investitore" }, ent: { en: "Private placement", it: "Collocamento privato" },
         det: { en: "Subscription from €10,000, professional investors", it: "Sottoscrizione da €10.000, investitori professionali" } },
       { role: { en: "Issuer", it: "Emittente" }, ent: "Expand2 Issuer PCC Limited",
         det: { en: "Guernsey. One protected cell per product, ring-fenced from the others", it: "Guernsey. Una cella protetta per prodotto, separata dalle altre" } },
@@ -1952,7 +1952,7 @@ class Component extends DCLogic {
       compare: { label: "Confronto prodotti", title: "Tutti i prodotti, a confronto", sub: "Struttura, strategia, liquidità, valuta, costi e idoneità di ogni prodotto aperto alle sottoscrizioni, in una vista unica. ISIN e sottoscrizione minima seguono esattamente le stesse regole di accesso delle schede prodotto. Le opportunità riservate, accessibili su codice, restano a livello teaser qui sotto.",
         all: "Tutti", subnav: "Confronta tutti i prodotti", cardLink: "Vedilo accanto a tutti gli altri prodotti",
         cProduct: "Prodotto", cWrapper: "Struttura", cStrategy: "Strategia", cLiquidity: "Liquidità", cCurrency: "Valuta", cCosts: "Costi", cElig: "Idoneità", cGated: "ISIN e minimo",
-        notes: { funds: "Fondi di investimento alternativi", amc: "Certificati a gestione attiva", eti: "Exchange traded instruments", deals: "Opportunità nei mercati privati" },
+        notes: { funds: "Fondi di investimento alternativi", amc: "Certificati a gestione attiva", eti: "Exchange traded instrument quotati", deals: "Opportunità nei mercati privati" },
         none: "Nessun prodotto di questa categoria è attualmente aperto alle sottoscrizioni. Le opportunità riservate sono elencate qui sotto.",
         soonTitle: "Riservati e su codice di accesso", soonSub: "Livello teaser — senza ISIN né minimo",
         note: "I dati provengono dalle schede prodotto di questo sito e dai KID, dai term sheet ufficiali e dalle condizioni economiche applicabili. I costi dei fondi e dei certificati sono indicati per intero nel Regolamento di Gestione, nell'Offering Supplement o nel KID PRIIPs di ciascun prodotto. Questa tabella è una sintesi a fini di confronto: non costituisce consulenza d'investimento, offerta o sollecitazione e non sostituisce la documentazione di prodotto. Leggere il KID e il prospetto o il Regolamento prima di investire. Capitale a rischio.",
@@ -2217,7 +2217,7 @@ class Component extends DCLogic {
         faq: [{ q: "In cosa si differenzia un AMC da un ETF?", a: "Un AMC è gestito attivamente da un gestore di portafoglio che prende decisioni discrezionali, mentre un ETF segue passivamente un indice. Gli AMC possono rispondere alle condizioni di mercato; gli ETF no." }, { q: "Qual è il rischio emittente?", a: "Gli AMC comportano un rischio di credito dell'emittente. Framont lavora esclusivamente con emittenti investment grade o completamente collateralizzati per mitigarlo." }, { q: "Posso uscire anticipatamente?", a: "Gli AMC quotati possono generalmente essere venduti sul mercato secondario. La liquidità dipende dalla quotazione del market maker e dai volumi di negoziazione giornalieri." }]
       },
       products: [
-        { id: "amc-noctiluca", name: "Noctiluca Capital AMC", isin: "CH1554882477", assetClass: "Actively Managed Certificate", currency: "EUR", minSub: 10000, minLabel: "€10,000", open: true, active: true,
+        { id: "amc-noctiluca", name: "Noctiluca Capital AMC", isin: "CH1554882477", assetClass: "Actively Managed Certificate", currency: "EUR", minSub: 10000, minLabel: { en: "€10,000", it: "€10.000" }, open: true, active: true,
           subscribeUrl: "",
           termsheetUrl: "assets/termsheets/framont-noctiluca-amc-termsheet.pdf",
           cmp: { wrapper: { en: "Open-end unlisted dynamic tracker certificate, Swiss law", it: "Tracker certificate dinamico open-end non quotato, diritto svizzero" },
@@ -2269,7 +2269,7 @@ class Component extends DCLogic {
             { label: { en: "Documentation", it: "Documentazione" }, value: { en: "PRIIPs KID and certificate ISIN on request", it: "KID PRIIPs e ISIN del certificato su richiesta" } }
           ],
           description: { en: "Framont Global Total Return is an actively managed certificate (AMC) issued by Leonteq Securities AG and listed on Borsa Italiana, tracking the Framont Global Total Return Index (ticker FRGLBOPP), calculated by Solactive AG. The EUR-denominated index follows a net-total-return, multi-asset strategy that can hold equities, ETFs and cash, with dividends reinvested, and reflects an actively managed strategy advised by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). The certificate is available to retail investors and is accompanied by a PRIIPs Key Information Document; the tradeable ISIN and minimum are set out in that documentation, available on request. Certificates are debt securities of the issuer and carry issuer risk. Read the KID before any investment decision. Capital at risk.", it: "Framont Global Total Return è un certificato a gestione attiva (AMC) emesso da Leonteq Securities AG e quotato su Borsa Italiana, che replica l'indice Framont Global Total Return (ticker FRGLBOPP), calcolato da Solactive AG. L'indice, denominato in EUR, segue una strategia multi-asset net total return che può detenere azioni, ETF e liquidità, con reinvestimento dei dividendi, e riflette una strategia a gestione attiva su indicazione di Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Il certificato è disponibile per gli investitori retail ed è accompagnato da un Documento contenente le Informazioni Chiave (KID PRIIPs); l'ISIN negoziabile e il minimo sono indicati in tale documentazione, disponibile su richiesta. I certificati sono titoli di debito dell'emittente e comportano rischio emittente. Leggere il KID prima di ogni decisione d'investimento. Capitale a rischio." } },
-        { id: "amc-zalphyx", name: "Zalphyx Yield Strategies", isin: "CH1518693374", assetClass: "Private Credit", currency: "EUR", minSub: 10000, minLabel: "€10,000", open: false, active: true,
+        { id: "amc-zalphyx", name: "Zalphyx Yield Strategies", isin: "CH1518693374", assetClass: "Private Credit", currency: "EUR", minSub: 10000, minLabel: { en: "€10,000", it: "€10.000" }, open: false, active: true,
           subscribeUrl: "",
           termsheetUrl: "assets/termsheets/framont-zalphyx-cln-termsheet.pdf",
           cmp: { wrapper: { en: "Credit-linked note, unlisted, private placement", it: "Credit-linked note, non quotata, private placement" },
@@ -2318,7 +2318,7 @@ class Component extends DCLogic {
         faq: [{ q: "Gli ETI sono la stessa cosa degli ETF?", a: "No. ETI è una categoria più ampia. Gli ETF sono fondi; gli ETI includono ETP, ETN e certificati strutturati. Non tutti gli ETI hanno le protezioni a livello di fondo." }, { q: "Cos'è il tracking error?", a: "Gli ETI legati a replica fisica o swap hanno generalmente un tracking error minimo. Le strutture sintetiche possono divergere dall'indice sottostante durante periodi di stress." }, { q: "Esistono caratteristiche di protezione del capitale?", a: "Alcune strutture ETI offrono protezione parziale o totale del capitale a scadenza. Queste caratteristiche sono dettagliate nel Documento Informativo Chiave del prodotto." }]
       },
       products: [
-        { id: "eti-heraklit", name: "HERAKLIT Strategy ETI", isin: "DE000AMC0D44", assetClass: "Systematic Multi-Asset", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+        { id: "eti-heraklit", name: "HERAKLIT Strategy ETI", isin: "DE000AMC0D44", assetClass: "Systematic Multi-Asset", currency: "EUR", minSub: 1000, minLabel: { en: "€1,000", it: "€1.000" }, open: true, active: true,
           landingUrl: "https://heraklit.framontmanagement.com/",
           subscribeUrl: "https://heraklit.framontmanagement.com/?src=framont-access",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
@@ -2344,7 +2344,7 @@ class Component extends DCLogic {
             { label: { en: "Backtested CAGR (1999–2026)*", it: "CAGR da backtest (1999–2026)*" }, value: "11.45%" }
           ],
           description: { en: "HERAKLIT applies a physics-based market model — regime detection derived from the Fokker–Planck equation across twelve global data streams — to distinguish stable, investable market phases from unstable ones and adjust exposure systematically. Strategy developed by Marcus Schmieke (Strategy Developer); portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). Issued by iMaps ETI AG (Liechtenstein) as an Exchange Traded Instrument listed on Börse Stuttgart. *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Capital at risk.", it: "HERAKLIT applica un modello di mercato su basi fisiche — rilevazione dei regimi derivata dall'equazione di Fokker–Planck su dodici flussi di dati globali — per distinguere le fasi di mercato stabili e investibili da quelle instabili e adeguare l'esposizione in modo sistematico. Strategia sviluppata da Marcus Schmieke (Sviluppatore della Strategia); la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). Emesso da iMaps ETI AG (Liechtenstein) come Exchange Traded Instrument quotato alla Börse di Stoccarda. *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
-        { id: "eti-techmegatrend", name: "Tech Megatrend Tactical ETI", isin: "DE000AMC0D85", assetClass: "Equity / Technology", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+        { id: "eti-techmegatrend", name: "Tech Megatrend Tactical ETI", isin: "DE000AMC0D85", assetClass: "Equity / Technology", currency: "EUR", minSub: 1000, minLabel: { en: "€1,000", it: "€1.000" }, open: true, active: true,
           landingUrl: "https://techmegatrend.framontmanagement.com/",
           subscribeUrl: "https://techmegatrend.framontmanagement.com/?src=framont-access",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
@@ -2368,7 +2368,7 @@ class Component extends DCLogic {
             { label: { en: "Backtested CAGR (2008–2026, long/cash)*", it: "CAGR da backtest (2008–2026, long/cash)*" }, value: "60.84%" }
           ],
           description: { en: "A tactical, liquidity-driven approach to US technology developed by Dr. Chris Kacher (Strategy Developer). The strategy combines macro liquidity analysis with price and volume confirmation, rotating between leveraged and unleveraged technology exposure (TECL, TQQQ, QQQ), cash and short positioning. Issued by iMaps ETI AG and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Leveraged exposure can amplify losses. Capital at risk.", it: "Un approccio tattico alla tecnologia USA guidato dalla liquidità, sviluppato dal Dr. Chris Kacher (Sviluppatore della Strategia). La strategia combina l'analisi della liquidità macro con conferme di prezzo e volume, ruotando tra esposizione tecnologica a leva e non (TECL, TQQQ, QQQ), liquidità e posizioni short. Emesso da iMaps ETI AG e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. L'esposizione a leva può amplificare le perdite. Capitale a rischio." } },
-        { id: "eti-lcinvest", name: "LC Invest — Value Edge ETI", isin: "DE000AMC0BZ5", assetClass: "Gold / FX", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+        { id: "eti-lcinvest", name: "LC Invest — Value Edge ETI", isin: "DE000AMC0BZ5", assetClass: "Gold / FX", currency: "EUR", minSub: 1000, minLabel: { en: "€1,000", it: "€1.000" }, open: true, active: true,
           landingUrl: "https://lcinvest.framontmanagement.com/",
           subscribeUrl: "https://lcinvest.framontmanagement.com/?src=framont-access",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
@@ -2392,7 +2392,7 @@ class Component extends DCLogic {
             { label: { en: "Developer's personal account, 2025*", it: "Conto personale dello sviluppatore, 2025*" }, value: "+483%" }
           ],
           description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } },
-        { id: "eti-ivn", name: "IVN Global ETI", isin: "DE000AMC0DX6", assetClass: "Alternative Multi-Asset", currency: "EUR", minSub: 1000, minLabel: "€1,000", open: true, active: true,
+        { id: "eti-ivn", name: "IVN Global ETI", isin: "DE000AMC0DX6", assetClass: "Alternative Multi-Asset", currency: "EUR", minSub: 1000, minLabel: { en: "€1,000", it: "€1.000" }, open: true, active: true,
           landingUrl: "https://ivncapital.com/",
           subscribeUrl: "",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
@@ -2560,10 +2560,14 @@ class Component extends DCLogic {
       if (this._writingHash) { this._writingHash = false; return; }
       const r = this.parseHash();
       const patch = {};
-      if (r.lang && r.lang !== this.state.lang) patch.lang = r.lang;
-      if (r.view && r.view !== this.state.view) { patch.view = r.view; patch.mobileOpen = false; patch.modal = null; patch.fCls = "all"; patch.fCur = "all"; patch.fSize = "all"; patch.glQuery = ""; patch.glFilter = "all"; }
+      const hashLang = r.lang || "en";
+      if (hashLang !== this.state.lang) patch.lang = hashLang;
+      if (r.view && r.view !== this.state.view) { patch.view = r.view; patch.mobileOpen = false; patch.modal = null; patch.cmpFilter = "all"; patch.fCls = "all"; patch.fCur = "all"; patch.fSize = "all"; patch.glQuery = ""; patch.glFilter = "all"; }
       else if (!r.view && this.state.view !== "home" && this.state.view !== "admin") { patch.view = "home"; patch.mobileOpen = false; patch.modal = null; }
-      if (Object.keys(patch).length) this.setState(patch);
+      const raw = (window.location.hash || "").replace(/^#\/?/, "").split("/").filter(Boolean);
+      const unknown = raw.length && !r.view && !r.insights && !r.lang;
+      if (unknown) patch.view = "home";
+      if (Object.keys(patch).length) this.setState(patch, () => { if (unknown) this.writeHash(); });
     };
     window.addEventListener("hashchange", this._onHash);
     this._onResize = () => {
@@ -2573,6 +2577,7 @@ class Component extends DCLogic {
     window.addEventListener("resize", this._onResize);
     this._onResize();
     this._onKey = (e) => {
+      if (e.key === "Escape" && this.state.mobileOpen) { this.setState({ mobileOpen: false }); return; }
       if (!this.state.modal) return;
       if (e.key === "Escape") { this.closeModal(); return; }
       if (e.key !== "Tab") return;
@@ -2592,6 +2597,17 @@ class Component extends DCLogic {
     // history entry it left the page instead and lost the category the visitor was on.
     this._onPop = () => { if (this.state.modal) { this._modalHistory = false; this._closeModalState(); } };
     window.addEventListener("popstate", this._onPop);
+    // The drawer is a top:68px panel, not an overlay, so the page stays interactive behind
+    // it — a tap outside has to dismiss it.
+    this._onDocDown = (e) => {
+      if (!this.state.mobileOpen) return;
+      const nav = document.getElementById("mobile-nav");
+      const burger = document.querySelector('button[aria-label="Menu"]');
+      if (nav && nav.contains(e.target)) return;
+      if (burger && burger.contains(e.target)) return;
+      this.setState({ mobileOpen: false });
+    };
+    document.addEventListener("pointerdown", this._onDocDown, true);
     this.scanReveal();
     this._rf = setTimeout(() => {
       if (this._ioFired) return;
@@ -2832,7 +2848,7 @@ class Component extends DCLogic {
   writeHash() {
     const s = this.state;
     const parts = [];
-    if (s.lang !== "en") parts.push(s.lang);
+    parts.push(s.lang);
     if (s.view !== "home" && s.view !== "admin") parts.push(s.view);
     const cur = window.location.hash === "#" ? "" : window.location.hash;
     const next = parts.length ? "#/" + parts.join("/") : (cur ? "#/" : "");
@@ -2851,20 +2867,46 @@ class Component extends DCLogic {
     const patch = {};
     if ((lang === "en" || lang === "it") && lang !== this.state.lang) patch.lang = lang;
     if (r.view && r.view !== this.state.view) patch.view = r.view;
-    if (Object.keys(patch).length) this.setState(patch);
+    // A typo or a stale link cold-loaded the home page under its own bogus URL. Normalise
+    // it here too: _onHash only sees later changes, not the initial hash.
+    const raw = (window.location.hash || "").replace(/^#\/?/, "").split("/").filter(Boolean);
+    const unknown = raw.length && !r.view && !r.insights && !r.lang;
+    if (unknown) patch.view = "home";
+    if (Object.keys(patch).length || unknown) this.setState(patch, () => { if (unknown) this.writeHash(); });
+  }
+
+  // One place to localise the asset-class taxonomy; the records keep the English key.
+  locClass(k) {
+    const it = {
+      "Real Estate": "Immobiliare", "Private Credit": "Credito privato",
+      "Absolute Return": "Absolute return", "Private Equity": "Private equity",
+      "Actively Managed Certificate": "Certificato a gestione attiva",
+      "Systematic Multi-Asset": "Multi-asset sistematico",
+      "Equity / Technology": "Azionario / Tecnologia", "Gold / FX": "Oro / Valute",
+      "Alternative Multi-Asset": "Multi-asset alternativo"
+    };
+    if (this.state.lang !== "it") return k;
+    return it[k] || k;
   }
 
   syncMeta() {
     const s = this.state;
     try {
       document.documentElement.lang = s.lang;
-      let title = "Framont Access — Institutional Investment Platform";
+      let title = s.lang === "it" ? "Framont Access — Piattaforma di Investimento Istituzionale" : "Framont Access — Institutional Investment Platform";
       if (["funds", "amc", "eti", "deals"].includes(s.view)) title = this.DATA[s.view][s.lang].title + " — Framont Access";
       else if (s.view === "compare") title = this.T[s.lang].compare.label + " — Framont Access";
       else if (s.view === "structure") title = this.T[s.lang].structure.label + " — Framont Access";
       else if (s.view === "glossary") title = this.T[s.lang].glossary.label + " — Framont Access";
       else if (s.view === "admin") title = this.T[s.lang].admin.title + " — Framont Access";
       if (document.title !== title) document.title = title;
+      const md = document.querySelector('meta[name="description"]');
+      if (md) {
+        const desc = s.lang === "it"
+          ? "Accesso curato per investitori idonei a prodotti di livello istituzionale: fondi, certificati a gestione attiva (AMC), exchange traded instrument (ETI) e operazioni di mercato privato."
+          : "Curated access for eligible investors to institutional-grade products: funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and private market deals.";
+        if (md.getAttribute("content") !== desc) md.setAttribute("content", desc);
+      }
       this.syncGlossaryLd();
     } catch (e) {}
   }
@@ -2908,6 +2950,7 @@ class Component extends DCLogic {
     window.removeEventListener("keydown", this._onKey);
     window.removeEventListener("hashchange", this._onHash);
     window.removeEventListener("popstate", this._onPop);
+    document.removeEventListener("pointerdown", this._onDocDown, true);
     try { document.body.style.overflow = ""; } catch (e) {}
     clearTimeout(this._ft); clearTimeout(this._tt); clearTimeout(this._st); clearTimeout(this._rf);
     if (this._io) this._io.disconnect();
@@ -2958,7 +3001,7 @@ class Component extends DCLogic {
 
   navTo(k) {
     if (k === "admin" && !(this.state.user && this.state.user.role === "admin")) return;
-    this.setState({ view: k, mobileOpen: false, modal: null, fCls: "all", fCur: "all", fSize: "all", glQuery: "", glFilter: "all" });
+    this.setState({ view: k, mobileOpen: false, modal: null, cmpFilter: "all", fCls: "all", fCur: "all", fSize: "all", glQuery: "", glFilter: "all" });
   }
 
   toggleLang() {
@@ -3275,7 +3318,7 @@ class Component extends DCLogic {
       // apart before deciding whether registering is worth it.
       if (gated) this.noteGateImpression(p, ck);
       return {
-        name: p.name, assetClass: p.assetClass, currency: p.currency,
+        name: p.name, assetClass: this.locClass(p.assetClass), currency: p.currency,
         code: p.isin || p.ticker || "—",
         strategy: loc(p.strategy), minLabel: loc(p.minLabel),
         metricLabel: loc(p.metricLabel), metricValue: loc(p.metricValue),
@@ -3316,6 +3359,7 @@ class Component extends DCLogic {
         if (s.fSize === "over100k" && p.minSub < 100000) return false;
         return true;
       });
+      catEmpty = fil.length === 0;
       products = fil.map((p) => dec(p, view));
       resultsLabel = act.length === 0 ? "" : fil.length + " " + (fil.length === 1 ? t.products.result : t.products.results);
       benefits = cat.benefits;
@@ -3381,7 +3425,7 @@ class Component extends DCLogic {
       };
 
       const counts = {};
-      CK.forEach((k) => { counts[k] = db[k].products.filter((p) => p.active).length; });
+      CK.forEach((k) => { counts[k] = db[k].products.filter((p) => p.active && p.open).length; });
       const total = CK.reduce((n, k) => n + counts[k], 0);
       cmpFilters = [{ key: "all", label: t.compare.all, n: total }]
         .concat(CK.map((k) => ({ key: k, label: t.nav[k], n: counts[k] })))
@@ -3495,7 +3539,7 @@ class Component extends DCLogic {
         shown += items.length;
         glGroups.push({
           key: g.key, label: loc(g.label),
-          terms: items.map((x) => ({ term: x[s.lang].t, alt: x[s.lang].alt, def: x[s.lang].d }))
+          terms: items.map((x) => ({ term: x[s.lang].t, alt: x[s.lang].alt, altLang: s.lang === "it" ? "en" : "it", def: x[s.lang].d }))
         });
       });
       glTally = shown + " " + (shown === 1 ? t.glossary.entry : t.glossary.entries);
@@ -4159,6 +4203,15 @@ class Component extends DCLogic {
   function primeHeroVideo(){
     var v=document.querySelector('[data-hero-video]');
     if(!v || v.__moPrimed) return; v.__moPrimed=true;
+    try{
+      var rm=window.matchMedia('(prefers-reduced-motion: reduce)');
+      var applyRm=function(){
+        if(rm.matches){ v.removeAttribute('autoplay'); v.loop=false; try{ v.pause(); }catch(e){} v.style.opacity='1'; }
+      };
+      applyRm();
+      if(rm.addEventListener) rm.addEventListener('change', applyRm);
+      if(rm.matches) return;
+    }catch(e){}
     try{ v.muted=true; v.defaultMuted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); }catch(e){}
     var show=function(){ v.style.opacity='1'; };
     v.addEventListener('playing', show);
