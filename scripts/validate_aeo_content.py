@@ -16,6 +16,8 @@ What it enforces:
     ``dateModified``;
   * every claim marker holding a time-sensitive number carries ``data-as-of``;
   * every article canonical URL appears in both ``sitemap.xml`` and ``llms.txt``;
+  * every page ``sitemap.xml`` ships exists on disk and is covered by a check
+    list, so a new page cannot go live unexamined;
   * a named ``reviewedBy`` only ever ships when the registry records the
     reviewer's consent as ``approved``.
 
@@ -65,7 +67,25 @@ STATIC_ROUTES = [
     ("compare/index.html", "it/confronto/index.html"),
     ("structure/index.html", "it/struttura/index.html"),
     ("glossary/index.html", "it/glossario/index.html"),
+    ("editorial-policy/index.html", "it/politica-editoriale/index.html"),
+    ("articles/index.html", "articles/it/index.html"),
 ]
+
+# Pages that ship in a single language, so there is no counterpart to hold them
+# to evidence parity. They still have to stand up without JavaScript, carry a
+# correct canonical and point their own hreflang at themselves.
+SOLO_ROUTES = [
+    ("it/eti/erere-quant-income/index.html", "it"),
+]
+
+# Pages the sitemap ships that the static checks deliberately do not describe.
+# The reason lives here so that an unchecked page stays a decision somebody made
+# once, rather than an omission nobody noticed.
+EXEMPT_PAGES = {
+    "index.html": "the product platform is a single-page app: it carries an H1 per "
+    "view and builds its markup from client-side templates, so the static-route "
+    "checks do not apply",
+}
 
 # A number is treated as time-sensitive when it states a magnitude, a share or a
 # money amount -- the kinds of figure that go stale silently and that an answer
@@ -144,6 +164,14 @@ class PageParser(HTMLParser):
         self.text_len += len(data.strip())
         for frame in self._claim_stack:
             frame["claim"]["text"] += data
+
+
+def covered_pages() -> set[str]:
+    """Every page some check list looks at."""
+    covered = {rel for pair in ARTICLE_PAIRS for rel in pair}
+    covered |= {rel for pair in STATIC_ROUTES for rel in pair}
+    covered |= {rel for rel, _lang in SOLO_ROUTES}
+    return covered
 
 
 def load_registry() -> dict:
@@ -343,6 +371,70 @@ def check_parity(en_rel: str, it_rel: str, en: PageParser, it: PageParser, repor
         report.error(f"{it_rel}: hreflang 'en' does not point at {en.canonical}")
 
 
+def check_static_page(rel: str, report: Report, lang: str | None = None) -> str:
+    """Check a route that has to stand up without JavaScript; return its canonical."""
+    path = ROOT / rel
+    if not path.exists():
+        report.error(f"{rel}: file does not exist")
+        return ""
+
+    raw = path.read_text(encoding="utf-8")
+    parser = parse_page(path)
+    report.checked += 1
+
+    if parser.h1_count != 1:
+        report.error(f"{rel}: expected exactly one H1, found {parser.h1_count}")
+    if parser.text_len < 1200:
+        report.error(
+            f"{rel}: only {parser.text_len} characters of static text; "
+            "the route must be readable without JavaScript"
+        )
+    if "{{" in raw:
+        report.error(f"{rel}: contains an unrendered template placeholder")
+    if "__INVALID_JSON__" in ld_types(parser):
+        report.error(f"{rel}: a JSON-LD block does not parse")
+
+    if not parser.canonical:
+        report.error(f"{rel}: no canonical URL")
+        return ""
+
+    expected = f"{SITE}/{rel}".replace("/index.html", "/")
+    if parser.canonical != expected:
+        report.error(f"{rel}: canonical is {parser.canonical}, expected {expected}")
+    if lang and parser.hreflang.get(lang) != parser.canonical:
+        report.error(f"{rel}: hreflang '{lang}' does not point at its own canonical")
+
+    return parser.canonical
+
+
+def check_coverage(covered: set[str], report: Report) -> None:
+    """Hold the check lists to what the site actually ships.
+
+    ``check_discovery`` walks from the check lists to the sitemap and catches a
+    page that is checked but unreachable. This walks the other way -- from the
+    sitemap to the check lists -- and catches the more likely accident: a page
+    that goes live, gets indexed and quoted by an answer engine while no check
+    in this file has ever looked at it.
+    """
+    if not SITEMAP_PATH.exists():
+        return
+    sitemap = SITEMAP_PATH.read_text(encoding="utf-8")
+    for url in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", sitemap):
+        if not url.startswith(f"{SITE}/"):
+            continue
+        rel = url[len(SITE) + 1 :]
+        rel = f"{rel}index.html" if rel.endswith("/") or not rel else rel
+        if not (ROOT / rel).exists():
+            report.error(f"sitemap.xml lists {url}, but {rel} does not exist")
+        elif rel in EXEMPT_PAGES:
+            continue
+        elif rel not in covered:
+            report.warn(
+                f"{rel} is published in sitemap.xml but no check list covers it; "
+                "add it to ARTICLE_PAIRS, STATIC_ROUTES, SOLO_ROUTES or EXEMPT_PAGES"
+            )
+
+
 def check_discovery(canonicals: list[str], report: Report) -> None:
     sitemap = SITEMAP_PATH.read_text(encoding="utf-8") if SITEMAP_PATH.exists() else ""
     llms = LLMS_PATH.read_text(encoding="utf-8") if LLMS_PATH.exists() else ""
@@ -432,28 +524,18 @@ def main() -> int:
             canonicals.extend([en.canonical, it.canonical])
 
     for en_rel, it_rel in STATIC_ROUTES:
-        for rel in (en_rel, it_rel):
-            path = ROOT / rel
-            if not path.exists():
-                report.error(f"{rel}: file does not exist")
-                continue
-            parser = parse_page(path)
-            report.checked += 1
-            if parser.h1_count != 1:
-                report.error(f"{rel}: expected exactly one H1, found {parser.h1_count}")
-            if parser.text_len < 1200:
-                report.error(
-                    f"{rel}: only {parser.text_len} characters of static text; "
-                    "the route must be readable without JavaScript"
-                )
-            if "{{" in path.read_text(encoding="utf-8"):
-                report.error(f"{rel}: contains an unrendered template placeholder")
-            if not parser.canonical:
-                report.error(f"{rel}: no canonical URL")
-            else:
-                canonicals.append(parser.canonical)
+        for rel, lang in ((en_rel, "en"), (it_rel, "it")):
+            canonical = check_static_page(rel, report, lang)
+            if canonical:
+                canonicals.append(canonical)
+
+    for rel, lang in SOLO_ROUTES:
+        canonical = check_static_page(rel, report, lang)
+        if canonical:
+            canonicals.append(canonical)
 
     check_discovery(canonicals, report)
+    check_coverage(covered_pages(), report)
 
     if args.links:
         print("\nResolving registry URLs:")
