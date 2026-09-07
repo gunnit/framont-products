@@ -62,6 +62,22 @@ records declare `access.automated: "bot-protected"` in the registry, and the lin
 check reports them without failing the run. Anything that genuinely does not
 resolve is an error.
 
+### Adding a page
+
+The validator checks a declared list of pages, not whatever happens to be on
+disk, so a new page is only checked once it is listed. It reads `sitemap.xml`
+back to those lists and warns about any published page that no list covers —
+which is the reminder that the page still needs a home in one of these:
+
+| List | For |
+|---|---|
+| `ARTICLE_PAIRS` | A bilingual article and its counterpart. Both must rest on the same evidence. |
+| `STATIC_ROUTES` | A bilingual utility route that has to read without JavaScript. |
+| `SOLO_ROUTES` | A page shipped in one language, so there is no counterpart to hold it to parity. |
+| `EXEMPT_PAGES` | A page the static checks do not describe. Say why: the note is the record. |
+
+A page listed in `sitemap.xml` with no file behind it is an error, not a warning.
+
 ## Local preview
 
 ```bash
