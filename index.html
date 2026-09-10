@@ -127,10 +127,9 @@
           "position": 3,
           "item": {
             "@type": "FinancialProduct",
-            "name": "LC Invest — Value Edge ETI",
+            "name": "Snow White — Value Edge ETI",
             "identifier": "DE000AMC0BZ5",
             "category": "Exchange Traded Instrument",
-            "url": "https://lcinvest.framontmanagement.com/",
             "provider": { "@id": "https://access.framontmanagement.com/#org" }
           }
         },
@@ -142,7 +141,6 @@
             "name": "IVN Global ETI",
             "identifier": "DE000AMC0DX6",
             "category": "Exchange Traded Instrument",
-            "url": "https://ivncapital.com/",
             "provider": { "@id": "https://access.framontmanagement.com/#org" }
           }
         },
@@ -403,8 +401,8 @@
   <ul>
     <li><a href="https://heraklit.framontmanagement.com/">HERAKLIT Strategy ETI</a> — ISIN DE000AMC0D44, listed on Börse Stuttgart</li>
     <li><a href="https://techmegatrend.framontmanagement.com/">Tech Megatrend Tactical ETI</a> — ISIN DE000AMC0D85</li>
-    <li><a href="https://lcinvest.framontmanagement.com/">LC Invest — Value Edge ETI</a> — ISIN DE000AMC0BZ5</li>
-    <li><a href="https://ivncapital.com/">IVN Global ETI</a> — ISIN DE000AMC0DX6, actively managed global long/short strategy</li>
+    <li>Snow White — Value Edge ETI — ISIN DE000AMC0BZ5</li>
+    <li>IVN Global ETI — ISIN DE000AMC0DX6, actively managed global long/short strategy</li>
     <li><a href="/it/eti/erere-quant-income/">Erere Quant Income ETI</a> — listed on Börse Stuttgart, issued through an iMaps Capital Markets segregated cell; systematic options-income strategy on US equities and ETFs, cash secured and unleveraged, minimum €100. ISIN on request from Framont</li>
     <li><a href="/assets/termsheets/framont-noctiluca-amc-termsheet.pdf">Noctiluca Capital AMC</a> — ISIN CH1554882477 (professional investors)</li>
     <li>Framont Global Total Return AMC — actively managed certificate on the Framont Global Total Return Index (FRGLBOPP), issued by Leonteq and listed on Borsa Italiana (retail, PRIIPs KID)</li>
@@ -2386,9 +2384,9 @@ class Component extends DCLogic {
             { label: { en: "Backtested CAGR (2008–2026, long/cash)*", it: "CAGR da backtest (2008–2026, long/cash)*" }, value: "60.84%" }
           ],
           description: { en: "A tactical, liquidity-driven approach to US technology developed by Dr. Chris Kacher (Strategy Developer). The strategy combines macro liquidity analysis with price and volume confirmation, rotating between leveraged and unleveraged technology exposure (TECL, TQQQ, QQQ), cash and short positioning. Issued by iMaps ETI AG and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *Backtested figures are simulated, do not represent actual trading and are not a reliable indicator of future results. Leveraged exposure can amplify losses. Capital at risk.", it: "Un approccio tattico alla tecnologia USA guidato dalla liquidità, sviluppato dal Dr. Chris Kacher (Sviluppatore della Strategia). La strategia combina l'analisi della liquidità macro con conferme di prezzo e volume, ruotando tra esposizione tecnologica a leva e non (TECL, TQQQ, QQQ), liquidità e posizioni short. Emesso da iMaps ETI AG e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *I dati di backtest sono simulati, non rappresentano operatività reale e non sono un indicatore affidabile dei risultati futuri. L'esposizione a leva può amplificare le perdite. Capitale a rischio." } },
-        { id: "eti-lcinvest", name: "LC Invest — Value Edge ETI", isin: "DE000AMC0BZ5", assetClass: "Gold / FX", currency: "EUR", minSub: 100, minLabel: { en: "€100", it: "€100" }, open: true, active: true,
-          landingUrl: "https://lcinvest.framontmanagement.com/",
-          subscribeUrl: "https://lcinvest.framontmanagement.com/?src=framont-access",
+        { id: "eti-lcinvest", name: "Snow White — Value Edge ETI", isin: "DE000AMC0BZ5", assetClass: "Gold / FX", currency: "EUR", minSub: 100, minLabel: { en: "€100", it: "€100" }, open: true, active: true,
+          landingUrl: "",
+          subscribeUrl: "",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
             short: { en: "Discretionary Gold and FX. Smart Money Concepts, price action and macro analysis", it: "Oro e valute in gestione discrezionale. Smart Money Concepts, price action e analisi macro" },
             liquidity: { en: "Daily on exchange, T+2", it: "Giornaliera in borsa, T+2" },
@@ -2411,7 +2409,7 @@ class Component extends DCLogic {
           ],
           description: { en: "A discretionary Gold and FX strategy developed by Luca Cunin (Strategy Developer), combining Smart Money Concepts, price action confirmation and macro analysis, with strict per-trade risk limits. Issued by iMaps ETI AG at an issue price of EUR 100 and listed on Börse Stuttgart; portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta). *The +483% result for 2025 refers to the strategy developer's personal trading account, is not the performance of the ETI, was achieved under different conditions and is not indicative of the instrument's future results. Capital at risk.", it: "Una strategia discrezionale su Oro e Valute sviluppata da Luca Cunin (Sviluppatore della Strategia), che combina Smart Money Concepts, conferme di price action e analisi macro, con rigidi limiti di rischio per operazione. Emesso da iMaps ETI AG a un prezzo di emissione di EUR 100 e quotato alla Börse di Stoccarda; la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta). *Il risultato +483% del 2025 si riferisce al conto di trading personale dello sviluppatore della strategia, non è la performance dell'ETI, è stato conseguito in condizioni differenti e non è indicativo dei risultati futuri dello strumento. Capitale a rischio." } },
         { id: "eti-ivn", name: "IVN Global ETI", isin: "DE000AMC0DX6", assetClass: "Alternative Multi-Asset", currency: "EUR", minSub: 100, minLabel: { en: "€100", it: "€100" }, open: true, active: true,
-          landingUrl: "https://ivncapital.com/",
+          landingUrl: "",
           subscribeUrl: "",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
             short: { en: "Global long/short: indices, currencies, commodities, digital assets. Leverage max 300%", it: "Long/short globale: indici, valute, materie prime, asset digitali. Leva massima 300%" },
@@ -2433,7 +2431,7 @@ class Component extends DCLogic {
             { label: { en: "Leverage Limit", it: "Limite di Leva" }, value: { en: "Max 300% of portfolio value", it: "Max 300% del valore del portafoglio" } },
             { label: { en: "Settlement / Liquidity", it: "Regolamento / Liquidità" }, value: { en: "T+2 · daily on exchange", it: "T+2 · giornaliera in borsa" } }
           ],
-          description: { en: "IVN Global is an Exchange Traded Instrument issued by iMaps ETI AG (Liechtenstein) at an issue price of EUR 100 (ISIN DE000AMC0DX6) and listed on Börse Stuttgart. The underlying segregated portfolio is actively managed and denominated in EUR, taking long and/or short positions across global equity indices, currencies, commodities and digital assets, with the objective of generating returns uncorrelated to traditional financial markets. The strategy is developed by IVN Capital (Strategy Developer); portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta), acting as Delegated Investment Manager. Leverage is capped at 300% of portfolio value under the portfolio guidelines. Further information is available at ivncapital.com; the Key Information Document is available from Framont & Partners Management Ltd and on the issuer's product page. *The 10% p.a. indicative return objective published by IVN Capital is a management guideline, is not guaranteed and is not a reliable indicator of future results. Capital at risk.", it: "IVN Global è un Exchange Traded Instrument emesso da iMaps ETI AG (Liechtenstein) a un prezzo di emissione di EUR 100 (ISIN DE000AMC0DX6) e quotato alla Börse di Stoccarda. Il portafoglio segregato sottostante è gestito attivamente ed è denominato in EUR, con posizioni long e/o short su indici azionari globali, valute, materie prime e asset digitali, con l'obiettivo di generare rendimenti non correlati ai mercati finanziari tradizionali. La strategia è sviluppata da IVN Capital (Sviluppatore della Strategia); la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta), in qualità di Delegated Investment Manager. La leva è limitata al 300% del valore del portafoglio secondo le linee guida di gestione. Maggiori informazioni su ivncapital.com; il Documento Informativo Chiave è disponibile presso Framont & Partners Management Ltd e sulla pagina prodotto dell'emittente. *L'obiettivo di rendimento indicativo del 10% annuo pubblicato da IVN Capital è una linea guida gestionale, non è garantito e non è un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
+          description: { en: "IVN Global is an Exchange Traded Instrument issued by iMaps ETI AG (Liechtenstein) at an issue price of EUR 100 (ISIN DE000AMC0DX6) and listed on Börse Stuttgart. The underlying segregated portfolio is actively managed and denominated in EUR, taking long and/or short positions across global equity indices, currencies, commodities and digital assets, with the objective of generating returns uncorrelated to traditional financial markets. The strategy is developed by IVN Capital (Strategy Developer); portfolio management is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA (Malta), acting as Delegated Investment Manager. Leverage is capped at 300% of portfolio value under the portfolio guidelines. The Key Information Document is available from Framont & Partners Management Ltd and on the issuer's product page. *The 10% p.a. indicative return objective published by IVN Capital is a management guideline, is not guaranteed and is not a reliable indicator of future results. Capital at risk.", it: "IVN Global è un Exchange Traded Instrument emesso da iMaps ETI AG (Liechtenstein) a un prezzo di emissione di EUR 100 (ISIN DE000AMC0DX6) e quotato alla Börse di Stoccarda. Il portafoglio segregato sottostante è gestito attivamente ed è denominato in EUR, con posizioni long e/o short su indici azionari globali, valute, materie prime e asset digitali, con l'obiettivo di generare rendimenti non correlati ai mercati finanziari tradizionali. La strategia è sviluppata da IVN Capital (Sviluppatore della Strategia); la gestione di portafoglio è svolta da Framont & Partners Management Ltd, AIFM autorizzato dalla MFSA (Malta), in qualità di Delegated Investment Manager. La leva è limitata al 300% del valore del portafoglio secondo le linee guida di gestione. Il Documento Informativo Chiave è disponibile presso Framont & Partners Management Ltd e sulla pagina prodotto dell'emittente. *L'obiettivo di rendimento indicativo del 10% annuo pubblicato da IVN Capital è una linea guida gestionale, non è garantito e non è un indicatore affidabile dei risultati futuri. Capitale a rischio." } },
         { id: "eti-erere", name: "Erere Quant Income ETI", assetClass: "Systematic Options Income", currency: "EUR", minSub: 100, minLabel: { en: "€100", it: "€100" }, open: true, active: true,
           landingUrl: "/it/eti/erere-quant-income/",
           subscribeUrl: "",
