@@ -4024,6 +4024,11 @@ class Component extends DCLogic {
   function primeCatVideo(media){
     if(RM || (navigator.connection&&navigator.connection.saveData)) return;
     var src=media.getAttribute('data-cat-src')||'';
+    // The stage can prime this element before the runtime has interpolated the
+    // attribute. Assigning a raw "{{ catVid }}" makes the browser fetch that
+    // literal string as a URL, so bail out and let the next pass do the work —
+    // without caching the placeholder, or the real src would look unchanged.
+    if(src.indexOf('{{')!==-1) return;
     if(media.__moVSrc===src) return;
     media.__moVSrc=src;
     var old=media.querySelector('video');
