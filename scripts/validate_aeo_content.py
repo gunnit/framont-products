@@ -76,6 +76,7 @@ STATIC_ROUTES = [
 # correct canonical and point their own hreflang at themselves.
 SOLO_ROUTES = [
     ("it/eti/erere-quant-income/index.html", "it"),
+    ("it/eti/value-edge-snowwhite/index.html", "it"),
 ]
 
 # Pages the sitemap ships that the static checks deliberately do not describe.
