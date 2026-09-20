@@ -728,6 +728,33 @@ input[type=range]::-moz-range-thumb{
 .cta-c a{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;color:var(--navy);border-bottom:1px solid var(--orange);padding-bottom:3px;word-break:break-word}
 .cta-disc{margin-top:26px;font-size:.76rem;line-height:1.8;color:var(--muted)}
 
+/* ---------- modulo di richiesta (funnel Framont Access) ---------- */
+.lead{margin-top:26px;background:var(--paper-2);border:1px solid var(--rule);border-top:4px solid var(--orange);padding:clamp(20px,5vw,30px)}
+.lead h3{font-size:1.2rem;margin-bottom:6px}
+.lead .small{margin-bottom:18px}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--body);margin-bottom:7px}
+.fld input,.fld select,.fld textarea{width:100%;background:var(--paper);border:1px solid var(--rule-strong);color:var(--ink);padding:13px 14px;font:inherit;font-size:16px;border-radius:0;outline:none;transition:border-color .2s,box-shadow .2s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(244,121,32,.14)}
+.fld textarea{min-height:100px;resize:vertical}
+.fld.bad input,.fld.bad select,.fld.bad textarea{border-color:var(--stop)}
+.fld.bad .fld-err{display:block}
+.fld-err{display:none;font-size:.76rem;color:var(--stop);margin-top:5px}
+.fld-2{display:grid;gap:0 14px}
+.consent{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;margin:6px 0 18px}
+.consent input{width:18px;height:18px;accent-color:var(--orange);margin-top:2px}
+.consent label{font-size:.82rem;line-height:1.6;color:var(--body)}
+.consent a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.consent.bad label{color:var(--stop)}
+.lead .btn-1{width:100%}
+.lead-ok,.lead-err{display:none;margin-top:16px;padding:16px 18px;font-size:.9rem;line-height:1.7}
+.lead-ok{background:#E7F3EC;border-left:4px solid var(--ok);color:#173F2B}
+.lead-err{background:#FBE9E7;border-left:4px solid var(--stop);color:#5C1A14}
+.lead-ok.on,.lead-err.on{display:block}
+.lead-err a,.lead-ok a{text-decoration:underline;text-underline-offset:2px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+@media(min-width:700px){.fld-2{grid-template-columns:1fr 1fr}.lead .btn-1{width:auto}}
+
 /* ---------- footer ---------- */
 footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px,7vw,56px) 0 calc(28px + env(safe-area-inset-bottom))}
 .f-top{display:grid;gap:26px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:26px}
@@ -1685,6 +1712,47 @@ span.t-en{display:none}
 <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank"><span class="t-it">Veicoli di investimento UE</span><span class="t-en">EU investment vehicles</span></a>
 </div>
 </div>
+<form action="https://api.web3forms.com/submit" class="lead" id="lead" method="POST" novalidate="">
+<h3><span class="t-it">Modulo di richiesta</span><span class="t-en">Request form</span></h3>
+<p class="small"><span class="t-it">Per ricevere KID, prospetto, ISIN e dettagli di quotazione. I campi contrassegnati sono obbligatori.</span><span class="t-en">To receive the KID, the prospectus, the ISIN and the listing details. Marked fields are required.</span></p>
+<input name="access_key" type="hidden" value="696099b6-87e7-4b98-95a8-960202419a36"/>
+<input name="subject" type="hidden" value="Product Info Request — Snow White — Value Edge ETI"/>
+<input name="from_name" type="hidden" value="Framont Access"/>
+<input name="lead_type" type="hidden" value="product_info_request"/>
+<input name="product" type="hidden" value="Snow White — Value Edge ETI"/>
+<input name="product_id" type="hidden" value="eti-lcinvest"/>
+<input name="isin" type="hidden" value="DE000AMC0BZ5"/>
+<input name="page" type="hidden" value="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/"/>
+<input name="language" type="hidden" value="it"/>
+<input name="referrer" type="hidden" value=""/>
+<input name="utm_source" type="hidden" value=""/><input name="utm_medium" type="hidden" value=""/><input name="utm_campaign" type="hidden" value=""/><input name="utm_term" type="hidden" value=""/><input name="utm_content" type="hidden" value=""/><input name="gclid" type="hidden" value=""/><input name="fbclid" type="hidden" value=""/>
+<input name="redirect" type="hidden" value="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/?sent=1#contact"/>
+<input autocomplete="off" class="hp" name="botcheck" tabindex="-1" type="checkbox"/>
+<div class="fld-2">
+<div class="fld"><label for="f-name"><span class="t-it">Nome e cognome *</span><span class="t-en">Full name *</span></label><input autocomplete="name" id="f-name" name="name" required="" type="text"/><div class="fld-err"><span class="t-it">Indica nome e cognome.</span><span class="t-en">Enter your full name.</span></div></div>
+<div class="fld"><label for="f-email"><span class="t-it">Email *</span><span class="t-en">Email *</span></label><input autocomplete="email" id="f-email" name="email" required="" type="email"/><div class="fld-err"><span class="t-it">Indica un indirizzo email valido.</span><span class="t-en">Enter a valid email address.</span></div></div>
+</div>
+<div class="fld-2">
+<div class="fld"><label for="f-phone"><span class="t-it">Telefono</span><span class="t-en">Phone</span></label><input autocomplete="tel" id="f-phone" name="phone" type="tel"/></div>
+<div class="fld"><label for="f-cat"><span class="t-it">Categoria di investitore *</span><span class="t-en">Investor category *</span></label>
+<select id="f-cat" name="investor_category" required="">
+<option value="">—</option>
+<option value="Retail investor">Investitore al dettaglio / Retail investor</option>
+<option value="Professional investor">Investitore professionale / Professional investor</option>
+<option value="Institutional investor">Investitore istituzionale / Institutional investor</option>
+<option value="Adviser or distributor">Consulente o distributore / Adviser or distributor</option>
+</select>
+<div class="fld-err"><span class="t-it">Seleziona la categoria.</span><span class="t-en">Select a category.</span></div></div>
+</div>
+<div class="fld"><label for="f-msg"><span class="t-it">Richiesta</span><span class="t-en">Request</span></label><textarea id="f-msg" name="message" placeholder="KID, prospetto, ISIN, sottoscrizione / subscription"></textarea></div>
+<div class="consent" id="consent-box">
+<input id="f-gdpr" name="gdpr_consent" required="" type="checkbox" value="yes"/>
+<label for="f-gdpr"><span class="t-it">Ho letto l'<a href="https://www.iubenda.com/privacy-policy/85437556/full-legal" rel="noopener" target="_blank">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla mia richiesta. *</span><span class="t-en">I have read the <a href="https://www.iubenda.com/privacy-policy/85437556/full-legal" rel="noopener" target="_blank">privacy policy</a> and consent to my data being processed to answer my request. *</span></label>
+</div>
+<button class="btn btn-1" type="submit"><span class="t-it">Invia la richiesta</span><span class="t-en">Send the request</span></button>
+<div class="lead-ok" id="lead-ok" tabindex="-1"><span class="t-it"><b>Richiesta inviata.</b> FRAMONT ti contatterà all'indirizzo indicato.</span><span class="t-en"><b>Request sent.</b> FRAMONT will contact you at the address given.</span></div>
+<div class="lead-err" id="lead-err"><span class="t-it"><b>La richiesta non è stata consegnata.</b> Scrivi direttamente a <a href="mailto:gianluigi.montagner@framontmanagement.com">gianluigi.montagner@framontmanagement.com</a>.</span><span class="t-en"><b>The request was not delivered.</b> Write directly to <a href="mailto:gianluigi.montagner@framontmanagement.com">gianluigi.montagner@framontmanagement.com</a>.</span></div>
+</form>
 <p class="cta-disc"><span class="t-it">Questa pagina è una comunicazione di marketing prodotta da FRAMONT &amp; Partners Management Ltd. Non costituisce consulenza in materia di investimenti, sollecitazione né offerta di acquisto o vendita di strumenti finanziari. La strategia utilizza leva, derivati e vendite a scoperto e può perdere valore rapidamente. Lo strumento è di nuova emissione e non ha un proprio storico di risultati: in questa pagina non sono pubblicati dati di performance. Il capitale è a rischio. Leggere il KID e il prospetto prima di investire. FRAMONT &amp; Partners Management Ltd è autorizzata e vigilata dalla Malta Financial Services Authority come Alternative Investment Fund Manager.</span><span class="t-en">This page is a marketing communication produced by FRAMONT &amp; Partners Management Ltd. It is not investment advice, a solicitation or an offer to buy or sell any financial instrument. The strategy uses leverage, derivatives and short selling and can lose value rapidly. The instrument is newly issued and has no track record of its own: no performance data is published on this page. Capital is at risk. Read the KID and the prospectus before investing. FRAMONT &amp; Partners Management Ltd is authorised and regulated by the Malta Financial Services Authority as an Alternative Investment Fund Manager.</span></p>
 </div>
 </section>
@@ -1765,6 +1833,7 @@ span.t-en{display:none}
     var od = d.querySelector('meta[property="og:description"]'); if(od) od.setAttribute('content', DESC[l]);
     var ot = d.querySelector('meta[property="og:title"]'); if(ot) ot.setAttribute('content', TITLE[l]);
     var ol = d.querySelector('meta[property="og:locale"]'); if(ol) ol.setAttribute('content', l === 'en' ? 'en_GB' : 'it_IT');
+    var fl = d.querySelector('#lead [name="language"]'); if(fl) fl.value = l;
     try{
       var u = new URL(window.location.href);
       if(l === 'en'){ u.searchParams.set('lang','en'); } else { u.searchParams.delete('lang'); }
@@ -1793,6 +1862,55 @@ span.t-en{display:none}
   var box = d.getElementById('cb-dismiss'), ck = d.getElementById('cookie');
   if(box && ck){
     box.addEventListener('change', function(){ if(box.checked){ ck.style.display = 'none'; } });
+  }
+
+  /* modulo: consegna al funnel di Framont Access (Web3Forms) senza lasciare la pagina */
+  var form = d.getElementById('lead'), okBox = d.getElementById('lead-ok'), errBox = d.getElementById('lead-err');
+  if(form){
+    try{
+      var qs = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){
+        var el = form.querySelector('[name="' + k + '"]'); if(el && qs.get(k)) el.value = qs.get(k);
+      });
+      var pg = form.querySelector('[name="page"]'); if(pg) pg.value = window.location.href;
+      var rf = form.querySelector('[name="referrer"]'); if(rf) rf.value = d.referrer || '';
+      var fl2 = form.querySelector('[name="language"]'); if(fl2) fl2.value = (rEn && rEn.checked) ? 'en' : 'it';
+      if(qs.get('sent') === '1' && okBox){ form.hidden = true; okBox.classList.add('on'); okBox.hidden = false; }
+    }catch(e){}
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var valid = true;
+      Array.prototype.forEach.call(form.querySelectorAll('[required]'), function(el){
+        var v = el.type === 'checkbox' ? el.checked : (el.value || '').trim();
+        var bad = !v || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
+        var wrap = el.closest('.fld') || el.closest('.consent');
+        if(wrap) wrap.classList.toggle('bad', bad);
+        if(bad) valid = false;
+      });
+      if(!valid){ var first = form.querySelector('.bad input, .bad select'); if(first) first.focus(); return; }
+      var btn = form.querySelector('button[type="submit"]'); if(btn) btn.disabled = true;
+      var data = {};
+      try{ new FormData(form).forEach(function(v, k){ data[k] = v; }); }catch(e){}
+      delete data.redirect;
+      data.botcheck = data.botcheck ? 'on' : '';
+      data.language = (rEn && rEn.checked) ? 'en' : 'it';
+      data.page = window.location.href;
+      fetch('https://api.web3forms.com/submit', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify(data)
+      }).then(function(r){ return !!(r && r.ok); }).catch(function(){ return false; })
+      .then(function(sent){
+        if(btn) btn.disabled = false;
+        if(sent){
+          form.querySelectorAll('.fld, .consent, .fld-2, h3, .small, button').forEach(function(el){ el.hidden = true; });
+          if(errBox) errBox.classList.remove('on');
+          if(okBox){ okBox.classList.add('on'); okBox.focus(); }
+        } else {
+          if(errBox) errBox.classList.add('on');
+        }
+      });
+    });
   }
 
   /* apparizione progressiva delle sezioni */
