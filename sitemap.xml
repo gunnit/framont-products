@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://access.framontmanagement.com/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-09-20</lastmod>
   </url>
   <url>
     <loc>https://access.framontmanagement.com/articles/</loc>
@@ -192,9 +192,23 @@
   </url>
   <url>
     <loc>https://access.framontmanagement.com/it/eti/value-edge-snowwhite/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/it/amc/noctiluca-capital/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/noctiluca-capital/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/it/amc/noctiluca-capital/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/it/amc/noctiluca-capital/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/"/>
   </url>
 </urlset>

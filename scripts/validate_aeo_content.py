@@ -77,6 +77,8 @@ STATIC_ROUTES = [
 SOLO_ROUTES = [
     ("it/eti/erere-quant-income/index.html", "it"),
     ("it/eti/value-edge-snowwhite/index.html", "it"),
+    ("it/amc/noctiluca-capital/index.html", "it"),
+    ("it/amc/zalphyx-yield-strategies/index.html", "it"),
 ]
 
 # Pages the sitemap ships that the static checks deliberately do not describe.
