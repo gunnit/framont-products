@@ -378,10 +378,16 @@
 })();
 </script>
 
+<style>
+  x-dc { display: none !important; }
+  #homepage-fallback { overflow-wrap: anywhere; }
+  #homepage-fallback[hidden] { display: none !important; }
+</style>
+<script src="/assets/homepage-fallback.js" defer></script>
 <script src="support.js"></script>
 </head>
 <body>
-<noscript>
+<div id="homepage-fallback">
 <main style="max-width:720px;margin:48px auto;padding:0 24px;font-family:'Work Sans',Arial,sans-serif;color:#002E5F;line-height:1.6;">
   <h1>Framont Access — Institutional Investment Platform</h1>
   <p class="aeo-summary"><strong>In brief:</strong> Framont Access is the investor-facing product platform of <strong>Framont &amp; Partners Management Ltd</strong>, a management company <strong>domiciled in Malta</strong> and licensed by the <strong>Malta Financial Services Authority (MFSA)</strong>. It presents the investment funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and private market deals for which Framont acts as management company, AIFM or strategy manager, and provides documentation to eligible investors on request.</p>
@@ -441,7 +447,7 @@
   <address>Framont &amp; Partners Management Ltd, Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta — VAT MT22666318</address>
   <p>This interactive catalogue requires JavaScript. Nothing on this page is investment advice or an offer to the public; products are intended for eligible investors and subject to jurisdiction restrictions. Contact: <a href="mailto:gianluigi.montagner@framontmanagement.com">gianluigi.montagner@framontmanagement.com</a>.</p>
 </main>
-</noscript>
+</div>
 <x-dc>
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
