@@ -263,3 +263,32 @@ test('generic registration after closing a product enquiry cannot reuse its stal
   assert.deepEqual(page.events('generate_lead'), [{ lead_type: 'access_request', language: 'en', category: 'eti' }]);
   assert.equal(component.state.user.email, 'person@example.com');
 });
+
+for (const [lang, fundsRoute, productRoute] of [
+  ['en', '/funds/', '/amc/noctiluca-capital/'],
+  ['it', '/it/fondi/', '/it/amc/noctiluca-capital/'],
+]) {
+  test('category overview and product links follow the selected language: ' + lang, () => {
+    const page = browser({ url: production + '/#/' + lang + '/funds' });
+    page.mount();
+    const component = page.component;
+    let view = component.renderVals();
+    assert.equal(view.categoryOverviewHref, fundsRoute);
+    assert.equal(view.overviewLinks.length, 4);
+    assert.equal(view.overviewLinks.find(link => link.key === 'funds').href, fundsRoute);
+    component.navTo('amc'); page.flush();
+    view = component.renderVals();
+    assert.equal(view.products.find(product => product.name === 'Noctiluca Capital AMC').landingUrl, productRoute);
+    component.viewProduct(component.DATA.amc.products.find(product => product.id === 'amc-noctiluca'), 'amc');
+    page.flush();
+    assert.equal(component.renderVals().pm.landingUrl, productRoute);
+  });
+}
+
+test('localized links leave untranslated and external product destinations intact', () => {
+  const page = browser({ url: production + '/#/en/eti' }); page.mount();
+  const view = page.component.renderVals();
+  assert.equal(view.products.find(product => product.name === 'Erere Quant Income ETI').landingUrl, '/it/eti/erere-quant-income/');
+  assert.equal(view.products.find(product => product.name === 'HERAKLIT Strategy ETI').landingUrl, 'https://heraklit.framontmanagement.com/');
+  assert.equal(view.products.find(product => product.name === 'Snow White — Value Edge ETI').landingUrl, '/eti/value-edge-snowwhite/');
+});

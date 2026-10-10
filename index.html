@@ -390,6 +390,10 @@
 <div id="homepage-fallback">
 <main style="max-width:720px;margin:48px auto;padding:0 24px;font-family:'Work Sans',Arial,sans-serif;color:#002E5F;line-height:1.6;">
   <h1>Framont Access — Institutional Investment Platform</h1>
+  <nav aria-label="Category overviews">
+    <p>Explore: <a href="/funds/">Funds</a> · <a href="/amc/">AMCs</a> · <a href="/eti/">ETIs</a> · <a href="/deals/">Private market deals</a></p>
+    <p lang="it">Panoramiche: <a href="/it/fondi/">Fondi</a> · <a href="/it/amc/">AMC</a> · <a href="/it/eti/">ETI</a> · <a href="/it/deals/">Operazioni private</a></p>
+  </nav>
   <p class="aeo-summary"><strong>In brief:</strong> Framont Access is the investor-facing product platform of <strong>Framont &amp; Partners Management Ltd</strong>, a management company <strong>domiciled in Malta</strong> and licensed by the <strong>Malta Financial Services Authority (MFSA)</strong>. It presents the investment funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and private market deals for which Framont acts as management company, AIFM or strategy manager, and provides documentation to eligible investors on request.</p>
   <p>Framont Access is the investment product platform of <strong>Framont &amp; Partners Management Ltd</strong>, a Malta-based management company licensed by the Malta Financial Services Authority (MFSA) under the Investment Services Act (Cap. 370) and authorised as a UCITS management company and Alternative Investment Fund Manager (AIFM) under the AIFMD. The platform gives eligible investors curated access to institutional-grade investment products: investment funds, actively managed certificates (AMCs), exchange traded instruments (ETIs) and selected private market deals.</p>
   <h2>What is an exchange traded instrument (ETI)?</h2>
@@ -713,6 +717,7 @@
         <sc-for list="{{ subnavLinks }}" as="sl" hint-placeholder-count="4">
           <a onclick="{{ sl.onClick }}" style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E; cursor:pointer; white-space:nowrap; transition:color .2s ease;" style-hover="color:#A85400;">{{ sl.label }}</a>
         </sc-for>
+        <a href="{{ categoryOverviewHref }}" style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#A85400; white-space:nowrap; text-decoration:none;">{{ overviewLabel }}</a>
       </div>
     </nav>
 
@@ -1344,6 +1349,10 @@
           <a onclick="{{ onStructure }}" href="#/structure" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.structure.label }}</a>
           <a onclick="{{ onGlossary }}" href="#/glossary" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.glossary.label }}</a>
           <a href="{{ insightsHref }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.insights.navLabel }}</a>
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin:26px 0 14px;">{{ overviewLabel }}</div>
+          <sc-for list="{{ overviewLinks }}" as="ol" hint-placeholder-count="4">
+            <a href="{{ ol.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; margin-bottom:13px;">{{ ol.label }}</a>
+          </sc-for>
         </div>
         <div style="min-width:0;">
           <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.legalCol }}</div>
@@ -3413,6 +3422,17 @@ class Component extends DCLogic {
     });
 
     const loc = (v) => (v && typeof v === "object" && !Array.isArray(v)) ? (v[s.lang] != null ? v[s.lang] : v.en) : v;
+    const overviewRoutes = s.lang === "it"
+      ? { funds: "/it/fondi/", amc: "/it/amc/", eti: "/it/eti/", deals: "/it/deals/" }
+      : { funds: "/funds/", amc: "/amc/", eti: "/eti/", deals: "/deals/" };
+    const overviewLinks = ["funds", "amc", "eti", "deals"].map((key) => ({ key, label: t.nav[key], href: overviewRoutes[key] }));
+    // Only these published pairs have an English product page. Other internal
+    // and external destinations keep their existing URL.
+    const landingUrl = (p) => {
+      const url = p && p.landingUrl || "";
+      return s.lang === "en" && ["/it/amc/noctiluca-capital/", "/it/amc/zalphyx-yield-strategies/", "/it/eti/value-edge-snowwhite/"].includes(url)
+        ? url.replace(/^\/it\//, "/") : url;
+    };
 
     const dec = (p, ck) => {
       // Deals are code-gated for everyone — the access code is the only key, so a vetted
@@ -3429,7 +3449,7 @@ class Component extends DCLogic {
         code: p.isin || p.ticker || "—",
         strategy: loc(p.strategy), minLabel: loc(p.minLabel),
         metricLabel: loc(p.metricLabel), metricValue: loc(p.metricValue),
-        landingUrl: p.landingUrl || "",
+        landingUrl: landingUrl(p),
         locked: gated,
         showPreviewTag: gated,
         previewLabel: t.teaser.preview,
@@ -3608,7 +3628,7 @@ class Component extends DCLogic {
       stAnchors = t.structure.anchors;
       stQuotes = db.eti.products.filter((p) => p.active && p.isin).map((p) => ({
         name: p.name, isin: p.isin, venue: t.structure.venue,
-        landingUrl: p.landingUrl || "", hasLanding: !!p.landingUrl
+        landingUrl: landingUrl(p), hasLanding: !!p.landingUrl
       }));
       stQuotesLabel = stQuotes.length + " " + t.structure.h5of;
     }
@@ -3669,7 +3689,7 @@ class Component extends DCLogic {
       name: ap.name, description: loc(ap.description), assetClass: this.locClass(ap.assetClass), currency: ap.currency,
       code: ap.isin || ap.ticker || "—", minLabel: loc(ap.minLabel),
       metricLabel: loc(ap.metricLabel), metricValue: loc(ap.metricValue),
-      landingUrl: ap.landingUrl || "",
+      landingUrl: landingUrl(ap),
       termsheetUrl: ap.termsheetUrl || "",
       facts: (ap.facts || []).map((f) => ({ label: loc(f.label), value: loc(f.value) }))
     } : {};
@@ -3692,6 +3712,8 @@ class Component extends DCLogic {
 
     return {
       t, rev,
+      overviewLinks, categoryOverviewHref: overviewRoutes[view] || "",
+      overviewLabel: s.lang === "it" ? "Panoramica delle categorie" : "Category overviews",
       navLinks, langLabel: t.lang,
       onLang: () => this.toggleLang(),
       onHome: go("home"),

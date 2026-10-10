@@ -11,6 +11,9 @@
 <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="googlebot"/>
 <meta content="#0F2347" name="theme-color"/>
 <link href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/" rel="canonical"/>
+<link href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/" hreflang="it" rel="alternate"/>
+<link href="https://access.framontmanagement.com/eti/value-edge-snowwhite/" hreflang="en" rel="alternate"/>
+<link href="https://access.framontmanagement.com/eti/value-edge-snowwhite/" hreflang="x-default" rel="alternate"/>
 <meta content="website" property="og:type"/>
 <meta content="FRAMONT &amp; Partners Management Ltd" property="og:site_name"/>
 <meta content="Value Edge SnowWhite, strategia long e short di Giovanni Zibordi | FRAMONT" property="og:title"/>
@@ -177,7 +180,7 @@
       "@id": "https://access.framontmanagement.com/it/eti/value-edge-snowwhite/",
       "url": "https://access.framontmanagement.com/it/eti/value-edge-snowwhite/",
       "name": "Value Edge, strategia SnowWhite | FRAMONT & Partners Management Ltd",
-      "inLanguage": ["it", "en"],
+      "inLanguage": "it",
       "publisher": { "@id": "https://www.framontmanagement.com/#organization" },
       "isPartOf": { "@type": "WebSite", "url": "https://access.framontmanagement.com/", "name": "Framont Access" },
       "datePublished": "2026-09-09",
@@ -1038,21 +1041,17 @@ button,label[role="button"]{-webkit-appearance:none;appearance:none}
 /* le due lingue convivono nella pagina, il CSS mostra quella scelta */
 span.t-it,span.t-en{display:inline;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;background:none;border:0;margin:0;padding:0;line-height:inherit}
 span.t-en{display:none}
-#lang-en:checked ~ * span.t-it{display:none}
-#lang-en:checked ~ * span.t-en{display:inline}
 
 /* selettore di lingua */
-.lang .lang-b{
+.lang .lang-b{text-decoration:none;
   font-family:var(--mono);font-size:.68rem;letter-spacing:.10em;text-transform:uppercase;
   background:transparent;color:rgba(255,255,255,.62);
   min-width:54px;min-height:46px;display:inline-flex;align-items:center;justify-content:center;
   cursor:pointer;-webkit-user-select:none;user-select:none;
 }
 .lang .lang-b+.lang-b{border-left:1px solid rgba(255,255,255,.24)}
-#lang-it:checked ~ * label[for="lang-it"],
-#lang-en:checked ~ * label[for="lang-en"]{background:rgba(255,255,255,.14);color:#fff}
-#lang-it:focus-visible ~ * label[for="lang-it"],
-#lang-en:focus-visible ~ * label[for="lang-en"]{outline:2px solid var(--orange-l);outline-offset:-2px}
+.lang .lang-b[aria-current="page"]{background:rgba(255,255,255,.14);color:#fff}
+.lang .lang-b:focus-visible{outline:2px solid var(--orange-l);outline-offset:-2px}
 
 /* schede delle componenti di portafoglio */
 .board-tabs .rtab{
@@ -1089,8 +1088,6 @@ span.t-en{display:none}
 </style>
 </head>
 <body>
-<input aria-label="Italiano" checked="" class="sw" id="lang-it" name="lang" type="radio"/>
-<input aria-label="English" class="sw" id="lang-en" name="lang" type="radio"/>
 <input aria-label="Azioni e opzioni" checked="" class="sw" id="reg-eq" name="regime" type="radio"/>
 <input aria-label="Futures su indici e bond" class="sw" id="reg-fu" name="regime" type="radio"/>
 <input aria-label="Valute e materie prime" class="sw" id="reg-fx" name="regime" type="radio"/>
@@ -1116,7 +1113,7 @@ span.t-en{display:none}
 <li><a href="#risks"><span class="t-it">Rischi</span><span class="t-en">Risks</span></a></li>
 </ul>
 <div class="nav-right">
-<div aria-label="Lingua / Language" class="lang" role="group"><label class="lang-b" for="lang-it">IT</label><label class="lang-b" for="lang-en">EN</label></div>
+<div aria-label="Lingua / Language" class="lang" role="group"><a aria-current="page" class="lang-b" data-language="it" href="/it/eti/value-edge-snowwhite/" hreflang="it">IT</a><a class="lang-b" data-language="en" href="/eti/value-edge-snowwhite/" hreflang="en">EN</a></div>
 <a class="nav-cta" href="#contact"><span class="t-it">Richiedi il KID</span><span class="t-en">Request the KID</span></a>
 <label aria-hidden="true" class="burger" for="nav-open"><span></span></label>
 </div>
@@ -1818,34 +1815,37 @@ span.t-en{display:none}
     en:'Listed instrument running a discretionary long and short strategy across several markets: up to 50 simultaneous positions, a 2% exit rule per position. Managed by FRAMONT, an MFSA authorised AIFM. Capital at risk.'
   };
 
-  /* La lingua e le schede sono gestite dal CSS: qui si allineano solo i
-     metadati della pagina, che il CSS non puo toccare. */
-  var rIt = d.getElementById('lang-it'), rEn = d.getElementById('lang-en');
-  function syncLang(){
-    var l = (rEn && rEn.checked) ? 'en' : 'it';
-    root.setAttribute('lang', l);
-    root.setAttribute('data-lang', l);
-    d.title = TITLE[l];
-    var m = d.querySelector('meta[name="description"]'); if(m) m.setAttribute('content', DESC[l]);
-    var od = d.querySelector('meta[property="og:description"]'); if(od) od.setAttribute('content', DESC[l]);
-    var ot = d.querySelector('meta[property="og:title"]'); if(ot) ot.setAttribute('content', TITLE[l]);
-    var ol = d.querySelector('meta[property="og:locale"]'); if(ol) ol.setAttribute('content', l === 'en' ? 'en_GB' : 'it_IT');
-    var fl = d.querySelector('#lead [name="language"]'); if(fl) fl.value = l;
-    try{
-      var u = new URL(window.location.href);
-      if(l === 'en'){ u.searchParams.set('lang','en'); } else { u.searchParams.delete('lang'); }
-      history.replaceState(null, '', u.pathname + (u.search || '') + u.hash);
-    }catch(e){}
+  /* Each URL serves a fixed locale. Keep existing attribution and section links. */
+  function lang(){ return root.getAttribute('lang') === 'en' ? 'en' : 'it'; }
+  var localePaths = {it:'/it/eti/value-edge-snowwhite/', en:'/eti/value-edge-snowwhite/'};
+  function localeUrl(locale){
+    var u = new URL(window.location.href);
+    u.pathname = localePaths[locale];
+    u.searchParams.delete('lang');
+    if(/^#(?:it|en)$/i.test(u.hash)){ u.hash = ''; }
+    return u.pathname + u.search + u.hash;
   }
-  if(rIt && rEn){
-    try{
-      var q = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
-      if(q === 'en' || window.location.hash.toLowerCase() === '#en'){ rEn.checked = true; }
-    }catch(e){}
-    rIt.addEventListener('change', syncLang);
-    rEn.addEventListener('change', syncLang);
-    syncLang();
+  function updateLocaleLinks(){
+    Array.prototype.forEach.call(d.querySelectorAll('a[data-language]'), function(link){
+      link.setAttribute('href', localeUrl(link.getAttribute('data-language')));
+    });
   }
+  try{
+    var currentUrl = new URL(window.location.href);
+    var requestedLocale = (currentUrl.searchParams.get('lang') || '').toLowerCase();
+    if(!localePaths[requestedLocale] && /^#(?:it|en)$/i.test(currentUrl.hash)){
+      requestedLocale = currentUrl.hash.slice(1).toLowerCase();
+    }
+    if(localePaths[requestedLocale] && requestedLocale !== lang()){
+      window.location.replace(localeUrl(requestedLocale));
+      return;
+    }
+    if(currentUrl.searchParams.has('lang') || /^#(?:it|en)$/i.test(currentUrl.hash)){
+      history.replaceState(null, '', localeUrl(lang()));
+    }
+    updateLocaleLinks();
+    window.addEventListener('hashchange', updateLocaleLinks);
+  }catch(e){}
 
   /* il menu si richiude da solo quando si tocca una voce */
   var navOpen = d.getElementById('nav-open'), drawer = d.getElementById('drawer');
@@ -1871,7 +1871,7 @@ span.t-en{display:none}
       });
       var pg = form.querySelector('[name="page"]'); if(pg) pg.value = window.location.href;
       var rf = form.querySelector('[name="referrer"]'); if(rf) rf.value = d.referrer || '';
-      var fl2 = form.querySelector('[name="language"]'); if(fl2) fl2.value = (rEn && rEn.checked) ? 'en' : 'it';
+      var fl2 = form.querySelector('[name="language"]'); if(fl2) fl2.value = lang();
       if(qs.get('sent') === '1' && okBox){ form.hidden = true; okBox.classList.add('on'); okBox.hidden = false; }
     }catch(e){}
     form.addEventListener('submit', function(e){
@@ -1890,13 +1890,16 @@ span.t-en{display:none}
       try{ new FormData(form).forEach(function(v, k){ data[k] = v; }); }catch(e){}
       delete data.redirect;
       data.botcheck = data.botcheck ? 'on' : '';
-      data.language = (rEn && rEn.checked) ? 'en' : 'it';
+      data.language = lang();
       data.page = window.location.href;
       fetch('https://api.web3forms.com/submit', {
         method:'POST',
         headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
         body: JSON.stringify(data)
-      }).then(function(r){ return !!(r && r.ok); }).catch(function(){ return false; })
+      }).then(function(r){
+        if(!r || !r.ok){ return false; }
+        return r.json().then(function(result){ return !!(result && result.success === true); });
+      }).catch(function(){ return false; })
       .then(function(sent){
         if(btn) btn.disabled = false;
         if(sent){

@@ -26,17 +26,37 @@ Legacy events such as `registration_complete`, `access_request` and
 Their historical counts must not be reinterpreted as confirmed leads, or added
 together as distinct people. The new key event does not backfill old data.
 
-Product and utility pages without analytics remain outside collection. Any
+New category overviews and product/utility pages without analytics remain
+outside collection. Any
 future expansion must first reconcile their stated cookie behavior with the
 intended consent implementation.
 
 ## Search metadata
 
-Product `?lang=en` switches are presentation variants with an Italian canonical,
-not independently published English pages. Do not declare them as English
-hreflang alternates. A future English publication needs its own rendered page,
-English canonical, reviewed equivalent content and reciprocal annotations.
-Real English/Italian article and utility pairs retain their existing hreflang.
+Funds, AMC, ETI and Deals have static English/Italian overview pages linked from
+the homepage fallback, catalogue footer and relevant Insights articles. Keep
+their real anchor links and reciprocal hreflang annotations alongside the
+interactive catalogue's existing hash navigation.
+
+Noctiluca Capital, Zalphyx Yield Strategies and Value Edge SnowWhite have their
+own English URLs without the `/it` prefix. Each URL serves a fixed locale and
+has a self canonical plus reciprocal English/Italian alternates. Language
+controls are real links; JavaScript preserves attribution parameters and
+section anchors, and redirects legacy Italian `?lang=en` and `#en` links.
+ERERE remains Italian-only and must not declare an English alternate.
+
+English product pages are generated from the English text already authored in
+the corresponding Italian sources. Edit those source files, then regenerate:
+
+```sh
+python3 scripts/generate_product_locales.py
+python3 scripts/generate_product_locales.py --check
+```
+
+Do not edit generated English files directly. The generator preserves product
+identifiers, legal/risk text, professional-access gates and form routing. This
+publication does not constitute a new financial review of the source content.
+Category excerpts retain their original evidence markers and source dates.
 
 Only update sitemap `lastmod` when the corresponding page changes meaningfully.
 An analytics-only edit does not justify refreshing all sitemap dates.
@@ -49,8 +69,13 @@ Use Search Console URL Inspection to check Google's subsequent stored state.
 node --test scripts/test_analytics.cjs
 python3 -m unittest discover -s scripts -p 'test_*.py'
 python3 scripts/validate_aeo_content.py
+python3 scripts/generate_product_locales.py --check
+# Requires Playwright and Chrome; PLAYWRIGHT_MODULE_PATH may point to an existing installation.
+node --test scripts/test_homepage_fallback.cjs scripts/test_product_leads.cjs scripts/test_product_locales.cjs
 ```
 
 Browser checks should block Analytics collection and form endpoints, and cover
-initial category links, language changes, modal open/close, desktop and mobile.
+initial category links, section highlights, language changes, modal open/close,
+desktop and mobile. Product-form checks cover provider rejection and malformed
+responses as well as a confirmed success; HTTP 200 alone is not acceptance.
 Do not submit real enquiries solely to test tracking.

@@ -41,6 +41,26 @@ async function assertPublicFallback(page) {
   assert.ok(size.width <= size.viewport + 1, 'fallback must not overflow horizontally');
 }
 
+test('category overview links preserve the active section highlight on desktop and mobile', async () => {
+  for (const width of [1440, 390]) {
+    const ctx = await context({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+    try {
+      const page = await ctx.newPage();
+      await page.goto(origin + '/#/en/amc', { waitUntil: 'domcontentloaded' });
+      await page.locator('#dc-root #main h1').waitFor({ state: 'visible', timeout: 40000 });
+      for (const [section, label] of [['sec-products', 'Products'], ['sec-about', 'About']]) {
+        await page.evaluate(id => window.scrollTo({ top: document.getElementById(id).getBoundingClientRect().top + scrollY - 140, behavior: 'instant' }), section);
+        await page.waitForFunction(expected => {
+          const links = [...document.querySelectorAll('[data-screen-label="Category — Subnav"] a')];
+          const active = links.filter(link => link.style.borderBottomColor === 'rgb(255, 130, 0)');
+          return active.length === 1 && active[0].textContent.trim() === expected;
+        }, label, { timeout: 5000 });
+      }
+      assert.equal(await page.locator('[data-screen-label="Category — Subnav"] a[href="/amc/"]').count(), 1);
+    } finally { await ctx.close(); }
+  }
+});
+
 test('no JavaScript exposes the existing public content once and hides the raw template', async () => {
   const ctx = await context({ javaScriptEnabled: false });
   try {

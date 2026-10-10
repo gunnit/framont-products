@@ -36,6 +36,19 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [Noctiluca Capital AMC](https://access.framontmanagement.com/it/amc/noctiluca-capital/): actively managed certificate for professional investors, ISIN CH1554882477, issued through a protected cell of Expand2 Issuer PCC Limited (Guernsey) on the GenTwo platform, EUR, EUR 1,000 per certificate, minimum 10 certificates, issued 29 June 2026, unlisted, private placement — a rules-based breakout and trend-following strategy on eight listed futures markets (three equity indices, two metals, two energy contracts and one currency contract; three more on hold, and the universe changes over time) with a 1% target risk per trade, subject to a one-contract minimum which can exceed 1% on low-contract markets, aggregate exposure capped at 200% and four exit rules, managed by Framont & Partners Management Ltd on software licensed from Kajero Ltd; management fee 2.00% p.a., performance fee 20% above the high-water mark. Track-record figures relate to 852 trades executed on test capital between March 2024 and May 2026; the certificate has no track record of its own. [Term sheet (PDF)](https://access.framontmanagement.com/assets/termsheets/framont-noctiluca-amc-termsheet.pdf)
 - [Zalphyx Yield Strategies CLN](https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/): 6% p.a. USD credit-linked note for professional and qualified investors, ISIN CH1518693374, issued through a protected cell of Expand3 Issuer PCC Limited (Guernsey) on the GenTwo platform, USD 1,000 per note, minimum 10 notes, semi-annual coupon, issued 16 September 2026, maturity 24 September 2029, unlisted, private placement — linked to a private loan to Zalphyx Giant Capital LLC, which originates first-rank USD mortgage loans in the Dominican Republic with a maximum 50% loan-to-value; coupons and redemption depend on the loan being repaid. The initial subscription window closed on 9 September 2026 and the issue carries a reopening clause. [Term sheet (PDF)](https://access.framontmanagement.com/assets/termsheets/framont-zalphyx-cln-termsheet.pdf)
 
+## Category overviews
+
+- [Funds](https://access.framontmanagement.com/funds/) · [Fondi](https://access.framontmanagement.com/it/fondi/): fund guides, documents and catalogue access.
+- [Actively managed certificates](https://access.framontmanagement.com/amc/) · [Certificati a gestione attiva](https://access.framontmanagement.com/it/amc/): AMC guides and published product pages.
+- [Exchange traded instruments](https://access.framontmanagement.com/eti/) · [Exchange traded instrument](https://access.framontmanagement.com/it/eti/): ETI guides and published product pages.
+- [Private market deals](https://access.framontmanagement.com/deals/) · [Operazioni sui mercati privati](https://access.framontmanagement.com/it/deals/): introductory guides and access to the existing reserved catalogue.
+
+## Product pages in English
+
+- [Noctiluca Capital AMC](https://access.framontmanagement.com/amc/noctiluca-capital/)
+- [Zalphyx Yield Strategies CLN](https://access.framontmanagement.com/amc/zalphyx-yield-strategies/)
+- [SnowWhite — Value Edge ETI](https://access.framontmanagement.com/eti/value-edge-snowwhite/)
+
 ## Compare, structure and vocabulary
 
 - [Product comparison](https://access.framontmanagement.com/compare/): every product open to subscription side by side — wrapper and structure, strategy, liquidity, currency, costs and eligibility, filtered by funds, AMCs and ETIs. Italian: [Confronto prodotti](https://access.framontmanagement.com/it/confronto/)
