@@ -72,8 +72,8 @@ STATIC_ROUTES = [
 ]
 
 # Pages that ship in a single language, so there is no counterpart to hold them
-# to evidence parity. They still have to stand up without JavaScript, carry a
-# correct canonical and point their own hreflang at themselves.
+# to evidence parity. They still have to stand up without JavaScript and carry a
+# correct canonical. Hreflang is optional; if declared, it must include itself.
 SOLO_ROUTES = [
     ("it/eti/erere-quant-income/index.html", "it"),
     ("it/eti/value-edge-snowwhite/index.html", "it"),
@@ -374,7 +374,9 @@ def check_parity(en_rel: str, it_rel: str, en: PageParser, it: PageParser, repor
         report.error(f"{it_rel}: hreflang 'en' does not point at {en.canonical}")
 
 
-def check_static_page(rel: str, report: Report, lang: str | None = None) -> str:
+def check_static_page(
+    rel: str, report: Report, lang: str | None = None, *, require_hreflang: bool = True
+) -> str:
     """Check a route that has to stand up without JavaScript; return its canonical."""
     path = ROOT / rel
     if not path.exists():
@@ -404,7 +406,7 @@ def check_static_page(rel: str, report: Report, lang: str | None = None) -> str:
     expected = f"{SITE}/{rel}".replace("/index.html", "/")
     if parser.canonical != expected:
         report.error(f"{rel}: canonical is {parser.canonical}, expected {expected}")
-    if lang and parser.hreflang.get(lang) != parser.canonical:
+    if lang and (require_hreflang or parser.hreflang) and parser.hreflang.get(lang) != parser.canonical:
         report.error(f"{rel}: hreflang '{lang}' does not point at its own canonical")
 
     return parser.canonical
@@ -533,7 +535,7 @@ def main() -> int:
                 canonicals.append(canonical)
 
     for rel, lang in SOLO_ROUTES:
-        canonical = check_static_page(rel, report, lang)
+        canonical = check_static_page(rel, report, lang, require_hreflang=False)
         if canonical:
             canonicals.append(canonical)
 
