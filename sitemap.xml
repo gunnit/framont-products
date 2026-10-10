@@ -193,13 +193,99 @@
   <url>
     <loc>https://access.framontmanagement.com/it/eti/value-edge-snowwhite/</loc>
     <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
   </url>
   <url>
     <loc>https://access.framontmanagement.com/it/amc/noctiluca-capital/</loc>
     <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/noctiluca-capital/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/noctiluca-capital/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/amc/noctiluca-capital/"/>
   </url>
   <url>
     <loc>https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/</loc>
     <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/zalphyx-yield-strategies/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/amc/zalphyx-yield-strategies/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/funds/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/funds/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/fondi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/funds/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/it/fondi/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/funds/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/fondi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/funds/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/amc/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/amc/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/it/amc/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/amc/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/eti/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/it/eti/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/deals/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/deals/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/deals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/deals/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/it/deals/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/deals/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/deals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/deals/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/amc/noctiluca-capital/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/noctiluca-capital/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/noctiluca-capital/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/amc/noctiluca-capital/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/amc/zalphyx-yield-strategies/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/zalphyx-yield-strategies/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/amc/zalphyx-yield-strategies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/amc/zalphyx-yield-strategies/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/eti/value-edge-snowwhite/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
   </url>
 </urlset>

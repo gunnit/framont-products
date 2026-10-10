@@ -64,6 +64,13 @@ ARTICLE_PAIRS = [
 
 # Utility routes that must be readable without running JavaScript.
 STATIC_ROUTES = [
+    ("funds/index.html", "it/fondi/index.html"),
+    ("amc/index.html", "it/amc/index.html"),
+    ("eti/index.html", "it/eti/index.html"),
+    ("deals/index.html", "it/deals/index.html"),
+    ("amc/noctiluca-capital/index.html", "it/amc/noctiluca-capital/index.html"),
+    ("amc/zalphyx-yield-strategies/index.html", "it/amc/zalphyx-yield-strategies/index.html"),
+    ("eti/value-edge-snowwhite/index.html", "it/eti/value-edge-snowwhite/index.html"),
     ("compare/index.html", "it/confronto/index.html"),
     ("structure/index.html", "it/struttura/index.html"),
     ("glossary/index.html", "it/glossario/index.html"),
@@ -76,9 +83,6 @@ STATIC_ROUTES = [
 # correct canonical. Hreflang is optional; if declared, it must include itself.
 SOLO_ROUTES = [
     ("it/eti/erere-quant-income/index.html", "it"),
-    ("it/eti/value-edge-snowwhite/index.html", "it"),
-    ("it/amc/noctiluca-capital/index.html", "it"),
-    ("it/amc/zalphyx-yield-strategies/index.html", "it"),
 ]
 
 # Pages the sitemap ships that the static checks deliberately do not describe.

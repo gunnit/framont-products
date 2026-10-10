@@ -1,0 +1,25 @@
+/* Category overviews extend the existing static Insights shell. */
+.category-skip { position: absolute; left: 18px; top: -80px; padding: 10px 16px; background: white; color: var(--navy-ink); z-index: 100; }
+.category-skip:focus { top: 10px; }
+.category > h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 5vw, 52px); font-weight: 500; line-height: 1.14; margin: 8px 0 24px; }
+.category .category-eyebrow { color: var(--orange-ink); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 12px; }
+.category-guides { list-style: none; counter-reset: guides; padding: 0 !important; }
+.category-guides > li { position: relative; padding: 8px 0 12px 48px; border-bottom: 1px solid var(--line); counter-increment: guides; }
+.category-guides > li::before { content: '0' counter(guides); position: absolute; left: 0; top: 24px; color: var(--orange-ink); font-size: 13px; font-weight: 600; }
+.category-guides h3 { margin: 12px 0 8px; }
+.category-guides p { font-size: 16px; }
+.category-excerpt { background: var(--wash); border-left: 3px solid var(--orange); padding: 25px; margin: 36px 0; }
+.category-excerpt h2 { margin-top: 8px; font-size: 24px; }
+.category-excerpt blockquote { margin: 0; }
+.category-excerpt > p:last-child { font-size: 14px; margin-bottom: 0; }
+.category .category-cta { display: inline-block; padding: 13px 20px; background: var(--navy-ink); color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+.category .category-cta:hover { background: var(--navy-deep); }
+.category-tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0 !important; }
+.category-tools li { border-top: 1px solid var(--line); }
+.category-tools h3 { margin-top: 20px; }
+.category-tools p { font-size: 15px; }
+.category-nav ul { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; padding: 0; font-size: 14px; }
+.category-nav [aria-current='page'] { color: var(--navy-ink); text-decoration: none; font-weight: 600; }
+.destination-language { font-size: 13px; color: var(--muted); }
+.category { overflow-wrap: anywhere; }
+@media (max-width: 560px) { .category-tools { grid-template-columns: 1fr; gap: 0; } .category-excerpt { padding: 20px; } .topbar-in { padding-left: 20px; padding-right: 20px; gap: 14px; } }

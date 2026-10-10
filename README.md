@@ -10,11 +10,14 @@ what is served.
 |---|---|
 | `index.html` | The single-page product platform |
 | `articles/`, `articles/it/` | Bilingual Insights articles |
+| `funds/`, `amc/`, `eti/`, `deals/` | English category overviews and product pages |
+| `it/fondi/`, `it/amc/`, `it/eti/`, `it/deals/` | Italian category overviews and product sources |
 | `compare/`, `structure/`, `glossary/` | Utility routes (English) |
 | `it/confronto/`, `it/struttura/`, `it/glossario/` | Utility routes (Italian) |
 | `data/aeo-sources.json` | Evidence registry backing every sourced claim |
 | `docs/editorial-and-review-policy.md` | Byline, review, sourcing and correction policy |
 | `scripts/validate_aeo_content.py` | Citation-readiness validator |
+| `scripts/generate_product_locales.py` | Generates three English product pages from existing English source text |
 
 ## Editorial workflow
 
@@ -42,6 +45,8 @@ Two rules that the validator enforces and that are easy to forget:
    `approved` and the written consent is recorded alongside it.
 
 Full policy: [`docs/editorial-and-review-policy.md`](docs/editorial-and-review-policy.md).
+Product-language publishing and tracking checks:
+[`docs/analytics-and-search-maintenance.md`](docs/analytics-and-search-maintenance.md).
 
 ## Validation
 
