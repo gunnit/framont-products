@@ -3,14 +3,7 @@
 
 
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YRE5XX3RN2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-YRE5XX3RN2');
-</script>
+<script src="/assets/analytics.js" data-manual-pageviews="true"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -1668,10 +1661,9 @@ class Component extends DCLogic {
   // ---- Deals gate — one shared access code, sent by email to vetted investors.
   //      Client-side check on a static site: a compliance/lead-capture gate, not security. ----
   DEALS_CODE = "FRAMONT-DEALS-2026";
-  // ---- Analytics — both empty = events buffer to window.dataLayer only.
-  //      Set ga4 to a "G-XXXX" id, or plausibleDomain, to auto-load that provider.
-  //      gtag.js is already loaded from <head> (Search Console verification), so the
-  //      loader below no-ops; the id is kept here so the funnel config is self-documenting. ----
+  // ---- Analytics — the shared head loader and all sinks are production-host only.
+  //      The SPA sends page views after routing; static Insights pages use automatic views.
+  //      GA enhanced-measurement history views must also remain disabled for this stream. ----
   ANALYTICS = { ga4: "G-YRE5XX3RN2", plausibleDomain: "" };
 
   // ---- "Request a call" enquiries — Gianluigi triages them to the right desk
@@ -2602,6 +2594,7 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this._analyticsReady = false;
     // Restore session from previous visits: registered user + Deals unlock survive reloads.
     try {
       const patch = {};
@@ -2610,16 +2603,21 @@ class Component extends DCLogic {
       if (window.localStorage.getItem("framont_deals_unlocked") === "1") patch.dealsUnlocked = true;
       if (Object.keys(patch).length) this.setState(patch);
     } catch (e) {}
-    this.applyProps();
-    this.initRoute();
-    this.syncMeta();
-    this.initAnalytics();
-    this.detectEntryContext();
-    this._lastView = this.state.view;
-    this._lastLang = this.state.lang;
+    // Both props and routing can update state asynchronously. Wait for their
+    // callbacks so a direct category link never records a temporary English home.
+    this.applyProps(() => this.initRoute(() => {
+      this.syncMeta();
+      this.initAnalytics();
+      this.detectEntryContext();
+      this._lastView = this.state.view;
+      this._lastLang = this.state.lang;
+      this._analyticsReady = true;
+      this.trackPageView();
+    }));
     this._onHash = () => {
       if (this._writingHash) { this._writingHash = false; return; }
       const r = this.parseHash();
+      if (r.insights) return;
       const patch = {};
       const hashLang = r.lang || "en";
       if (hashLang !== this.state.lang) patch.lang = hashLang;
@@ -2681,11 +2679,11 @@ class Component extends DCLogic {
   componentDidUpdate(prevProps) {
     if (prevProps && this.props && (prevProps.startState !== this.props.startState || prevProps.language !== this.props.language)) this.applyProps();
     // The DC host calls this without prevState, so view/lang changes are tracked on the instance.
-    if (this._lastView !== undefined && this._lastView !== this.state.view) window.scrollTo({ top: 0 });
-    if (this._lastView !== this.state.view || this._lastLang !== this.state.lang) {
+    if (this._analyticsReady && this._lastView !== this.state.view) window.scrollTo({ top: 0 });
+    if (this._analyticsReady && (this._lastView !== this.state.view || this._lastLang !== this.state.lang)) {
       this.syncMeta(); this.writeHash();
       if (this._lastLang !== this.state.lang) this.trackEvent("language_switch", { language: this.state.lang });
-      this.trackEvent("page_view", { view: this.state.view, language: this.state.lang });
+      this.trackPageView();
     }
     this._lastView = this.state.view;
     this._lastLang = this.state.lang;
@@ -2744,14 +2742,10 @@ class Component extends DCLogic {
     // Always keep a GA/GTM-compatible event buffer available.
     window.dataLayer = window.dataLayer || [];
 
-    // Turnkey loaders — activate only when an id/domain is configured above.
-    if (this.ANALYTICS.ga4 && !window.gtag) {
-      const s = document.createElement("script"); s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=" + this.ANALYTICS.ga4;
-      document.head.appendChild(s);
-      window.gtag = function () { window.dataLayer.push(arguments); };
-      window.gtag("js", new Date());
-      window.gtag("config", this.ANALYTICS.ga4, { anonymize_ip: true });
+    if (window.location.hostname !== "access.framontmanagement.com") return;
+    // Idempotent when the shared head loader already configured this property.
+    if (this.ANALYTICS.ga4 && window.framontAnalytics) {
+      window.framontAnalytics.loadGa4(this.ANALYTICS.ga4, true);
     }
     if (this.ANALYTICS.plausibleDomain && !window.plausible) {
       const s = document.createElement("script"); s.defer = true;
@@ -2760,14 +2754,25 @@ class Component extends DCLogic {
       document.head.appendChild(s);
       window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
     }
-
-    this.trackEvent("page_view", { view: this.state.view, language: this.state.lang });
   }
 
-  // Fan out one event to every analytics sink that happens to be present. No-ops safely.
+  trackPageView() {
+    const location = window.location.href;
+    this.trackEvent("page_view", {
+      view: this.state.view, language: this.state.lang,
+      page_location: location, page_title: document.title,
+      page_referrer: this._previousPageLocation || document.referrer || ""
+    });
+    this._previousPageLocation = location;
+  }
+
+  // Buffer locally, then fan out on production only. Confirmed leads carry only
+  // their explicit allowlist: attribution may contain query strings or referrers.
   trackEvent(name, params) {
     const p = params || {};
-    try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, this._attribution || {}, p)); } catch (e) {}
+    const attribution = name === "generate_lead" ? {} : this._attribution || {};
+    try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, attribution, p)); } catch (e) {}
+    if (window.location.hostname !== "access.framontmanagement.com") return;
     try { if (typeof window.gtag === "function") window.gtag("event", name, p); } catch (e) {}
     try { if (typeof window.plausible === "function") window.plausible(name, { props: p }); } catch (e) {}
     try { window.dispatchEvent(new CustomEvent("framont:" + name, { detail: p })); } catch (e) {}
@@ -2866,12 +2871,35 @@ class Component extends DCLogic {
       utm_term: a.utm_term || "", utm_content: a.utm_content || "", gclid: a.gclid || "", fbclid: a.fbclid || "",
       referrer: a.referrer || "", landing_page: a.landing_page || ""
     }, extra || {});
+    // Snapshot only known taxonomy values before the caller clears the form or
+    // the visitor changes view/language while delivery is pending. Never spread
+    // form data, extra fields or first-touch attribution into the GA event.
+    const context = this.state.regCtx || this._entryContext || {};
+    const lead = { lead_type: kind, language: this.state.lang === "it" ? "it" : "en" };
+    const category = context.ck || this.state.view;
+    if (["funds", "amc", "eti", "deals"].includes(category)) lead.category = category;
+    const productId = (extra && extra.product_id) || context.productId;
+    for (const ck of ["funds", "amc", "eti", "deals"]) {
+      if (this.DATA[ck].products.some((p) => p.id === productId)) {
+        lead.product_id = productId;
+        lead.category = ck;
+        break;
+      }
+    }
     try {
       return fetch(this.WEB3FORMS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(body)
-      }).then(function (r) { return !!(r && r.ok); }).catch(function () { return false; });
+      }).then(async (r) => {
+        if (!r || !r.ok) return false;
+        const result = await r.json();
+        if (!result || result.success !== true) return false;
+        if (["access_request", "deals_access_request", "product_info_request", "call_request"].includes(kind)) {
+          this.trackEvent("generate_lead", lead);
+        }
+        return true;
+      }).catch(function () { return false; });
     } catch (e) { return Promise.resolve(false); }
   }
 
@@ -2901,7 +2929,7 @@ class Component extends DCLogic {
     if (insights) {
       // Insights live as static pages, not a hash view — send the visitor there in their language.
       window.location.replace((lang || this.state.lang) === "it" ? "articles/it/" : "articles/");
-      return { lang, view: null };
+      return { lang, view: null, insights: true };
     }
     return { lang, view };
   }
@@ -2919,8 +2947,9 @@ class Component extends DCLogic {
     }
   }
 
-  initRoute() {
+  initRoute(done) {
     const r = this.parseHash();
+    if (r.insights) return; // The destination static page records its own view.
     let stored = null;
     try { stored = window.localStorage.getItem("framont_lang"); } catch (e) {}
     const auto = ((navigator.language || "").toLowerCase().indexOf("it") === 0) ? "it" : null;
@@ -2933,7 +2962,8 @@ class Component extends DCLogic {
     const raw = (window.location.hash || "").replace(/^#\/?/, "").split("/").filter(Boolean);
     const unknown = raw.length && !r.view && !r.insights && !r.lang;
     if (unknown) patch.view = "home";
-    if (Object.keys(patch).length || unknown) this.setState(patch, () => { if (unknown) this.writeHash(); });
+    if (Object.keys(patch).length || unknown) this.setState(patch, () => { if (unknown) this.writeHash(); if (done) done(); });
+    else if (done) done();
   }
 
   // One place to localise the asset-class taxonomy; the records keep the English key.
@@ -3018,7 +3048,7 @@ class Component extends DCLogic {
     if (this._io) this._io.disconnect();
   }
 
-  applyProps() {
+  applyProps(done) {
     const p = this.props || {};
     const patch = {};
     const langP = p.language;
@@ -3034,7 +3064,8 @@ class Component extends DCLogic {
       if (st === "member" || st === "phone-verified") patch.user = { name: "Mario Rossi", email: "mario@example.com", phone: "+39 333 456 7890", category: "professional", role: "member" };
       if (st === "admin") patch.user = { name: "Framont Admin", email: "admin@framont.com", phone: "+356 99 000 000", category: "institutional", role: "admin" };
     }
-    if (Object.keys(patch).length) this.setState(patch);
+    if (Object.keys(patch).length) this.setState(patch, done);
+    else if (done) done();
   }
 
   scanReveal() {
@@ -3098,7 +3129,15 @@ class Component extends DCLogic {
 
   // One entry point for "Request a call", so every trigger carries its own origin.
   openCall(origin) {
-    this.setState((s) => ({ regCtx: s.regCtx || { ck: (this._entryContext && this._entryContext.ck) || s.view, origin: origin || "cta" } }), () => this.openModal("call"));
+    this.setState((s) => {
+      const context = Object.assign({}, s.regCtx || { ck: (this._entryContext && this._entryContext.ck) || s.view, origin: origin || "cta" });
+      // Only these triggers refer to the open product. Other calls and later
+      // registrations must never inherit the product left in state.active.
+      if ((origin === "product_enquiry" || origin === "deals_enquiry") && s.active && s.active.p) {
+        context.productId = s.active.p.id;
+      }
+      return { regCtx: context };
+    }, () => this.openModal("call"));
   }
 
   callSubmit() {
