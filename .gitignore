@@ -33,3 +33,7 @@ desktop.ini
 
 # Client source material (email attachments — not for the public repo)
 reference/
+
+# Python bytecode (created by the test runs)
+__pycache__/
+*.pyc
