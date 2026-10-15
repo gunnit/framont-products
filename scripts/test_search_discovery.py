@@ -13,6 +13,7 @@ PAIRS = [
  ('/amc/noctiluca-capital/', '/it/amc/noctiluca-capital/'),
  ('/amc/zalphyx-yield-strategies/', '/it/amc/zalphyx-yield-strategies/'),
  ('/eti/value-edge-snowwhite/', '/it/eti/value-edge-snowwhite/'),
+ ('/eti/heraklit-strategy/', '/it/eti/heraklit-strategy/'),
 ]
 
 class Links(HTMLParser):

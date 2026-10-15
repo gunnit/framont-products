@@ -289,6 +289,6 @@ test('localized links leave untranslated and external product destinations intac
   const page = browser({ url: production + '/#/en/eti' }); page.mount();
   const view = page.component.renderVals();
   assert.equal(view.products.find(product => product.name === 'Erere Quant Income ETI').landingUrl, '/it/eti/erere-quant-income/');
-  assert.equal(view.products.find(product => product.name === 'HERAKLIT Strategy ETI').landingUrl, 'https://heraklit.framontmanagement.com/');
+  assert.equal(view.products.find(product => product.name === 'HERAKLIT Strategy ETI').landingUrl, '/eti/heraklit-strategy/');
   assert.equal(view.products.find(product => product.name === 'Snow White — Value Edge ETI').landingUrl, '/eti/value-edge-snowwhite/');
 });

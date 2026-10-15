@@ -10,7 +10,8 @@ const origin = 'https://access.framontmanagement.com';
 const products = [
   { route: '/amc/noctiluca-capital/', heading: 'Noctiluca Capital Systematic Futures Programme', id: 'amc-noctiluca', isin: 'CH1554882477', gated: true },
   { route: '/amc/zalphyx-yield-strategies/', heading: 'Zalphyx Yield Strategies 6% p.a. credit-linked note', id: 'amc-zalphyx', isin: 'CH1518693374', gated: true },
-  { route: '/eti/value-edge-snowwhite/', heading: 'Value Edge SnowWhite Strategy', id: 'eti-lcinvest', isin: 'DE000AMC0BZ5', gated: false },
+  { route: '/eti/value-edge-snowwhite/', heading: 'Value Edge SnowWhite Strategy', id: 'eti-lcinvest', isin: 'DE000AMC0BZ5', gated: false, photo: true },
+  { route: '/eti/heraklit-strategy/', heading: 'HERAKLIT Strategy ETI', id: 'eti-heraklit', isin: 'DE000AMC0D44', gated: false, photo: false },
 ];
 let browser;
 before(async () => { browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' }); });
@@ -62,6 +63,11 @@ for (const product of products) {
       } else {
         assert.equal(await page.locator('.spec-n .pre').textContent(), 'up to');
       }
+      if (product.id === 'eti-heraklit') {
+        assert.equal(await page.locator('.kpi b').filter({ hasText: /^36\.67%$/ }).count(), 1);
+        assert.equal(await page.locator('.kpi b').filter({ hasText: /^11\.45%$/ }).count(), 1);
+        assert.ok(body.includes('performance fee 25%'));
+      }
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), origin + product.route);
       assert.equal(await page.locator('link[hreflang="en"]').getAttribute('href'), origin + product.route);
       assert.equal(await page.locator('link[hreflang="it"]').getAttribute('href'), origin + '/it' + product.route);
@@ -93,7 +99,7 @@ for (const product of products) {
       assert.equal(await page.locator('a[data-language="it"]').getAttribute('href'), '/it' + product.route);
       const size = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth }));
       assert.ok(size.width <= size.viewport + 1, 'no mobile overflow');
-      if (!product.gated) {
+      if (product.photo) {
         assert.equal(await page.locator('.dev-photo img').evaluate(img => img.complete && img.naturalWidth > 0), true);
       }
     } finally { await ctx.close(); }

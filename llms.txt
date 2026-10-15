@@ -28,7 +28,7 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 
 ## Listed products
 
-- [HERAKLIT Strategy ETI](https://heraklit.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D44, listed on Börse Stuttgart
+- [HERAKLIT Strategy ETI](https://access.framontmanagement.com/it/eti/heraklit-strategy/): collateralised exchange traded instrument issued by iMaps ETI AG and listed on Börse Stuttgart since 26 May 2026, EUR, issue price EUR 100, minimum €100 — systematic strategy developed by Marcus Schmieke, inspired by his Architecture of Distinction framework: physics-based regime detection (Fokker–Planck) across twelve global data streams driving dynamic exposure to Nasdaq growth, with the portfolio managed by Framont & Partners Management Ltd as delegated manager appointed by the issuer. Per the KID of 26 May 2026: ongoing costs 4.50% p.a., performance fee 25% above the high-water mark, summary risk indicator 3 of 7, recommended holding period 5 years. Long-horizon figures are backtested simulations, not the instrument's performance. ISIN DE000AMC0D44
 - [Tech Megatrend Tactical ETI](https://techmegatrend.framontmanagement.com/): exchange traded instrument, ISIN DE000AMC0D85
 - [Snow White — Value Edge ETI](https://access.framontmanagement.com/it/eti/value-edge-snowwhite/): exchange traded instrument issued by iMaps ETI AG and listed on Börse Stuttgart, EUR, issue price EUR 100, minimum €100 — Value Edge is the legal name of the segregated portfolio, SnowWhite the discretionary multi-market long/short strategy applied within it, developed by Giovanni Zibordi (up to 50 simultaneous positions across equities, index and bond futures, options, currencies and commodities, 2% stop per position, 300% mandate exposure cap) and managed by Framont & Partners Management Ltd. Newly issued instrument with no track record of its own; management fee 1.0% p.a., performance fee 25%, with the full cost disclosure in the PRIIPs KID, available from Framont on request. ISIN DE000AMC0BZ5
 - IVN Global ETI: exchange traded instrument, ISIN DE000AMC0DX6, actively managed global long/short strategy across equities, currencies, commodities and digital assets
@@ -48,6 +48,7 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [Noctiluca Capital AMC](https://access.framontmanagement.com/amc/noctiluca-capital/)
 - [Zalphyx Yield Strategies CLN](https://access.framontmanagement.com/amc/zalphyx-yield-strategies/)
 - [SnowWhite — Value Edge ETI](https://access.framontmanagement.com/eti/value-edge-snowwhite/)
+- [HERAKLIT Strategy ETI](https://access.framontmanagement.com/eti/heraklit-strategy/)
 
 ## Compare, structure and vocabulary
 
