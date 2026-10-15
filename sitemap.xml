@@ -198,6 +198,13 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
   </url>
   <url>
+    <loc>https://access.framontmanagement.com/it/eti/heraklit-strategy/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/heraklit-strategy/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/heraklit-strategy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/heraklit-strategy/"/>
+  </url>
+  <url>
     <loc>https://access.framontmanagement.com/it/amc/noctiluca-capital/</loc>
     <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/amc/noctiluca-capital/"/>
@@ -287,5 +294,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/value-edge-snowwhite/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/value-edge-snowwhite/"/>
+  </url>
+  <url>
+    <loc>https://access.framontmanagement.com/eti/heraklit-strategy/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://access.framontmanagement.com/eti/heraklit-strategy/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://access.framontmanagement.com/it/eti/heraklit-strategy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://access.framontmanagement.com/eti/heraklit-strategy/"/>
   </url>
 </urlset>

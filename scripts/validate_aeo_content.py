@@ -71,6 +71,7 @@ STATIC_ROUTES = [
     ("amc/noctiluca-capital/index.html", "it/amc/noctiluca-capital/index.html"),
     ("amc/zalphyx-yield-strategies/index.html", "it/amc/zalphyx-yield-strategies/index.html"),
     ("eti/value-edge-snowwhite/index.html", "it/eti/value-edge-snowwhite/index.html"),
+    ("eti/heraklit-strategy/index.html", "it/eti/heraklit-strategy/index.html"),
     ("compare/index.html", "it/confronto/index.html"),
     ("structure/index.html", "it/struttura/index.html"),
     ("glossary/index.html", "it/glossario/index.html"),

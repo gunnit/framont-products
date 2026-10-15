@@ -38,8 +38,8 @@ the homepage fallback, catalogue footer and relevant Insights articles. Keep
 their real anchor links and reciprocal hreflang annotations alongside the
 interactive catalogue's existing hash navigation.
 
-Noctiluca Capital, Zalphyx Yield Strategies and Value Edge SnowWhite have their
-own English URLs without the `/it` prefix. Each URL serves a fixed locale and
+Noctiluca Capital, Zalphyx Yield Strategies, Value Edge SnowWhite and HERAKLIT
+Strategy have their own English URLs without the `/it` prefix. Each URL serves a fixed locale and
 has a self canonical plus reciprocal English/Italian alternates. Language
 controls are real links; JavaScript preserves attribution parameters and
 section anchors, and redirects legacy Italian `?lang=en` and `#en` links.

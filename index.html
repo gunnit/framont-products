@@ -99,7 +99,7 @@
             "name": "HERAKLIT Strategy ETI",
             "identifier": "DE000AMC0D44",
             "category": "Exchange Traded Instrument",
-            "url": "https://heraklit.framontmanagement.com/",
+            "url": "https://access.framontmanagement.com/it/eti/heraklit-strategy/",
             "provider": { "@id": "https://access.framontmanagement.com/#org" }
           }
         },
@@ -404,7 +404,7 @@
   <p>Framont &amp; Partners Management Ltd manages a focused range of alternative investment funds spanning Italian real estate, distressed credit and global capital-market strategies, reserved for professional and eligible investors: six Italian reserved AIFs — <strong>Gentile da Fabriano</strong>, <strong>Orizzonte</strong>, <strong>Wright</strong> (Rome focus, for professional investors or subscriptions from €500,000), <strong>Real Sequoia</strong> and <strong>Pinnacle Investment</strong> in real estate, plus <strong>Hubble Capital</strong> in distressed credit — and three Malta-domiciled Notified AIFs: <strong>Asymetria Fund</strong> (open-ended absolute return, Global Series SICAV plc), <strong>Earth Horizon Fund</strong> (private equity, Global Series SICAV plc) and <strong>CIREDCO Fund 1</strong> (closed-ended, Italian real estate distressed credit). Fund Rules or Offering Supplement and Offering Memorandum are available on request from the Management Company / AIFM.</p>
   <h2>Listed products</h2>
   <ul>
-    <li><a href="https://heraklit.framontmanagement.com/">HERAKLIT Strategy ETI</a> — ISIN DE000AMC0D44, listed on Börse Stuttgart</li>
+    <li><a href="/it/eti/heraklit-strategy/">HERAKLIT Strategy ETI</a> — listed on Börse Stuttgart, issued by iMaps ETI AG; systematic strategy developed by Marcus Schmieke, physics-based regime detection across twelve global data streams driving dynamic exposure to Nasdaq growth, minimum €100. ISIN DE000AMC0D44</li>
     <li><a href="https://techmegatrend.framontmanagement.com/">Tech Megatrend Tactical ETI</a> — ISIN DE000AMC0D85</li>
     <li><a href="/it/eti/value-edge-snowwhite/">Snow White — Value Edge ETI</a> — listed on Börse Stuttgart, issued by iMaps ETI AG; discretionary multi-market long/short strategy (SnowWhite) developed by Giovanni Zibordi, up to 50 positions with a 2% stop per position, minimum €100. ISIN DE000AMC0BZ5</li>
     <li>IVN Global ETI — ISIN DE000AMC0DX6, actively managed global long/short strategy</li>
@@ -2346,8 +2346,8 @@ class Component extends DCLogic {
       },
       products: [
         { id: "eti-heraklit", name: "HERAKLIT Strategy ETI", isin: "DE000AMC0D44", assetClass: "Systematic Multi-Asset", currency: "EUR", minSub: 100, minLabel: { en: "€100", it: "€100" }, open: true, active: true,
-          landingUrl: "https://heraklit.framontmanagement.com/",
-          subscribeUrl: "https://heraklit.framontmanagement.com/?src=framont-access",
+          landingUrl: "/it/eti/heraklit-strategy/",
+          subscribeUrl: "",
           cmp: { wrapper: { en: "Listed exchange traded instrument, issue price EUR 100", it: "Exchange traded instrument quotato, prezzo di emissione EUR 100" },
             short: { en: "Systematic multi-asset. Regime detection across twelve global data streams", it: "Multi-asset sistematico. Rilevazione dei regimi su dodici flussi di dati globali" },
             liquidity: { en: "Daily on exchange, T+2", it: "Giornaliera in borsa, T+2" },
@@ -3430,7 +3430,7 @@ class Component extends DCLogic {
     // and external destinations keep their existing URL.
     const landingUrl = (p) => {
       const url = p && p.landingUrl || "";
-      return s.lang === "en" && ["/it/amc/noctiluca-capital/", "/it/amc/zalphyx-yield-strategies/", "/it/eti/value-edge-snowwhite/"].includes(url)
+      return s.lang === "en" && ["/it/amc/noctiluca-capital/", "/it/amc/zalphyx-yield-strategies/", "/it/eti/value-edge-snowwhite/", "/it/eti/heraklit-strategy/"].includes(url)
         ? url.replace(/^\/it\//, "/") : url;
     };
 

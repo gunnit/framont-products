@@ -17,7 +17,7 @@ import re
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://access.framontmanagement.com"
-ROUTES = ("amc/noctiluca-capital", "amc/zalphyx-yield-strategies", "eti/value-edge-snowwhite")
+ROUTES = ("amc/noctiluca-capital", "amc/zalphyx-yield-strategies", "eti/value-edge-snowwhite", "eti/heraklit-strategy")
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
 
@@ -152,7 +152,7 @@ def english_schema(rendered, route, title, description):
     org["identifier"] = [copy.deepcopy(value) for value in by_type["Organization"].get("identifier", []) if value.get("name") == "VAT"]
     product = select("FinancialProduct", ("@type", "@id", "name", "identifier", "provider", "category"))
     product.update(url=url, description=description)
-    if route == "eti/value-edge-snowwhite":
+    if route.startswith("eti/"):
         product["name"] = doc.text(next(n for n in doc.nodes if n.tag == "h1"))
     breadcrumb = {"@type": "BreadcrumbList", "@id": url + "#breadcrumb", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": org["name"], "item": "https://www.framontmanagement.com/"},
@@ -201,7 +201,7 @@ def generate(source, route):
             key = attrs.get("name", attrs.get("property"))
             values = {"description": description, "og:title": title, "twitter:title": title, "og:description": description, "twitter:description": description, "og:url": url, "og:locale": "en_GB", "og:locale:alternate": "it_IT"}
             if key in values: changes["content"] = values[key]
-            if key == "og:image:alt" and route == "eti/value-edge-snowwhite":
+            if key == "og:image:alt" and route.startswith("eti/"):
                 heading = doc.text(next(n for n in doc.nodes if n.tag == "h1"))
                 author = next(n.attrs["content"] for n in doc.nodes if n.tag == "meta" and n.attrs.get("name") == "author")
                 changes["content"] = heading + ", " + author
@@ -247,7 +247,7 @@ def main():
             print("Generated", target.relative_to(ROOT))
     if stale:
         parser.exit(1, "Stale English product routes: " + ", ".join(stale) + "\nRun python3 scripts/generate_product_locales.py\n")
-    if args.check: print("PASS: all 3 generated English product routes match their authored sources")
+    if args.check: print(f"PASS: all {len(ROUTES)} generated English product routes match their authored sources")
 
 
 if __name__ == "__main__": main()
