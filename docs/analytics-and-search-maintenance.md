@@ -53,7 +53,16 @@ python3 scripts/generate_product_locales.py
 python3 scripts/generate_product_locales.py --check
 ```
 
-Do not edit generated English files directly. The generator preserves product
+HERAKLIT Strategy also has a German page at `/de/eti/heraklit-strategy/`. It is
+generated from the same Italian source: each authored English span is replaced
+by its German text from `i18n/de/eti/heraklit-strategy.json`, keyed by the exact
+English span. When English text changes, `--check` fails until the dictionary
+has a German entry for the new text and no entry for the old one;
+`--dump-missing PATH` writes the untranslated spans as a JSON stub. The three
+HERAKLIT pages declare reciprocal `it`, `en` and `de` alternates, with
+`x-default` on the English page, and the validator checks the cluster.
+
+Do not edit generated English or German files directly. The generator preserves product
 identifiers, legal/risk text, professional-access gates and form routing. This
 publication does not constitute a new financial review of the source content.
 Category excerpts retain their original evidence markers and source dates.

@@ -6,7 +6,7 @@ Key facts:
 
 - Operator: Framont & Partners Management Ltd., Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta (VAT MT22666318)
 - Corporate site: https://www.framontmanagement.com/
-- Platform: https://access.framontmanagement.com/ (English and Italian)
+- Platform: https://access.framontmanagement.com/ (English and Italian; the HERAKLIT product page is also available in German)
 - Access model: product details unlock with free registration; the Deals section is reserved for vetted investors
 - Nothing on the site is investment advice or a public offer; products are intended for eligible investors and subject to jurisdiction restrictions
 
@@ -49,6 +49,10 @@ Fund Rules (Regolamento di Gestione) or Offering Supplement and Offering Memoran
 - [Zalphyx Yield Strategies CLN](https://access.framontmanagement.com/amc/zalphyx-yield-strategies/)
 - [SnowWhite — Value Edge ETI](https://access.framontmanagement.com/eti/value-edge-snowwhite/)
 - [HERAKLIT Strategy ETI](https://access.framontmanagement.com/eti/heraklit-strategy/)
+
+## Product pages in German
+
+- [HERAKLIT Strategy ETI](https://access.framontmanagement.com/de/eti/heraklit-strategy/): German version of the HERAKLIT landing, generated from the same source as the Italian and English pages
 
 ## Compare, structure and vocabulary
 

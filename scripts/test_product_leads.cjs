@@ -30,10 +30,11 @@ const products = [
   { route: '/amc/noctiluca-capital/', id: 'amc-noctiluca', isin: 'CH1554882477' },
   { route: '/amc/zalphyx-yield-strategies/', id: 'amc-zalphyx', isin: 'CH1518693374' },
   { route: '/eti/value-edge-snowwhite/', id: 'eti-lcinvest', isin: 'DE000AMC0BZ5' },
-  { route: '/eti/heraklit-strategy/', id: 'eti-heraklit', isin: 'DE000AMC0D44' },
+  { route: '/eti/heraklit-strategy/', id: 'eti-heraklit', isin: 'DE000AMC0D44', german: true },
 ].flatMap(product => [
   { ...product, language: 'en' },
   { ...product, route: '/it' + product.route, language: 'it' },
+  ...(product.german ? [{ ...product, route: '/de' + product.route, language: 'de' }] : []),
 ]);
 
 for (const product of products) {
