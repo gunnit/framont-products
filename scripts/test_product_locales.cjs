@@ -66,7 +66,7 @@ for (const product of products) {
       if (product.id === 'eti-heraklit') {
         assert.equal(await page.locator('.kpi b').filter({ hasText: /^36\.67%$/ }).count(), 1);
         assert.equal(await page.locator('.kpi b').filter({ hasText: /^11\.45%$/ }).count(), 1);
-        assert.ok(body.includes('performance fee 25%'));
+        assert.ok(body.includes('performance fee 20%'));
       }
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), origin + product.route);
       assert.equal(await page.locator('link[hreflang="en"]').getAttribute('href'), origin + product.route);
