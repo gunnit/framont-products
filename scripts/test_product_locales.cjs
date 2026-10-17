@@ -64,8 +64,8 @@ for (const product of products) {
         assert.equal(await page.locator('.spec-n .pre').textContent(), 'up to');
       }
       if (product.id === 'eti-heraklit') {
-        assert.equal(await page.locator('.kpi b').filter({ hasText: /^36\.67%$/ }).count(), 1);
-        assert.equal(await page.locator('.kpi b').filter({ hasText: /^11\.45%$/ }).count(), 1);
+        assert.equal(await page.locator('.kpi b').filter({ hasText: /^27\.01%$/ }).count(), 1);
+        assert.equal(await page.locator('.kpi b').filter({ hasText: /^−79\.14%$/ }).count(), 1);
         assert.ok(body.includes('performance fee 20%'));
       }
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), origin + product.route);
@@ -166,8 +166,8 @@ test('/de' + german.route + ' serves the reviewed German content and metadata wi
       const plain = text.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
       assert.ok(body.includes(plain), 'reviewed German text: ' + plain.slice(0, 80));
     }
-    assert.equal(await page.locator('.kpi b').filter({ hasText: /^36,67%$/ }).count(), 1);
-    assert.equal(await page.locator('.kpi b').filter({ hasText: /^11,45%$/ }).count(), 1);
+    assert.equal(await page.locator('.kpi b').filter({ hasText: /^27,01%$/ }).count(), 1);
+    assert.equal(await page.locator('.kpi b').filter({ hasText: /^−79,14%$/ }).count(), 1);
     assert.equal(await page.locator('.spec-n .pre').textContent(), 'bis zu');
     assert.ok(body.includes('Performancegebühr 20%'));
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), url);
