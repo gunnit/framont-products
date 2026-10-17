@@ -17,7 +17,7 @@ what is served.
 | `data/aeo-sources.json` | Evidence registry backing every sourced claim |
 | `docs/editorial-and-review-policy.md` | Byline, review, sourcing and correction policy |
 | `scripts/validate_aeo_content.py` | Citation-readiness validator |
-| `scripts/generate_product_locales.py` | Generates the English product pages from existing English source text |
+| `scripts/generate_product_locales.py` | Generates the English product pages from existing English source text, and the German HERAKLIT page from the reviewed dictionary in `i18n/de/` |
 
 ## Editorial workflow
 

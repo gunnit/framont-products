@@ -79,6 +79,17 @@ STATIC_ROUTES = [
     ("articles/index.html", "articles/it/index.html"),
 ]
 
+# Product routes published in more than two languages. Each page must stand up
+# without JavaScript and every page in the cluster must declare reciprocal
+# hreflang alternates for all its languages plus x-default (the English page).
+LOCALE_CLUSTERS = [
+    {
+        "en": "eti/heraklit-strategy/index.html",
+        "it": "it/eti/heraklit-strategy/index.html",
+        "de": "de/eti/heraklit-strategy/index.html",
+    },
+]
+
 # Pages that ship in a single language, so there is no counterpart to hold them
 # to evidence parity. They still have to stand up without JavaScript and carry a
 # correct canonical. Hreflang is optional; if declared, it must include itself.
@@ -179,6 +190,7 @@ def covered_pages() -> set[str]:
     covered = {rel for pair in ARTICLE_PAIRS for rel in pair}
     covered |= {rel for pair in STATIC_ROUTES for rel in pair}
     covered |= {rel for rel, _lang in SOLO_ROUTES}
+    covered |= {rel for cluster in LOCALE_CLUSTERS for rel in cluster.values()}
     return covered
 
 
@@ -417,6 +429,22 @@ def check_static_page(
     return parser.canonical
 
 
+def check_locale_cluster(cluster: dict[str, str], report: Report) -> None:
+    """Every page in a multi-language cluster points at every other one."""
+    canonicals = {lang: f"{SITE}/{rel}".replace("/index.html", "/") for lang, rel in cluster.items()}
+    for lang, rel in cluster.items():
+        path = ROOT / rel
+        if not path.exists():
+            report.error(f"{rel}: file does not exist")
+            continue
+        parser = parse_page(path)
+        for other, url in canonicals.items():
+            if parser.hreflang.get(other) != url:
+                report.error(f"{rel}: hreflang '{other}' does not point at {url}")
+        if parser.hreflang.get("x-default") != canonicals.get("en"):
+            report.error(f"{rel}: hreflang 'x-default' does not point at {canonicals.get('en')}")
+
+
 def check_coverage(covered: set[str], report: Report) -> None:
     """Hold the check lists to what the site actually ships.
 
@@ -543,6 +571,15 @@ def main() -> int:
         canonical = check_static_page(rel, report, lang, require_hreflang=False)
         if canonical:
             canonicals.append(canonical)
+
+    static_pages = {rel for pair in STATIC_ROUTES for rel in pair}
+    for cluster in LOCALE_CLUSTERS:
+        for lang, rel in cluster.items():
+            if rel not in static_pages:
+                canonical = check_static_page(rel, report, lang)
+                if canonical:
+                    canonicals.append(canonical)
+        check_locale_cluster(cluster, report)
 
     check_discovery(canonicals, report)
     check_coverage(covered_pages(), report)

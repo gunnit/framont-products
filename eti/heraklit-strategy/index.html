@@ -13,6 +13,7 @@
 <link href="https://access.framontmanagement.com/eti/heraklit-strategy/" rel="canonical"/>
 <link href="https://access.framontmanagement.com/it/eti/heraklit-strategy/" hreflang="it" rel="alternate"/>
 <link href="https://access.framontmanagement.com/eti/heraklit-strategy/" hreflang="en" rel="alternate"/>
+<link href="https://access.framontmanagement.com/de/eti/heraklit-strategy/" hreflang="de" rel="alternate"/>
 <link href="https://access.framontmanagement.com/eti/heraklit-strategy/" hreflang="x-default" rel="alternate"/>
 <meta content="website" property="og:type"/>
 <meta content="FRAMONT &amp; Partners Management Ltd" property="og:site_name"/>
@@ -27,6 +28,7 @@
 <meta content="https://access.framontmanagement.com/assets/og-image.jpg" name="twitter:image"/>
 <meta content="2026-10-15T00:00:00+00:00" property="og:updated_time"/>
 <meta content="it_IT" property="og:locale:alternate"/>
+<meta content="de_DE" property="og:locale:alternate"/>
 <meta content="https://www.linkedin.com/company/framontmanagement/" property="article:publisher"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="HERAKLIT Strategy ETI, systematic strategy by Marcus Schmieke | FRAMONT" name="twitter:title"/>
@@ -1152,7 +1154,7 @@ span.t-en{display:none}
 <li><a href="#risks">Risks</a></li>
 </ul>
 <div class="nav-right">
-<div aria-label="Language" class="lang" role="group"><a class="lang-b" data-language="it" href="/it/eti/heraklit-strategy/" hreflang="it">IT</a><a class="lang-b" data-language="en" href="/eti/heraklit-strategy/" hreflang="en" aria-current="page">EN</a></div>
+<div aria-label="Language" class="lang" role="group"><a class="lang-b" data-language="it" href="/it/eti/heraklit-strategy/" hreflang="it">IT</a><a class="lang-b" data-language="en" href="/eti/heraklit-strategy/" hreflang="en" aria-current="page">EN</a><a class="lang-b" data-language="de" href="/de/eti/heraklit-strategy/" hreflang="de">DE</a></div>
 <a class="nav-cta" href="#contact">Request the KID</a>
 <label aria-hidden="true" class="burger" for="nav-open"><span></span></label>
 </div>
@@ -1794,21 +1796,23 @@ span.t-en{display:none}
 
   var TITLE = {
     it:'HERAKLIT Strategy ETI, strategia sistematica di Marcus Schmieke | FRAMONT',
-    en:'HERAKLIT Strategy ETI, systematic strategy by Marcus Schmieke | FRAMONT'
+    en:'HERAKLIT Strategy ETI, systematic strategy by Marcus Schmieke | FRAMONT',
+    de:'HERAKLIT Strategy ETI, systematische Strategie von Marcus Schmieke | FRAMONT'
   };
   var DESC = {
     it:'Strumento quotato con strategia sistematica: rilevazione dei regimi di mercato su dodici flussi di dati globali ed esposizione dinamica alla crescita del Nasdaq. Gestione FRAMONT, AIFM autorizzato MFSA. Capitale a rischio.',
-    en:'Listed instrument running a systematic strategy: market regime detection across twelve global data streams and dynamic exposure to Nasdaq growth. Managed by FRAMONT, an MFSA authorised AIFM. Capital at risk.'
+    en:'Listed instrument running a systematic strategy: market regime detection across twelve global data streams and dynamic exposure to Nasdaq growth. Managed by FRAMONT, an MFSA authorised AIFM. Capital at risk.',
+    de:'Börsennotiertes Instrument mit systematischer Strategie: Erkennung von Marktregimen über zwölf globale Datenströme und dynamische Partizipation am Wachstum des Nasdaq. Verwaltet von FRAMONT, einem von der MFSA zugelassenen AIFM. Kapitalverlust möglich.'
   };
 
   /* Each URL serves a fixed locale. Keep existing attribution and section links. */
-  function lang(){ return root.getAttribute('lang') === 'en' ? 'en' : 'it'; }
-  var localePaths = {it:'/it/eti/heraklit-strategy/', en:'/eti/heraklit-strategy/'};
+  var localePaths = {it:'/it/eti/heraklit-strategy/', en:'/eti/heraklit-strategy/', de:'/de/eti/heraklit-strategy/'};
+  function lang(){ var l = root.getAttribute('lang'); return localePaths[l] ? l : 'it'; }
   function localeUrl(locale){
     var u = new URL(window.location.href);
     u.pathname = localePaths[locale];
     u.searchParams.delete('lang');
-    if(/^#(?:it|en)$/i.test(u.hash)){ u.hash = ''; }
+    if(/^#(?:it|en|de)$/i.test(u.hash)){ u.hash = ''; }
     return u.pathname + u.search + u.hash;
   }
   function updateLocaleLinks(){
@@ -1819,14 +1823,14 @@ span.t-en{display:none}
   try{
     var currentUrl = new URL(window.location.href);
     var requestedLocale = (currentUrl.searchParams.get('lang') || '').toLowerCase();
-    if(!localePaths[requestedLocale] && /^#(?:it|en)$/i.test(currentUrl.hash)){
+    if(!localePaths[requestedLocale] && /^#(?:it|en|de)$/i.test(currentUrl.hash)){
       requestedLocale = currentUrl.hash.slice(1).toLowerCase();
     }
     if(localePaths[requestedLocale] && requestedLocale !== lang()){
       window.location.replace(localeUrl(requestedLocale));
       return;
     }
-    if(currentUrl.searchParams.has('lang') || /^#(?:it|en)$/i.test(currentUrl.hash)){
+    if(currentUrl.searchParams.has('lang') || /^#(?:it|en|de)$/i.test(currentUrl.hash)){
       history.replaceState(null, '', localeUrl(lang()));
     }
     updateLocaleLinks();

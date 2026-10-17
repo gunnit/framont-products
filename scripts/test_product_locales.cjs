@@ -144,3 +144,81 @@ for (const product of products) {
     } finally { await ctx.close(); }
   });
 }
+
+const german = { route: '/eti/heraklit-strategy/', heading: 'HERAKLIT Strategy ETI', id: 'eti-heraklit', isin: 'DE000AMC0D44' };
+
+test('/de' + german.route + ' serves the reviewed German content and metadata without JavaScript', async () => {
+  const ctx = await context({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  try {
+    const page = await ctx.newPage();
+    const url = origin + '/de' + german.route;
+    const response = await page.goto(url);
+    assert.equal(response.status(), 200);
+    assert.equal(await page.locator('html').getAttribute('lang'), 'de');
+    const source = fs.readFileSync(path.join(root, 'it', german.route, 'index.html'), 'utf8');
+    assert.equal(await page.title(), source.match(/var TITLE = \{[\s\S]*?\bde:'([^']+)'/)[1]);
+    assert.equal(await page.locator('meta[name="description"]').getAttribute('content'), source.match(/var DESC = \{[\s\S]*?\bde:'([^']+)'/)[1]);
+    assert.equal(await page.locator('body .t-it, body .t-en').count(), 0);
+    assert.equal(await page.locator('h1').textContent(), german.heading);
+    const body = await page.locator('body').textContent();
+    const segments = JSON.parse(fs.readFileSync(path.join(root, 'i18n', 'de', german.route.slice(1, -1) + '.json'), 'utf8')).segments;
+    for (const text of Object.values(segments)) {
+      const plain = text.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
+      assert.ok(body.includes(plain), 'reviewed German text: ' + plain.slice(0, 80));
+    }
+    assert.equal(await page.locator('.kpi b').filter({ hasText: /^36,67%$/ }).count(), 1);
+    assert.equal(await page.locator('.kpi b').filter({ hasText: /^11,45%$/ }).count(), 1);
+    assert.equal(await page.locator('.spec-n .pre').textContent(), 'bis zu');
+    assert.ok(body.includes('Performancegebühr 20%'));
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), url);
+    assert.equal(await page.locator('link[hreflang="de"]').getAttribute('href'), url);
+    assert.equal(await page.locator('link[hreflang="en"]').getAttribute('href'), origin + german.route);
+    assert.equal(await page.locator('link[hreflang="it"]').getAttribute('href'), origin + '/it' + german.route);
+    assert.equal(await page.locator('link[hreflang="x-default"]').getAttribute('href'), origin + german.route);
+    assert.equal(await page.locator('meta[property="og:locale"]').getAttribute('content'), 'de_DE');
+    assert.equal(await page.locator('#lead [name="language"]').inputValue(), 'de');
+    assert.equal(await page.locator('#lead [name="page"]').inputValue(), url);
+    assert.equal(await page.locator('#lead [name="redirect"]').inputValue(), url + '?sent=1#contact');
+    assert.equal(await page.locator('#lead [name="product_id"]').inputValue(), german.id);
+    assert.equal(await page.locator('#lead [name="isin"]').inputValue(), german.isin);
+    const graph = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())['@graph'];
+    assert.equal(graph.find(node => node['@type'] === 'WebPage').inLanguage, 'de');
+    assert.equal(graph.find(node => node['@type'] === 'FinancialProduct').name, german.heading);
+    assert.equal(graph.find(node => node['@type'] === 'FinancialProduct').url, url);
+    const faqs = graph.find(node => node['@type'] === 'FAQPage').mainEntity;
+    const visibleFaqs = await page.locator('#faq details').evaluateAll(nodes => nodes.map(node => ({ question: node.querySelector('summary').textContent, answer: node.querySelector('.ans').textContent })));
+    assert.equal(faqs.length, visibleFaqs.length);
+    for (let i = 0; i < faqs.length; i++) {
+      assert.equal(faqs[i].name, visibleFaqs[i].question.trim());
+      assert.equal(faqs[i].acceptedAnswer.text, visibleFaqs[i].answer.trim());
+    }
+    assert.equal(await page.locator('a[data-language="de"]').getAttribute('aria-current'), 'page');
+    assert.equal(await page.locator('a[data-language="it"]').getAttribute('href'), '/it' + german.route);
+    assert.equal(await page.locator('a[data-language="en"]').getAttribute('href'), german.route);
+    const size = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth }));
+    assert.ok(size.width <= size.viewport + 1, 'no mobile overflow');
+  } finally { await ctx.close(); }
+});
+
+test('/de' + german.route + ' language links keep attribution and anchors, and legacy German links redirect', async () => {
+  const ctx = await context();
+  try {
+    const page = await ctx.newPage();
+    const errors = []; page.on('pageerror', error => errors.push(error.message));
+    await page.goto(origin + '/de' + german.route + '?utm_source=locale-test#contact');
+    assert.equal(await page.locator('html').getAttribute('lang'), 'de');
+    assert.equal(await page.locator('#lead [name="language"]').inputValue(), 'de');
+    assert.equal(await page.locator('a[data-language="en"]').getAttribute('href'), german.route + '?utm_source=locale-test#contact');
+    await page.locator('a[data-language="it"]').click();
+    await page.waitForURL(origin + '/it' + german.route + '?utm_source=locale-test#contact');
+    assert.equal(await page.locator('a[data-language="de"]').getAttribute('href'), '/de' + german.route + '?utm_source=locale-test#contact');
+    await page.locator('a[data-language="de"]').click();
+    await page.waitForURL(origin + '/de' + german.route + '?utm_source=locale-test#contact');
+    await page.goto(origin + '/it' + german.route + '?lang=de&utm_medium=guide#contact');
+    await page.waitForURL(origin + '/de' + german.route + '?utm_medium=guide#contact');
+    assert.equal(await page.locator('html').getAttribute('lang'), 'de');
+    await page.goto(origin + german.route + '?utm_medium=guide#de');
+    await page.waitForURL(origin + '/de' + german.route + '?utm_medium=guide');
+    assert.deepEqual(errors, []);
+  } finally { await ctx.close(); }
+});

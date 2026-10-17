@@ -15,6 +15,8 @@ PAIRS = [
  ('/eti/value-edge-snowwhite/', '/it/eti/value-edge-snowwhite/'),
  ('/eti/heraklit-strategy/', '/it/eti/heraklit-strategy/'),
 ]
+# Routes that also publish a German page: (en, it, de).
+TRIOS = [('/eti/heraklit-strategy/', '/it/eti/heraklit-strategy/', '/de/eti/heraklit-strategy/')]
 
 class Links(HTMLParser):
  def __init__(self, text):
@@ -76,5 +78,27 @@ class DiscoveryTests(unittest.TestCase):
   for en,it in PAIRS:
    self.assertIn(en,visited)
    self.assertIn(it,visited)
+  for en,it,de in TRIOS:
+   self.assertIn(de,visited)
+ def test_german_routes_are_registered_reciprocal_and_link_to_existing_pages(self):
+  sitemap=ET.parse(ROOT/'sitemap.xml').getroot()
+  entries={e.find('{*}loc').text:e for e in sitemap.findall('{*}url')}
+  llms=(ROOT/'llms.txt').read_text()
+  for en,it,de in TRIOS:
+   expected={'en':SITE+en,'it':SITE+it,'de':SITE+de,'x-default':SITE+en}
+   for route in [en,it,de]:
+    with self.subTest(route=route):
+     self.assertIn(SITE+route,entries)
+     self.assertEqual({e.attrib['hreflang']:e.attrib['href'] for e in entries[SITE+route].findall('{*}link')},expected)
+     page=Links(file_for(route).read_text())
+     self.assertEqual(page.canonical,SITE+route)
+     self.assertEqual({k:v for k,v in page.alternates.items() if k in expected},expected)
+     for href in page.hrefs:
+      url=urlsplit(urljoin(SITE+route,href))
+      if url.netloc!=urlsplit(SITE).netloc or url.scheme not in ['http','https']: continue
+      relative=url.path.lstrip('/')
+      target=ROOT/(relative+'index.html' if not relative or relative.endswith('/') else relative)
+      self.assertTrue(target.is_file(),f'{route} broken internal link {href}')
+   self.assertIn(SITE+de,llms)
 
 if __name__=='__main__': unittest.main()
