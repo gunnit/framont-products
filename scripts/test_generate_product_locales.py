@@ -20,6 +20,10 @@ class ProductLocaleGenerationTests(unittest.TestCase):
         expected = '<table><tr><td>USD 275,000 - 366,000</td><td>USD 100,000</td><td>USD 1,000</td><td>USD 1,000,000</td><td>2.89</td><td>-10.7%</td><td>1.3×</td><td>USD 1,000 and <b>2,89</b> verbatim</td><td></td></tr></table><script>var number="1.000";</script><b>CH1554882477</b><b>2026-09-24</b>'
         self.assertEqual(english_body(source), expected)
 
+    def test_shared_signed_percentages_accept_the_typographic_minus(self):
+        source = '<table><tr><td>−36,20%</td><td>+79,19%</td></tr></table><b>−63,28%</b>'
+        self.assertEqual(english_body(source), '<table><tr><td>−36.20%</td><td>+79.19%</td></tr></table><b>−63.28%</b>')
+
     def test_shared_language_labels_keep_values(self):
         source = '<small class="pre">fino a</small>50<b>24 set 2026</b><b>24 mar 2027</b><b>24 set 2029</b>'
         self.assertEqual(english_body(source), '<small class="pre">up to</small>50<b>24 Sep 2026</b><b>24 Mar 2027</b><b>24 Sep 2029</b>')

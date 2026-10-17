@@ -135,7 +135,7 @@ def english_body(source):
             continue
         value = doc.inner(node)
         localized = value
-        number = r"(?:USD\s+)?[+-]?\d[\d.,]*(?:%|x|×)?"
+        number = r"(?:USD\s+)?[+\-−]?\d[\d.,]*(?:%|x|×)?"
         if re.fullmatch(number + r"(?:\s+-\s+" + number + r")?", value.strip()):
             def format_number(match):
                 token = match.group()
