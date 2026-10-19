@@ -393,7 +393,10 @@ body{
   font-variant-numeric:tabular-nums;
 }
 h1,h2,h3{font-family:var(--serif);color:var(--ink);line-height:1.14;font-weight:600}
-h4,h5{font-family:var(--sans);color:var(--ink);font-weight:700;line-height:1.35}
+h4,h5,.h4{font-family:var(--sans);color:var(--ink);font-weight:700;line-height:1.35}
+/* .h4: card titles are h3 under their section h2 and keep the h4 look; an h3 would
+   otherwise take the browser's 1.17em and the balanced wrap set for h1-h3 */
+.h4{font-size:1em;text-wrap:inherit}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
@@ -567,7 +570,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .obj b{
   font-family:var(--mono);font-size:.66rem;font-weight:500;color:var(--orange-ink);letter-spacing:.1em;padding-top:3px;
 }
-.obj h4{margin-bottom:5px;font-size:.98rem}
+.obj h4,.obj .h4{margin-bottom:5px;font-size:.98rem}
 .obj p{font-size:.9rem;line-height:1.72}
 .pull{
   font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3.6vw,1.3rem);
@@ -583,7 +586,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .sleeve.s-btc{--accent:var(--btc)}
 .sleeve.s-cash{--accent:var(--cash)}
 .sl-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
-.sl-h h4{font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--ink)}
+.sl-h h4,.sl-h .h4{font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--ink)}
 .sl-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent,var(--navy))}
 .sl-d{font-size:.86rem;line-height:1.7;color:var(--muted);margin-bottom:16px}
 .tiers{display:grid;gap:8px}
@@ -653,7 +656,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 }
 .inputs{display:grid;gap:10px;margin-top:34px}
 .inp{border:1px solid rgba(255,255,255,.16);padding:16px 18px}
-.inp h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-l);font-weight:500;margin-bottom:7px}
+.inp h4,.inp .h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-l);font-weight:500;margin-bottom:7px}
 .inp p{font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.76)}
 
 /* ---------- process / turnover ---------- */
@@ -670,14 +673,14 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .ladder{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--rule)}
 .rung{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:start}
 .rung-x{font-family:var(--mono);font-size:.9rem;font-weight:600;color:var(--navy);padding-top:1px}
-.rung h4{font-size:.9rem;margin-bottom:3px}
+.rung h4,.rung .h4{font-size:.9rem;margin-bottom:3px}
 .rung p{font-size:.84rem;line-height:1.65;color:var(--muted)}
 
 /* ---------- behaviour ---------- */
 #behaviour{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .schem{background:var(--paper);border:1px solid var(--rule);padding:clamp(16px,4.5vw,26px);margin-top:30px}
 .schem-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:16px}
-.schem-h h4{font-size:.95rem}
+.schem-h h4,.schem-h .h4{font-size:.95rem}
 .sch-t{font-family:var(--mono);font-size:11px;fill:var(--muted)}
 .sch-legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:14px;font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;color:var(--body)}
 .sch-legend span{display:flex;align-items:center;gap:7px}
@@ -691,7 +694,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .envs{display:grid;gap:14px;margin-top:22px}
 .env{border-left:3px solid var(--accent,var(--navy));background:var(--paper);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px 20px}
 .env.e1{--accent:var(--tech)}.env.e2{--accent:var(--gold)}.env.e3{--accent:var(--cash)}
-.env h4{font-size:.92rem;margin-bottom:6px}
+.env h4,.env .h4{font-size:.92rem;margin-bottom:6px}
 .env p{font-size:.86rem;line-height:1.72;color:var(--muted)}
 
 /* ---------- structure ---------- */
@@ -699,7 +702,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .chain{display:grid;gap:0;margin-top:32px;border-top:1px solid var(--rule)}
 .node{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--rule)}
 .node-n{font-family:var(--mono);font-size:.68rem;color:var(--orange-ink);letter-spacing:.1em;padding-top:4px}
-.node h4{font-size:1rem;margin-bottom:5px}
+.node h4,.node .h4{font-size:1rem;margin-bottom:5px}
 .node p{font-size:.87rem;line-height:1.7;color:var(--muted)}
 .tables{display:grid;gap:clamp(18px,5vw,26px);margin-top:34px}
 .tbl{width:100%;border-collapse:collapse;margin-top:14px}
@@ -771,7 +774,7 @@ input[type=range]::-moz-range-thumb{
 .a-no li::before{content:"-"}
 .a-do li::before{content:">"}
 .mifid{margin-top:24px;background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--navy);padding:24px 22px}
-.mifid h4{font-size:.98rem;margin-bottom:10px}
+.mifid h4,.mifid .h4{font-size:.98rem;margin-bottom:10px}
 .mifid p{font-size:.86rem;line-height:1.78}
 
 /* ---------- docs ---------- */
@@ -779,7 +782,7 @@ input[type=range]::-moz-range-thumb{
 .docs{display:grid;gap:14px;margin-top:30px}
 .doc{border:1px solid var(--rule);padding:22px 20px;display:grid;gap:10px;background:var(--paper)}
 .doc-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--orange-ink)}
-.doc h4{font-size:1rem}
+.doc h4,.doc .h4{font-size:1rem}
 .doc p{font-size:.86rem;line-height:1.7;color:var(--muted)}
 .doc a{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--orange);padding-bottom:3px;width:fit-content}
 .doc a:hover{color:var(--orange-ink)}
@@ -790,11 +793,11 @@ input[type=range]::-moz-range-thumb{
 #risks{background:var(--paper-2);border-top:1px solid var(--rule)}
 .risks{display:grid;gap:0;margin-top:30px;border-top:1px solid var(--rule-strong)}
 .rk{padding:20px 0;border-bottom:1px solid var(--rule)}
-.rk h4{font-size:.95rem;margin-bottom:6px;display:flex;gap:12px;align-items:baseline}
-.rk h4 i{font-family:var(--mono);font-style:normal;font-size:.66rem;color:var(--stop);letter-spacing:.08em;flex-shrink:0}
+.rk h4,.rk .h4{font-size:.95rem;margin-bottom:6px;display:flex;gap:12px;align-items:baseline}
+.rk h4 i,.rk .h4 i{font-family:var(--mono);font-style:normal;font-size:.66rem;color:var(--stop);letter-spacing:.08em;flex-shrink:0}
 .rk p{font-size:.87rem;line-height:1.72;color:var(--body);padding-left:34px}
 .rk-sum{margin-top:26px;background:var(--navy);color:rgba(255,255,255,.84);padding:26px 22px}
-.rk-sum h4{color:#fff;margin-bottom:10px;font-size:1rem}
+.rk-sum h4,.rk-sum .h4{color:#fff;margin-bottom:10px;font-size:1rem}
 .rk-sum p{font-size:.87rem;line-height:1.8}
 .rk-sum b{color:#fff}
 
@@ -842,7 +845,7 @@ input[type=range]::-moz-range-thumb{
 #framont .tag i{color:rgba(255,255,255,.55)}
 .fr-grid{display:grid;gap:14px;margin-top:32px}
 .fr{border:1px solid rgba(255,255,255,.14);padding:22px 20px}
-.fr h4{color:#fff;font-size:.95rem;margin-bottom:8px}
+.fr h4,.fr .h4{color:#fff;font-size:.95rem;margin-bottom:8px}
 .fr p{font-size:.86rem;line-height:1.72;color:rgba(255,255,255,.76)}
 .fr a{color:var(--orange-l);text-decoration:underline;text-underline-offset:2px}
 .fr-cta{margin-top:26px;background:rgba(244,121,32,.10);border:1px solid rgba(244,121,32,.36);padding:26px 22px}
@@ -853,7 +856,7 @@ input[type=range]::-moz-range-thumb{
 #contact{background:var(--paper)}
 .cta-grid{display:grid;gap:14px;margin-top:30px}
 .cta-c{border:1px solid var(--rule);padding:24px 22px;background:var(--paper-2)}
-.cta-c h4{font-size:1rem;margin-bottom:9px}
+.cta-c h4,.cta-c .h4{font-size:1rem;margin-bottom:9px}
 .cta-c p{font-size:.87rem;line-height:1.75;margin-bottom:16px;color:var(--muted)}
 .cta-c a{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;color:var(--navy);border-bottom:1px solid var(--orange);padding-bottom:3px;word-break:break-word}
 .cta-disc{margin-top:26px;font-size:.76rem;line-height:1.8;color:var(--muted)}
@@ -1032,14 +1035,14 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 /* ---------- elenco canali ---------- */
 .chans{display:grid;gap:12px;margin-top:24px}
 .chan{border:1px solid var(--rule);background:var(--paper);padding:16px 18px}
-.chan h4{font-size:.92rem}
+.chan h4,.chan .h4{font-size:.92rem}
 .chan p{font-size:.84rem;line-height:1.7;color:var(--body);margin-top:5px}
 .chan a{color:var(--navy-2);text-decoration:underline;text-underline-offset:2px;word-break:break-word}
 .chan .doc-k{margin-bottom:8px}
 
 /* ---------- nota conflitto di interessi ---------- */
 .coi{border-left:4px solid var(--warn);background:#FDF6E7;padding:clamp(18px,4.5vw,26px);margin-top:26px}
-.coi h4{font-size:.95rem;margin-bottom:8px}
+.coi h4,.coi .h4{font-size:.95rem;margin-bottom:8px}
 .coi p{font-size:.86rem;line-height:1.75;color:var(--body)}
 .coi p+p{margin-top:10px}
 
@@ -1235,9 +1238,9 @@ span.t-en{display:none}
 .ptbl tbody th{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--muted);font-weight:500;text-transform:uppercase}
 .ptbl td{font-size:.88rem;color:var(--ink);white-space:nowrap}
 .tables-tight{margin-top:4px}
-#model .inputs.steps .inp h4{text-transform:none;letter-spacing:.04em;font-size:.72rem}
+#model .inputs.steps .inp h4,#model .inputs.steps .inp .h4{text-transform:none;letter-spacing:.04em;font-size:.72rem}
 .formula{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:.84rem;color:var(--muted)}
-.meth .card h4{font-size:1rem;margin-bottom:8px}
+.meth .card h4,.meth .card .h4{font-size:1rem;margin-bottom:8px}
 .meth .card p{color:var(--muted)}
 </style>
 </head>
@@ -1365,28 +1368,28 @@ span.t-en{display:none}
 <li>
 <b>a</b>
 <div>
-<h4>Engagement im Nasdaq-Wachstum</h4>
+<h3 class="h4">Engagement im Nasdaq-Wachstum</h3>
 <p>Teilhabe an der langfristigen Entwicklung des Nasdaq-100 über eine regelbasierte, dynamisch bemessene Position.</p>
 </div>
 </li>
 <li>
 <b>b</b>
 <div>
-<h4>Risikobewusste Allokation</h4>
+<h3 class="h4">Risikobewusste Allokation</h3>
 <p>Geschätztes Abwärtsrisiko und beobachtete Volatilität nutzen, um zu entscheiden, wann das Marktengagement verringert, erhöht oder durch Liquidität ersetzt werden sollte.</p>
 </div>
 </li>
 <li>
 <b>c</b>
 <div>
-<h4>Ein Blick auf Marktübergänge</h4>
+<h3 class="h4">Ein Blick auf Marktübergänge</h3>
 <p>Die Wahrscheinlichkeit analysieren, in einen Stresszustand des Marktes zu geraten, sowie die geschätzte Richtung, in die sich der aktuelle Zustand entwickelt.</p>
 </div>
 </li>
 <li>
 <b>d</b>
 <div>
-<h4>Konsequenz statt Intuition</h4>
+<h3 class="h4">Konsequenz statt Intuition</h3>
 <p>Dokumentierte Entscheidungsregeln zu festgelegten Marktschlüssen anwenden, statt emotional auf tägliche Schlagzeilen zu reagieren.</p>
 </div>
 </li>
@@ -1415,21 +1418,21 @@ span.t-en{display:none}
 <p class="lede" style="margin-top:18px">Die HERAKLIT-Regeln teilen das Kapital zwischen einem einzigen täglich gehebelten Nasdaq-100-ETF und Liquidität auf: Wenn das Risikomodell eine Anlage zulässt, können bis zu 100% des Portfolios im ETF gehalten werden. Die von der Emittentin veröffentlichten Bedingungen des segregierten Portfolios erlauben ein breiteres Anlageuniversum, das über Interactive Brokers zugänglich ist: Long- oder Short-Positionen in Aktien, ETFs und Hinterlegungsscheinen, Long-Positionen in komplexen oder gehebelten börsengehandelten Produkten sowie Long- oder Short-Positionen in Währungen. Bis zu 100% des Portfolios dürfen aus Liquidität bestehen. Es investiert weder in physische Rohstoffe noch in Immobilien.</p>
 <div class="sleeves">
 <article class="sleeve s-tech rv">
-<div class="sl-h"><h4>Gehebelter Nasdaq-100-ETF</h4><span class="sl-k">Von den Regeln genutzt</span></div>
+<div class="sl-h"><h3 class="h4">Gehebelter Nasdaq-100-ETF</h3><span class="sl-k">Von den Regeln genutzt</span></div>
 <p class="sl-d">TQQQ, ein in den USA notierter ETF, der das Dreifache der täglichen Rendite des Nasdaq-100 anstrebt. Die Regeln halten 0% bis 100% des Portfolios darin und berechnen die Gewichtung täglich neu. Hebelwirkung verstärkt Verluste ebenso wie Gewinne.</p>
 <div class="tiers">
 <div class="tier"><span class="tier-x">L</span><div class="tickers"><span class="tk">0% bis 100% des Portfolios</span></div></div>
 </div>
 </article>
 <article class="sleeve s-cash rv">
-<div class="sl-h"><h4>Liquidität</h4><span class="sl-k">Defensiv</span></div>
+<div class="sl-h"><h3 class="h4">Liquidität</h3><span class="sl-k">Defensiv</span></div>
 <p class="sl-d">Nicht im ETF investiertes Kapital wird als Liquidität gehalten, bis zu 100% des Portfolios und unter Umständen über längere Zeiträume. Am Emissionstag war das Portfolio zu 100% in Euro-Liquidität investiert.</p>
 <div class="tiers">
 <div class="tier"><span class="tier-x">0</span><div class="tickers"><span class="tk">Bis zu 100%</span></div></div>
 </div>
 </article>
 <article class="sleeve s-gold rv">
-<div class="sl-h"><h4>Aktien, ETFs und andere ETPs</h4><span class="sl-k">Laut Mandat zulässig</span></div>
+<div class="sl-h"><h3 class="h4">Aktien, ETFs und andere ETPs</h3><span class="sl-k">Laut Mandat zulässig</span></div>
 <p class="sl-d">Das Mandat erlaubt zudem Long- oder Short-Positionen in Aktien, ETFs und Hinterlegungsscheinen sowie Long-Positionen in anderen komplexen oder gehebelten börsengehandelten Produkten. Die aktuellen Regeln nutzen sie nicht.</p>
 <div class="tiers">
 <div class="tier"><span class="tier-x">L</span><div class="tickers"><span class="tk">Long-Positionen</span></div></div>
@@ -1437,7 +1440,7 @@ span.t-en{display:none}
 </div>
 </article>
 <article class="sleeve s-btc rv">
-<div class="sl-h"><h4>Währungen</h4><span class="sl-k">Long und short</span></div>
+<div class="sl-h"><h3 class="h4">Währungen</h3><span class="sl-k">Long und short</span></div>
 <p class="sl-d">Das Mandat erlaubt Long- oder Short-Positionen in Währungen. Das Instrument lautet auf Euro, während der Nasdaq-100-ETF in US-Dollar gehandelt wird: Der Wechselkurs beeinflusst das Ergebnis.</p>
 <div class="tiers">
 <div class="tier"><span class="tier-x">L</span><div class="tickers"><span class="tk">Long-Positionen</span></div></div>
@@ -1485,16 +1488,16 @@ span.t-en{display:none}
 <p class="lede" style="margin-top:18px">HERAKLIT kombiniert drei zusammenwirkende Elemente: ein statistisches Abwärtsrisiko-Regime, eine volatilitätsbasierte Positionsgröße und ein Zustandsübergangsmodell. Eine hohe geschätzte Wahrscheinlichkeit, in einen Stresszustand des Marktes zu geraten, führt nicht von sich aus zu mehr Investition: Ein zusätzlicher Multiplikator kommt nur in Betracht, wenn die lokale Trenddrift positiv ist und das Risikoregime bereits eine investierte Position zulässt.</p>
 <p class="pull">Das Risikomodell entscheidet, ob eine Position zulässig ist. Die beobachtete Volatilität entscheidet über ihre Größe.</p>
 <div class="inputs steps">
-<div class="inp"><h4>01 Beobachten: Kurs, Stress und Volatilität</h4><p>Täglich bereinigte Kurse eines Nasdaq-Referenzwerts und der VIX sind die Eingangsgrößen für eine statistische Beschreibung der Marktbedingungen. Eine Komponente schätzt das Risiko, dass der Nasdaq-Referenzwert innerhalb der folgenden 20 Handelstage um mindestens 10% fällt.</p></div>
-<div class="inp"><h4>02 Einstufen: teilhaben oder Engagement verringern</h4><p>An jedem planmäßigen Entscheidungspunkt, alle drei US-Handelstage, prüft das Modell, ob die Bedingungen eine Risk-on-Haltung stützen oder eine Risk-off-Allokation erfordern. Getrennte Ausstiegs- und Wiedereinstiegsschwellen sorgen für eine Hysterese, sodass das Portfolio nicht bei jeder kleinen Schwankung umschaltet.</p></div>
-<div class="inp"><h4>03 Bewerten: die Richtung im Übergang</h4><p>Ein zweites Modell schätzt einen Committor, die Wahrscheinlichkeit, eine vordefinierte Stressregion des Marktes zu erreichen, bevor eine vordefinierte sicherere Region wieder erreicht wird, sowie die lokale Änderungsrichtung der Trendkoordinate des Marktes.</p></div>
-<div class="inp"><h4>04 Allokieren: das Engagement bemessen, nicht die Erzählung</h4><p>Wenn das Risikoregime-Modell eine Anlage zulässt, bewegt sich die Allokation umgekehrt zur beobachteten 20-Tage-Volatilität, gemessen an einem annualisierten Volatilitätsbudget von 34,65%. Beträgt der Committor mindestens 0,5 und ist die modellierte Trenddrift positiv, wird die Zielgewichtung mit 1,5 multipliziert, begrenzt auf 100% des Portfolios im ETF.</p></div>
-<div class="inp"><h4>05 Umschichten: Regeln und Ausführung trennen</h4><p>Die ETF-Gewichtung wird täglich mit den neuesten verfügbaren Daten neu berechnet. Das historische Modell unterstellt, dass ein zum US-Börsenschluss beobachtetes Signal frühestens zum folgenden US-Schluss ausgeführt wird; die tatsächliche Ausführung kann abweichen.</p></div>
+<div class="inp"><h3 class="h4">01 Beobachten: Kurs, Stress und Volatilität</h3><p>Täglich bereinigte Kurse eines Nasdaq-Referenzwerts und der VIX sind die Eingangsgrößen für eine statistische Beschreibung der Marktbedingungen. Eine Komponente schätzt das Risiko, dass der Nasdaq-Referenzwert innerhalb der folgenden 20 Handelstage um mindestens 10% fällt.</p></div>
+<div class="inp"><h3 class="h4">02 Einstufen: teilhaben oder Engagement verringern</h3><p>An jedem planmäßigen Entscheidungspunkt, alle drei US-Handelstage, prüft das Modell, ob die Bedingungen eine Risk-on-Haltung stützen oder eine Risk-off-Allokation erfordern. Getrennte Ausstiegs- und Wiedereinstiegsschwellen sorgen für eine Hysterese, sodass das Portfolio nicht bei jeder kleinen Schwankung umschaltet.</p></div>
+<div class="inp"><h3 class="h4">03 Bewerten: die Richtung im Übergang</h3><p>Ein zweites Modell schätzt einen Committor, die Wahrscheinlichkeit, eine vordefinierte Stressregion des Marktes zu erreichen, bevor eine vordefinierte sicherere Region wieder erreicht wird, sowie die lokale Änderungsrichtung der Trendkoordinate des Marktes.</p></div>
+<div class="inp"><h3 class="h4">04 Allokieren: das Engagement bemessen, nicht die Erzählung</h3><p>Wenn das Risikoregime-Modell eine Anlage zulässt, bewegt sich die Allokation umgekehrt zur beobachteten 20-Tage-Volatilität, gemessen an einem annualisierten Volatilitätsbudget von 34,65%. Beträgt der Committor mindestens 0,5 und ist die modellierte Trenddrift positiv, wird die Zielgewichtung mit 1,5 multipliziert, begrenzt auf 100% des Portfolios im ETF.</p></div>
+<div class="inp"><h3 class="h4">05 Umschichten: Regeln und Ausführung trennen</h3><p>Die ETF-Gewichtung wird täglich mit den neuesten verfügbaren Daten neu berechnet. Das historische Modell unterstellt, dass ein zum US-Börsenschluss beobachtetes Signal frühestens zum folgenden US-Schluss ausgeführt wird; die tatsächliche Ausführung kann abweichen.</p></div>
 </div>
 <div class="envs">
-<div class="env e1 rv"><h4>Was der Committor misst</h4><p>Er stellt eine Frage des ersten Erreichens: Welche vordefinierte Region wird vom aktuellen Zustand aus wahrscheinlich zuerst erreicht, eine Stressregion oder eine sicherere? Ein hoher Wert beschreibt eine relative Erreichenswahrscheinlichkeit, nicht den Zeitpunkt eines Rückgangs, sein Ausmaß oder die Richtung der nächsten Tagesrenditen, und er ist nicht die Wahrscheinlichkeit, dass der Nasdaq morgen fällt. Ein hoher Committor kann einen Markt beschreiben, der bereits unter Stress steht.</p></div>
-<div class="env e2 rv"><h4>Die bedingte Trenddrift</h4><p>Das Modell schätzt die erwartete Veränderung der standardisierten Trendkoordinate über fünf Handelstage, gegeben den aktuellen Zustand. Ihr Vorzeichen wirkt als Richtungsfilter: Eine positive Drift kann in einem Zustand mit hohem Committor eine höhere Allokation erlauben, aber nur, wenn das Risikoregime-Modell eine Anlage unabhängig davon zulässt. Das Signal kann falsch sein und Verluste vergrößern.</p></div>
-<div class="env e3 rv"><h4>Regeln, Grenzen und Änderungen</h4><p>FRAMONT wendet die Regeln bei der Verwaltung des Portfolios an. Ein Modell kann die Marktbedingungen falsch einschätzen, verspätet reagieren oder auf Zusammenhängen beruhen, die nicht mehr gelten, und jeder dieser Fälle kann Verluste verursachen. Parameter können überarbeitet werden; eine Änderung der Strategie ist nach den Bedingungen der Emittentin den Anlegern vorab mitzuteilen.</p></div>
+<div class="env e1 rv"><h3 class="h4">Was der Committor misst</h3><p>Er stellt eine Frage des ersten Erreichens: Welche vordefinierte Region wird vom aktuellen Zustand aus wahrscheinlich zuerst erreicht, eine Stressregion oder eine sicherere? Ein hoher Wert beschreibt eine relative Erreichenswahrscheinlichkeit, nicht den Zeitpunkt eines Rückgangs, sein Ausmaß oder die Richtung der nächsten Tagesrenditen, und er ist nicht die Wahrscheinlichkeit, dass der Nasdaq morgen fällt. Ein hoher Committor kann einen Markt beschreiben, der bereits unter Stress steht.</p></div>
+<div class="env e2 rv"><h3 class="h4">Die bedingte Trenddrift</h3><p>Das Modell schätzt die erwartete Veränderung der standardisierten Trendkoordinate über fünf Handelstage, gegeben den aktuellen Zustand. Ihr Vorzeichen wirkt als Richtungsfilter: Eine positive Drift kann in einem Zustand mit hohem Committor eine höhere Allokation erlauben, aber nur, wenn das Risikoregime-Modell eine Anlage unabhängig davon zulässt. Das Signal kann falsch sein und Verluste vergrößern.</p></div>
+<div class="env e3 rv"><h3 class="h4">Regeln, Grenzen und Änderungen</h3><p>FRAMONT wendet die Regeln bei der Verwaltung des Portfolios an. Ein Modell kann die Marktbedingungen falsch einschätzen, verspätet reagieren oder auf Zusammenhängen beruhen, die nicht mehr gelten, und jeder dieser Fälle kann Verluste verursachen. Parameter können überarbeitet werden; eine Änderung der Strategie ist nach den Bedingungen der Emittentin den Anlegern vorab mitzuteilen.</p></div>
 </div>
 </div>
 </section>
@@ -1615,11 +1618,11 @@ span.t-en{display:none}
 <h2 class="h-sec" id="h-structure">Wer was macht</h2>
 <p class="lede" style="margin-top:18px">Die Trennung der Rollen ist der wichtigste Punkt dieser Seite. Die Person, die die Strategie entwickelt hat, und die Gesellschaft, die aufsichtsrechtlich dafür verantwortlich ist, sind nicht dieselben.</p>
 <div class="chain">
-<div class="node"><span class="node-n">01</span><div><h4>Strategieentwicklung</h4><p>Marcus Schmieke hat die Strategie und das quantitative Modell, auf dem sie beruht, entwickelt. Er ist nicht der Verwalter des Instruments, trifft keine Anlageentscheidungen für das Portfolio und erbringt keine Anlageberatung.</p></div></div>
-<div class="node"><span class="node-n">02</span><div><h4>Portfolioverwaltung</h4><p>FRAMONT &amp; Partners Management Ltd, von der MFSA als Verwalter alternativer Investmentfonds zugelassen, ist der delegierte Verwalter, der von der iMaps ETI AG, dem Master Investment Manager des segregierten Portfolios, bestellt wurde. FRAMONT legt die Zusammensetzung des Portfolios unter Anwendung der Regeln der Strategie fest, aktualisiert sie und ist für die Einhaltung der Anlagebeschränkungen verantwortlich.</p></div></div>
-<div class="node"><span class="node-n">03</span><div><h4>Emission und Besicherung</h4><p>Das Instrument wird von der iMaps ETI AG, Liechtenstein, unter Aufsicht der Finanzmarktaufsicht begeben und ist im Verhältnis 1:1 an HERAKLIT STRATEGY PLN gekoppelt, das Wertpapier des segregierten Portfolios, das von Pecunia SPC, einer hundertprozentigen Tochtergesellschaft der Emittentin, begeben wird. Das Produkt ist besichert, um die Anleger im Fall einer Insolvenz der Emittentin zu schützen.</p></div></div>
-<div class="node"><span class="node-n">04</span><div><h4>Bank und Broker</h4><p>Die Baader Bank AG ist die Hauptbank des segregierten Portfolios; Interactive Brokers ist der Broker und verwahrt einen Teil der Vermögenswerte. Maßgeblich für die Bewertung sind die Kurse in den Abrechnungen des Brokers und der Verwahrstelle.</p></div></div>
-<div class="node"><span class="node-n">05</span><div><h4>Börsennotierung und Transparenz</h4><p>Das Instrument ist seit dem 26. Mai 2026 an der Börse Stuttgart notiert, mit Barabwicklung; die iMaps ETI AG ist zugleich Market Maker. Die Zusammensetzung des Portfolios wird monatlich auf der Website der Emittentin veröffentlicht. Die Emittentin kann das Produkt nach eigenem Ermessen mit einer Frist von mindestens vier Wochen kündigen.</p></div></div>
+<div class="node"><span class="node-n">01</span><div><h3 class="h4">Strategieentwicklung</h3><p>Marcus Schmieke hat die Strategie und das quantitative Modell, auf dem sie beruht, entwickelt. Er ist nicht der Verwalter des Instruments, trifft keine Anlageentscheidungen für das Portfolio und erbringt keine Anlageberatung.</p></div></div>
+<div class="node"><span class="node-n">02</span><div><h3 class="h4">Portfolioverwaltung</h3><p>FRAMONT &amp; Partners Management Ltd, von der MFSA als Verwalter alternativer Investmentfonds zugelassen, ist der delegierte Verwalter, der von der iMaps ETI AG, dem Master Investment Manager des segregierten Portfolios, bestellt wurde. FRAMONT legt die Zusammensetzung des Portfolios unter Anwendung der Regeln der Strategie fest, aktualisiert sie und ist für die Einhaltung der Anlagebeschränkungen verantwortlich.</p></div></div>
+<div class="node"><span class="node-n">03</span><div><h3 class="h4">Emission und Besicherung</h3><p>Das Instrument wird von der iMaps ETI AG, Liechtenstein, unter Aufsicht der Finanzmarktaufsicht begeben und ist im Verhältnis 1:1 an HERAKLIT STRATEGY PLN gekoppelt, das Wertpapier des segregierten Portfolios, das von Pecunia SPC, einer hundertprozentigen Tochtergesellschaft der Emittentin, begeben wird. Das Produkt ist besichert, um die Anleger im Fall einer Insolvenz der Emittentin zu schützen.</p></div></div>
+<div class="node"><span class="node-n">04</span><div><h3 class="h4">Bank und Broker</h3><p>Die Baader Bank AG ist die Hauptbank des segregierten Portfolios; Interactive Brokers ist der Broker und verwahrt einen Teil der Vermögenswerte. Maßgeblich für die Bewertung sind die Kurse in den Abrechnungen des Brokers und der Verwahrstelle.</p></div></div>
+<div class="node"><span class="node-n">05</span><div><h3 class="h4">Börsennotierung und Transparenz</h3><p>Das Instrument ist seit dem 26. Mai 2026 an der Börse Stuttgart notiert, mit Barabwicklung; die iMaps ETI AG ist zugleich Market Maker. Die Zusammensetzung des Portfolios wird monatlich auf der Website der Emittentin veröffentlicht. Die Emittentin kann das Produkt nach eigenem Ermessen mit einer Frist von mindestens vier Wochen kündigen.</p></div></div>
 </div>
 <div class="tables">
 <div>
@@ -1721,19 +1724,19 @@ span.t-en{display:none}
 <div class="docs">
 <article class="doc rv">
 <div class="doc-k">Pflichtlektüre</div>
-<h4>Basisinformationsblatt</h4>
+<h3 class="h4">Basisinformationsblatt</h3>
 <p>Das PRIIPs-konforme Basisinformationsblatt (KID), zuletzt überarbeitet am 26. Mai 2026, beschreibt die Art des Instruments, den Gesamtrisikoindikator, die Performance-Szenarien und die vollständige Kostenaufstellung. Es ist auf der Produktseite der Emittentin veröffentlicht, auch in deutscher Sprache, und wird von FRAMONT auf Anfrage zur Verfügung gestellt.</p>
 <a href="https://imaps-capital.com/eti-details/?isin=DE000AMC0D44" rel="noopener" target="_blank">Produktseite der Emittentin</a>
 </article>
 <article class="doc rv">
 <div class="doc-k">Vollständige Bedingungen</div>
-<h4>Basisprospekt, Nachträge und Endgültige Bedingungen</h4>
+<h3 class="h4">Basisprospekt, Nachträge und Endgültige Bedingungen</h3>
 <p>Sie behandeln die Struktur des Emissionsprogramms, die Emissionsbedingungen des Instruments, die Risiken und den Rückzahlungsmechanismus. Sie werden von der Emittentin veröffentlicht und von FRAMONT auf Anfrage zur Verfügung gestellt.</p>
 <a href="#contact">Bei FRAMONT anfordern</a>
 </article>
 <article class="doc rv">
 <div class="doc-k">Segregiertes Portfolio</div>
-<h4>Information Summary und Kennungen</h4>
+<h3 class="h4">Information Summary und Kennungen</h3>
 <p>Das Information Summary der Emittentin beschreibt das segregierte Portfolio, die Rollen von Master Investment Manager und delegiertem Verwalter, die Anlagebeschränkungen, die Gebühren, die Bank und den Broker. ISIN, Basiswert und Angaben zur Börsennotierung werden von FRAMONT bestätigt.</p>
 <a href="#contact">FRAMONT kontaktieren</a>
 </article>
@@ -1748,26 +1751,26 @@ span.t-en{display:none}
 <h2 class="h-sec" id="h-risks">Bitte lesen Sie diese, bevor Sie fortfahren</h2>
 <p class="lede" style="margin-top:18px">Eine Zusammenfassung der wesentlichen Risiken, keine vollständige Liste. Das Basisinformationsblatt und der Prospekt enthalten die vollständigen Angaben. Risiken und Chancen werden auf dieser Seite gleichrangig dargestellt.</p>
 <div class="risks">
-<div class="rk"><h4><i>R1</i>Kapitalverlust</h4><p>Es gibt keinen Kapitalschutz und keine garantierte Rendite. Sie können einen Teil oder den gesamten investierten Betrag verlieren.</p></div>
-<div class="rk"><h4><i>R2</i>Drawdowns</h4><p>Die simulierte aktive Strategie verlor vom Höchst- zum Tiefststand mehr als 60%, und die gesamte Simulation einschließlich des reinen QQQ-Zeitraums zeigt einen Verlust von fast 79%. Künftige Verluste können diese Werte übersteigen, bis hin zum Totalverlust des investierten Betrags.</p></div>
-<div class="rk"><h4><i>R3</i>Täglicher Hebel und Pfadabhängigkeit</h4><p>Der von der Strategie genutzte ETF strebt das Dreifache der täglichen Rendite des Nasdaq-100 an. Über längere Zeiträume können Zinseszinseffekt und Volatilität zu Renditen führen, die stark von einem konstanten Vielfachen des Index abweichen, und eine Allokation von 100% erzeugt ein wirtschaftliches Engagement im Nasdaq-100 von etwa dem Dreifachen des Portfolios. Das Mandat erlaubt ein Gesamtengagement von bis zu 300%. Hebelwirkung verstärkt Verluste ebenso wie Gewinne.</p></div>
-<div class="rk"><h4><i>R4</i>Modell- und Schätzrisiko</h4><p>Das Signal beruht auf statistischen Entscheidungen, historischen Zusammenhängen und festgelegten Zustandsgrenzen. Strukturelle Marktveränderungen, instabile Übergangsschätzungen, Datenkorrekturen und Modellfehler können zu Entscheidungen führen, die die Rendite verschlechtern, mit Verlusten oder entgangenen Gewinnen.</p></div>
-<div class="rk"><h4><i>R5</i>Simulation und Auswahlverzerrung</h4><p>Die langfristigen Renditen sind Backtests, deren Parameter in Kenntnis des vergangenen Marktverhaltens gewählt wurden, was Auswahlverzerrungen und Überanpassung erzeugen kann. Sie sind keine verifizierte Erfolgsbilanz mit echtem Geld, nicht die Wertentwicklung des Instruments und kein Hinweis auf künftige Ergebnisse. Vor Februar 2010 ist die gehebelte Historie synthetisch.</p></div>
-<div class="rk"><h4><i>R6</i>Konzentration</h4><p>Das Engagement ist auf Wachstumsunternehmen des Nasdaq-100 konzentriert, die anfällig für sektorspezifische Neubewertungen sowie für Veränderungen bei Zinsen, Bewertungen und Marktstimmung sein können.</p></div>
-<div class="rk"><h4><i>R7</i>Ausführung</h4><p>Aus Schlusskursen berechnete Signale sind möglicherweise nicht zu den angenommenen Kursen ausführbar. Spreads, Illiquidität, Börsenunterbrechungen, Orderlimits und verzögerte Ausführung können die Rendite erheblich schmälern.</p></div>
-<div class="rk"><h4><i>R8</i>Short-Positionen</h4><p>Das Mandat erlaubt Short-Positionen in Aktien, ETFs und Währungen, auch wenn die aktuellen Regeln sie nicht nutzen. Eine Short-Position birgt ein theoretisch unbegrenztes Verlustpotenzial.</p></div>
-<div class="rk"><h4><i>R9</i>Währungsrisiko</h4><p>Das Instrument lautet auf Euro, die Nasdaq-bezogenen Basiswerte werden jedoch in Dollar gehandelt. Wechselkursbewegungen beeinflussen den Wert positiv oder negativ.</p></div>
-<div class="rk"><h4><i>R10</i>Phasen mit reduziertem Engagement</h4><p>Wenn das Modell das Engagement reduziert, kann das Portfolio dem Markt fernbleiben, während dieser steigt. Diese Opportunitätskosten sind Teil der Strategie.</p></div>
-<div class="rk"><h4><i>R11</i>Kurze Historie des Instruments</h4><p>Das Instrument wird seit dem 26. Mai 2026 gehandelt. Seine Historie ist zu kurz, um Schlüsse über das Verhalten der Strategie unter realen Bedingungen zu ziehen.</p></div>
-<div class="rk"><h4><i>R12</i>Abhängigkeit vom Entwickler und vom Modell</h4><p>Die Strategie beruht auf einem von Marcus Schmieke entwickelten proprietären Modell. Fallen der Entwickler, das Modell oder die zugrunde liegenden Daten aus, wirkt sich das auf die Strategie aus. Eine Änderung der Strategie ist nach den Bedingungen der Emittentin vorab anzukündigen.</p></div>
-<div class="rk"><h4><i>R13</i>Liquidität und Handel</h4><p>Bei ungewöhnlichen Marktbedingungen oder technischen Störungen können Kauf und Verkauf vorübergehend erschwert oder unmöglich sein, und die Geld-Brief-Spanne kann sich ausweiten.</p></div>
-<div class="rk"><h4><i>R14</i>Emittentin und vorzeitige Kündigung</h4><p>Das Instrument ist eine Schuldverschreibung der Emittentin, besichert, aber nicht durch eine Einlagensicherung gedeckt. Die Emittentin kann es nach eigenem Ermessen mit Frist kündigen, auch zu einem für den Anleger ungünstigen Zeitpunkt.</p></div>
-<div class="rk"><h4><i>R15</i>Interessenkonflikte</h4><p>Die Performancegebühr schafft einen Anreiz, Risiken einzugehen. Den Schutz bieten die Grenzen des Mandats und die Aufsicht durch den Verwalter und die Emittentin.</p></div>
-<div class="rk"><h4><i>R16</i>Kosten</h4><p>Gebühren, Kosten der Emittentin und Transaktionskosten mindern die Rendite, und der nicht erfolgsabhängige Teil fällt auch in negativen Perioden an. Das KID zeigt ihre Auswirkung.</p></div>
-<div class="rk"><h4><i>R17</i>Regulierung und Steuern</h4><p>Änderungen von Gesetzen, Vorschriften oder der steuerlichen Behandlung können sich auf das Instrument, seine Struktur oder die Nettorendite des Anlegers auswirken.</p></div>
+<div class="rk"><h3 class="h4"><i>R1</i>Kapitalverlust</h3><p>Es gibt keinen Kapitalschutz und keine garantierte Rendite. Sie können einen Teil oder den gesamten investierten Betrag verlieren.</p></div>
+<div class="rk"><h3 class="h4"><i>R2</i>Drawdowns</h3><p>Die simulierte aktive Strategie verlor vom Höchst- zum Tiefststand mehr als 60%, und die gesamte Simulation einschließlich des reinen QQQ-Zeitraums zeigt einen Verlust von fast 79%. Künftige Verluste können diese Werte übersteigen, bis hin zum Totalverlust des investierten Betrags.</p></div>
+<div class="rk"><h3 class="h4"><i>R3</i>Täglicher Hebel und Pfadabhängigkeit</h3><p>Der von der Strategie genutzte ETF strebt das Dreifache der täglichen Rendite des Nasdaq-100 an. Über längere Zeiträume können Zinseszinseffekt und Volatilität zu Renditen führen, die stark von einem konstanten Vielfachen des Index abweichen, und eine Allokation von 100% erzeugt ein wirtschaftliches Engagement im Nasdaq-100 von etwa dem Dreifachen des Portfolios. Das Mandat erlaubt ein Gesamtengagement von bis zu 300%. Hebelwirkung verstärkt Verluste ebenso wie Gewinne.</p></div>
+<div class="rk"><h3 class="h4"><i>R4</i>Modell- und Schätzrisiko</h3><p>Das Signal beruht auf statistischen Entscheidungen, historischen Zusammenhängen und festgelegten Zustandsgrenzen. Strukturelle Marktveränderungen, instabile Übergangsschätzungen, Datenkorrekturen und Modellfehler können zu Entscheidungen führen, die die Rendite verschlechtern, mit Verlusten oder entgangenen Gewinnen.</p></div>
+<div class="rk"><h3 class="h4"><i>R5</i>Simulation und Auswahlverzerrung</h3><p>Die langfristigen Renditen sind Backtests, deren Parameter in Kenntnis des vergangenen Marktverhaltens gewählt wurden, was Auswahlverzerrungen und Überanpassung erzeugen kann. Sie sind keine verifizierte Erfolgsbilanz mit echtem Geld, nicht die Wertentwicklung des Instruments und kein Hinweis auf künftige Ergebnisse. Vor Februar 2010 ist die gehebelte Historie synthetisch.</p></div>
+<div class="rk"><h3 class="h4"><i>R6</i>Konzentration</h3><p>Das Engagement ist auf Wachstumsunternehmen des Nasdaq-100 konzentriert, die anfällig für sektorspezifische Neubewertungen sowie für Veränderungen bei Zinsen, Bewertungen und Marktstimmung sein können.</p></div>
+<div class="rk"><h3 class="h4"><i>R7</i>Ausführung</h3><p>Aus Schlusskursen berechnete Signale sind möglicherweise nicht zu den angenommenen Kursen ausführbar. Spreads, Illiquidität, Börsenunterbrechungen, Orderlimits und verzögerte Ausführung können die Rendite erheblich schmälern.</p></div>
+<div class="rk"><h3 class="h4"><i>R8</i>Short-Positionen</h3><p>Das Mandat erlaubt Short-Positionen in Aktien, ETFs und Währungen, auch wenn die aktuellen Regeln sie nicht nutzen. Eine Short-Position birgt ein theoretisch unbegrenztes Verlustpotenzial.</p></div>
+<div class="rk"><h3 class="h4"><i>R9</i>Währungsrisiko</h3><p>Das Instrument lautet auf Euro, die Nasdaq-bezogenen Basiswerte werden jedoch in Dollar gehandelt. Wechselkursbewegungen beeinflussen den Wert positiv oder negativ.</p></div>
+<div class="rk"><h3 class="h4"><i>R10</i>Phasen mit reduziertem Engagement</h3><p>Wenn das Modell das Engagement reduziert, kann das Portfolio dem Markt fernbleiben, während dieser steigt. Diese Opportunitätskosten sind Teil der Strategie.</p></div>
+<div class="rk"><h3 class="h4"><i>R11</i>Kurze Historie des Instruments</h3><p>Das Instrument wird seit dem 26. Mai 2026 gehandelt. Seine Historie ist zu kurz, um Schlüsse über das Verhalten der Strategie unter realen Bedingungen zu ziehen.</p></div>
+<div class="rk"><h3 class="h4"><i>R12</i>Abhängigkeit vom Entwickler und vom Modell</h3><p>Die Strategie beruht auf einem von Marcus Schmieke entwickelten proprietären Modell. Fallen der Entwickler, das Modell oder die zugrunde liegenden Daten aus, wirkt sich das auf die Strategie aus. Eine Änderung der Strategie ist nach den Bedingungen der Emittentin vorab anzukündigen.</p></div>
+<div class="rk"><h3 class="h4"><i>R13</i>Liquidität und Handel</h3><p>Bei ungewöhnlichen Marktbedingungen oder technischen Störungen können Kauf und Verkauf vorübergehend erschwert oder unmöglich sein, und die Geld-Brief-Spanne kann sich ausweiten.</p></div>
+<div class="rk"><h3 class="h4"><i>R14</i>Emittentin und vorzeitige Kündigung</h3><p>Das Instrument ist eine Schuldverschreibung der Emittentin, besichert, aber nicht durch eine Einlagensicherung gedeckt. Die Emittentin kann es nach eigenem Ermessen mit Frist kündigen, auch zu einem für den Anleger ungünstigen Zeitpunkt.</p></div>
+<div class="rk"><h3 class="h4"><i>R15</i>Interessenkonflikte</h3><p>Die Performancegebühr schafft einen Anreiz, Risiken einzugehen. Den Schutz bieten die Grenzen des Mandats und die Aufsicht durch den Verwalter und die Emittentin.</p></div>
+<div class="rk"><h3 class="h4"><i>R16</i>Kosten</h3><p>Gebühren, Kosten der Emittentin und Transaktionskosten mindern die Rendite, und der nicht erfolgsabhängige Teil fällt auch in negativen Perioden an. Das KID zeigt ihre Auswirkung.</p></div>
+<div class="rk"><h3 class="h4"><i>R17</i>Regulierung und Steuern</h3><p>Änderungen von Gesetzen, Vorschriften oder der steuerlichen Behandlung können sich auf das Instrument, seine Struktur oder die Nettorendite des Anlegers auswirken.</p></div>
 </div>
 <div class="rk-sum">
-<h4>Vollständige Risikohinweise</h4>
+<h3 class="h4">Vollständige Risikohinweise</h3>
 <p>Die obige Liste ist eine nicht abschließende Zusammenfassung zu Informationszwecken. Sie ersetzt nicht die Risikohinweise im Basisinformationsblatt und im Prospekt, die vor jeder Entscheidung vollständig gelesen werden müssen. Wenden Sie sich im Zweifel an einen zugelassenen unabhängigen Berater.</p>
 </div>
 </div>
@@ -1900,7 +1903,7 @@ span.t-en{display:none}
 </div>
 </div>
 <div class="coi">
-<h4>Rollen und Kommunikation</h4>
+<h3 class="h4">Rollen und Kommunikation</h3>
 <p>Der Strategieentwickler stellt das Modell und die Regeln bereit, auf denen die Strategie beruht. Er trifft keine Anlageentscheidungen für das Portfolio, übermittelt keine Aufträge und hat keine direkte Beziehung zu den Anlegern des Instruments. Alle Werbeinhalte zum Produkt, auf dieser Seite wie andernorts, bedürfen vor ihrer Veröffentlichung der Freigabe durch FRAMONT.</p>
 </div>
 </div>
@@ -1912,12 +1915,12 @@ span.t-en{display:none}
 <h2 class="h-sec" id="h-framont">FRAMONT &amp; Partners Management Ltd</h2>
 <p class="lede" style="margin-top:18px">FRAMONT bringt die Zulassung der MFSA, die Einhaltung der AIFMD und die operative Infrastruktur ein, die nötig sind, um eine systematische Strategie innerhalb eines regulierten Rahmens anzuwenden.</p>
 <div class="fr-grid">
-<div class="fr rv"><h4>Von der MFSA zugelassener AIFM</h4><p>Von der Malta Financial Services Authority als Verwalter alternativer Investmentfonds gemäß der AIFMD zugelassen, mit vollem europäischem Aufsichtsstatus.</p></div>
-<div class="fr rv"><h4>Delegierter Verwalter</h4><p>Von der iMaps ETI AG als delegierter Verwalter des segregierten Portfolios bestellt, legt FRAMONT die Zusammensetzung des Portfolios unter Anwendung der Regeln der Strategie fest, aktualisiert sie und ist für die Einhaltung der Anlagebeschränkungen verantwortlich.</p></div>
-<div class="fr rv"><h4>Compliance und Risiko</h4><p>Ein unabhängiger Compliance Officer, ein Risk Manager und ein Anlageausschuss gewährleisten eine kontinuierliche Überwachung. Pflichten zur Geldwäscheprävention und Sorgfaltsprüfung, aufsichtsrechtliches Meldewesen und interne Kontrollen sind Teil des operativen Rahmens.</p></div>
-<div class="fr rv"><h4>Operative Infrastruktur</h4><p>Bank, Broker, Verwaltungs- und Reportingplattformen der Emittentin unterstützen eine transparente Verwaltung des Portfolios.</p></div>
-<div class="fr rv"><h4>EU-Anlagevehikel</h4><p>Über dieses Instrument hinaus betreibt FRAMONT eine von der MFSA zugelassene Plattform für AIFs, AMCs und ETIs. Mehr unter <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">framontmanagement.com</a>.</p></div>
-<div class="fr rv"><h4>Berichterstattung</h4><p>Es gelten die Transparenzstandards des Emissionsprogramms, mit monatlicher Veröffentlichung der Portfoliozusammensetzung auf der Website der Emittentin und Offenlegung der Kosten über das KID.</p></div>
+<div class="fr rv"><h3 class="h4">Von der MFSA zugelassener AIFM</h3><p>Von der Malta Financial Services Authority als Verwalter alternativer Investmentfonds gemäß der AIFMD zugelassen, mit vollem europäischem Aufsichtsstatus.</p></div>
+<div class="fr rv"><h3 class="h4">Delegierter Verwalter</h3><p>Von der iMaps ETI AG als delegierter Verwalter des segregierten Portfolios bestellt, legt FRAMONT die Zusammensetzung des Portfolios unter Anwendung der Regeln der Strategie fest, aktualisiert sie und ist für die Einhaltung der Anlagebeschränkungen verantwortlich.</p></div>
+<div class="fr rv"><h3 class="h4">Compliance und Risiko</h3><p>Ein unabhängiger Compliance Officer, ein Risk Manager und ein Anlageausschuss gewährleisten eine kontinuierliche Überwachung. Pflichten zur Geldwäscheprävention und Sorgfaltsprüfung, aufsichtsrechtliches Meldewesen und interne Kontrollen sind Teil des operativen Rahmens.</p></div>
+<div class="fr rv"><h3 class="h4">Operative Infrastruktur</h3><p>Bank, Broker, Verwaltungs- und Reportingplattformen der Emittentin unterstützen eine transparente Verwaltung des Portfolios.</p></div>
+<div class="fr rv"><h3 class="h4">EU-Anlagevehikel</h3><p>Über dieses Instrument hinaus betreibt FRAMONT eine von der MFSA zugelassene Plattform für AIFs, AMCs und ETIs. Mehr unter <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">framontmanagement.com</a>.</p></div>
+<div class="fr rv"><h3 class="h4">Berichterstattung</h3><p>Es gelten die Transparenzstandards des Emissionsprogramms, mit monatlicher Veröffentlichung der Portfoliozusammensetzung auf der Website der Emittentin und Offenlegung der Kosten über das KID.</p></div>
 </div>
 <div class="fr-cta">
 <h3>Fordern Sie die vollständige Dokumentation an</h3>
@@ -1937,22 +1940,22 @@ span.t-en{display:none}
 <p class="lede" style="margin-top:18px">Wenden Sie sich an FRAMONT &amp; Partners Management Ltd für das Basisinformationsblatt, den Prospekt, die ISIN und die Angaben zur Börsennotierung.</p>
 <div class="cta-grid">
 <div class="cta-c">
-<h4>Anfragen von Anlegern</h4>
+<h3 class="h4">Anfragen von Anlegern</h3>
 <p>Für das KID, den Prospekt, die ISIN und Handelsinformationen. Alle offiziellen Dokumente werden von der Emittentin veröffentlicht und von FRAMONT zur Verfügung gestellt.</p>
 <a href="mailto:gianluigi.montagner@framontmanagement.com">gianluigi.montagner@framontmanagement.com</a>
 </div>
 <div class="cta-c">
-<h4>Vertrieb und institutionelle Anleger</h4>
+<h3 class="h4">Vertrieb und institutionelle Anleger</h3>
 <p>Für Vertriebsvereinbarungen, institutionelle Allokationen oder Informationen zur FRAMONT-Plattform für EU-Anlagevehikel.</p>
 <a href="https://www.framontmanagement.com" rel="noopener" target="_blank">www.framontmanagement.com</a>
 </div>
 <div class="cta-c">
-<h4>Büro</h4>
+<h3 class="h4">Büro</h3>
 <p>Dragonara Business Centre, 5th Floor<br/>Dragonara Road, San Giljan STJ 3141<br/>Malta<br/>+356 20105592</p>
 <a href="mailto:gianluigi.montagner@framontmanagement.com">E-Mail senden</a>
 </div>
 <div class="cta-c">
-<h4>Sie betreiben eine eigene Strategie</h4>
+<h3 class="h4">Sie betreiben eine eigene Strategie</h3>
 <p>Wenn Sie eine Strategie betreiben und einen regulierten EU-Mantel benötigen, deckt die von der MFSA zugelassene FRAMONT-Plattform AIF-, AMC- und ETI-Strukturen ab.</p>
 <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">EU-Anlagevehikel</a>
 </div>
