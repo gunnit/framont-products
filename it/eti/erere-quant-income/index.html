@@ -113,7 +113,7 @@
   --orange-dk:#C96400;
   --ice:#E9F0FA;
   --muted:#93A6C4;
-  --dim:#6C7F9E;
+  --dim:#7E91AE;
   --pos:#34D399;
   --neg:#F87171;
   --line:rgba(255,130,0,.20);
@@ -134,7 +134,8 @@ body::before{
     radial-gradient(820px 600px at 4% 10%, rgba(0,46,95,.55), transparent 66%),
     radial-gradient(1100px 760px at 50% 106%, rgba(20,48,97,.42), transparent 62%);
 }
-h1,h2,h3,h4,h5{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.015em;margin:0;line-height:1.14}
+h1,h2,h3,h4,h5,.h5{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.015em;margin:0;line-height:1.14}
+/* .h5: footer column titles are h2 for the outline and keep the h5 look */
 p{margin:0}
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
@@ -282,7 +283,7 @@ header.nav{position:sticky;top:0;z-index:60;backdrop-filter:saturate(160%) blur(
 .gridline{stroke:rgba(233,240,250,.07);stroke-width:1}
 .eqline{fill:none;stroke:var(--orange);stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round}
 .hoverline{stroke:var(--orange-lt);stroke-width:1;stroke-dasharray:3 4}
-.axlabel{font-family:'JetBrains Mono',monospace;font-size:9.5px;fill:#6C7F9E}
+.axlabel{font-family:'JetBrains Mono',monospace;font-size:9.5px;fill:var(--dim)}
 .tip{position:absolute;pointer-events:none;background:rgba(5,13,27,.97);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:.73rem;transform:translate(-50%,-118%);opacity:0;transition:opacity .14s;white-space:nowrap;z-index:5}
 .tip b{font-family:'JetBrains Mono',monospace;color:var(--orange-lt);display:block;font-size:.87rem}
 .chart-note{font-size:.71rem;color:var(--dim);margin-top:16px;line-height:1.68}
@@ -394,11 +395,11 @@ select option{background:#08152B;color:#E9F0FA}
 /* ---- FOOTER ---- */
 footer{padding:60px 0 46px;border-top:1px solid var(--hair);position:relative;z-index:2;background:rgba(8,21,43,.44)}
 .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px}
-.foot h5{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin:0 0 15px;font-weight:500}
+.foot h5,.foot .h5{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin:0 0 15px;font-weight:500}
 .foot p,.foot a{font-size:.8rem;color:var(--muted);line-height:1.85;display:block}
 .foot a:hover{color:var(--orange-lt)}
 .foot-logo{display:none;height:36px;width:auto;margin-bottom:14px;opacity:.92}
-.legal{margin-top:40px;padding-top:26px;border-top:1px solid var(--hair);font-size:.71rem;color:#5E7093;line-height:1.8}
+.legal{margin-top:40px;padding-top:26px;border-top:1px solid var(--hair);font-size:.71rem;color:var(--dim);line-height:1.8}
 .legal b{color:var(--muted)}
 .legal p+p{margin-top:14px}
 
@@ -1066,12 +1067,12 @@ footer{padding:60px 0 46px;border-top:1px solid var(--hair);position:relative;z-
   <div class="wrap">
     <div class="foot">
       <div>
-        <h5>FRAMONT &amp; Partners Management Ltd</h5>
+        <h2 class="h5">FRAMONT &amp; Partners Management Ltd</h2>
         <p>Dragonara Business Centre, 5th Floor<br />Dragonara Road, San Ġiljan STJ 3141<br />Malta · Partita IVA MT22666318</p>
         <p>Autorizzata dalla Malta Financial Services Authority come gestore di fondi di investimento alternativi ai sensi della AIFMD II e come società di gestione UCITS. Reg. C 69366 · Autorizzazione FRMT-10380.</p>
       </div>
       <div>
-        <h5>Contatti</h5>
+        <h2 class="h5">Contatti</h2>
         <a href="tel:+35620105592">+356 2010 5592</a>
         <a href="mailto:info@framontmanagement.com">info@framontmanagement.com</a>
         <a href="https://www.framontmanagement.com" target="_blank" rel="noopener">www.framontmanagement.com</a>
@@ -1079,7 +1080,7 @@ footer{padding:60px 0 46px;border-top:1px solid var(--hair);position:relative;z-
         <a href="https://www.framontmanagement.com/news-doc-hub/" target="_blank" rel="noopener">News &amp; Doc Hub</a>
       </div>
       <div>
-        <h5>Promotore della strategia</h5>
+        <h2 class="h5">Promotore della strategia</h2>
         <img class="foot-logo" src="assets/erere-logo-negative.png" alt="Erere" loading="eager" />
         <p>Erere S.r.l.<br />Via Speranza 35<br />40068 San Lazzaro di Savena (BO)<br />Italia</p>
       </div>

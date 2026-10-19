@@ -176,6 +176,11 @@
   --orange:#F47920;
   --orange-l:#F9A54A;
   --orange-soft:#FDF1E6;
+  /* fills under white text: the homepage button orange (white on #F47920 was 2.76:1) */
+  --orange-action:#B35A00;
+  --orange-action-hover:#964B00;
+  /* orange as text on white and grey grounds (#F47920 there was 2.76:1) */
+  --orange-ink:#A85400;
   --paper:#FFFFFF;
   --paper-2:#F5F7FA;
   --paper-3:#EDF1F6;
@@ -183,9 +188,9 @@
   --rule-strong:#C4CEDA;
   --ink:#0C1523;
   --body:#3B4757;
-  --muted:#6C7889;
+  --muted:#5E6A7B;
   --eq:#2F5FA0;
-  --met:#B08A2E;
+  --met:#86671B;
   --ene:#B4451F;
   --ok:#1E6B45;
   --warn:#8A5B12;
@@ -201,18 +206,21 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:86px}
 body{font-family:var(--sans);background:var(--paper);color:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-variant-numeric:tabular-nums}
 h1,h2,h3{font-family:var(--serif);color:var(--ink);line-height:1.14;font-weight:600}
-h4,h5{font-family:var(--sans);color:var(--ink);font-weight:700;line-height:1.35}
+h4,h5,.h4{font-family:var(--sans);color:var(--ink);font-weight:700;line-height:1.35}
+/* .h4: card titles are h3 under their section h2 and keep the h4 look; an h3 would
+   otherwise take the browser's 1.17em and the balanced wrap set for h1-h3 */
+.h4{font-size:1em;text-wrap:inherit}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
-.skip{position:absolute;left:-9999px;top:0;z-index:900;background:var(--orange);color:#fff;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;padding:12px 18px}
+.skip{position:absolute;left:-9999px;top:0;z-index:900;background:var(--orange-action);color:#fff;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;padding:12px 18px}
 .skip:focus{left:8px;top:8px}
 button{font:inherit;cursor:pointer}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
 section{padding:clamp(48px,9vw,104px) 0}
 .mono{font-family:var(--mono)}
-.tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:14px}
-.tag i{font-style:normal;color:var(--rule-strong);margin-right:8px}
+.tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink);display:block;margin-bottom:14px}
+.tag i{font-style:normal;color:var(--muted);margin-right:8px}
 .h-sec{font-size:clamp(1.6rem,5.4vw,2.5rem);letter-spacing:-.01em}
 .lede{font-size:clamp(1rem,2.6vw,1.08rem);line-height:1.8;color:var(--body);max-width:62ch}
 .small{font-size:.82rem;line-height:1.7;color:var(--muted)}
@@ -231,8 +239,8 @@ nav{position:sticky;top:0;z-index:400;background:var(--navy);border-bottom:1px s
 .nav-logo-fb em{color:var(--orange);font-style:normal}
 .nav-right{display:flex;align-items:center;gap:10px}
 .nav-menu{display:none}
-.nav-cta{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.10em;text-transform:uppercase;padding:11px 16px;background:var(--orange);color:#fff;border:0;min-height:42px;display:inline-flex;align-items:center}
-.nav-cta:hover{background:var(--orange-l)}
+.nav-cta{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.10em;text-transform:uppercase;padding:11px 16px;background:var(--orange-action);color:#fff;border:0;min-height:42px;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--orange-action-hover)}
 .burger{width:44px;height:44px;display:grid;place-items:center;background:transparent;border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer}
 .burger span{display:block;width:17px;height:1.5px;background:#fff;position:relative}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:17px;height:1.5px;background:#fff;transition:transform .22s}
@@ -266,8 +274,8 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .hero-note{font-family:var(--mono);font-size:.68rem;line-height:1.7;color:rgba(255,255,255,.55);border-left:2px solid rgba(244,121,32,.55);padding-left:13px;margin-top:20px;max-width:54ch}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.10em;text-transform:uppercase;font-weight:500;padding:15px 24px;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;transition:background .2s,border-color .2s,color .2s;cursor:pointer}
-.btn-1{background:var(--orange);color:#fff}
-.btn-1:hover{background:var(--orange-l)}
+.btn-1{background:var(--orange-action);color:#fff}
+.btn-1:hover{background:var(--orange-action-hover)}
 .btn-2{background:transparent;color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.28)}
 .btn-2:hover{border-color:#fff;color:#fff}
 .specs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:32px;border-top:1px solid rgba(255,255,255,.14)}
@@ -275,7 +283,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .spec:nth-child(odd){border-right:1px solid rgba(255,255,255,.10);padding-right:14px}
 .spec:nth-child(even){padding-left:14px}
 .spec-n{font-family:var(--serif);font-size:clamp(1.5rem,6vw,1.95rem);color:var(--orange-l);line-height:1;font-weight:600}
-.spec-n small{font-family:var(--mono);font-size:.55em;color:rgba(249,165,74,.7);font-weight:400}
+.spec-n small{font-family:var(--mono);font-size:.55em;color:rgba(249,165,74,.85);font-weight:400}
 .spec-l{font-family:var(--mono);font-size:.60rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:8px}
 .sheet{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);padding:22px 20px;backdrop-filter:blur(2px)}
 .sheet-h{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-l);padding-bottom:12px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:10px}
@@ -284,7 +292,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .sheet .row:last-child{border-bottom:0}
 .sheet dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);flex-shrink:0}
 .sheet dd{font-size:.84rem;color:#fff;text-align:right;line-height:1.5}
-.sheet-f{font-family:var(--mono);font-size:.60rem;color:rgba(255,255,255,.42);margin-top:14px;line-height:1.6}
+.sheet-f{font-family:var(--mono);font-size:.60rem;color:rgba(255,255,255,.6);margin-top:14px;line-height:1.6}
 
 /* ---------- spec strip ---------- */
 #strip{background:var(--navy-ink);border-top:1px solid rgba(244,121,32,.30);padding:14px 0}
@@ -298,8 +306,8 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .intro-grid{display:grid;gap:clamp(28px,6vw,48px)}
 .obj{list-style:none;margin-top:26px;border-top:1px solid var(--rule)}
 .obj li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid var(--rule)}
-.obj b{font-family:var(--mono);font-size:.66rem;font-weight:500;color:var(--orange);letter-spacing:.1em;padding-top:3px}
-.obj h4{margin-bottom:5px;font-size:.98rem}
+.obj b{font-family:var(--mono);font-size:.66rem;font-weight:500;color:var(--orange-ink);letter-spacing:.1em;padding-top:3px}
+.obj h4,.obj .h4{margin-bottom:5px;font-size:.98rem}
 .obj p{font-size:.9rem;line-height:1.72}
 .pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3.6vw,1.3rem);color:var(--navy);line-height:1.6;border-left:3px solid var(--orange);padding-left:18px;margin:26px 0}
 .brief{border-top:3px solid var(--navy-2);background:var(--paper-2);padding:clamp(20px,5vw,30px)}
@@ -313,8 +321,8 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #structure{background:var(--paper)}
 .chain{display:grid;gap:0;margin-top:32px;border-top:1px solid var(--rule)}
 .node{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--rule)}
-.node-n{font-family:var(--mono);font-size:.68rem;color:var(--orange);letter-spacing:.1em;padding-top:4px}
-.node h4{font-size:1rem;margin-bottom:5px}
+.node-n{font-family:var(--mono);font-size:.68rem;color:var(--orange-ink);letter-spacing:.1em;padding-top:4px}
+.node h4,.node .h4{font-size:1rem;margin-bottom:5px}
 .node p{font-size:.87rem;line-height:1.7;color:var(--muted)}
 .tables{display:grid;gap:clamp(18px,5vw,26px);margin-top:34px}
 .tbl{width:100%;border-collapse:collapse;margin-top:14px}
@@ -327,7 +335,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #flow{background:var(--paper-2);border-bottom:1px solid var(--rule)}
 .flow{display:grid;gap:12px;margin-top:34px}
 .fs{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--navy);padding:20px 18px}
-.fs-n{width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;font-family:var(--serif);font-weight:600;display:grid;place-items:center;margin-bottom:12px}
+.fs-n{width:34px;height:34px;border-radius:50%;background:var(--orange-action);color:#fff;font-family:var(--serif);font-weight:600;display:grid;place-items:center;margin-bottom:12px}
 .fs h3{font-size:1rem;margin-bottom:6px}
 .fs p{font-size:.85rem;line-height:1.68;color:var(--body)}
 .fs-k{margin-top:12px;font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--orange-soft);border-left:3px solid var(--orange);padding:8px 10px}
@@ -361,7 +369,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #coupons h2,#coupons h3{color:#fff}
 #coupons .lede{color:rgba(255,255,255,.80)}
 #coupons .tag{color:var(--orange-l)}
-#coupons .tag i{color:rgba(255,255,255,.28)}
+#coupons .tag i{color:rgba(255,255,255,.55)}
 .cal{display:grid;gap:10px;margin-top:30px}
 .cd{border:1px solid rgba(255,255,255,.16);padding:16px 14px;background:rgba(255,255,255,.03)}
 .cd b{display:block;font-family:var(--serif);font-size:1.1rem;color:#fff;font-weight:600}
@@ -399,11 +407,11 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #docs{background:var(--paper-2);border-top:1px solid var(--rule)}
 .docs{display:grid;gap:14px;margin-top:30px}
 .doc{border:1px solid var(--rule);padding:22px 20px;display:grid;gap:10px;background:var(--paper)}
-.doc-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--orange)}
-.doc h4{font-size:1rem}
+.doc-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--orange-ink)}
+.doc h4,.doc .h4{font-size:1rem}
 .doc p{font-size:.86rem;line-height:1.7;color:var(--muted)}
 .doc a{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--orange);padding-bottom:3px;width:fit-content}
-.doc a:hover{color:var(--orange)}
+.doc a:hover{color:var(--orange-ink)}
 .docs-note{margin-top:22px;font-size:.86rem;line-height:1.8;background:var(--paper);border:1px solid var(--rule);padding:20px}
 .docs-note a{color:var(--navy);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
 
@@ -411,11 +419,11 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #risks{background:var(--paper);border-top:1px solid var(--rule)}
 .risks{display:grid;gap:0;margin-top:30px;border-top:1px solid var(--rule-strong)}
 .rk{padding:20px 0;border-bottom:1px solid var(--rule)}
-.rk h4{font-size:.95rem;margin-bottom:6px;display:flex;gap:12px;align-items:baseline}
-.rk h4 i{font-family:var(--mono);font-style:normal;font-size:.66rem;color:var(--stop);letter-spacing:.08em;flex-shrink:0}
+.rk h4,.rk .h4{font-size:.95rem;margin-bottom:6px;display:flex;gap:12px;align-items:baseline}
+.rk h4 i,.rk .h4 i{font-family:var(--mono);font-style:normal;font-size:.66rem;color:var(--stop);letter-spacing:.08em;flex-shrink:0}
 .rk p{font-size:.87rem;line-height:1.72;color:var(--body);padding-left:34px}
 .rk-sum{margin-top:26px;background:var(--navy);color:rgba(255,255,255,.84);padding:26px 22px}
-.rk-sum h4{color:#fff;margin-bottom:10px;font-size:1rem}
+.rk-sum h4,.rk-sum .h4{color:#fff;margin-bottom:10px;font-size:1rem}
 .rk-sum p{font-size:.87rem;line-height:1.8}
 .rk-sum b{color:#fff}
 
@@ -425,7 +433,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .faq details{border-bottom:1px solid var(--rule)}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:18px 0;min-height:52px;font-weight:700;color:var(--ink);font-size:.95rem;line-height:1.5}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--mono);font-size:1.05rem;color:var(--orange);flex-shrink:0;transition:transform .2s}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:1.05rem;color:var(--orange-ink);flex-shrink:0;transition:transform .2s}
 .faq details[open] summary::after{content:"-"}
 .faq .ans{padding:0 0 20px;font-size:.9rem;line-height:1.78;color:var(--body);max-width:70ch}
 .faq .ans a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
@@ -435,10 +443,10 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #framont h2{color:#fff}
 #framont .lede{color:rgba(255,255,255,.80)}
 #framont .tag{color:var(--orange-l)}
-#framont .tag i{color:rgba(255,255,255,.26)}
+#framont .tag i{color:rgba(255,255,255,.55)}
 .fr-grid{display:grid;gap:14px;margin-top:32px}
 .fr{border:1px solid rgba(255,255,255,.14);padding:22px 20px}
-.fr h4{color:#fff;font-size:.95rem;margin-bottom:8px}
+.fr h4,.fr .h4{color:#fff;font-size:.95rem;margin-bottom:8px}
 .fr p{font-size:.86rem;line-height:1.72;color:rgba(255,255,255,.76)}
 .fr a{color:var(--orange-l);text-decoration:underline;text-underline-offset:2px}
 
@@ -446,7 +454,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #contact{background:var(--paper)}
 .ct-grid{display:grid;gap:clamp(24px,5vw,40px);margin-top:30px}
 .cta-c{border:1px solid var(--rule);padding:22px 20px;background:var(--paper-2);margin-bottom:14px}
-.cta-c h4{font-size:1rem;margin-bottom:9px}
+.cta-c h4,.cta-c .h4{font-size:1rem;margin-bottom:9px}
 .cta-c p{font-size:.87rem;line-height:1.75;margin-bottom:14px;color:var(--muted)}
 .cta-c a{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;color:var(--navy);border-bottom:1px solid var(--orange);padding-bottom:3px;overflow-wrap:anywhere}
 .lead{background:var(--paper-2);border:1px solid var(--rule);border-top:4px solid var(--orange);padding:clamp(20px,5vw,30px)}
@@ -491,17 +499,17 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 .f-nav a:hover{color:#fff}
 .f-legal p{font-size:.72rem;line-height:1.78;margin-bottom:12px}
 .f-legal b{color:rgba(255,255,255,.82)}
-.f-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.10);font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.45)}
+.f-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.10);font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.6)}
 .f-bot a{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- sticky mobile cta + cookie ---------- */
-.mcta{position:fixed;left:0;right:0;bottom:0;z-index:880;background:var(--orange);color:#fff;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 16px calc(15px + env(safe-area-inset-bottom))}
+.mcta{position:fixed;left:0;right:0;bottom:0;z-index:880;background:var(--orange-action);color:#fff;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 16px calc(15px + env(safe-area-inset-bottom))}
 #cookie{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--navy);border-top:2px solid rgba(244,121,32,.5);padding:14px var(--gut) calc(18px + env(safe-area-inset-bottom));display:grid;gap:12px}
 #cookie p{font-size:.74rem;line-height:1.65;color:rgba(255,255,255,.82)}
 #cookie a{color:var(--orange-l);text-decoration:underline}
 .cb-btns{display:flex;gap:10px}
 .cb-btns label{flex:1;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:12px;min-height:50px;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
-.cb-ok{background:var(--orange);color:#fff}
+.cb-ok{background:var(--orange-action);color:#fff}
 .cb-no{background:transparent;color:rgba(255,255,255,.78);border-color:rgba(255,255,255,.3)}
 .cb-dismiss{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;clip:rect(0 0 0 0)}
 .cb-dismiss:checked~#cookie{display:none}
@@ -509,7 +517,7 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 /* ---------- professional investor gate ---------- */
 #gate{position:fixed;inset:0;z-index:1200;background:rgba(8,23,41,.86);backdrop-filter:blur(6px);display:grid;place-items:center;padding:var(--gut);overflow-y:auto}
 .gate-box{background:var(--paper);max-width:640px;width:100%;padding:clamp(24px,5vw,40px);border-top:5px solid var(--orange);box-shadow:0 30px 80px rgba(0,0,0,.45)}
-.gate-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.gate-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink);margin-bottom:12px}
 .gate-box h2{font-size:clamp(1.4rem,4.6vw,1.9rem);margin-bottom:12px}
 .gate-box p{font-size:.92rem;line-height:1.75;color:var(--body)}
 .gate-box p+p{margin-top:10px}
@@ -837,12 +845,12 @@ p,li,.lede,.ans{text-wrap:pretty}
 <span class="tag"><span class="t-it"><i>05</i>Chi fa che cosa</span><span class="t-en"><i>05</i>Who does what</span></span>
 <h2 class="h-sec" id="h-parties"><span class="t-it">Cinque soggetti, nessuno dei quali garantisce gli altri</span><span class="t-en">Five parties, none of which guarantees the others</span></h2>
 <div class="chain">
-<div class="node"><div class="node-n">01</div><div><h4><span class="t-it">Emittente e calculation agent: Expand3 Issuer PCC Limited</span><span class="t-en">Issuer and calculation agent: Expand3 Issuer PCC Limited</span></h4><p><span class="t-it">Società a celle protette di Guernsey, registrazione n. 75961, costituita il 19 giugno 2025. La cella CH1518693374 è stata creata per questa nota; per legge di Guernsey attività e passività di ogni cella sono separate dalle altre. Non è autorizzata dalla Guernsey Financial Services Commission e la nota non è un organismo di investimento collettivo.</span><span class="t-en">Guernsey protected cell company, registration no. 75961, incorporated on 19 June 2025. Cell CH1518693374 was created for this note; under Guernsey law the assets and liabilities of each cell are separate from the others. It is not licensed by the Guernsey Financial Services Commission and the note is not a collective investment scheme.</span></p></div></div>
-<div class="node"><div class="node-n">02</div><div><h4><span class="t-it">Piattaforma: GenTwo AG, Svizzera</span><span class="t-en">Platform: GenTwo AG, Switzerland</span></h4><p><span class="t-it">Piattaforma di cartolarizzazione che struttura l'emissione e pubblica le comunicazioni agli investitori. In Svizzera la nota è un prodotto strutturato, non soggetto alla legge sugli investimenti collettivi né alla vigilanza FINMA.</span><span class="t-en">Securitisation platform that structures the issue and publishes investor notices. In Switzerland the note is a structured product, not subject to the Collective Investment Schemes Act or to FINMA supervision.</span></p></div></div>
-<div class="node"><div class="node-n">03</div><div><h4><span class="t-it">Paying agent: InCore Bank AG, Svizzera</span><span class="t-en">Paying agent: InCore Bank AG, Switzerland</span></h4><p><span class="t-it">Riceve gli ordini, regola cedole e rimborsi e gestisce il mercato secondario best effort. Deposito centrale SIX SIS AG, clearing ICB CH103283.</span><span class="t-en">Receives orders, settles coupons and redemptions and runs the best-effort secondary market. Common depository SIX SIS AG, clearing ICB CH103283.</span></p></div></div>
-<div class="node"><div class="node-n">04</div><div><h4><span class="t-it">Borrower: Zalphyx Giant Capital LLC</span><span class="t-en">Borrower: Zalphyx Giant Capital LLC</span></h4><p><span class="t-it">Società a responsabilità limitata della Florida, Naples, con filiale registrata presso la Camera di commercio di Santo Domingo. Riceve il prestito privato e origina i mutui ipotecari. Il suo inadempimento è l'evento di credito della nota.</span><span class="t-en">Florida limited liability company, Naples, with a branch registered with the Santo Domingo Chamber of Commerce. Receives the private loan and originates the mortgage loans. Its default is the note's credit event.</span></p></div></div>
-<div class="node"><div class="node-n">05</div><div><h4><span class="t-it">Gestore e distributore: FRAMONT &amp; Partners Management Ltd</span><span class="t-en">Manager and distributor: FRAMONT &amp; Partners Management Ltd</span></h4><p><span class="t-it">AIFM autorizzato dalla MFSA a Malta. Struttura l'operazione, cura l'onboarding e la verifica di idoneità degli investitori e li accompagna nella sottoscrizione. Secondo la presentazione, i principali di FRAMONT co-investono capitale proprio nell'operazione. FRAMONT non garantisce gli obblighi dell'emittente né del borrower.</span><span class="t-en">MFSA authorised AIFM in Malta. Structures the transaction, handles investor onboarding and eligibility checks and supports investors through subscription. According to the presentation, FRAMONT's principals co-invest their own capital in the transaction. FRAMONT does not guarantee the obligations of the issuer or of the borrower.</span></p></div></div>
-<div class="node"><div class="node-n">06</div><div><h4><span class="t-it">Consulenza legale nella Repubblica Dominicana</span><span class="t-en">Legal counsel in the Dominican Republic</span></h4><p><span class="t-it">La presentazione indica ISLAW Abogados, William Matías Ramírez, come studio legale di riferimento per le ipoteche e le procedure di escussione nel Paese.</span><span class="t-en">The presentation names ISLAW Abogados, William Matías Ramírez, as the reference law firm for mortgages and enforcement proceedings in the country.</span></p></div></div>
+<div class="node"><div class="node-n">01</div><div><h3 class="h4"><span class="t-it">Emittente e calculation agent: Expand3 Issuer PCC Limited</span><span class="t-en">Issuer and calculation agent: Expand3 Issuer PCC Limited</span></h3><p><span class="t-it">Società a celle protette di Guernsey, registrazione n. 75961, costituita il 19 giugno 2025. La cella CH1518693374 è stata creata per questa nota; per legge di Guernsey attività e passività di ogni cella sono separate dalle altre. Non è autorizzata dalla Guernsey Financial Services Commission e la nota non è un organismo di investimento collettivo.</span><span class="t-en">Guernsey protected cell company, registration no. 75961, incorporated on 19 June 2025. Cell CH1518693374 was created for this note; under Guernsey law the assets and liabilities of each cell are separate from the others. It is not licensed by the Guernsey Financial Services Commission and the note is not a collective investment scheme.</span></p></div></div>
+<div class="node"><div class="node-n">02</div><div><h3 class="h4"><span class="t-it">Piattaforma: GenTwo AG, Svizzera</span><span class="t-en">Platform: GenTwo AG, Switzerland</span></h3><p><span class="t-it">Piattaforma di cartolarizzazione che struttura l'emissione e pubblica le comunicazioni agli investitori. In Svizzera la nota è un prodotto strutturato, non soggetto alla legge sugli investimenti collettivi né alla vigilanza FINMA.</span><span class="t-en">Securitisation platform that structures the issue and publishes investor notices. In Switzerland the note is a structured product, not subject to the Collective Investment Schemes Act or to FINMA supervision.</span></p></div></div>
+<div class="node"><div class="node-n">03</div><div><h3 class="h4"><span class="t-it">Paying agent: InCore Bank AG, Svizzera</span><span class="t-en">Paying agent: InCore Bank AG, Switzerland</span></h3><p><span class="t-it">Riceve gli ordini, regola cedole e rimborsi e gestisce il mercato secondario best effort. Deposito centrale SIX SIS AG, clearing ICB CH103283.</span><span class="t-en">Receives orders, settles coupons and redemptions and runs the best-effort secondary market. Common depository SIX SIS AG, clearing ICB CH103283.</span></p></div></div>
+<div class="node"><div class="node-n">04</div><div><h3 class="h4"><span class="t-it">Borrower: Zalphyx Giant Capital LLC</span><span class="t-en">Borrower: Zalphyx Giant Capital LLC</span></h3><p><span class="t-it">Società a responsabilità limitata della Florida, Naples, con filiale registrata presso la Camera di commercio di Santo Domingo. Riceve il prestito privato e origina i mutui ipotecari. Il suo inadempimento è l'evento di credito della nota.</span><span class="t-en">Florida limited liability company, Naples, with a branch registered with the Santo Domingo Chamber of Commerce. Receives the private loan and originates the mortgage loans. Its default is the note's credit event.</span></p></div></div>
+<div class="node"><div class="node-n">05</div><div><h3 class="h4"><span class="t-it">Gestore e distributore: FRAMONT &amp; Partners Management Ltd</span><span class="t-en">Manager and distributor: FRAMONT &amp; Partners Management Ltd</span></h3><p><span class="t-it">AIFM autorizzato dalla MFSA a Malta. Struttura l'operazione, cura l'onboarding e la verifica di idoneità degli investitori e li accompagna nella sottoscrizione. Secondo la presentazione, i principali di FRAMONT co-investono capitale proprio nell'operazione. FRAMONT non garantisce gli obblighi dell'emittente né del borrower.</span><span class="t-en">MFSA authorised AIFM in Malta. Structures the transaction, handles investor onboarding and eligibility checks and supports investors through subscription. According to the presentation, FRAMONT's principals co-invest their own capital in the transaction. FRAMONT does not guarantee the obligations of the issuer or of the borrower.</span></p></div></div>
+<div class="node"><div class="node-n">06</div><div><h3 class="h4"><span class="t-it">Consulenza legale nella Repubblica Dominicana</span><span class="t-en">Legal counsel in the Dominican Republic</span></h3><p><span class="t-it">La presentazione indica ISLAW Abogados, William Matías Ramírez, come studio legale di riferimento per le ipoteche e le procedure di escussione nel Paese.</span><span class="t-en">The presentation names ISLAW Abogados, William Matías Ramírez, as the reference law firm for mortgages and enforcement proceedings in the country.</span></p></div></div>
 </div>
 <div class="tables">
 <div>
@@ -899,19 +907,19 @@ p,li,.lede,.ans{text-wrap:pretty}
 <div class="docs">
 <article class="doc rv">
 <div class="doc-k"><span class="t-it">Documento vincolante</span><span class="t-en">Binding document</span></div>
-<h4>Term sheet</h4>
+<h3 class="h4">Term sheet</h3>
 <p><span class="t-it">Termini della nota, parti coinvolte, meccanica delle cedole, eventi di credito e di terminazione, mercato secondario, restrizioni di vendita, rischi e descrizione del borrower. Versione del 26 agosto 2026, contrassegnata come bozza dall'emittente; la versione vigente è fornita da FRAMONT.</span><span class="t-en">Note terms, parties, coupon mechanics, credit and termination events, secondary market, selling restrictions, risks and borrower description. Version of 26 August 2026, marked as a draft by the issuer; the current version is provided by FRAMONT.</span></p>
 <a href="/assets/termsheets/framont-zalphyx-cln-termsheet.pdf" rel="noopener" target="_blank"><span class="t-it">Apri il term sheet (PDF)</span><span class="t-en">Open the term sheet (PDF)</span></a>
 </article>
 <article class="doc rv">
 <div class="doc-k"><span class="t-it">Su richiesta</span><span class="t-en">On request</span></div>
-<h4><span class="t-it">Presentazione agli investitori</span><span class="t-en">Investor presentation</span></h4>
+<h3 class="h4"><span class="t-it">Presentazione agli investitori</span><span class="t-en">Investor presentation</span></h3>
 <p><span class="t-it">Il quadro di prestito, gli scenari di copertura degli interessi, l'allocazione per area e le informazioni sul borrower sono nella presentazione riservata di giugno 2026, fornita da FRAMONT agli investitori professionali e qualificati.</span><span class="t-en">The lending framework, the interest coverage scenarios, the allocation by area and the borrower information are in the confidential June 2026 presentation, provided by FRAMONT to professional and qualified investors.</span></p>
 <a href="#contact"><span class="t-it">Richiedila a FRAMONT</span><span class="t-en">Request from FRAMONT</span></a>
 </article>
 <article class="doc rv">
 <div class="doc-k"><span class="t-it">Sottoscrizione</span><span class="t-en">Subscription</span></div>
-<h4><span class="t-it">Idoneità, KYC e AML</span><span class="t-en">Eligibility, KYC and AML</span></h4>
+<h3 class="h4"><span class="t-it">Idoneità, KYC e AML</span><span class="t-en">Eligibility, KYC and AML</span></h3>
 <p><span class="t-it">Verifica dell'idoneità come investitore professionale o qualificato, adempimenti di adeguata verifica, conferma della disponibilità di note e istruzioni di sottoscrizione tramite il paying agent.</span><span class="t-en">Professional or qualified investor eligibility check, customer due diligence, confirmation of note availability and subscription instructions through the paying agent.</span></p>
 <a href="#contact"><span class="t-it">Contatta FRAMONT</span><span class="t-en">Contact FRAMONT</span></a>
 </article>
@@ -926,23 +934,23 @@ p,li,.lede,.ans{text-wrap:pretty}
 <h2 class="h-sec" id="h-risks"><span class="t-it">Da leggere prima di andare avanti</span><span class="t-en">Read these before you go further</span></h2>
 <p class="lede" style="margin-top:18px"><span class="t-it">Una sintesi dei rischi principali, non un elenco completo. Il term sheet contiene l'informativa integrale. Rischi e benefici hanno pari evidenza in questa pagina.</span><span class="t-en">A summary of the principal risks, not a complete list. The term sheet contains the full disclosure. Risks and benefits are given equal prominence on this page.</span></p>
 <div class="risks">
-<div class="rk"><h4><span class="t-it"><i>R1</i>Rischio di credito del prestito sottostante</span><span class="t-en"><i>R1</i>Credit risk of the underlying loan</span></h4><p><span class="t-it">Cedole e rimborso dipendono dal fatto che Zalphyx Giant Capital LLC serva il prestito. Un suo inadempimento è l'evento di credito: le cedole possono cessare, le date possono essere rinviate e il rimborso può ridursi fino a zero.</span><span class="t-en">Coupons and redemption depend on Zalphyx Giant Capital LLC servicing the loan. Its default is the credit event: coupons can stop, dates can be postponed and redemption can fall to zero.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R2</i>Rischio emittente</span><span class="t-en"><i>R2</i>Issuer risk</span></h4><p><span class="t-it">La nota è un credito verso una cella protetta di Expand3 Issuer PCC Limited, non autorizzata dalla GFSC. Non è un organismo di investimento collettivo, non è soggetta alla vigilanza FINMA e non gode delle relative tutele.</span><span class="t-en">The note is a claim on a protected cell of Expand3 Issuer PCC Limited, which is not licensed by the GFSC. It is not a collective investment scheme, is not subject to FINMA supervision and does not benefit from its protections.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R3</i>Nessuna protezione del capitale, cedola non garantita</span><span class="t-en"><i>R3</i>No capital protection, coupon not guaranteed</span></h4><p><span class="t-it">La cedola del 6% è pagata solo finché non si verifica un evento di credito, una terminazione o un rimborso anticipato. Nello scenario peggiore il titolare può perdere l'intero investimento.</span><span class="t-en">The 6% coupon is paid only as long as no credit event, termination or early redemption occurs. In the worst case the holder can lose the entire investment.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R4</i>Il collaterale non è del titolare</span><span class="t-en"><i>R4</i>The collateral is not the holder's</span></h4><p><span class="t-it">Le ipoteche garantiscono i mutui erogati dal borrower, non la nota. Il titolare non ha un diritto diretto sugli immobili: il recupero passa dall'escussione da parte del borrower e dal servizio del prestito verso l'emittente.</span><span class="t-en">The mortgages secure the loans made by the borrower, not the note. The holder has no direct right over the properties: recovery goes through the borrower's enforcement and the servicing of the loan owed to the issuer.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R5</i>Escussione, valutazione e mercato immobiliare</span><span class="t-en"><i>R5</i>Enforcement, valuation and property market</span></h4><p><span class="t-it">Tempi giudiziari più lunghi del previsto, costi legali, perizie non aggiornate e vendite forzate sotto il valore di perizia possono ridurre il recupero anche con LTV del 50%. Il mercato immobiliare dominicano, in particolare quello turistico, può subire cali rapidi.</span><span class="t-en">Longer than expected court timing, legal costs, stale appraisals and forced sales below appraised value can reduce recovery even at 50% LTV. The Dominican property market, especially the resort segment, can fall quickly.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R6</i>Concentrazione</span><span class="t-en"><i>R6</i>Concentration</span></h4><p><span class="t-it">Un solo borrower, un solo Paese, un solo settore. La diversificazione tra quattro aree e il limite del 40% per area riducono la concentrazione geografica, non quella di controparte.</span><span class="t-en">One borrower, one country, one sector. Diversification across four areas and the 40% cap per area reduce geographic concentration, not counterparty concentration.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R7</i>Liquidità</span><span class="t-en"><i>R7</i>Liquidity</span></h4><p><span class="t-it">La nota non è quotata. Il mercato secondario è best effort tramite il paying agent, con uno spread dell'1% in condizioni normali; l'accettazione degli ordini non è garantita e la liquidità della nota e del sottostante può mancare del tutto per l'intera durata.</span><span class="t-en">The note is not listed. The secondary market is best effort through the paying agent, with a 1% spread under normal conditions; acceptance of orders is not guaranteed and the liquidity of the note and of the underlying may not exist at all for the entire term.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R8</i>Rischio di cambio</span><span class="t-en"><i>R8</i>Currency risk</span></h4><p><span class="t-it">La nota, le cedole e i mutui sono in dollari statunitensi. Un investitore in euro sopporta il rischio di cambio su cedole e capitale, che può annullare il rendimento della cedola.</span><span class="t-en">The note, the coupons and the loans are in US dollars. A euro investor bears currency risk on coupons and principal, which can wipe out the coupon return.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R9</i>Rimborso anticipato e reinvestimento</span><span class="t-en"><i>R9</i>Early redemption and reinvestment</span></h4><p><span class="t-it">L'emittente può rimborsare la nota in qualsiasi momento al nominale più la cedola maturata. Il titolare perde il rendimento atteso sul periodo residuo e deve reinvestire alle condizioni del momento.</span><span class="t-en">The issuer may redeem the note at any time at par plus accrued coupon. The holder loses the expected return on the remaining period and has to reinvest at the prevailing conditions.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R10</i>Terminazione</span><span class="t-en"><i>R10</i>Termination</span></h4><p><span class="t-it">L'emittente può terminare la nota senza un motivo specifico. L'importo di terminazione può essere considerevolmente inferiore al prezzo di emissione, fino a zero.</span><span class="t-en">The issuer may terminate the note without a specific reason. The termination amount can be considerably lower than the issue price, down to zero.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R11</i>Informazioni fornite dal borrower</span><span class="t-en"><i>R11</i>Borrower-provided information</span></h4><p><span class="t-it">Tasso lordo dei mutui, tasso storico di insolvenza, scenari di copertura e tempi di escussione sono dichiarazioni del borrower nella presentazione. Non sono verificati da terzi indipendenti e non vincolano l'emittente.</span><span class="t-en">The gross loan rate, the historical default rate, the coverage scenarios and the enforcement timing are borrower statements in the presentation. They are not verified by independent third parties and do not bind the issuer.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R12</i>Rischio Paese e giuridico</span><span class="t-en"><i>R12</i>Country and legal risk</span></h4><p><span class="t-it">Il borrower è una società della Florida, i mutui sono nella Repubblica Dominicana, l'emittente è a Guernsey e la nota è di diritto svizzero. Cambiamenti normativi, fiscali o giudiziari in uno qualsiasi di questi ordinamenti, o restrizioni ai movimenti di capitale, possono incidere sui pagamenti.</span><span class="t-en">The borrower is a Florida company, the loans are in the Dominican Republic, the issuer is in Guernsey and the note is governed by Swiss law. Regulatory, tax or judicial changes in any of these jurisdictions, or capital controls, can affect payments.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R13</i>Costi</span><span class="t-en"><i>R13</i>Costs</span></h4><p><span class="t-it">La distribution fee fino al 2,00%, le spese di negoziazione sul secondario e i costi di escussione deducibili dopo un evento di credito riducono il rendimento effettivo rispetto alla cedola nominale.</span><span class="t-en">The distribution fee of up to 2.00%, secondary-market dealing charges and enforcement costs deductible after a credit event reduce the effective return relative to the nominal coupon.</span></p></div>
-<div class="rk"><h4><span class="t-it"><i>R14</i>Restrizioni di vendita e fiscalità</span><span class="t-en"><i>R14</i>Selling restrictions and tax</span></h4><p><span class="t-it">La nota non può essere offerta in Russia, Bielorussia, Canada, Regno Unito, Guernsey e Stati Uniti né a US persons, e in Svizzera solo a clienti istituzionali e professionali. Il trattamento fiscale dipende dalla situazione del singolo investitore, che deve consultare i propri consulenti.</span><span class="t-en">The note may not be offered in the Russian Federation, Belarus, Canada, the United Kingdom, Guernsey or the United States, nor to US persons, and in Switzerland only to institutional and professional clients. Tax treatment depends on each investor's situation, on which they should consult their own advisers.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R1</i>Rischio di credito del prestito sottostante</span><span class="t-en"><i>R1</i>Credit risk of the underlying loan</span></h3><p><span class="t-it">Cedole e rimborso dipendono dal fatto che Zalphyx Giant Capital LLC serva il prestito. Un suo inadempimento è l'evento di credito: le cedole possono cessare, le date possono essere rinviate e il rimborso può ridursi fino a zero.</span><span class="t-en">Coupons and redemption depend on Zalphyx Giant Capital LLC servicing the loan. Its default is the credit event: coupons can stop, dates can be postponed and redemption can fall to zero.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R2</i>Rischio emittente</span><span class="t-en"><i>R2</i>Issuer risk</span></h3><p><span class="t-it">La nota è un credito verso una cella protetta di Expand3 Issuer PCC Limited, non autorizzata dalla GFSC. Non è un organismo di investimento collettivo, non è soggetta alla vigilanza FINMA e non gode delle relative tutele.</span><span class="t-en">The note is a claim on a protected cell of Expand3 Issuer PCC Limited, which is not licensed by the GFSC. It is not a collective investment scheme, is not subject to FINMA supervision and does not benefit from its protections.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R3</i>Nessuna protezione del capitale, cedola non garantita</span><span class="t-en"><i>R3</i>No capital protection, coupon not guaranteed</span></h3><p><span class="t-it">La cedola del 6% è pagata solo finché non si verifica un evento di credito, una terminazione o un rimborso anticipato. Nello scenario peggiore il titolare può perdere l'intero investimento.</span><span class="t-en">The 6% coupon is paid only as long as no credit event, termination or early redemption occurs. In the worst case the holder can lose the entire investment.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R4</i>Il collaterale non è del titolare</span><span class="t-en"><i>R4</i>The collateral is not the holder's</span></h3><p><span class="t-it">Le ipoteche garantiscono i mutui erogati dal borrower, non la nota. Il titolare non ha un diritto diretto sugli immobili: il recupero passa dall'escussione da parte del borrower e dal servizio del prestito verso l'emittente.</span><span class="t-en">The mortgages secure the loans made by the borrower, not the note. The holder has no direct right over the properties: recovery goes through the borrower's enforcement and the servicing of the loan owed to the issuer.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R5</i>Escussione, valutazione e mercato immobiliare</span><span class="t-en"><i>R5</i>Enforcement, valuation and property market</span></h3><p><span class="t-it">Tempi giudiziari più lunghi del previsto, costi legali, perizie non aggiornate e vendite forzate sotto il valore di perizia possono ridurre il recupero anche con LTV del 50%. Il mercato immobiliare dominicano, in particolare quello turistico, può subire cali rapidi.</span><span class="t-en">Longer than expected court timing, legal costs, stale appraisals and forced sales below appraised value can reduce recovery even at 50% LTV. The Dominican property market, especially the resort segment, can fall quickly.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R6</i>Concentrazione</span><span class="t-en"><i>R6</i>Concentration</span></h3><p><span class="t-it">Un solo borrower, un solo Paese, un solo settore. La diversificazione tra quattro aree e il limite del 40% per area riducono la concentrazione geografica, non quella di controparte.</span><span class="t-en">One borrower, one country, one sector. Diversification across four areas and the 40% cap per area reduce geographic concentration, not counterparty concentration.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R7</i>Liquidità</span><span class="t-en"><i>R7</i>Liquidity</span></h3><p><span class="t-it">La nota non è quotata. Il mercato secondario è best effort tramite il paying agent, con uno spread dell'1% in condizioni normali; l'accettazione degli ordini non è garantita e la liquidità della nota e del sottostante può mancare del tutto per l'intera durata.</span><span class="t-en">The note is not listed. The secondary market is best effort through the paying agent, with a 1% spread under normal conditions; acceptance of orders is not guaranteed and the liquidity of the note and of the underlying may not exist at all for the entire term.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R8</i>Rischio di cambio</span><span class="t-en"><i>R8</i>Currency risk</span></h3><p><span class="t-it">La nota, le cedole e i mutui sono in dollari statunitensi. Un investitore in euro sopporta il rischio di cambio su cedole e capitale, che può annullare il rendimento della cedola.</span><span class="t-en">The note, the coupons and the loans are in US dollars. A euro investor bears currency risk on coupons and principal, which can wipe out the coupon return.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R9</i>Rimborso anticipato e reinvestimento</span><span class="t-en"><i>R9</i>Early redemption and reinvestment</span></h3><p><span class="t-it">L'emittente può rimborsare la nota in qualsiasi momento al nominale più la cedola maturata. Il titolare perde il rendimento atteso sul periodo residuo e deve reinvestire alle condizioni del momento.</span><span class="t-en">The issuer may redeem the note at any time at par plus accrued coupon. The holder loses the expected return on the remaining period and has to reinvest at the prevailing conditions.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R10</i>Terminazione</span><span class="t-en"><i>R10</i>Termination</span></h3><p><span class="t-it">L'emittente può terminare la nota senza un motivo specifico. L'importo di terminazione può essere considerevolmente inferiore al prezzo di emissione, fino a zero.</span><span class="t-en">The issuer may terminate the note without a specific reason. The termination amount can be considerably lower than the issue price, down to zero.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R11</i>Informazioni fornite dal borrower</span><span class="t-en"><i>R11</i>Borrower-provided information</span></h3><p><span class="t-it">Tasso lordo dei mutui, tasso storico di insolvenza, scenari di copertura e tempi di escussione sono dichiarazioni del borrower nella presentazione. Non sono verificati da terzi indipendenti e non vincolano l'emittente.</span><span class="t-en">The gross loan rate, the historical default rate, the coverage scenarios and the enforcement timing are borrower statements in the presentation. They are not verified by independent third parties and do not bind the issuer.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R12</i>Rischio Paese e giuridico</span><span class="t-en"><i>R12</i>Country and legal risk</span></h3><p><span class="t-it">Il borrower è una società della Florida, i mutui sono nella Repubblica Dominicana, l'emittente è a Guernsey e la nota è di diritto svizzero. Cambiamenti normativi, fiscali o giudiziari in uno qualsiasi di questi ordinamenti, o restrizioni ai movimenti di capitale, possono incidere sui pagamenti.</span><span class="t-en">The borrower is a Florida company, the loans are in the Dominican Republic, the issuer is in Guernsey and the note is governed by Swiss law. Regulatory, tax or judicial changes in any of these jurisdictions, or capital controls, can affect payments.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R13</i>Costi</span><span class="t-en"><i>R13</i>Costs</span></h3><p><span class="t-it">La distribution fee fino al 2,00%, le spese di negoziazione sul secondario e i costi di escussione deducibili dopo un evento di credito riducono il rendimento effettivo rispetto alla cedola nominale.</span><span class="t-en">The distribution fee of up to 2.00%, secondary-market dealing charges and enforcement costs deductible after a credit event reduce the effective return relative to the nominal coupon.</span></p></div>
+<div class="rk"><h3 class="h4"><span class="t-it"><i>R14</i>Restrizioni di vendita e fiscalità</span><span class="t-en"><i>R14</i>Selling restrictions and tax</span></h3><p><span class="t-it">La nota non può essere offerta in Russia, Bielorussia, Canada, Regno Unito, Guernsey e Stati Uniti né a US persons, e in Svizzera solo a clienti istituzionali e professionali. Il trattamento fiscale dipende dalla situazione del singolo investitore, che deve consultare i propri consulenti.</span><span class="t-en">The note may not be offered in the Russian Federation, Belarus, Canada, the United Kingdom, Guernsey or the United States, nor to US persons, and in Switzerland only to institutional and professional clients. Tax treatment depends on each investor's situation, on which they should consult their own advisers.</span></p></div>
 </div>
 <div class="rk-sum">
-<h4><span class="t-it">Informativa completa sui rischi</span><span class="t-en">Full risk disclosure</span></h4>
+<h3 class="h4"><span class="t-it">Informativa completa sui rischi</span><span class="t-en">Full risk disclosure</span></h3>
 <p><span class="t-it">L'elenco riportato sopra è una sintesi non esaustiva fornita a fini informativi. Non sostituisce l'informativa sui rischi contenuta nel term sheet, che va letto integralmente prima di qualsiasi decisione. In caso di dubbi rivolgersi a un consulente finanziario indipendente abilitato. FRAMONT &amp; Partners Management Ltd non presta consulenza personalizzata in materia di investimenti. <b>Una cedola fissa non è un rendimento garantito: dipende dal rimborso di un prestito privato. Il capitale è a rischio.</b></span><span class="t-en">The list above is a non-exhaustive summary provided for information. It does not replace the risk disclosures in the term sheet, which should be read in full before any decision. If you are uncertain, consult a licensed independent financial adviser. FRAMONT &amp; Partners Management Ltd does not provide personal investment advice. <b>A fixed coupon is not a guaranteed return: it depends on the repayment of a private loan. Capital is at risk.</b></span></p>
 </div>
 </div>
@@ -996,12 +1004,12 @@ p,li,.lede,.ans{text-wrap:pretty}
 <h2 class="h-sec" id="h-framont">FRAMONT &amp; Partners Management Ltd</h2>
 <p class="lede" style="margin-top:18px"><span class="t-it">FRAMONT struttura l'operazione, verifica l'idoneità degli investitori e li accompagna nella sottoscrizione, dentro un perimetro regolamentato. Non garantisce gli obblighi dell'emittente né del borrower.</span><span class="t-en">FRAMONT structures the transaction, checks investor eligibility and supports investors through subscription, inside a regulated perimeter. It does not guarantee the obligations of the issuer or of the borrower.</span></p>
 <div class="fr-grid">
-<div class="fr rv"><h4><span class="t-it">AIFM autorizzato MFSA</span><span class="t-en">MFSA authorised AIFM</span></h4><p><span class="t-it">Autorizzata dalla Malta Financial Services Authority come Alternative Investment Fund Manager ai sensi dell'AIFMD, con piena legittimazione regolamentare europea.</span><span class="t-en">Authorised by the Malta Financial Services Authority as an Alternative Investment Fund Manager under the AIFMD, with full EU regulatory standing.</span></p></div>
-<div class="fr rv"><h4><span class="t-it">Strutturazione e distribuzione</span><span class="t-en">Structuring and distribution</span></h4><p><span class="t-it">FRAMONT ha strutturato la nota con GenTwo e ne cura il collocamento privato presso investitori professionali e qualificati, in coordinamento con il paying agent.</span><span class="t-en">FRAMONT structured the note with GenTwo and handles its private placement with professional and qualified investors, in coordination with the paying agent.</span></p></div>
-<div class="fr rv"><h4><span class="t-it">Compliance e adeguata verifica</span><span class="t-en">Compliance and due diligence</span></h4><p><span class="t-it">Un Compliance Officer indipendente, un Risk Manager e un Comitato investimenti assicurano la vigilanza continua. Obblighi antiriciclaggio e di adeguata verifica, reporting regolamentare e adempimenti verso la MFSA sono gestiti internamente.</span><span class="t-en">An independent Compliance Officer, a Risk Manager and an Investment Committee provide ongoing oversight. AML and KYC obligations, regulatory reporting and MFSA filings are handled in house.</span></p></div>
-<div class="fr rv"><h4><span class="t-it">Co-investimento</span><span class="t-en">Co-investment</span></h4><p><span class="t-it">Secondo la presentazione agli investitori, i principali di FRAMONT investono capitale proprio in ogni operazione. Il co-investimento allinea gli interessi ma non riduce i rischi della nota.</span><span class="t-en">According to the investor presentation, FRAMONT's principals invest their own capital in every transaction. Co-investment aligns interests but does not reduce the risks of the note.</span></p></div>
-<div class="fr rv"><h4><span class="t-it">Veicoli di investimento UE</span><span class="t-en">EU investment vehicles</span></h4><p><span class="t-it">Oltre a questa nota, FRAMONT opera una piattaforma autorizzata MFSA per AIF, AMC ed ETI. Maggiori informazioni su <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">framontmanagement.com</a>.</span><span class="t-en">Beyond this note, FRAMONT operates an MFSA authorised platform for AIFs, AMCs and ETIs. More at <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">framontmanagement.com</a>.</span></p></div>
-<div class="fr rv"><h4><span class="t-it">Gli altri prodotti</span><span class="t-en">The other products</span></h4><p><span class="t-it">Il catalogo completo, il confronto tra i prodotti, la guida al credito privato e la struttura di ogni involucro sono su <a href="/">Framont Access</a>.</span><span class="t-en">The full catalogue, the product comparison, the private credit guide and the structure of each wrapper are on <a href="/">Framont Access</a>.</span></p></div>
+<div class="fr rv"><h3 class="h4"><span class="t-it">AIFM autorizzato MFSA</span><span class="t-en">MFSA authorised AIFM</span></h3><p><span class="t-it">Autorizzata dalla Malta Financial Services Authority come Alternative Investment Fund Manager ai sensi dell'AIFMD, con piena legittimazione regolamentare europea.</span><span class="t-en">Authorised by the Malta Financial Services Authority as an Alternative Investment Fund Manager under the AIFMD, with full EU regulatory standing.</span></p></div>
+<div class="fr rv"><h3 class="h4"><span class="t-it">Strutturazione e distribuzione</span><span class="t-en">Structuring and distribution</span></h3><p><span class="t-it">FRAMONT ha strutturato la nota con GenTwo e ne cura il collocamento privato presso investitori professionali e qualificati, in coordinamento con il paying agent.</span><span class="t-en">FRAMONT structured the note with GenTwo and handles its private placement with professional and qualified investors, in coordination with the paying agent.</span></p></div>
+<div class="fr rv"><h3 class="h4"><span class="t-it">Compliance e adeguata verifica</span><span class="t-en">Compliance and due diligence</span></h3><p><span class="t-it">Un Compliance Officer indipendente, un Risk Manager e un Comitato investimenti assicurano la vigilanza continua. Obblighi antiriciclaggio e di adeguata verifica, reporting regolamentare e adempimenti verso la MFSA sono gestiti internamente.</span><span class="t-en">An independent Compliance Officer, a Risk Manager and an Investment Committee provide ongoing oversight. AML and KYC obligations, regulatory reporting and MFSA filings are handled in house.</span></p></div>
+<div class="fr rv"><h3 class="h4"><span class="t-it">Co-investimento</span><span class="t-en">Co-investment</span></h3><p><span class="t-it">Secondo la presentazione agli investitori, i principali di FRAMONT investono capitale proprio in ogni operazione. Il co-investimento allinea gli interessi ma non riduce i rischi della nota.</span><span class="t-en">According to the investor presentation, FRAMONT's principals invest their own capital in every transaction. Co-investment aligns interests but does not reduce the risks of the note.</span></p></div>
+<div class="fr rv"><h3 class="h4"><span class="t-it">Veicoli di investimento UE</span><span class="t-en">EU investment vehicles</span></h3><p><span class="t-it">Oltre a questa nota, FRAMONT opera una piattaforma autorizzata MFSA per AIF, AMC ed ETI. Maggiori informazioni su <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">framontmanagement.com</a>.</span><span class="t-en">Beyond this note, FRAMONT operates an MFSA authorised platform for AIFs, AMCs and ETIs. More at <a href="https://www.framontmanagement.com/eu-investment-vehicles/" rel="noopener" target="_blank">framontmanagement.com</a>.</span></p></div>
+<div class="fr rv"><h3 class="h4"><span class="t-it">Gli altri prodotti</span><span class="t-en">The other products</span></h3><p><span class="t-it">Il catalogo completo, il confronto tra i prodotti, la guida al credito privato e la struttura di ogni involucro sono su <a href="/">Framont Access</a>.</span><span class="t-en">The full catalogue, the product comparison, the private credit guide and the structure of each wrapper are on <a href="/">Framont Access</a>.</span></p></div>
 </div>
 </div>
 </section>
@@ -1014,17 +1022,17 @@ p,li,.lede,.ans{text-wrap:pretty}
 <div class="ct-grid">
 <div>
 <div class="cta-c">
-<h4><span class="t-it">Richieste degli investitori</span><span class="t-en">Investor enquiries</span></h4>
+<h3 class="h4"><span class="t-it">Richieste degli investitori</span><span class="t-en">Investor enquiries</span></h3>
 <p><span class="t-it">Per term sheet, presentazione, disponibilità e informazioni sulla sottoscrizione. Tutti i documenti ufficiali sono forniti esclusivamente tramite FRAMONT.</span><span class="t-en">For the term sheet, the presentation, availability and subscription information. All official documents are provided exclusively through FRAMONT.</span></p>
 <a href="mailto:gianluigi.montagner@framontmanagement.com">gianluigi.montagner@framontmanagement.com</a>
 </div>
 <div class="cta-c">
-<h4><span class="t-it">Sede</span><span class="t-en">Office</span></h4>
+<h3 class="h4"><span class="t-it">Sede</span><span class="t-en">Office</span></h3>
 <p>Dragonara Business Centre, 5th Floor<br/>Dragonara Road, San Giljan STJ 3141<br/>Malta<br/>+356 20105592</p>
 <a href="https://www.framontmanagement.com" rel="noopener" target="_blank">www.framontmanagement.com</a>
 </div>
 <div class="cta-c">
-<h4><span class="t-it">Che cosa chiedere nella due diligence</span><span class="t-en">What to ask in due diligence</span></h4>
+<h3 class="h4"><span class="t-it">Che cosa chiedere nella due diligence</span><span class="t-en">What to ask in due diligence</span></h3>
 <p><span class="t-it">Contratto di prestito tra emittente e borrower, politica di erogazione e perizia, portafoglio mutui in essere con LTV e aree, storico di insolvenze e recuperi con evidenze, costi fissi della struttura, procedura di escussione nella Repubblica Dominicana e modalità di segnalazione degli eventi di credito.</span><span class="t-en">Loan agreement between issuer and borrower, origination and appraisal policy, current mortgage book with LTVs and areas, default and recovery history with evidence, fixed costs of the structure, enforcement procedure in the Dominican Republic and how credit events are reported.</span></p>
 </div>
 </div>

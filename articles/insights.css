@@ -8,7 +8,12 @@
   --line: #E9E7E2;
   --wash: #F7F7F5;
   --orange: #FF8200;
-  --orange-ink: #B85C00;
+  /* Orange as text on white/wash, and as a fill under white text. #B85C00 and white
+     on #FF8200 measured 4.28:1 and 2.49:1; these match the homepage (#A85400 text,
+     #B35A00 buttons) and clear 4.5:1 on every ground they sit on. */
+  --orange-ink: #A85400;
+  --orange-action: #B35A00;
+  --orange-action-hover: #964B00;
   --orange-dark: #E97500;
 }
 * { box-sizing: border-box; }
@@ -35,10 +40,10 @@ img { max-width: 100%; }
 .topbar-brand img { height: 26px; display: block; }
 .topbar-brand .brand-word { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--navy-ink); }
 .topbar-tag { border-left: 1px solid var(--line); padding-left: 13px; font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
-.topbar a.plain { font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .2s ease; }
+.topbar a.plain { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .2s ease; }
 .topbar a.plain:hover { color: var(--orange-ink); }
-.topbar a.cta { background: var(--orange); border: 1px solid var(--orange); color: #FFFFFF; padding: 9px 18px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background .2s ease; }
-.topbar a.cta:hover { background: var(--orange-dark); }
+.topbar a.cta { background: var(--orange-action); border: 1px solid var(--orange-action); color: #FFFFFF; padding: 9px 18px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background .2s ease; }
+.topbar a.cta:hover { background: var(--orange-action-hover); border-color: var(--orange-action-hover); }
 @media (max-width: 560px) { .topbar a.cta { display: none; } .topbar-tag { display: none; } }
 
 /* ---- Article hero ---- */
@@ -71,11 +76,23 @@ img { max-width: 100%; }
 .article li { margin-bottom: 9px; }
 .article a { color: var(--orange-ink); text-decoration: underline; text-underline-offset: 3px; transition: color .2s ease; }
 .article a:hover { color: var(--orange); }
+/* Glossary entries. Unstyled, each definition ran straight into the next term with
+   no space between entries, under the browser's 40px indent (an eighth of a phone
+   column). Space now separates the entries; the bold term leads its definition. */
+.article dl { margin: 6px 0 34px; }
+.article dt { margin: 26px 0 4px; color: var(--navy-ink); line-height: 1.5; }
+.article dl > dt:first-child { margin-top: 0; }
+.article dd { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
 
 /* Answer box: the two-sentence definition up front */
+/* Boxed components span the full column, like the byline, facts grid, tables and
+   FAQ around them, so every box shares one right edge; the text inside keeps the
+   reading measure. At 68ch the answer and caveat boxes stopped ~85px short of the
+   boxes above and below them. */
 .answer { border: 1px solid var(--line); border-top: 3px solid var(--orange); background: var(--wash); padding: 24px 26px; margin: 0 0 34px; }
+.article > .answer, .article > .notbox { max-width: none; }
 .answer .answer-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-ink); margin-bottom: 10px; }
-.answer p { margin: 0; color: var(--navy-ink); font-size: 16.5px; line-height: 1.7; }
+.answer p { margin: 0; color: var(--navy-ink); font-size: 16.5px; line-height: 1.7; max-width: 68ch; }
 
 /* Key-facts grid */
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 28px 0 34px; max-width: none; }
@@ -116,6 +133,8 @@ table.compare tr:nth-child(even) td { background: var(--wash); }
 
 /* Next-article links */
 .nextread { max-width: 860px; margin: 0 auto; padding: 0 28px 64px; }
+/* After the product band the "Keep reading" label sat 8px under the band's edge. */
+.products + .nextread { padding-top: 56px; }
 .nextread .n-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange-ink); margin-bottom: 16px; }
 .nextread a { display: block; border: 1px solid var(--line); padding: 18px 20px; text-decoration: none; margin-bottom: 12px; transition: border-color .2s ease, background .2s ease; }
 .nextread a:hover { border-color: rgba(255,130,0,0.5); background: var(--wash); }
@@ -293,7 +312,7 @@ a.cite:hover { background: rgba(255,130,0,0.12); }
   color: var(--navy-ink);
   margin-bottom: 10px;
 }
-.notbox ul { margin: 0; padding-left: 20px; }
+.notbox ul { margin: 0; padding-left: 20px; max-width: 68ch; }
 .notbox li { margin: 0 0 7px; font-size: 15px; color: var(--muted); line-height: 1.6; }
 .notbox li:last-child { margin-bottom: 0; }
 .notbox .n-date { display: block; margin-top: 12px; font-size: 12px; color: var(--muted-2); }
@@ -385,4 +404,34 @@ table.compare tr:nth-child(even) th[scope="row"] { background: var(--wash); }
     max-width: calc(100vw - 40px);
     margin-left: -180px;
   }
+}
+/* Product names wrap so the name column stops taking a quarter of the table
+   (it sized itself to "Framont Global Total Return AMC" on one line) and the
+   strategy and costs columns get the room. */
+.tablewrap.bleed th[scope="row"] { white-space: normal; min-width: 11em; }
+/* Below the breakout width the eight columns were squeezed into the 560px minimum,
+   about 55px each on a phone, so every cell broke into eight or more lines. Give
+   each column a readable width, scroll the table, and keep the product name
+   pinned at the left so a row can still be read once it has scrolled. */
+@media (max-width: 1199px) {
+  .tablewrap.bleed table.compare { min-width: 1000px; }
+  .tablewrap.bleed thead th:first-child,
+  .tablewrap.bleed th[scope="row"] {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #FFFFFF;
+    min-width: 9.5em;
+    box-shadow: inset -1px 0 0 var(--line);
+  }
+  .tablewrap.bleed tr:nth-child(even) th[scope="row"] { background: var(--wash); }
+}
+
+/* On a phone the unbroken first column ran off the screen: in the two-column
+   "check / where the answer is" tables the question itself was cut mid-word and its
+   answer sat entirely off-screen. Let the first column wrap, and let a two-column
+   table fit the column instead of scrolling. Wider tables still scroll. */
+@media (max-width: 640px) {
+  table.compare td:first-child { white-space: normal; min-width: 8.5em; }
+  table.compare:not(:has(tr > :nth-child(3))) { min-width: 0; }
 }
