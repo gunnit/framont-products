@@ -200,9 +200,9 @@
 <link href="https://www.framontmanagement.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="preload"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
 <style>
 
 /* =========================================================
@@ -268,8 +268,8 @@ body{
   overflow-x:hidden;
   font-variant-numeric:tabular-nums;
 }
-h1,h2,h3{font-family:var(--serif);color:var(--ink);line-height:1.14;font-weight:600}
-h4,h5,.h4{font-family:var(--sans);color:var(--ink);font-weight:700;line-height:1.35}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);line-height:1.14;font-weight:500}
+h4,h5,.h4{font-family:var(--sans);color:var(--ink);font-weight:600;line-height:1.35}
 /* .h4: card titles are h3 under their section h2 and keep the h4 look; an h3 would
    otherwise take the browser's 1.17em and the balanced wrap set for h1-h3 */
 .h4{font-size:1em;text-wrap:inherit}
@@ -370,11 +370,11 @@ nav{
 }
 .eyebrow span{color:rgba(255,255,255,.55)}
 h1{
-  font-size:clamp(1.85rem,6.6vw,3.05rem);color:#fff;font-weight:600;letter-spacing:-.02em;line-height:1.1;
+  font-size:clamp(1.85rem,6.6vw,3.05rem);color:#fff;font-weight:500;letter-spacing:-.02em;line-height:1.1;
 }
 h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;margin-top:.10em;letter-spacing:-.01em}
 .hero-claim{
-  font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3.9vw,1.42rem);
+  font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.05rem,3.9vw,1.42rem);
   color:rgba(255,255,255,.90);margin-top:18px;line-height:1.45;
 }
 .hero-lede{font-size:clamp(.98rem,3.4vw,1.12rem);line-height:1.78;color:rgba(255,255,255,.86);margin-top:20px;max-width:56ch}
@@ -449,7 +449,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .obj h4,.obj .h4{margin-bottom:5px;font-size:.98rem}
 .obj p{font-size:.9rem;line-height:1.72}
 .pull{
-  font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3.6vw,1.3rem);
+  font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.05rem,3.6vw,1.3rem);
   color:var(--navy);line-height:1.6;border-left:3px solid var(--orange);padding-left:18px;margin:26px 0;
 }
 
@@ -462,7 +462,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .sleeve.s-btc{--accent:var(--btc)}
 .sleeve.s-cash{--accent:var(--cash)}
 .sl-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
-.sl-h h4,.sl-h .h4{font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--ink)}
+.sl-h h4,.sl-h .h4{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink)}
 .sl-k{font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent,var(--navy))}
 .sl-d{font-size:.86rem;line-height:1.7;color:var(--muted);margin-bottom:16px}
 .tiers{display:grid;gap:8px}
@@ -532,7 +532,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 }
 .inputs{display:grid;gap:10px;margin-top:34px}
 .inp{border:1px solid rgba(255,255,255,.16);padding:16px 18px}
-.inp h4,.inp .h4{font-family:var(--sans);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-l);font-weight:500;margin-bottom:7px}
+.inp h4,.inp .h4{font-family:var(--sans);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-l);font-weight:600;margin-bottom:7px}
 .inp p{font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.76)}
 
 /* ---------- process / turnover ---------- */
@@ -703,7 +703,7 @@ input[type=range]::-moz-range-thumb{
 .dev-photo{margin:calc(var(--devpad) * -1) calc(var(--devpad) * -1) calc(var(--devpad) * .8)}
 .dev-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:var(--paper)}
 .dev-photo figcaption{font-family:var(--sans);font-size:.63rem;line-height:1.65;color:var(--muted);margin:10px var(--devpad) 0}
-.dev-name{font-family:var(--serif);font-size:1.45rem;color:var(--ink);font-weight:600;line-height:1.2}
+.dev-name{font-family:var(--serif);font-size:1.45rem;color:var(--ink);font-weight:500;line-height:1.2}
 .dev-role{font-family:var(--sans);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--orange-ink);margin-top:8px;margin-bottom:18px}
 .dev-list{list-style:none;border-top:1px solid var(--rule)}
 .dev-list li{
@@ -770,7 +770,7 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 .f-brand{display:flex;gap:14px;align-items:flex-start}
 .f-brand img{height:44px;width:auto}
 .f-fb{width:44px;height:44px;border:2px solid var(--orange);display:none;place-items:center;font-family:var(--serif);color:var(--orange);font-size:1.3rem;font-weight:700}
-.f-name{font-family:var(--serif);font-size:1.02rem;color:rgba(255,255,255,.92);line-height:1.3}
+.f-name{font-family:var(--serif);font-weight:600;font-size:1.02rem;color:rgba(255,255,255,.92);line-height:1.3}
 .f-name span{color:var(--orange)}
 .f-addr{font-family:var(--sans);font-size:.6rem;letter-spacing:.06em;color:rgba(255,255,255,.48);margin-top:6px;line-height:1.6}
 .f-soc{display:inline-flex;margin-top:12px;font-family:var(--sans);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.2);padding:9px 14px;min-height:40px;align-items:center}
