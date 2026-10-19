@@ -615,8 +615,8 @@
                 <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ p.currency }}</span>
               </div>
               <div style="font-size:16.5px; font-weight:600; color:#002E5F; line-height:1.35;">{{ p.name }}</div>
-              <p style="font-size:13.5px; color:#4D575E; line-height:1.6; margin:0;">{{ p.strategy }}</p>
-              <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr)); gap:10px;">
+              <p data-card-teaser style="font-size:13.5px; color:#4D575E; line-height:1.6; margin:0;">{{ p.strategy }}</p>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr)); gap:10px; margin-top:auto;">
                 <div onclick="{{ p.onGateIsin }}" title="{{ p.gateTitle }}" style="background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 12px; cursor: {{ p.gateCursor }}; animation: {{ p.anim }};">
                   <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
                     <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.isin }}</span>
@@ -642,7 +642,7 @@
                   <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:5px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.minLabel }}</div>
                 </div>
               </div>
-              <div style="margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
+              <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
                 <div>
                   <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap;">
                     <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ p.metricLabel }}</span>
@@ -792,8 +792,8 @@
                   <span style="display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; background:#F7F7F5; border:1px solid #E9E7E2; color:#4D575E;">{{ p.currency }}</span>
                 </div>
                 <div style="font-size:16.5px; font-weight:600; color:#002E5F; line-height:1.35;">{{ p.name }}</div>
-                <p style="font-size:13.5px; color:#4D575E; line-height:1.6; margin:0;">{{ p.strategy }}</p>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr)); gap:10px;">
+                <p data-card-teaser style="font-size:13.5px; color:#4D575E; line-height:1.6; margin:0;">{{ p.strategy }}</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr)); gap:10px; margin-top:auto;">
                   <div onclick="{{ p.onGateIsin }}" title="{{ p.gateTitle }}" style="background:#F7F7F5; border:1px solid #E9E7E2; padding:10px 12px; cursor: {{ p.gateCursor }}; animation: {{ p.anim }};">
                     <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
                       <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ t.products.isin }}</span>
@@ -819,7 +819,7 @@
                     <div style="font-size:13.5px; font-weight:600; color:#002E5F; margin-top:5px; filter: {{ p.blur }}; user-select: {{ p.usel }}; transition:filter .6s ease;">{{ p.minLabel }}</div>
                   </div>
                 </div>
-                <div style="margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
+                <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; border-top:1px solid #E9E7E2; padding-top:16px;">
                   <div>
                     <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap;">
                       <span style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4D575E;">{{ p.metricLabel }}</span>
@@ -1344,21 +1344,21 @@
         <div style="min-width:0;">
           <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.platform }}</div>
           <sc-for list="{{ navLinks }}" as="fl" hint-placeholder-count="4">
-            <a onclick="{{ fl.onClick }}" href="{{ fl.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ fl.label }}</a>
+            <a onclick="{{ fl.onClick }}" href="{{ fl.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ fl.label }}</a>
           </sc-for>
-          <a onclick="{{ onStructure }}" href="#/structure" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.structure.label }}</a>
-          <a onclick="{{ onGlossary }}" href="#/glossary" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.glossary.label }}</a>
-          <a href="{{ insightsHref }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.insights.navLabel }}</a>
+          <a onclick="{{ onStructure }}" href="#/structure" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.structure.label }}</a>
+          <a onclick="{{ onGlossary }}" href="#/glossary" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.glossary.label }}</a>
+          <a href="{{ insightsHref }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.insights.navLabel }}</a>
           <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin:26px 0 14px;">{{ overviewLabel }}</div>
           <sc-for list="{{ overviewLinks }}" as="ol" hint-placeholder-count="4">
-            <a href="{{ ol.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; margin-bottom:13px;">{{ ol.label }}</a>
+            <a href="{{ ol.href }}" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none;">{{ ol.label }}</a>
           </sc-for>
         </div>
         <div style="min-width:0;">
           <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.legalCol }}</div>
-          <a href="https://www.iubenda.com/privacy-policy/85437556/full-legal" target="_blank" rel="noopener" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.auth.privacy }}</a>
-          <a href="https://www.iubenda.com/privacy-policy/85437556/cookie-policy" target="_blank" rel="noopener" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.cookies }}</a>
-          <a href="mailto:gianluigi.montagner@framontmanagement.com" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; margin-bottom:13px; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.contact }}</a>
+          <a href="https://www.iubenda.com/privacy-policy/85437556/full-legal" target="_blank" rel="noopener" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.auth.privacy }}</a>
+          <a href="https://www.iubenda.com/privacy-policy/85437556/cookie-policy" target="_blank" rel="noopener" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.cookies }}</a>
+          <a href="mailto:gianluigi.montagner@framontmanagement.com" style="display:block; width:fit-content; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; transition:color .2s ease, transform .2s ease;" style-hover="color:#FF8200; transform:translateX(3px);">{{ t.footer.contact }}</a>
         </div>
         <div style="min-width:0;">
           <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px;">{{ t.footer.contactCol }}</div>
@@ -1366,7 +1366,7 @@
             <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0;"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>{{ t.footer.address }}
           </div>
           <a href="mailto:gianluigi.montagner@framontmanagement.com" style="display:inline-flex; align-items:flex-start; gap:9px; font-size:13.5px; color:rgba(255,255,255,0.72); text-decoration:none; cursor:pointer; overflow-wrap:anywhere; min-width:0; transition:color .2s ease;" style-hover="color:#FF8200;">
-            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0; margin-top:3px;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>{{ t.footer.email }}
+            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#FF8200; stroke-width:2; fill:none; flex-shrink:0; margin-top:3px;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>gianluigi.montagner@<wbr>framontmanagement.com</span>
           </a>
         </div>
       </div>
@@ -1880,7 +1880,7 @@ class Component extends DCLogic {
       ] },
       gate: { members: "Members", toastUnlock: "Thank you — your request has been received and full product details are now unlocked.", toastWelcome: "Signed in — welcome back.", toastDocs: "Full documentation (KID, prospectus) is available on the official product page.", leadFailed: "We could not send your request just now. Please email info@framontmanagement.com and we will pick it up." },
       dealsGate: { title: "Deals — Access Code", intro: "Deals are reserved for professional and institutional investors and are protected by an access code. Enter the code you received by email from our team.", codeLabel: "Access code", placeholder: "Enter your access code", unlock: "Unlock Deals", badCode: "Invalid access code. Please check the email you received from our team, or request access below.", noCode: "Don't have a code yet?", request: "Request Access Code", requestHint: "Leave your details and our team will email you the access code after verifying your eligibility.", toastUnlocked: "Deals unlocked — welcome.", toastRequested: "Request received — our team will email you the access code after verifying your eligibility.", codeRequired: "Code required", unlockHint: "Enter your access code to view" },
-      cta: { eyebrow: "Membership", title: "Ready to access institutional-grade products?", sub: "Registration is free and takes two minutes.", button: "Request Access" },
+      cta: { eyebrow: "Membership", title: "Ready to access institutional‑grade products?", sub: "Registration is free and takes two minutes.", button: "Request Access" },
       footer: { tag: "Curated access to institutional-grade investment products for qualified investors across Europe.", platform: "Platform", legalCol: "Legal", company: "Company", contactCol: "Contact", contact: "Contact", cookies: "Cookie Policy", address: "Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta", email: "gianluigi.montagner@framontmanagement.com", backToTop: "Back to top", copyright: "© 2026 Framont Group. All rights reserved.", mfsa: "Licensed by the MFSA", legal: "Framont & Partners Management Ltd. — Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta — VAT No. MT22666318. The Company is licensed by the Malta Financial Services Authority under the Investment Services Act, 1994 (Chapter 370 of the Laws of Malta) and qualifies as a UCITS Management Company under the UCITS Directive and as an Alternative Investment Fund Manager under the AIFMD; a copy of the licence is available on the MFSA website (www.mfsa.mt) and upon request. The content of this platform is provided for information purposes only and does not constitute investment advice, a solicitation or an offer to the public. Access to certain products is restricted to investors who meet the applicable eligibility criteria. Investments involve risk, including the possible loss of the capital invested. Past performance is not a reliable indicator of future results. Exchange Traded Instruments (ETIs) and actively managed certificates are debt securities of the respective issuer and carry issuer risk. Before any investment decision, read the Key Information Document (KID) and the relevant prospectus or final terms, available on the product pages. Backtested and simulated performance figures are hypothetical, do not represent actual trading and are not a reliable indicator of future results. Where reference is made to results achieved by a strategy developer on personal accounts, such results relate to accounts independent of the instrument and are not indicative of the instrument's performance. Strategy developers act solely as providers of the underlying strategy; portfolio management of the referenced instruments is performed by Framont & Partners Management Ltd, an AIFM authorised by the MFSA. Capital at risk." },
       auth: { register: "Request Access", login: "Sign In", name: "Full Name", email: "Email Address", phone: "Phone Number", category: "Investor Category", retail: "Retail Investor", professional: "Professional Investor", institutional: "Institutional Investor", gdpr: "I consent to the processing of my personal data in accordance with the", privacy: "Privacy Policy", submit: "Request Access" },
       err: { name: "Name is required", email: "Valid email required", phone: "Valid phone number required", gdpr: "Please accept the privacy policy" },
@@ -3903,7 +3903,7 @@ class Component extends DCLogic {
   .cmp-rec dd{background:#FFFFFF;padding:10px 12px;margin:0;font-size:13px;color:#4D575E;line-height:1.6}
   .cmp-rec .cmp-gate{flex-direction:row;gap:10px;margin-top:14px}
   .cmp-rec .cmp-lock{flex:1;min-width:0}
-  .cmp-view{width:100%;margin-top:14px;background:#FF8200;border:1px solid #FF8200;color:#fff;
+  .cmp-view{width:100%;margin-top:14px;background:#B35A00;border:1px solid #B35A00;color:#fff;
     padding:11px 16px;font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;
     letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}
   .cmp-view:hover{background:#E97500}
@@ -4024,6 +4024,15 @@ class Component extends DCLogic {
   /* ---- Audit fixes: tap targets, focus, small-screen legibility -------------------- */
   /* Interactive controls need a ~44px target. These were 13-28px tall with 13px gaps. */
   footer a, footer button { min-height: 44px; display: inline-flex; align-items: center; }
+  /* With 13px link margins on top, that made a 57px pitch: the Platform column's twelve
+     links ran to 680px. The margins are gone; touch keeps the 44px target and a mouse,
+     which does not need it, gets a 32px row. */
+  @media (hover: hover) and (pointer: fine) { footer a { min-height: 32px; } }
+  /* Card teasers ran from 3 to 13 lines, so one long strategy (Snow White) left the
+     cards beside it with ~170px holes and their ISIN boxes at different heights. Four
+     lines is the teaser; the full description is in the product detail. */
+  [data-card-teaser] { display: -webkit-box; -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
   [data-tap-target] { min-height: 44px; min-width: 44px; display: inline-flex;
     align-items: center; justify-content: center; }
   /* The card link sits 14px from VIEW DETAILS, so grow it inline rather than as a block. */
