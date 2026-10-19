@@ -179,6 +179,8 @@
   /* fills under white text: the homepage button orange (white on #F47920 was 2.76:1) */
   --orange-action:#B35A00;
   --orange-action-hover:#964B00;
+  /* orange as text on white and grey grounds (#F47920 there was 2.76:1) */
+  --orange-ink:#A85400;
   --paper:#FFFFFF;
   --paper-2:#F5F7FA;
   --paper-3:#EDF1F6;
@@ -186,9 +188,9 @@
   --rule-strong:#C4CEDA;
   --ink:#0C1523;
   --body:#3B4757;
-  --muted:#6C7889;
+  --muted:#5E6A7B;
   --eq:#2F5FA0;
-  --met:#B08A2E;
+  --met:#86671B;
   --ene:#B4451F;
   --fx:#1D6A73;
   --ok:#1E6B45;
@@ -215,8 +217,8 @@ button{font:inherit;cursor:pointer}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
 section{padding:clamp(48px,9vw,104px) 0}
 .mono{font-family:var(--mono)}
-.tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:14px}
-.tag i{font-style:normal;color:var(--rule-strong);margin-right:8px}
+.tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink);display:block;margin-bottom:14px}
+.tag i{font-style:normal;color:var(--muted);margin-right:8px}
 .h-sec{font-size:clamp(1.6rem,5.4vw,2.5rem);letter-spacing:-.01em}
 .lede{font-size:clamp(1rem,2.6vw,1.08rem);line-height:1.8;color:var(--body);max-width:62ch}
 .small{font-size:.82rem;line-height:1.7;color:var(--muted)}
@@ -279,7 +281,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .spec:nth-child(odd){border-right:1px solid rgba(255,255,255,.10);padding-right:14px}
 .spec:nth-child(even){padding-left:14px}
 .spec-n{font-family:var(--serif);font-size:clamp(1.5rem,6vw,1.95rem);color:var(--orange-l);line-height:1;font-weight:600}
-.spec-n small{font-family:var(--mono);font-size:.55em;color:rgba(249,165,74,.7);font-weight:400}
+.spec-n small{font-family:var(--mono);font-size:.55em;color:rgba(249,165,74,.85);font-weight:400}
 .spec-l{font-family:var(--mono);font-size:.60rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:8px}
 .sheet{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);padding:22px 20px;backdrop-filter:blur(2px)}
 .sheet-h{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-l);padding-bottom:12px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:10px}
@@ -288,7 +290,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .sheet .row:last-child{border-bottom:0}
 .sheet dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);flex-shrink:0}
 .sheet dd{font-size:.84rem;color:#fff;text-align:right;line-height:1.5}
-.sheet-f{font-family:var(--mono);font-size:.60rem;color:rgba(255,255,255,.42);margin-top:14px;line-height:1.6}
+.sheet-f{font-family:var(--mono);font-size:.60rem;color:rgba(255,255,255,.6);margin-top:14px;line-height:1.6}
 
 /* ---------- spec strip ---------- */
 #strip{background:var(--navy-ink);border-top:1px solid rgba(244,121,32,.30);padding:14px 0}
@@ -302,7 +304,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .intro-grid{display:grid;gap:clamp(28px,6vw,48px)}
 .obj{list-style:none;margin-top:26px;border-top:1px solid var(--rule)}
 .obj li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid var(--rule)}
-.obj b{font-family:var(--mono);font-size:.66rem;font-weight:500;color:var(--orange);letter-spacing:.1em;padding-top:3px}
+.obj b{font-family:var(--mono);font-size:.66rem;font-weight:500;color:var(--orange-ink);letter-spacing:.1em;padding-top:3px}
 .obj h4{margin-bottom:5px;font-size:.98rem}
 .obj p{font-size:.9rem;line-height:1.72}
 .pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3.6vw,1.3rem);color:var(--navy);line-height:1.6;border-left:3px solid var(--orange);padding-left:18px;margin:26px 0}
@@ -347,7 +349,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #track h2,#track h3{color:#fff}
 #track .lede{color:rgba(255,255,255,.80)}
 #track .tag{color:var(--orange-l)}
-#track .tag i{color:rgba(255,255,255,.28)}
+#track .tag i{color:rgba(255,255,255,.55)}
 .warnbox{margin-top:26px;background:rgba(150,38,31,.22);border:1px solid rgba(255,140,120,.45);padding:18px 20px;font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.88)}
 .warnbox b{color:#FFD1C8}
 .bases{display:grid;gap:14px;margin-top:30px}
@@ -395,7 +397,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #structure{background:var(--paper)}
 .chain{display:grid;gap:0;margin-top:32px;border-top:1px solid var(--rule)}
 .node{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--rule)}
-.node-n{font-family:var(--mono);font-size:.68rem;color:var(--orange);letter-spacing:.1em;padding-top:4px}
+.node-n{font-family:var(--mono);font-size:.68rem;color:var(--orange-ink);letter-spacing:.1em;padding-top:4px}
 .node h4{font-size:1rem;margin-bottom:5px}
 .node p{font-size:.87rem;line-height:1.7;color:var(--muted)}
 .tables{display:grid;gap:clamp(18px,5vw,26px);margin-top:34px}
@@ -407,7 +409,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .team{display:grid;gap:12px;margin-top:22px}
 .tm{border:1px solid var(--rule);background:var(--paper-2);padding:16px 18px}
 .tm b{display:block;font-size:.95rem;color:var(--ink)}
-.tm i{display:block;font-family:var(--mono);font-style:normal;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin:5px 0 8px}
+.tm i{display:block;font-family:var(--mono);font-style:normal;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink);margin:5px 0 8px}
 .tm p{font-size:.84rem;line-height:1.65;color:var(--muted)}
 
 /* ---------- access routes ---------- */
@@ -444,11 +446,11 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #docs{background:var(--paper-2);border-top:1px solid var(--rule)}
 .docs{display:grid;gap:14px;margin-top:30px}
 .doc{border:1px solid var(--rule);padding:22px 20px;display:grid;gap:10px;background:var(--paper)}
-.doc-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--orange)}
+.doc-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--orange-ink)}
 .doc h4{font-size:1rem}
 .doc p{font-size:.86rem;line-height:1.7;color:var(--muted)}
 .doc a{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--orange);padding-bottom:3px;width:fit-content}
-.doc a:hover{color:var(--orange)}
+.doc a:hover{color:var(--orange-ink)}
 .docs-note{margin-top:22px;font-size:.86rem;line-height:1.8;background:var(--paper);border:1px solid var(--rule);padding:20px}
 .docs-note a{color:var(--navy);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
 
@@ -470,7 +472,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 .faq details{border-bottom:1px solid var(--rule)}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:18px 0;min-height:52px;font-weight:700;color:var(--ink);font-size:.95rem;line-height:1.5}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--mono);font-size:1.05rem;color:var(--orange);flex-shrink:0;transition:transform .2s}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:1.05rem;color:var(--orange-ink);flex-shrink:0;transition:transform .2s}
 .faq details[open] summary::after{content:"-"}
 .faq .ans{padding:0 0 20px;font-size:.9rem;line-height:1.78;color:var(--body);max-width:70ch}
 .faq .ans a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
@@ -480,7 +482,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
 #framont h2{color:#fff}
 #framont .lede{color:rgba(255,255,255,.80)}
 #framont .tag{color:var(--orange-l)}
-#framont .tag i{color:rgba(255,255,255,.26)}
+#framont .tag i{color:rgba(255,255,255,.55)}
 .fr-grid{display:grid;gap:14px;margin-top:32px}
 .fr{border:1px solid rgba(255,255,255,.14);padding:22px 20px}
 .fr h4{color:#fff;font-size:.95rem;margin-bottom:8px}
@@ -536,7 +538,7 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 .f-nav a:hover{color:#fff}
 .f-legal p{font-size:.72rem;line-height:1.78;margin-bottom:12px}
 .f-legal b{color:rgba(255,255,255,.82)}
-.f-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.10);font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.45)}
+.f-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.10);font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.6)}
 .f-bot a{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- sticky mobile cta + cookie ---------- */
@@ -554,7 +556,7 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 /* ---------- professional investor gate ---------- */
 #gate{position:fixed;inset:0;z-index:1200;background:rgba(8,23,41,.86);backdrop-filter:blur(6px);display:grid;place-items:center;padding:var(--gut);overflow-y:auto}
 .gate-box{background:var(--paper);max-width:640px;width:100%;padding:clamp(24px,5vw,40px);border-top:5px solid var(--orange);box-shadow:0 30px 80px rgba(0,0,0,.45)}
-.gate-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.gate-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink);margin-bottom:12px}
 .gate-box h2{font-size:clamp(1.4rem,4.6vw,1.9rem);margin-bottom:12px}
 .gate-box p{font-size:.92rem;line-height:1.75;color:var(--body)}
 .gate-box p+p{margin-top:10px}
