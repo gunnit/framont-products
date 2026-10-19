@@ -220,6 +220,9 @@
   --orange:#F47920;
   --orange-l:#F9A54A;
   --orange-soft:#FDF1E6;
+  /* fills under white text: the homepage button orange (white on #F47920 was 2.76:1) */
+  --orange-action:#B35A00;
+  --orange-action-hover:#964B00;
 
   /* surfaces */
   --paper:#FFFFFF;
@@ -269,7 +272,7 @@ a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 .skip{
-  position:absolute;left:-9999px;top:0;z-index:900;background:var(--orange);color:#fff;
+  position:absolute;left:-9999px;top:0;z-index:900;background:var(--orange-action);color:#fff;
   font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;padding:12px 18px;
 }
 .skip:focus{left:8px;top:8px}
@@ -311,9 +314,9 @@ nav{
 .nav-menu{display:none}
 .nav-cta{
   font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.10em;text-transform:uppercase;
-  padding:11px 16px;background:var(--orange);color:#fff;border:0;min-height:42px;display:inline-flex;align-items:center;
+  padding:11px 16px;background:var(--orange-action);color:#fff;border:0;min-height:42px;display:inline-flex;align-items:center;
 }
-.nav-cta:hover{background:var(--orange-l)}
+.nav-cta:hover{background:var(--orange-action-hover)}
 .burger{
   width:44px;height:44px;display:grid;place-items:center;background:transparent;
   border:1px solid rgba(255,255,255,.22);color:#fff;
@@ -380,8 +383,8 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
   padding:15px 24px;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
   border:1px solid transparent;transition:background .2s,border-color .2s,color .2s;
 }
-.btn-1{background:var(--orange);color:#fff}
-.btn-1:hover{background:var(--orange-l)}
+.btn-1{background:var(--orange-action);color:#fff}
+.btn-1:hover{background:var(--orange-action-hover)}
 .btn-2{background:transparent;color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.28)}
 .btn-2:hover{border-color:#fff;color:#fff}
 .btn-dark{background:var(--navy);color:#fff}
@@ -488,7 +491,7 @@ h1 em{display:block;font-style:italic;color:var(--orange-l);font-size:.82em;marg
   padding:15px 6px;min-height:52px;transition:background .2s,color .2s;line-height:1.35;
 }
 .rtab:last-child{border-right:0}
-.rtab[aria-selected="true"]{background:var(--orange);color:#fff;font-weight:600}
+.rtab[aria-selected="true"]{background:var(--orange-action);color:#fff;font-weight:600}
 .rtab:not([aria-selected="true"]):hover{background:rgba(255,255,255,.07);color:#fff}
 .board-body{padding:clamp(20px,5.5vw,34px)}
 .board-say{font-size:.94rem;line-height:1.78;color:rgba(255,255,255,.86);max-width:60ch;margin-bottom:26px}
@@ -776,7 +779,7 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
 
 /* ---------- sticky mobile cta + cookie ---------- */
 .mcta{
-  position:fixed;left:0;right:0;bottom:0;z-index:590;background:var(--orange);color:#fff;
+  position:fixed;left:0;right:0;bottom:0;z-index:590;background:var(--orange-action);color:#fff;
   text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   padding:15px 16px calc(15px + env(safe-area-inset-bottom));
 }
@@ -793,7 +796,7 @@ footer{background:var(--navy-ink);color:rgba(255,255,255,.62);padding:clamp(36px
   padding:12px;min-height:50px;border:1px solid transparent;
   display:inline-flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;
 }
-.cb-ok{background:var(--orange);color:#fff}
+.cb-ok{background:var(--orange-action);color:#fff}
 .cb-no{background:transparent;color:rgba(255,255,255,.78);border-color:rgba(255,255,255,.3)}
 
 /* ---------- reveal ---------- */
@@ -1067,7 +1070,7 @@ span.t-en{display:none}
 #reg-fx:checked ~ * #panel-fx{display:block}
 #reg-eq:checked ~ * label[for="reg-eq"],
 #reg-fu:checked ~ * label[for="reg-fu"],
-#reg-fx:checked ~ * label[for="reg-fx"]{background:var(--orange);color:#fff;font-weight:600}
+#reg-fx:checked ~ * label[for="reg-fx"]{background:var(--orange-action);color:#fff;font-weight:600}
 #reg-eq:focus-visible ~ * label[for="reg-eq"],
 #reg-fu:focus-visible ~ * label[for="reg-fu"],
 #reg-fx:focus-visible ~ * label[for="reg-fx"]{outline:2px solid #fff;outline-offset:-3px}
