@@ -54,7 +54,7 @@ try{if(sessionStorage.getItem("framont-re-gate")==="ok")document.documentElement
 
   /* Type scale: one very large size, one section size, one display size for named
      things, then body and small. */
-  --t-hero:clamp(2.6rem,7vw,6rem);
+  --t-hero:clamp(2.6rem,min(7vw,12.5vh),6rem);
   --t-h2:clamp(2.1rem,4.2vw,3.75rem);
   --t-name:1.75rem;
   --t-h3:1.125rem;
@@ -182,7 +182,7 @@ html:not(.motion) .cue{display:none}
    sits in the flow under the risen sun */
 html.hero-static .hero{height:auto}
 html.hero-static .hero-stage{position:relative;height:auto;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end}
-html.hero-static .hero-copy{position:relative;padding-top:calc(var(--header-h) + 24px)}
+html.hero-static .hero-copy{position:relative;width:100%;padding-top:calc(var(--header-h) + 24px)}
 html.hero-static .cue{display:none}
 
 /* ---------------- Structure: words light up like morning ---------------- */
@@ -407,7 +407,8 @@ footer a{color:var(--on-night)}
 .field label{font-weight:600;color:var(--ink);font-size:.9375rem}
 .field select{appearance:none;width:100%;min-height:50px;padding:0 44px 0 14px;font:400 1rem var(--sans);color:var(--ink);background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230B1A2E' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center;border:1px solid #98A2AD;border-radius:6px}
 .field select:hover{border-color:var(--ink)}
-.field select[aria-invalid="true"],.check input[aria-invalid="true"]{border-color:#A3260F;box-shadow:0 0 0 3px rgba(163,38,15,.25)}
+.field select[aria-invalid="true"]{border-color:#A3260F;box-shadow:0 0 0 3px rgba(163,38,15,.25)}
+.check input[aria-invalid="true"]{box-shadow:0 0 0 2px #fff,0 0 0 4px #A3260F}
 .check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:.9375rem}
 .check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--navy-2)}
 .gate .error{color:#A3260F;font-size:.875rem;font-weight:500}
@@ -425,7 +426,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
   <form class="gate-panel" id="gate-form" novalidate onsubmit="return false">
     <h2 id="gate-title">Before you continue</h2>
-    <p id="gate-desc">This page describes funds reserved for professional investors and, where a fund's rules and the law of the investor's country allow it, other eligible investors, and private opportunities reserved for professional investors only. It is not intended for US Persons or for anyone in a country where its distribution is not permitted.</p>
+    <p id="gate-desc">This page is a marketing communication. It describes funds reserved for professional investors and, where a fund's rules and the law of the investor's country of residence allow it, other eligible investors. It also describes private opportunities, which are reserved for professional investors only. It is not intended for US Persons or for anyone in a country where its distribution is not permitted.</p>
     <div class="field">
       <label for="gate-country">Country of residence</label>
       <select id="gate-country" required>
@@ -455,7 +456,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
     <p class="error" id="gate-error" role="alert" hidden>Choose your country and investor category, and tick the confirmation.</p>
     <button class="btn btn-sun" type="submit" id="gate-continue">Confirm and continue</button>
     <div class="stop-msg" id="gate-stop" hidden>
-      <p id="gate-stop-text"><strong>This page is not available to you.</strong> The funds it describes are offered only to professional investors and to other investors eligible under each fund's rules and their national law, the private opportunities only to professional investors, and none of them to US Persons.</p>
+      <p id="gate-stop-text"><strong>This page is not available to you.</strong> The funds it describes are offered only to professional investors and to other investors eligible under each fund's rules and the law of their country of residence, the private opportunities only to professional investors, and none of them to US Persons.</p>
       <a class="btn btn-sun" href="https://access.framontmanagement.com/" aria-describedby="gate-stop-text">Return to Framont Access</a>
     </div>
   </form>
@@ -498,7 +499,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
         <a class="btn btn-sun" href="#funds">See the funds</a>
         <a class="btn btn-line" href="#risks">Read the risks</a>
       </div>
-      <p class="notice" data-hero="2"><strong>Marketing communication.</strong> For professional and eligible investors only; the private opportunities are for professional investors only. Capital is at risk and the funds are illiquid. Read the fund documents before investing. The images, films and 3D models are illustrative and AI-generated; they do not show any fund's assets.</p>
+      <p class="notice" data-hero="2"><strong>Marketing communication.</strong> For professional and eligible investors only; the private opportunities are for professional investors only. Capital is at risk and the funds are illiquid. Read the fund documents before investing. Images and the palazzo model are illustrative and AI-generated; they show no asset of any fund or opportunity.</p>
     </div>
     <div class="cue" id="cue" aria-hidden="true">Scroll to sunrise<i></i></div>
   </div>
@@ -535,7 +536,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
       <li class="card"><h3 class="name">Orizzonte</h3><p class="what">Acquires, enhances and disposes of real estate. A dedicated Real Estate Management Committee informs significant investment and divestment decisions.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span></p></li>
       <li class="card"><h3 class="name">Wright</h3><p class="what">Real estate and shares of real estate companies, with a focus on Rome.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Professional investors, or other investors subscribing at least €500,000</span></p></li>
       <li class="card"><h3 class="name">Real Sequoia</h3><p class="what">Invests at least two-thirds in real estate and property rights, and funds the construction, completion and development of the assets it holds.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
-      <li class="card"><h3 class="name">Pinnacle Investment</h3><p class="what">Mainly residential, office, commercial, industrial and tourism assets in Italy, the European Union and the G8. May use leverage.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
+      <li class="card"><h3 class="name">Pinnacle Investment</h3><p class="what">Mainly residential, office, commercial, industrial and tourism assets in Italy, the European Union and the G8. May use leverage. <span class="todo">Scope and leverage to confirm</span></p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
 
       <li class="panel">
         <figure><img data-par src="media/travertine-door.jpg" width="1100" height="1364" alt="A closed wooden double door in a weathered travertine doorway, in low evening light." loading="lazy" decoding="async"><figcaption>Illustrative, AI-generated</figcaption></figure>
@@ -549,8 +550,8 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
         <div><h3 class="name">Private opportunities</h3><p>Individual transactions for professional investors only. Location, business plan and documentation are released after eligibility verification and, where required, a non-disclosure agreement.</p></div>
       </li>
       <li class="card"><h3 class="name">Value-add hospitality, Italy</h3><p class="what">Acquisition and luxury repositioning of a hospitality asset.</p><p class="facts"><span>SPV, share deal</span><span>Illiquid</span></p></li>
-      <li class="card"><h3 class="name">Adaptive re&#8209;use hotel, Spain</h3><p class="what">Planned conversion of an industrial building in a Spanish city into a 71-key four-star hotel with a retail unit, with an international operator. <span class="todo">Planning status and operator agreement to confirm</span></p><p class="facts"><span>SPV with senior debt</span><span>Illiquid</span></p></li>
-      <li class="card"><h3 class="name">Greek real&nbsp;estate portfolio</h3><p class="what">Off-market villas, hotels, development land, coastal assets and a private island.</p><p class="facts"><span>SPV, club deal or actively managed certificate</span><span>Non-disclosure or non-circumvention agreement first</span></p></li>
+      <li class="card"><h3 class="name">Adaptive re&#8209;use hotel, Spain</h3><p class="what">Planned conversion of an industrial building in a Spanish city into a 71-key four-star hotel with a retail unit and an international operator. <span class="todo">Planning status and operator agreement to confirm</span></p><p class="facts"><span>SPV with senior debt</span><span>Illiquid</span></p></li>
+      <li class="card"><h3 class="name">Greek real&nbsp;estate portfolio</h3><p class="what">Off-market villas, hotels, development land, coastal assets and a private island.</p><p class="facts"><span>SPV, club deal or actively managed certificate</span><span>Non-disclosure agreement (NDA or NCNDA) first</span></p></li>
       <li class="panel end">
         <figure><img data-par src="media/sunrise-poster.jpg" width="1600" height="900" alt="The sun just above the horizon over a calm sea, seen from a rocky coast." loading="lazy" decoding="async"><figcaption>Illustrative, AI-generated</figcaption></figure>
         <div><h3 class="name">Details after verification</h3>
@@ -608,7 +609,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
       <div class="model-stage" id="model-stage" role="img" aria-label="Illustrative 3D model of a Mediterranean palazzo.">
         <img src="media/palazzo-poster.jpg" alt="" width="1000" height="1000" loading="lazy" decoding="async">
         <canvas id="model3d" aria-hidden="true"></canvas>
-        <span class="cap">Illustrative 3D model, AI-generated.<span class="live-only"> Scroll to move the sun; drag to turn.</span></span>
+        <span class="cap">Illustrative 3D model, AI-generated.<span class="live-only"> Scroll to move the sun; drag or use the arrow keys to turn.</span></span>
       </div>
       <div class="ladder" id="ladder" role="img" aria-label="Three bars, each shorter than the one before: market value, forced-sale value and net recovery value.">
         <div class="rung"><div class="lab"><b>Market value</b><span>from comparable local sales</span></div><div class="track"><span class="fill" style="--w:100%"></span></div></div>
@@ -660,12 +661,12 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
       </div>
       <div class="item">
         <h3>Who can invest, and where</h3>
-        <p>The funds are reserved for professional investors and, where a fund's rules allow it, other eligible investors. Whether a non-professional investor can subscribe also depends on the rules of their country of residence. They are not offered to other retail investors. The private opportunities are reserved for professional investors. This page is not directed at US Persons or at anyone in a country where its distribution would be unlawful. Each fund is marketed only in the countries where it has been notified.</p>
+        <p>The funds are reserved for professional investors and, where a fund's rules allow it, other eligible investors. Whether a non-professional investor can subscribe also depends on the law of their country of residence. The funds are not offered to other retail investors. The private opportunities are reserved for professional investors. This page is not directed at US Persons or at anyone in a country where its distribution would be unlawful. Each fund is marketed only in the countries where it has been notified.</p>
         <p>Framont &amp; Partners Management Ltd may decide to end the arrangements for marketing a fund in a country (de-notification).</p>
       </div>
       <div class="item">
         <h3>Regulation</h3>
-        <p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. The licence can be checked on the <a href="https://www.mfsa.mt/financial-services-register/">MFSA Financial Services Register</a>. The MFSA's licensing of the manager does not mean that it has approved these funds or this communication.</p>
+        <p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. The licence can be checked on the <a href="https://www.mfsa.mt/financial-services-register/">MFSA Financial Services Register</a>. The MFSA's licensing of the manager does not mean that it has approved these funds, the private opportunities or this communication.</p>
       </div>
       <div class="item">
         <h3>Conflicts of interest and sustainability</h3>
@@ -681,7 +682,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
       </div>
       <div class="item">
         <h3>The company</h3>
-        <address>Framont &amp; Partners Management Ltd<br>Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta<br>Company registration number <span class="todo">to confirm</span><br>VAT MT22666318</address>
+        <address>Framont &amp; Partners Management Ltd<br>Registered office: Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta<br>Company registration number <span class="todo">to confirm</span><br>VAT MT22666318</address>
       </div>
       <div class="item">
         <h3>Privacy, cookies and AI</h3>
@@ -689,7 +690,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
           <li><a href="https://www.iubenda.com/privacy-policy/85437556/full-legal">Privacy Policy</a> and <a href="https://www.iubenda.com/privacy-policy/85437556/cookie-policy">Cookie Policy</a></li>
           <li>This page sets no cookies of its own. Only the fact that you completed the entry gate is kept, in this browser tab (session storage); your answers are not stored or sent anywhere.</li>
           <li>Its fonts and scripts, including the 3D graphics library, are served with the page.</li>
-          <li>The films, photographs and 3D models were generated with AI tools. <a href="https://www.framontmanagement.com/ai-disclosure/">AI disclosure</a></li>
+          <li>The films, photographs and the palazzo model were generated with AI tools; the 3D map is drawn from Natural Earth data. <a href="https://www.framontmanagement.com/ai-disclosure/">AI disclosure</a></li>
         </ul>
       </div>
     </div>
@@ -699,7 +700,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
 <section class="notes" id="notes" aria-labelledby="notes-title">
   <div class="wrap">
     <h2 id="notes-title">Review notes</h2>
-    <p class="lead">Response to Francesca Caruso's review of 21 October 2026. This section and the highlighted items are removed before publication. Regulatory references still need confirming with the legal adviser.</p>
+    <p class="lead">Response to Francesca Caruso's review of 21 October 2026. Before publication this section and the draft line in the footer are removed, and each highlighted item is replaced with the confirmed information or dropped. Regulatory references still need confirming with the legal adviser.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th scope="col">#</th><th scope="col">Point raised</th><th scope="col">What changed</th></tr></thead>
@@ -711,7 +712,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
           <tr><td>5</td><td>"Since 2026" claim on Italian lending</td><td>Removed. The page makes no claim about the origination regime.</td></tr>
           <tr><td>6</td><td>"MFSA licensed, EU passport" badge; Dominican Republic</td><td>Badge removed. The page states that each fund is marketed only where it has been notified; the per-fund country list is still open (see below). The Dominican Republic is removed: no current real estate fund or opportunity invests there.</td></tr>
           <tr><td>7</td><td>Marketing communication or pre-marketing</td><td>The page describes only existing funds and opportunities already listed on Framont Access, and is labelled a marketing communication in the opening and in Important information. The opening headline makes no regulatory claim.</td></tr>
-          <tr><td>8</td><td>Audience</td><td>"Private investors" and the €50,000 minimum removed. An entry gate asks for country and investor category, and turns away US Persons and investors who are neither professional nor eligible under a fund's rules and their national law. The private opportunities are stated as professional only.</td></tr>
+          <tr><td>8</td><td>Audience</td><td>"Private investors" and the €50,000 minimum removed. An entry gate asks for country and investor category, and turns away US Persons and investors who are neither professional nor eligible under a fund's rules and the law of their country of residence. The private opportunities are stated as for professional investors only.</td></tr>
           <tr><td>9</td><td>Target returns and bracketed figures</td><td>All target returns, minimum tickets and "double-digit yields" removed. The one remaining amount is Wright's €500,000 eligibility threshold, as listed on Access.</td></tr>
           <tr><td>10</td><td>No risks shown</td><td>A full risks section set at the same type sizes as the fund list, plus an About returns note.</td></tr>
           <tr><td>11</td><td>Operational promises</td><td>Co-investment, drawdown, custody and ten-day decision claims removed. The collateral method is marked for confirmation.</td></tr>
@@ -734,6 +735,9 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
         <li>Retail eligibility rules in each notified country, for the "other eligible investor" category in the entry gate.</li>
         <li>Whether the three private opportunities should be hidden from visitors who choose "other eligible investor", since they are for professional investors only.</li>
         <li>About returns: confirm that every target return Framont states, on Framont Access and in each fund's documents, is stated before fees, costs and taxes.</li>
+        <li>Point 13: whether "Framont Access" and the page title "Framont Access Real Estate" can be used as a trading name or brand as notified to the MFSA.</li>
+        <li>In what capacity Framont presents the three private opportunities (Framont Access describes it as structurer and AIFM), to confirm with the legal adviser against points 1 and 3.</li>
+        <li>Whether a PRIIPs key information document exists or is needed for any fund open to non-professional investors, for example Wright.</li>
         <li>The typeface (Bodoni Moda and Hanken Grotesk) differs from the rest of Framont Access (Playfair Display and Work Sans): to agree with Framont.</li>
         <li>Italian version, after the English text is approved.</li>
       </ul>
@@ -896,7 +900,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
 
   /* ---------- funds: sideways travel ---------- */
   var funds=$("#funds"),fundsStage=$("#funds-stage"),fundsHead=$(".funds-head"),fundsTitle=$("#funds-title"),railView=$("#rail-view"),rail=$("#rail"),counterN=$("#counter-n"),counterF=$("#counter-f");
-  var cards=$$(".card",rail),panels=$$(".panel figure img, .panel figure video",rail);
+  var cards=$$(".card",rail),panels=$$(".panel figure img, .panel figure video",rail),endPanel=$(".end",rail);
   var travel=!reduce&&finePointer&&vw>=900&&vh>=640,travelDist=0;
   function layoutFunds(){
     root.classList.toggle("travel",travel);
@@ -904,8 +908,11 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
       funds.style.removeProperty("--travel-h");rail.style.transform=fundsHead.style.transform=fundsHead.style.top="";
       panels.forEach(function(el){el.style.transform=""});
       rail.setAttribute("tabindex",rail.scrollWidth>rail.clientWidth+1?"0":"-1");
+      /* the closing panel spans two cells only in a three-column grid, so no cell is left empty */
+      endPanel.style.gridColumn=vw>=900&&getComputedStyle(rail).gridTemplateColumns.split(" ").length===2?"auto":"";
       return;
     }
+    endPanel.style.gridColumn="";
     rail.setAttribute("tabindex","-1");
     rail.style.transform=fundsHead.style.transform="none";
     var line=$(".card h3",rail).getBoundingClientRect().top-fundsStage.getBoundingClientRect().top;
@@ -949,7 +956,8 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
 
   /* ---------- map stops ---------- */
   var mapSec=$("#markets"),mapStage=$("#map-stage"),mapPinned=true,stops=$$(".stop"),dots=$$("[data-dot]");
-  var stopVids=stops.map(function(s){return $("video",s)}),liveStop=-1;
+  var stopVids=stops.map(function(s){return $("video",s)}),stopFigs=stops.map(function(s){return $("figure",s)}),liveStop=-1;
+  function halfIn(el){var f=el.getBoundingClientRect();return f.height>0&&Math.min(f.bottom,vh)-Math.max(f.top,0)>=f.height*.5}
   function mapProgress(){
     var r=mapSec.getBoundingClientRect();
     if(!mapPinned)return clamp((vh-r.top)/(vh+r.height),0,1);
@@ -963,7 +971,10 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
     dots.forEach(function(d,i){d.classList.toggle("on",i===idx)});
     if(saveData)return;
     /* each stop's film plays once (about 4 s) when its stop comes up, and rests on its last frame */
-    var r=mapSec.getBoundingClientRect(),want=r.top<vh&&r.bottom>0?idx:-1;
+    /* the film that plays is the one whose stop is actually on screen */
+    var want=-1;
+    if(mapPinned){if(halfIn(stopFigs[idx]))want=idx}
+    else for(var k=0;k<stopFigs.length;k++)if(halfIn(stopFigs[k])){want=k;break}
     if(want===liveStop)return;liveStop=want;
     stopVids.forEach(function(v,i){
       if(!v)return;
@@ -1021,9 +1032,10 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
   rail.addEventListener("scroll",function(){settle=20},{passive:true});
   function frame(){
     var y=scrollY,moving=y!==lastY||vw!==lastW;
-    var filmBusy=videoReady&&video.duration&&Math.abs(clamp(heroProgress()/.88,0,1)*(video.duration-.05)-vt)>.01;
+    var hp=reduce||heroStatic?1:heroProgress();
+    var filmBusy=videoReady&&video.duration&&Math.abs(clamp(hp/.88,0,1)*(video.duration-.05)-vt)>.01;
     if(moving||filmBusy||settle>0){
-      renderHero(reduce||heroStatic?1:heroProgress());
+      renderHero(hp);
       renderWords();renderDaybreak();renderFunds();renderMapCopy();renderIndex();
       settle=moving?30:settle-1;
     }
@@ -1036,7 +1048,7 @@ html:not(.gate-ok):has(#gate:not([hidden])){overflow:hidden}
     travel=!reduce&&finePointer&&vw>=900&&vh>=640;
     /* the hero pins only if its copy fits in the stage under the header */
     root.classList.remove("hero-static");
-    heroStatic=heroCopy.offsetHeight+bar.offsetHeight+16>heroStage.offsetHeight;
+    heroStatic=heroCopy.offsetHeight+bar.getBoundingClientRect().bottom+16>Math.min(heroStage.offsetHeight,vh);
     root.classList.toggle("hero-static",heroStatic);
     mapPinned=getComputedStyle(mapStage).position==="sticky";
     measureMark();layoutFunds();settle=30;
@@ -1225,8 +1237,8 @@ async function initMap(THREE) {
       tmp.copy(m.anchor).project(camera);
       const x = (tmp.x * 0.5 + 0.5) * w, y = (-tmp.y * 0.5 + 0.5) * h;
       const lw = m.el.offsetWidth, lh = m.el.offsetHeight;
-      const box = { above: [x - lw / 2, y - lh - 10], left: [x - lw - 12, y - lh / 2], right: [x + 12, y - lh / 2] };
-      const order = m.p.side === 'left' ? ['left', 'above', 'right'] : ['above', 'left', 'right'];
+      const box = { above: [x - lw / 2, y - lh - 10], left: [x - lw - 12, y - lh / 2], right: [x + 12, y - lh / 2], below: [x - lw / 2, y + 12] };
+      const order = m.p.side === 'left' ? ['left', 'above', 'right', 'below'] : ['above', 'left', 'right', 'below'];
       const fit = order.find((k) => box[k][0] >= 8 && box[k][0] + lw <= w - 8 && box[k][1] >= minTop && box[k][1] + lh <= h - 8);
       const at = box[fit || order[0]];
       m.el.style.transform = `translate(${at[0].toFixed(1)}px,${at[1].toFixed(1)}px)`;
@@ -1328,7 +1340,10 @@ async function initModel(THREE, GLTFLoader, RoomEnvironment) {
     e.preventDefault(); drag += e.key === 'ArrowLeft' ? -0.2 : 0.2; dirty = true;
   });
   canvas.addEventListener('webglcontextlost', () => stage.classList.remove('live'));
-  canvas.addEventListener('webglcontextrestored', () => { dirty = true; stage.classList.add('live'); });
+  canvas.addEventListener('webglcontextrestored', () => {
+    const g = new THREE.PMREMGenerator(renderer); scene.environment = g.fromScene(new RoomEnvironment(), 0.04).texture; g.dispose();
+    dirty = true; stage.classList.add('live');
+  });
   requestAnimationFrame(tick);
   stage.classList.add('live');
   stage.setAttribute('role', 'img');
