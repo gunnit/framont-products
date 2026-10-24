@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Framont Access Real Estate</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Draft for compliance review: the real estate and property-backed credit funds managed by Framont &amp; Partners Management Ltd.">
+<meta name="theme-color" content="#001F42">
+<link rel="preload" as="font" type="font/woff2" href="fonts/playfair-display-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/work-sans-latin.woff2" crossorigin>
+<link rel="preload" as="image" href="media/hero-poster.jpg">
+<style>
+/* Layout: a navy room for the hero and the risks, white paper for everything read
+   closely; one 12-column grid, the funds set as an editorial register beside a single
+   dominant photograph per group. Tokens follow PRODUCT.md and preview/preview.css.
+   Single committed look (the Access brand has no dark theme): every colour is set here. */
+:root{
+  color-scheme:light;
+  --navy-900:#00122A;
+  --navy-700:#001F42;
+  --navy-600:#002E5F;
+  --ink:#002E5F;
+  --ink-2:#42505C;
+  --ink-3:#5F6A72;
+  --paper:#FFFFFF;
+  --paper-2:#F5F4F1;
+  --paper-3:#ECEAE4;
+  --amber:#FF8200;
+  --amber-ink:#B05800;
+  --on-navy:#F3F5F8;
+  --on-navy-2:#B9C6D6;
+  --review:#FFF4E5;
+  --review-ink:#6B3A00;
+
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Work Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  --t-display:clamp(2.5rem,6.2vw,5.25rem);
+  --t-h2:clamp(1.75rem,3.4vw,2.75rem);
+  --t-h3:1.125rem;
+  --t-body:1rem;
+  --t-small:0.875rem;
+
+  --section:clamp(88px,11vw,168px);
+  --measure:66ch;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+@font-face{font-family:"Playfair Display";src:url("fonts/playfair-display-latin.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Work Sans";src:url("fonts/work-sans-latin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink-2);font-family:var(--sans);font-size:var(--t-body);line-height:1.7;-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums}
+img,video{display:block;max-width:100%;height:auto}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:.2em}
+a:hover{color:var(--amber-ink)}
+::selection{background:rgba(255,130,0,.24);color:var(--navy-700)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance}
+h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.015em;line-height:1.08}
+h2{font-size:var(--t-h2)}
+h3{font-family:var(--sans);font-size:var(--t-h3);font-weight:600;line-height:1.35}
+p{margin:0}
+
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:520px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+section{padding-block:var(--section)}
+.lead{font-size:1.125rem;line-height:1.65;color:var(--ink-2);max-width:var(--measure)}
+.prose{max-width:var(--measure);display:grid;gap:16px}
+
+/* Buttons: one flat fill, one quiet outline. */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:2px;font:600 .9375rem/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.btn-primary{background:var(--amber);color:var(--navy-900)}
+.btn-primary:hover{background:#FF9A33;color:var(--navy-900)}
+.btn-quiet{background:transparent;color:var(--on-navy);border-color:rgba(243,245,248,.42)}
+.btn-quiet:hover{border-color:var(--on-navy);color:var(--on-navy)}
+
+/* ---------- Review marks (preview only) ---------- */
+.review{background:var(--review);color:var(--review-ink);font-size:var(--t-small);line-height:1.55;padding:12px 16px;border-radius:2px;max-width:var(--measure)}
+.review strong{color:var(--review-ink)}
+.todo{background:var(--review);color:var(--review-ink);padding:1px 6px;border-radius:2px;font-weight:500;white-space:nowrap}
+
+/* ---------- Header ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy-900)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy-900);color:var(--on-navy)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px}
+.brand{color:var(--on-navy);text-decoration:none;font:500 1.125rem/1 var(--serif);letter-spacing:.01em;white-space:nowrap}
+.brand span{color:var(--on-navy-2);font-family:var(--sans);font-size:.875rem;font-weight:400;margin-left:10px}
+.bar nav{display:flex;align-items:center;gap:28px}
+.bar nav a{color:var(--on-navy-2);text-decoration:none;font-size:.9375rem}
+.bar nav a:hover{color:var(--on-navy)}
+.bar .btn{min-height:40px;padding:0 18px;font-size:.875rem;white-space:nowrap}
+.bar .btn .short{display:none}
+@media (max-width:520px){.bar .btn .long{display:none}.bar .btn .short{display:inline}}
+@media (max-width:900px){.bar nav a:not(.btn){display:none}}
+@media (max-width:420px){.brand span{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:var(--navy-900);color:var(--on-navy);overflow:hidden;isolation:isolate;padding-block:0}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,18,42,.86) 0%,rgba(0,18,42,.62) 42%,rgba(0,18,42,.12) 78%)}
+.hero .wrap{min-height:min(700px,82vh);display:flex;flex-direction:column;justify-content:flex-end;padding-block:clamp(120px,16vw,200px) clamp(48px,6vw,80px)}
+.hero h1{color:#fff;font-size:var(--t-display);max-width:18ch}
+.hero .lead{color:var(--on-navy);margin-top:28px;max-width:56ch}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.hero .notice{margin-top:56px;font-size:var(--t-small);color:var(--on-navy-2);max-width:72ch}
+.hero .notice strong{color:var(--on-navy);font-weight:600}
+.hero .credit{margin-top:8px;font-size:.8125rem;color:var(--on-navy-2)}
+@media (max-width:640px){.hero::after{background:linear-gradient(0deg,rgba(0,18,42,.92) 0%,rgba(0,18,42,.72) 55%,rgba(0,18,42,.35) 100%)}}
+
+/* The one authored moment: the headline settles as the film fades up. */
+@media (prefers-reduced-motion:no-preference){
+  .hero h1{animation:settle 1.6s var(--ease) both}
+  .hero .lead{animation:settle 1.6s .12s var(--ease) both}
+  .hero-media video{animation:fade 2.4s var(--ease) both}
+}
+@keyframes settle{from{transform:translateY(14px)}to{transform:none}}
+@keyframes fade{from{opacity:.55}to{opacity:1}}
+
+/* ---------- Roles ---------- */
+.roles{display:grid;grid-template-columns:repeat(12,1fr);gap:48px 32px;align-items:start}
+.roles .head{grid-column:1/span 5}
+.roles .head .lead{margin-top:24px}
+.roles dl{grid-column:7/span 6;margin:0;display:grid;gap:36px}
+.roles dt{font:600 var(--t-h3)/1.35 var(--sans);color:var(--ink)}
+.roles dd{margin:8px 0 0}
+@media (max-width:860px){.roles .head,.roles dl{grid-column:1/-1}}
+
+/* ---------- Fund register ---------- */
+.funds{background:var(--paper-2)}
+.funds .intro{display:grid;gap:24px;max-width:var(--measure)}
+.group{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 32px;margin-top:clamp(72px,8vw,120px);align-items:start}
+.group figure{grid-column:1/span 5;margin:0;position:sticky;top:96px}
+.group.flip figure{grid-column:8/span 5;grid-row:1}
+.group .list{grid-column:7/span 6}
+.group.flip .list{grid-column:1/span 6;grid-row:1}
+.group figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.group figure.wide img{aspect-ratio:3/2}
+figcaption{margin-top:12px;font-size:.8125rem;line-height:1.5;color:var(--ink-3)}
+.list h3{font:500 clamp(1.5rem,2.4vw,1.875rem)/1.2 var(--serif);letter-spacing:-.01em}
+.list > p{margin-top:12px;max-width:58ch}
+.vehicles{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:8px}
+.vehicle{background:var(--paper);padding:24px 24px 22px;border-radius:2px;display:grid;gap:10px}
+.vehicle .name{font:600 1.0625rem/1.3 var(--sans);color:var(--ink)}
+.vehicle .what{color:var(--ink-2)}
+.vehicle .facts{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:var(--t-small);color:var(--ink-3)}
+.vehicle .facts span{min-width:0}
+.group .list,.vehicle,.roles .head,.roles dl,.collateral .text,.ladder{min-width:0}
+.list .more{margin-top:24px;font-size:.9375rem}
+@media (max-width:860px){
+  .group figure,.group.flip figure{grid-column:1/-1;grid-row:auto;position:static}
+  .group .list,.group.flip .list{grid-column:1/-1;grid-row:auto}
+  .group figure img{aspect-ratio:3/2}
+}
+
+/* ---------- Collateral ---------- */
+.collateral .layout{display:grid;grid-template-columns:repeat(12,1fr);gap:48px 32px;align-items:center}
+.collateral .text{grid-column:1/span 5;display:grid;gap:20px}
+.ladder{grid-column:7/span 6;display:grid;gap:22px}
+.rung{display:grid;gap:8px}
+.rung .label{display:flex;justify-content:space-between;gap:16px;font-size:var(--t-small);color:var(--ink-3)}
+.rung .label b{font-weight:600;color:var(--ink)}
+.rung .bar-track{height:44px;background:var(--paper-2);border-radius:2px;overflow:hidden}
+.rung .bar-fill{height:100%;background:var(--navy-600);transform-origin:left;width:var(--w)}
+.rung.sized .bar-fill{background:var(--amber)}
+.ladder .note{font-size:.8125rem;color:var(--ink-3)}
+@media (prefers-reduced-motion:no-preference){
+  .ladder.in .bar-fill{animation:grow 1.4s var(--ease) both}
+  .ladder.in .rung:nth-child(2) .bar-fill{animation-delay:.15s}
+  .ladder.in .rung:nth-child(3) .bar-fill{animation-delay:.3s}
+}
+@keyframes grow{from{transform:scaleX(.35)}to{transform:none}}
+@media (max-width:860px){.collateral .text,.ladder{grid-column:1/-1}}
+
+/* ---------- Markets ---------- */
+.markets{background:var(--paper-2)}
+.markets-layout{display:grid;grid-template-columns:repeat(12,1fr);gap:48px 32px;align-items:center}
+.markets-layout figure{grid-column:1/span 5;margin:0}
+.markets-layout figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.markets-text{grid-column:7/span 6;min-width:0}
+.markets .grid{display:grid;gap:40px;margin-top:48px}
+.market h3{font:500 1.625rem/1.2 var(--serif);letter-spacing:-.01em}
+.market p{margin-top:10px;max-width:56ch}
+.market .via{margin-top:10px;font-size:var(--t-small);color:var(--ink-3)}
+@media (max-width:860px){.markets-layout figure,.markets-text{grid-column:1/-1}.markets-layout figure img{aspect-ratio:3/2}}
+
+/* ---------- Risks: the same weight as the funds ---------- */
+.risks{background:var(--navy-700);color:var(--on-navy)}
+.risks h2{color:#fff}
+.risks .lead{color:var(--on-navy);margin-top:24px}
+.risk-list{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px}
+.risk-list h3{color:#fff;font-size:1.125rem}
+.risk-list p{margin-top:8px;color:var(--on-navy-2)}
+.returns{margin-top:72px;background:var(--navy-900);padding:32px;border-radius:2px;display:grid;gap:12px;max-width:860px}
+.returns h3{color:#fff}
+.returns p{color:var(--on-navy)}
+@media (max-width:760px){.risk-list{grid-template-columns:1fr}}
+
+/* ---------- Important information ---------- */
+.info .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 56px;margin-top:56px}
+.info .item{display:grid;gap:10px;min-width:0;align-content:start}
+.info .item h3{font-size:1rem}
+.info .item p,.info .item li{font-size:.9375rem}
+.info .item ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.info address{font-style:normal}
+@media (max-width:760px){.info .cols{grid-template-columns:1fr}}
+
+/* ---------- Review notes ---------- */
+.notes{background:var(--review)}
+.notes h2,.notes h3{color:var(--review-ink)}
+.notes .lead{color:var(--review-ink);margin-top:20px}
+.table-scroll{overflow-x:auto;margin-top:48px;background:var(--paper);border-radius:2px}
+.notes table{width:100%;min-width:720px;border-collapse:collapse;font-size:.9375rem}
+.notes th,.notes td{text-align:left;vertical-align:top;padding:16px 18px}
+.notes thead th{font-size:.8125rem;font-weight:600;color:var(--ink-3);background:var(--paper-3)}
+.notes tbody tr:nth-child(even){background:var(--paper-2)}
+.notes td:first-child{font-variant-numeric:tabular-nums;color:var(--ink-3);width:44px}
+.notes td:nth-child(2){font-weight:600;color:var(--ink);width:28%}
+@media (max-width:640px){
+  .notes table{min-width:0}
+  .notes thead{display:none}
+  .notes tr{display:grid;grid-template-columns:32px 1fr;gap:4px 8px;padding:16px}
+  .notes td{display:block;padding:0;width:auto!important}
+  .notes td:last-child{grid-column:2}
+}
+.open{margin-top:56px;display:grid;gap:16px;max-width:var(--measure)}
+.open ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--review-ink)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy-900);color:var(--on-navy-2);font-size:var(--t-small);padding-block:56px}
+footer .wrap{display:grid;gap:12px}
+footer a{color:var(--on-navy)}
+
+/* ---------- Gate ---------- */
+.gate{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(0,18,42,.78);overflow-y:auto}
+.gate-panel{background:var(--paper);color:var(--ink-2);width:min(560px,100%);border-radius:2px;padding:clamp(28px,5vw,44px);display:grid;gap:22px;box-shadow:0 24px 60px rgba(0,10,24,.45)}
+.gate-panel h2{font-size:clamp(1.625rem,3vw,2rem)}
+.gate-panel p{font-size:.9375rem}
+.field{display:grid;gap:8px}
+.field label,.field legend{font-weight:600;color:var(--ink);font-size:.9375rem}
+.field select{appearance:none;width:100%;min-height:48px;padding:0 44px 0 14px;font:400 1rem var(--sans);color:var(--ink);background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23002E5F' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center;border:1px solid #9AA4AD;border-radius:2px}
+.field select:hover{border-color:var(--ink)}
+.check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:.9375rem}
+.check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--navy-600)}
+.gate .error{color:#A3260F;font-size:.875rem;font-weight:500}
+.gate .stop{display:grid;gap:16px}
+.gate-panel .btn-primary{width:100%}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <form class="gate-panel" id="gate-form" novalidate>
+    <h2 id="gate-title">Before you continue</h2>
+    <p>This page describes funds reserved for professional investors and, where a fund's rules allow it, other eligible investors. It is not intended for US Persons or for anyone in a country where its distribution is not permitted.</p>
+    <div class="field">
+      <label for="gate-country">Country of residence</label>
+      <select id="gate-country" required>
+        <option value="">Select a country</option>
+        <option>Italy</option>
+        <option>Malta</option>
+        <option>Spain</option>
+        <option>Greece</option>
+        <option>Germany</option>
+        <option>Switzerland</option>
+        <option>Another EU or EEA country</option>
+        <option>United Kingdom</option>
+        <option value="us">United States</option>
+        <option>Another country</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="gate-category">Investor category</label>
+      <select id="gate-category" required>
+        <option value="">Select your category</option>
+        <option value="professional">Professional client (MiFID II, Annex II)</option>
+        <option value="eligible">Eligible investor under a fund's rules</option>
+        <option value="retail">Retail investor</option>
+      </select>
+    </div>
+    <label class="check" for="gate-confirm"><input type="checkbox" id="gate-confirm"><span>I am not a US Person, I am reading this page from a country where that is permitted, and the category above is correct.</span></label>
+    <p class="error" id="gate-error" hidden>Choose your country and investor category, then tick the confirmation.</p>
+    <button class="btn btn-primary" type="submit" id="gate-continue">Continue</button>
+    <div class="stop" id="gate-stop" hidden>
+      <p><strong>This page is not available to you.</strong> The funds it describes are not offered to retail investors or to US Persons. Framont Access has guides and products that are open to everyone.</p>
+      <a class="btn btn-primary" href="https://access.framontmanagement.com/">Go to Framont Access</a>
+    </div>
+  </form>
+</div>
+
+<div id="page" inert>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="https://access.framontmanagement.com/">Framont Access<span>Real estate</span></a>
+    <nav aria-label="Sections">
+      <a href="#funds">Funds</a>
+      <a href="#risks">Risks</a>
+      <a href="#information">Important information</a>
+      <a class="btn btn-primary" href="https://access.framontmanagement.com/#/en/funds"><span class="long">Request documentation</span><span class="short">Documents</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-media">
+    <video id="hero-video" muted loop playsinline preload="none" poster="media/hero-poster.jpg" aria-hidden="true">
+      <source src="media/hero-loop.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap">
+    <h1 id="hero-title">Real estate, inside regulated funds</h1>
+    <p class="lead">Seven funds managed by Framont &amp; Partners Management Ltd invest in Italian real estate or in credit secured by property. Three single-asset opportunities in Italy, Spain and Greece are presented to professional investors on Framont Access.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#funds">See the funds</a>
+      <a class="btn btn-quiet" href="#risks">Read the risks</a>
+    </div>
+    <p class="notice"><strong>Marketing communication.</strong> For professional and eligible investors only. Capital is at risk and the funds are illiquid. Read the fund documents before any investment decision.</p>
+    <p class="credit">Film and photographs on this page are illustrative and AI-generated. They do not show assets held by any Framont fund or vehicle.</p>
+  </div>
+</section>
+
+<section class="roles-section" aria-labelledby="roles-title">
+  <div class="wrap roles">
+    <div class="head">
+      <h2 id="roles-title">The fund invests. Framont manages the fund.</h2>
+      <p class="lead">Each fund holds its properties or credits as a segregated pool, separate from Framont's own assets and from every other fund. Investors subscribe units of the fund, and Framont &amp; Partners Management Ltd manages it on their behalf.</p>
+    </div>
+    <dl>
+      <div>
+        <dt>The fund</dt>
+        <dd>A closed-ended alternative investment fund with its own rules, assets and investors. Property is bought, and credit is held, for the account of the fund, never for Framont's own account.</dd>
+      </div>
+      <div>
+        <dt>The manager</dt>
+        <dd>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. It manages each fund's portfolio and risk, and owes its duties to the fund's investors.</dd>
+      </div>
+      <div>
+        <dt>The other appointed parties</dt>
+        <dd>Each fund's depositary and its other service providers are named in its documents.</dd>
+      </div>
+      <div>
+        <dt>Conflicts of interest</dt>
+        <dd>Where Framont or a vehicle it manages is involved on more than one side of a transaction, the conflict is identified, managed and disclosed to investors under Framont's conflicts of interest policy.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="funds" id="funds" aria-labelledby="funds-title">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="funds-title">Seven funds and three opportunities</h2>
+      <p class="lead">Five funds invest in real estate. Two hold credit positions secured by property. The single-asset opportunities are structured through MFSA-regulated vehicles and shown at teaser level.</p>
+    </div>
+
+    <div class="group">
+      <figure>
+        <img src="media/rome-rooftops.jpg" width="1600" height="1074" alt="Terracotta rooftops and a church dome in central Rome at first light." loading="lazy">
+        <figcaption>Illustrative image, AI-generated.</figcaption>
+      </figure>
+      <div class="list">
+        <h3>Real estate funds</h3>
+        <p>Italian reserved alternative investment funds, closed-ended, for professional investors and, where the fund rules allow, eligible investors. Their documentation is the Fund Rules (Regolamento di Gestione), available on request.</p>
+        <ul class="vehicles">
+          <li class="vehicle">
+            <span class="name">Gentile da Fabriano</span>
+            <span class="what">Real estate, property rights and property-holding companies, managed for patient capital over a long horizon.</span>
+            <span class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Horizon up to 30 years</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">Orizzonte</span>
+            <span class="what">Acquires, enhances and disposes of real estate. A dedicated Real Estate Management Committee informs significant investment and divestment decisions.</span>
+            <span class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">Wright</span>
+            <span class="what">Real estate and shares of real estate companies, with a focus on Rome.</span>
+            <span class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Professional investors, or subscriptions from €500,000</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">Real Sequoia</span>
+            <span class="what">At least two-thirds in real estate and property rights. Funds the construction, completion and development of the assets it holds.</span>
+            <span class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">Pinnacle Investment</span>
+            <span class="what">Residential, office, commercial, industrial and tourism assets in Italy, the European Union and the G8.</span>
+            <span class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></span>
+          </li>
+        </ul>
+        <p class="more"><a href="https://access.framontmanagement.com/#/en/funds">Fund details on Framont Access</a></p>
+      </div>
+    </div>
+
+    <div class="group flip">
+      <figure>
+        <img src="media/travertine-door.jpg" width="1100" height="1364" alt="A closed wooden double door set in a weathered travertine doorway, in low evening light." loading="lazy">
+        <figcaption>Illustrative image, AI-generated.</figcaption>
+      </figure>
+      <div class="list">
+        <h3>Credit secured by property</h3>
+        <p>These funds buy distressed credit positions, such as non-performing and unlikely-to-pay loans, secured on Italian real estate, and work them out. Returns depend on what is recovered and when.</p>
+        <ul class="vehicles">
+          <li class="vehicle">
+            <span class="name">Hubble Capital</span>
+            <span class="what">Credit compartment that acquires and works out distressed credit positions largely secured by real estate collateral. Funded through investor commitments and capital calls.</span>
+            <span class="facts"><span>Closed-ended reserved AIF, credit compartment</span><span>Italy</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">CIREDCO Fund 1</span>
+            <span class="what">Co-investment vehicle for Italian NPLs, UTPs and distressed positions secured by property. Value comes from restructuring, settlement, enforcement or sale of the collateral.</span>
+            <span class="facts"><span>Closed-ended Notified AIF</span><span>Malta</span><span>Offering Memorandum and Supplement on request</span></span>
+          </li>
+        </ul>
+        <p class="more"><a href="https://access.framontmanagement.com/#/en/funds">Fund details on Framont Access</a></p>
+      </div>
+    </div>
+
+    <div class="group">
+      <figure class="wide">
+        <img src="media/italy-courtyard.jpg" width="1600" height="1070" alt="Stone arches and lit lanterns in the courtyard of a restored Italian country estate at dusk." loading="lazy">
+        <figcaption>Illustrative image, AI-generated.</figcaption>
+      </figure>
+      <div class="list">
+        <h3>Single-asset opportunities</h3>
+        <p>Individual transactions for professional and institutional investors only. Location, business plan and documentation are released after eligibility verification and, where required, a non-disclosure agreement.</p>
+        <ul class="vehicles">
+          <li class="vehicle">
+            <span class="name">Value-add hospitality, Italy</span>
+            <span class="what">Acquisition and luxury repositioning of a hospitality asset.</span>
+            <span class="facts"><span>MFSA-regulated SPV, share deal</span><span>Illiquid</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">Adaptive re-use hotel, Spain</span>
+            <span class="what">Conversion of an approved industrial building in a Spanish city into a 71-key four-star hotel with a retail unit, run by an international operator under a management agreement.</span>
+            <span class="facts"><span>MFSA-regulated SPV with senior debt</span><span>Illiquid</span></span>
+          </li>
+          <li class="vehicle">
+            <span class="name">Greek real estate portfolio</span>
+            <span class="what">Off-market villas, hotels, development land, coastal assets and a private island.</span>
+            <span class="facts"><span>SPV, club deal or AMC</span><span>NDA or NCNDA before disclosure</span></span>
+          </li>
+        </ul>
+        <p class="more"><a href="https://access.framontmanagement.com/#/en/deals">Opportunities on Framont Access</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collateral" aria-labelledby="collateral-title">
+  <div class="wrap layout">
+    <div class="text">
+      <h2 id="collateral-title">A property is worth what it sells for under pressure</h2>
+      <p>The credit funds value collateral from comparable sales, not from the appraisal. Realised prices are adjusted for how long similar properties take to sell locally, then reduced again for a forced sale. Three figures result, and a position is priced on the lower ones.</p>
+      <p class="review"><strong>To confirm before publication.</strong> This method comes from the earlier draft. The investment team needs to confirm that it describes how Hubble Capital and CIREDCO Fund 1 actually value collateral.</p>
+    </div>
+    <div class="ladder" id="ladder" role="img" aria-label="Three bars, each shorter than the one before: market value, forced-sale value and net recovery value.">
+      <div class="rung"><div class="label"><b>Market value</b><span>from realised comparable prices</span></div><div class="bar-track"><div class="bar-fill" style="--w:100%"></div></div></div>
+      <div class="rung sized"><div class="label"><b>Forced-sale value</b><span>after the local liquidity discount</span></div><div class="bar-track"><div class="bar-fill" style="--w:74%"></div></div></div>
+      <div class="rung"><div class="label"><b>Net recovery value</b><span>after time and recovery costs</span></div><div class="bar-track"><div class="bar-fill" style="--w:58%"></div></div></div>
+      <p class="note">Bar lengths show the order of the three values, not real proportions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="markets" aria-labelledby="markets-title">
+  <div class="wrap markets-layout">
+    <figure>
+      <img src="media/spain-reuse.jpg" width="1100" height="1366" alt="A red-brick industrial building with tall arched windows, partly restored, with scaffolding on one corner." loading="lazy">
+      <figcaption>Illustrative image, AI-generated.</figcaption>
+    </figure>
+    <div class="markets-text">
+    <h2 id="markets-title">Where the assets are</h2>
+    <div class="grid">
+      <div class="market">
+        <h3>Italy</h3>
+        <p>Where most of the activity is: five Italian real estate funds, one of them focused on Rome, and two funds holding credit secured on Italian property.</p>
+        <p class="via">Seven funds, one hospitality opportunity</p>
+      </div>
+      <div class="market">
+        <h3>Spain</h3>
+        <p>One development opportunity: an industrial building converted into a hotel in a Spanish city.</p>
+        <p class="via">One single-asset opportunity</p>
+      </div>
+      <div class="market">
+        <h3>Greece</h3>
+        <p>An off-market portfolio across the islands, the coast and Athens, disclosed under a non-disclosure agreement.</p>
+        <p class="via">One portfolio opportunity</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="risks" id="risks" aria-labelledby="risks-title">
+  <div class="wrap">
+    <h2 id="risks-title">The risks</h2>
+    <p class="lead">Real estate and distressed credit can lose value, and money committed to these funds cannot be taken out on demand. Read the risk sections of each fund's documents in full.</p>
+    <ul class="risk-list">
+      <li><h3>Loss of capital</h3><p>You can lose part or all of the money you invest. None of these funds or vehicles protects or guarantees capital.</p></li>
+      <li><h3>Illiquidity and lock-up</h3><p>The funds are closed-ended. Units cannot normally be redeemed before the fund ends, which for one fund can be up to 30 years, and there may be no buyer for them.</p></li>
+      <li><h3>Concentration</h3><p>A single-asset opportunity depends on one property and one business plan. A fund may hold few assets, in few places.</p></li>
+      <li><h3>Development and sales</h3><p>Construction can cost more and take longer than planned, permits can be delayed, and completed units or rooms may not sell or let as expected.</p></li>
+      <li><h3>Credit and recovery</h3><p>Distressed credits may recover less than their purchase price, or later than expected. Enforcement through the courts can take years.</p></li>
+      <li><h3>Valuation</h3><p>Property values are estimates until an asset is sold. The price achieved in a sale can be well below the last valuation.</p></li>
+      <li><h3>Leverage</h3><p>Where a vehicle borrows, as the Spanish hotel SPV does through senior debt, losses fall on investors first and are larger as a result.</p></li>
+      <li><h3>Country, legal and tax</h3><p>Rules on property, enforcement and tax differ between Italy, Spain and Greece and can change, affecting value and timing.</p></li>
+      <li><h3>Issuer risk on certificates</h3><p>Where an opportunity is offered through an actively managed certificate, you also carry the credit risk of the certificate's issuer.</p></li>
+      <li><h3>Notified AIF</h3><p>CIREDCO Fund 1 is a Malta Notified AIF. It is not authorised by the MFSA, which relies on the AIFM for its oversight.</p></li>
+    </ul>
+    <div class="returns">
+      <h3>About returns</h3>
+      <p>This page shows no return figures. Where a fund's documents state a target return, it is an objective, not a forecast, and is stated before fees, costs and taxes. Past and target returns are not a reliable indicator of future results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="information" aria-labelledby="info-title">
+  <div class="wrap">
+    <h2 id="info-title">Important information</h2>
+    <div class="cols">
+      <div class="item">
+        <h3>What this page is</h3>
+        <p>This is a marketing communication. It is not an offer, a solicitation, or investment, legal or tax advice. Decisions to invest must be based on each fund's offering documents.</p>
+      </div>
+      <div class="item">
+        <h3>Documents to read first</h3>
+        <p>The Fund Rules for the Italian funds; the Offering Memorandum and Offering Supplement for CIREDCO Fund 1; the deal documentation for each opportunity; and a key information document where one is required. They are available on request from Framont &amp; Partners Management Ltd, in <span class="todo">languages to confirm</span>.</p>
+        <p>A summary of investor rights is available at <span class="todo">link to confirm</span>.</p>
+      </div>
+      <div class="item">
+        <h3>Who can invest, and where</h3>
+        <p>The funds are reserved for professional investors and, where a fund's rules allow it, eligible investors. They are not offered to retail investors. This page is not directed at US Persons or at anyone in a country where its distribution would be unlawful. Each fund is marketed only in the countries where it has been notified.</p>
+        <p>Framont &amp; Partners Management Ltd may decide to end the arrangements for marketing a fund in a country (de-notification).</p>
+      </div>
+      <div class="item">
+        <h3>Regulation</h3>
+        <p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. A copy of the licence is on the <a href="https://www.mfsa.mt/financial-services-register/">MFSA Financial Services Register</a>. The MFSA's authorisation does not mean that it has approved these funds or this communication.</p>
+      </div>
+      <div class="item">
+        <h3>Conflicts of interest and sustainability</h3>
+        <ul>
+          <li>Conflicts of interest policy: <span class="todo">link to confirm</span></li>
+          <li><a href="https://www.framontmanagement.com/esg-policy">ESG Policy</a>, the entity-level sustainability disclosure</li>
+          <li>SFDR classification for each fund (Article 6 or 8): <span class="todo">to confirm</span></li>
+        </ul>
+      </div>
+      <div class="item">
+        <h3>Complaints</h3>
+        <p>Complaints procedure: <span class="todo">link to confirm</span>. Eligible complainants can refer an unresolved complaint to the <a href="https://financialarbiter.org.mt/">Office of the Arbiter for Financial Services</a> in Malta. Position under the Investor Compensation Scheme: <span class="todo">to confirm</span>.</p>
+      </div>
+      <div class="item">
+        <h3>The company</h3>
+        <address>Framont &amp; Partners Management Ltd<br>Dragonara Business Centre, 5th Floor, Dragonara Road, San Ġiljan STJ 3141, Malta<br>Company registration number <span class="todo">to confirm</span><br>VAT MT22666318</address>
+      </div>
+      <div class="item">
+        <h3>Privacy, cookies and AI</h3>
+        <ul>
+          <li><a href="https://www.iubenda.com/privacy-policy/85437556/full-legal">Privacy Policy</a> and <a href="https://www.iubenda.com/privacy-policy/85437556/cookie-policy">Cookie Policy</a></li>
+          <li>This page sets no cookies of its own and loads its fonts from its own server.</li>
+          <li>The film and photographs were generated with AI tools. <a href="https://www.framontmanagement.com/ai-disclosure/">AI disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="notes" aria-labelledby="notes-title">
+  <div class="wrap">
+    <h2 id="notes-title">Review notes</h2>
+    <p class="lead">For Francesca Caruso's review of 21 October 2026. This section and the highlighted items are removed before publication. Regulatory references still need confirming with the legal adviser.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">#</th><th scope="col">Point raised</th><th scope="col">What changed</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Framont shown as the lender</td><td>Lending language removed. Property and credit are described as held for the account of each fund, as a segregated pool; Framont is named only as the manager (section "The fund invests").</td></tr>
+          <tr><td>2</td><td>Loan servicing for third parties</td><td>Service removed.</td></tr>
+          <tr><td>3</td><td>Capital Solutions and advisory for developers</td><td>Service removed. No structuring or advisory offer to borrowers remains.</td></tr>
+          <tr><td>4</td><td>Separate account</td><td>Removed.</td></tr>
+          <tr><td>5</td><td>"Since 2026" claim on Italian lending</td><td>Removed. The page makes no claim about the origination regime.</td></tr>
+          <tr><td>6</td><td>"MFSA licensed, EU passport" badge; Dominican Republic</td><td>Badge removed. Marketing is described per fund and per notified country. The Dominican Republic is removed: no current real estate fund or opportunity invests there.</td></tr>
+          <tr><td>7</td><td>Marketing communication or pre-marketing</td><td>The page describes only existing funds and opportunities already listed on Framont Access, and is labelled a marketing communication in the hero and in Important information.</td></tr>
+          <tr><td>8</td><td>Audience</td><td>"Private investors" and the €50,000 minimum removed. An entry gate asks for country and investor category and turns away retail investors and US Persons.</td></tr>
+          <tr><td>9</td><td>Target returns and bracketed figures</td><td>All target returns, minimum tickets and "double-digit yields" removed. The one remaining amount is Wright's €500,000 eligibility threshold, as listed on Access.</td></tr>
+          <tr><td>10</td><td>No risks shown</td><td>A risks section, given the same space and weight as the fund list, plus an About returns note.</td></tr>
+          <tr><td>11</td><td>Operational promises</td><td>Co-investment, drawdown, custody and ten-day decision claims removed. The collateral method is marked for confirmation.</td></tr>
+          <tr><td>12</td><td>Conflicts of interest</td><td>"Clients, not counterparties" removed. Roles and the conflicts policy are stated; the policy link is pending.</td></tr>
+          <tr><td>13</td><td>Company details and trading name</td><td>Full name with Ltd, address and VAT added; licence wording made identical everywhere (AIFM and UCITS management company). "Framont Real Estate" is no longer used as a name: the page sits under Framont Access.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="open">
+      <h3>Still open</h3>
+      <ul>
+        <li>Company registration number, conflicts of interest policy, complaints procedure and summary of investor rights: links or text to supply.</li>
+        <li>Investor Compensation Scheme position, and the SFDR article for each fund.</li>
+        <li>Languages in which each fund's documents are available.</li>
+        <li>The countries each fund is notified in, which decide the country list in the entry gate.</li>
+        <li>Whether the collateral valuation method applies to Hubble Capital and CIREDCO Fund 1.</li>
+        <li>Italian version, after the English text is approved.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Framont &amp; Partners Management Ltd, licensed by the Malta Financial Services Authority as an alternative investment fund manager and a UCITS management company. Marketing communication. Capital at risk.</p>
+    <p>Draft for compliance review, not published. <a href="https://access.framontmanagement.com/">Framont Access</a></p>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var gate=document.getElementById("gate"),page=document.getElementById("page"),
+      form=document.getElementById("gate-form"),country=document.getElementById("gate-country"),
+      category=document.getElementById("gate-category"),confirmBox=document.getElementById("gate-confirm"),
+      error=document.getElementById("gate-error"),stop=document.getElementById("gate-stop"),
+      cont=document.getElementById("gate-continue"),video=document.getElementById("hero-video");
+  var KEY="framont-re-gate";
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function startFilm(){
+    if(reduce||!video)return;
+    video.preload="auto";
+    var p=video.play();
+    if(p&&p.catch)p.catch(function(){});
+  }
+  function open(){
+    gate.hidden=true;
+    page.removeAttribute("inert");
+    startFilm();
+    watchLadder();
+  }
+  function remembered(){try{return sessionStorage.getItem(KEY)==="ok"}catch(e){return false}}
+  function remember(){try{sessionStorage.setItem(KEY,"ok")}catch(e){}}
+
+  if(remembered()){open()}else{country.focus()}
+
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(!country.value||!category.value||!confirmBox.checked){error.hidden=false;return}
+    error.hidden=true;
+    if(country.value==="us"||category.value==="retail"){
+      stop.hidden=false;cont.hidden=true;
+      stop.querySelector("a").focus();
+      return;
+    }
+    remember();open();
+  });
+  [country,category].forEach(function(el){el.addEventListener("change",function(){stop.hidden=true;cont.hidden=false})});
+
+  function watchLadder(){
+    var l=document.getElementById("ladder");
+    if(!l||!("IntersectionObserver" in window)){return}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){l.classList.add("in");io.disconnect()}});
+    },{threshold:.4});
+    io.observe(l);
+  }
+})();
+</script>
+</body>
+</html>
