@@ -9,6 +9,7 @@
 <meta name="description" content="Draft for compliance review: the real estate and property-backed credit funds managed by Framont &amp; Partners Management Ltd.">
 <meta name="theme-color" content="#05070D">
 <link rel="preload" as="font" type="font/woff2" href="fonts/bodoni-moda-italic-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/bodoni-moda-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/hanken-grotesk-latin.woff2" crossorigin>
 <link rel="preload" as="image" href="media/sunrise-poster-dark.jpg">
 <script type="importmap">
@@ -19,15 +20,16 @@
 </script>
 <style>
 /* Layout: the page is a dawn. It opens in near-black night, the sunrise film is driven by
-   the scroll, and the light then stays in the photographs, films and the one orange accent
-   while the reading surfaces stay cool white. One grid; a fixed right-hand index whose line
-   warms from night blue to sunrise orange; pinned sequences travel sideways (the funds) and
-   west to east (the 3D Mediterranean). Single committed look, every colour set here. */
+   the scroll, day breaks between the structure and the funds, and the light then stays in
+   the photographs, films and the one orange accent while the reading surfaces stay cool
+   white. One grid with equal outer margins; a fixed right-hand index whose line warms from
+   night blue to sunrise orange and steps aside while a pinned sequence plays; pinned
+   sequences travel sideways (the funds) and west to east (the 3D Mediterranean).
+   Single committed look: every colour is set here. */
 :root{
   color-scheme:light;
   --night:#05070D;
   --night-2:#0A1222;
-  --navy:#001F42;
   --navy-2:#002E5F;
   --ink:#0B1A2E;
   --ink-2:#3E4A57;
@@ -46,56 +48,67 @@
   --display:"Bodoni Moda",Didot,"Bodoni 72","Times New Roman",serif;
   --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
-  --t-hero:clamp(2.75rem,7.4vw,6.25rem);
-  --t-h2:clamp(2.1rem,4.6vw,4rem);
+  /* Type scale: one very large size, one section size, one display size for named
+     things, then body and small. */
+  --t-hero:clamp(2.6rem,7vw,6rem);
+  --t-h2:clamp(2.1rem,4.2vw,3.75rem);
+  --t-name:1.75rem;
   --t-h3:1.125rem;
+  --t-body:1.0625rem;
+  --t-small:.8125rem;
+
   --section:clamp(104px,13vw,200px);
-  --measure:62ch;
+  --measure:66ch;
   --ease:cubic-bezier(.16,1,.3,1);
   --header-h:76px;
+  /* the left edge of .wrap content, for full-bleed rows that line up with it */
+  --edge:max(28px,env(safe-area-inset-left,0px));
 }
+@media (max-width:560px){:root{--edge:16px}}
+@media (min-width:1100px){:root{--edge:max(150px,calc((100vw - 1280px)/2 + 150px))}}
 @font-face{font-family:"Bodoni Moda";src:url("fonts/bodoni-moda-latin.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
 @font-face{font-family:"Bodoni Moda";src:url("fonts/bodoni-moda-italic-latin.woff2") format("woff2");font-weight:400 900;font-style:italic;font-display:swap}
 @font-face{font-family:"Hanken Grotesk";src:url("fonts/hanken-grotesk-latin.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--header-h)}
-body{margin:0;background:var(--paper);color:var(--ink-2);font-family:var(--sans);font-size:1.0625rem;line-height:1.68;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--header-h);caret-color:var(--sun);accent-color:var(--navy-2);scrollbar-color:#5B6672 transparent}
+body{margin:0;background:var(--paper);color:var(--ink-2);font-family:var(--sans);font-size:var(--t-body);line-height:1.68;-webkit-font-smoothing:antialiased}
 img,video,canvas{display:block;max-width:100%;height:auto}
 a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:.22em}
 a:hover{color:var(--sun-ink)}
 ::selection{background:rgba(255,130,0,.26);color:var(--night)}
 :focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+.no-ring:focus,.no-ring:focus-visible{outline:none}
 h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance}
-h1,h2{font-family:var(--display);font-weight:500;font-optical-sizing:auto;letter-spacing:-.02em;line-height:1.02}
+h1,h2{font-family:var(--display);font-weight:500;font-optical-sizing:auto;letter-spacing:-.02em;line-height:1.04}
 h2{font-size:var(--t-h2)}
 h3{font-size:var(--t-h3);font-weight:600;line-height:1.35}
-em{font-family:var(--display);font-style:italic;font-weight:400}
+.name{font:500 var(--t-name)/1.15 var(--display);letter-spacing:-.01em}
 p{margin:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .wrap{max-width:1280px;margin:0 auto;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
 @media (max-width:560px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
-@media (min-width:1100px){.wrap{padding-right:max(150px,env(safe-area-inset-right,0px))}}
+@media (min-width:1100px){.wrap{padding-left:max(150px,env(safe-area-inset-left,0px));padding-right:max(150px,env(safe-area-inset-right,0px))}}
 section{padding-block:var(--section)}
 .lead{font-size:clamp(1.125rem,1.5vw,1.3125rem);line-height:1.6;max-width:var(--measure)}
-.label{font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:600 .9375rem/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:6px;font:600 .9375rem/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
 .btn-sun{background:var(--sun);color:var(--night)}
 .btn-sun:hover{background:var(--sun-2);color:var(--night)}
 .btn-line{color:var(--on-night);border-color:rgba(242,244,247,.4)}
 .btn-line:hover{color:var(--on-night);border-color:var(--on-night)}
 
 .review{background:var(--review);color:var(--review-ink);font-size:.875rem;line-height:1.55;padding:12px 16px;border-radius:4px;max-width:var(--measure)}
-.todo{background:var(--review);color:var(--review-ink);padding:1px 6px;border-radius:3px;font-weight:500;white-space:nowrap}
+.todo{background:var(--review);color:var(--review-ink);padding:1px 6px;border-radius:3px;font-weight:500;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* ---------------- Header and the flying mark ---------------- */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--night)}
 .bar{position:fixed;inset:env(safe-area-inset-top,0px) 0 auto 0;height:var(--header-h);z-index:30;pointer-events:none}
-.bar::before{content:"";position:absolute;inset:0;background:rgba(5,7,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .5s var(--ease)}
+.bar::before{content:"";position:absolute;inset:0;background:var(--night);opacity:0;transition:opacity .5s var(--ease)}
 .bar.solid::before{opacity:1}
-.bar .wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:flex-end;gap:18px}
-@media (min-width:1100px){.bar .wrap{padding-right:max(28px,env(safe-area-inset-right,0px))}}
+.bar .wrap{position:relative;max-width:none;height:100%;display:flex;align-items:center;justify-content:flex-end;padding-left:28px;padding-right:max(28px,env(safe-area-inset-right,0px))}
+@media (max-width:560px){.bar .wrap{padding-right:max(16px,env(safe-area-inset-right,0px))}}
 .bar .btn{pointer-events:auto;min-height:42px;padding:0 20px;font-size:.875rem}
 .bar .btn .short{display:none}
 @media (max-width:560px){.bar .btn .long{display:none}.bar .btn .short{display:inline}}
@@ -105,27 +118,31 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .mark{position:fixed;left:0;top:0;width:0;height:0;z-index:32;color:var(--on-night);text-decoration:none}
 .mark .m1,.mark .m2{position:absolute;left:0;top:0;display:block;transform-origin:0 0;will-change:transform;white-space:nowrap}
 .mark .m1{font:500 clamp(.8rem,1.35vw,1.05rem)/1 var(--sans);letter-spacing:.42em;text-transform:uppercase}
-.mark .m2{font:italic 400 clamp(3.4rem,10.5vw,9.5rem)/1 var(--display);letter-spacing:-.025em;padding:0 .04em .08em 0}
+.mark .m2{font:italic 400 clamp(3.4rem,10vw,6rem)/1 var(--display);letter-spacing:-.025em;padding:0 .04em .08em 0}
 .mark:hover{color:#fff}
-html.motion .mark .m2 .ink{display:block;clip-path:inset(0 100% 0 0);animation:wipe 1.8s .35s var(--ease) forwards}
-html.motion .mark .m1 .ink{display:block;opacity:0;animation:fadein 1.4s .15s var(--ease) forwards}
+.mark:focus-visible{outline:none}
+.mark:focus-visible .ink{outline:2px solid var(--sun);outline-offset:6px;border-radius:2px}
+.mark .ink{display:block}
+html.motion .mark .m2 .ink{clip-path:inset(0 100% 0 0);animation:wipe 1.8s .35s var(--ease) forwards}
+html.motion .mark .m1 .ink{opacity:0;animation:fadein 1.4s .15s var(--ease) forwards}
 @keyframes wipe{to{clip-path:inset(-10% -4% -10% 0)}}
 @keyframes fadein{to{opacity:1}}
 
 /* ---------------- Right-hand index ---------------- */
-.index{position:fixed;right:max(24px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:29;display:none}
+.index{position:fixed;right:max(24px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:29;display:none;transition:opacity .5s var(--ease)}
 @media (min-width:1100px){.index{display:block}}
-.index ol{list-style:none;margin:0;padding:0 0 0 22px;display:grid;gap:14px;position:relative}
-.index ol::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:2px;border-radius:2px;background:rgba(127,140,156,.28)}
-.index .fill{position:absolute;left:0;top:4px;width:2px;border-radius:2px;height:calc((100% - 8px) * var(--p,0));background:linear-gradient(180deg,#22436F 0%,#7A5A8C 45%,var(--sun) 100%)}
-.index .sun{position:absolute;left:-4px;top:calc(4px + (100% - 8px) * var(--p,0));width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px rgba(255,130,0,.18),0 0 18px rgba(255,130,0,.55)}
-.index a{display:block;font-size:.8125rem;font-weight:500;letter-spacing:.02em;text-decoration:none;padding:2px 0;transition:color .4s var(--ease),transform .4s var(--ease)}
-.index[data-tone="dark"] a{color:rgba(242,244,247,.55)}
-.index[data-tone="light"] a{color:#5B6672}
-.index a:hover{transform:translateX(-3px)}
-.index[data-tone="dark"] a[aria-current="true"]{color:#fff}
-.index[data-tone="light"] a[aria-current="true"]{color:var(--ink)}
-.index a[aria-current="true"]{font-weight:600}
+.index.away{opacity:0;pointer-events:none}
+.index .track{position:absolute;left:0;top:4px;bottom:4px;width:2px;border-radius:2px;background:rgba(127,140,156,.3)}
+.index .fill{position:absolute;left:0;top:0;width:2px;border-radius:2px;height:calc(100% * var(--p,0));background:var(--fill,#22436F)}
+.index .sun{position:absolute;left:-4px;top:calc(100% * var(--p,0));width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--sun)}
+.index ol{list-style:none;margin:0;padding:0 0 0 22px;display:grid;gap:14px}
+.index a{display:block;font-size:var(--t-small);font-weight:500;letter-spacing:.02em;text-decoration:none;padding:2px 0;transition:color .4s var(--ease)}
+.index a[data-tone="dark"]{color:rgba(242,244,247,.62)}
+.index a[data-tone="light"]{color:var(--ink-3)}
+.index a[data-tone="dark"][aria-current]{color:#fff}
+.index a[data-tone="light"][aria-current]{color:var(--ink)}
+.index a[aria-current]{font-weight:600}
+.index a:hover{text-decoration:underline}
 
 /* ---------------- Hero: the sunrise ---------------- */
 .hero{position:relative;padding:0;background:var(--night);color:var(--on-night)}
@@ -134,7 +151,9 @@ html.motion .hero{height:300vh}
 html.motion .hero-stage{position:sticky;top:0}
 .hero-stage video,.hero-stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;z-index:-3}
 .hero-shade{position:absolute;inset:0;z-index:-2;background:var(--night);opacity:.55;pointer-events:none}
+/* neutral scrims over the film, so the copy keeps its contrast against the sun */
 .hero-veil{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,rgba(5,7,13,.86) 0%,rgba(5,7,13,.45) 38%,rgba(5,7,13,0) 70%),linear-gradient(90deg,rgba(5,7,13,.55) 0%,rgba(5,7,13,0) 60%)}
+@media (max-width:560px){.hero-veil{background:linear-gradient(0deg,rgba(5,7,13,.92) 0%,rgba(5,7,13,.78) 55%,rgba(5,7,13,.1) 88%)}}
 .hero-copy{position:absolute;left:0;right:0;bottom:0;padding-bottom:clamp(40px,7vh,80px)}
 .hero h1{color:#fff;font-size:var(--t-hero)}
 @media (min-width:720px){.hero h1 .line > span{white-space:nowrap}}
@@ -145,158 +164,181 @@ html.motion .hero-stage{position:sticky;top:0}
 .hero .notice{margin-top:40px;font-size:.875rem;color:var(--on-night-2);max-width:74ch}
 .hero .notice strong{color:var(--on-night);font-weight:600}
 .cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;color:var(--on-night-2);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase}
-.cue i{display:block;width:1px;height:46px;background:linear-gradient(180deg,rgba(242,244,247,0),rgba(242,244,247,.8));animation:drip 2.4s var(--ease) infinite}
+.cue i{display:block;width:1px;height:46px;background:rgba(242,244,247,.7);animation:drip 2.4s var(--ease) infinite}
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 html:not(.motion) .cue{display:none}
 
 /* ---------------- Structure: words light up like morning ---------------- */
-.structure{background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%);color:var(--on-night)}
-.structure .statement{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.4vw,3.9rem);line-height:1.12;letter-spacing:-.015em;color:#fff;max-width:20ch;text-wrap:balance}
+.structure{background:var(--night);color:var(--on-night)}
+.structure .statement{font:400 var(--t-h2)/1.12 var(--display);letter-spacing:-.015em;color:#fff;max-width:24ch;text-wrap:balance}
 .structure .statement .w{transition:color .6s var(--ease)}
-html.motion .structure .statement .w{color:rgba(242,244,247,.2)}
+html.motion .structure .statement .w{color:rgba(242,244,247,.22)}
 html.motion .structure .statement .w.lit{color:#fff}
-.structure .statement em{color:var(--sun-2)}
-.roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 36px;margin-top:clamp(72px,9vw,128px)}
-.roles h3{color:#fff;font-size:1.0625rem}
-.roles p{margin-top:10px;color:var(--on-night-2);font-size:.9688rem}
-.roles .sunline{display:block;width:28px;height:2px;border-radius:2px;background:var(--sun);margin-bottom:22px}
-@media (max-width:960px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.roles{grid-template-columns:1fr}}
+.roles{display:grid;gap:44px;margin-top:clamp(72px,9vw,128px);max-width:980px;margin-left:auto}
+.roles > div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:10px 40px}
+.roles .name{color:#fff}
+.roles p{color:var(--on-night-2)}
+@media (max-width:760px){.roles > div{grid-template-columns:1fr}}
+
+/* Day breaks: a band between the night and the funds whose colour the scroll moves from
+   night to white. It is one flat colour at any moment, never a gradient. */
+.daybreak{height:56vh;background:var(--night)}
+html:not(.motion) .daybreak{display:none}
 
 /* ---------------- Funds: sideways travel ---------------- */
 .funds{background:var(--paper);padding:0}
 .funds-stage{position:relative}
-.funds-head{padding-top:var(--section)}
-.funds-head .lead{margin-top:22px}
-.rail{list-style:none;margin:0;padding:56px 0 var(--section);display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(28px,env(safe-area-inset-left,0px));-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
+.funds-head{padding-top:var(--section);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:20px 56px;align-items:end}
+.funds-head .lead{max-width:52ch}
+@media (max-width:900px){.funds-head{grid-template-columns:1fr}}
+.rail{list-style:none;margin:0;padding:48px var(--edge) 28px;display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--edge);-webkit-overflow-scrolling:touch;scrollbar-width:thin;align-items:flex-start}
 .rail > li{flex:0 0 auto;scroll-snap-align:start;min-width:0}
-.counter{display:none}
-html.travel .funds{height:var(--travel-h,300vh)}
-html.travel .funds-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);padding-top:calc(var(--header-h) + 24px)}
-html.travel .funds-head{padding-top:0}
-html.travel .rail-view{overflow:hidden;min-width:0}
-@media (min-width:1100px){html.travel .rail-view{margin-right:150px}}
-html.travel .rail{overflow:visible;scroll-snap-type:none;padding-block:36px 48px;will-change:transform;align-items:stretch}
-html.travel .counter{display:flex;align-items:center;gap:14px;position:absolute;left:max(28px,env(safe-area-inset-left,0px));bottom:28px;font-size:.8125rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rail:focus-visible{outline-offset:-2px}
+.counter{display:flex;align-items:center;gap:14px;padding:0 var(--edge) var(--section);font-size:var(--t-small);color:var(--ink-3);font-variant-numeric:tabular-nums}
 .counter .bar-t{width:160px;height:2px;border-radius:2px;background:var(--paper-3);overflow:hidden}
 .counter .bar-f{display:block;height:100%;width:100%;background:var(--sun);transform-origin:left;transform:scaleX(var(--p,0))}
+html.travel .funds{height:var(--travel-h,300vh)}
+html.travel .funds-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;padding-top:calc(var(--header-h) + 40px);--head-w:clamp(400px,38vw,580px)}
+/* the heading travels as the first column of the row: it stands above the shared title line
+   like the photographs, and its lead starts on that line (top set from the script) */
+html.travel .funds-head{position:absolute;left:var(--edge);top:0;width:var(--head-w);max-width:none;margin:0;padding:0;display:block;z-index:1;will-change:transform}
+html.travel .funds-head .lead{margin-top:22px}
+html.travel .rail-view{overflow:hidden;min-width:0;display:flex;align-items:center}
+/* one shared baseline: every title starts on row 2, so the row reads as a line of type, not a ragged edge */
+html.travel .rail{overflow:visible;scroll-snap-type:none;padding-block:24px;padding-left:calc(var(--edge) + var(--head-w) + 72px);will-change:transform;display:grid;grid-auto-flow:column;grid-template-rows:minmax(0,1fr) auto;align-items:stretch;gap:22px 56px;height:min(100%,680px)}
+html.travel .card{width:320px}
+html.travel .rail > .card{grid-row:2}
+html.travel .rail > .panel{grid-row:1 / span 2;grid-template-rows:subgrid}
+html.travel .card .facts{margin-top:auto;padding-top:4px}
+html.travel .panel figure{min-height:0}
+html.travel .counter{padding-bottom:36px}
+html.travel .counter .swipe{display:none}
+/* wide screens without the travel (touch, reduced motion): a plain grid, no sideways scroll */
+@media (min-width:900px){
+  html:not(.travel) .rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));overflow:visible;scroll-snap-type:none;gap:56px 40px;padding-left:var(--edge);padding-right:var(--edge)}
+  html:not(.travel) .rail .panel{grid-column:span 2;width:auto}
+  html:not(.travel) .rail .card,html:not(.travel) .rail .end{width:auto}
+  html:not(.travel) .counter{display:none}
+}
 
-.card{width:min(340px,78vw);background:var(--paper-2);border-radius:6px;padding:30px 28px 28px;display:flex;flex-direction:column;gap:14px;min-height:min(58vh,520px)}
-.card .num{display:block;overflow:hidden;font:italic 400 clamp(3rem,5vw,4.5rem)/1 var(--display);color:var(--sun-ink);letter-spacing:-.02em;margin-bottom:auto;padding-bottom:28px}
-.card .num span{display:block;transition:transform 1s var(--ease)}
-html.travel .card .num span{transform:translateY(105%)}
-html.travel .card.seen .num span{transform:none}
-.card h3{font:500 1.625rem/1.15 var(--display);letter-spacing:-.01em}
+.card{width:min(300px,76vw);display:flex;flex-direction:column;gap:12px}
 .card .what{color:var(--ink-2);font-size:.96875rem}
-.card .facts{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.8125rem;color:var(--ink-3)}
-.panel{width:min(620px,86vw);display:grid;grid-template-rows:1fr auto;gap:22px}
-.panel figure{margin:0;overflow:hidden;border-radius:6px;background:var(--paper-3);min-height:240px;position:relative}
+.card .facts{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:var(--t-small);color:var(--ink-3)}
+.panel{width:min(620px,86vw);display:grid;grid-template-rows:minmax(0,1fr) auto;gap:22px}
+.panel figure{margin:0;overflow:hidden;border-radius:6px;background:var(--paper-3);min-height:260px;position:relative}
 .panel figure img,.panel figure video{position:absolute;inset:0 -6%;width:112%;height:100%;object-fit:cover;max-width:none;will-change:transform}
 .panel figcaption{position:absolute;left:14px;bottom:12px;font-size:.75rem;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.panel h3{font:500 clamp(1.75rem,2.6vw,2.25rem)/1.1 var(--display);letter-spacing:-.015em}
 .panel p{margin-top:10px;max-width:52ch}
-.panel.text{width:min(460px,82vw);display:flex;flex-direction:column;justify-content:flex-end;gap:16px}
-.panel.text p{font-size:1.0625rem}
-.rail .end{width:min(420px,82vw);display:flex;flex-direction:column;justify-content:center;gap:16px;padding:0 12px}
+.rail .end{width:min(460px,84vw)}
+.rail .end figure img{object-position:64% 50%}
+.rail .end .links{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:16px}
 .rail .end a{font-weight:600}
 @media (max-width:760px){.panel figure{min-height:300px}}
-@media (max-width:560px){.rail{scroll-padding-inline:16px;padding-left:16px;padding-right:16px}}
-html:not(.travel) .panel.text{justify-content:center}
 
 /* ---------------- The 3D Mediterranean ---------------- */
+/* Copy and map never share pixels: the copy has its own solid column (left on wide
+   screens, under the map on narrow ones) and the 3D view renders only in its own box. */
 .map{padding:0;background:var(--night-2);color:var(--on-night)}
 html.motion .map{height:320vh}
-.map-stage{position:relative;height:100svh;min-height:600px;overflow:hidden}
+.map-stage{position:relative;height:100svh;min-height:560px;overflow:hidden;display:grid;grid-template-columns:minmax(360px,34%) minmax(0,1fr)}
 html.motion .map-stage{position:sticky;top:0}
-.map-stage canvas,.map-stage .map-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.map-stage canvas{opacity:0;transition:opacity 1.2s var(--ease)}
-.map-stage.live canvas{opacity:1}
+.map-panel{position:relative;z-index:2;background:var(--night-2);min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:calc(var(--header-h) + clamp(40px,7vh,72px)) 40px clamp(28px,5vh,48px) max(28px,env(safe-area-inset-left,0px))}
+@media (min-width:1100px){.map-panel{padding-left:56px;padding-right:48px}}
+.map-panel h2{color:#fff}
+.map-panel .sub{margin-top:16px;color:var(--on-night-2);max-width:34ch}
+.map-view{position:relative;min-width:0;overflow:hidden}
+.map-view canvas,.map-view .map-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.map-view canvas{opacity:0;transition:opacity 1.2s var(--ease)}
+.map-stage.live .map-view canvas{opacity:1}
 .map-stage.live .map-poster{opacity:0;transition:opacity 1.2s var(--ease)}
-.map-stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,18,34,.92) 0%,rgba(10,18,34,.6) 34%,rgba(10,18,34,0) 62%)}
 .map-labels{position:absolute;inset:0;pointer-events:none;z-index:2}
-.pin-label{position:absolute;left:0;top:0;transform:translate(-50%,-100%);white-space:nowrap;font-size:.8125rem;font-weight:600;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.7);opacity:.9;transition:opacity .5s var(--ease)}
+.pin-label{position:absolute;left:0;top:0;white-space:nowrap;font-size:var(--t-small);font-weight:600;line-height:1.3;color:#fff;background:var(--night-2);padding:6px 10px;border-radius:4px;opacity:0;transition:opacity .5s var(--ease)}
 .pin-label small{display:block;font-weight:400;color:var(--on-night-2);font-size:.75rem}
-.pin-label.minor{font-weight:500;font-size:.75rem}
-.map-copy{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;pointer-events:none}
-.map-copy h2{color:#fff;max-width:9ch}
-.map-copy .sub{margin-top:18px;color:var(--on-night-2);max-width:40ch}
-.stops{position:relative;margin-top:40px;max-width:420px;min-height:420px}
-.stop{position:absolute;inset:0 auto auto 0;width:100%;display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:start;pointer-events:auto;transition:opacity .8s var(--ease),transform .8s var(--ease)}
-html.motion .stop{opacity:0;transform:translateX(36px)}
-html.motion .stop.on{opacity:1;transform:none}
-html.motion .stop.past{opacity:0;transform:translateX(-36px)}
-.stop figure{margin:0;width:132px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:#13213A}
+.stops{display:grid;max-width:420px}
+.stop{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:start}
+html.motion .stop{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .8s var(--ease),visibility 0s .8s}
+html.motion .stop.on{opacity:1;visibility:visible;transition:opacity .8s var(--ease),visibility 0s}
+.stop figure{margin:0;width:120px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:#13213A}
 .stop figure video,.stop figure img{width:100%;height:100%;object-fit:cover}
-.stop h3{font:500 2.25rem/1 var(--display);color:#fff;letter-spacing:-.01em}
-.stop p{margin-top:12px;color:var(--on-night);font-size:.96875rem}
-.stop .via{margin-top:12px;font-size:.8125rem;color:var(--sun-2)}
-.stop-dots{display:flex;gap:18px;margin-top:28px;font-size:.8125rem;color:var(--on-night-2);pointer-events:auto}
+.stop .name{color:#fff}
+.stop p{margin-top:10px;color:var(--on-night);font-size:.96875rem}
+.map-foot{display:grid;gap:18px}
+.stop-dots{display:flex;gap:18px;font-size:var(--t-small);color:var(--on-night-2)}
 .stop-dots span{position:relative;padding-top:10px}
 .stop-dots span::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;border-radius:2px;background:rgba(242,244,247,.2)}
 .stop-dots span.on{color:#fff}
 .stop-dots span.on::before{background:var(--sun)}
-.map-note{position:absolute;right:max(28px,env(safe-area-inset-right,0px));bottom:22px;z-index:3;font-size:.75rem;color:var(--on-night-2);max-width:46ch;text-align:right}
-@media (min-width:1100px){.map-note{right:150px}}
-html:not(.motion) .stops{min-height:0;display:grid;gap:40px}
-html:not(.motion) .stop{position:static}
-@media (max-width:760px){
-  .map-stage::after{background:linear-gradient(0deg,rgba(10,18,34,.95) 0%,rgba(10,18,34,.7) 50%,rgba(10,18,34,.1) 100%)}
-  .map-copy{justify-content:flex-end;padding-bottom:64px}
-  .map-copy .sub{display:none}
-  .stops{min-height:250px;margin-top:20px}
-  .stop{grid-template-columns:96px 1fr;gap:16px}
+.map-note{font-size:.75rem;line-height:1.5;color:var(--on-night-2);max-width:44ch}
+html:not(.motion) .map-stage{height:auto}
+html:not(.motion) .map-view{min-height:70vh}
+html:not(.motion) .stops{gap:36px}
+html:not(.motion) .stop-dots{display:none}
+@media (max-height:820px) and (min-width:900px){
+  .map-panel{gap:24px;padding-top:calc(var(--header-h) + 32px);padding-bottom:28px}
+  .map-panel .sub{display:none}
   .stop figure{width:96px}
-  .stop h3{font-size:1.75rem}
-  .map-note{display:none}
+  .stop{grid-template-columns:96px minmax(0,1fr)}
+}
+@media (max-width:899px){
+  .map-stage{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+  .map-view{grid-row:1}
+  .map-panel{grid-row:2;padding:22px 16px 26px;gap:16px;justify-content:flex-start}
+  .map-panel h2{font-size:var(--t-name)}
+  .map-panel .sub,.map-note{display:none}
+  .stop{grid-template-columns:84px minmax(0,1fr);gap:16px}
+  .stop figure{width:84px}
+  .stop p{font-size:.9375rem;margin-top:8px}
+  html:not(.motion) .map-view{min-height:52vh}
 }
 
 /* ---------------- Valuation with the 3D palazzo ---------------- */
 .valuation .layout{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px 32px;align-items:center}
 .valuation .text{grid-column:1/span 5;display:grid;gap:22px;min-width:0}
-.valuation .text .lead{font-size:1.0625rem}
+.valuation .text .lead{font-size:var(--t-body)}
 .model{grid-column:7/span 6;min-width:0;display:grid;gap:28px}
-.model-stage{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:radial-gradient(120% 90% at 70% 20%,#FFF1E2 0%,#F3F5F7 55%,#E7EBEF 100%);cursor:grab;touch-action:pan-y}
-.model-stage:active{cursor:grabbing}
+.model-stage{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--paper-2);touch-action:pan-y}
+.model-stage.live{cursor:grab}
+.model-stage.live:active{cursor:grabbing}
 .model-stage canvas,.model-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .model-stage canvas{opacity:0;transition:opacity 1s var(--ease)}
 .model-stage.live canvas{opacity:1}
 .model-stage.live img{opacity:0;transition:opacity 1s var(--ease)}
 .model-stage .cap{position:absolute;left:16px;bottom:12px;font-size:.75rem;color:var(--ink-3)}
+.model-stage .cap .live-only{display:none}
+.model-stage.live .cap .live-only{display:inline}
 .ladder{display:grid;gap:18px}
 .rung{display:grid;gap:8px}
 .rung .lab{display:flex;justify-content:space-between;gap:16px;font-size:.875rem;color:var(--ink-3)}
 .rung .lab b{font-weight:600;color:var(--ink)}
 .rung .track{height:12px;border-radius:12px;background:var(--paper-2);overflow:hidden}
 .rung .fill{display:block;height:100%;border-radius:12px;width:var(--w);background:var(--navy-2);transform-origin:left;transition:transform 1.4s var(--ease)}
-.rung.key .fill{background:linear-gradient(90deg,#FF9A33,var(--sun))}
+.rung.key .fill{background:var(--sun)}
 html.motion .ladder .fill{transform:scaleX(.08)}
 html.motion .ladder.in .fill{transform:none}
-.ladder .note{font-size:.8125rem;color:var(--ink-3)}
+.ladder .note{font-size:var(--t-small);color:var(--ink-3)}
 @media (max-width:900px){.valuation .text,.model{grid-column:1/-1}}
 
-/* ---------------- Risks: the night side, given the same weight ---------------- */
+/* ---------------- Risks: the night side ---------------- */
 .risks{background:var(--night);color:var(--on-night)}
 .risks .layout{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px 32px;align-items:start}
 .risks .head{grid-column:1/span 4;position:sticky;top:calc(var(--header-h) + 48px);display:grid;gap:22px}
 .risks h2{color:#fff}
 .risks .head p{color:var(--on-night-2)}
-.risk-list{grid-column:6/span 7;list-style:none;margin:0;padding:0;display:grid;gap:0}
-.risk-list li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:12px 32px;padding:28px 0;border-top:1px solid rgba(242,244,247,.12)}
-.risk-list li:last-child{border-bottom:1px solid rgba(242,244,247,.12)}
-.risk-list h3{color:#fff;font:500 1.375rem/1.2 var(--display)}
+.risk-list{grid-column:6/span 7;list-style:none;margin:0;padding:0;display:grid;gap:44px}
+.risk-list li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:10px 32px}
+.risk-list .name{color:#fff}
 .risk-list p{color:var(--on-night-2);font-size:.96875rem}
-.returns{margin-top:56px;padding:30px 32px;border-radius:8px;background:linear-gradient(120deg,rgba(255,130,0,.14),rgba(255,130,0,.04));display:grid;gap:10px}
+.returns{grid-column:6/span 7;margin-top:12px;padding:30px 32px;border-radius:8px;background:rgba(255,130,0,.1);display:grid;gap:10px}
 .returns h3{color:#fff}
 .returns p{color:var(--on-night)}
-@media (max-width:900px){.risks .head{grid-column:1/-1;position:static}.risk-list{grid-column:1/-1}}
+@media (max-width:900px){.risks .head{grid-column:1/-1;position:static}.risk-list,.returns{grid-column:1/-1}}
 @media (max-width:640px){.risk-list li{grid-template-columns:1fr}}
 
 /* ---------------- Important information ---------------- */
 .info h2{max-width:14ch}
 .info .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 64px;margin-top:64px}
 .info .item{display:grid;gap:10px;min-width:0;align-content:start}
-.info .item h3{font-size:1rem}
-.info .item p,.info .item li{font-size:.96875rem}
+.info .item p,.info .item li,.info address{font-size:.96875rem}
 .info .item ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .info address{font-style:normal}
 @media (max-width:760px){.info .cols{grid-template-columns:1fr}}
@@ -308,7 +350,7 @@ html.motion .ladder.in .fill{transform:none}
 .table-scroll{overflow-x:auto;margin-top:48px;background:var(--paper);border-radius:6px}
 .notes table{width:100%;min-width:720px;border-collapse:collapse;font-size:.9375rem}
 .notes th,.notes td{text-align:left;vertical-align:top;padding:16px 18px}
-.notes thead th{font-size:.8125rem;font-weight:600;color:var(--ink-3);background:var(--paper-3)}
+.notes thead th{font-size:var(--t-small);font-weight:600;color:var(--ink-3);background:var(--paper-3)}
 .notes tbody tr:nth-child(even){background:var(--paper-2)}
 .notes td:first-child{font-variant-numeric:tabular-nums;color:var(--ink-3);width:44px}
 .notes td:nth-child(2){font-weight:600;color:var(--ink);width:28%}
@@ -326,19 +368,16 @@ footer{background:var(--night);color:var(--on-night-2);font-size:.875rem;padding
 footer .wrap{display:grid;gap:12px}
 footer a{color:var(--on-night)}
 
-/* ---------------- Reveal ---------------- */
-html.motion .rise{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-html.motion .rise.in{opacity:1;transform:none}
-
 /* ---------------- Gate ---------------- */
-.gate{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(5,7,13,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow-y:auto}
-.gate-panel{background:var(--paper);color:var(--ink-2);width:min(560px,100%);border-radius:10px;padding:clamp(28px,5vw,44px);display:grid;gap:22px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.gate-panel h2{font-size:clamp(1.75rem,3.2vw,2.25rem)}
+.gate{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(5,7,13,.88);overflow-y:auto}
+.gate-panel{background:var(--paper);color:var(--ink-2);width:min(560px,100%);border-radius:10px;padding:clamp(28px,5vw,44px);display:grid;gap:22px}
+.gate-panel h2{font-size:var(--t-name)}
 .gate-panel p{font-size:.9375rem}
 .field{display:grid;gap:8px}
 .field label{font-weight:600;color:var(--ink);font-size:.9375rem}
 .field select{appearance:none;width:100%;min-height:50px;padding:0 44px 0 14px;font:400 1rem var(--sans);color:var(--ink);background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230B1A2E' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center;border:1px solid #98A2AD;border-radius:6px}
 .field select:hover{border-color:var(--ink)}
+.field select[aria-invalid="true"],.check input[aria-invalid="true"]{border-color:#A3260F;outline:2px solid rgba(163,38,15,.25);outline-offset:1px}
 .check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:.9375rem}
 .check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--navy-2)}
 .gate .error{color:#A3260F;font-size:.875rem;font-weight:500}
@@ -348,13 +387,13 @@ html.motion .rise.in{opacity:1;transform:none}
 </head>
 <body>
 
-<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
   <form class="gate-panel" id="gate-form" novalidate>
     <h2 id="gate-title">Before you continue</h2>
-    <p>This page describes funds reserved for professional investors and, where a fund's rules allow it, other eligible investors. It is not intended for US Persons or for anyone in a country where its distribution is not permitted.</p>
+    <p id="gate-desc">This page describes funds and opportunities reserved for professional investors and, where a fund's rules allow it, other eligible investors. It is not intended for US Persons or for anyone in a country where its distribution is not permitted.</p>
     <div class="field">
       <label for="gate-country">Country of residence</label>
-      <select id="gate-country" required>
+      <select id="gate-country" required aria-describedby="gate-error">
         <option value="">Select a country</option>
         <option>Italy</option>
         <option>Malta</option>
@@ -370,35 +409,34 @@ html.motion .rise.in{opacity:1;transform:none}
     </div>
     <div class="field">
       <label for="gate-category">Investor category</label>
-      <select id="gate-category" required>
+      <select id="gate-category" required aria-describedby="gate-error">
         <option value="">Select your category</option>
         <option value="professional">Professional client (MiFID II, Annex II)</option>
-        <option value="eligible">Eligible investor under a fund's rules</option>
-        <option value="retail">Retail investor</option>
+        <option value="eligible">Other investor eligible under a fund's rules (for example, subscribing at least €500,000)</option>
+        <option value="none">Neither of these</option>
       </select>
     </div>
-    <label class="check" for="gate-confirm"><input type="checkbox" id="gate-confirm"><span>I am not a US Person, I am reading this page from a country where that is permitted, and the category above is correct.</span></label>
-    <p class="error" id="gate-error" hidden>Choose your country and investor category, then tick the confirmation.</p>
-    <button class="btn btn-sun" type="submit" id="gate-continue">Continue</button>
+    <label class="check" for="gate-confirm"><input type="checkbox" id="gate-confirm" aria-describedby="gate-error"><span>I am not a US Person, I am reading this page from a country where that is permitted, and the category above is correct.</span></label>
+    <p class="error" id="gate-error" role="alert" hidden>Choose your country and investor category, and tick the confirmation.</p>
+    <button class="btn btn-sun" type="submit" id="gate-continue">Confirm and continue</button>
     <div class="stop-msg" id="gate-stop" hidden>
-      <p><strong>This page is not available to you.</strong> The funds it describes are not offered to retail investors or to US Persons. Framont Access has guides and products that are open to everyone.</p>
-      <a class="btn btn-sun" href="https://access.framontmanagement.com/">Go to Framont Access</a>
+      <p><strong>This page is not available to you.</strong> The funds and opportunities it describes are offered only to professional investors and to other investors eligible under each fund's rules, and not to US Persons.</p>
+      <a class="btn btn-sun" href="https://access.framontmanagement.com/">Return to Framont Access</a>
     </div>
   </form>
 </div>
 
-<a class="mark" id="mark" href="#dawn" aria-label="Framont Access Real Estate, back to the top"><span class="m1"><span class="ink">Framont Access</span></span><span class="m2"><span class="ink">Real Estate</span></span></a>
+<a class="mark" id="mark" href="#dawn" inert aria-label="Framont Access Real Estate, back to the top"><span class="m1"><span class="ink">Framont Access</span></span><span class="m2"><span class="ink">Real Estate</span></span></a>
 
-<header class="bar" id="bar">
+<header class="bar" id="bar" inert>
   <div class="wrap">
-    <a class="btn btn-sun" href="https://access.framontmanagement.com/#/en/funds"><span class="long">Request documentation</span><span class="short">Documents</span></a>
+    <a class="btn btn-sun" href="https://access.framontmanagement.com/#/en/funds"><span class="long">Funds on Framont Access</span><span class="short">Framont Access</span></a>
   </div>
 </header>
 
-<nav class="index" id="index" aria-label="Page sections" data-tone="dark">
+<nav class="index" id="index" aria-label="Page sections" inert>
+  <div class="track" aria-hidden="true"><span class="fill"></span><span class="sun"></span></div>
   <ol>
-    <li class="fill" aria-hidden="true"></li>
-    <li class="sun" aria-hidden="true"></li>
     <li><a href="#dawn">Overview</a></li>
     <li><a href="#structure">The structure</a></li>
     <li><a href="#funds">Funds</a></li>
@@ -420,8 +458,8 @@ html.motion .rise.in{opacity:1;transform:none}
     <div class="hero-shade" id="shade"></div>
     <div class="hero-veil" id="veil"></div>
     <div class="hero-copy wrap" id="hero-copy">
-      <h1 id="hero-title"><span class="line"><span>Real estate,</span></span><span class="line"><span>inside regulated funds</span></span></h1>
-      <p class="lead" data-hero="2">Seven funds managed by Framont &amp; Partners Management Ltd invest in Italian real estate or in credit secured by property. Three single-asset opportunities in Italy, Spain and Greece are presented to professional investors on Framont Access.</p>
+      <h1 id="hero-title" class="no-ring"><span class="line"><span>Real estate,</span></span><span class="line"><span>in a new light</span></span></h1>
+      <p class="lead" data-hero="2">Seven funds managed by Framont &amp; Partners Management Ltd invest in real estate, mainly in Italy, or in credit secured by Italian property. Three private opportunities in Italy, Spain and Greece are presented to professional investors on Framont Access.</p>
       <div class="actions" data-hero="2">
         <a class="btn btn-sun" href="#funds">See the funds</a>
         <a class="btn btn-line" href="#risks">Read the risks</a>
@@ -434,109 +472,114 @@ html.motion .rise.in{opacity:1;transform:none}
 
 <section class="structure" id="structure" aria-labelledby="structure-title">
   <div class="wrap">
-    <h2 class="statement" id="structure-title" data-words>Each fund holds its property and credit as a <em>segregated pool.</em> The fund invests. Framont manages the fund for its investors.</h2>
+    <h2 class="sr-only" id="structure-title">The structure</h2>
+    <p class="statement" data-words>Each fund holds its property and credit in a segregated pool for its own investors. Framont manages the fund.</p>
     <div class="roles">
-      <div class="rise"><span class="sunline" aria-hidden="true"></span><h3>The fund</h3><p>A closed-ended alternative investment fund with its own rules, assets and investors. Property is bought, and credit is held, for the account of the fund, never for Framont's own account.</p></div>
-      <div class="rise"><span class="sunline" aria-hidden="true"></span><h3>The manager</h3><p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. It manages each fund's portfolio and risk, and owes its duties to the fund's investors.</p></div>
-      <div class="rise"><span class="sunline" aria-hidden="true"></span><h3>The other appointed parties</h3><p>Each fund's depositary and its other service providers are named in its documents.</p></div>
-      <div class="rise"><span class="sunline" aria-hidden="true"></span><h3>Conflicts of interest</h3><p>Where Framont or a vehicle it manages is involved on more than one side of a transaction, the conflict is identified, managed and disclosed to investors under Framont's conflicts of interest policy.</p></div>
+      <div><h3 class="name">The fund</h3><p>A closed-ended alternative investment fund with its own rules, assets and investors. Property is bought, and credit is held, for the account of the fund, never for Framont's own account.</p></div>
+      <div><h3 class="name">The manager</h3><p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. It manages each fund's portfolio and risk, and owes its duties to the fund's investors.</p></div>
+      <div><h3 class="name">The other appointed parties</h3><p>Each fund's depositary and its other service providers are named in its documents.</p></div>
+      <div><h3 class="name">Conflicts of interest</h3><p>Where Framont or a vehicle it manages is involved on more than one side of a transaction, the conflict is identified, managed and disclosed to investors under Framont's conflicts of interest policy.</p></div>
     </div>
   </div>
 </section>
+
+<div class="daybreak" id="daybreak" aria-hidden="true"></div>
 
 <section class="funds" id="funds" aria-labelledby="funds-title">
   <div class="funds-stage" id="funds-stage">
     <div class="funds-head wrap">
       <h2 id="funds-title">Seven funds and three opportunities</h2>
+      <p class="lead">Five funds invest in real estate and two hold credit secured by property. The three private opportunities are held through special purpose vehicles, a club deal or a certificate, and are summarised here.</p>
     </div>
     <div class="rail-view" id="rail-view">
-    <ol class="rail" id="rail">
-      <li class="panel text">
-        <p class="lead">Five funds invest in real estate. Two hold credit positions secured by property. The single-asset opportunities are structured through MFSA-regulated vehicles and shown at teaser level.</p>
-        <p class="label" style="color:var(--ink-3)">Scroll to move along</p>
-      </li>
-
+    <ol class="rail" id="rail" tabindex="0" aria-label="Funds and opportunities">
       <li class="panel">
         <figure><video data-loop src="media/rome-loop.mp4" poster="media/rome-rooftops.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Illustrative, AI-generated</figcaption></figure>
-        <div><h3>Real estate funds</h3><p>Italian reserved alternative investment funds, closed-ended, for professional investors and, where the fund rules allow, eligible investors. Their documentation is the Fund Rules (Regolamento di Gestione), available on request.</p></div>
+        <div><h3 class="name">Real estate funds</h3><p>Italian reserved alternative investment funds, closed-ended, for professional investors and, where the fund rules allow, eligible investors. Their documentation is the Fund Rules (Regolamento di Gestione), available on request.</p></div>
       </li>
-      <li class="card"><span class="num" aria-hidden="true"><span>01</span></span><h3>Gentile da Fabriano</h3><p class="what">Real estate, property rights and property-holding companies, managed for patient capital over a long horizon.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Horizon up to 30 years</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>02</span></span><h3>Orizzonte</h3><p class="what">Acquires, enhances and disposes of real estate. A dedicated Real Estate Management Committee informs significant investment and divestment decisions.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>03</span></span><h3>Wright</h3><p class="what">Real estate and shares of real estate companies, with a focus on Rome.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Professional investors, or subscriptions from €500,000</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>04</span></span><h3>Real Sequoia</h3><p class="what">At least two-thirds in real estate and property rights. Funds the construction, completion and development of the assets it holds.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>05</span></span><h3>Pinnacle Investment</h3><p class="what">Residential, office, commercial, industrial and tourism assets in Italy, the European Union and the G8.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
+      <li class="card"><h3 class="name">Gentile da Fabriano</h3><p class="what">Real estate, property rights and property-holding companies, held over a horizon of up to 30 years.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span></p></li>
+      <li class="card"><h3 class="name">Orizzonte</h3><p class="what">Acquires, enhances and disposes of real estate. A dedicated Real Estate Management Committee informs significant investment and divestment decisions.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span></p></li>
+      <li class="card"><h3 class="name">Wright</h3><p class="what">Real estate and shares of real estate companies, with a focus on Rome.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Professional investors, or other investors subscribing at least €500,000</span></p></li>
+      <li class="card"><h3 class="name">Real Sequoia</h3><p class="what">Invests at least two-thirds in real estate and property rights, and funds the construction, completion and development of the assets it holds.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
+      <li class="card"><h3 class="name">Pinnacle Investment</h3><p class="what">Residential, office, commercial, industrial and tourism assets in Italy, the European Union and the G8.</p><p class="facts"><span>Closed-ended reserved AIF</span><span>Italy</span><span>Medium to long term</span></p></li>
 
       <li class="panel">
-        <figure><img data-par src="media/travertine-door.jpg" width="1100" height="1364" alt="A closed wooden double door in a weathered travertine doorway, in low evening light." loading="lazy"><figcaption>Illustrative, AI-generated</figcaption></figure>
-        <div><h3>Credit secured by property</h3><p>These funds buy distressed credit positions, such as non-performing and unlikely-to-pay loans, secured on Italian real estate, and work them out. Returns depend on what is recovered and when.</p></div>
+        <figure><img data-par src="media/travertine-door.jpg" width="1100" height="1364" alt="A closed wooden double door in a weathered travertine doorway, in low evening light." loading="lazy" decoding="async"><figcaption>Illustrative, AI-generated</figcaption></figure>
+        <div><h3 class="name">Credit secured by property</h3><p>These funds buy distressed credit positions, such as non-performing and unlikely-to-pay loans, secured on Italian real estate, and work them out. Returns depend on what is recovered and when.</p></div>
       </li>
-      <li class="card"><span class="num" aria-hidden="true"><span>06</span></span><h3>Hubble Capital</h3><p class="what">Credit compartment that acquires and works out distressed credit positions largely secured by real estate collateral. Funded through investor commitments and capital calls.</p><p class="facts"><span>Closed-ended reserved AIF, credit compartment</span><span>Italy</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>07</span></span><h3>CIREDCO Fund 1</h3><p class="what">Co-investment vehicle for Italian NPLs, UTPs and distressed positions secured by property. Value comes from restructuring, settlement, enforcement or sale of the collateral.</p><p class="facts"><span>Closed-ended Notified AIF</span><span>Malta</span><span>Offering Memorandum and Supplement on request</span></p></li>
+      <li class="card"><h3 class="name">Hubble Capital</h3><p class="what">Credit compartment that acquires and works out distressed credit positions largely secured by real estate collateral. Funded through investor commitments and capital calls.</p><p class="facts"><span>Closed-ended reserved AIF, credit compartment</span><span>Italy</span></p></li>
+      <li class="card"><h3 class="name">CIREDCO Fund 1</h3><p class="what">Fund investing in Italian NPLs, UTPs and distressed positions secured by property. It seeks to recover value through restructuring, settlement, enforcement or sale of the collateral.</p><p class="facts"><span>Closed-ended Notified AIF</span><span>Malta</span><span>Offering Memorandum and Supplement on request</span></p></li>
 
       <li class="panel">
-        <figure><img data-par src="media/italy-courtyard.jpg" width="1600" height="1070" alt="Stone arches and lit lanterns in the courtyard of a restored Italian country estate at dusk." loading="lazy"><figcaption>Illustrative, AI-generated</figcaption></figure>
-        <div><h3>Single-asset opportunities</h3><p>Individual transactions for professional and institutional investors only. Location, business plan and documentation are released after eligibility verification and, where required, a non-disclosure agreement.</p></div>
+        <figure><img data-par src="media/italy-courtyard.jpg" width="1600" height="1070" alt="Stone arches and lit lanterns in the courtyard of a restored Italian country estate at dusk." loading="lazy" decoding="async"><figcaption>Illustrative, AI-generated</figcaption></figure>
+        <div><h3 class="name">Private opportunities</h3><p>Individual transactions for professional investors only. Location, business plan and documentation are released after eligibility verification and, where required, a non-disclosure agreement.</p></div>
       </li>
-      <li class="card"><span class="num" aria-hidden="true"><span>08</span></span><h3>Value-add hospitality, Italy</h3><p class="what">Acquisition and luxury repositioning of a hospitality asset.</p><p class="facts"><span>MFSA-regulated SPV, share deal</span><span>Illiquid</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>09</span></span><h3>Adaptive re-use hotel, Spain</h3><p class="what">Conversion of an approved industrial building in a Spanish city into a 71-key four-star hotel with a retail unit, run by an international operator under a management agreement.</p><p class="facts"><span>MFSA-regulated SPV with senior debt</span><span>Illiquid</span></p></li>
-      <li class="card"><span class="num" aria-hidden="true"><span>10</span></span><h3>Greek real estate portfolio</h3><p class="what">Off-market villas, hotels, development land, coastal assets and a private island.</p><p class="facts"><span>SPV, club deal or AMC</span><span>NDA or NCNDA before disclosure</span></p></li>
-      <li class="end">
-        <h3 style="font:500 1.75rem/1.15 var(--display)">Details after verification</h3>
+      <li class="card"><h3 class="name">Value-add hospitality, Italy</h3><p class="what">Acquisition and luxury repositioning of a hospitality asset.</p><p class="facts"><span>MFSA-regulated SPV, share deal</span><span>Illiquid</span></p></li>
+      <li class="card"><h3 class="name">Adaptive re&#8209;use hotel, Spain</h3><p class="what">Planned conversion of an approved industrial building in a Spanish city into a 71-key four-star hotel with a retail unit, to be run by an international operator under a management agreement.</p><p class="facts"><span>MFSA-regulated SPV with senior debt</span><span>Illiquid</span></p></li>
+      <li class="card"><h3 class="name">Greek real estate portfolio</h3><p class="what">Off-market villas, hotels, development land, coastal assets and a private island.</p><p class="facts"><span>SPV, club deal or AMC</span><span>NDA or NCNDA before disclosure</span></p></li>
+      <li class="panel end">
+        <figure><img data-par src="media/sunrise-poster.jpg" width="1600" height="900" alt="The sun just above the horizon over a calm sea, seen from a rocky coast." loading="lazy" decoding="async"><figcaption>Illustrative, AI-generated</figcaption></figure>
+        <div><h3 class="name">Details after verification</h3>
         <p>Fund documents, ISINs and deal materials are released on Framont Access to verified investors.</p>
-        <p><a href="https://access.framontmanagement.com/#/en/funds">Funds on Framont Access</a></p>
-        <p><a href="https://access.framontmanagement.com/#/en/deals">Opportunities on Framont Access</a></p>
+        <p class="links"><a href="https://access.framontmanagement.com/#/en/funds">Funds on Framont Access</a><a href="https://access.framontmanagement.com/#/en/deals">Opportunities on Framont Access</a></p></div>
       </li>
     </ol>
     </div>
-    <div class="counter" aria-hidden="true"><span id="counter-n">01 / 10</span><span class="bar-t"><span class="bar-f" id="counter-f"></span></span></div>
+    <div class="counter" aria-hidden="true"><span id="counter-n">01 / 10</span><span class="bar-t"><span class="bar-f" id="counter-f"></span></span><span class="swipe">Swipe for all ten</span></div>
   </div>
 </section>
 
 <section class="map" id="markets" aria-labelledby="markets-title">
   <div class="map-stage" id="map-stage">
-    <img class="map-poster" src="media/map-poster.jpg" alt="" width="1600" height="900" loading="lazy">
-    <canvas id="map3d" aria-hidden="true"></canvas>
-    <div class="map-labels" id="map-labels" aria-hidden="true"></div>
-    <div class="map-copy wrap">
-      <h2 id="markets-title">Where the assets are</h2>
-      <p class="sub">From west to east across the Mediterranean, the way the morning light travels.</p>
+    <div class="map-panel">
+      <div>
+        <h2 id="markets-title">Where the assets are</h2>
+        <p class="sub">West to east, the way the morning light travels.</p>
+      </div>
       <div class="stops" id="stops">
         <article class="stop" data-stop="0">
           <figure><video data-loop src="media/spain-loop.mp4" poster="media/spain-reuse.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
-          <div><h3>Spain</h3><p>One development opportunity: an industrial building converted into a hotel in a Spanish city.</p><p class="via">One single-asset opportunity</p></div>
+          <div><h3 class="name">Spain</h3><p>One opportunity: the planned conversion of an industrial building into a hotel in a Spanish city.</p></div>
         </article>
         <article class="stop" data-stop="1">
           <figure><video data-loop src="media/rome-loop.mp4" poster="media/rome-rooftops.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
-          <div><h3>Italy</h3><p>Where most of the activity is: five Italian real estate funds, one of them focused on Rome, and two funds holding credit secured on Italian property. The manager is in Malta.</p><p class="via">Seven funds, one hospitality opportunity</p></div>
+          <div><h3 class="name">Italy</h3><p>Five Italian real estate funds, one focused on Rome, and two funds holding credit secured on Italian property. The manager is based in Malta.</p></div>
         </article>
         <article class="stop" data-stop="2">
           <figure><video data-loop src="media/greece-loop.mp4" poster="media/greece-coast.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
-          <div><h3>Greece</h3><p>An off-market portfolio across the islands, the coast and Athens, disclosed under a non-disclosure agreement.</p><p class="via">One portfolio opportunity</p></div>
+          <div><h3 class="name">Greece</h3><p>An off-market portfolio across the islands, the coast and Athens. Details are shared only under a non-disclosure agreement.</p></div>
         </article>
       </div>
-      <div class="stop-dots" aria-hidden="true"><span data-dot="0">Spain</span><span data-dot="1">Italy</span><span data-dot="2">Greece</span></div>
+      <div class="map-foot">
+        <div class="stop-dots" aria-hidden="true"><span data-dot="0">Spain</span><span data-dot="1">Italy</span><span data-dot="2">Greece</span></div>
+        <p class="map-note">Markers show countries, plus Rome, Wright's stated focus, and Malta, where the manager is based. Exact locations are shared only after verification. Coastlines: Natural Earth.</p>
+      </div>
     </div>
-    <p class="map-note">Markers show countries only, plus Rome, which Framont Access already names as Wright's focus. Exact asset locations are released only after verification. Coastlines: Natural Earth.</p>
+    <div class="map-view" id="map-view">
+      <img class="map-poster" src="media/map-poster.jpg" alt="" width="1600" height="1364" loading="lazy" decoding="async">
+      <canvas id="map3d" aria-hidden="true"></canvas>
+      <div class="map-labels" id="map-labels" aria-hidden="true"></div>
+    </div>
   </div>
 </section>
 
 <section class="valuation" id="valuation" aria-labelledby="valuation-title">
   <div class="wrap layout">
     <div class="text">
-      <h2 id="valuation-title">A property is worth what it sells for under pressure</h2>
-      <p class="lead">The credit funds value collateral from comparable sales, not from the appraisal. Realised prices are adjusted for how long similar properties take to sell locally, then reduced again for a forced sale. Three figures result, and a position is priced on the lower ones.</p>
-      <p class="review"><strong>To confirm before publication.</strong> This method comes from the earlier draft. The investment team needs to confirm that it describes how Hubble Capital and CIREDCO Fund 1 actually value collateral.</p>
+      <h2 id="valuation-title">Valued for a forced sale</h2>
+      <p class="lead">The credit funds value the property behind each position from prices achieved in comparable local sales, not from the appraisal. A discount for how long similar properties take to sell gives a forced-sale value; deducting the time and cost of recovery gives a net recovery value. Positions are priced on <span class="todo">the value to confirm</span>.</p>
+      <p class="review"><strong>To confirm before publication.</strong> This method comes from the earlier draft. The investment team needs to confirm that it describes how Hubble Capital and CIREDCO Fund 1 actually value collateral, and which of the three values a position is priced on.</p>
     </div>
     <div class="model">
-      <div class="model-stage" id="model-stage" role="img" aria-label="An illustrative 3D model of a Mediterranean palazzo that turns as the page scrolls. Drag to turn it.">
-        <img src="media/palazzo-poster.jpg" alt="" width="1000" height="1000" loading="lazy">
+      <div class="model-stage" id="model-stage" role="img" aria-label="Illustrative 3D model of a Mediterranean palazzo.">
+        <img src="media/palazzo-poster.jpg" alt="" width="1000" height="1000" loading="lazy" decoding="async">
         <canvas id="model3d" aria-hidden="true"></canvas>
-        <span class="cap">Illustrative 3D model, AI-generated. Drag to turn.</span>
+        <span class="cap">Illustrative 3D model, AI-generated.<span class="live-only"> Scroll to move the sun; drag to turn.</span></span>
       </div>
       <div class="ladder" id="ladder" role="img" aria-label="Three bars, each shorter than the one before: market value, forced-sale value and net recovery value.">
-        <div class="rung"><div class="lab"><b>Market value</b><span>from realised comparable prices</span></div><div class="track"><span class="fill" style="--w:100%"></span></div></div>
-        <div class="rung key"><div class="lab"><b>Forced-sale value</b><span>after the local liquidity discount</span></div><div class="track"><span class="fill" style="--w:74%"></span></div></div>
-        <div class="rung"><div class="lab"><b>Net recovery value</b><span>after time and recovery costs</span></div><div class="track"><span class="fill" style="--w:58%"></span></div></div>
+        <div class="rung"><div class="lab"><b>Market value</b><span>from comparable local sales</span></div><div class="track"><span class="fill" style="--w:100%"></span></div></div>
+        <div class="rung key"><div class="lab"><b>Forced-sale value</b><span>after the time-to-sell discount</span></div><div class="track"><span class="fill" style="--w:74%"></span></div></div>
+        <div class="rung"><div class="lab"><b>Net recovery value</b><span>after the time and cost of recovery</span></div><div class="track"><span class="fill" style="--w:58%"></span></div></div>
         <p class="note">Bar lengths show the order of the three values, not real proportions.</p>
       </div>
     </div>
@@ -550,20 +593,20 @@ html.motion .rise.in{opacity:1;transform:none}
       <p>Real estate and distressed credit can lose value, and money committed to these funds cannot be taken out on demand. Read the risk sections of each fund's documents in full.</p>
     </div>
     <ul class="risk-list">
-      <li class="rise"><h3>Loss of capital</h3><p>You can lose part or all of the money you invest. None of these funds or vehicles protects or guarantees capital.</p></li>
-      <li class="rise"><h3>Illiquidity and lock-up</h3><p>The funds are closed-ended. Units cannot normally be redeemed before the fund ends, which for one fund can be up to 30 years, and there may be no buyer for them.</p></li>
-      <li class="rise"><h3>Concentration</h3><p>A single-asset opportunity depends on one property and one business plan. A fund may hold few assets, in few places.</p></li>
-      <li class="rise"><h3>Development and sales</h3><p>Construction can cost more and take longer than planned, permits can be delayed, and completed units or rooms may not sell or let as expected.</p></li>
-      <li class="rise"><h3>Credit and recovery</h3><p>Distressed credits may recover less than their purchase price, or later than expected. Enforcement through the courts can take years.</p></li>
-      <li class="rise"><h3>Valuation</h3><p>Property values are estimates until an asset is sold. The price achieved in a sale can be well below the last valuation.</p></li>
-      <li class="rise"><h3>Leverage</h3><p>Where a vehicle borrows, as the Spanish hotel SPV does through senior debt, losses fall on investors first and are larger as a result.</p></li>
-      <li class="rise"><h3>Country, legal and tax</h3><p>Rules on property, enforcement and tax differ between Italy, Spain and Greece and can change, affecting value and timing.</p></li>
-      <li class="rise"><h3>Issuer risk on certificates</h3><p>Where an opportunity is offered through an actively managed certificate, you also carry the credit risk of the certificate's issuer.</p></li>
-      <li class="rise"><h3>Notified AIF</h3><p>CIREDCO Fund 1 is a Malta Notified AIF. It is not authorised by the MFSA, which relies on the AIFM for its oversight.</p></li>
+      <li><h3 class="name">Loss of capital</h3><p>You can lose part or all of the money you invest. None of these funds or vehicles protects or guarantees capital.</p></li>
+      <li><h3 class="name">Illiquidity and lock&#8209;up</h3><p>The funds are closed-ended. Units cannot normally be redeemed before the fund ends, which for one fund can be up to 30 years, and there may be no buyer for them.</p></li>
+      <li><h3 class="name">Concentration</h3><p>An individual opportunity depends on one property or a small portfolio, and on one business plan. A fund may hold few assets, in few places.</p></li>
+      <li><h3 class="name">Development and sales</h3><p>Construction can cost more and take longer than planned, permits can be delayed, and completed units or rooms may not sell or let as expected.</p></li>
+      <li><h3 class="name">Credit and recovery</h3><p>Distressed credits may recover less than their purchase price, or later than expected. Enforcement through the courts can take years.</p></li>
+      <li><h3 class="name">Valuation</h3><p>Property values are estimates until an asset is sold. The price achieved in a sale can be well below the last valuation.</p></li>
+      <li><h3 class="name">Leverage</h3><p>Where a vehicle borrows, as the Spanish hotel SPV does through senior debt, the lender is repaid before investors, so investors absorb losses first and those losses are larger.</p></li>
+      <li><h3 class="name">Country, legal and tax</h3><p>Rules on property, enforcement and tax differ between Italy, Spain and Greece and can change, affecting value and timing.</p></li>
+      <li><h3 class="name">Issuer risk on certificates</h3><p>Where an opportunity is offered through an actively managed certificate, you also carry the credit risk of the certificate's issuer.</p></li>
+      <li><h3 class="name">Notified AIF</h3><p>CIREDCO Fund 1 is a Malta Notified AIF. It is not authorised by the MFSA, which relies on the AIFM for its oversight.</p></li>
     </ul>
-    <div class="returns" style="grid-column:6/span 7">
+    <div class="returns">
       <h3>About returns</h3>
-      <p>This page shows no return figures. Where a fund's documents state a target return, it is an objective, not a forecast, and is stated before fees, costs and taxes. Past and target returns are not a reliable indicator of future results.</p>
+      <p>This page shows no return figures. Where a fund's documents state a target return, it is an objective, not a forecast or a promise, and it is stated before fees, costs and taxes. Past and target returns are not a reliable indicator of future results.</p>
     </div>
   </div>
 </section>
@@ -583,12 +626,12 @@ html.motion .rise.in{opacity:1;transform:none}
       </div>
       <div class="item">
         <h3>Who can invest, and where</h3>
-        <p>The funds are reserved for professional investors and, where a fund's rules allow it, eligible investors. They are not offered to retail investors. This page is not directed at US Persons or at anyone in a country where its distribution would be unlawful. Each fund is marketed only in the countries where it has been notified.</p>
+        <p>The funds are reserved for professional investors and, where a fund's rules allow it, other eligible investors. They are not offered to other retail investors. This page is not directed at US Persons or at anyone in a country where its distribution would be unlawful. Each fund is marketed only in the countries where it has been notified.</p>
         <p>Framont &amp; Partners Management Ltd may decide to end the arrangements for marketing a fund in a country (de-notification).</p>
       </div>
       <div class="item">
         <h3>Regulation</h3>
-        <p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. A copy of the licence is on the <a href="https://www.mfsa.mt/financial-services-register/">MFSA Financial Services Register</a>. The MFSA's authorisation does not mean that it has approved these funds or this communication.</p>
+        <p>Framont &amp; Partners Management Ltd is licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. The licence can be checked on the <a href="https://www.mfsa.mt/financial-services-register/">MFSA Financial Services Register</a>. The MFSA's licensing of the manager does not mean that it has approved these funds or this communication.</p>
       </div>
       <div class="item">
         <h3>Conflicts of interest and sustainability</h3>
@@ -610,7 +653,8 @@ html.motion .rise.in{opacity:1;transform:none}
         <h3>Privacy, cookies and AI</h3>
         <ul>
           <li><a href="https://www.iubenda.com/privacy-policy/85437556/full-legal">Privacy Policy</a> and <a href="https://www.iubenda.com/privacy-policy/85437556/cookie-policy">Cookie Policy</a></li>
-          <li>This page sets no cookies of its own. Its fonts are served with the page; the 3D graphics library is loaded from the jsDelivr CDN.</li>
+          <li>This page sets no cookies of its own. Your answers at the entry gate are kept only in this browser tab (session storage) and are not sent anywhere.</li>
+          <li>Its fonts are served with the page; the 3D graphics library is loaded from the jsDelivr CDN.</li>
           <li>The films, photographs and 3D models were generated with AI tools. <a href="https://www.framontmanagement.com/ai-disclosure/">AI disclosure</a></li>
         </ul>
       </div>
@@ -621,24 +665,24 @@ html.motion .rise.in{opacity:1;transform:none}
 <section class="notes" id="notes" aria-labelledby="notes-title">
   <div class="wrap">
     <h2 id="notes-title">Review notes</h2>
-    <p class="lead">For Francesca Caruso's review of 21 October 2026. This section and the highlighted items are removed before publication. Regulatory references still need confirming with the legal adviser.</p>
+    <p class="lead">Response to Francesca Caruso's review of 21 October 2026. This section and the highlighted items are removed before publication. Regulatory references still need confirming with the legal adviser.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th scope="col">#</th><th scope="col">Point raised</th><th scope="col">What changed</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Framont shown as the lender</td><td>Lending language removed. Property and credit are described as held for the account of each fund, as a segregated pool; Framont is named only as the manager (section "The structure").</td></tr>
+          <tr><td>1</td><td>Framont shown as the lender</td><td>Lending language removed. Property and credit are described as held for the account of each fund, in a segregated pool; Framont is named only as the manager (section "The structure").</td></tr>
           <tr><td>2</td><td>Loan servicing for third parties</td><td>Service removed.</td></tr>
           <tr><td>3</td><td>Capital Solutions and advisory for developers</td><td>Service removed. No structuring or advisory offer to borrowers remains.</td></tr>
           <tr><td>4</td><td>Separate account</td><td>Removed.</td></tr>
           <tr><td>5</td><td>"Since 2026" claim on Italian lending</td><td>Removed. The page makes no claim about the origination regime.</td></tr>
           <tr><td>6</td><td>"MFSA licensed, EU passport" badge; Dominican Republic</td><td>Badge removed. Marketing is described per fund and per notified country. The Dominican Republic is removed: no current real estate fund or opportunity invests there.</td></tr>
-          <tr><td>7</td><td>Marketing communication or pre-marketing</td><td>The page describes only existing funds and opportunities already listed on Framont Access, and is labelled a marketing communication in the opening and in Important information.</td></tr>
-          <tr><td>8</td><td>Audience</td><td>"Private investors" and the €50,000 minimum removed. An entry gate asks for country and investor category and turns away retail investors and US Persons.</td></tr>
+          <tr><td>7</td><td>Marketing communication or pre-marketing</td><td>The page describes only existing funds and opportunities already listed on Framont Access, and is labelled a marketing communication in the opening and in Important information. The opening headline makes no regulatory claim.</td></tr>
+          <tr><td>8</td><td>Audience</td><td>"Private investors" and the €50,000 minimum removed. An entry gate asks for country and investor category, and turns away US Persons and investors who are neither professional nor eligible under a fund's rules.</td></tr>
           <tr><td>9</td><td>Target returns and bracketed figures</td><td>All target returns, minimum tickets and "double-digit yields" removed. The one remaining amount is Wright's €500,000 eligibility threshold, as listed on Access.</td></tr>
-          <tr><td>10</td><td>No risks shown</td><td>A risks section, given the same space and weight as the fund list, plus an About returns note.</td></tr>
+          <tr><td>10</td><td>No risks shown</td><td>A full risks section set at the same type sizes as the fund list, plus an About returns note.</td></tr>
           <tr><td>11</td><td>Operational promises</td><td>Co-investment, drawdown, custody and ten-day decision claims removed. The collateral method is marked for confirmation.</td></tr>
           <tr><td>12</td><td>Conflicts of interest</td><td>"Clients, not counterparties" removed. Roles and the conflicts policy are stated; the policy link is pending.</td></tr>
-          <tr><td>13</td><td>Company details and trading name</td><td>Full name with Ltd, address and VAT added; licence wording made identical everywhere (AIFM and UCITS management company). "Framont Real Estate" is no longer used as a company name: the page sits under Framont Access as its real estate section.</td></tr>
+          <tr><td>13</td><td>Company details and trading name</td><td>Full name with Ltd, address and VAT added; licence wording made identical everywhere (AIFM and UCITS management company, under the Investment Services Act, Cap. 370). "Framont Real Estate" is no longer used as a company name: the page sits under Framont Access as its real estate section.</td></tr>
         </tbody>
       </table>
     </div>
@@ -649,7 +693,10 @@ html.motion .rise.in{opacity:1;transform:none}
         <li>Investor Compensation Scheme position, and the SFDR article for each fund.</li>
         <li>Languages in which each fund's documents are available.</li>
         <li>The countries each fund is notified in, which decide the country list in the entry gate.</li>
-        <li>Whether the collateral valuation method applies to Hubble Capital and CIREDCO Fund 1.</li>
+        <li>Whether the collateral valuation method applies to Hubble Capital and CIREDCO Fund 1, and which value positions are priced on.</li>
+        <li>Framont Access describes the deal vehicles as MFSA-regulated SPVs: confirm the regulatory status of each vehicle.</li>
+        <li>Spanish hotel: confirm the planning status of the conversion and whether the operator agreement is signed.</li>
+        <li>Pinnacle Investment: confirm the "Italy, the European Union and the G8" wording against the Fund Rules.</li>
         <li>The typeface (Bodoni Moda and Hanken Grotesk) differs from the rest of Framont Access (Playfair Display and Work Sans): to agree with Framont.</li>
         <li>Italian version, after the English text is approved.</li>
       </ul>
@@ -660,7 +707,7 @@ html.motion .rise.in{opacity:1;transform:none}
 
 <footer>
   <div class="wrap">
-    <p>Framont &amp; Partners Management Ltd, licensed by the Malta Financial Services Authority as an alternative investment fund manager and a UCITS management company. Marketing communication. Capital at risk.</p>
+    <p>Framont &amp; Partners Management Ltd, licensed by the Malta Financial Services Authority under the Investment Services Act (Cap. 370) as an alternative investment fund manager and a UCITS management company. Marketing communication. Capital at risk.</p>
     <p>Draft for compliance review, not published. <a href="https://access.framontmanagement.com/">Framont Access</a></p>
   </div>
 </footer>
@@ -671,29 +718,38 @@ html.motion .rise.in{opacity:1;transform:none}
   var root=document.documentElement;
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer=window.matchMedia&&matchMedia("(pointer: fine)").matches;
+  var saveData=!!(navigator.connection&&navigator.connection.saveData);
   if(!reduce)root.classList.add("motion");
 
   var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
   var clamp=function(v,a,b){return v<a?a:v>b?b:v},lerp=function(a,b,t){return a+(b-a)*t};
   var ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
   var easeOut=function(t){return 1-Math.pow(1-t,3)};
+  var mix=function(a,b,t){return "rgb("+Math.round(lerp(a[0],b[0],t))+","+Math.round(lerp(a[1],b[1],t))+","+Math.round(lerp(a[2],b[2],t))+")"};
+  var NIGHT=[5,7,13],PAPER=[255,255,255],LINE0=[34,67,111],SUN=[255,130,0];
   var vw=innerWidth,vh=innerHeight;
 
   /* ---------- gate ---------- */
   var gate=$("#gate"),page=$("#page"),form=$("#gate-form"),country=$("#gate-country"),category=$("#gate-category"),
       confirmBox=$("#gate-confirm"),error=$("#gate-error"),stopMsg=$("#gate-stop"),cont=$("#gate-continue");
+  var chrome=[$("#mark"),$("#bar"),$("#index")];
   var KEY="framont-re-gate";
   function remembered(){try{return sessionStorage.getItem(KEY)==="ok"}catch(e){return false}}
   function remember(){try{sessionStorage.setItem(KEY,"ok")}catch(e){}}
-  function open(){gate.hidden=true;page.removeAttribute("inert");start()}
+  function open(){gate.hidden=true;page.removeAttribute("inert");chrome.forEach(function(el){el.removeAttribute("inert")});start()}
   form.addEventListener("submit",function(e){
     e.preventDefault();
-    if(!country.value||!category.value||!confirmBox.checked){error.hidden=false;return}
+    var missing=[];
+    [[country,!country.value],[category,!category.value],[confirmBox,!confirmBox.checked]].forEach(function(f){f[0].setAttribute("aria-invalid",f[1]?"true":"false");if(f[1])missing.push(f[0])});
+    if(missing.length){error.hidden=false;missing[0].focus();return}
     error.hidden=true;
-    if(country.value==="us"||category.value==="retail"){stopMsg.hidden=false;cont.hidden=true;stopMsg.querySelector("a").focus();return}
+    if(country.value==="us"||category.value==="none"){stopMsg.hidden=false;cont.hidden=true;stopMsg.querySelector("a").focus();return}
     remember();open();
+    /* the dialog is gone: put focus at the start of the content, not on the body */
+    var h1=$("#hero-title");h1.setAttribute("tabindex","-1");h1.focus({preventScroll:true});
   });
-  [country,category].forEach(function(el){el.addEventListener("change",function(){stopMsg.hidden=true;cont.hidden=false})});
+  [country,category].forEach(function(el){el.addEventListener("change",function(){stopMsg.hidden=true;cont.hidden=false;el.setAttribute("aria-invalid","false")})});
+  confirmBox.addEventListener("change",function(){confirmBox.setAttribute("aria-invalid","false")});
 
   /* ---------- the flying mark ---------- */
   var mark=$("#mark"),bar=$("#bar"),m1=$(".m1",mark),m2=$(".m2",mark);
@@ -703,27 +759,27 @@ html.motion .rise.in{opacity:1;transform:none}
     var a=m1.getBoundingClientRect(),b=m2.getBoundingClientRect();
     d1={w:a.width,h:a.height};d2={w:b.width,h:b.height};
   }
-  function put(el,d,x,y,s){el.style.transform="translate("+x.toFixed(2)+"px,"+y.toFixed(2)+"px) scale("+s.toFixed(4)+")"}
+  function put(el,x,y,s){el.style.transform="translate("+x.toFixed(2)+"px,"+y.toFixed(2)+"px) scale("+s.toFixed(4)+")"}
   function placeMark(t){
-    var hh=76,cy=hh/2,narrow=vw<=560,pad=narrow?16:28;
+    var cy=38,narrow=vw<=560,pad=narrow?16:28;
     /* at rest: stacked and centred */
     var gap=d2.h*.12,H=d1.h+gap+d2.h,top0=vh*.46-H/2;
-    var r1={x:vw/2-d1.w/2,y:top0,s:1},r2={x:vw/2-d2.w/2,y:top0+d1.h+gap,s:1};
+    var r1={x:vw/2-d1.w/2,y:top0},r2={x:vw/2-d2.w/2,y:top0+d1.h+gap};
     /* docked: on one line on wide screens, stacked on phones */
     var s1=(narrow?10.5:12.5)/d1.h,s2=(narrow?19:28)/d2.h,k1,k2;
     if(narrow){k1={x:pad,y:cy-(d1.h*s1+3+d2.h*s2)/2,s:s1};k2={x:pad,y:k1.y+d1.h*s1+3,s:s2}}
     else{k2={x:pad+d1.w*s1+14,y:cy-d2.h*s2*.58,s:s2};k1={x:pad,y:cy-d1.h*s1/2,s:s1}}
     var t1=ease(clamp(t*1.08,0,1)),t2=ease(clamp(t,0,1));
-    put(m1,d1,lerp(r1.x,k1.x,t1),lerp(r1.y,k1.y,t1),lerp(1,k1.s,t1));
-    put(m2,d2,lerp(r2.x,k2.x,t2),lerp(r2.y,k2.y,t2),lerp(1,k2.s,t2));
+    put(m1,lerp(r1.x,k1.x,t1),lerp(r1.y,k1.y,t1),lerp(1,k1.s,t1));
+    put(m2,lerp(r2.x,k2.x,t2),lerp(r2.y,k2.y,t2),lerp(1,k2.s,t2));
   }
 
   /* ---------- hero: sunrise driven by the scroll ---------- */
-  var hero=$("#dawn"),video=$("#sun"),poster=$("#sun-poster"),shade=$("#shade"),veil=$("#veil"),cue=$("#cue");
+  var hero=$("#dawn"),video=$("#sun"),poster=$("#sun-poster"),shade=$("#shade"),veil=$("#veil"),cue=$("#cue"),heroCopy=$("#hero-copy");
   var lines=$$("#hero-title .line > span"),h2s=$$("[data-hero='2']"),h3s=$$("[data-hero='3']");
   var vt=0,videoReady=false;
   function setupVideo(){
-    if(reduce){poster.src="media/sunrise-poster.jpg";return}
+    if(reduce||saveData){poster.src="media/sunrise-poster.jpg";return}
     var webm=video.canPlayType('video/webm; codecs="vp9"')!=="";
     var src="media/sunrise-"+(vw<=760?"960":"1600")+(webm?".webm":".mp4");
     /* The film is fetched whole and played from memory, so scrubbing works on any host,
@@ -739,20 +795,22 @@ html.motion .rise.in{opacity:1;transform:none}
   }
   function renderHero(p){
     placeMark(clamp(p/.3,0,1));
+    var w=clamp(p/.85,0,1);mark.style.color=mix([242,244,247],[255,241,230],w);
     if(videoReady&&video.duration){
       var target=clamp(p/.88,0,1)*(video.duration-.05);
-      vt+= (target-vt)*.18;
+      vt+=(target-vt)*.18;
       if(Math.abs(video.currentTime-vt)>.016&&!video.seeking){try{video.currentTime=vt}catch(e){}}
     }
     shade.style.opacity=(.62*(1-easeOut(clamp(p/.8,0,1)))).toFixed(3);
     veil.style.opacity=clamp((p-.2)/.25,0,1).toFixed(3);
     cue.style.opacity=(1-clamp(p/.06,0,1)).toFixed(3);
-    var t1=easeOut(clamp((p-.3)/.2,0,1));
     lines.forEach(function(l,i){var ti=easeOut(clamp((p-.3-i*.05)/.2,0,1));l.style.transform="translateY("+((1-ti)*110).toFixed(1)+"%)"});
     var t2=easeOut(clamp((p-.45)/.2,0,1));h2s.forEach(function(el){el.style.opacity=t2;el.style.transform="translateY("+((1-t2)*24).toFixed(1)+"px)"});
     var t3=easeOut(clamp((p-.58)/.2,0,1));h3s.forEach(function(el){el.style.opacity=t3});
-    bar.classList.toggle("solid",hero.getBoundingClientRect().bottom<(76+8));
+    bar.classList.toggle("solid",hero.getBoundingClientRect().bottom<84);
   }
+  /* a keyboard user who tabs into the hero copy before it has risen is taken to where it is visible */
+  heroCopy.addEventListener("focusin",function(){if(!reduce&&heroProgress()<.75)scrollTo(0,hero.offsetTop+(hero.offsetHeight-vh)*.8)});
 
   /* ---------- statement words light up ---------- */
   var statement=$("[data-words]"),words=[];
@@ -776,82 +834,136 @@ html.motion .rise.in{opacity:1;transform:none}
     for(var i=0;i<words.length;i++)words[i].classList.toggle("lit",i<n);
   }
 
+  /* ---------- day breaks ---------- */
+  var daybreak=$("#daybreak"),dayP=0;
+  function renderDaybreak(){
+    if(reduce)return;
+    var r=daybreak.getBoundingClientRect();
+    dayP=clamp((vh-r.top)/(vh+r.height*.4),0,1);
+    daybreak.style.backgroundColor=mix(NIGHT,PAPER,easeOut(dayP));
+  }
+
   /* ---------- funds: sideways travel ---------- */
-  var funds=$("#funds"),rail=$("#rail"),counterN=$("#counter-n"),counterF=$("#counter-f");
-  var cards=$$(".card",rail),parImgs=$$(".panel figure img[data-par], .panel figure video",rail);
-  var travel=!reduce&&finePointer&&vw>=900,travelDist=0;
+  var funds=$("#funds"),fundsStage=$("#funds-stage"),fundsHead=$(".funds-head"),fundsTitle=$("#funds-title"),railView=$("#rail-view"),rail=$("#rail"),counterN=$("#counter-n"),counterF=$("#counter-f");
+  var cards=$$(".card",rail),panels=$$(".panel figure img, .panel figure video",rail);
+  var travel=!reduce&&finePointer&&vw>=900&&vh>=640,travelDist=0;
   function layoutFunds(){
     root.classList.toggle("travel",travel);
-    if(!travel){funds.style.removeProperty("--travel-h");rail.style.transform="";return}
-    rail.style.transform="none";
-    var view=$("#rail-view");
+    rail.setAttribute("tabindex",travel?"-1":"0");
+    if(!travel){funds.style.removeProperty("--travel-h");rail.style.transform=fundsHead.style.transform=fundsHead.style.top="";return}
+    rail.style.transform=fundsHead.style.transform="none";
+    var line=$(".card h3",rail).getBoundingClientRect().top-fundsStage.getBoundingClientRect().top;
+    fundsHead.style.top=(line-22-fundsTitle.offsetHeight)+"px";
     var last=rail.lastElementChild;
-    travelDist=Math.max(0,last.offsetLeft+last.offsetWidth+40-view.clientWidth);
+    /* the last item stops at the content edge, clear of the section index in the right margin */
+    travelDist=Math.max(0,last.offsetLeft+last.offsetWidth+parseFloat(getComputedStyle(rail).paddingRight)-railView.clientWidth);
     funds.style.setProperty("--travel-h",(travelDist+vh)+"px");
   }
+  function fundsP(){var h=funds.offsetHeight-vh;return h>0?clamp(-funds.getBoundingClientRect().top/h,0,1):0}
+  /* the clipped viewport must never scroll on its own: focus would otherwise shift it */
+  railView.addEventListener("scroll",function(){if(railView.scrollLeft)railView.scrollLeft=0});
+  /* keyboard focus inside the travelling row moves the page to where that item is in view */
+  rail.addEventListener("focusin",function(e){
+    if(!travel)return;
+    var item=e.target.closest("li");if(!item)return;
+    var x=clamp(item.offsetLeft-railView.clientWidth*.3,0,travelDist);
+    scrollTo(0,funds.offsetTop+(travelDist?x/travelDist:0)*(funds.offsetHeight-vh));
+  });
+  function develop(el,c){
+    var f=1-clamp(Math.abs(c)*1.6,0,1);
+    el.style.filter="brightness("+(.7+.3*f).toFixed(3)+") saturate("+(.78+.22*f).toFixed(3)+")";
+  }
   function renderFunds(){
+    var shown=0;
     if(!travel){
-      cards.forEach(function(c){var r=c.getBoundingClientRect();if(r.left<vw&&r.top<vh)c.classList.add("seen")});return;
+      var max=rail.scrollWidth-rail.clientWidth;
+      cards.forEach(function(c,i){var r=c.getBoundingClientRect();if(r.left<vw*.8&&r.top<vh)shown=i+1});
+      counterN.textContent=String(Math.max(1,shown)).padStart(2,"0")+" / 10";
+      counterF.style.setProperty("--p",(max>0?rail.scrollLeft/max:0).toFixed(3));
+      if(!reduce)panels.forEach(function(img){var r=img.parentNode.getBoundingClientRect();develop(img,(r.left+r.width/2-vw/2)/vw+(r.top+r.height/2-vh/2)/vh*.6)});
+      return;
     }
-    var h=funds.offsetHeight-vh,p=h>0?clamp(-funds.getBoundingClientRect().top/h,0,1):0;
-    var x=-p*travelDist;rail.style.transform="translate3d("+x.toFixed(1)+"px,0,0)";
-    var seenN=0;
-    cards.forEach(function(c,i){var r=c.getBoundingClientRect();if(r.left<vw*.92){c.classList.add("seen");seenN=i+1}});
-    counterN.textContent=String(Math.max(1,seenN)).padStart(2,"0")+" / 10";
+    var p=fundsP();
+    rail.style.transform=fundsHead.style.transform="translate3d("+(-p*travelDist).toFixed(1)+"px,0,0)";
+    cards.forEach(function(c,i){if(c.getBoundingClientRect().left<vw*.85)shown=i+1});
+    counterN.textContent=String(Math.max(1,shown)).padStart(2,"0")+" / 10";
     counterF.style.setProperty("--p",p.toFixed(3));
-    parImgs.forEach(function(img){var r=img.parentNode.getBoundingClientRect();var c=(r.left+r.width/2-vw/2)/vw;img.style.transform="translate3d("+(c*-6).toFixed(2)+"%,0,0)"});
+    panels.forEach(function(img){var r=img.parentNode.getBoundingClientRect();var c=(r.left+r.width/2-vw/2)/vw;img.style.transform="translate3d("+(c*-6).toFixed(2)+"%,0,0)";develop(img,c)});
   }
 
   /* ---------- map stops ---------- */
   var mapSec=$("#markets"),stops=$$(".stop"),dots=$$("[data-dot]");
-  var mapP=0;
+  function mapProgress(){var h=mapSec.offsetHeight-vh;return h>0?clamp(-mapSec.getBoundingClientRect().top/h,0,1):0}
   function renderMapCopy(){
-    var h=mapSec.offsetHeight-vh;mapP=h>0?clamp(-mapSec.getBoundingClientRect().top/h,0,1):0;
+    var p=mapProgress();window.__mapP=p;
     if(reduce)return;
-    var idx=mapP<.33?0:mapP<.66?1:2;
-    stops.forEach(function(s,i){s.classList.toggle("on",i===idx);s.classList.toggle("past",i<idx)});
+    var idx=p<.33?0:p<.66?1:2;
+    stops.forEach(function(s,i){s.classList.toggle("on",i===idx)});
     dots.forEach(function(d,i){d.classList.toggle("on",i===idx)});
-    window.__mapP=mapP;
   }
 
   /* ---------- right index ---------- */
   var index=$("#index"),links=$$("a",index),secs=links.map(function(a){return $(a.getAttribute("href"))});
-  var darkIds={dawn:1,structure:1,markets:1,risks:1};
+  /* what sits behind each label decides its tone: dark sections, light sections, and the
+     daybreak band, which is dark until halfway through */
+  var tones=[["#dawn","dark"],["#structure","dark"],["#daybreak","day"],["#funds","light"],["#markets","dark"],["#valuation","light"],["#risks","dark"],["#information","light"],["#notes","light"],["footer","dark"]]
+    .map(function(t){return {el:$(t[0]),tone:t[1]}});
+  function toneAt(y){
+    for(var i=0;i<tones.length;i++){var r=tones[i].el.getBoundingClientRect();if(y>=r.top&&y<r.bottom){return tones[i].tone==="day"?(easeOut(dayP)>.5?"light":"dark"):tones[i].tone}}
+    return "light";
+  }
   function renderIndex(){
-    var doc=document.documentElement,max=doc.scrollHeight-vh;
-    index.style.setProperty("--p",(max>0?clamp(scrollY/max,0,1):0).toFixed(4));
-    var cur=0,tone="dark";
-    secs.forEach(function(s,i){if(!s)return;var r=s.getBoundingClientRect();if(r.top<=vh*.45)cur=i;if(r.top<=vh/2&&r.bottom>vh/2)tone=darkIds[s.id]?"dark":"light"});
-    links.forEach(function(a,i){a.setAttribute("aria-current",i===cur?"true":"false")});
-    if(scrollY>document.documentElement.scrollHeight-vh*1.6)tone="light";
-    index.setAttribute("data-tone",tone);
+    if(vw<1100)return;
+    var max=document.documentElement.scrollHeight-vh,p=max>0?clamp(scrollY/max,0,1):0;
+    index.style.setProperty("--p",p.toFixed(4));
+    index.style.setProperty("--fill",mix(LINE0,SUN,p));
+    var cur=0;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<=vh*.45)cur=i});
+    links.forEach(function(a,i){
+      if(i===cur)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current");
+      var r=a.getBoundingClientRect();a.setAttribute("data-tone",toneAt(r.top+r.height/2));
+    });
+    /* step aside while a pinned sequence plays: it has its own progress */
+    var fp=travel?fundsP():0,mp=mapProgress();
+    var away=(travel&&fp>0&&fp<1)||(!reduce&&mp>0&&mp<1);
+    index.classList.toggle("away",away);
+    if(away&&index.contains(document.activeElement))document.activeElement.blur();
   }
 
   /* ---------- reveals and loops ---------- */
   function observeReveals(){
-    if(reduce||!("IntersectionObserver" in window)){$$(".rise").forEach(function(e){e.classList.add("in")});$("#ladder").classList.add("in");return}
-    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.2,rootMargin:"0px 0px -8% 0px"});
-    $$(".rise").forEach(function(e){io.observe(e)});io.observe($("#ladder"));
+    var ladder=$("#ladder");
+    if(reduce||!("IntersectionObserver" in window)){ladder.classList.add("in");return}
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.3});
+    io.observe(ladder);
   }
   function observeLoops(){
     var vids=$$("video[data-loop]");
-    if(reduce){return}
+    if(reduce||saveData)return;
     if(!("IntersectionObserver" in window)){vids.forEach(function(v){v.preload="auto";v.play().catch(function(){})});return}
     var io=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;if(en.isIntersecting){v.preload="auto";var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.15});
     vids.forEach(function(v){io.observe(v)});
   }
 
   /* ---------- frame loop ---------- */
-  var running=false;
+  /* one loop for every scroll-linked effect; it rests when the page is still and the
+     film has caught up with the scroll */
+  var lastY=-1,lastW=-1,settle=0;
+  rail.addEventListener("scroll",function(){settle=20},{passive:true});
   function frame(){
-    renderHero(reduce?1:heroProgress());
-    renderWords();renderFunds();renderMapCopy();renderIndex();
+    var y=scrollY,moving=y!==lastY||vw!==lastW;
+    var filmBusy=videoReady&&video.duration&&Math.abs(clamp(heroProgress()/.88,0,1)*(video.duration-.05)-vt)>.01;
+    if(moving||filmBusy||settle>0){
+      renderHero(reduce?1:heroProgress());
+      renderWords();renderDaybreak();renderFunds();renderMapCopy();renderIndex();
+      settle=moving?30:settle-1;
+    }
+    lastY=y;lastW=vw;
     requestAnimationFrame(frame);
   }
   function relayout(){
     vw=innerWidth;vh=innerHeight;
-    travel=!reduce&&finePointer&&vw>=900;
-    measureMark();layoutFunds();
+    travel=!reduce&&finePointer&&vw>=900&&vh>=640;
+    measureMark();layoutFunds();settle=30;
   }
   var started=false;
   function start(){
@@ -869,8 +981,9 @@ html.motion .rise.in{opacity:1;transform:none}
 
 <script type="module">
 /* Real-time 3D: the Mediterranean (west to east with the scroll, sunlight rising from the
-   east) and the palazzo model (turns with the scroll, drag to turn). Both render only while
-   on screen, cap the pixel ratio, and leave their poster image in place if WebGL or the
+   east) and the palazzo model (a sundial: the scroll moves the sun across it, drag turns
+   it). Each scene is built only when the reader is near it, renders only when something
+   changed, caps the pixel ratio, and leaves its poster image in place if WebGL or the
    library is unavailable. Not loaded with reduced motion. */
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -884,18 +997,23 @@ async function boot() {
   } catch (e) { return; }
   const probe = document.createElement('canvas');
   if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) return;
-  initMap(THREE).catch(() => {});
-  initModel(THREE, GLTFLoader, RoomEnvironment).catch(() => {});
+  const near = (el, fn) => {
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); fn(); } }, { rootMargin: '200% 0px' });
+    io.observe(el);
+  };
+  near(document.getElementById('markets'), () => initMap(THREE).catch(() => {}));
+  near(document.getElementById('valuation'), () => initModel(THREE, GLTFLoader, RoomEnvironment).catch(() => {}));
 }
 
-function visible(el, cb) {
+function visible(el) {
   let on = false;
-  new IntersectionObserver((es) => { on = es[0].isIntersecting; cb(on); }, { rootMargin: '200px 0px' }).observe(el);
+  new IntersectionObserver((es) => { on = es[0].isIntersecting; }, { rootMargin: '200px 0px' }).observe(el);
   return () => on;
 }
 
 async function initMap(THREE) {
-  const stage = document.getElementById('map-stage');
+  const host = document.getElementById('map-stage');
+  const stage = document.getElementById('map-view');
   const canvas = document.getElementById('map3d');
   const labelsEl = document.getElementById('map-labels');
   const data = await (await fetch('data/med-land.json')).json();
@@ -915,8 +1033,8 @@ async function initMap(THREE) {
   scene.background = night.clone();
   scene.fog = new THREE.Fog(scene.background, 14, 34);
 
-  /* sea */
-  const sea = new THREE.Mesh(new THREE.PlaneGeometry(120, 80), new THREE.MeshStandardMaterial({ color: '#1B4272', roughness: 0.55, metalness: 0 }));
+  /* sea: smooth enough for the low sun to draw a light path on it */
+  const sea = new THREE.Mesh(new THREE.PlaneGeometry(120, 80), new THREE.MeshStandardMaterial({ color: '#1B4272', roughness: 0.3, metalness: 0.1 }));
   sea.rotation.x = -Math.PI / 2; sea.position.y = -0.02; sea.receiveShadow = true; scene.add(sea);
 
   /* land: every ring extruded a little above the sea, lit like stone */
@@ -935,7 +1053,7 @@ async function initMap(THREE) {
   const pins = [
     { lon: -3.7, lat: 40.2, h: 0.6, label: 'Spain', sub: '1 opportunity', stop: 0 },
     { lon: 13.4, lat: 42.0, h: 1.0, label: 'Italy', sub: '7 funds, 1 opportunity', stop: 1 },
-    { lon: 12.49, lat: 41.9, h: 0, label: 'Rome', sub: "Wright's focus", minor: true, stop: 1 },
+    { lon: 12.49, lat: 41.9, h: 0, label: 'Rome', sub: "Wright's focus", minor: true, side: 'left', stop: 1 },
     { lon: 14.49, lat: 35.92, h: 0, label: 'Malta', sub: 'The manager', minor: true, stop: 1 },
     { lon: 22.6, lat: 38.6, h: 0.6, label: 'Greece', sub: '1 portfolio', stop: 2 },
   ];
@@ -948,34 +1066,36 @@ async function initMap(THREE) {
       col.position.y = p.h / 2; g.add(col);
       const cap = new THREE.Mesh(new THREE.SphereGeometry(0.12, 24, 16), new THREE.MeshBasicMaterial({ color: '#FFD3A1' })); cap.position.y = p.h; g.add(cap);
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.18, 0.24, 48), new THREE.MeshBasicMaterial({ color: sunCol, transparent: true, opacity: 0.7, side: THREE.DoubleSide }));
-      ring.rotation.x = -Math.PI / 2; ring.position.y = 0.01; g.add(ring); p.ring = ring;
+      ring.rotation.x = -Math.PI / 2; ring.position.y = 0.01; g.add(ring);
     } else {
       const dot = new THREE.Mesh(new THREE.SphereGeometry(0.07, 16, 12), new THREE.MeshBasicMaterial({ color: '#FFFFFF' })); dot.position.y = 0.05; g.add(dot);
     }
     scene.add(g);
-    const el = document.createElement('div'); el.className = 'pin-label' + (p.minor ? ' minor' : ''); el.innerHTML = p.label + '<small>' + p.sub + '</small>';
+    const el = document.createElement('div'); el.className = 'pin-label'; el.innerHTML = p.label + '<small>' + p.sub + '</small>';
     labelsEl.appendChild(el);
-    pinMeshes.push({ p, g, el, top: new THREE.Vector3(base.x, base.y + Math.max(p.h, 0.12) + 0.25, base.z) });
+    const anchor = p.h > 0 ? new THREE.Vector3(base.x, base.y + p.h + 0.2, base.z) : new THREE.Vector3(base.x, base.y + 0.05, base.z);
+    pinMeshes.push({ p, el, anchor });
   }
 
   /* light: the sun rises in the east as the camera travels east */
-  const hemi = new THREE.HemisphereLight('#8FA6C8', '#0A1222', 0.35); scene.add(hemi);
+  const hemi = new THREE.HemisphereLight('#8FA6C8', '#0A1222', 0.55); scene.add(hemi);
   const sun = new THREE.DirectionalLight('#FF9A4D', 2.2);
-  sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+  sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024);
   Object.assign(sun.shadow.camera, { left: -16, right: 16, top: 12, bottom: -12, near: 1, far: 80 });
   scene.add(sun, sun.target);
   const sunColA = new THREE.Color('#FF6A2A'), sunColB = new THREE.Color('#FFE2B8');
 
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-  const stopsLL = [[-4.2, 39.6], [13.6, 40.9], [23.2, 37.9]];
-  const stopV = stopsLL.map(([lo, la]) => P(lo, la));
-  const look = new THREE.Vector3(), cam = new THREE.Vector3(), tmp = new THREE.Vector3();
+  const stopV = [[-4.2, 39.6], [13.9, 40.1], [23.2, 37.9]].map(([lo, la]) => P(lo, la));
+  const look = new THREE.Vector3(), tmp = new THREE.Vector3();
 
+  let dirty = true;
   function size() {
     const w = stage.clientWidth, h = stage.clientHeight;
-    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); dirty = true;
   }
-  size(); addEventListener('resize', size);
+  /* the box can change size without the window doing so (fonts, the copy under it, the pin) */
+  size(); new ResizeObserver(size).observe(stage);
 
   const smooth = (t) => t * t * (3 - 2 * t);
   function along(p) {
@@ -988,22 +1108,25 @@ async function initMap(THREE) {
     return stopV[2].clone();
   }
 
-  const isOn = visible(stage, () => {});
-  let cur = null, t0 = performance.now();
-  const narrow = () => stage.clientWidth < 760;
-  function tick(now) {
+  const isOn = visible(stage);
+  let cur = null, lastP = -1, lastT = performance.now();
+  const bar = document.querySelector('.bar');
+  function tick() {
     requestAnimationFrame(tick);
     if (!isOn()) return;
     const p = window.__mapP || 0;
     const target = along(p);
-    cur = cur ? cur.lerp(target, 0.08) : target.clone();
-    /* look a little west of the subject so it sits right of the copy column */
-    const shift = narrow() ? 0 : -2.8;
-    look.set(cur.x + shift, 0, cur.z + (narrow() ? 1.6 : 0.4));
-    cam.set(cur.x + shift - 1.2, narrow() ? 14 : 11, cur.z + (narrow() ? 11.5 : 9.6));
-    const drift = Math.sin((now - t0) / 6000) * 0.25;
-    camera.position.set(cam.x + drift, cam.y, cam.z);
+    if (!cur) cur = target.clone();
+    const moving = cur.distanceTo(target) > 0.002;
+    const now = performance.now(), dt = Math.min(0.1, (now - lastT) / 1000); lastT = now;
+    if (!moving && !dirty && p === lastP) return;
+    cur.lerp(target, 1 - Math.pow(0.92, dt * 60)); lastP = p; dirty = false;
+
+    const tall = stage.clientHeight > stage.clientWidth * 0.9;
+    look.set(cur.x, 0, cur.z + 0.2);
+    camera.position.set(cur.x - 1.0, tall ? 13 : 10.5, cur.z + (tall ? 10.5 : 8.6));
     camera.lookAt(look);
+    camera.updateMatrixWorld(); /* labels are projected before render(), which would otherwise update it a frame late */
 
     /* sunrise: low and red in the east at the start, higher and paler by Greece */
     const e = smooth(Math.min(1, p * 1.1));
@@ -1015,19 +1138,25 @@ async function initMap(THREE) {
     scene.background.copy(night).lerp(dawn, e * 0.8); scene.fog.color.copy(scene.background);
 
     const w = stage.clientWidth, h = stage.clientHeight;
-    const idx = p < 0.33 ? 0 : p < 0.66 ? 1 : 2, minX = narrow() ? 0 : w * 0.4;
+    const idx = p < 0.33 ? 0 : p < 0.66 ? 1 : 2;
+    /* labels never sit under the fixed header or past the edge of the view: each tries its
+       preferred side, then the others, and stays hidden if none of them fits */
+    const minTop = Math.max(8, bar.getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 8);
     for (const m of pinMeshes) {
-      if (m.p.ring) { const s = 1 + 0.25 * Math.sin(now / 700 + m.p.lon); m.p.ring.scale.set(s, s, s); m.p.ring.material.opacity = 0.75 - (s - 1) * 1.6; }
-      tmp.copy(m.top).project(camera);
+      tmp.copy(m.anchor).project(camera);
       const x = (tmp.x * 0.5 + 0.5) * w, y = (-tmp.y * 0.5 + 0.5) * h;
-      const inFront = tmp.z < 1 && m.p.stop === idx && x > minX && x < w - 20 && y > 90 && y < h - 20;
-      m.el.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-100%)`;
-      m.el.style.opacity = inFront ? (m.p.minor ? 0.85 : 1) : 0;
+      const lw = m.el.offsetWidth, lh = m.el.offsetHeight;
+      const box = { above: [x - lw / 2, y - lh - 10], left: [x - lw - 12, y - lh / 2], right: [x + 12, y - lh / 2] };
+      const order = m.p.side === 'left' ? ['left', 'above', 'right'] : ['above', 'left', 'right'];
+      const fit = order.find((k) => box[k][0] >= 8 && box[k][0] + lw <= w - 8 && box[k][1] >= minTop && box[k][1] + lh <= h - 8);
+      const at = box[fit || order[0]];
+      m.el.style.transform = `translate(${at[0].toFixed(1)}px,${at[1].toFixed(1)}px)`;
+      m.el.style.opacity = tmp.z < 1 && m.p.stop === idx && fit ? 1 : 0;
     }
     renderer.render(scene, camera);
   }
   requestAnimationFrame(tick);
-  stage.classList.add('live');
+  host.classList.add('live');
 }
 
 async function initModel(THREE, GLTFLoader, RoomEnvironment) {
@@ -1045,11 +1174,13 @@ async function initModel(THREE, GLTFLoader, RoomEnvironment) {
   renderer.setPixelRatio(Math.min(2, devicePixelRatio || 1));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
+  renderer.toneMappingExposure = 0.92;
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   const scene = new THREE.Scene();
   const pm = new THREE.PMREMGenerator(renderer);
   scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; pm.dispose();
+  scene.environmentIntensity = 0.32; /* a scene environment ignores material.envMapIntensity: at 1 it flattens every face */
 
   const box = new THREE.Box3().setFromObject(model);
   const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
@@ -1057,53 +1188,60 @@ async function initModel(THREE, GLTFLoader, RoomEnvironment) {
   model.position.set(-c.x, -box.min.y, -c.z);
   const holder = new THREE.Group(); holder.add(model); holder.scale.setScalar(s);
   const turn = new THREE.Group(); turn.add(holder); scene.add(turn);
-  /* the generated texture carries dark seams: shade the mesh as a monochrome
-     architect's model in travertine instead */
-  const stone = new THREE.MeshStandardMaterial({ color: '#D8CAB4', roughness: 0.8, metalness: 0, envMapIntensity: 0.35 });
+  /* shaded as a monochrome architect's model in travertine */
+  const stone = new THREE.MeshStandardMaterial({ color: '#D9CBB4', roughness: 0.85, metalness: 0, side: THREE.DoubleSide, shadowSide: THREE.FrontSide });
   model.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.material = stone; } });
-  renderer.toneMappingExposure = 0.9;
 
-  scene.add(new THREE.HemisphereLight('#E9EEF5', '#8C96A3', 0.45));
-  const rim = new THREE.DirectionalLight('#9FB4D6', 0.6); rim.position.set(-2.5, 1.5, -2); scene.add(rim);
-  const key = new THREE.DirectionalLight('#FFB877', 2.6); key.position.set(2.6, 2.2, 1.4); key.castShadow = true;
-  key.shadow.mapSize.set(1024, 1024); Object.assign(key.shadow.camera, { left: -1, right: 1, top: 1, bottom: -1, near: 0.5, far: 8 }); key.shadow.radius = 5;
+  /* low fill and a strong key, so the faces separate and the moving sun reads */
+  scene.add(new THREE.HemisphereLight('#E9EEF5', '#7D8794', 0.22));
+  const rim = new THREE.DirectionalLight('#9FB4D6', 0.3); rim.position.set(-2.5, 1.5, -2); scene.add(rim);
+  const key = new THREE.DirectionalLight('#FFD2A6', 2.6); key.castShadow = true; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.01;
+  key.shadow.mapSize.set(1024, 1024); Object.assign(key.shadow.camera, { left: -1.2, right: 1.2, top: 1.2, bottom: -1.2, near: 0.5, far: 10 }); key.shadow.radius = 5;
   scene.add(key);
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(6, 6), new THREE.ShadowMaterial({ opacity: 0.12 }));
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(8, 8), new THREE.ShadowMaterial({ opacity: 0.16 }));
   floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
 
   const h = size.y * s;
   const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
+  let dirty = true;
   function fit() {
     const w = stage.clientWidth, hh = stage.clientHeight;
     renderer.setSize(w, hh, false); camera.aspect = w / hh;
-    const dist = 3.1;
+    const dist = 3.6;
     camera.position.set(0, h * 0.5 + dist * 0.42, dist);
-    camera.lookAt(0, h * 0.42, 0); camera.updateProjectionMatrix();
+    camera.lookAt(0, h * 0.42, 0); camera.updateProjectionMatrix(); dirty = true;
   }
-  fit(); addEventListener('resize', fit);
+  fit(); new ResizeObserver(fit).observe(stage);
 
+  /* drag turns the model; the scroll moves the sun */
   let drag = 0, vel = 0, down = false, lastX = 0;
   stage.addEventListener('pointerdown', (e) => { down = true; lastX = e.clientX; stage.setPointerCapture(e.pointerId); });
-  stage.addEventListener('pointermove', (e) => { if (!down) return; const dx = e.clientX - lastX; lastX = e.clientX; vel = dx * 0.008; drag += vel; });
+  stage.addEventListener('pointermove', (e) => { if (!down) return; const dx = e.clientX - lastX; lastX = e.clientX; vel = dx * 0.008; drag += vel; dirty = true; });
   const up = () => { down = false; }; stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
 
-  const isOn = visible(stage, () => {});
-  let ang = 0;
+  const isOn = visible(stage);
+  let ang = -0.6, lastP = -1;
   function tick() {
     requestAnimationFrame(tick);
     if (!isOn()) return;
     const r = stage.getBoundingClientRect();
     const p = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight + r.height)));
-    if (!down) { vel *= 0.94; drag += vel; }
-    const target = -0.9 + p * Math.PI * 1.1 + drag;
-    ang += (target - ang) * 0.1;
+    if (!down) { vel *= 0.92; if (Math.abs(vel) > 1e-4) { drag += vel; dirty = true; } }
+    const target = -0.6 + drag;
+    if (Math.abs(target - ang) > 1e-4) dirty = true;
+    if (!dirty && Math.abs(p - lastP) < 1e-4) return;
+    ang += (target - ang) * 0.12; lastP = p; dirty = false;
     turn.rotation.y = ang;
-    /* the light warms and climbs as the model turns: morning on the facade */
-    key.position.set(Math.cos(p * 1.2) * 2.8, 1.2 + p * 1.8, 1.4);
+    /* a sundial: the sun climbs from low in the east to high in the south as you scroll */
+    const a = p * Math.PI * 0.85;
+    key.position.set(Math.cos(a) * 3.2, 0.9 + Math.sin(a) * 2.4, 0.4 + Math.sin(a) * 0.8);
+    key.color.setHSL(0.08, 0.9, 0.78 + p * 0.12);
     renderer.render(scene, camera);
   }
   requestAnimationFrame(tick);
   stage.classList.add('live');
+  stage.setAttribute('role', 'img');
+  stage.setAttribute('aria-label', 'Illustrative 3D model of a Mediterranean palazzo. As you scroll, the light moves across it like the sun through a day. Drag to turn it.');
 }
 
 window.__startScenes = boot;
