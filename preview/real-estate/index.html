@@ -1033,7 +1033,11 @@ async function initMap(THREE) {
 async function initModel(THREE, GLTFLoader, RoomEnvironment) {
   const stage = document.getElementById('model-stage');
   const canvas = document.getElementById('model3d');
-  const gltf = await new GLTFLoader().loadAsync('media/palazzo.glb');
+  /* the .glb, or the same bytes as base64 text for hosts that do not serve .glb */
+  let buf;
+  try { const r = await fetch('media/palazzo.glb'); if (!r.ok) throw 0; buf = await r.arrayBuffer(); }
+  catch (e) { const t = await (await fetch('media/palazzo.glb.txt')).text(); const bin = atob(t.trim()); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); buf = u.buffer; }
+  const gltf = await new GLTFLoader().parseAsync(buf, '');
   const model = gltf.scene;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
